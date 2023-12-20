@@ -11,7 +11,7 @@
         android:orientation="vertical"
         android:paddingTop="@dimen/activity_margin">
 
-        <com.simplemobiletools.commons.views.MyTextInputLayout
+        <org.fossify.commons.views.MyTextInputLayout
             android:id="@+id/export_call_history_filename_hint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -28,6 +28,6 @@
                 android:textCursorDrawable="@null"
                 android:textSize="@dimen/bigger_text_size" />
 
-        </com.simplemobiletools.commons.views.MyTextInputLayout>
+        </org.fossify.commons.views.MyTextInputLayout>
     </LinearLayout>
 </ScrollView>

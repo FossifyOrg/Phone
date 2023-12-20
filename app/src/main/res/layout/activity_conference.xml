@@ -20,13 +20,13 @@
         android:layout_height="match_parent"
         android:layout_marginTop="?attr/actionBarSize">
 
-        <com.simplemobiletools.commons.views.MyRecyclerView
+        <org.fossify.commons.views.MyRecyclerView
             android:id="@+id/conference_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clipToPadding="false"
             android:scrollbars="none"
-            app:layoutManager="com.simplemobiletools.commons.views.MyLinearLayoutManager"
+            app:layoutManager="org.fossify.commons.views.MyLinearLayoutManager"
             tools:listitem="@layout/item_conference_call" />
 
     </FrameLayout>

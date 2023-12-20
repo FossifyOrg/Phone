@@ -41,7 +41,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <org.fossify.commons.views.MyTextView
                     android:id="@+id/settings_color_customization_label"
                     style="@style/SettingsTextLabelStyle"
                     android:layout_width="wrap_content"
@@ -69,7 +69,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <org.fossify.commons.views.MyTextView
                     android:id="@+id/settings_purchase_thank_you_label"
                     style="@style/SettingsTextLabelStyle"
                     android:layout_width="wrap_content"
@@ -84,7 +84,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.simplemobiletools.commons.views.MyAppCompatCheckbox
+                <org.fossify.commons.views.MyAppCompatCheckbox
                     android:id="@+id/settings_use_english"
                     style="@style/SettingsCheckboxStyle"
                     android:layout_width="match_parent"
@@ -99,14 +99,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <org.fossify.commons.views.MyTextView
                     android:id="@+id/settings_language_label"
                     style="@style/SettingsTextLabelStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/language" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <org.fossify.commons.views.MyTextView
                     android:id="@+id/settings_language"
                     style="@style/SettingsTextValueStyle"
                     android:layout_width="wrap_content"
@@ -122,7 +122,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <org.fossify.commons.views.MyTextView
                     android:id="@+id/settings_manage_blocked_numbers_label"
                     style="@style/SettingsTextLabelStyle"
                     android:layout_width="wrap_content"
@@ -137,7 +137,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <org.fossify.commons.views.MyTextView
                     android:id="@+id/settings_change_date_time_format_label"
                     style="@style/SettingsTextLabelStyle"
                     android:layout_width="wrap_content"
@@ -152,7 +152,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <org.fossify.commons.views.MyTextView
                     android:id="@+id/settings_manage_speed_dial_label"
                     style="@style/SettingsTextLabelStyle"
                     android:layout_width="wrap_content"
@@ -167,14 +167,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <org.fossify.commons.views.MyTextView
                     android:id="@+id/settings_font_size_label"
                     style="@style/SettingsTextLabelStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/font_size" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <org.fossify.commons.views.MyTextView
                     android:id="@+id/settings_font_size"
                     style="@style/SettingsTextValueStyle"
                     android:layout_width="match_parent"
@@ -190,7 +190,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.simplemobiletools.commons.views.MyAppCompatCheckbox
+                <org.fossify.commons.views.MyAppCompatCheckbox
                     android:id="@+id/settings_start_name_with_surname"
                     style="@style/SettingsCheckboxStyle"
                     android:layout_width="match_parent"
@@ -205,7 +205,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.simplemobiletools.commons.views.MyAppCompatCheckbox
+                <org.fossify.commons.views.MyAppCompatCheckbox
                     android:id="@+id/settings_hide_dialpad_numbers"
                     style="@style/SettingsCheckboxStyle"
                     android:layout_width="match_parent"
@@ -220,7 +220,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.simplemobiletools.commons.views.MyAppCompatCheckbox
+                <org.fossify.commons.views.MyAppCompatCheckbox
                     android:id="@+id/settings_dialpad_vibration"
                     style="@style/SettingsCheckboxStyle"
                     android:layout_width="match_parent"
@@ -235,7 +235,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.simplemobiletools.commons.views.MyAppCompatCheckbox
+                <org.fossify.commons.views.MyAppCompatCheckbox
                     android:id="@+id/settings_dialpad_beeps"
                     style="@style/SettingsCheckboxStyle"
                     android:layout_width="match_parent"
@@ -261,7 +261,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <org.fossify.commons.views.MyTextView
                     android:id="@+id/settings_manage_tabs"
                     style="@style/SettingsTextLabelStyle"
                     android:layout_width="wrap_content"
@@ -276,14 +276,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <org.fossify.commons.views.MyTextView
                     android:id="@+id/settings_default_tab_label"
                     style="@style/SettingsTextLabelStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/default_tab_to_open" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <org.fossify.commons.views.MyTextView
                     android:id="@+id/settings_default_tab"
                     style="@style/SettingsTextValueStyle"
                     android:layout_width="match_parent"
@@ -299,7 +299,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.simplemobiletools.commons.views.MyAppCompatCheckbox
+                <org.fossify.commons.views.MyAppCompatCheckbox
                     android:id="@+id/settings_open_dialpad_at_launch"
                     style="@style/SettingsCheckboxStyle"
                     android:layout_width="match_parent"
@@ -325,7 +325,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.simplemobiletools.commons.views.MyAppCompatCheckbox
+                <org.fossify.commons.views.MyAppCompatCheckbox
                     android:id="@+id/settings_group_subsequent_calls"
                     style="@style/SettingsCheckboxStyle"
                     android:layout_width="match_parent"
@@ -340,7 +340,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.simplemobiletools.commons.views.MyAppCompatCheckbox
+                <org.fossify.commons.views.MyAppCompatCheckbox
                     android:id="@+id/settings_show_call_confirmation"
                     style="@style/SettingsCheckboxStyle"
                     android:layout_width="match_parent"
@@ -355,7 +355,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.simplemobiletools.commons.views.MyAppCompatCheckbox
+                <org.fossify.commons.views.MyAppCompatCheckbox
                     android:id="@+id/settings_disable_proximity_sensor"
                     style="@style/SettingsCheckboxStyle"
                     android:layout_width="match_parent"
@@ -370,7 +370,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.simplemobiletools.commons.views.MyAppCompatCheckbox
+                <org.fossify.commons.views.MyAppCompatCheckbox
                     android:id="@+id/settings_disable_swipe_to_answer"
                     style="@style/SettingsCheckboxStyle"
                     android:layout_width="match_parent"
@@ -385,7 +385,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.simplemobiletools.commons.views.MyAppCompatCheckbox
+                <org.fossify.commons.views.MyAppCompatCheckbox
                     android:id="@+id/settings_always_show_fullscreen"
                     style="@style/SettingsCheckboxStyle"
                     android:layout_width="match_parent"
@@ -411,7 +411,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <org.fossify.commons.views.MyTextView
                     android:id="@+id/settings_export_calls"
                     style="@style/SettingsTextLabelStyle"
                     android:layout_width="match_parent"
@@ -426,7 +426,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <org.fossify.commons.views.MyTextView
                     android:id="@+id/settings_import_calls"
                     style="@style/SettingsTextLabelStyle"
                     android:layout_width="match_parent"

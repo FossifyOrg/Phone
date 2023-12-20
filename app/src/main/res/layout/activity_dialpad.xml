@@ -22,7 +22,7 @@
         android:layout_marginTop="?attr/actionBarSize"
         android:focusableInTouchMode="true">
 
-        <com.simplemobiletools.commons.views.MyTextView
+        <org.fossify.commons.views.MyTextView
             android:id="@+id/dialpad_placeholder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -39,13 +39,13 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.simplemobiletools.commons.views.MyRecyclerView
+        <org.fossify.commons.views.MyRecyclerView
             android:id="@+id/dialpad_list"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:clipToPadding="false"
             android:scrollbars="none"
-            app:layoutManager="com.simplemobiletools.commons.views.MyLinearLayoutManager"
+            app:layoutManager="org.fossify.commons.views.MyLinearLayoutManager"
             app:layout_constraintBottom_toTopOf="@+id/dialpad_input"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -75,7 +75,7 @@
             android:background="@drawable/divider"
             app:layout_constraintBottom_toTopOf="@+id/dialpad_input" />
 
-        <com.simplemobiletools.commons.views.MyEditText
+        <org.fossify.commons.views.MyEditText
             android:id="@+id/dialpad_input"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
