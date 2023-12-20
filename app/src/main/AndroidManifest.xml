@@ -31,12 +31,12 @@
         tools:node="remove" />
 
     <queries>
-        <package android:name="com.simplemobiletools.contacts.pro.debug" />
-        <package android:name="com.simplemobiletools.contacts.pro" />
+        <package android:name="org.fossify.contacts.debug" />
+        <package android:name="org.fossify.contacts" />
     </queries>
 
     <application
-        android:name=".App"
+        android:name="org.fossify.dialer.App"
         android:allowBackup="true"
         android:appCategory="productivity"
         android:icon="@mipmap/ic_launcher"
@@ -63,21 +63,21 @@
         </activity>
 
         <activity
-            android:name="com.simplemobiletools.commons.activities.AboutActivity"
+            android:name="org.fossify.commons.activities.AboutActivity"
             android:configChanges="orientation"
             android:exported="false"
             android:label="@string/about"
             android:parentActivityName=".activities.MainActivity" />
 
         <activity
-            android:name="com.simplemobiletools.commons.activities.CustomizationActivity"
+            android:name="org.fossify.commons.activities.CustomizationActivity"
             android:configChanges="orientation"
             android:exported="false"
             android:label="@string/customize_colors"
             android:parentActivityName=".activities.SettingsActivity" />
 
         <activity
-            android:name="com.simplemobiletools.commons.activities.ManageBlockedNumbersActivity"
+            android:name="org.fossify.commons.activities.ManageBlockedNumbersActivity"
             android:configChanges="orientation"
             android:exported="false"
             android:label="@string/blocked_numbers"
@@ -96,7 +96,7 @@
             android:configChanges="orientation"
             android:exported="false"
             android:label="@string/conference"
-            android:parentActivityName=".activities.CallActivity" />
+            android:parentActivityName="org.fossify.dialer.activities.CallActivity" />
 
         <activity
             android:name=".activities.SettingsActivity"
@@ -112,7 +112,7 @@
         </activity>
 
         <activity
-            android:name=".activities.CallActivity"
+            android:name="org.fossify.dialer.activities.CallActivity"
             android:excludeFromRecents="true"
             android:exported="false"
             android:label="@string/ongoing_call"
@@ -195,8 +195,8 @@
             android:enabled="true"
             android:exported="true">
             <intent-filter>
-                <action android:name="com.simplemobiletools.dialer.action.ACCEPT_CALL" />
-                <action android:name="com.simplemobiletools.dialer.action.DECLINE_CALL" />
+                <action android:name="org.fossify.dialer.action.ACCEPT_CALL" />
+                <action android:name="org.fossify.dialer.action.DECLINE_CALL" />
             </intent-filter>
         </receiver>
 
@@ -328,10 +328,10 @@
 
         <activity-alias
             android:name=".activities.SplashActivity.Green"
-            android:enabled="false"
+            android:enabled="true"
             android:exported="true"
-            android:icon="@mipmap/ic_launcher_green"
-            android:roundIcon="@mipmap/ic_launcher_green"
+            android:icon="@mipmap/ic_launcher"
+            android:roundIcon="@mipmap/ic_launcher"
             android:targetActivity=".activities.SplashActivity">
 
             <intent-filter>
@@ -398,10 +398,10 @@
 
         <activity-alias
             android:name=".activities.SplashActivity.Orange"
-            android:enabled="true"
+            android:enabled="false"
             android:exported="true"
-            android:icon="@mipmap/ic_launcher"
-            android:roundIcon="@mipmap/ic_launcher"
+            android:icon="@mipmap/ic_launcher_orange"
+            android:roundIcon="@mipmap/ic_launcher_orange"
             android:targetActivity=".activities.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

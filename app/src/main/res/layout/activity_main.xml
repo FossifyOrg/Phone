@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.simplemobiletools.commons.views.MySearchMenu
+    <org.fossify.commons.views.MySearchMenu
         android:id="@+id/main_menu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -18,14 +18,14 @@
         android:fillViewport="true"
         android:scrollbars="none">
 
-        <com.simplemobiletools.commons.views.MyViewPager
+        <org.fossify.commons.views.MyViewPager
             android:id="@+id/view_pager"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintBottom_toTopOf="@+id/main_tabs_holder"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.simplemobiletools.commons.views.MyFloatingActionButton
+        <org.fossify.commons.views.MyFloatingActionButton
             android:id="@+id/main_dialpad_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
