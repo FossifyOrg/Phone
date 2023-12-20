@@ -5,6 +5,7 @@ import android.content.Context
 import android.telecom.Call
 import android.telecom.CallAudioState
 import android.telecom.InCallService
+import org.fossify.dialer.activities.CallActivity
 import org.fossify.dialer.extensions.config
 import org.fossify.dialer.extensions.isOutgoing
 import org.fossify.dialer.extensions.powerManager
@@ -36,7 +37,7 @@ class CallService : InCallService() {
         if (!powerManager.isInteractive || call.isOutgoing() || isScreenLocked || config.alwaysShowFullscreen) {
             try {
                 callNotificationManager.setupNotification(true)
-                startActivity(org.fossify.dialer.activities.CallActivity.getStartIntent(this))
+                startActivity(CallActivity.getStartIntent(this))
             } catch (e: Exception) {
                 // seems like startActivity can throw AndroidRuntimeException and ActivityNotFoundException, not yet sure when and why, lets show a notification
                 callNotificationManager.setupNotification()
@@ -57,7 +58,7 @@ class CallService : InCallService() {
         } else {
             callNotificationManager.setupNotification()
             if (wasPrimaryCall) {
-                startActivity(org.fossify.dialer.activities.CallActivity.getStartIntent(this))
+                startActivity(CallActivity.getStartIntent(this))
             }
         }
     }

@@ -15,6 +15,7 @@ import org.fossify.commons.extensions.setText
 import org.fossify.commons.extensions.setVisibleIf
 import org.fossify.commons.helpers.isOreoPlus
 import org.fossify.dialer.R
+import org.fossify.dialer.activities.CallActivity
 import org.fossify.dialer.extensions.powerManager
 import org.fossify.dialer.receivers.CallActionReceiver
 
@@ -42,7 +43,7 @@ class CallNotificationManager(private val context: Context) {
                 }
             }
 
-            val openAppIntent = org.fossify.dialer.activities.CallActivity.getStartIntent(context)
+            val openAppIntent = CallActivity.getStartIntent(context)
             val openAppPendingIntent = PendingIntent.getActivity(context, 0, openAppIntent, PendingIntent.FLAG_MUTABLE)
 
             val acceptCallIntent = Intent(context, CallActionReceiver::class.java)
