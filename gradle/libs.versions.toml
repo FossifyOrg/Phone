@@ -5,7 +5,7 @@ kotlinxSerializationJson = "1.5.1"
 #Simple tools
 commons = "0053668b48"
 #Gradle
-gradlePlugins-agp = "8.1.1"
+gradlePlugins-agp = "8.2.0"
 #Other
 indicatorFastScroll = "4524cd0b61"
 autofitTextView = "0.2.1"
