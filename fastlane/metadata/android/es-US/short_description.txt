@@ -1,1 +1,0 @@
-Práctico administrador de llamadas con agenda, bloqueo de número, multi-SIM

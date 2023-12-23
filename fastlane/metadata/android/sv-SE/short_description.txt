@@ -1,1 +1,0 @@
-En telefonsamtalshanterare med nummerblockering och stöd för flera SIM-kort

@@ -1,1 +1,0 @@
-Dialer app for Android with phonebook for managing phone calls, phone dialer

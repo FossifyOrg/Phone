@@ -1,1 +1,0 @@
-Gestisci le chiamate con una semplice app di composizione telefonica con rubrica

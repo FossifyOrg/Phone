@@ -1,1 +1,0 @@
-Ein einfacher Anrufmanager für Telefonnummern mit Telefonbuch und Wähltastenfeld
