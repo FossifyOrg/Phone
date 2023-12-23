@@ -79,6 +79,6 @@
     <string name="faq_1_text">Такива проблеми могат да имат много специфични за устройството и системата причини, трудно е да се каже като цяло. Трябва да се огледате в настройките на вашето устройство и да се уверите, че на приложението е разрешено да изскача, когато е във фонов режим и да позволява показване върху други приложения.</string>
     <!--
         Haven't found some strings? There's more at
-        https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
+        https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
     -->
 </resources>

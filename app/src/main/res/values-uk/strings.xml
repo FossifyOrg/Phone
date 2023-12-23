@@ -79,6 +79,6 @@
     <string name="faq_1_text">Такі проблеми можуть мати багато специфічних для пристрою та системи причин, важко сказати в цілому. Вам слід подивитися в налаштуваннях свого пристрою та переконатися, що застосунку дозволено відображати у фоновому режимі та дозволяти відображення над іншими застосунками.</string>
     <!--
         Haven't found some strings? There's more at
-        https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
+        https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
     -->
 </resources>

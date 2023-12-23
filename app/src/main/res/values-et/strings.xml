@@ -79,6 +79,6 @@
     <string name="faq_1_text">Üldist vastust pole, sellistel probleemidel võib olla palju seadme- ja süsteemispetsiifilisi põhjusi. Peaksid oma nutiseadme seadistustes ringi vaatama ja veenduma, et rakendusel on lubatud taustalt aknaid avada ja lubada kuvamist rakenduste peal.</string>
     <!--
         Haven't found some strings? There's more at
-        https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
+        https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
     -->
 </resources>

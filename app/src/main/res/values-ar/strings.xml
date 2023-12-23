@@ -79,6 +79,6 @@
     <string name="faq_1_text">يمكن أن يكون لمثل هذه المشكلات العديد من الأسباب الخاصة بالجهاز والنظام ، والتي يصعب تحديدها بشكل عام. يجب أن تنظر حولك في إعدادات جهازك وتأكد من السماح للتطبيق بالظهور عندما يكون في الخلفية والسماح بالعرض فوق التطبيقات الأخرى.</string>
     <!--
         Haven't found some strings? There's more at
-        https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
+        https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
     -->
 </resources>

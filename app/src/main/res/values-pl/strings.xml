@@ -79,6 +79,6 @@
     <string name="faq_1_text">Takie problemy mogą mieć wiele przyczyn specyficznych dla urządzenia i systemu; ogólnie trudno powiedzieć. Powinieneś/powinnaś rozejrzeć się w ustawieniach swojego urządzenia i upewnić się, że aplikacja może pojawiać się, gdy jest w tle, i wyświetlać się nad innymi aplikacjami.</string>
     <!--
         Haven't found some strings? There's more at
-        https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
+        https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
     -->
 </resources>

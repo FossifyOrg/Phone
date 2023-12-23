@@ -80,6 +80,6 @@
     <string name="faq_1_text">Takvi problemi mogu imati mnogo razloga specifičnih za uređaj i sustav, koje je teško reći općenito. Trebali biste pogledati uokolo u postavkama svog uređaja i provjeriti je li aplikaciji dopušteno iskakanje u pozadini i dopuštenje prikazivanja preko drugih aplikacija.</string>
     <!--
         Haven't found some strings? There's more at
-        https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
+        https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
     -->
 </resources>

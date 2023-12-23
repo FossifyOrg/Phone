@@ -79,6 +79,6 @@
     <string name="faq_1_text">Tällaisiin ongelmiin voi olla monia laite- ja järjestelmäkohtaisia syitä, joiden yleistäminen on hankalaa. Kannattaa tutkia laitteen asetuksia ja varmistaa, että sovelluksella on oikeus ponnahtaa esiin taustalta ja näkyä muiden sovellusten päällä.</string>
     <!--
         Haven't found some strings? There's more at
-        https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
+        https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
     -->
 </resources>

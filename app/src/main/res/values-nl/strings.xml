@@ -79,6 +79,6 @@
     <string name="faq_1_text">Dit soort problemen kan vele oorzaken hebben, specifiek voor bepaalde apparaten en software. Controleer in ieder geval of voor deze app in de systeeminstellingen \"Weergeven vóór andere apps\" is toegestaan en of bij meldingen voor inkomende gesprekken \"Weergeven op scherm\" is ingeschakeld.</string>
     <!--
         Haven't found some strings? There's more at
-        https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
+        https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
     -->
 </resources>

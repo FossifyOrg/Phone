@@ -79,6 +79,6 @@
     <string name="faq_1_text">Estes problemas poden ter moitas razóns específicas do dispositivo e do sistema, difíciles de dicir en xeral. Debes mirar ao teu redor na configuración do teu dispositivo e asegurarte de que a aplicación pode aparecer cando está en segundo plano e permitir que se vexa sobre outras aplicacións.</string>
     <!--
         Haven't found some strings? There's more at
-        https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
+        https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
     -->
 </resources>

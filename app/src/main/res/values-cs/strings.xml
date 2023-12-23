@@ -79,6 +79,6 @@
     <string name="faq_1_text">Takové problémy mohou mít mnoho důvodů specifických pro zařízení a systém, takže je těžké říci něco obecně. Měli byste zkontrolovat nastavení zařízení a ujistit se, že se aplikace může otevřít, když běží na pozadí, a umožnit zobrazení přes jiné aplikace.</string>
     <!--
         Haven't found some strings? There's more at
-        https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
+        https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
     -->
 </resources>

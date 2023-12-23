@@ -79,6 +79,6 @@
     <string name="faq_1_text">این مشکل ممکن است بسته به دلایل مشکلات مختلفی در دستگاه و سامانه رخ دهد، بنابراین جواب کلی برای آن سخت است. باید تنظیمات دستگاهتان را بررسی کنید و مطمئن شوید که برنامه اجازه دارد در پس‌زمینه اجرا شود و روی برنامه‌های دیگر نمایش داده شود.</string>
     <!--
         Haven't found some strings? There's more at
-        https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
+        https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
     -->
 </resources>
