@@ -92,6 +92,7 @@ class SettingsActivity : SimpleActivity() {
             arrayOf(
                 settingsColorCustomizationSectionLabel,
                 settingsGeneralSettingsLabel,
+                settingsDialpadSettingsLabel,
                 settingsStartupLabel,
                 settingsCallsLabel,
                 settingsMigrationSectionLabel

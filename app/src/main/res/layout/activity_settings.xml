@@ -199,6 +199,17 @@
 
             </RelativeLayout>
 
+            <include
+                android:id="@+id/settings_general_settings_divider"
+                layout="@layout/divider" />
+
+            <TextView
+                android:id="@+id/settings_dialpad_settings_label"
+                style="@style/SettingsSectionLabelStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/dialpad" />
+
             <RelativeLayout
                 android:id="@+id/settings_hide_dialpad_numbers_holder"
                 style="@style/SettingsHolderCheckboxStyle"
@@ -245,7 +256,7 @@
             </RelativeLayout>
 
             <include
-                android:id="@+id/settings_general_settings_divider"
+                android:id="@+id/settings_dialpad_settings_divider"
                 layout="@layout/divider" />
 
             <TextView
