@@ -17,6 +17,7 @@ const val FAVORITES_CUSTOM_ORDER_SELECTED = "favorites_custom_order_selected"
 const val WAS_OVERLAY_SNACKBAR_CONFIRMED = "was_overlay_snackbar_confirmed"
 const val DIALPAD_VIBRATION = "dialpad_vibration"
 const val DIALPAD_BEEPS = "dialpad_beeps"
+const val DIALPAD_SECONDARY_LANGUAGE = "dialpad_secondary_language"
 const val HIDE_DIALPAD_NUMBERS = "hide_dialpad_numbers"
 const val ALWAYS_SHOW_FULLSCREEN = "always_show_fullscreen"
 
@@ -31,3 +32,9 @@ const val DECLINE_CALL = PATH + "decline_call"
 const val DIALPAD_TONE_LENGTH_MS = 150L // The length of DTMF tones in milliseconds
 
 const val MIN_RECENTS_THRESHOLD = 30
+
+const val LANGUAGE_NONE = "none"
+
+const val SECONDARY_LANGUAGE_NONE_ID: Int = -1
+
+const val LOCALE_EN = "en"
