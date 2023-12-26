@@ -3,7 +3,7 @@
 kotlin = "1.9.0"
 kotlinxSerializationJson = "1.5.1"
 #Simple tools
-commons = "0053668b48"
+commons = "cbf79568d3"
 #Gradle
 gradlePlugins-agp = "8.2.0"
 #Other
