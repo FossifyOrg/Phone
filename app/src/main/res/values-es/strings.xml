@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Marcador Simple</string>
     <string name="app_launcher_name">Marcador</string>
     <string name="default_phone_app_prompt">Por favor, haz que esta aplicación sea la aplicación de teléfono por defecto</string>
     <string name="allow_displaying_over_other_apps">Por favor, permita la visualización sobre otras aplicaciones para un comportamiento fiable</string>

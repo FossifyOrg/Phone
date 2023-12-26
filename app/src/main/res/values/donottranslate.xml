@@ -1,5 +1,4 @@
 <resources>
-
     <string name="package_name">org.fossify.dialer</string>
-
+    <string name="app_name">Fossify Dialer</string>
 </resources>

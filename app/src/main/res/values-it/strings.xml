@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Telefono Semplice</string>
     <string name="app_launcher_name">Telefono</string>
     <string name="default_phone_app_prompt">Per favore, rendi l\'app la predefinita per le chiamate</string>
     <string name="allow_displaying_over_other_apps">Si prega di consentire la visualizzazione su altre app per un comportamento affidabile</string>

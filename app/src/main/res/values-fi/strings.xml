@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Yksinkertainen puhelin</string>
     <string name="app_launcher_name">Puhelin</string>
     <string name="default_phone_app_prompt">Tää tästä oletussovellus puheluille</string>
     <string name="allow_displaying_over_other_apps">Salli näkyminen muiden sovellusten päällä, jotta sovellus toimii luotettavasti</string>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Simple Dialer</string>
     <string name="app_launcher_name">Dialer</string>
     <string name="default_phone_app_prompt">Mohon buat aplikasi ini sebagai aplikasi Telepon bawaan</string>
     <string name="allow_displaying_over_other_apps">Mohon izinkan tampilkan di atas aplikasi lain untuk perilaku yang andal</string>
