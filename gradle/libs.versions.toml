@@ -2,7 +2,7 @@
 #jetbrains
 kotlin = "1.9.0"
 kotlinxSerializationJson = "1.5.1"
-#Simple tools
+#Fossify
 commons = "cbf79568d3"
 #Gradle
 gradlePlugins-agp = "8.2.0"
