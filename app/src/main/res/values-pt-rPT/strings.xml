@@ -1,2 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="dialpad_beeps">Ativar sons ao clicar no marcador</string>
+    <string name="dialpad_vibrations">Ativar vibrações ao clicar no marcador</string>
+    <string name="conference_manage">Gerir chamada em conferência</string>
+    <string name="call_number">Ligar</string>
+    <string name="turn_microphone_off">Desligar microfone</string>
+    <string name="asterisk">Asterisco</string>
+    <string name="ongoing_call">Chamada em curso</string>
+    <string name="unknown_caller">Chamada Desconhecida</string>
+    <string name="call_swap">Troca de chamadas</string>
+    <string name="clear_call_history">Limpar histórico de chamadas</string>
+    <string name="always_use_this_sim">Utilizar sempre este SIM para ligar para este número</string>
+    <string name="could_not_access_contacts">Não foi possível aceder aos seus contactos</string>
+    <string name="call_merge">Juntar chamadas</string>
+    <string name="call_ending">A terminar chamada</string>
+    <string name="select_sim">Selecione o SIM para esta chamada</string>
+    <string name="dialing">A ligar…</string>
+    <string name="dialer">Marcador</string>
+    <string name="show_dialpad">Mostrar marcador</string>
+    <string name="call_split">Separar chamada</string>
+    <string name="app_launcher_name">Telefone</string>
+    <string name="decline">Recusar</string>
+    <string name="no_previous_calls">Não existem chamadas anteriores</string>
+    <string name="turn_microphone_on">Ligar microfone</string>
+    <string name="call_add">Adicionar chamada</string>
+    <string name="accept_call">Aceitar chamada</string>
+    <string name="show_call_details">Mostrar detalhes das chamadas</string>
+    <string name="request_access">Pedir acesso</string>
+    <string name="call_ended">Chamada terminada</string>
+    <string name="resume_call">Retomar chamada</string>
+    <string name="hashtag">Hashtag</string>
+    <string name="clear_history_confirmation">Tens a certeza de que pretendes remover todo o histórico de chamadas?</string>
+    <string name="is_calling">A chamar…</string>
+    <string name="decline_call">Recusar chamada</string>
+    <string name="could_not_access_the_call_history">Não foi possível aceder ao histórico de chamadas</string>
+    <string name="dialpad">Marcador</string>
+    <string name="hide_dialpad">Ocultar marcador</string>
+    <string name="default_phone_app_prompt">Tornar aplicação de Chamadas padrão</string>
+    <string name="show_grouped_calls">Mostrar chamadas agrupadas</string>
+    <string name="allow_displaying_over_other_apps">Permitir que esta aplicação tenha permissão sobre outras aplicações para obter um comportamento fiável</string>
+    <string name="unset_default_sim">Despromover de SIM padrão</string>
+    <string name="calls">Chamadas</string>
+    <string name="accept">Aceitar</string>
+    <string name="call_on_hold">Em espera</string>
+    <string name="hold_call">Colocar chamada em espera</string>
+    <string name="turn_speaker_on">Ligar alta-voz</string>
+    <string name="end_call">Terminar chamada</string>
+    <string name="conference">Conferência</string>
+    <string name="turn_speaker_off">Desligar alta-voz</string>
+    <string name="remove_confirmation">Tens a certeza de que desejas remover os itens selecionados do histórico de chamadas?</string>
+</resources>
