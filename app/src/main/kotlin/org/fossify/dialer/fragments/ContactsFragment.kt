@@ -148,29 +148,30 @@ class ContactsFragment(context: Context, attributeSet: AttributeSet) : MyViewPag
     }
 
     override fun onSearchQueryChanged(text: String) {
-        val shouldNormalize = text.normalizeString() == text
+        val fixedText = text.trim().replace("\\s+".toRegex(), " ")
+        val shouldNormalize = fixedText.normalizeString() == fixedText
         val filtered = allContacts.filter {
-            getProperText(it.getNameToDisplay(), shouldNormalize).contains(text, true) ||
-                getProperText(it.nickname, shouldNormalize).contains(text, true) ||
+            getProperText(it.getNameToDisplay(), shouldNormalize).contains(fixedText, true) ||
+                getProperText(it.nickname, shouldNormalize).contains(fixedText, true) ||
                 it.phoneNumbers.any {
-                    text.normalizePhoneNumber().isNotEmpty() && it.normalizedNumber.contains(text.normalizePhoneNumber(), true)
+                    fixedText.normalizePhoneNumber().isNotEmpty() && it.normalizedNumber.contains(fixedText.normalizePhoneNumber(), true)
                 } ||
-                it.emails.any { it.value.contains(text, true) } ||
-                it.addresses.any { getProperText(it.value, shouldNormalize).contains(text, true) } ||
-                it.IMs.any { it.value.contains(text, true) } ||
-                getProperText(it.notes, shouldNormalize).contains(text, true) ||
-                getProperText(it.organization.company, shouldNormalize).contains(text, true) ||
-                getProperText(it.organization.jobPosition, shouldNormalize).contains(text, true) ||
-                it.websites.any { it.contains(text, true) }
+                it.emails.any { it.value.contains(fixedText, true) } ||
+                it.addresses.any { getProperText(it.value, shouldNormalize).contains(fixedText, true) } ||
+                it.IMs.any { it.value.contains(fixedText, true) } ||
+                getProperText(it.notes, shouldNormalize).contains(fixedText, true) ||
+                getProperText(it.organization.company, shouldNormalize).contains(fixedText, true) ||
+                getProperText(it.organization.jobPosition, shouldNormalize).contains(fixedText, true) ||
+                it.websites.any { it.contains(fixedText, true) }
         } as ArrayList
 
         filtered.sortBy {
             val nameToDisplay = it.getNameToDisplay()
-            !getProperText(nameToDisplay, shouldNormalize).startsWith(text, true) && !nameToDisplay.contains(text, true)
+            !getProperText(nameToDisplay, shouldNormalize).startsWith(fixedText, true) && !nameToDisplay.contains(fixedText, true)
         }
 
         binding.fragmentPlaceholder.beVisibleIf(filtered.isEmpty())
-        (binding.fragmentList.adapter as? ContactsAdapter)?.updateItems(filtered, text)
+        (binding.fragmentList.adapter as? ContactsAdapter)?.updateItems(filtered, fixedText)
         setupLetterFastScroller(filtered)
     }
 
