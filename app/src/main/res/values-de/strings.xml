@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_launcher_name">Telefon</string>
-    <string name="default_phone_app_prompt">Bitte machen Sie diese Anwendung zur Standard-Telefonanwendung</string>
-    <string name="allow_displaying_over_other_apps">Bitte erlauben Sie die Anzeige über andere Anwendungen für ein zuverlässiges Verhalten</string>
+    <string name="default_phone_app_prompt">Bitte mache diese App zur Standard-Telefonanwendung</string>
+    <string name="allow_displaying_over_other_apps">Bitte erlaube das Anzeigen über andere Apps für ein zuverlässiges Verhalten</string>
     <!-- Contacts -->
     <string name="could_not_access_contacts">Kein Zugriff auf deine Kontakte möglich</string>
     <!-- Recents -->
