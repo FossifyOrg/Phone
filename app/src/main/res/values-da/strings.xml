@@ -44,8 +44,4 @@
     <string name="open_dialpad_by_default">Åben det numeriske tastatur som standard når appen åbner</string>
     <string name="disable_proximity_sensor">Deaktivér nærhedssensor under opkald</string>
     <string name="disable_swipe_to_answer">Erstat swipe ved besvarelse af indgående opkald med at klikke på</string>
-    <!--
-        Kan du ikke finde nogle strenge? Der er mere på
-        https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
-    -->
 </resources>
