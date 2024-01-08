@@ -68,5 +68,4 @@
     <string name="import_call_history">Importuj historię połączeń</string>
     <string name="faq_1_title">Słyszę połączenia przychodzące, ale ekran się nie włącza. Co mogę zrobić\?</string>
     <string name="faq_1_text">Takie problemy mogą mieć wiele przyczyn specyficznych dla urządzenia i systemu; ogólnie trudno powiedzieć. Powinieneś/powinnaś rozejrzeć się w ustawieniach swojego urządzenia i upewnić się, że aplikacja może pojawiać się, gdy jest w tle, i wyświetlać się nad innymi aplikacjami.</string>
-    <string name="audio_route_bluetooth">Bluetooth</string>
-</resources>
+    </resources>
