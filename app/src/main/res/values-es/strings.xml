@@ -68,4 +68,5 @@
     <string name="import_call_history">Importar el historial de llamadas</string>
     <string name="faq_1_title">Escucho las llamadas entrantes, pero la pantalla no se enciende. ¿Qué puedo hacer\?</string>
     <string name="faq_1_text">Estos problemas pueden deberse a muchas razones específicas del dispositivo y del sistema, es difícil decirlo en general. Deberías mirar en la configuración de tu dispositivo y asegurarte de que la aplicación tiene permiso para aparecer cuando está en segundo plano y permitir la aplicación se muestre sobre otras aplicaciones.</string>
+    <string name="audio_route_bluetooth">Bluetooth</string>
 </resources>
