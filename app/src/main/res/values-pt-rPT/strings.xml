@@ -29,7 +29,6 @@
     <string name="request_access">Pedir acesso</string>
     <string name="call_ended">Chamada terminada</string>
     <string name="resume_call">Retomar chamada</string>
-    <string name="hashtag">Hashtag</string>
     <string name="clear_history_confirmation">Tens a certeza de que pretendes remover todo o histórico de chamadas?</string>
     <string name="is_calling">A chamar…</string>
     <string name="decline_call">Recusar chamada</string>

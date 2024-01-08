@@ -3,9 +3,7 @@
     <string name="app_launcher_name">Телефон</string>
     <string name="default_phone_app_prompt">Сделайте это приложение основным для совершения телефонных вызовов</string>
     <string name="allow_displaying_over_other_apps">Разрешите отображение поверх других приложений для надёжной работы</string>
-    <!-- Contacts -->
     <string name="could_not_access_contacts">Невозможно получить доступ к контактам</string>
-    <!-- Recents -->
     <string name="no_previous_calls">Предыдущие вызовы не найдены</string>
     <string name="could_not_access_the_call_history">Невозможно получить доступ к истории вызовов</string>
     <string name="request_access">Запрос доступа</string>
@@ -14,14 +12,12 @@
     <string name="show_grouped_calls">Сгруппировать вызовы</string>
     <string name="clear_call_history">Очистить историю вызовов</string>
     <string name="show_call_details">Показать сведения о вызове</string>
-    <!-- Dialpad -->
     <string name="dialpad">Номеронабиратель</string>
     <string name="asterisk">Звёздочка</string>
     <string name="hashtag">Хэштег</string>
     <string name="call_number">Номер вызова</string>
     <string name="dialpad_beeps">Звуковые сигналы при нажатии кнопок набора номера</string>
     <string name="dialpad_vibrations">Вибрация при нажатии кнопок набора номера</string>
-    <!-- Dialer -->
     <string name="dialer">Телефон</string>
     <string name="accept">Принять</string>
     <string name="accept_call">Принять вызов</string>
@@ -55,16 +51,13 @@
     <string name="conference">Конференция</string>
     <string name="audio_route_speaker">Динамик</string>
     <string name="audio_route_earpiece">Наушники</string>
-    <string name="audio_route_bluetooth">Bluetooth</string>
     <string name="audio_route_wired_headset">Проводная гарнитура</string>
     <string name="audio_route_wired_or_earpiece">Проводные или внутриканальные наушники</string>
     <string name="choose_audio_route">Выберите аудиовыход</string>
     <string name="calling_blocked_number">Набранный вами номер заблокирован</string>
-    <!-- Speed dial -->
     <string name="speed_dial">Быстрый вызов</string>
     <string name="manage_speed_dial">Управление быстрым вызовом</string>
     <string name="speed_dial_label">Нажмите на цифру, чтобы назначить ей контакт. Затем вы сможете быстро вызвать данный контакт длительным нажатием на выбранную цифру в номеронабирателе.</string>
-    <!-- Settings -->
     <string name="group_subsequent_calls">Группировать последующие вызовы с тем же номером в журнале вызовов</string>
     <string name="open_dialpad_by_default">По умолчанию открывать номеронабиратель при запуске приложения</string>
     <string name="disable_proximity_sensor">Отключать датчик приближения во время вызовов</string>
@@ -73,13 +66,6 @@
     <string name="hide_dialpad_numbers">Скрыть цифры на номеронабирателе</string>
     <string name="export_call_history">Экспорт истории звонков</string>
     <string name="import_call_history">Импорт истории звонков</string>
-
-    <!-- FAQ -->
     <string name="faq_1_title">Я слышу сигналы входящих вызовов, но экран не включается. Что можно сделать\?</string>
     <string name="faq_1_text">Такие проблемы могут иметь множество специфических для устройства и системы причин, о которых трудно говорить в общем. Следует проверить настройки устройства и убедиться, что приложению разрешено отображение всплывающих уведомлений в фоновом режиме и отображение поверх других приложений.</string>
-
-    <!--
-        Haven't found some strings? There's more at
-        https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
-    -->
 </resources>

@@ -3,9 +3,7 @@
     <string name="app_launcher_name">Телефон</string>
     <string name="default_phone_app_prompt">Будь ласка, зробіть цю програму типовою для телефонних викликів</string>
     <string name="allow_displaying_over_other_apps">Дозвольте відображення над іншими застосунками для надійної роботи</string>
-    <!-- Contacts -->
     <string name="could_not_access_contacts">Не вдалося отримати доступ до контактів</string>
-    <!-- Recents -->
     <string name="no_previous_calls">Попередні виклики не знайдено</string>
     <string name="could_not_access_the_call_history">Не вдалося отримати доступ до історії викликів</string>
     <string name="request_access">Запит на доступ</string>
@@ -14,14 +12,11 @@
     <string name="show_grouped_calls">Згрупувати виклики</string>
     <string name="clear_call_history">Очистити історію викликів</string>
     <string name="show_call_details">Показати деталі виклику</string>
-    <!-- Dialpad -->
     <string name="dialpad">Панель набору</string>
-    <string name="asterisk">Asterisk</string>
     <string name="hashtag">Хештег</string>
     <string name="call_number">Номер виклику</string>
     <string name="dialpad_beeps">Увімкнути звукові сигнали при наборі номеру</string>
     <string name="dialpad_vibrations">Увімкнути вібрації при наборі номеру</string>
-    <!-- Dialer -->
     <string name="dialer">Телефон</string>
     <string name="accept">Прийняти</string>
     <string name="accept_call">Прийняти дзвінок</string>
@@ -55,16 +50,13 @@
     <string name="conference">Конференц-виклик</string>
     <string name="audio_route_speaker">Динамік</string>
     <string name="audio_route_earpiece">Навушники</string>
-    <string name="audio_route_bluetooth">Bluetooth</string>
     <string name="audio_route_wired_headset">Провідна гарнітура</string>
     <string name="audio_route_wired_or_earpiece">Провідний або навушник</string>
     <string name="choose_audio_route">Оберіть аудіовихід</string>
     <string name="calling_blocked_number">Номер, на який ви телефонуєте, заблоковано</string>
-    <!-- Speed dial -->
     <string name="speed_dial">Швидкий виклик</string>
     <string name="manage_speed_dial">Управління швидким викликом</string>
     <string name="speed_dial_label">Натисніть на номер, щоб призначити йому контакт. Потім ви зможете швидко зателефонувати вказаному контакту, довго натискаючи вказаний номер на цифровій панелі.</string>
-    <!-- Settings -->
     <string name="group_subsequent_calls">Групувати наступні дзвінки з тим самим номером у журналі викликів</string>
     <string name="open_dialpad_by_default">За замовчуванням відкривати цифрову панель при запуску застосунку</string>
     <string name="disable_proximity_sensor">Вимикати датник наближення під час викликів</string>
@@ -73,11 +65,6 @@
     <string name="hide_dialpad_numbers">Приховати номери цифрової клавіатури</string>
     <string name="export_call_history">Експорт журналу дзвінків</string>
     <string name="import_call_history">Імпорт історії дзвінків</string>
-    <!-- FAQ -->
     <string name="faq_1_title">Я чую вхідні дзвінки, але екран не вмикається. Що я можу зробити\?</string>
     <string name="faq_1_text">Такі проблеми можуть мати багато специфічних для пристрою та системи причин, важко сказати в цілому. Вам слід подивитися в налаштуваннях свого пристрою та переконатися, що застосунку дозволено відображати у фоновому режимі та дозволяти відображення над іншими застосунками.</string>
-    <!--
-        Haven't found some strings? There's more at
-        https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
-    -->
 </resources>

@@ -3,9 +3,7 @@
     <string name="app_launcher_name">Тэлефон</string>
     <string name="default_phone_app_prompt">Зрабіце гэта прыкладанне стандартным для тэлефонных выклікаў</string>
     <string name="allow_displaying_over_other_apps">Дазвольце паказ над іншымі прыкладаннямі для надзейнай працы</string>
-    <!-- Contacts -->
     <string name="could_not_access_contacts">Не атрымалася атрымаць доступ да кантактаў</string>
-    <!-- Recents -->
     <string name="no_previous_calls">Папярэднія выклікі не знойдзены</string>
     <string name="could_not_access_the_call_history">Не атрымалася атрымаць доступ да журнала выклікаў</string>
     <string name="request_access">Запыт доступу</string>
@@ -14,14 +12,12 @@
     <string name="show_grouped_calls">Паказаць згрупаваныя выклікі</string>
     <string name="clear_call_history">Ачысціць журнал выклікаў</string>
     <string name="show_call_details">Паказаць звесткі аб выкліке</string>
-    <!-- Dialpad -->
     <string name="dialpad">Панэль набору нумароў</string>
     <string name="asterisk">Зорачка</string>
     <string name="hashtag">Рашотка</string>
     <string name="call_number">Нумар выкліку</string>
     <string name="dialpad_beeps">Уключыць гукавыя сігналы пры націсканні кнопак панэлі набору</string>
     <string name="dialpad_vibrations">Уключыць вібрацыю пры націсканні кнопак панэлі набору</string>
-    <!-- Dialer -->
     <string name="dialer">Тэлефон</string>
     <string name="accept">Прыняць</string>
     <string name="accept_call">Прыняць выклік</string>
@@ -53,33 +49,12 @@
     <string name="call_add">Дадаць выклік</string>
     <string name="conference_manage">Кіраванне канферэнц-сувяззю</string>
     <string name="conference">Канферэнц-сувязь</string>
-    <string name="audio_route_speaker">Speaker</string>
-    <string name="audio_route_earpiece">Earpiece</string>
-    <string name="audio_route_bluetooth">Bluetooth</string>
-    <string name="audio_route_wired_headset">Wired Headset</string>
-    <string name="audio_route_wired_or_earpiece">Wired or Earpiece</string>
-    <string name="choose_audio_route">Choose audio route</string>
-    <string name="calling_blocked_number">The number you are calling is blocked</string>
-    <!-- Speed dial -->
     <string name="speed_dial">Хуткі набор</string>
     <string name="manage_speed_dial">Кіраванне хуткім наборам</string>
     <string name="speed_dial_label">Націсніце на лічбу, каб прызначыць ёй кантакт. Затым вы можаце хутка патэлефанаваць дадзенаму кантакту доўгім націсканнем на абранай лічбе на панэлі набору нумароў.</string>
-    <!-- Settings -->
     <string name="group_subsequent_calls">Групаваць наступныя выклікі з тым жа нумарам у журнале выклікаў</string>
     <string name="open_dialpad_by_default">Адкрываць панэль набору нумароў пры запуску</string>
     <string name="disable_proximity_sensor">Адключаць датчык набліжэння падчас выклікаў</string>
     <string name="disable_swipe_to_answer">Выкарыстоўваць націсканне замест перацягвання пры адказе на ўваходныя выклікі</string>
     <string name="show_incoming_calls_full_screen">Заўсёды паказваць уваходныя выклікі ў поўнаэкранным рэжыме</string>
-    <string name="hide_dialpad_numbers">Hide dialpad numbers</string>
-    <string name="export_call_history">Export call history</string>
-    <string name="import_call_history">Import call history</string>
-
-    <!-- FAQ -->
-    <string name="faq_1_title">I hear incoming calls, but the screen doesn\'t turn on. What can I do?</string>
-    <string name="faq_1_text">Such issues can have many device and system specific reasons, hard to say in general. You should look around in your device settings and make sure that the app is allowed to pop up when in background and allow displaying over other apps.</string>
-
-    <!--
-        Haven't found some strings? There's more at
-        https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
-    -->
 </resources>

@@ -3,9 +3,7 @@
     <string name="app_launcher_name">Диалер</string>
     <string name="default_phone_app_prompt">Учините ову апликацију подразумеваном апликацијом за телефон</string>
     <string name="allow_displaying_over_other_apps">Дозволите приказивање преко других апликација ради поузданог понашања</string>
-    <!-- Contacts -->
     <string name="could_not_access_contacts">Није могуће приступити вашим контактима</string>
-    <!-- Recents -->
     <string name="no_previous_calls">Није пронађен ниједан претходни позив</string>
     <string name="could_not_access_the_call_history">Није могуће приступити историји позива</string>
     <string name="request_access">Захтевај приступ</string>
@@ -14,14 +12,12 @@
     <string name="show_grouped_calls">Прикажи груписане позиве</string>
     <string name="clear_call_history">Обришите историју позива</string>
     <string name="show_call_details">Прикажи детаље позива</string>
-    <!-- Dialpad -->
     <string name="dialpad">Тастер за бирање бројева</string>
     <string name="asterisk">Астериск</string>
     <string name="hashtag">Хаштег</string>
     <string name="call_number">Позив број</string>
     <string name="dialpad_beeps">Омогућите звучне сигнале при кликовима на дугме на тастатури</string>
     <string name="dialpad_vibrations">Омогућите звучне сигнале при кликовима на дугме на тастатури</string>
-    <!-- Dialer -->
     <string name="dialer">Диалер</string>
     <string name="accept">Прихвати</string>
     <string name="accept_call">Прихвати позив</string>
@@ -59,23 +55,14 @@
     <string name="audio_route_wired_headset">Жичане слушалице</string>
     <string name="audio_route_wired_or_earpiece">Жичани или слушалица</string>
     <string name="choose_audio_route">Изаберите аудио руту</string>
-    <string name="calling_blocked_number">The number you are calling is blocked</string>
-    <!-- Speed dial -->
     <string name="speed_dial">Брзо бирање</string>
     <string name="manage_speed_dial">Управљајте брзим бирањем</string>
     <string name="speed_dial_label">Кликните на број да бисте му доделили контакт. Затим можете брзо да позовете дати контакт дугим притиском на дати број на бирачу.</string>
-    <!-- Settings -->
     <string name="group_subsequent_calls">Групирајте следеће позиве са истим бројем у евиденцији позива</string>
     <string name="open_dialpad_by_default">Подразумевано отворите тастатуру за бирање бројева када се апликација отвори</string>
     <string name="disable_proximity_sensor">Онемогућите сензор близине током позива</string>
     <string name="disable_swipe_to_answer">Замените превлачење при одговарању на долазне позиве кликом</string>
     <string name="show_incoming_calls_full_screen">Увек прикажи долазне позиве преко целог екрана</string>
-    <string name="hide_dialpad_numbers">Hide dialpad numbers</string>
-    <string name="export_call_history">Export call history</string>
-    <string name="import_call_history">Import call history</string>
-
-    <!-- FAQ -->
     <string name="faq_1_title">Чујем долазне позиве, али екран се не укључује. Шта могу да урадим\?</string>
     <string name="faq_1_text">Такви проблеми могу имати много специфичних разлога за уређај и систем, што је уопштено тешко рећи. Требало би да погледате около у подешавањима уређаја и уверите се да је апликацији дозвољено да искаче када је у позадини и да дозволи приказивање преко других апликација.</string>
-
 </resources>

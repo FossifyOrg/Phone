@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_launcher_name">Dialer</string>
     <string name="default_phone_app_prompt">Vă rugăm să setați ca aplicația implicită pentru telefon</string>
     <string name="allow_displaying_over_other_apps">Vă rugăm să permiteți afișarea peste alte aplicații pentru un aspect fiabil</string>
-    <!-- Contacts -->
     <string name="could_not_access_contacts">Contactele dumneavoastră nu au putut fi accesate</string>
-    <!-- Recents -->
     <string name="no_previous_calls">Nu au fost găsite apeluri anterioare</string>
     <string name="could_not_access_the_call_history">Nu s-a putut accesa istoricul apelurilor</string>
     <string name="request_access">Solicitați acces</string>
@@ -14,15 +11,11 @@
     <string name="show_grouped_calls">Afișați apelurile grupate</string>
     <string name="clear_call_history">Ștergeți istoricul apelurilor</string>
     <string name="show_call_details">Afișați detaliile apelului</string>
-    <!-- Dialpad -->
     <string name="dialpad">Tastatură telefonică</string>
     <string name="asterisk">Asterisc</string>
-    <string name="hashtag">Hashtag</string>
     <string name="call_number">Apelaţi numărul</string>
     <string name="dialpad_beeps">Activați semnalele sonore la apăsarea butoanelor tastaturii telefonice</string>
     <string name="dialpad_vibrations">Activați vibrațiile la apăsarea butoanelor tastaturii telefonice</string>
-    <!-- Dialer -->
-    <string name="dialer">Dialer</string>
     <string name="accept">Acceptați</string>
     <string name="accept_call">Acceptați apelul</string>
     <string name="decline">Refuzaţi</string>
@@ -53,33 +46,14 @@
     <string name="call_add">Adăugați apel</string>
     <string name="conference_manage">Gestionați apelul de conferință</string>
     <string name="conference">Conferință</string>
-    <string name="audio_route_speaker">Speaker</string>
-    <string name="audio_route_earpiece">Earpiece</string>
-    <string name="audio_route_bluetooth">Bluetooth</string>
-    <string name="audio_route_wired_headset">Wired Headset</string>
-    <string name="audio_route_wired_or_earpiece">Wired or Earpiece</string>
-    <string name="choose_audio_route">Choose audio route</string>
-    <string name="calling_blocked_number">The number you are calling is blocked</string>
-    <!-- Speed dial -->
     <string name="speed_dial">Apelare rapidă</string>
     <string name="manage_speed_dial">Gestionați apelarea rapidă</string>
     <string name="speed_dial_label">Apăsaţi pe un număr pentru a-i atribui un contact. Apoi, puteți apela rapid contactul dat prin apăsarea lungă a numărului dat în dialer.</string>
-    <!-- Settings -->
     <string name="group_subsequent_calls">Grupaţi apelurile ulterioare cu același număr în jurnalul de apeluri</string>
     <string name="open_dialpad_by_default">Deschideți în mod implicit tastatura telefonică la deschiderea aplicației</string>
     <string name="disable_proximity_sensor">Dezactivați senzorul de proximitate în timpul apelurilor</string>
     <string name="disable_swipe_to_answer">Înlocuiți glisarea pentru a răspunde la apelurile primite cu o singură apăsare</string>
     <string name="show_incoming_calls_full_screen">Afișați întotdeauna apelurile primite pe întreg ecranul</string>
-    <string name="hide_dialpad_numbers">Hide dialpad numbers</string>
-    <string name="export_call_history">Export call history</string>
-    <string name="import_call_history">Import call history</string>
-
-    <!-- FAQ -->
     <string name="faq_1_title">Aud apelurile primite, dar ecranul nu se aprinde. Ce pot face\?</string>
     <string name="faq_1_text">Aceste probleme pot avea multe motive specifice dispozitivului și sistemului, fiind greu de spus în general. Ar trebui să vă uitați în setările dispozitivului și să vă asigurați că aplicația este permisă să apară atunci când este în fundal și că permite afișarea peste alte aplicații.</string>
-
-    <!--
-        Haven't found some strings? There's more at
-        https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
-    -->
 </resources>

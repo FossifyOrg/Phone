@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_launcher_name">Dialer</string>
     <string name="default_phone_app_prompt">Mohon buat aplikasi ini sebagai aplikasi Telepon bawaan</string>
     <string name="allow_displaying_over_other_apps">Mohon izinkan tampilkan di atas aplikasi lain untuk perilaku yang andal</string>
-    <!-- Contacts -->
     <string name="could_not_access_contacts">Tidak dapat mengakses kontak anda</string>
-    <!-- Recents -->
     <string name="no_previous_calls">Tidak ada panggilan sebelumnya yang ditemukan</string>
     <string name="could_not_access_the_call_history">Tidak dapat mengakses riwayat panggilan</string>
     <string name="request_access">Akses diminta</string>
@@ -14,15 +11,12 @@
     <string name="show_grouped_calls">Tampilkan panggilan yang digrup</string>
     <string name="clear_call_history">Hapus riwayat panggilan</string>
     <string name="show_call_details">Tampilkan detail panggilan</string>
-    <!-- Dialpad -->
     <string name="dialpad">Tombol nomor</string>
     <string name="asterisk">Bintang</string>
     <string name="hashtag">Pagar</string>
     <string name="call_number">Nomor telepon</string>
     <string name="dialpad_beeps">Aktifkan suara ketika tombol papan ditekan</string>
     <string name="dialpad_vibrations">Aktifkan getaran ketika tombol papan ditekan</string>
-    <!-- Dialer -->
-    <string name="dialer">Dialer</string>
     <string name="accept">Menerima</string>
     <string name="accept_call">Terima panggilan</string>
     <string name="decline">Menolak</string>
@@ -53,33 +47,20 @@
     <string name="call_add">Tambahkan panggilan</string>
     <string name="conference_manage">Kelola panggilan konferensi</string>
     <string name="conference">Konferensi</string>
-    <string name="audio_route_speaker">Speaker</string>
     <string name="audio_route_earpiece">Earphone</string>
-    <string name="audio_route_bluetooth">Bluetooth</string>
     <string name="audio_route_wired_headset">Headset Kabel</string>
     <string name="audio_route_wired_or_earpiece">Kabel atau Earphone</string>
     <string name="choose_audio_route">Pilih rute audio</string>
     <string name="calling_blocked_number">Nomor yang Anda panggil diblokir</string>
-    <!-- Speed dial -->
     <string name="speed_dial">Panggilan cepat</string>
     <string name="manage_speed_dial">Kelola panggilan cepat</string>
     <string name="speed_dial_label">Klik pada nomor untuk menetapkan kontak ke sana. Anda kemudian dapat dengan cepat memanggil kontak yang diberikan dengan menekan lama nomor yang diberikan di dialer.</string>
-    <!-- Settings -->
     <string name="group_subsequent_calls">Kelompokkan panggilan berikutnya dengan nomor yang sama di log panggilan</string>
     <string name="open_dialpad_by_default">Buka dialpad secara default ketika aplikasi dibuka</string>
     <string name="disable_proximity_sensor">Nonaktifkan sensor kedekatan saat ada di panggilan</string>
     <string name="disable_swipe_to_answer">Ganti menggesek saat menanggapi panggilan masuk dengan mengklik</string>
     <string name="show_incoming_calls_full_screen">Selalu tampilkan panggilan masuk dengan layar penuh</string>
     <string name="hide_dialpad_numbers">Sembunyikan nomor tombol papan</string>
-    <string name="export_call_history">Export call history</string>
-    <string name="import_call_history">Import call history</string>
-
-    <!-- FAQ -->
     <string name="faq_1_title">Saya mendengar panggilan masuk, tetapi layarnya tidak menyala\? Apa yang bisa saya lakukan\?</string>
     <string name="faq_1_text">Beberapa masalah dapat memiliki alasan perangkat dan sistem spesifik, tidak mudah untuk diberi tahu secara umum. Anda seharusnya melihat dalam pengaturan perangkat Anda dan memastikan bahwa aplikasi diperbolehkan untuk muncul ketika dalam latar belakang dan memperbolehkan menampilkan di atas aplikasi lain.</string>
-
-    <!--
-        Haven't found some strings? There's more at
-        https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
-    -->
 </resources>

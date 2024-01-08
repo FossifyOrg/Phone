@@ -3,9 +3,7 @@
     <string name="app_launcher_name">Telefonas</string>
     <string name="default_phone_app_prompt">Padarykite šią programėlę numatytąja telefono programėle</string>
     <string name="allow_displaying_over_other_apps">Prašome leisti rodyti per kitas programas, kad būtų užtikrintas patikimas elgesys</string>
-    <!-- Contacts -->
     <string name="could_not_access_contacts">Nepavyko gauti prieigos prie adresatų</string>
-    <!-- Recents -->
     <string name="no_previous_calls">Nerasta jokių ankstesnių skambučių</string>
     <string name="could_not_access_the_call_history">Nepavyko pasiekti skambučių istorijos</string>
     <string name="request_access">Prašyti prieigos</string>
@@ -14,14 +12,10 @@
     <string name="show_grouped_calls">Rodyti sugrupuotus skambučius</string>
     <string name="clear_call_history">Išvalyti skambučių istoriją</string>
     <string name="show_call_details">Rodyti skambučio informaciją</string>
-    <!-- Dialpad -->
     <string name="dialpad">Numerio rinkiklis</string>
     <string name="asterisk">Žvaigždutė</string>
     <string name="hashtag">Grotelėmis</string>
     <string name="call_number">Skambinti numeriu</string>
-    <string name="dialpad_beeps">Enable beeps on dialpad button clicks</string>
-    <string name="dialpad_vibrations">Enable vibrations on dialpad button clicks</string>
-    <!-- Dialer -->
     <string name="dialer">Numerio rinkiklis</string>
     <string name="accept">Priimti</string>
     <string name="accept_call">Atsiliepti</string>
@@ -53,33 +47,12 @@
     <string name="call_add">Pridėti skambutį</string>
     <string name="conference_manage">Tvarkyti konferencinį skambutį</string>
     <string name="conference">Konferencija</string>
-    <string name="audio_route_speaker">Speaker</string>
-    <string name="audio_route_earpiece">Earpiece</string>
-    <string name="audio_route_bluetooth">Bluetooth</string>
-    <string name="audio_route_wired_headset">Wired Headset</string>
-    <string name="audio_route_wired_or_earpiece">Wired or Earpiece</string>
-    <string name="choose_audio_route">Choose audio route</string>
-    <string name="calling_blocked_number">The number you are calling is blocked</string>
-    <!-- Speed dial -->
     <string name="speed_dial">Spartusis rinkimas</string>
     <string name="manage_speed_dial">Tvarkyti spartųjį rinkimą</string>
     <string name="speed_dial_label">Spustelėkite ant skaitmens, kad priskirtumėte jam adresatą. Tuomet, numerio rinkiklyje ilgai laikydami nurodytą skaitmenį, galėsite greitai pradėti skambinti nurodytam adresatui.</string>
-    <!-- Settings -->
     <string name="group_subsequent_calls">Skambučių žurnale sugrupuokite paskesnius skambučius su tuo pačiu numeriu</string>
     <string name="open_dialpad_by_default">Atveriant programėlę, automatiškai pagal numatymą atverti numerio rinkiklį</string>
     <string name="disable_proximity_sensor">Skambučių metu išjungti artumo jutiklį</string>
     <string name="disable_swipe_to_answer">Atsiliepiant į įeinančius skambučius perbraukimą pakeiskite paspaudimu</string>
     <string name="show_incoming_calls_full_screen">Visada rodykite įeinančius skambučius per visą ekraną</string>
-    <string name="hide_dialpad_numbers">Hide dialpad numbers</string>
-    <string name="export_call_history">Export call history</string>
-    <string name="import_call_history">Import call history</string>
-
-    <!-- FAQ -->
-    <string name="faq_1_title">I hear incoming calls, but the screen doesn\'t turn on. What can I do?</string>
-    <string name="faq_1_text">Such issues can have many device and system specific reasons, hard to say in general. You should look around in your device settings and make sure that the app is allowed to pop up when in background and allow displaying over other apps.</string>
-
-    <!--
-        Haven't found some strings? There's more at
-        https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
-    -->
 </resources>

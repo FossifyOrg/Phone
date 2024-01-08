@@ -3,9 +3,7 @@
     <string name="app_launcher_name">Telefone</string>
     <string name="default_phone_app_prompt">Tornar esta a aplicação padrão</string>
     <string name="allow_displaying_over_other_apps">Deve permitir que esta aplicação seja mostrada por cima das outras para evitar comportamentos erráticos</string>
-    <!-- Contacts -->
     <string name="could_not_access_contacts">Não foi possível aceder aos contactos</string>
-    <!-- Recents -->
     <string name="no_previous_calls">Não existem chamadas anteriores</string>
     <string name="could_not_access_the_call_history">Não foi possível aceder ao histórico de chamadas</string>
     <string name="request_access">Pedir acesso</string>
@@ -14,14 +12,12 @@
     <string name="show_grouped_calls">Mostrar chamadas em grupo</string>
     <string name="clear_call_history">Limpar registo de chamadas</string>
     <string name="show_call_details">Mostrar detalhes da chamada</string>
-    <!-- Dialpad -->
     <string name="dialpad">Marcador</string>
     <string name="asterisk">Asterisco</string>
     <string name="hashtag">\'Hashtag\'</string>
     <string name="call_number">Ligar</string>
     <string name="dialpad_beeps">Ativar sons do teclado</string>
     <string name="dialpad_vibrations">Ativar vibração do teclado</string>
-    <!-- Dialer -->
     <string name="dialer">Marcador</string>
     <string name="accept">Aceitar</string>
     <string name="accept_call">Aceitar chamada</string>
@@ -55,16 +51,13 @@
     <string name="conference">Conferência</string>
     <string name="audio_route_speaker">Altifalante</string>
     <string name="audio_route_earpiece">Auricular</string>
-    <string name="audio_route_bluetooth">Bluetooth</string>
     <string name="audio_route_wired_headset">Auscultador de cabo</string>
     <string name="audio_route_wired_or_earpiece">Cabo ou auricular</string>
     <string name="choose_audio_route">Escolha a rota de áudio</string>
     <string name="calling_blocked_number">O número para o qual está a tentar ligar está bloqueado</string>
-    <!-- Speed dial -->
     <string name="speed_dial">Ligação rápida</string>
     <string name="manage_speed_dial">Gerir ligações rápidas</string>
     <string name="speed_dial_label">Clique num número para o atribuir a um contacto. Poderá assim, ligar diretamente ao contacto ao premir longamente a tecla de ligação rápida.</string>
-    <!-- Settings -->
     <string name="group_subsequent_calls">Agrupar, no registo, as chamadas para o mesmo contacto</string>
     <string name="open_dialpad_by_default">Mostrar marcador ao abrir a aplicação</string>
     <string name="disable_proximity_sensor">Desativar sensor de proximidade durante as chamadas</string>
@@ -73,11 +66,6 @@
     <string name="hide_dialpad_numbers">Ocultar números no marcador</string>
     <string name="export_call_history">Exportar registo de chamadas</string>
     <string name="import_call_history">Importar registo de chamadas</string>
-    <!-- FAQ -->
     <string name="faq_1_title">Estou a ouvir som mas o ecrã não liga. O que posso fazer\?</string>
     <string name="faq_1_text">Esses problemas podem ter muitos motivos específicos do dispositivo e do sistema, difíceis de dizer em geral. Aceda às definições do sistema e certifique-se de que concedeu as permissões necessárias tais como permitir exibição por cima das outras aplicações.</string>
-    <!--
-        Haven't found some strings? There's more at
-        https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
-    -->
 </resources>

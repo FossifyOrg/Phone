@@ -3,9 +3,7 @@
     <string name="app_launcher_name">Téléphone</string>
     <string name="default_phone_app_prompt">Veuillez faire de cette application votre application de téléphone par défaut</string>
     <string name="allow_displaying_over_other_apps">Veuillez permettre l\'affichage sur d\'autres applications pour un comportement fiable</string>
-    <!-- Contacts -->
     <string name="could_not_access_contacts">Impossible d\'accéder à vos contacts</string>
-    <!-- Recents -->
     <string name="no_previous_calls">Aucun appel précédent n\'a été trouvé</string>
     <string name="could_not_access_the_call_history">Impossible d\'accéder à l\'historique des appels</string>
     <string name="request_access">Demande d\'accès</string>
@@ -14,14 +12,12 @@
     <string name="show_grouped_calls">Afficher les appels groupés</string>
     <string name="clear_call_history">Nettoyer l\'historique d\'appel</string>
     <string name="show_call_details">Afficher les détails de l\'appel</string>
-    <!-- Dialpad -->
     <string name="dialpad">Pavé numérique</string>
     <string name="asterisk">Étoile</string>
     <string name="hashtag">Dièse</string>
     <string name="call_number">Numéro d\'appel</string>
     <string name="dialpad_beeps">Activer les sons lors de l\'appui sur les touches du pavé numérique</string>
     <string name="dialpad_vibrations">Activer les vibrations lors de l\'appui sur les touches du pavé numérique</string>
-    <!-- Dialer -->
     <string name="dialer">Pavé numérique</string>
     <string name="accept">Accepter</string>
     <string name="accept_call">Accepter l\'appel</string>
@@ -55,16 +51,13 @@
     <string name="conference">Conférence</string>
     <string name="audio_route_speaker">Haut-parleur</string>
     <string name="audio_route_earpiece">Écouteur</string>
-    <string name="audio_route_bluetooth">Bluetooth</string>
     <string name="audio_route_wired_headset">Casque filaire</string>
     <string name="audio_route_wired_or_earpiece">Filaire ou écouteur</string>
     <string name="choose_audio_route">Choisir la sortie audio</string>
     <string name="calling_blocked_number">Le numéro que vous appelez est bloqué</string>
-    <!-- Speed dial -->
     <string name="speed_dial">Numérotation rapide</string>
     <string name="manage_speed_dial">Gérer la numérotation rapide</string>
     <string name="speed_dial_label">Cliquez sur un numéro pour lui attribuer un contact. Vous pouvez ensuite appeler rapidement le contact donné en appuyant longuement sur le numéro donné sur le pavé numérique.</string>
-    <!-- Settings -->
     <string name="group_subsequent_calls">Regrouper les appels suivants avec le même numéro dans le journal des appels</string>
     <string name="open_dialpad_by_default">Ouvrir le pavé numérique par défaut à l\'ouverture de l\'application</string>
     <string name="disable_proximity_sensor">Désactiver le capteur de proximité pendant les appels</string>
@@ -73,11 +66,6 @@
     <string name="hide_dialpad_numbers">Masquer les numéros du pavé numérique</string>
     <string name="export_call_history">Exporter l\'historique d\'appels</string>
     <string name="import_call_history">Importer l\'historique d\'appels</string>
-    <!-- FAQ -->
     <string name="faq_1_title">J\'entends les appels entrants, mais l\'écran ne s\'allume pas. Que puis-je faire \?</string>
     <string name="faq_1_text">Ces problèmes peuvent avoir de nombreuses raisons spécifiques à l\'appareil et au système, il est difficile d\'en parler en général. Vous devriez consulter les paramètres de votre appareil et vous assurer que l\'application est autorisée à apparaître en arrière-plan et à s\'afficher au-dessus des autres applications.</string>
-    <!--
-        Haven't found some strings? There's more at
-        https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
-    -->
 </resources>

@@ -3,9 +3,7 @@
     <string name="app_launcher_name">Telefon</string>
     <string name="default_phone_app_prompt">Palun muuda see rakendus helistamisel vaikimisi kasutatavaks rakenduseks</string>
     <string name="allow_displaying_over_other_apps">Parima töökindluse tagamiseks palun luba seda rakendust käivtada teiste rakenduste peal</string>
-    <!-- Contacts -->
     <string name="could_not_access_contacts">Puudub ligipääs telefoniraamatule</string>
-    <!-- Recents -->
     <string name="no_previous_calls">Varasemaid kõnesid ei leidu</string>
     <string name="could_not_access_the_call_history">Puudub ligipääs kõnede ajaloole</string>
     <string name="request_access">Taotle õigusi</string>
@@ -14,14 +12,12 @@
     <string name="show_grouped_calls">Näita rühmitatud kõnesid</string>
     <string name="clear_call_history">Kustuta kõnede ajalugu</string>
     <string name="show_call_details">Näita kõne teavet</string>
-    <!-- Dialpad -->
     <string name="dialpad">Numbriklahvid</string>
     <string name="asterisk">Tärn</string>
     <string name="hashtag">Teemaviide</string>
     <string name="call_number">Helista numbrile</string>
     <string name="dialpad_beeps">Numbriklahvistiku nupu klõpsamisel esita helisignaali</string>
     <string name="dialpad_vibrations">Numbriklahvistiku nupu klõpsamisel värista telefoni</string>
-    <!-- Dialer -->
     <string name="dialer">Telefon</string>
     <string name="accept">Nõustu</string>
     <string name="accept_call">Vasta kõnele</string>
@@ -55,16 +51,13 @@
     <string name="conference">Rühmakõne</string>
     <string name="audio_route_speaker">Kõlar</string>
     <string name="audio_route_earpiece">Kõrvasisesed kõrvaklapid</string>
-    <string name="audio_route_bluetooth">Bluetooth</string>
     <string name="audio_route_wired_headset">Juhtmega kõrvaklapid</string>
     <string name="audio_route_wired_or_earpiece">Juhtmega või kõrvasisesed kõrvaklapid</string>
     <string name="choose_audio_route">Vali heliruuting</string>
     <string name="calling_blocked_number">Sa üritad helistada blokeeritud numbrile</string>
-    <!-- Speed dial -->
     <string name="speed_dial">Kiirvalimine</string>
     <string name="speed_dial_label">Klõpsa numbrit ja seosta ta konkreetse telefoniraamatu kirjega. Hiljem saad samale numbrile pikalt vajutades alustada kõnet määratud telefoninumbrile.</string>
     <string name="manage_speed_dial">Halda kiirvalimist</string>
-    <!-- Settings -->
     <string name="group_subsequent_calls">Rühmita kõnelogis samale numbrile tehtud järjest kõned</string>
     <string name="open_dialpad_by_default">Rakenduse avamisel näita vaikimisi numbriklahvistikku</string>
     <string name="disable_proximity_sensor">Kõnede ajaks lülita lähedusandur välja</string>
@@ -73,11 +66,6 @@
     <string name="hide_dialpad_numbers">Peida numbriklahvistik</string>
     <string name="export_call_history">Ekspordi kõnede ajalugu</string>
     <string name="import_call_history">Impordi kõnede ajalugu</string>
-    <!-- FAQ -->
     <string name="faq_1_title">Ma kuulen sissetulevaid kõnesid, kuid ekraan ei lülitu sisse. Mida ma saan teha\?</string>
     <string name="faq_1_text">Üldist vastust pole, sellistel probleemidel võib olla palju seadme- ja süsteemispetsiifilisi põhjusi. Peaksid oma nutiseadme seadistustes ringi vaatama ja veenduma, et rakendusel on lubatud taustalt aknaid avada ja lubada kuvamist rakenduste peal.</string>
-    <!--
-        Haven't found some strings? There's more at
-        https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
-    -->
 </resources>

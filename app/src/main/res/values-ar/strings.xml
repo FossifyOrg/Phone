@@ -3,9 +3,7 @@
     <string name="app_launcher_name">الهاتف</string>
     <string name="default_phone_app_prompt">الرجاء جعل هذا التطبيق هو تطبيق الهاتف الافتراضي</string>
     <string name="allow_displaying_over_other_apps">الرجاء السماح بالعرض فوق التطبيقات الأخرى للحصول على سلوك موثوق</string>
-    <!-- Contacts -->
     <string name="could_not_access_contacts">تعذر الوصول إلى جهات الاتصال</string>
-    <!-- Recents -->
     <string name="no_previous_calls">لاتوجد مكالمات سابقة</string>
     <string name="could_not_access_the_call_history">تعذر الوصول إلى سجل المكالمات</string>
     <string name="request_access">طلب الوصول</string>
@@ -14,14 +12,12 @@
     <string name="show_grouped_calls">إظهار المكالمات المجمعة</string>
     <string name="clear_call_history">محو سجل المكالمات</string>
     <string name="show_call_details">إظهار تفاصيل المكالمة</string>
-    <!-- Dialpad -->
     <string name="dialpad">لوحة الاتصال</string>
     <string name="asterisk">نجمة</string>
     <string name="hashtag">وسم</string>
     <string name="call_number">رقم الاتصال</string>
     <string name="dialpad_beeps">تمكين الصفير عند نقر أزرار لوحة الاتصال</string>
     <string name="dialpad_vibrations">تمكين الاهتزازات عند نقر أزرار لوحة الاتصال</string>
-    <!-- Dialer -->
     <string name="dialer">الهاتف</string>
     <string name="accept">قبول</string>
     <string name="accept_call">قبول المكالمة</string>
@@ -60,11 +56,9 @@
     <string name="audio_route_wired_or_earpiece">سلكي أو سماعة أذن</string>
     <string name="choose_audio_route">اختر مسار الصوت</string>
     <string name="calling_blocked_number">الرقم الذي تتصل به محظور</string>
-    <!-- Speed dial -->
     <string name="speed_dial">اتصال سريع</string>
     <string name="manage_speed_dial">إدارة الاتصال السريع</string>
     <string name="speed_dial_label">انقر فوق رقم لتعيين جهة اتصال له. يمكنك بعد ذلك الاتصال بجهة الاتصال المحددة بسرعة عن طريق الضغط لفترة طويلة على الرقم المحدد في الهاتف.</string>
-    <!-- Settings -->
     <string name="group_subsequent_calls">تجميع المكالمات اللاحقة مع نفس الرقم في سجل المكالمات</string>
     <string name="open_dialpad_by_default">افتح لوحة الاتصال افتراضيًا عند فتح التطبيق</string>
     <string name="disable_proximity_sensor">تعطيل مستشعر القرب أثناء المكالمات</string>
@@ -73,11 +67,6 @@
     <string name="hide_dialpad_numbers">اخفي ارقام لوحت المفاتيح</string>
     <string name="export_call_history">تصدير سجل المكالمات</string>
     <string name="import_call_history">استيراد سجل المكالمات</string>
-    <!-- FAQ -->
     <string name="faq_1_title">أسمع مكالمات واردة، ولكن الشاشة لا تعمل. ماذا أفعل؟</string>
     <string name="faq_1_text">يمكن أن يكون لمثل هذه المشكلات العديد من الأسباب الخاصة بالجهاز والنظام ، والتي يصعب تحديدها بشكل عام. يجب أن تنظر حولك في إعدادات جهازك وتأكد من السماح للتطبيق بالظهور عندما يكون في الخلفية والسماح بالعرض فوق التطبيقات الأخرى.</string>
-    <!--
-        Haven't found some strings? There's more at
-        https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
-    -->
 </resources>

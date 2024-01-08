@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_launcher_name">Dialer</string>
     <string name="default_phone_app_prompt">請將此 app 設為預設的電話 app</string>
     <string name="allow_displaying_over_other_apps">請允許在其他 app 上顯示以確保可靠的行為</string>
-    <!-- Contacts -->
     <string name="could_not_access_contacts">無法存取您的聯絡人</string>
-    <!-- Recents -->
     <string name="no_previous_calls">找不到先前的通話紀錄</string>
     <string name="could_not_access_the_call_history">無法存取通話紀錄</string>
     <string name="request_access">請求存取權限</string>
@@ -14,14 +11,12 @@
     <string name="show_grouped_calls">顯示群組通話</string>
     <string name="clear_call_history">清除通話紀錄</string>
     <string name="show_call_details">顯示通話詳細資訊</string>
-    <!-- Dialpad -->
     <string name="dialpad">撥號鍵盤</string>
     <string name="asterisk">星號</string>
     <string name="hashtag">井號</string>
     <string name="call_number">撥打電話號碼</string>
     <string name="dialpad_beeps">啟用撥號鍵盤按鈕點選的提示音</string>
     <string name="dialpad_vibrations">啟用撥號鍵盤按鈕點選的震動</string>
-    <!-- Dialer -->
     <string name="dialer">撥號器</string>
     <string name="accept">接受</string>
     <string name="accept_call">接聽來電</string>
@@ -60,11 +55,9 @@
     <string name="audio_route_wired_or_earpiece">有線或耳機</string>
     <string name="choose_audio_route">選擇音訊路徑</string>
     <string name="calling_blocked_number">您撥打的號碼已被封鎖</string>
-    <!-- Speed dial -->
     <string name="speed_dial">快速撥號</string>
     <string name="manage_speed_dial">管理快速撥號</string>
     <string name="speed_dial_label">點選一個號碼以指定聯絡人。然後您可以在撥號器長按該號碼快速撥打給該聯絡人。</string>
-    <!-- Settings -->
     <string name="group_subsequent_calls">將通話紀錄中相同號碼的連續通話分組</string>
     <string name="open_dialpad_by_default">當 app 開啟時預設開啟撥號鍵盤</string>
     <string name="disable_proximity_sensor">通話時停用接近感應器</string>
@@ -73,11 +66,6 @@
     <string name="hide_dialpad_numbers">隱藏撥號鍵盤數字</string>
     <string name="export_call_history">匯出通話紀錄</string>
     <string name="import_call_history">匯入通話紀錄</string>
-    <!-- FAQ -->
     <string name="faq_1_title">我聽到來電，但螢幕沒有亮起。我該怎麼辦？</string>
     <string name="faq_1_text">這種問題可能有許多與裝置和系統特定的原因，一般來說很難確定。您應該查看您的裝置設定，並確保 app 被允許在背景時彈出並允許在其他 app 上顯示。</string>
-    <!--
-        Haven't found some strings? There's more at
-        https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
-    -->
 </resources>

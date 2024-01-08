@@ -3,9 +3,7 @@
     <string name="app_launcher_name">Puhelin</string>
     <string name="default_phone_app_prompt">Tää tästä oletussovellus puheluille</string>
     <string name="allow_displaying_over_other_apps">Salli näkyminen muiden sovellusten päällä, jotta sovellus toimii luotettavasti</string>
-    <!-- Contacts -->
     <string name="could_not_access_contacts">Yhteystietojen käyttöoikeutta ei ole</string>
-    <!-- Recents -->
     <string name="no_previous_calls">Aiempia puheluita ei löytynyt</string>
     <string name="could_not_access_the_call_history">Puheluhistorian käyttöoikeutta ei ole</string>
     <string name="request_access">Pyydä käyttöoikeutta</string>
@@ -14,14 +12,12 @@
     <string name="show_grouped_calls">Näytä ryhmitetyt puhelut</string>
     <string name="clear_call_history">Tyhjennä puheluhistoria</string>
     <string name="show_call_details">Näytä puhelun tiedot</string>
-    <!-- Dialpad -->
     <string name="dialpad">Numeronäppäimistö</string>
     <string name="asterisk">Tähti</string>
     <string name="hashtag">Ruutu</string>
     <string name="call_number">Soita numeroon</string>
     <string name="dialpad_beeps">Piippaa numeronäppäimistön painalluksista</string>
     <string name="dialpad_vibrations">Värähdä numeronäppäimistön painalluksista</string>
-    <!-- Dialer -->
     <string name="dialer">Puhelin</string>
     <string name="accept">Hyväksy</string>
     <string name="accept_call">Vastaa puheluun</string>
@@ -55,16 +51,13 @@
     <string name="conference">Ryhmäpuhelu</string>
     <string name="audio_route_speaker">Kaiutin</string>
     <string name="audio_route_earpiece">Kuuloke</string>
-    <string name="audio_route_bluetooth">Bluetooth</string>
     <string name="audio_route_wired_headset">Langallinen kuulokemikrofoni</string>
     <string name="audio_route_wired_or_earpiece">Langallinen tai kuuloke</string>
     <string name="choose_audio_route">Vslitse äänen reitti</string>
     <string name="calling_blocked_number">Soitettava numero on estetty</string>
-    <!-- Speed dial -->
     <string name="speed_dial">Pikavalinta</string>
     <string name="manage_speed_dial">Hallitse pikavalintoja</string>
     <string name="speed_dial_label">Paina numeroa määrittääksesi siihen yhteystiedon. Voit soittaa yhteystiedolle painamalla puhelimen numeronäppäimistöä pitkään.</string>
-    <!-- Settings -->
     <string name="group_subsequent_calls">Ryhmittele samojen numeroiden puhelut puheluhistoriassa</string>
     <string name="open_dialpad_by_default">Avaa sovellus numeronäppäimiin</string>
     <string name="disable_proximity_sensor">Poista läheisyysanturi käytöstä puheluiden ajaksi</string>
@@ -73,11 +66,6 @@
     <string name="hide_dialpad_numbers">Piilota numeronäppäimet</string>
     <string name="export_call_history">Vie puheluhistoria</string>
     <string name="import_call_history">Tuo puheluhistoria</string>
-    <!-- FAQ -->
     <string name="faq_1_title">Kuulen saapuvat puhelut, mutta näyttö on pimeänä. Mitä voin tehdä\?</string>
     <string name="faq_1_text">Tällaisiin ongelmiin voi olla monia laite- ja järjestelmäkohtaisia syitä, joiden yleistäminen on hankalaa. Kannattaa tutkia laitteen asetuksia ja varmistaa, että sovelluksella on oikeus ponnahtaa esiin taustalta ja näkyä muiden sovellusten päällä.</string>
-    <!--
-        Haven't found some strings? There's more at
-        https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
-    -->
 </resources>

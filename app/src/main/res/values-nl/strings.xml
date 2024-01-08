@@ -3,9 +3,7 @@
     <string name="app_launcher_name">Telefoon</string>
     <string name="default_phone_app_prompt">Maak deze app de standaard telefoon-app</string>
     <string name="allow_displaying_over_other_apps">Geef toestemming tot weergave vóór andere apps voor betrouwbare werking</string>
-    <!-- Contacts -->
     <string name="could_not_access_contacts">Kon geen toegang krijgen tot de contactenlijst</string>
-    <!-- Recents -->
     <string name="no_previous_calls">Er zijn geen eerdere gesprekken gevonden</string>
     <string name="could_not_access_the_call_history">Kon geen toegang krijgen tot de gespreksgeschiedenis</string>
     <string name="request_access">Toegang aanvragen</string>
@@ -14,14 +12,12 @@
     <string name="show_grouped_calls">Gesprekken gegroepeerd weergeven</string>
     <string name="clear_call_history">Gespreksgeschiedenis wissen</string>
     <string name="show_call_details">Gespreksgegevens tonen</string>
-    <!-- Dialpad -->
     <string name="dialpad">Toetsenblok</string>
     <string name="asterisk">Sterretje</string>
     <string name="hashtag">Hekje</string>
     <string name="call_number">Nummer bellen</string>
     <string name="dialpad_beeps">Geluiden bij klikken op het toetsenblok inschakelen</string>
     <string name="dialpad_vibrations">Trillen bij klikken op het toetsenblok</string>
-    <!-- Dialer -->
     <string name="dialer">Telefoon</string>
     <string name="accept">Aannemen</string>
     <string name="accept_call">Gesprek aannemen</string>
@@ -55,16 +51,13 @@
     <string name="conference">Groepsgesprek</string>
     <string name="audio_route_speaker">Luidspreker(s)</string>
     <string name="audio_route_earpiece">Oordopje(s)</string>
-    <string name="audio_route_bluetooth">Bluetooth</string>
     <string name="audio_route_wired_headset">Bedrade koptelefoon</string>
     <string name="audio_route_wired_or_earpiece">Bedraad of via oordopje(s)</string>
     <string name="choose_audio_route">Geluidsroute kiezen</string>
     <string name="calling_blocked_number">Het gebelde nummer is geblokkeerd</string>
-    <!-- Speed dial -->
     <string name="speed_dial">Snelkiesnummer</string>
     <string name="manage_speed_dial">Snelkiezen beheren</string>
     <string name="speed_dial_label">Klik op een cijfer om er een contact aan toe te wijzen. Vervolgens kan dit contact direct gebeld worden door lang op het gekoppelde cijfer te drukken.</string>
-    <!-- Settings -->
     <string name="group_subsequent_calls">In de gespreksgeschiedenis opeenvolgende gesprekken met hetzelfde nummer groeperen</string>
     <string name="open_dialpad_by_default">Standaard het toetsenblok openen bij starten</string>
     <string name="disable_proximity_sensor">Nabijheidssensor uitschakelen tijdens bellen</string>
@@ -73,11 +66,6 @@
     <string name="hide_dialpad_numbers">Toetsenblokcijfers verbergen</string>
     <string name="export_call_history">Gespreksgeschiedenis exporteren</string>
     <string name="import_call_history">Gespreksgeschiedenis importeren</string>
-    <!-- FAQ -->
     <string name="faq_1_title">Ik hoor dat er een gesprek binnenkomt, maar het scherm gaat niet aan. Wat kan ik doen\?</string>
     <string name="faq_1_text">Dit soort problemen kan vele oorzaken hebben, specifiek voor bepaalde apparaten en software. Controleer in ieder geval of voor deze app in de systeeminstellingen \"Weergeven vóór andere apps\" is toegestaan en of bij meldingen voor inkomende gesprekken \"Weergeven op scherm\" is ingeschakeld.</string>
-    <!--
-        Haven't found some strings? There's more at
-        https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
-    -->
 </resources>
