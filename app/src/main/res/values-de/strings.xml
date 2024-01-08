@@ -68,4 +68,5 @@
     <string name="import_call_history">Anrufliste importieren</string>
     <string name="faq_1_title">Ich höre eingehende Anrufe, aber der Bildschirm schaltet sich nicht ein. Was kann ich tun\?</string>
     <string name="faq_1_text">Eine allgemeine Antwort auf die Frage ist schwer, denn solche Probleme können viele geräte- und systemspezifische Gründe haben. Du solltest dich in den Einstellungen des Geräts umsehen und sicherstellen, dass die App im Hintergrund angezeigt werden darf und die Einblendung über anderen Apps erlaubt ist.</string>
+    <string name="audio_route_bluetooth">Bluetooth</string>
 </resources>
