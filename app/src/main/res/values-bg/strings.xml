@@ -3,9 +3,7 @@
     <string name="app_launcher_name">Телефон</string>
     <string name="default_phone_app_prompt">Направете това приложение подразбирано приложение за телефонни обаждания</string>
     <string name="allow_displaying_over_other_apps">Разрешете на приложението да се показва над други приложения за надеждната работа</string>
-    <!-- Contacts -->
     <string name="could_not_access_contacts">Няма достъп до контактите</string>
-    <!-- Recents -->
     <string name="no_previous_calls">Няма предишни обаждания</string>
     <string name="could_not_access_the_call_history">Няма достъп до дневника с обажданията</string>
     <string name="request_access">Заявка за разрешение</string>
@@ -14,14 +12,12 @@
     <string name="show_grouped_calls">Групиране на обажданията</string>
     <string name="clear_call_history">Изчистване на дневника с обажданията</string>
     <string name="show_call_details">Подробности за обаждането</string>
-    <!-- Dialpad -->
     <string name="dialpad">Панел за набиране</string>
     <string name="asterisk">Звездичка</string>
     <string name="hashtag">Диез</string>
     <string name="call_number">Номер</string>
     <string name="dialpad_beeps">Активиране на звукови сигнали при докосване на бутоните на клавиатурата за набиране</string>
     <string name="dialpad_vibrations">Активиране на вибрации при докосване на бутоните на клавиатурата за набиране</string>
-    <!-- Dialer -->
     <string name="dialer">Телефон</string>
     <string name="accept">Приемане</string>
     <string name="accept_call">Приемане на обаждането</string>
@@ -55,16 +51,13 @@
     <string name="conference">Конференция</string>
     <string name="audio_route_speaker">Високоговорител</string>
     <string name="audio_route_earpiece">Слушалки</string>
-    <string name="audio_route_bluetooth">Bluetooth</string>
     <string name="audio_route_wired_headset">Слушалки с кабел</string>
     <string name="audio_route_wired_or_earpiece">Жични или безжични слушалки</string>
     <string name="choose_audio_route">Изберете аудио източник</string>
     <string name="calling_blocked_number">Номерът, на който звъните, е блокиран</string>
-    <!-- Speed dial -->
     <string name="speed_dial">Бързо набиране</string>
     <string name="manage_speed_dial">Управление на бързото набиране</string>
     <string name="speed_dial_label">Докоснете цифра, за да изберете контакт към нея. След това можете бързо да наберете така избрания контакт, чрез задържане върху цифрата в панела за набиране.</string>
-    <!-- Settings -->
     <string name="group_subsequent_calls">Групиране на последователните обаждания от един номер в дневника на обажданията</string>
     <string name="open_dialpad_by_default">При стартиране се отваря панела за набиране</string>
     <string name="disable_proximity_sensor">Изключване на сензора за близост по време на обаждания</string>
@@ -73,11 +66,6 @@
     <string name="hide_dialpad_numbers">Скриване на номерата на клавиатурата за набиране</string>
     <string name="export_call_history">Експортиране на хронология на обажданията</string>
     <string name="import_call_history">Импортиране на хронология на обажданията</string>
-    <!-- FAQ -->
     <string name="faq_1_title">Чувам входящи повиквания, но екранът не се включва. Какво мога да направя\?</string>
     <string name="faq_1_text">Такива проблеми могат да имат много специфични за устройството и системата причини, трудно е да се каже като цяло. Трябва да се огледате в настройките на вашето устройство и да се уверите, че на приложението е разрешено да изскача, когато е във фонов режим и да позволява показване върху други приложения.</string>
-    <!--
-        Haven't found some strings? There's more at
-        https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
-    -->
 </resources>

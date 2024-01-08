@@ -3,9 +3,7 @@
     <string name="app_launcher_name">Tárcsázó</string>
     <string name="default_phone_app_prompt">Tegye az alkalmazást az alapértelmezett Telefon alkalmazássá</string>
     <string name="allow_displaying_over_other_apps">A kiszámítható viselkedés érdekében engedélyezze a más alkalmazások feletti megjelenítést</string>
-    <!-- Contacts -->
     <string name="could_not_access_contacts">A névjegyei nem érhetők el</string>
-    <!-- Recents -->
     <string name="no_previous_calls">Nem találhatók híváselőzmények</string>
     <string name="could_not_access_the_call_history">A híváselőzmények nem érhetők el</string>
     <string name="request_access">Hozzáférés kérése</string>
@@ -14,14 +12,12 @@
     <string name="show_grouped_calls">Csoportosított hívások megjelenítése</string>
     <string name="clear_call_history">Híváselőzmények törlése</string>
     <string name="show_call_details">Hívás részleteinek megjelenítése</string>
-    <!-- Dialpad -->
     <string name="dialpad">Tárcsázó</string>
     <string name="asterisk">Csillag</string>
     <string name="hashtag">Kettőskereszt</string>
     <string name="call_number">Hívószám</string>
     <string name="dialpad_beeps">Pittyegés a tárcsázógombokra történő kattintás során</string>
     <string name="dialpad_vibrations">Rezgés a tárcsázógombokra történő kattintás során</string>
-    <!-- Dialer -->
     <string name="dialer">Tárcsázó</string>
     <string name="accept">Fogadás</string>
     <string name="accept_call">Hívás fogadása</string>
@@ -55,31 +51,19 @@
     <string name="conference">Konferencia</string>
     <string name="audio_route_speaker">Hangszóró</string>
     <string name="audio_route_earpiece">Fülhallgató</string>
-    <string name="audio_route_bluetooth">Bluetooth</string>
     <string name="audio_route_wired_headset">Vezetékes fejhallgató</string>
     <string name="audio_route_wired_or_earpiece">Vezetékes vagy vezeték nélküli fülhallgató</string>
     <string name="choose_audio_route">Válasszon hangkimenetet</string>
     <string name="calling_blocked_number">A hívott szám blokkolva van</string>
-    <!-- Speed dial -->
     <string name="speed_dial">Gyors tárcsázó</string>
     <string name="manage_speed_dial">Gyors tárcsázó kezelése</string>
     <string name="speed_dial_label">Koppintson egy számra, hogy névjegyet rendeljen hozzá. Aztán gyorsan felhívhatja az adott szám hosszú érintésével a tárcsázón.</string>
-    <!-- Settings -->
     <string name="group_subsequent_calls">Ugyanazon szám egymást követő hívásainak csoportosítása a hívásnaplóban</string>
     <string name="open_dialpad_by_default">Tárcsázó alapértelmezett kinyitása az alkalmazás megnyitásakor</string>
     <string name="disable_proximity_sensor">Közelségérzékelő kikapcsolása a hívások során</string>
     <string name="disable_swipe_to_answer">Csúsztatás kattintásra cserélése a bejövő hívásoknál</string>
     <string name="show_incoming_calls_full_screen">Bejövő hívások megjelenítése mindig teljes képernyőn</string>
     <string name="hide_dialpad_numbers">Tárcsázószámok elrejtése</string>
-    <string name="export_call_history">Export call history</string>
-    <string name="import_call_history">Import call history</string>
-
-    <!-- FAQ -->
     <string name="faq_1_title">Bejövő hívást hallok, de a képernyő nem kapcsol be. Mit tehetek\?</string>
     <string name="faq_1_text">Az ilyen problémáknak számos eszköz- és rendszerfüggő oka lehet, általánosságban nehéz megmondani. Nézzen körül az eszközbeállításokban, és győződjön meg róla, hogy az alkalmazás előbújhat-e a háttérből, és megjelenhet-e más alkalmazások felett.</string>
-
-    <!--
-        Haven't found some strings? There's more at
-        https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
-    -->
 </resources>

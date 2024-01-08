@@ -3,9 +3,7 @@
     <string name="app_launcher_name">Telefono</string>
     <string name="default_phone_app_prompt">Per favore, rendi l\'app la predefinita per le chiamate</string>
     <string name="allow_displaying_over_other_apps">Si prega di consentire la visualizzazione su altre app per un comportamento affidabile</string>
-    <!-- Contacts -->
     <string name="could_not_access_contacts">Impossibile accedere ai contatti</string>
-    <!-- Recents -->
     <string name="no_previous_calls">Non sono state trovate chiamate precedenti</string>
     <string name="could_not_access_the_call_history">Impossibile accedere alla cronologia delle chiamate</string>
     <string name="request_access">Richiedo accesso</string>
@@ -14,14 +12,12 @@
     <string name="show_grouped_calls">Mostra chiamate raggruppate</string>
     <string name="clear_call_history">Svuota la cronologia delle chiamate</string>
     <string name="show_call_details">Mostra i dettagli della chiamata</string>
-    <!-- Dialpad -->
     <string name="dialpad">Tastierino numerico</string>
     <string name="asterisk">Asterisco</string>
     <string name="hashtag">Cancelletto</string>
     <string name="call_number">Numero di chiamata</string>
     <string name="dialpad_beeps">Abilita i segnali acustici ai clic dei pulsanti della tastiera</string>
     <string name="dialpad_vibrations">Abilita le vibrazioni sui clic dei pulsanti della tastiera</string>
-    <!-- Dialer -->
     <string name="dialer">Compositore</string>
     <string name="accept">Accetta</string>
     <string name="accept_call">Accetta la chiamata</string>
@@ -55,16 +51,13 @@
     <string name="conference">Conferenza</string>
     <string name="audio_route_speaker">Altoparlante</string>
     <string name="audio_route_earpiece">Auricolare</string>
-    <string name="audio_route_bluetooth">Bluetooth</string>
     <string name="audio_route_wired_headset">Cuffia cablata</string>
     <string name="audio_route_wired_or_earpiece">Cablato o auricolare</string>
     <string name="choose_audio_route">Scegli l\'uscita audio</string>
     <string name="calling_blocked_number">Il numero che stai chiamando è bloccato</string>
-    <!-- Speed dial -->
     <string name="speed_dial">Contatti veloci</string>
     <string name="manage_speed_dial">Gestisci i contatti veloci</string>
     <string name="speed_dial_label">Seleziona un numero per assegnargli un contatto. In questo modo puoi chiamarlo rapidamente tenendo premuto sul numero scelto nel tastierino.</string>
-    <!-- Settings -->
     <string name="group_subsequent_calls">Raggruppa chiamate successive con lo stesso numero nel registro delle chiamate</string>
     <string name="open_dialpad_by_default">Apri il tastierino per impostazione predefinita quando l\'app si apre</string>
     <string name="disable_proximity_sensor">Disattiva il sensore di prossimità durante le chiamate</string>
@@ -73,11 +66,6 @@
     <string name="hide_dialpad_numbers">Nascondi i numeri del tastierino</string>
     <string name="export_call_history">Esporta la cronologia delle chiamate</string>
     <string name="import_call_history">Importa la cronologia delle chiamate</string>
-    <!-- FAQ -->
     <string name="faq_1_title">Sento le chiamate in arrivo, ma lo schermo non si accende. Cosa posso fare\?</string>
     <string name="faq_1_text">Tali problemi possono avere molte ragioni specifiche per il dispositivo e il sistema, è difficile identificarle in generale. Dovresti dare un\'occhiata alle impostazioni del dispositivo e assicurarti che l\'app sia autorizzata a comparire quando è in background e che permetta la visualizzazione sopra le altre app.</string>
-    <!--
-        Haven't found some strings? There's more at
-        https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
-    -->
 </resources>

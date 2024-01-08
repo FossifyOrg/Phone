@@ -3,9 +3,7 @@
     <string name="app_launcher_name">電話</string>
     <string name="default_phone_app_prompt">このアプリをデフォルトの電話アプリにしてください</string>
     <string name="allow_displaying_over_other_apps">安定した動作のために、他のアプリの上に重ねて表示することを許可して下さい</string>
-    <!-- Contacts -->
     <string name="could_not_access_contacts">連絡先にアクセスできませんでした</string>
-    <!-- Recents -->
     <string name="no_previous_calls">通話履歴が見つかりませんでした</string>
     <string name="could_not_access_the_call_history">通話履歴にアクセスできませんでした</string>
     <string name="request_access">アクセスを要求する</string>
@@ -14,14 +12,12 @@
     <string name="show_grouped_calls">グループ化された通話履歴を表示する</string>
     <string name="clear_call_history">通話履歴をクリア</string>
     <string name="show_call_details">通話の詳細を表示する</string>
-    <!-- Dialpad -->
     <string name="dialpad">ダイヤルパッド</string>
     <string name="asterisk">アスタリスク</string>
     <string name="hashtag">ハッシュタグ</string>
     <string name="call_number">電話番号</string>
     <string name="dialpad_beeps">ダイヤルパッドボタンのタップ時にビープ音を鳴らす</string>
     <string name="dialpad_vibrations">ダイヤルパッドボタンのタップ時に振動させる</string>
-    <!-- Dialer -->
     <string name="dialer">電話</string>
     <string name="accept">許可</string>
     <string name="accept_call">電話を受ける</string>
@@ -55,31 +51,19 @@
     <string name="conference">会議</string>
     <string name="audio_route_speaker">スピーカー</string>
     <string name="audio_route_earpiece">イヤーピース</string>
-    <string name="audio_route_bluetooth">Bluetooth</string>
     <string name="audio_route_wired_headset">有線ヘッドセット</string>
     <string name="audio_route_wired_or_earpiece">有線またはイヤーピース</string>
     <string name="choose_audio_route">音声の出力先を選択</string>
     <string name="calling_blocked_number">その番号はブロックした番号です</string>
-    <!-- Speed dial -->
     <string name="speed_dial">スピードダイヤル</string>
     <string name="manage_speed_dial">スピードダイヤルの管理</string>
     <string name="speed_dial_label">番号をタップすると連絡先を割り当てることが出来ます。ダイヤルパッドで割り当てた番号を長押しすると、割り当てた連絡先に素早く電話をかけることが出来ます。</string>
-    <!-- Settings -->
     <string name="group_subsequent_calls">発着信履歴で同じ番号による連続した通話をグループ化する</string>
     <string name="open_dialpad_by_default">アプリを開いたときにデフォルトでダイヤルパッドを開く</string>
     <string name="disable_proximity_sensor">通話中に近接センサーを無効にする</string>
     <string name="disable_swipe_to_answer">着信に応答する際のスワイプ操作をタップ操作に置き換える</string>
     <string name="show_incoming_calls_full_screen">着信通知を常に全画面で表示する</string>
     <string name="hide_dialpad_numbers">ダイヤルパッドの番号を表示しない</string>
-    <string name="export_call_history">Export call history</string>
-    <string name="import_call_history">Import call history</string>
-
-    <!-- FAQ -->
     <string name="faq_1_title">着信音は聞こえるのですが、画面がつきません。どうしたらよいですか？</string>
     <string name="faq_1_text">このような問題は、端末やシステム固有の理由が多く、一概には言えません。端末の設定を見て、アプリがバックグラウンドでポップアップすることを許可しているか、他のアプリの上に表示することを許可しているかを確認する必要があります。</string>
-
-    <!--
-        Haven't found some strings? There's more at
-        https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
-    -->
 </resources>

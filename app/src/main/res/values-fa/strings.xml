@@ -3,9 +3,7 @@
     <string name="app_launcher_name">تلفن</string>
     <string name="default_phone_app_prompt">لطفا این برنامه را به عنوان پیش‌گزیده تنظیم کنید</string>
     <string name="allow_displaying_over_other_apps">برای عملکرد صحیح برنامه لطفا اجازه دهید روی برنامه‌های دیگر نمایش داده شود</string>
-    <!-- Contacts -->
     <string name="could_not_access_contacts">دسترسی به مخاطبین شما امکان‌پذیر نیست</string>
-    <!-- Recents -->
     <string name="no_previous_calls">هیچ تماس قبلی پیدا نشد</string>
     <string name="could_not_access_the_call_history">دسترسی به تاریخچهٔ تماس شما امکان‌پذیر نیست</string>
     <string name="request_access">درخواست دسترسی</string>
@@ -14,14 +12,12 @@
     <string name="show_grouped_calls">نمایش تماس‌های گروه‌بندی شده</string>
     <string name="clear_call_history">پاک کردن تاریخچه تماس</string>
     <string name="show_call_details">نمایش اطلاعات تماس</string>
-    <!-- Dialpad -->
     <string name="dialpad">شماره‌گیر</string>
     <string name="asterisk">ستاره</string>
     <string name="hashtag">مربع</string>
     <string name="call_number">شماره تماس</string>
     <string name="dialpad_beeps">فعال کردن صدا هنگام لمس دکمه‌های شماره‌گیر</string>
     <string name="dialpad_vibrations">فعال کردن لرزش هنگام لمس دکمه‌های شماره‌گیر</string>
-    <!-- Dialer -->
     <string name="dialer">تلفن</string>
     <string name="accept">پذیرش</string>
     <string name="accept_call">پذیرفتن تماس</string>
@@ -47,12 +43,7 @@
     <string name="hold_call">انتظار تماس</string>
     <string name="resume_call">ادامه تماس</string>
     <string name="call_on_hold">در انتظار</string>
-    <string name="call_swap">Swap calls</string>
-    <string name="call_merge">Merge calls</string>
-    <string name="call_split">Split call</string>
     <string name="call_add">افزودن تماس</string>
-    <string name="conference_manage">Manage conference call</string>
-    <string name="conference">Conference</string>
     <string name="audio_route_speaker">بلندگو</string>
     <string name="audio_route_earpiece">هدفون</string>
     <string name="audio_route_bluetooth">بلوتوث</string>
@@ -60,11 +51,9 @@
     <string name="audio_route_wired_or_earpiece">سیمی یا هدفون</string>
     <string name="choose_audio_route">انتخاب مسیر صدا</string>
     <string name="calling_blocked_number">شماره‌ای که با آن تماس گرفته‌اید مسدود است</string>
-    <!-- Speed dial -->
     <string name="speed_dial">شماره‌گیری سریع</string>
     <string name="manage_speed_dial">مدیریت شماره‌گیری سریع</string>
     <string name="speed_dial_label">یک شماره را انتخاب کنید تا مخاطبی را به آن اختصاص دهید. با لمس طولانی آن شماره در شماره‌گیر می‌توانید به سرعت با آن تماس بگیرید.</string>
-    <!-- Settings -->
     <string name="group_subsequent_calls">گروه‌بندی تماس‌های پشت‌هم از یک شماره در تاریخچهٔ تماس</string>
     <string name="open_dialpad_by_default">باز کردن شماره‌گیر به طور پیش‌فرض هنگام باز شدن برنامه</string>
     <string name="disable_swipe_to_answer">پاسخ دادن به تماس با استفاده از کلیک به جای کشیدن</string>
@@ -73,11 +62,6 @@
     <string name="hide_dialpad_numbers">مخفی کردن اعداد شماره‌گیر</string>
     <string name="export_call_history">خروجی گرفتن تاریخچهٔ تماس</string>
     <string name="import_call_history">وارد کردن تاریخچهٔ تماس</string>
-    <!-- FAQ -->
     <string name="faq_1_title">من صدای تماس ورودی را می‌شنوم اما نمایشگر روشن نمی‌شود. باید چه کاری انجام دهم؟</string>
     <string name="faq_1_text">این مشکل ممکن است بسته به دلایل مشکلات مختلفی در دستگاه و سامانه رخ دهد، بنابراین جواب کلی برای آن سخت است. باید تنظیمات دستگاهتان را بررسی کنید و مطمئن شوید که برنامه اجازه دارد در پس‌زمینه اجرا شود و روی برنامه‌های دیگر نمایش داده شود.</string>
-    <!--
-        Haven't found some strings? There's more at
-        https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
-    -->
 </resources>

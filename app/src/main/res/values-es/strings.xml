@@ -3,9 +3,7 @@
     <string name="app_launcher_name">Marcador</string>
     <string name="default_phone_app_prompt">Por favor, haz que esta aplicación sea la aplicación de teléfono por defecto</string>
     <string name="allow_displaying_over_other_apps">Por favor, permita la visualización sobre otras aplicaciones para un comportamiento fiable</string>
-    <!-- Contacts -->
     <string name="could_not_access_contacts">No se ha podido acceder a tus contactos</string>
-    <!-- Recents -->
     <string name="no_previous_calls">No se han encontrado llamadas anteriores</string>
     <string name="could_not_access_the_call_history">No se pudo acceder al historial de llamadas</string>
     <string name="request_access">Solicitar acceso</string>
@@ -14,14 +12,12 @@
     <string name="show_grouped_calls">Mostrar llamadas agrupadas</string>
     <string name="clear_call_history">Borrar historial de llamadas</string>
     <string name="show_call_details">Mostrar los detalles de la llamada</string>
-    <!-- Dialpad -->
     <string name="dialpad">Teclado de marcado</string>
     <string name="asterisk">Asterisco</string>
     <string name="hashtag">Almohadilla</string>
     <string name="call_number">Número de llamada</string>
     <string name="dialpad_beeps">Activar los pitidos al pulsar los botones del teclado telefónico</string>
     <string name="dialpad_vibrations">Activar las vibraciones al pulsar los botones del teclado</string>
-    <!-- Dialer -->
     <string name="dialer">Marcador</string>
     <string name="accept">Aceptar</string>
     <string name="accept_call">Aceptar llamada</string>
@@ -55,16 +51,13 @@
     <string name="conference">Conferencia</string>
     <string name="audio_route_speaker">Altavoz</string>
     <string name="audio_route_earpiece">Auricular</string>
-    <string name="audio_route_bluetooth">Bluetooth</string>
     <string name="audio_route_wired_headset">Auricular con cable</string>
     <string name="audio_route_wired_or_earpiece">Auricular inalámbrico</string>
     <string name="choose_audio_route">Elija la salida del audio</string>
     <string name="calling_blocked_number">El número al que llamas está bloqueado</string>
-    <!-- Speed dial -->
     <string name="speed_dial">Marcado rápido</string>
     <string name="manage_speed_dial">Administrar marcado rápido</string>
     <string name="speed_dial_label">Toca un número para asignarle un contacto. Entonces podrás llamarlo rápidamente manteniendo presionado el número asignado en el teclado de marcado.</string>
-    <!-- Settings -->
     <string name="group_subsequent_calls">Agrupar llamadas subsecuentes con el mísmo número en el registro de llamadas</string>
     <string name="open_dialpad_by_default">Abrir el teclado de marcado de forma predeterminada al abrir la aplicación</string>
     <string name="disable_proximity_sensor">Deshabilitar el sensor de proximidad durante las llamadas</string>
@@ -73,11 +66,6 @@
     <string name="hide_dialpad_numbers">Ocultar los números del teclado</string>
     <string name="export_call_history">Exportar el historial de llamadas</string>
     <string name="import_call_history">Importar el historial de llamadas</string>
-    <!-- FAQ -->
     <string name="faq_1_title">Escucho las llamadas entrantes, pero la pantalla no se enciende. ¿Qué puedo hacer\?</string>
     <string name="faq_1_text">Estos problemas pueden deberse a muchas razones específicas del dispositivo y del sistema, es difícil decirlo en general. Deberías mirar en la configuración de tu dispositivo y asegurarte de que la aplicación tiene permiso para aparecer cuando está en segundo plano y permitir la aplicación se muestre sobre otras aplicaciones.</string>
-    <!--
-        Haven't found some strings? There's more at
-        https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
-    -->
 </resources>

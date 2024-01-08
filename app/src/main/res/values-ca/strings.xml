@@ -3,9 +3,7 @@
     <string name="app_launcher_name">Marcador</string>
     <string name="default_phone_app_prompt">Fes que aquesta aplicació sigui l\'aplicació predeterminada de telèfon</string>
     <string name="allow_displaying_over_other_apps">Permeteu la visualització sobre d\'altres aplicacions per a un comportament fiable</string>
-    <!-- Contacts -->
     <string name="could_not_access_contacts">No s\'ha pogut accedir als contactes</string>
-    <!-- Recents -->
     <string name="no_previous_calls">No s\'ha trobat cap trucada anterior</string>
     <string name="could_not_access_the_call_history">No s\'ha pogut accedir a l\'historial de trucades</string>
     <string name="request_access">Sol·licita accés</string>
@@ -14,14 +12,12 @@
     <string name="show_grouped_calls">Mostra les trucades agrupades</string>
     <string name="clear_call_history">Neteja l\'historial de trucades</string>
     <string name="show_call_details">Mostra els detalls de la trucada</string>
-    <!-- Dialpad -->
     <string name="dialpad">Teclat de marcatge</string>
     <string name="asterisk">Asterisc</string>
     <string name="hashtag">Etiqueta</string>
     <string name="call_number">Número de trucada</string>
     <string name="dialpad_beeps">Activa els sons en fer clic als botons del teclat de marcatge</string>
     <string name="dialpad_vibrations">Activa les vibracions en fer clic als botons del teclat de marcatge</string>
-    <!-- Dialer -->
     <string name="dialer">Marcador</string>
     <string name="accept">Accepta</string>
     <string name="accept_call">Accepta la trucada</string>
@@ -55,16 +51,13 @@
     <string name="conference">Conferència</string>
     <string name="audio_route_speaker">Altaveu</string>
     <string name="audio_route_earpiece">Auricular</string>
-    <string name="audio_route_bluetooth">Bluetooth</string>
     <string name="audio_route_wired_headset">Auriculars amb cable</string>
     <string name="audio_route_wired_or_earpiece">Amb cable o auricular</string>
     <string name="choose_audio_route">Trieu la sortida d\'àudio</string>
     <string name="calling_blocked_number">El número al qual esteu trucant està bloquejat</string>
-    <!-- Speed dial -->
     <string name="speed_dial">Marcatge ràpid</string>
     <string name="manage_speed_dial">Gestiona el marcatge ràpid</string>
     <string name="speed_dial_label">Feu clic en un número per assignar-li un contacte. A continuació, podeu trucar ràpidament al contacte indicat prement prolongadament el número assignat al marcador.</string>
-    <!-- Settings -->
     <string name="group_subsequent_calls">Agrupa les trucades posteriors amb el mateix número al registre de trucades</string>
     <string name="open_dialpad_by_default">Obre el teclat de marcatge de manera predeterminada quan s\'obri l\'aplicació</string>
     <string name="disable_proximity_sensor">Desactiva el sensor de proximitat durant les trucades</string>
@@ -73,11 +66,6 @@
     <string name="hide_dialpad_numbers">Oculta els números del teclat numèric</string>
     <string name="export_call_history">Exporta l\'historial de trucades</string>
     <string name="import_call_history">Importa l\'historial de trucades</string>
-    <!-- FAQ -->
     <string name="faq_1_title">Sento trucades entrants, però la pantalla no s\'encén. Què puc fer\?</string>
     <string name="faq_1_text">Aquests problemes poden tenir moltes raons específiques del dispositiu i del sistema, difícils de dir en general. Hauríeu de mirar per la configuració del dispositiu i assegurar-vos que l\'aplicació pugui aparèixer en segon pla i permetre que es mostri sobre altres aplicacions.</string>
-    <!--
-        Haven't found some strings? There's more at
-        https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
-    -->
 </resources>

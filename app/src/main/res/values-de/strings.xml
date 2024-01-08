@@ -3,9 +3,7 @@
     <string name="app_launcher_name">Telefon</string>
     <string name="default_phone_app_prompt">Bitte mache diese App zur Standard-Telefonanwendung</string>
     <string name="allow_displaying_over_other_apps">Bitte erlaube das Anzeigen über andere Apps für ein zuverlässiges Verhalten</string>
-    <!-- Contacts -->
     <string name="could_not_access_contacts">Kein Zugriff auf deine Kontakte möglich</string>
-    <!-- Recents -->
     <string name="no_previous_calls">Anrufliste ist leer</string>
     <string name="could_not_access_the_call_history">Kein Zugriff auf die Anrufliste möglich</string>
     <string name="request_access">Zugriff anfordern</string>
@@ -14,14 +12,12 @@
     <string name="show_grouped_calls">Gruppierte Anrufe anzeigen</string>
     <string name="clear_call_history">Anrufliste löschen</string>
     <string name="show_call_details">Anrufdetails anzeigen</string>
-    <!-- Dialpad -->
     <string name="dialpad">Wähltastenfeld</string>
     <string name="asterisk">Sternchen</string>
     <string name="hashtag">Raute</string>
     <string name="call_number">Rufnummer</string>
     <string name="dialpad_beeps">Signaltöne bei Tastendruck auf das Wähltastenfeld</string>
     <string name="dialpad_vibrations">Vibration bei Tastendruck auf das Wähltastenfeld</string>
-    <!-- Dialer -->
     <string name="dialer">Telefon</string>
     <string name="accept">Annehmen</string>
     <string name="accept_call">Anruf annehmen</string>
@@ -55,16 +51,13 @@
     <string name="conference">Konferenz</string>
     <string name="audio_route_speaker">Lautsprecher</string>
     <string name="audio_route_earpiece">Kopfhörer</string>
-    <string name="audio_route_bluetooth">Bluetooth</string>
     <string name="audio_route_wired_headset">Kabelgebundenes Headset</string>
     <string name="audio_route_wired_or_earpiece">Kabelgebunden oder über Kopfhörer</string>
     <string name="choose_audio_route">Audioausgang wählen</string>
     <string name="calling_blocked_number">Die angerufene Nummer ist gesperrt</string>
-    <!-- Speed dial -->
     <string name="speed_dial">Kurzwahl</string>
     <string name="manage_speed_dial">Kurzwahlnummern verwalten</string>
     <string name="speed_dial_label">Auf eine Zahl klicken, um einen Kontakt zuzuweisen. Danach kann der Kontakt durch langes Drücken der entsprechenden Zahl schnell angerufen werden.</string>
-    <!-- Settings -->
     <string name="group_subsequent_calls">In der Anrufliste aufeinanderfolgende Anrufe mit derselben Nummer gruppieren</string>
     <string name="open_dialpad_by_default">Beim Öffnen der App immer das Wähltastenfeld öffnen</string>
     <string name="disable_proximity_sensor">Näherungssensor bei Anrufen deaktivieren</string>
@@ -73,11 +66,6 @@
     <string name="hide_dialpad_numbers">Wähltastenfeld-Nummern ausblenden</string>
     <string name="export_call_history">Anrufliste exportieren</string>
     <string name="import_call_history">Anrufliste importieren</string>
-    <!-- FAQ -->
     <string name="faq_1_title">Ich höre eingehende Anrufe, aber der Bildschirm schaltet sich nicht ein. Was kann ich tun\?</string>
     <string name="faq_1_text">Eine allgemeine Antwort auf die Frage ist schwer, denn solche Probleme können viele geräte- und systemspezifische Gründe haben. Du solltest dich in den Einstellungen des Geräts umsehen und sicherstellen, dass die App im Hintergrund angezeigt werden darf und die Einblendung über anderen Apps erlaubt ist.</string>
-    <!--
-        Haven't found some strings? There's more at
-        https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
-    -->
 </resources>

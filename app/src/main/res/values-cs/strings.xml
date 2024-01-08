@@ -3,9 +3,7 @@
     <string name="app_launcher_name">Telefon</string>
     <string name="default_phone_app_prompt">Prosím, nastavte tuto aplikaci jako výchozí aplikaci pro telefonování</string>
     <string name="allow_displaying_over_other_apps">Pro správné fungování prosíme povolte zobrazování nad ostatními aplikacemi</string>
-    <!-- Contacts -->
     <string name="could_not_access_contacts">Nelze získat přístup k vašim kontaktům</string>
-    <!-- Recents -->
     <string name="no_previous_calls">Nebyly nalezeny žádné předchozí hovory</string>
     <string name="could_not_access_the_call_history">Nelze získat přístup k historii hovorů</string>
     <string name="request_access">Požádat o přístup</string>
@@ -14,14 +12,12 @@
     <string name="show_grouped_calls">Zobrazit hovory seskupené</string>
     <string name="clear_call_history">Vymazat historii hovorů</string>
     <string name="show_call_details">Ukázat detaily hovoru</string>
-    <!-- Dialpad -->
     <string name="dialpad">Číselník</string>
     <string name="asterisk">Hvězdička</string>
     <string name="hashtag">Mřížka</string>
     <string name="call_number">Volané číslo</string>
     <string name="dialpad_beeps">Povolit pípání při kliknutí na tlačítka číselníku</string>
     <string name="dialpad_vibrations">Povolit vibrace při kliknutí na tlačítka číselníku</string>
-    <!-- Dialer -->
     <string name="dialer">Telefon</string>
     <string name="accept">Přijmout</string>
     <string name="accept_call">Přijmout volání</string>
@@ -55,16 +51,13 @@
     <string name="conference">Konference</string>
     <string name="audio_route_speaker">Reproduktor</string>
     <string name="audio_route_earpiece">Sluchátka</string>
-    <string name="audio_route_bluetooth">Bluetooth</string>
     <string name="audio_route_wired_headset">Náhlavní souprava s kabelem</string>
     <string name="audio_route_wired_or_earpiece">Kabel nebo sluchátka</string>
     <string name="choose_audio_route">Vybrat směrování zvuku</string>
     <string name="calling_blocked_number">Číslo, které voláte, je blokované</string>
-    <!-- Speed dial -->
     <string name="speed_dial">Rychlé vytáčení</string>
     <string name="manage_speed_dial">Spravovat rychlá vytáčení</string>
     <string name="speed_dial_label">Kliknutím na číslo mu přiřadíte kontakt. Potom můžete rychle zavolat danému kontaktu dlouhým stisknutím daného čísla na číselníku.</string>
-    <!-- Settings -->
     <string name="group_subsequent_calls">Seskupit v protokolu hovorů další hovory se stejným číslem</string>
     <string name="open_dialpad_by_default">Otevřít číselník vždy po spuštění aplikace</string>
     <string name="disable_proximity_sensor">Vypnout senzor přiblížení během hovoru</string>
@@ -73,11 +66,6 @@
     <string name="hide_dialpad_numbers">Skrýt čísla číselníku</string>
     <string name="export_call_history">Exportovat historii volání</string>
     <string name="import_call_history">Importovat historii volání</string>
-    <!-- FAQ -->
     <string name="faq_1_title">Slyším příchozí hovor, ale obrazovka se nezapne. Co mohu dělat\?</string>
     <string name="faq_1_text">Takové problémy mohou mít mnoho důvodů specifických pro zařízení a systém, takže je těžké říci něco obecně. Měli byste zkontrolovat nastavení zařízení a ujistit se, že se aplikace může otevřít, když běží na pozadí, a umožnit zobrazení přes jiné aplikace.</string>
-    <!--
-        Haven't found some strings? There's more at
-        https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
-    -->
 </resources>

@@ -3,9 +3,7 @@
     <string name="app_launcher_name">Opkald</string>
     <string name="default_phone_app_prompt">Vælg venligst denne app som standard til opkald</string>
     <string name="allow_displaying_over_other_apps">Tillad venligst visning over andre apps for pålidelig adfærd</string>
-    <!-- Contacts -->
     <string name="could_not_access_contacts">Kunne ikke få adgang til dine kontakter</string>
-    <!-- Recents -->
     <string name="no_previous_calls">Der blev ikke fundet nogle tidligere opkald</string>
     <string name="could_not_access_the_call_history">Kunne ikke få adgang til opkaldshistorikken</string>
     <string name="request_access">Anmod om adgang</string>
@@ -14,14 +12,9 @@
     <string name="show_grouped_calls">Vis gruppérede opkald</string>
     <string name="clear_call_history">Ryd opkaldshistorik</string>
     <string name="show_call_details">Vis opkaldsdetaljer</string>
-    <!-- Dialpad -->
     <string name="dialpad">Numerisk tastatur</string>
     <string name="asterisk">Stjerne</string>
-    <string name="hashtag">Hashtag</string>
     <string name="call_number">Opkaldsnummer</string>
-    <string name="dialpad_beeps">Enable beeps on dialpad button clicks</string>
-    <string name="dialpad_vibrations">Enable vibrations on dialpad button clicks</string>
-    <!-- Dialer -->
     <string name="dialer">Opkald</string>
     <string name="accept">Acceptér</string>
     <string name="accept_call">Accepter opkald</string>
@@ -44,40 +37,13 @@
     <string name="show_dialpad">Vis opkaldstastatur</string>
     <string name="hide_dialpad">Skjul opkaldstastatur</string>
     <string name="end_call">Afslut opkald</string>
-    <string name="hold_call">Hold call</string>
-    <string name="resume_call">Resume call</string>
-    <string name="call_on_hold">On Hold</string>
-    <string name="call_swap">Swap calls</string>
-    <string name="call_merge">Merge calls</string>
-    <string name="call_split">Split call</string>
-    <string name="call_add">Add call</string>
-    <string name="conference_manage">Manage conference call</string>
-    <string name="conference">Conference</string>
-    <string name="audio_route_speaker">Speaker</string>
-    <string name="audio_route_earpiece">Earpiece</string>
-    <string name="audio_route_bluetooth">Bluetooth</string>
-    <string name="audio_route_wired_headset">Wired Headset</string>
-    <string name="audio_route_wired_or_earpiece">Wired or Earpiece</string>
-    <string name="choose_audio_route">Choose audio route</string>
-    <string name="calling_blocked_number">The number you are calling is blocked</string>
-    <!-- Speed dial -->
     <string name="speed_dial">Hurtigopkald</string>
     <string name="manage_speed_dial">Administrér hurtigopkald</string>
     <string name="speed_dial_label">Klik på et nummer for at tilknytte en kontakt til det. Derefter kan du hurtigt ringe op til den givne kontkakt ved at trykke længe på det givne nummer via det numeriske tastatur.</string>
-    <!-- Settings -->
     <string name="group_subsequent_calls">Gruppér efterfølgende opkald med samme nummer i opkaldsloggen</string>
     <string name="open_dialpad_by_default">Åben det numeriske tastatur som standard når appen åbner</string>
     <string name="disable_proximity_sensor">Deaktivér nærhedssensor under opkald</string>
     <string name="disable_swipe_to_answer">Erstat swipe ved besvarelse af indgående opkald med at klikke på</string>
-    <string name="show_incoming_calls_full_screen">Always display incoming calls on full screen</string>
-    <string name="hide_dialpad_numbers">Hide dialpad numbers</string>
-    <string name="export_call_history">Export call history</string>
-    <string name="import_call_history">Import call history</string>
-
-    <!-- FAQ -->
-    <string name="faq_1_title">I hear incoming calls, but the screen doesn\'t turn on. What can I do?</string>
-    <string name="faq_1_text">Such issues can have many device and system specific reasons, hard to say in general. You should look around in your device settings and make sure that the app is allowed to pop up when in background and allow displaying over other apps.</string>
-
     <!--
         Kan du ikke finde nogle strenge? Der er mere på
         https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res

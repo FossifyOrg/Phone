@@ -3,9 +3,7 @@
     <string name="app_launcher_name">Çevirici</string>
     <string name="default_phone_app_prompt">Lütfen bu uygulamayı öntanımlı Telefon uygulaması yapın</string>
     <string name="allow_displaying_over_other_apps">Düzgün çalışması için lütfen diğer uygulamaların üzerinde görüntülemeye izin verin</string>
-    <!-- Contacts -->
     <string name="could_not_access_contacts">Kişilerinize erişilemedi</string>
-    <!-- Recents -->
     <string name="no_previous_calls">Önceki arama bulunamadı</string>
     <string name="could_not_access_the_call_history">Arama geçmişine erişilemedi</string>
     <string name="request_access">Erişim isteği</string>
@@ -14,14 +12,12 @@
     <string name="show_grouped_calls">Gruplandırılmış aramaları göster</string>
     <string name="clear_call_history">Arama geçmişini temizle</string>
     <string name="show_call_details">Arama ayrıntılarını göster</string>
-    <!-- Dialpad -->
     <string name="dialpad">Tuş takımı</string>
     <string name="asterisk">Yıldız işareti</string>
     <string name="hashtag">Kare işareti</string>
     <string name="call_number">Numarayı ara</string>
     <string name="dialpad_beeps">Tuş takımı düğmelerine tıklandığında bip sesini etkinleştir</string>
     <string name="dialpad_vibrations">Tuş takımı düğmelerine tıklandığında titreşimi etkinleştir</string>
-    <!-- Dialer -->
     <string name="dialer">Çevirici</string>
     <string name="accept">Kabul Et</string>
     <string name="accept_call">Aramayı kabul et</string>
@@ -55,16 +51,13 @@
     <string name="conference">Konferans</string>
     <string name="audio_route_speaker">Hoparlör</string>
     <string name="audio_route_earpiece">Kulaklık</string>
-    <string name="audio_route_bluetooth">Bluetooth</string>
     <string name="audio_route_wired_headset">Kablolu Kulaklık</string>
     <string name="audio_route_wired_or_earpiece">Kablolu veya Kulaklık</string>
     <string name="choose_audio_route">Ses çıkışını seçin</string>
     <string name="calling_blocked_number">Aradığınız numara engellendi</string>
-    <!-- Speed dial -->
     <string name="speed_dial">Hızlı arama</string>
     <string name="manage_speed_dial">Hızlı aramayı yönet</string>
     <string name="speed_dial_label">Bir kişiyi atamak için bir numaraya tıklayın. Daha sonra numarayı çeviricide verilen numaraya uzun basarak hızlıca arayabilirsiniz.</string>
-    <!-- Settings -->
     <string name="group_subsequent_calls">Arama kaydında aynı numaraya sahip sonraki aramaları gruplandır</string>
     <string name="open_dialpad_by_default">Uygulama açıldığında öntanımlı olarak tuş takımını aç</string>
     <string name="disable_proximity_sensor">Aramalar sırasında yakınlık sensörünü devre dışı bırak</string>
@@ -73,7 +66,6 @@
     <string name="hide_dialpad_numbers">Tuş takımı numaralarını gizle</string>
     <string name="export_call_history">Arama geçmişini dışa aktar</string>
     <string name="import_call_history">Arama geçmişini içe aktar</string>
-    <!-- FAQ -->
     <string name="faq_1_title">Gelen aramaları duyuyorum ama ekran açılmıyor. Ne yapabilirim\?</string>
     <string name="faq_1_text">Bu tür sorunların aygıta ve sisteme özgü birçok nedeni olabilir, genel olarak söylemek zor. Aygıt ayarlarınıza bakmalı ve uygulamanın arka plandayken açılmasına ve diğer uygulamaların üzerinde görüntülenmesine izin verildiğinden emin olmalısınız.</string>
     <!--

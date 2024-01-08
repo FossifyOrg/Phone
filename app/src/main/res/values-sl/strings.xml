@@ -3,9 +3,7 @@
     <string name="app_launcher_name">Telefon</string>
     <string name="default_phone_app_prompt">Prosimo, nastavite to aplikacijo za privzeto telefonsko aplikacijo</string>
     <string name="allow_displaying_over_other_apps">Prosimo, dovolite prikaz nad drugimi aplikacijami za zanesljivo obnašanje</string>
-    <!-- Contacts -->
     <string name="could_not_access_contacts">Ni bilo mogoče dostopati do vaših stikov</string>
-    <!-- Recents -->
     <string name="no_previous_calls">Najden ni bil noben prejšnji klic</string>
     <string name="could_not_access_the_call_history">Ni bilo mogoče dostopati do zgodovine klicev</string>
     <string name="request_access">Zahtevaj dostop</string>
@@ -14,14 +12,12 @@
     <string name="show_grouped_calls">Prikaži združene klice</string>
     <string name="clear_call_history">Počisti zgodovino klicev</string>
     <string name="show_call_details">Prikaži podrobnosti klica</string>
-    <!-- Dialpad -->
     <string name="dialpad">Številčnica</string>
     <string name="asterisk">Zvezdica</string>
     <string name="hashtag">Lojtra</string>
     <string name="call_number">Pokliči številko</string>
     <string name="dialpad_beeps">Omogoči piske ob klikih gumbov na številčnici</string>
     <string name="dialpad_vibrations">Omogoči vibriranje ob klikih gumbov na številčnici</string>
-    <!-- Dialer -->
     <string name="dialer">Telefon</string>
     <string name="accept">Sprejmi</string>
     <string name="accept_call">Sprejmi klic</string>
@@ -55,31 +51,17 @@
     <string name="conference">Konferenca</string>
     <string name="audio_route_speaker">Zvočnik</string>
     <string name="audio_route_earpiece">Slušalke</string>
-    <string name="audio_route_bluetooth">Bluetooth</string>
     <string name="audio_route_wired_headset">Ožičene slušalke</string>
     <string name="audio_route_wired_or_earpiece">Ožičeno ali brezžično</string>
     <string name="choose_audio_route">Izberi smer zvoka</string>
-    <string name="calling_blocked_number">The number you are calling is blocked</string>
-    <!-- Speed dial -->
     <string name="speed_dial">Hitro klicanje</string>
     <string name="manage_speed_dial">Upravljanje hitrega klica</string>
     <string name="speed_dial_label">Kliknite številko, če ji želite dodeliti stik. Nato lahko hitro pokličete določen stik z dolgim pritiskom na določeno številko na številčnici.</string>
-    <!-- Settings -->
     <string name="group_subsequent_calls">Združi zaporedne klice z isto številko v dnevniku klicev</string>
     <string name="open_dialpad_by_default">Privzeto odpri številčnico ob odprtju aplikacije</string>
     <string name="disable_proximity_sensor">Onemogoči senzor bližine med klici</string>
     <string name="disable_swipe_to_answer">Pri odzivanju na dohodne klice zamenjajte poteg s prstom na odziv s klikanjem</string>
     <string name="show_incoming_calls_full_screen">Dohodne klice vedno prikaži na celotnem zaslonu</string>
-    <string name="hide_dialpad_numbers">Hide dialpad numbers</string>
-    <string name="export_call_history">Export call history</string>
-    <string name="import_call_history">Import call history</string>
-
-    <!-- FAQ -->
     <string name="faq_1_title">Slišim dohodne klice, vendar se zaslon ne vklopi. Kaj lahko storim\?</string>
     <string name="faq_1_text">Takšne težave imajo lahko veliko razlogov, ki so specifični za napravo in sistem, zato jih je na splošno težko opredeliti. Oglejte si nastavitve naprave in se prepričajte, da je aplikaciji dovoljeno, da se prikaže, ko je v ozadju, in da omogoča prikaz nad drugimi aplikacijami.</string>
-
-    <!--
-        Haven't found some strings? There's more at
-        https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
-    -->
 </resources>

@@ -3,9 +3,7 @@
     <string name="app_launcher_name">Telefon</string>
     <string name="default_phone_app_prompt">Ustaw tę aplikację jako domyślną aplikację telefonu</string>
     <string name="allow_displaying_over_other_apps">Zezwól aplikacji na wyświetlanie nad innymi, aby zapewnić niezawodne działanie</string>
-    <!-- Contacts -->
     <string name="could_not_access_contacts">Nie udało się uzyskać dostępu do Twoich kontaktów</string>
-    <!-- Recents -->
     <string name="no_previous_calls">Nie znaleziono wcześniejszych połączeń</string>
     <string name="could_not_access_the_call_history">Nie udało się uzyskać dostępu do historii połączeń</string>
     <string name="request_access">Poproś o dostęp</string>
@@ -14,14 +12,12 @@
     <string name="show_grouped_calls">Pokaż zgrupowane połączenia</string>
     <string name="clear_call_history">Wyczyść historię połączeń</string>
     <string name="show_call_details">Pokaż szczegóły połączenia</string>
-    <!-- Dialpad -->
     <string name="dialpad">Panel wybierania</string>
     <string name="asterisk">Gwiazdka</string>
     <string name="hashtag">Kratka</string>
     <string name="call_number">Zadzwoń na numer</string>
     <string name="dialpad_beeps">Włącz sygnały dźwiękowe przy naciśnięciach przycisków na panelu wybierania</string>
     <string name="dialpad_vibrations">Włącz wibracje przy naciśnięciach przycisków na panelu wybierania</string>
-    <!-- Dialer -->
     <string name="dialer">Telefon</string>
     <string name="accept">Odbierz</string>
     <string name="accept_call">Odbierz połączenie</string>
@@ -55,16 +51,13 @@
     <string name="conference">Konferencja</string>
     <string name="audio_route_speaker">Głośnik</string>
     <string name="audio_route_earpiece">Słuchawka</string>
-    <string name="audio_route_bluetooth">Bluetooth</string>
     <string name="audio_route_wired_headset">Słuchawki przewodowe</string>
     <string name="audio_route_wired_or_earpiece">Słuchawka urządzenia lub przewodowa</string>
     <string name="choose_audio_route">Wybierz urządzenie audio</string>
     <string name="calling_blocked_number">Numer, na który dzwonisz, jest zablokowany</string>
-    <!-- Speed dial -->
     <string name="speed_dial">Szybkie wybieranie</string>
     <string name="manage_speed_dial">Zarządzaj szybkim wybieraniem</string>
     <string name="speed_dial_label">Naciśnij cyfrę, aby przypisać do niej kontakt. Możesz wtedy szybko zadzwonić do danego kontaktu przez długie naciśnięcie odpowiedniej cyfry na panelu wybierania.</string>
-    <!-- Settings -->
     <string name="group_subsequent_calls">Grupuj kolejne połączenia z tym samym numerem w rejestrze połączeń</string>
     <string name="open_dialpad_by_default">Otwieraj panel wybierania numeru domyślnie przy uruchomieniu aplikacji</string>
     <string name="disable_proximity_sensor">Wyłączaj czujnik zbliżeniowy podczas połączeń</string>
@@ -73,11 +66,6 @@
     <string name="hide_dialpad_numbers">Ukryj cyfry panelu wybierania</string>
     <string name="export_call_history">Eksportuj historię połączeń</string>
     <string name="import_call_history">Importuj historię połączeń</string>
-    <!-- FAQ -->
     <string name="faq_1_title">Słyszę połączenia przychodzące, ale ekran się nie włącza. Co mogę zrobić\?</string>
     <string name="faq_1_text">Takie problemy mogą mieć wiele przyczyn specyficznych dla urządzenia i systemu; ogólnie trudno powiedzieć. Powinieneś/powinnaś rozejrzeć się w ustawieniach swojego urządzenia i upewnić się, że aplikacja może pojawiać się, gdy jest w tle, i wyświetlać się nad innymi aplikacjami.</string>
-    <!--
-        Haven't found some strings? There's more at
-        https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
-    -->
 </resources>

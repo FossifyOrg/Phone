@@ -3,9 +3,7 @@
     <string name="app_launcher_name">Birač</string>
     <string name="default_phone_app_prompt">Postavi ovu aplikaciju kao standardnu aplikaciju za telefon</string>
     <string name="allow_displaying_over_other_apps">Za pouzdano ponašanje dozvoli prikazivanje ispred drugih aplikacija</string>
-    <!-- Contacts -->
     <string name="could_not_access_contacts">Nije moguće pristupiti tvojim kontaktima</string>
-    <!-- Recents -->
     <string name="no_previous_calls">Nije pronađen nijedan prethodni poziv</string>
     <string name="could_not_access_the_call_history">Nije moguće pristupiti povijesti poziva</string>
     <string name="request_access">Zatraži pristup</string>
@@ -14,14 +12,12 @@
     <string name="show_grouped_calls">Prikaži grupirane pozive</string>
     <string name="clear_call_history">Izbriši povijest poziva</string>
     <string name="show_call_details">Prikaži detalje poziva</string>
-    <!-- Dialpad -->
     <string name="dialpad">Brojčanik</string>
     <string name="asterisk">Zvjezdica</string>
     <string name="hashtag">Taraba</string>
     <string name="call_number">Nazovi broj</string>
     <string name="dialpad_beeps">Aktiviraj zvučne signale prilikom pritiskanja gumbova brojčanika</string>
     <string name="dialpad_vibrations">Aktiviraj vibriranje prilikom pritiskanja gumbova brojčanika</string>
-    <!-- Dialer -->
     <string name="dialer">Birač</string>
     <string name="accept">Prihvati</string>
     <string name="accept_call">Prihvati poziv</string>
@@ -55,30 +51,19 @@
     <string name="conference">Konferencija</string>
     <string name="audio_route_speaker">Zvučnik</string>
     <string name="audio_route_earpiece">Slušalica</string>
-    <string name="audio_route_bluetooth">Bluetooth</string>
     <string name="audio_route_wired_headset">Analogna slušalica s mikrofonom</string>
     <string name="audio_route_wired_or_earpiece">Analogno ili slušalica</string>
     <string name="choose_audio_route">Odaberi audio izlaz</string>
     <string name="calling_blocked_number">Broj koji zoveš je blokiran</string>
-    <!-- Speed dial -->
     <string name="speed_dial">Brzo biranje</string>
     <string name="manage_speed_dial">Upravljaj brzim biranjem</string>
     <string name="speed_dial_label">Pritisni jedan broj za dodjeljivanje kontakta. Zatim možeš brzo nazvati zadani kontakt dugim pritiskom na zadani broj na biraču.</string>
-    <!-- Settings -->
     <string name="group_subsequent_calls">Grupiraj naknadne pozive s istim brojem u zapisniku poziva</string>
     <string name="open_dialpad_by_default">Otvori brojčanik prema zadanim postavkama kada se aplikacija otvori</string>
     <string name="disable_proximity_sensor">Isključi senzor blizine tijekom poziva</string>
     <string name="disable_swipe_to_answer">Prihvati pozive dodirom umjesto povlačenjem</string>
     <string name="show_incoming_calls_full_screen">Uvijek prikaži dolazne pozive u cjeloekranskom prikazu</string>
     <string name="hide_dialpad_numbers">Sakrij brojeve tipkovnice telefona</string>
-    <string name="export_call_history">Export call history</string>
-    <string name="import_call_history">Import call history</string>
-
-    <!-- FAQ -->
     <string name="faq_1_title">Čujem dolazne pozive, ali se ekran ne uključuje. Što mogu učiniti\?</string>
     <string name="faq_1_text">Takvi problemi mogu imati mnogo razloga specifičnih za uređaj i sustav, koje je teško reći općenito. Trebali biste pogledati uokolo u postavkama svog uređaja i provjeriti je li aplikaciji dopušteno iskakanje u pozadini i dopuštenje prikazivanja preko drugih aplikacija.</string>
-    <!--
-        Haven't found some strings? There's more at
-        https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
-    -->
 </resources>
