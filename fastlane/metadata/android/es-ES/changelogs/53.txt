@@ -1,0 +1,2 @@
+* Corregido el número de pulsaciones durante la llamada
+ * Se han añadido algunas mejoras de estabilidad, traducción y UX

@@ -1,0 +1,4 @@
+* No permitir llamar a números bloqueados
+ * Permitir ocultar números en el teclado de marcación
+ * Usar el tema Material You por defecto en Android 12+.
+ * Se han añadido algunas mejoras en la interfaz de usuario, la traducción y la estabilidad
