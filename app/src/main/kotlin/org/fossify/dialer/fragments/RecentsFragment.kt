@@ -164,14 +164,15 @@ class RecentsFragment(context: Context, attributeSet: AttributeSet) : MyViewPage
     }
 
     override fun onSearchQueryChanged(text: String) {
+        val fixedText = text.trim().replace("\\s+".toRegex(), " ")
         val recentCalls = allRecentCalls.filter {
-            it.name.contains(text, true) || it.doesContainPhoneNumber(text)
+            it.name.contains(fixedText, true) || it.doesContainPhoneNumber(fixedText)
         }.sortedByDescending {
-            it.name.startsWith(text, true)
+            it.name.startsWith(fixedText, true)
         }.toMutableList() as ArrayList<RecentCall>
 
         binding.recentsPlaceholder.beVisibleIf(recentCalls.isEmpty())
-        recentsAdapter?.updateItems(recentCalls, text)
+        recentsAdapter?.updateItems(recentCalls, fixedText)
     }
 }
 
