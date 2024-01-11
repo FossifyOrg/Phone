@@ -1,11 +1,11 @@
 [versions]
 #jetbrains
-kotlin = "1.9.0"
+kotlin = "1.9.10"
 kotlinxSerializationJson = "1.5.1"
 #Fossify
 commons = "cbf79568d3"
 #Gradle
-gradlePlugins-agp = "8.2.0"
+gradlePlugins-agp = "8.2.1"
 #Other
 indicatorFastScroll = "4524cd0b61"
 autofitTextView = "0.2.1"
