@@ -1,4 +1,4 @@
-rootProject.name = "Dialer"
+rootProject.name = "Phone"
 pluginManagement {
     repositories {
         gradlePluginPortal()

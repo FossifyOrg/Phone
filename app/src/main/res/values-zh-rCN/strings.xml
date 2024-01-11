@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_launcher_name">拨号器</string>
     <string name="default_phone_app_prompt">请将此应用程序设置为默认的通话程序</string>
     <string name="allow_displaying_over_other_apps">为了应用能稳定工作，请允许其显示在其他应用上方</string>
     <string name="could_not_access_contacts">无法访问您的通讯录</string>

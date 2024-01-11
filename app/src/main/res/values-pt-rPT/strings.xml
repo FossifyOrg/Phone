@@ -19,7 +19,6 @@
     <string name="dialer">Marcador</string>
     <string name="show_dialpad">Mostrar marcador</string>
     <string name="call_split">Separar chamada</string>
-    <string name="app_launcher_name">Telefone</string>
     <string name="decline">Recusar</string>
     <string name="no_previous_calls">Não existem chamadas anteriores</string>
     <string name="turn_microphone_on">Ligar microfone</string>

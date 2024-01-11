@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<org.fossify.dialer.fragments.RecentsFragment xmlns:android="http://schemas.android.com/apk/res/android"
+<org.fossify.phone.fragments.RecentsFragment xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/recents_fragment"
     android:layout_width="match_parent"
@@ -42,4 +42,4 @@
         android:scrollbars="none"
         app:layoutManager="org.fossify.commons.views.MyLinearLayoutManager" />
 
-</org.fossify.dialer.fragments.RecentsFragment>
+</org.fossify.phone.fragments.RecentsFragment>

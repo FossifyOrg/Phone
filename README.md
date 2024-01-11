@@ -1,4 +1,4 @@
-# Fossify Dialer
+# Fossify Phone
 <img alt="Logo" src="graphics/icon.webp" width="120" />
 
 A lightweight app for handling your calls, no matter where are you. Comes with a handy call log for easy call initiation. You can now easily dial numbers using this amazing dial pad without any problem as this dial pad gives you different things to ease up your overall experience while making a call. Stay connected with your friends and family while having a smooth experience in this app. With bigger numbers and letters, it is now easier for you to see and dial numbers. Using this dialpad, you can access your contacts and maintain a call log with ease.

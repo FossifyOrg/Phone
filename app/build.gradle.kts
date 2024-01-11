@@ -10,7 +10,7 @@ plugins {
 }
 
 base {
-    archivesName.set("dialer")
+    archivesName.set("phone")
 }
 
 val keystorePropertiesFile: File = rootProject.file("keystore.properties")

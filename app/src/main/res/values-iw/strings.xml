@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_launcher_name">חייגן</string>
     <string name="default_phone_app_prompt">אנא הפוך את האפליקציה הזו לחייגן ברירת המחדל</string>
     <string name="allow_displaying_over_other_apps">אנא אפשר הצגה מעל אפליקציות אחרות לצורך התנהגות אמינה</string>
     <string name="could_not_access_contacts">לא ניתן היה לגשת לאנשי הקשר שלך נא אפשר ידנית דרך הגדרות האפליקציה</string>

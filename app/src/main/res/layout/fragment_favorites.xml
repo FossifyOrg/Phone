@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<org.fossify.dialer.fragments.FavoritesFragment xmlns:android="http://schemas.android.com/apk/res/android"
+<org.fossify.phone.fragments.FavoritesFragment xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/favorites_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <include layout="@layout/fragment_letters_layout" />
 
-</org.fossify.dialer.fragments.FavoritesFragment>
+</org.fossify.phone.fragments.FavoritesFragment>
