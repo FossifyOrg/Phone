@@ -17,10 +17,12 @@ It comes with material design and dark theme by default, provides great user exp
 
 Contains no ads or unnecessary permissions. It is fully opensource, provides customizable colors. Keeping track of call logs for different phone number is also a plus point of this app.
 
-Check out the full suite of apps here:  
-https://github.com/FossifyOrg
+➡️ Explore more Fossify apps: https://www.fossify.org<br>
+➡️ Open-Source Code: https://www.github.com/FossifyOrg<br>
+➡️ Join the community on Reddit: https://www.reddit.com/r/Fossify<br>
+➡️ Connect on Telegram: https://t.me/Fossify
 
-<div style="display:flex;">
+<div align="center">
 <img alt="App image" src="fastlane/metadata/android/en-US/images/phoneScreenshots/1_en-US.jpeg" width="30%">
 <img alt="App image" src="fastlane/metadata/android/en-US/images/phoneScreenshots/2_en-US.jpeg" width="30%">
 <img alt="App image" src="fastlane/metadata/android/en-US/images/phoneScreenshots/3_en-US.jpeg" width="30%">
