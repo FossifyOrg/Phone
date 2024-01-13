@@ -1,0 +1,2 @@
+* Agregar un botón obtener Simple Phone en la sección Acerca de
+ * Añadido algunas mejoras de traducción y UX

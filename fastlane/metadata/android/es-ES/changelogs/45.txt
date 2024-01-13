@@ -1,0 +1,2 @@
+* Arreglado un fallo con la notificación de llamada que se quedaba atascada
+ * Añadidas algunas mejoras de traducción y UX

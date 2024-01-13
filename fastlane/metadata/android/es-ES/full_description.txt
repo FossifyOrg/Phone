@@ -1,0 +1,24 @@
+Una aplicación ligera para manejar sus llamadas, sin importar dónde se encuentre. Viene con un práctico registro de llamadas para facilitar las llamadas. Ahora puede marcar fácilmente números usando este increíble teclado sin ningún problema, ya que le ofrece diferentes cosas para facilitar su experiencia general al hacer una llamada. Mantente conectado con tus amigos y familiares mientras disfrutas de una experiencia fluida en esta aplicación. Con números y letras más grandes, ahora es más fácil para usted ver y marcar números. Con este teclado de teléfono, puede acceder a sus contactos y mantener un registro de llamadas con facilidad.
+
+También hay un teclado rápido a su servicio, con sugerencias inteligentes de contactos . También admite cartas. Puede utilizar la búsqueda rápida para encontrar sus contactos favoritos no sólo en la lista de contactos, sino también en el historial de llamadas. Las entradas del registro de llamadas se pueden eliminar una por una, pero también se pueden borrar de una vez.
+
+Puede bloquear fácilmente números de teléfono para evitar llamadas entrantes no deseadas. Esta característica falta en la mayoría de las aplicaciones presentes en la tienda. Con esta función, usted puede elegir quién puede llamarle. Gracias a esta característica, la seguridad del usuario se puede mantener fácilmente bloqueando números inútiles o amenazantes. También puede bloquear llamadas de contactos no guardados.
+
+Con las funciones de seguridad avanzadas de esta aplicación, los números que escribes están fuertemente asegurados para que puedas tener una experiencia sin problemas sin preocuparte de que tus datos caigan en manos equivocadas. Cada uno de sus números de teléfono está a salvo con usted. 
+
+Compatible la marcación rápida hace que llamar a sus contactos favoritos con este verdadero teléfono una brisa. Puede hacer que cualquier número de teléfono sea su favorito para que pueda marcarlo rápidamente. De esta manera, usted puede fácilmente hacer contactos con la gente sin encontrar otros números diferentes.
+
+Para ayudarle a administrar sus llamadas rápidamente, la aplicación de teléfono también admite contactos favoritos y la creación de accesos directos de cualquier contacto en la pantalla de inicio. El seguimiento de los registros de llamadas para diferentes números de teléfono es también un punto a favor de esta aplicación.
+
+Viene con material design y tema oscuro por defecto, proporciona una gran experiencia de usuario para un uso fácil. La falta de acceso a Internet te da más privacidad, seguridad y estabilidad que otras aplicaciones.
+
+No contiene anuncios ni permisos innecesarios. Es totalmente de código abierto, proporciona colores personalizables.
+
+Echa un vistazo a la suite completa de Simple Tools aquí:
+Sitio web: https://www.fossify.org
+
+En Reddit:
+Sitio web: https://www.reddit.com/r/Fossify
+
+Telegram:
+Sitio web: https://t.me/Fossify

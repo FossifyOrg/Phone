@@ -1,0 +1,1 @@
+* Añadidas algunas mejoras de estabilidad, traducción y UX

@@ -1,0 +1,3 @@
+* Evitar mostrar contactos sin número de teléfono
+ * Corregidos múltiples fallos relacionados con el manejo de contactos
+ * Añadidas algunas mejoras de estabilidad, traducción y UX
