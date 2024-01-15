@@ -3,7 +3,7 @@
 kotlin = "1.9.10"
 kotlinxSerializationJson = "1.5.1"
 #Fossify
-commons = "e75c9096f5"
+commons = "f77df348d6"
 #Gradle
 gradlePlugins-agp = "8.2.1"
 #Other
@@ -25,7 +25,7 @@ fossify-commons = { module = "org.fossify:commons", version.ref = "commons" }
 #Kotlin
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
 #Other
-indicator-fast-scroll = { module = "com.github.tibbi:IndicatorFastScroll", version.ref = "indicatorFastScroll" }
+indicator-fast-scroll = { module = "org.fossify:IndicatorFastScroll", version.ref = "indicatorFastScroll" }
 autofit-text-view = { module = "me.grantland:autofittextview", version.ref = "autofitTextView" }
 [plugins]
 android = { id = "com.android.application", version.ref = "gradlePlugins-agp" }
