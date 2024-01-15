@@ -6,9 +6,6 @@ Empower your calls, safeguard your data. Fossify Phone redefines the mobile app 
 📱 **YOUR PRIVACY, OUR PRIORITY:**  
 Welcome to the Fossify Phone App, where your digital privacy is paramount. Switch to a mobile experience that respects your data, ensuring your personal information remains secure and private.
 
-🔐 **ROBUST SECURITY FEATURES:**  
-Elevate your mobile security with the Fossify Phone App. Enjoy advanced encryption for your communications, customizable app permissions, and secure access options like pin, pattern, and fingerprint locks. Your peace of mind is our top concern.
-
 🚀 **SEAMLESS PERFORMANCE:**  
 The Fossify Phone App offers a fluid and responsive mobile interface, enhancing your phone's performance while safeguarding your privacy. Experience a lag-free, smooth user experience, optimized for efficiency and speed.
 
