@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.app.KeyguardManager
 import android.content.Context
 import android.content.Intent
-import android.graphics.Bitmap
 import android.graphics.drawable.LayerDrawable
 import android.graphics.drawable.RippleDrawable
 import android.media.AudioManager
@@ -22,6 +21,8 @@ import android.view.animation.OvershootInterpolator
 import android.widget.ImageView
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.children
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import org.fossify.commons.extensions.*
 import org.fossify.commons.helpers.*
 import org.fossify.commons.models.SimpleListItem
@@ -549,13 +550,13 @@ class CallActivity : SimpleActivity() {
         binding.holdStatusLabel.beVisibleIf(isOnHold)
     }
 
-    private fun updateOtherPersonsInfo(avatar: Bitmap?) {
+    private fun updateOtherPersonsInfo(avatarUri: String?) {
         if (callContact == null) {
             return
         }
 
         binding.apply {
-            callerNameLabel.text = if (callContact!!.name.isNotEmpty()) callContact!!.name else getString(R.string.unknown_caller)
+            callerNameLabel.text = callContact!!.name.ifEmpty { getString(R.string.unknown_caller) }
             if (callContact!!.number.isNotEmpty() && callContact!!.number != callContact!!.name) {
                 callerNumber.text = callContact!!.number
 
@@ -566,11 +567,10 @@ class CallActivity : SimpleActivity() {
                 callerNumber.beGone()
             }
 
-            if (avatar != null) {
-                callerAvatar.setImageBitmap(avatar)
-            } else {
-                callerAvatar.setImageDrawable(null)
-            }
+            Glide.with(callerAvatar)
+                .load(avatarUri)
+                .apply(RequestOptions.circleCropTransform())
+                .into(callerAvatar)
         }
     }
 
@@ -679,7 +679,7 @@ class CallActivity : SimpleActivity() {
                 return@getCallContact
             }
             callContact = contact
-            val avatar = if (!call.isConference()) callContactAvatarHelper.getCallContactAvatar(contact) else null
+            val avatar = if (!call.isConference()) contact.photoUri else null
             runOnUiThread {
                 updateOtherPersonsInfo(avatar)
                 checkCalledSIMCard()
