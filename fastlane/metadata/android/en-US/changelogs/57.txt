@@ -1,4 +1,0 @@
- * Allow blocking contacts easier
- * Added a grid view to favorites
- * Added blocking calls from hidden numbers
- * Added some stability, translation and UX improvements

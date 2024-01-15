@@ -1,2 +1,0 @@
- * Fixed number presses during call
- * Added some stability, translation and UX improvements

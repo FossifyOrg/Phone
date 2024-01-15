@@ -1,3 +1,0 @@
- * Avoid showing contacts without a phone number
- * Fixed multiple contact handling related glitches
- * Added some stability, translation and UX improvements

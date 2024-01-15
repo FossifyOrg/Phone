@@ -1,5 +1,0 @@
-* Se ha corregido la imposibilidad de establecer la aplicación como predeterminada para gestionar llamadas en algunos dispositivos.
- * Solucionados algunos problemas con las llamadas entrantes que no se muestran a veces
- * Se ha mejorado la marcación rápida de contactos con varios números.
- * Se muestran correctamente los nombres de los contactos de la organización.
- * Se han añadido algunas mejoras de estabilidad, traducción y UX

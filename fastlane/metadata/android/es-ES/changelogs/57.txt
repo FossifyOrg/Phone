@@ -1,4 +1,0 @@
-* Permitir bloquear contactos más fácilmente
- * Añadida una vista de cuadrícula a los favoritos
- * Añadido el bloqueo de llamadas de números ocultos
- * Añadidas algunas mejoras de estabilidad, traducción y UX

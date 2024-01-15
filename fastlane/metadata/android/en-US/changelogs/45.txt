@@ -1,2 +1,0 @@
- * Fixed a glitch with call notification getting stuck
- * Added some translation and UX improvements

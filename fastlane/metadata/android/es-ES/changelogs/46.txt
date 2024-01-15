@@ -1,3 +1,0 @@
-* Permitir cambiar la ruta de audio durante las llamadas
- * Requerir Simple Thank You para algunas funciones
- * Añadido algunas mejoras de estabilidad, traducción y UX

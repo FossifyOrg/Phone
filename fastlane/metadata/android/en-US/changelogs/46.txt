@@ -1,3 +1,0 @@
- * Allow changing the audio route during calls
- * Require Simple Thank You for some features
- * Added some stability, translation and UX improvements

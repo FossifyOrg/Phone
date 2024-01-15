@@ -1,4 +1,0 @@
-* Permitir filtrar contactos
- * Arreglar la visualización de contactos, si el nombre empieza por un apellido
- * Corregidos algunos fallos en el diseño de derecha a izquierda
- * Se han añadido algunas mejoras de estabilidad, traducción y UX

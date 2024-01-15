@@ -1,1 +1,0 @@
- * Fixed a glitch with dialpad button not being visible on some devices

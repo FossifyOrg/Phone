@@ -1,1 +1,0 @@
- * Added the new search bar at the top menu
