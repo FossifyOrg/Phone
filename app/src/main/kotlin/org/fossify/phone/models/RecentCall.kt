@@ -18,6 +18,7 @@ data class RecentCall(
     val type: Int,
     val neighbourIDs: MutableList<Int>,
     val simID: Int,
+    val simColor: Int,
     val specificNumber: String,
     val specificType: String,
     val isUnknownNumber: Boolean,

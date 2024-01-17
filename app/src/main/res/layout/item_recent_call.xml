@@ -65,6 +65,7 @@
         android:gravity="center"
         android:textColor="@color/md_grey_black"
         android:textSize="@dimen/small_text_size"
+        android:textStyle="bold"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/item_recents_sim_image"
         app:layout_constraintEnd_toEndOf="@+id/item_recents_sim_image"
