@@ -283,6 +283,7 @@
             android:layout_height="@dimen/dialpad_button_size"
             android:contentDescription="@string/end_call"
             android:src="@drawable/ic_call_end"
+            android:elevation="@dimen/big_margin"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -310,6 +311,7 @@
             android:elevation="@dimen/medium_margin"
             android:orientation="vertical"
             android:visibility="invisible"
+            android:layout_marginBottom="@dimen/small_margin"
             app:layout_constraintBottom_toTopOf="@id/call_end"
             app:layout_constraintStart_toStartOf="parent">
 
