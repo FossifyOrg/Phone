@@ -216,7 +216,6 @@ class CallActivity : SimpleActivity() {
             dialpadHashtagHolder.setOnClickListener { dialpadPressed('#') }
         }
 
-        dialpadWrapper.setBackgroundColor(getProperBackgroundColor())
         arrayOf(dialpadClose, callSimImage).forEach {
             it.applyColorFilter(getProperTextColor())
         }
@@ -500,7 +499,10 @@ class CallActivity : SimpleActivity() {
     }
 
     private fun findVisibleViewsUnderDialpad(): Sequence<Pair<View, Float>> {
-        return binding.ongoingCallHolder.children.filter { it.isVisible() }.map { view -> Pair(view, view.alpha) }
+        val ignored = arrayOf(binding.dialpadWrapper, binding.callEnd)
+        return binding.ongoingCallHolder.children.map { it }
+            .filter { it.isVisible() && !ignored.contains(it) }
+            .map { view -> Pair(view, view.alpha) }
     }
 
     private fun showDialpad() {
@@ -520,8 +522,8 @@ class CallActivity : SimpleActivity() {
         viewsUnderDialpad.addAll(findVisibleViewsUnderDialpad())
         viewsUnderDialpad.forEach { (view, _) ->
             view.run {
-                animate().scaleX(0f).alpha(0f).withEndAction { beGone() }.duration = 250L
-                animate().scaleY(0f).alpha(0f).withEndAction { beGone() }.duration = 250L
+                animate().scaleX(0f).alpha(0f).withEndAction { beInvisible() }.duration = 250L
+                animate().scaleY(0f).alpha(0f).withEndAction { beInvisible() }.duration = 250L
             }
         }
     }
@@ -817,7 +819,13 @@ class CallActivity : SimpleActivity() {
     private fun setActionButtonEnabled(button: ImageView, enabled: Boolean) {
         button.apply {
             isEnabled = enabled
-            alpha = if (enabled) 1.0f else LOWER_ALPHA
+            val newAlpha = if (enabled) 1.0f else LOWER_ALPHA
+            val underDialpadIndex = viewsUnderDialpad.indexOfFirst { it.first == button }
+            if (underDialpadIndex > -1) {
+                viewsUnderDialpad[underDialpadIndex] = Pair(button, newAlpha)
+            } else {
+                alpha = newAlpha
+            }
         }
     }
 
