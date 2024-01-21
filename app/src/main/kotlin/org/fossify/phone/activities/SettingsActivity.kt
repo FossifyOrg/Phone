@@ -27,7 +27,6 @@ import org.fossify.phone.models.RecentCall
 import org.fossify.phone.helpers.DialpadT9
 import org.fossify.phone.helpers.LANGUAGE_NONE
 import org.fossify.phone.helpers.SECONDARY_LANGUAGE_NONE_ID
-import java.io.InputStreamReader
 import java.util.Locale
 import kotlin.system.exitProcess
 
@@ -57,11 +56,6 @@ class SettingsActivity : SimpleActivity() {
         isMaterialActivity = true
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-
-        if (!DialpadT9.Initialized) {
-            val reader = InputStreamReader(resources.openRawResource(R.raw.t9languages))
-            DialpadT9.readFromJson(reader.readText())
-        }
 
         binding.apply {
             updateMaterialActivityViews(settingsCoordinator, settingsHolder, useTransparentNavigation = true, useTopSearchMenu = false)

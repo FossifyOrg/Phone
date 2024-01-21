@@ -38,9 +38,9 @@ import org.fossify.phone.fragments.ContactsFragment
 import org.fossify.phone.fragments.FavoritesFragment
 import org.fossify.phone.fragments.MyViewPagerFragment
 import org.fossify.phone.fragments.RecentsFragment
-import org.fossify.phone.helpers.OPEN_DIAL_PAD_AT_LAUNCH
-import org.fossify.phone.helpers.RecentsHelper
-import org.fossify.phone.helpers.tabsList
+import org.fossify.phone.helpers.*
+import java.io.InputStreamReader
+import java.util.Locale
 
 class MainActivity : SimpleActivity() {
     private val binding by viewBinding(ActivityMainBinding::inflate)
@@ -89,6 +89,8 @@ class MainActivity : SimpleActivity() {
         if (isQPlus() && (config.blockUnknownNumbers || config.blockHiddenNumbers)) {
             setDefaultCallerIdApp()
         }
+
+        setupSecondaryLanguage()
 
         setupTabs()
         Contact.sorting = config.sorting
@@ -611,5 +613,22 @@ class MainActivity : SimpleActivity() {
             cachedContacts.addAll(contacts)
         } catch (e: Exception) {
         }
+    }
+
+    private fun setupSecondaryLanguage() {
+        if (!DialpadT9.Initialized) {
+            val reader = InputStreamReader(resources.openRawResource(R.raw.t9languages))
+            DialpadT9.readFromJson(reader.readText())
+        }
+
+        if (config.dialpadSecondaryLanguage == "") {
+            val currentLang = Locale.getDefault().language
+            if (DialpadT9.getSupportedSecondaryLanguages().contains(currentLang)) {
+                config.dialpadSecondaryLanguage = currentLang
+            } else {
+                config.dialpadSecondaryLanguage = LANGUAGE_NONE
+            }
+        }
+
     }
 }

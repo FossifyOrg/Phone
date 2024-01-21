@@ -79,7 +79,7 @@ class Config(context: Context) : BaseConfig(context) {
         set(dialpadVibration) = prefs.edit().putBoolean(DIALPAD_VIBRATION, dialpadVibration).apply()
 
     var dialpadSecondaryLanguage: String?
-        get() = prefs.getString(DIALPAD_SECONDARY_LANGUAGE, LANGUAGE_NONE)
+        get() = prefs.getString(DIALPAD_SECONDARY_LANGUAGE, "")
         set(dialpadSecondaryLanguage) = prefs.edit().putString(DIALPAD_SECONDARY_LANGUAGE, dialpadSecondaryLanguage).apply()
 
     var hideDialpadNumbers: Boolean
