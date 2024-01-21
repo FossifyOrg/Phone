@@ -65,4 +65,7 @@
     <string name="hide_dialpad_numbers">Ẩn số bàn phím quay số</string>
     <string name="faq_1_title">Tôi nghe thấy cuộc gọi đến, nhưng màn hình không bật. Tôi có thể làm gì\?</string>
     <string name="faq_1_text">Những vấn đề như vậy có thể có nhiều lý do cụ thể của thiết bị và hệ thống, khó nói chung. Bạn nên xem trong cài đặt thiết bị của mình và đảm bảo rằng ứng dụng được phép bật lên khi ở chế độ nền và cho phép hiển thị trên các ứng dụng khác.</string>
+    <string name="app_launcher_name">Điện thoại</string>
+    <string name="import_call_history">Nhập lịch sử cuộc gọi</string>
+    <string name="export_call_history">Xuất lịch sử cuộc gọi</string>
 </resources>
