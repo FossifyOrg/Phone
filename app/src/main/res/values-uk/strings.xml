@@ -66,4 +66,7 @@
     <string name="import_call_history">Імпорт історії дзвінків</string>
     <string name="faq_1_title">Я чую вхідні дзвінки, але екран не вмикається. Що я можу зробити\?</string>
     <string name="faq_1_text">Такі проблеми можуть мати багато специфічних для пристрою та системи причин, важко сказати в цілому. Вам слід подивитися в налаштуваннях свого пристрою та переконатися, що застосунку дозволено відображати у фоновому режимі та дозволяти відображення над іншими застосунками.</string>
+    <string name="app_launcher_name">Телефон</string>
+    <string name="asterisk">Зірочка</string>
+    <string name="audio_route_bluetooth">Bluetooth</string>
 </resources>
