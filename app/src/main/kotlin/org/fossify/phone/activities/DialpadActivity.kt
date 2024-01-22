@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.annotation.TargetApi
 import android.content.Intent
 import android.database.Cursor
-import android.graphics.Color
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -156,16 +155,10 @@ class DialpadActivity : SimpleActivity() {
 
         val properPrimaryColor = getProperPrimaryColor()
         val properBackgroundColor = getProperBackgroundColor()
-        val hsv = FloatArray(3)
-        Color.colorToHSV(properBackgroundColor, hsv)
         if (areMultipleSIMsAvailable()) {
             val simInfo = getAvailableSIMCardLabels()
-            var callColor1 = if (simInfo.size > 1) simInfo[0].color else properPrimaryColor
-            var callColor2 = if (simInfo.size > 1) simInfo[1].color else properPrimaryColor
-            if (hsv[2] < 0.5) {
-                callColor1 = callColor1.lightenColor(24)
-                callColor2 = callColor2.lightenColor(24)
-            }
+            val callColor1 = if (simInfo.size > 1) simInfo[0].color.adjustSimColorForBackground(properBackgroundColor) else properPrimaryColor
+            val callColor2 = if (simInfo.size > 1) simInfo[1].color.adjustSimColorForBackground(properBackgroundColor) else properPrimaryColor
             val callIcon1 = resources.getColoredDrawableWithColor(R.drawable.ic_phone_one_vector, callColor1.getContrastColor())
             val callIcon2 = resources.getColoredDrawableWithColor(R.drawable.ic_phone_two_vector, callColor2.getContrastColor())
             binding.apply {

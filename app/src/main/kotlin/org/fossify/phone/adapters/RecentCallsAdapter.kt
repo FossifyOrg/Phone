@@ -1,7 +1,6 @@
 package org.fossify.phone.adapters
 
 import android.content.Intent
-import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.provider.CallLog.Calls
 import android.text.SpannableString
@@ -331,10 +330,7 @@ class RecentCallsAdapter(
             itemRecentsSimImage.beVisibleIf(areMultipleSIMsAvailable && call.simID != -1)
             itemRecentsSimId.beVisibleIf(areMultipleSIMsAvailable && call.simID != -1)
             if (areMultipleSIMsAvailable && call.simID != -1) {
-                val hsv = FloatArray(3)
-                Color.colorToHSV(backgroundColor, hsv)
-                val simColor = if (hsv[2] > 0.5) call.simColor else call.simColor.lightenColor(24)
-                itemRecentsSimImage.applyColorFilter(simColor)
+                itemRecentsSimImage.applyColorFilter(call.simColor.adjustSimColorForBackground(backgroundColor))
                 itemRecentsSimId.setTextColor(backgroundColor)
                 itemRecentsSimId.text = call.simID.toString()
             }
