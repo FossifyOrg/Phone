@@ -17,7 +17,7 @@ import org.fossify.commons.dialogs.RadioGroupDialog
 import org.fossify.commons.extensions.*
 import org.fossify.commons.helpers.*
 import org.fossify.commons.models.RadioItem
-import org.fossify.phone.R
+import org.fossify.commons.R
 import org.fossify.phone.databinding.ActivitySettingsBinding
 import org.fossify.phone.dialogs.ExportCallHistoryDialog
 import org.fossify.phone.dialogs.ManageVisibleTabsDialog
@@ -290,7 +290,7 @@ class SettingsActivity : SimpleActivity() {
 
     private fun getLanguageName(lang: String?): String? {
         return if (lang == LANGUAGE_NONE) {
-            getString(R.string.none_explicit)
+            getString(R.string.none)
         } else {
             val currentLocale = Locale.getDefault()
             val locale = Locale(lang!!)
@@ -301,7 +301,7 @@ class SettingsActivity : SimpleActivity() {
     private fun setupDialpadSecondaryLanguage() {
         binding.settingsDialpadSecondaryLanguage.text = getLanguageName(config.dialpadSecondaryLanguage)
         binding.settingsDialpadSecondaryLanguageHolder.setOnClickListener {
-            val items: ArrayList<RadioItem> = arrayListOf(RadioItem(SECONDARY_LANGUAGE_NONE_ID, getString(R.string.none_explicit)))
+            val items: ArrayList<RadioItem> = arrayListOf(RadioItem(SECONDARY_LANGUAGE_NONE_ID, getString(R.string.none)))
             val supportedLanguages = DialpadT9.getSupportedSecondaryLanguages()
             for (i in supportedLanguages.indices) {
                 items.add(RadioItem(i, getLanguageName(supportedLanguages[i])!!))

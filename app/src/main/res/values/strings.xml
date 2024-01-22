@@ -25,7 +25,6 @@
     <string name="dialpad_beeps">Enable beeps on dialpad button clicks</string>
     <string name="dialpad_vibrations">Enable vibrations on dialpad button clicks</string>
     <string name="secondary_dialpad_language">Secondary dialpad language</string>
-    <string name="none_explicit">none</string>
 
     <!-- Dialer -->
     <string name="dialer">Dialer</string>
