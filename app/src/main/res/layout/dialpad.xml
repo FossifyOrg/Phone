@@ -29,12 +29,11 @@
             style="@style/DialpadNumberStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
             android:text="1" />
 
     </RelativeLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/dialpad_2_holder"
         style="@style/DialpadButtonStyle"
         android:layout_width="0dp"
@@ -60,9 +59,9 @@
             android:layout_below="@+id/dialpad_2"
             android:layout_marginBottom="@dimen/small_margin"
             android:text="ABC" />
-    </RelativeLayout>
+    </LinearLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/dialpad_3_holder"
         style="@style/DialpadButtonStyle"
         android:layout_width="0dp"
@@ -87,9 +86,9 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/dialpad_3"
             android:text="DEF" />
-    </RelativeLayout>
+    </LinearLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/dialpad_4_holder"
         style="@style/DialpadButtonStyle"
         android:layout_width="0dp"
@@ -114,9 +113,9 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/dialpad_4"
             android:text="GHI" />
-    </RelativeLayout>
+    </LinearLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/dialpad_5_holder"
         style="@style/DialpadButtonStyle"
         android:layout_width="0dp"
@@ -142,9 +141,9 @@
             android:layout_below="@+id/dialpad_5"
             android:layout_marginBottom="@dimen/small_margin"
             android:text="JKL" />
-    </RelativeLayout>
+    </LinearLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/dialpad_6_holder"
         style="@style/DialpadButtonStyle"
         android:layout_width="0dp"
@@ -169,9 +168,9 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/dialpad_6"
             android:text="MNO" />
-    </RelativeLayout>
+    </LinearLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/dialpad_7_holder"
         style="@style/DialpadButtonStyle"
         android:layout_width="0dp"
@@ -196,9 +195,9 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/dialpad_7"
             android:text="PQRS" />
-    </RelativeLayout>
+    </LinearLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/dialpad_8_holder"
         style="@style/DialpadButtonStyle"
         android:layout_width="0dp"
@@ -224,9 +223,9 @@
             android:layout_below="@+id/dialpad_8"
             android:layout_marginBottom="@dimen/small_margin"
             android:text="TUV" />
-    </RelativeLayout>
+    </LinearLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/dialpad_9_holder"
         style="@style/DialpadButtonStyle"
         android:layout_width="0dp"
@@ -251,9 +250,9 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/dialpad_9"
             android:text="WXYZ" />
-    </RelativeLayout>
+    </LinearLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/dialpad_asterisk_holder"
         style="@style/DialpadButtonStyle"
         android:layout_width="0dp"
@@ -271,9 +270,9 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="*" />
-    </RelativeLayout>
+    </LinearLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/dialpad_0_holder"
         style="@style/DialpadButtonStyle"
         android:layout_width="0dp"
@@ -300,9 +299,9 @@
             android:layout_marginBottom="@dimen/small_margin"
             android:text="+" />
 
-    </RelativeLayout>
+    </LinearLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/dialpad_plus_holder"
         style="@style/DialpadButtonStyle"
         android:layout_width="0dp"
@@ -322,9 +321,9 @@
             android:layout_centerInParent="true"
             android:text="+" />
 
-    </RelativeLayout>
+    </LinearLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/dialpad_hashtag_holder"
         style="@style/DialpadButtonStyle"
         android:layout_width="0dp"
@@ -343,5 +342,5 @@
             android:layout_centerInParent="true"
             android:text="#" />
 
-    </RelativeLayout>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
