@@ -67,4 +67,6 @@
     <string name="import_call_history">Importera samtalshistorik</string>
     <string name="faq_1_title">Jag hör inkommande samtal men skärmen vaknar inte. Vad gör jag\?</string>
     <string name="faq_1_text">Sådana problem kan bero specifikt på apparat eller ditt sytem, det är svårt att svara på generellt. Du bör kolla i dina inställningar och säkerställa att appen har behörighet att synas i förgrunden och tillåts att synas över andra appar.</string>
+    <string name="app_launcher_name">Telefon</string>
+    <string name="audio_route_bluetooth">Blåtand</string>
 </resources>

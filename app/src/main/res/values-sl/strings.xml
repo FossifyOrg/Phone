@@ -63,4 +63,10 @@
     <string name="show_incoming_calls_full_screen">Dohodne klice vedno prikaži na celotnem zaslonu</string>
     <string name="faq_1_title">Slišim dohodne klice, vendar se zaslon ne vklopi. Kaj lahko storim\?</string>
     <string name="faq_1_text">Takšne težave imajo lahko veliko razlogov, ki so specifični za napravo in sistem, zato jih je na splošno težko opredeliti. Oglejte si nastavitve naprave in se prepričajte, da je aplikaciji dovoljeno, da se prikaže, ko je v ozadju, in da omogoča prikaz nad drugimi aplikacijami.</string>
+    <string name="app_launcher_name">Telefon</string>
+    <string name="audio_route_bluetooth">Bluetooth</string>
+    <string name="calling_blocked_number">Klicana številka je blokirana</string>
+    <string name="hide_dialpad_numbers">Skrij števila na številčnici</string>
+    <string name="export_call_history">Izvozi zgodovino klicev</string>
+    <string name="import_call_history">Uvozi zgodovino klicev</string>
 </resources>

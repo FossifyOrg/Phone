@@ -68,4 +68,5 @@
     <string name="import_call_history">导入通话记录</string>
     <string name="faq_1_title">我听到来电声音，但屏幕不亮。我该怎么办\?</string>
     <string name="faq_1_text">这样的问题可能有很多设备和系统的具体原因，很难笼统地说。你应该查看你的设备设置，确保应用在后台时被允许弹出，并允许其显示在其他应用上方。</string>
+    <string name="app_launcher_name">电话</string>
 </resources>

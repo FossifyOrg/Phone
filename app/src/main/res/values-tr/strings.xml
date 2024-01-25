@@ -68,4 +68,5 @@
     <string name="faq_1_title">Gelen aramaları duyuyorum ama ekran açılmıyor. Ne yapabilirim\?</string>
     <string name="faq_1_text">Bu tür sorunların aygıta ve sisteme özgü birçok nedeni olabilir, genel olarak söylemek zor. Aygıt ayarlarınıza bakmalı ve uygulamanın arka plandayken açılmasına ve diğer uygulamaların üzerinde görüntülenmesine izin verildiğinden emin olmalısınız.</string>
     <string name="audio_route_bluetooth">Bluetooth</string>
+    <string name="app_launcher_name">Telefon</string>
 </resources>

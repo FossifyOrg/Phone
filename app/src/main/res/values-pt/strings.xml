@@ -67,4 +67,6 @@
     <string name="import_call_history">Importar registo de chamadas</string>
     <string name="faq_1_title">Estou a ouvir som mas o ecrã não liga. O que posso fazer\?</string>
     <string name="faq_1_text">Esses problemas podem ter muitos motivos específicos do dispositivo e do sistema, difíceis de dizer em geral. Aceda às definições do sistema e certifique-se de que concedeu as permissões necessárias tais como permitir exibição por cima das outras aplicações.</string>
+    <string name="audio_route_bluetooth">Bluetooth</string>
+    <string name="app_launcher_name">Telefone</string>
 </resources>
