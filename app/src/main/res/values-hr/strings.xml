@@ -24,13 +24,13 @@
     <string name="decline_call">Odbij poziv</string>
     <string name="unknown_caller">Nepoznat pozivatelj</string>
     <string name="is_calling">Zove…</string>
-    <string name="dialing">Biranje…</string>
+    <string name="dialing">Biranje …</string>
     <string name="call_ended">Poziv je završio</string>
     <string name="call_ending">Poziv se završava</string>
     <string name="ongoing_call">Poziv u tijeku</string>
     <string name="select_sim">Odaberi SIM karticu za ovaj poziv</string>
     <string name="always_use_this_sim">Uvijek koristi ovu SIM karticu za ovaj broj</string>
-    <string name="unset_default_sim">Poništi postavu zadane SIM kartice</string>
+    <string name="unset_default_sim">Poništi postavljanje standardne SIM kartice</string>
     <string name="calls">Pozivi</string>
     <string name="turn_microphone_on">Uključi mikrofon</string>
     <string name="turn_microphone_off">Isključi mikrofon</string>
@@ -58,11 +58,15 @@
     <string name="manage_speed_dial">Upravljaj brzim biranjem</string>
     <string name="speed_dial_label">Pritisni jedan broj za dodjeljivanje kontakta. Zatim možeš brzo nazvati zadani kontakt dugim pritiskom na zadani broj na biraču.</string>
     <string name="group_subsequent_calls">Grupiraj naknadne pozive s istim brojem u zapisniku poziva</string>
-    <string name="open_dialpad_by_default">Otvori brojčanik prema zadanim postavkama kada se aplikacija otvori</string>
+    <string name="open_dialpad_by_default">Otvori tipkovnicu za biranje brojeva kada se aplikacija otvori</string>
     <string name="disable_proximity_sensor">Isključi senzor blizine tijekom poziva</string>
     <string name="disable_swipe_to_answer">Prihvati pozive dodirom umjesto povlačenjem</string>
     <string name="show_incoming_calls_full_screen">Uvijek prikaži dolazne pozive u cjeloekranskom prikazu</string>
     <string name="hide_dialpad_numbers">Sakrij brojeve tipkovnice telefona</string>
     <string name="faq_1_title">Čujem dolazne pozive, ali se ekran ne uključuje. Što mogu učiniti\?</string>
     <string name="faq_1_text">Takvi problemi mogu imati mnogo razloga specifičnih za uređaj i sustav, koje je teško reći općenito. Trebali biste pogledati uokolo u postavkama svog uređaja i provjeriti je li aplikaciji dopušteno iskakanje u pozadini i dopuštenje prikazivanja preko drugih aplikacija.</string>
+    <string name="audio_route_bluetooth">Bluetooth</string>
+    <string name="export_call_history">Izvezi povijest poziva</string>
+    <string name="import_call_history">Uvezi povijest poziva</string>
+    <string name="app_launcher_name">Telefon</string>
 </resources>
