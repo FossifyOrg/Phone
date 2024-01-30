@@ -67,4 +67,6 @@
     <string name="import_call_history">Importa l\'historial de trucades</string>
     <string name="faq_1_title">Sento trucades entrants, però la pantalla no s\'encén. Què puc fer\?</string>
     <string name="faq_1_text">Aquests problemes poden tenir moltes raons específiques del dispositiu i del sistema, difícils de dir en general. Hauríeu de mirar per la configuració del dispositiu i assegurar-vos que l\'aplicació pugui aparèixer en segon pla i permetre que es mostri sobre altres aplicacions.</string>
+    <string name="app_launcher_name">Telèfon</string>
+    <string name="audio_route_bluetooth">Bluetooth</string>
 </resources>
