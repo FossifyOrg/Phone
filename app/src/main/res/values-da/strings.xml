@@ -69,9 +69,5 @@
     <string name="import_call_history">Importer opkaldshistorik</string>
     <string name="faq_1_title">Jeg hører indgående opkald, men skærmen tænder ikke. Hvad kan jeg gøre?</string>
     <string name="faq_1_text">Sådanne problemer kan have mange enheds- og systemspecifikke årsager, så det er svært at sige noget generelt. Du bør se dig omkring i dine enhedsindstillinger og sikre dig, at appen får lov til at poppe op, når den er i baggrunden, og tillade visning over andre apps.</string>
-    <string name="app_launcher_name">Phone_debug</string>
-    <string name="package_name">org.fossify.phone</string>
-    <string name="app_launcher_name">Phone_debug</string>
-    <string name="app_launcher_name">Phone_debug</string>
     <string name="app_name">Fossify Opkald</string>
 </resources>
