@@ -21,7 +21,7 @@
     <string name="could_not_access_contacts">आपके संपर्कों तक नहीं पहुंच सका</string>
     <string name="no_previous_calls">कोई पिछली कॉल नहीं मिलीं</string>
     <string name="could_not_access_the_call_history">कॉल इतिहास तक नहीं पहुंच सका</string>
-    <string name="request_access">अनुरोध का उपयोग</string>
+    <string name="request_access">पहुंच अनुरोध</string>
     <string name="remove_confirmation">क्या आप वाकई कॉल इतिहास से चयनित आइटम हटाना चाहते हैं?</string>
     <string name="clear_history_confirmation">क्या आप वाकई कॉल इतिहास से सब कुछ हटाना चाहते हैं?</string>
     <string name="show_grouped_calls">समूहीकृत कॉल दिखाएँ</string>
@@ -44,13 +44,13 @@
     <string name="turn_speaker_on">स्पीकर चालू करें</string>
     <string name="show_dialpad">डायलपैड दिखाएँ</string>
     <string name="hide_dialpad">डायलपैड छुपाएं</string>
-    <string name="end_call">कॉल समाप्त करें</string>
-    <string name="hold_call">कॉल होल्ड करें</string>
+    <string name="end_call">कॉल समाप्त</string>
+    <string name="hold_call">कॉल होल्ड</string>
     <string name="resume_call">कॉल पुनः प्रारंभ करें</string>
     <string name="call_on_hold">होल्ड पर</string>
     <string name="call_swap">कॉल बदलें</string>
-    <string name="call_merge">कॉल्स मर्ज करें</string>
-    <string name="call_split">कॉल विभक्त करें</string>
+    <string name="call_merge">कॉल्स मर्ज</string>
+    <string name="call_split">कॉल विभक्त</string>
     <string name="conference_manage">कॉन्फ़्रेंस कॉल प्रबंधित करें</string>
     <string name="conference">कॉन्फ़्रेंस</string>
     <string name="audio_route_speaker">स्पीकर</string>
@@ -68,5 +68,5 @@
     <string name="select_sim">इस कॉल के लिए एक SIM चुनें</string>
     <string name="unset_default_sim">डिफ़ॉल्ट SIM अनसेट करें</string>
     <string name="app_launcher_name">फ़ोन</string>
-    <string name="accept">स्वीकार करें</string>
+    <string name="accept">स्वीकार</string>
 </resources>
