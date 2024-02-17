@@ -21,7 +21,7 @@
     <string name="accept_call">Aceitar chamada</string>
     <string name="decline">Rejeitar</string>
     <string name="decline_call">Rejeitar chamada</string>
-    <string name="unknown_caller">Número desconocido</string>
+    <string name="unknown_caller">Chamada Desconhecida</string>
     <string name="is_calling">Está chamando…</string>
     <string name="dialing">Discando…</string>
     <string name="call_ended">Chamada encerrada</string>
@@ -50,7 +50,7 @@
     <string name="audio_route_speaker">Alto falante</string>
     <string name="audio_route_earpiece">Fone de ouvido</string>
     <string name="audio_route_wired_headset">Headset com fio</string>
-    <string name="choose_audio_route">Escolha a rota de áudio</string>
+    <string name="choose_audio_route">Escolher a rota de áudio</string>
     <string name="calling_blocked_number">O número que você está ligando está bloqueado</string>
     <string name="speed_dial">Ligação rápida</string>
     <string name="manage_speed_dial">Gerenciar ligações rápidas</string>
@@ -65,6 +65,7 @@
     <string name="faq_1_text">Esses problemas podem ter muitos motivos específicos do dispositivo e do sistema, difíceis de dizer em geral. Você deve olhar em volta nas configurações do seu dispositivo e certificar-se de que o aplicativo pode aparecer quando estiver em segundo plano e permitir a exibição sobre outros aplicativos.</string>
     <string name="export_call_history">Exportar histórico de chamadas</string>
     <string name="audio_route_bluetooth">Bluetooth</string>
-    <string name="app_launcher_name">Telefone</string>
+    <string name="app_launcher_name">Telefone Fossify</string>
     <string name="import_call_history">Importar histórico de chamadas</string>
+    <string name="audio_route_wired_or_earpiece">Com fio ou fone de ouvido</string>
 </resources>
