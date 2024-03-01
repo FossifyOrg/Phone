@@ -1,2 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="default_phone_app_prompt">Facer que iste application sia le application predefinite de telephono</string>
+    <string name="clear_history_confirmation">Es tu secur que tu vole deler toto del chronologia de appellos?</string>
+    <string name="show_grouped_calls">Monstrar le appellos gruppate</string>
+    <string name="call_number">Numero de appello</string>
+    <string name="ongoing_call">Appello in curso</string>
+    <string name="resume_call">Resumer le appello</string>
+    <string name="select_sim">Selige un carta SIM pro iste appello</string>
+    <string name="app_launcher_name">Telephono</string>
+    <string name="no_previous_calls">Necun appellos previe ha essite trovate</string>
+    <string name="could_not_access_the_call_history">Non poteva acceder al chronologia de appellos</string>
+    <string name="request_access">Requestar accesso</string>
+    <string name="remove_confirmation">Es tu secur que tu vole remover le elementos seligite del chronologia de appellos?</string>
+    <string name="clear_call_history">Rader le chronologia de appellos</string>
+    <string name="show_call_details">Monstrar le detalios del appello</string>
+    <string name="asterisk">Asterisco</string>
+    <string name="hashtag">Signo numeric</string>
+    <string name="accept">Acceptar</string>
+    <string name="accept_call">Acceptar le appello</string>
+    <string name="decline">Declinar</string>
+    <string name="decline_call">Declinar le appello</string>
+    <string name="unknown_caller">Numero incognite</string>
+    <string name="is_calling">es appellante…</string>
+    <string name="dialing">Telephonante…</string>
+    <string name="call_ended">Appello finite</string>
+    <string name="always_use_this_sim">Sempre usar iste carta SIM pro iste numero</string>
+    <string name="unset_default_sim">Disactivar le SIM predeterminate</string>
+    <string name="calls">Appellos</string>
+    <string name="turn_microphone_on">Activar le microphono</string>
+    <string name="turn_microphone_off">Disactivar le microphono</string>
+    <string name="turn_speaker_on">Activar le altoparlator</string>
+    <string name="turn_speaker_off">Disactivar le altoparlator</string>
+    <string name="end_call">Finir le appello</string>
+    <string name="call_swap">Excambiar le appellos</string>
+    <string name="call_add">Adder un appello</string>
+    <string name="audio_route_speaker">Altoparlator</string>
+    <string name="audio_route_earpiece">Auricular</string>
+    <string name="audio_route_bluetooth">Bluetooth</string>
+</resources>

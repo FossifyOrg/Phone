@@ -67,4 +67,6 @@
     <string name="import_call_history">Gespreksgeschiedenis importeren</string>
     <string name="faq_1_title">Ik hoor dat er een gesprek binnenkomt, maar het scherm gaat niet aan. Wat kan ik doen\?</string>
     <string name="faq_1_text">Dit soort problemen kan vele oorzaken hebben, specifiek voor bepaalde apparaten en software. Controleer in ieder geval of voor deze app in de systeeminstellingen \"Weergeven vóór andere apps\" is toegestaan en of bij meldingen voor inkomende gesprekken \"Weergeven op scherm\" is ingeschakeld.</string>
+    <string name="audio_route_bluetooth">Bluetooth</string>
+    <string name="app_launcher_name">Telefoon</string>
 </resources>
