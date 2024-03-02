@@ -1,2 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="default_phone_app_prompt">தயவு செய்து இந்த செயலியை இயல்புநிலை செயலியாக மாற்றவும்</string>
+    <string name="allow_displaying_over_other_apps">இந்த செயலி நன்கு வேலை செய்ய மற்ற செயலிகள் மீது தன்னை காட்சிப்படுத்த அனுமதிக்கவும்</string>
+    <string name="could_not_access_the_call_history">உங்கள் அழைப்பு வரலாற்றை அணுக முடியவில்லை</string>
+    <string name="remove_confirmation">தேர்ந்தெடுக்கப்பட்ட உருப்படிகளை உங்கள் அழைப்பு வரலாற்றில் நீக்கவா?</string>
+    <string name="asterisk">நட்சத்திரக் குறி</string>
+    <string name="could_not_access_contacts">உங்கள் தொடர்புகளை அணுக முடியவில்லை</string>
+    <string name="no_previous_calls">முந்தைய அழைப்புகள் எதுவும் கண்டறியப்படவில்லை</string>
+    <string name="request_access">அணுகலை கோருக</string>
+    <string name="clear_history_confirmation">அழைப்பு வரலாற்றில் இருக்கும் அனைத்தையும் நீக்கவா?</string>
+    <string name="show_grouped_calls">குழுவாக்கப்பட்ட அழைப்புகளைக் காட்டு</string>
+    <string name="clear_call_history">அழைப்பு வரலாற்றை நீக்கு</string>
+    <string name="show_call_details">அழைப்பு விவரங்களை காட்டு</string>
+    <string name="dialpad">அழைப்பு பலகை</string>
+    <string name="hashtag">ஹேஷ்டேக்</string>
+    <string name="call_number">தொலைபேசி எண்னை அழைக்கவும்</string>
+    <string name="app_launcher_name">தொலைபேசி</string>
+</resources>
