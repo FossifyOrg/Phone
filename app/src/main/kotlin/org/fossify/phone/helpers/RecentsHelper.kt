@@ -17,7 +17,7 @@ class RecentsHelper(private val context: Context) {
     private val QUERY_LIMIT = 200
     private val contentUri = Calls.CONTENT_URI
 
-    fun getRecentCalls(groupSubsequentCalls: Boolean, maxSize: Int = QUERY_LIMIT, callback: (List<RecentCall>) -> Unit) {
+    fun getRecentCalls(groupSubsequentCalls: Boolean, maxSize: Int = QUERY_LIMIT, previousRecents: List<RecentCall> = ArrayList(), callback: (List<RecentCall>) -> Unit) {
         val privateCursor = context.getMyContactsCursor(false, true)
         ensureBackgroundThread {
             if (!context.hasPermission(PERMISSION_READ_CALL_LOG)) {
@@ -31,13 +31,13 @@ class RecentsHelper(private val context: Context) {
                     contacts.addAll(privateContacts)
                 }
 
-                getRecents(contacts, groupSubsequentCalls, maxSize, callback = callback)
+                getRecents(contacts, groupSubsequentCalls, maxSize, previousRecents, callback = callback)
             }
         }
     }
 
     @SuppressLint("NewApi")
-    private fun getRecents(contacts: List<Contact>, groupSubsequentCalls: Boolean, maxSize: Int, callback: (List<RecentCall>) -> Unit) {
+    private fun getRecents(contacts: List<Contact>, groupSubsequentCalls: Boolean, maxSize: Int, previousRecents: List<RecentCall>, callback: (List<RecentCall>) -> Unit) {
 
         val recentCalls = mutableListOf<RecentCall>()
         var previousRecentCallFrom = ""
@@ -61,16 +61,25 @@ class RecentsHelper(private val context: Context) {
             accountIdToSimIDMap[it.handle.id] = it.id
         }
 
+        var selection: String? = null
+        var selectionParams: Array<String>? = null
+
+        val lastId = previousRecents.lastOrNull()?.id
+        if (lastId != null) {
+            selection = "${Calls._ID} < ?"
+            selectionParams = arrayOf(lastId.toString())
+        }
+
         val cursor = if (isNougatPlus()) {
             // https://issuetracker.google.com/issues/175198972?pli=1#comment6
             val limitedUri = contentUri.buildUpon()
                 .appendQueryParameter(Calls.LIMIT_PARAM_KEY, QUERY_LIMIT.toString())
                 .build()
             val sortOrder = "${Calls.DATE} DESC"
-            context.contentResolver.query(limitedUri, projection, null, null, sortOrder)
+            context.contentResolver.query(limitedUri, projection, selection, selectionParams, sortOrder)
         } else {
             val sortOrder = "${Calls.DATE} DESC LIMIT $QUERY_LIMIT"
-            context.contentResolver.query(contentUri, projection, null, null, sortOrder)
+            context.contentResolver.query(contentUri, projection, selection, selectionParams, sortOrder)
         }
 
         val contactsWithMultipleNumbers = contacts.filter { it.phoneNumbers.size > 1 }
@@ -196,7 +205,7 @@ class RecentsHelper(private val context: Context) {
         val recentResult = recentCalls
             .filter { !context.isNumberBlocked(it.phoneNumber, blockedNumbers) }
 
-        callback(recentResult)
+        callback(previousRecents.plus(recentResult))
     }
 
     fun removeRecentCalls(ids: List<Int>, callback: () -> Unit) {
