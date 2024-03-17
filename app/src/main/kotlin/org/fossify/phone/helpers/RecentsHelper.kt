@@ -13,12 +13,20 @@ import org.fossify.phone.extensions.getAvailableSIMCardLabels
 import org.fossify.phone.models.RecentCall
 
 class RecentsHelper(private val context: Context) {
-    private val COMPARABLE_PHONE_NUMBER_LENGTH = 9
-    private val QUERY_LIMIT = 200
+    companion object {
+        private const val COMPARABLE_PHONE_NUMBER_LENGTH = 9
+        private const val QUERY_LIMIT = 200
+    }
+
     private val contentUri = Calls.CONTENT_URI
 
-    fun getRecentCalls(groupSubsequentCalls: Boolean, maxSize: Int = QUERY_LIMIT, previousRecents: List<RecentCall> = ArrayList(), callback: (List<RecentCall>) -> Unit) {
-        val privateCursor = context.getMyContactsCursor(false, true)
+    fun getRecentCalls(
+        groupSubsequentCalls: Boolean,
+        maxSize: Int = QUERY_LIMIT,
+        previousRecents: List<RecentCall> = ArrayList(),
+        callback: (List<RecentCall>) -> Unit,
+    ) {
+        val privateCursor = context.getMyContactsCursor(favoritesOnly = false, withPhoneNumbersOnly = true)
         ensureBackgroundThread {
             if (!context.hasPermission(PERMISSION_READ_CALL_LOG)) {
                 callback(ArrayList())
@@ -37,8 +45,13 @@ class RecentsHelper(private val context: Context) {
     }
 
     @SuppressLint("NewApi")
-    private fun getRecents(contacts: List<Contact>, groupSubsequentCalls: Boolean, maxSize: Int, previousRecents: List<RecentCall>, callback: (List<RecentCall>) -> Unit) {
-
+    private fun getRecents(
+        contacts: List<Contact>,
+        groupSubsequentCalls: Boolean,
+        maxSize: Int,
+        previousRecents: List<RecentCall>,
+        callback: (List<RecentCall>) -> Unit,
+    ) {
         val recentCalls = mutableListOf<RecentCall>()
         var previousRecentCallFrom = ""
         var previousStartTS = 0
@@ -232,8 +245,8 @@ class RecentsHelper(private val context: Context) {
     }
 
     fun restoreRecentCalls(activity: SimpleActivity, objects: List<RecentCall>, callback: () -> Unit) {
-        activity.handlePermission(PERMISSION_WRITE_CALL_LOG) {
-            if (it) {
+        activity.handlePermission(PERMISSION_WRITE_CALL_LOG) { granted ->
+            if (granted) {
                 ensureBackgroundThread {
                     val values = objects
                         .sortedBy { it.startTS }
