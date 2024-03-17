@@ -147,21 +147,6 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:id="@+id/settings_manage_speed_dial_holder"
-                style="@style/SettingsHolderTextViewOneLinerStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <org.fossify.commons.views.MyTextView
-                    android:id="@+id/settings_manage_speed_dial_label"
-                    style="@style/SettingsTextLabelStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/manage_speed_dial" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
                 android:id="@+id/settings_font_size_holder"
                 style="@style/SettingsHolderTextViewStyle"
                 android:layout_width="match_parent"
@@ -201,85 +186,6 @@
 
             <include
                 android:id="@+id/settings_general_settings_divider"
-                layout="@layout/divider" />
-
-            <TextView
-                android:id="@+id/settings_dialpad_settings_label"
-                style="@style/SettingsSectionLabelStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/dialpad" />
-
-            <RelativeLayout
-                android:id="@+id/settings_hide_dialpad_numbers_holder"
-                style="@style/SettingsHolderCheckboxStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <org.fossify.commons.views.MyAppCompatCheckbox
-                    android:id="@+id/settings_hide_dialpad_numbers"
-                    style="@style/SettingsCheckboxStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/hide_dialpad_numbers" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/settings_dialpad_vibration_holder"
-                style="@style/SettingsHolderCheckboxStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <org.fossify.commons.views.MyAppCompatCheckbox
-                    android:id="@+id/settings_dialpad_vibration"
-                    style="@style/SettingsCheckboxStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/dialpad_vibrations" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/settings_dialpad_beeps_holder"
-                style="@style/SettingsHolderCheckboxStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <org.fossify.commons.views.MyAppCompatCheckbox
-                    android:id="@+id/settings_dialpad_beeps"
-                    style="@style/SettingsCheckboxStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/dialpad_beeps" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/settings_dialpad_secondary_language_holder"
-                style="@style/SettingsHolderTextViewStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <org.fossify.commons.views.MyTextView
-                    android:id="@+id/settings_dialpad_secondary_language_label"
-                    style="@style/SettingsTextLabelStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/secondary_dialpad_language" />
-
-                <org.fossify.commons.views.MyTextView
-                    android:id="@+id/settings_dialpad_secondary_language"
-                    style="@style/SettingsTextValueStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/settings_dialpad_secondary_language_label"
-                    tools:text="@string/none_explicit" />
-
-            </RelativeLayout>
-
-            <include
-                android:id="@+id/settings_dialpad_settings_divider"
                 layout="@layout/divider" />
 
             <TextView
@@ -429,7 +335,101 @@
             </RelativeLayout>
 
             <include
-                android:id="@+id/settings_migration_divider"
+                android:id="@+id/settings_calls_divider"
+                layout="@layout/divider" />
+
+            <TextView
+                android:id="@+id/settings_dialpad_section_label"
+                style="@style/SettingsSectionLabelStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/dialpad" />
+
+            <RelativeLayout
+                android:id="@+id/settings_manage_speed_dial_holder"
+                style="@style/SettingsHolderTextViewOneLinerStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <org.fossify.commons.views.MyTextView
+                    android:id="@+id/settings_manage_speed_dial_label"
+                    style="@style/SettingsTextLabelStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/manage_speed_dial" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/settings_hide_dialpad_numbers_holder"
+                style="@style/SettingsHolderCheckboxStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <org.fossify.commons.views.MyAppCompatCheckbox
+                    android:id="@+id/settings_hide_dialpad_numbers"
+                    style="@style/SettingsCheckboxStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/hide_dialpad_numbers" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/settings_dialpad_vibration_holder"
+                style="@style/SettingsHolderCheckboxStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <org.fossify.commons.views.MyAppCompatCheckbox
+                    android:id="@+id/settings_dialpad_vibration"
+                    style="@style/SettingsCheckboxStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/dialpad_vibrations" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/settings_dialpad_beeps_holder"
+                style="@style/SettingsHolderCheckboxStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <org.fossify.commons.views.MyAppCompatCheckbox
+                    android:id="@+id/settings_dialpad_beeps"
+                    style="@style/SettingsCheckboxStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/dialpad_beeps" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/settings_dialpad_secondary_language_holder"
+                style="@style/SettingsHolderTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <org.fossify.commons.views.MyTextView
+                    android:id="@+id/settings_dialpad_secondary_language_label"
+                    style="@style/SettingsTextLabelStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/secondary_dialpad_language" />
+
+                <org.fossify.commons.views.MyTextView
+                    android:id="@+id/settings_dialpad_secondary_language"
+                    style="@style/SettingsTextValueStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/settings_dialpad_secondary_language_label"
+                    tools:text="@string/none_explicit" />
+
+            </RelativeLayout>
+
+            <include
+                android:id="@+id/settings_dialpad_divider"
                 layout="@layout/divider" />
 
             <TextView
