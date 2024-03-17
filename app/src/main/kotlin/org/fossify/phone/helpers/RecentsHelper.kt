@@ -77,10 +77,10 @@ class RecentsHelper(private val context: Context) {
         var selection: String? = null
         var selectionParams: Array<String>? = null
 
-        val lastId = previousRecents.lastOrNull()?.id
-        if (lastId != null) {
-            selection = "${Calls._ID} < ?"
-            selectionParams = arrayOf(lastId.toString())
+        val lastDate = previousRecents.lastOrNull()?.startTS
+        if (lastDate != null) {
+            selection = "${Calls.DATE} < ?"
+            selectionParams = arrayOf((lastDate * 1000L).toString())
         }
 
         val cursor = if (isNougatPlus()) {
