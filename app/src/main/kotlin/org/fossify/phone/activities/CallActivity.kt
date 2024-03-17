@@ -216,6 +216,7 @@ class CallActivity : SimpleActivity() {
             dialpadHashtagHolder.setOnClickListener { dialpadPressed('#') }
         }
 
+        dialpadWrapper.setBackgroundColor(getProperBackgroundColor())
         arrayOf(dialpadClose, callSimImage).forEach {
             it.applyColorFilter(getProperTextColor())
         }
@@ -499,9 +500,8 @@ class CallActivity : SimpleActivity() {
     }
 
     private fun findVisibleViewsUnderDialpad(): Sequence<Pair<View, Float>> {
-        val ignored = arrayOf(binding.dialpadWrapper, binding.callEnd)
         return binding.ongoingCallHolder.children.map { it }
-            .filter { it.isVisible() && !ignored.contains(it) }
+            .filter { it.isVisible() }
             .map { view -> Pair(view, view.alpha) }
     }
 
@@ -522,8 +522,8 @@ class CallActivity : SimpleActivity() {
         viewsUnderDialpad.addAll(findVisibleViewsUnderDialpad())
         viewsUnderDialpad.forEach { (view, _) ->
             view.run {
-                animate().scaleX(0f).alpha(0f).withEndAction { beInvisible() }.duration = 250L
-                animate().scaleY(0f).alpha(0f).withEndAction { beInvisible() }.duration = 250L
+                animate().scaleX(0f).alpha(0f).withEndAction { beGone() }.duration = 250L
+                animate().scaleY(0f).alpha(0f).withEndAction { beGone() }.duration = 250L
             }
         }
     }
@@ -819,13 +819,7 @@ class CallActivity : SimpleActivity() {
     private fun setActionButtonEnabled(button: ImageView, enabled: Boolean) {
         button.apply {
             isEnabled = enabled
-            val newAlpha = if (enabled) 1.0f else LOWER_ALPHA
-            val underDialpadIndex = viewsUnderDialpad.indexOfFirst { it.first == button }
-            if (underDialpadIndex > -1) {
-                viewsUnderDialpad[underDialpadIndex] = Pair(button, newAlpha)
-            } else {
-                alpha = newAlpha
-            }
+            alpha = if (enabled) 1.0f else LOWER_ALPHA
         }
     }
 
