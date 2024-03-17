@@ -14,8 +14,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.08"
+        app:layout_constraintTop_toBottomOf="@id/on_hold_status_holder"
+        app:layout_constraintVertical_bias="0.05"
         tools:src="@drawable/ic_call_accept" />
 
     <org.fossify.commons.views.MyTextView
@@ -24,6 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/normal_margin"
         android:gravity="center_horizontal"
+        android:maxLines="1"
         android:paddingStart="@dimen/medium_margin"
         android:paddingEnd="@dimen/medium_margin"
         android:textSize="@dimen/caller_name_text_size"
@@ -171,7 +172,7 @@
             app:layout_constraintEnd_toStartOf="@+id/call_toggle_speaker"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.63" />
+            app:layout_constraintVertical_bias="0.66" />
 
         <ImageView
             android:id="@+id/call_toggle_speaker"
@@ -185,7 +186,7 @@
             app:layout_constraintEnd_toStartOf="@+id/call_dialpad"
             app:layout_constraintStart_toEndOf="@+id/call_toggle_microphone"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.63" />
+            app:layout_constraintVertical_bias="0.66" />
 
         <ImageView
             android:id="@+id/call_dialpad"
@@ -199,7 +200,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/call_toggle_speaker"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.63" />
+            app:layout_constraintVertical_bias="0.66" />
 
         <ImageView
             android:id="@+id/call_toggle_hold"
@@ -269,24 +270,6 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="@+id/call_toggle_speaker"
             app:layout_constraintTop_toBottomOf="@+id/call_toggle_speaker" />
-
-        <androidx.constraintlayout.widget.Barrier
-            android:id="@+id/call_control_grid_barrier"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:barrierDirection="bottom"
-            app:constraint_referenced_ids="call_toggle_microphone,call_toggle_speaker,call_dialpad,call_toggle_hold,call_add,call_swap,call_merge,call_manage" />
-
-        <ImageView
-            android:id="@+id/call_end"
-            android:layout_width="@dimen/dialpad_button_size"
-            android:layout_height="@dimen/dialpad_button_size"
-            android:contentDescription="@string/end_call"
-            android:src="@drawable/ic_call_end"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/call_control_grid_barrier" />
 
         <androidx.constraintlayout.widget.Group
             android:id="@+id/controls_single_call"
@@ -436,6 +419,7 @@
         android:layout_height="wrap_content"
         android:elevation="@dimen/medium_margin"
         android:orientation="vertical"
+        android:paddingBottom="@dimen/dialpad_bottom_padding"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -455,7 +439,8 @@
                 android:gravity="center"
                 android:inputType="phone"
                 android:textCursorDrawable="@null"
-                android:textSize="@dimen/dialpad_text_size" />
+                android:textSize="@dimen/dialpad_text_size"
+                tools:ignore="SpUsage" />
 
             <ImageView
                 android:id="@+id/dialpad_close"
@@ -479,4 +464,18 @@
             layout="@layout/dialpad" />
 
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/call_end"
+        android:layout_width="@dimen/dialpad_button_size"
+        android:layout_height="@dimen/dialpad_button_size"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/end_call_button_margin"
+        android:contentDescription="@string/end_call"
+        android:elevation="@dimen/big_margin"
+        android:src="@drawable/ic_call_end"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

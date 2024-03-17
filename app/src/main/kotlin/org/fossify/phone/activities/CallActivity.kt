@@ -500,7 +500,9 @@ class CallActivity : SimpleActivity() {
     }
 
     private fun findVisibleViewsUnderDialpad(): Sequence<Pair<View, Float>> {
-        return binding.ongoingCallHolder.children.filter { it.isVisible() }.map { view -> Pair(view, view.alpha) }
+        return binding.ongoingCallHolder.children.map { it }
+            .filter { it.isVisible() }
+            .map { view -> Pair(view, view.alpha) }
     }
 
     private fun showDialpad() {
