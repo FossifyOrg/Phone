@@ -216,7 +216,14 @@ class CallActivity : SimpleActivity() {
             dialpadHashtagHolder.setOnClickListener { dialpadPressed('#') }
         }
 
-        dialpadWrapper.setBackgroundColor(getProperBackgroundColor())
+        dialpadWrapper.setBackgroundColor(
+            if (isUsingSystemDarkTheme()) {
+                getProperBackgroundColor().lightenColor(2)
+            } else {
+                getProperBackgroundColor()
+            }
+        )
+
         arrayOf(dialpadClose, callSimImage).forEach {
             it.applyColorFilter(getProperTextColor())
         }
