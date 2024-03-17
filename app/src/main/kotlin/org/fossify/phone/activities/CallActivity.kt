@@ -21,6 +21,7 @@ import android.view.animation.OvershootInterpolator
 import android.widget.ImageView
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.children
+import androidx.core.view.setPadding
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import org.fossify.commons.extensions.*
@@ -216,7 +217,14 @@ class CallActivity : SimpleActivity() {
             dialpadHashtagHolder.setOnClickListener { dialpadPressed('#') }
         }
 
-        dialpadWrapper.setBackgroundColor(getProperBackgroundColor())
+        dialpadWrapper.setBackgroundColor(
+            if (isUsingSystemDarkTheme()) {
+                getProperBackgroundColor().lightenColor(2)
+            } else {
+                getProperBackgroundColor()
+            }
+        )
+
         arrayOf(dialpadClose, callSimImage).forEach {
             it.applyColorFilter(getProperTextColor())
         }
@@ -500,7 +508,9 @@ class CallActivity : SimpleActivity() {
     }
 
     private fun findVisibleViewsUnderDialpad(): Sequence<Pair<View, Float>> {
-        return binding.ongoingCallHolder.children.filter { it.isVisible() }.map { view -> Pair(view, view.alpha) }
+        return binding.ongoingCallHolder.children.map { it }
+            .filter { it.isVisible() }
+            .map { view -> Pair(view, view.alpha) }
     }
 
     private fun showDialpad() {
@@ -567,10 +577,21 @@ class CallActivity : SimpleActivity() {
                 callerNumber.beGone()
             }
 
-            Glide.with(callerAvatar)
-                .load(avatarUri)
-                .apply(RequestOptions.circleCropTransform())
-                .into(callerAvatar)
+            callerAvatar.apply {
+                if (avatarUri.isNullOrEmpty()) {
+                    val bgColor = getProperPrimaryColor()
+                    setBackgroundResource(R.drawable.circle_background)
+                    setImageResource(R.drawable.ic_person_vector)
+                    setPadding(resources.getDimensionPixelSize(R.dimen.activity_margin))
+                    applyColorFilter(bgColor.getContrastColor())
+                    background.applyColorFilter(bgColor)
+                } else {
+                    Glide.with(this)
+                        .load(avatarUri)
+                        .apply(RequestOptions.circleCropTransform())
+                        .into(this)
+                }
+            }
         }
     }
 
@@ -695,6 +716,7 @@ class CallActivity : SimpleActivity() {
         enableProximitySensor()
         binding.incomingCallHolder.beGone()
         binding.ongoingCallHolder.beVisible()
+        binding.callEnd.beVisible()
     }
 
     private fun callRinging() {
@@ -705,6 +727,7 @@ class CallActivity : SimpleActivity() {
         enableProximitySensor()
         binding.incomingCallHolder.beGone()
         binding.ongoingCallHolder.beVisible()
+        binding.callEnd.beVisible()
         callDurationHandler.removeCallbacks(updateCallDurationTask)
         callDurationHandler.post(updateCallDurationTask)
     }
