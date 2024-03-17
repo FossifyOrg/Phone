@@ -15,8 +15,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/on_hold_status_holder"
-        app:layout_constraintVertical_bias="0.05"
-        tools:src="@drawable/ic_call_accept" />
+        app:layout_constraintVertical_bias="0.06"
+        tools:padding="16dp"
+        tools:src="@drawable/ic_person_vector" />
 
     <org.fossify.commons.views.MyTextView
         android:id="@+id/caller_name_label"

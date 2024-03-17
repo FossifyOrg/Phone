@@ -21,6 +21,7 @@ import android.view.animation.OvershootInterpolator
 import android.widget.ImageView
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.children
+import androidx.core.view.setPadding
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import org.fossify.commons.extensions.*
@@ -576,10 +577,21 @@ class CallActivity : SimpleActivity() {
                 callerNumber.beGone()
             }
 
-            Glide.with(callerAvatar)
-                .load(avatarUri)
-                .apply(RequestOptions.circleCropTransform())
-                .into(callerAvatar)
+            callerAvatar.apply {
+                if (avatarUri.isNullOrEmpty()) {
+                    val bgColor = getProperPrimaryColor()
+                    setBackgroundResource(R.drawable.circle_background)
+                    setImageResource(R.drawable.ic_person_vector)
+                    setPadding(resources.getDimensionPixelSize(R.dimen.activity_margin))
+                    applyColorFilter(bgColor.getContrastColor())
+                    background.applyColorFilter(bgColor)
+                } else {
+                    Glide.with(this)
+                        .load(avatarUri)
+                        .apply(RequestOptions.circleCropTransform())
+                        .into(this)
+                }
+            }
         }
     }
 
