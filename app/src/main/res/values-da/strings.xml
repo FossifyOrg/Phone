@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_launcher_name">Opkald</string>
     <string name="default_phone_app_prompt">Vælg venligst denne app som standard til opkald</string>
     <string name="allow_displaying_over_other_apps">Tillad venligst visning over andre apps for pålidelig adfærd</string>
     <string name="could_not_access_contacts">Kunne ikke få adgang til dine kontakter</string>
@@ -13,7 +14,10 @@
     <string name="show_call_details">Vis opkaldsdetaljer</string>
     <string name="dialpad">Numerisk tastatur</string>
     <string name="asterisk">Stjerne</string>
+    <string name="hashtag">Hashtag</string>
     <string name="call_number">Opkaldsnummer</string>
+    <string name="dialpad_beeps">Aktiver bip ved klik på tastatur</string>
+    <string name="dialpad_vibrations">Aktiver vibration ved klik på tastatur</string>
     <string name="dialer">Opkald</string>
     <string name="accept">Acceptér</string>
     <string name="accept_call">Accepter opkald</string>
@@ -36,6 +40,22 @@
     <string name="show_dialpad">Vis opkaldstastatur</string>
     <string name="hide_dialpad">Skjul opkaldstastatur</string>
     <string name="end_call">Afslut opkald</string>
+    <string name="hold_call">Parker opkald</string>
+    <string name="resume_call">Forsæt opkald</string>
+    <string name="call_on_hold">Opkald parkeret</string>
+    <string name="call_swap">Ombyt opkald</string>
+    <string name="call_merge">Sammenflet opkald</string>
+    <string name="call_split">Opsplit opkald</string>
+    <string name="call_add">Tilføj opkald</string>
+    <string name="conference_manage">Administrer konferenceopkald</string>
+    <string name="conference">Konference</string>
+    <string name="audio_route_speaker">Højtaler</string>
+    <string name="audio_route_earpiece">Øretelefon</string>
+    <string name="audio_route_bluetooth">Bluetooth</string>
+    <string name="audio_route_wired_headset">Kablet hovedtelefon</string>
+    <string name="audio_route_wired_or_earpiece">Kablet øretelefon</string>
+    <string name="choose_audio_route">Vælg audio rute</string>
+    <string name="calling_blocked_number">Nummeret du kalder er blokeret</string>
     <string name="speed_dial">Hurtigopkald</string>
     <string name="manage_speed_dial">Administrér hurtigopkald</string>
     <string name="speed_dial_label">Klik på et nummer for at tilknytte en kontakt til det. Derefter kan du hurtigt ringe op til den givne kontkakt ved at trykke længe på det givne nummer via det numeriske tastatur.</string>
@@ -45,4 +65,10 @@
     <string name="disable_swipe_to_answer">Erstat swipe ved besvarelse af indgående opkald med at klikke på</string>
     <string name="hashtag">Hashtag</string>
     <string name="app_launcher_name">Telefon</string>
+    <string name="show_incoming_calls_full_screen">Vis altid indkomne opkald i fuld skærm</string>
+    <string name="hide_dialpad_numbers">Skjul numre på tastaturet</string>
+    <string name="export_call_history">Eksporter opkaldshistorik</string>
+    <string name="import_call_history">Importer opkaldshistorik</string>
+    <string name="faq_1_title">Jeg hører indgående opkald, men skærmen tænder ikke. Hvad kan jeg gøre?</string>
+    <string name="faq_1_text">Sådanne problemer kan have mange enheds- og systemspecifikke årsager, så det er svært at sige noget generelt. Du bør se dig omkring i dine enhedsindstillinger og sikre dig, at appen får lov til at poppe op, når den er i baggrunden, og tillade visning over andre apps.</string>
 </resources>
