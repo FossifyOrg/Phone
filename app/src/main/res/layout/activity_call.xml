@@ -474,8 +474,10 @@
         android:contentDescription="@string/end_call"
         android:elevation="@dimen/big_margin"
         android:src="@drawable/ic_call_end"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

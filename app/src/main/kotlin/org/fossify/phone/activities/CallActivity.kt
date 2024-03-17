@@ -697,6 +697,7 @@ class CallActivity : SimpleActivity() {
         enableProximitySensor()
         binding.incomingCallHolder.beGone()
         binding.ongoingCallHolder.beVisible()
+        binding.callEnd.beVisible()
     }
 
     private fun callRinging() {
@@ -707,6 +708,7 @@ class CallActivity : SimpleActivity() {
         enableProximitySensor()
         binding.incomingCallHolder.beGone()
         binding.ongoingCallHolder.beVisible()
+        binding.callEnd.beVisible()
         callDurationHandler.removeCallbacks(updateCallDurationTask)
         callDurationHandler.post(updateCallDurationTask)
     }
