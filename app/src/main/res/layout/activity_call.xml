@@ -171,7 +171,7 @@
             app:layout_constraintEnd_toStartOf="@+id/call_toggle_speaker"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.63" />
+            app:layout_constraintVertical_bias="0.66" />
 
         <ImageView
             android:id="@+id/call_toggle_speaker"
@@ -185,7 +185,7 @@
             app:layout_constraintEnd_toStartOf="@+id/call_dialpad"
             app:layout_constraintStart_toEndOf="@+id/call_toggle_microphone"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.63" />
+            app:layout_constraintVertical_bias="0.66" />
 
         <ImageView
             android:id="@+id/call_dialpad"
@@ -199,7 +199,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/call_toggle_speaker"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.63" />
+            app:layout_constraintVertical_bias="0.66" />
 
         <ImageView
             android:id="@+id/call_toggle_hold"
@@ -270,25 +270,6 @@
             app:layout_constraintStart_toStartOf="@+id/call_toggle_speaker"
             app:layout_constraintTop_toBottomOf="@+id/call_toggle_speaker" />
 
-        <androidx.constraintlayout.widget.Barrier
-            android:id="@+id/call_control_grid_barrier"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:barrierDirection="bottom"
-            app:constraint_referenced_ids="call_toggle_microphone,call_toggle_speaker,call_dialpad,call_toggle_hold,call_add,call_swap,call_merge,call_manage" />
-
-        <ImageView
-            android:id="@+id/call_end"
-            android:layout_width="@dimen/dialpad_button_size"
-            android:layout_height="@dimen/dialpad_button_size"
-            android:contentDescription="@string/end_call"
-            android:src="@drawable/ic_call_end"
-            android:elevation="@dimen/big_margin"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/call_control_grid_barrier" />
-
         <androidx.constraintlayout.widget.Group
             android:id="@+id/controls_single_call"
             android:layout_width="wrap_content"
@@ -303,57 +284,6 @@
             android:layout_height="wrap_content"
             android:visibility="gone"
             app:constraint_referenced_ids="call_swap,call_merge" />
-
-        <LinearLayout
-            android:id="@+id/dialpad_wrapper"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:elevation="@dimen/medium_margin"
-            android:orientation="vertical"
-            android:visibility="invisible"
-            android:layout_marginBottom="@dimen/small_margin"
-            app:layout_constraintBottom_toTopOf="@id/call_end"
-            app:layout_constraintStart_toStartOf="parent">
-
-            <RelativeLayout
-                android:id="@+id/dialpad_input_holder"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <org.fossify.commons.views.MyEditText
-                    android:id="@+id/dialpad_input"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/dialpad_button_size"
-                    android:layout_marginEnd="@dimen/medium_margin"
-                    android:layout_toStartOf="@+id/dialpad_close"
-                    android:gravity="center"
-                    android:inputType="phone"
-                    android:textCursorDrawable="@null"
-                    android:textSize="@dimen/dialpad_text_size" />
-
-                <ImageView
-                    android:id="@+id/dialpad_close"
-                    android:layout_width="@dimen/normal_icon_size"
-                    android:layout_height="@dimen/normal_icon_size"
-                    android:layout_alignTop="@+id/dialpad_input"
-                    android:layout_alignBottom="@+id/dialpad_input"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="@dimen/activity_margin"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:contentDescription="@string/hide_dialpad"
-                    android:elevation="@dimen/medium_margin"
-                    android:padding="@dimen/medium_margin"
-                    android:src="@drawable/ic_cross_vector" />
-
-            </RelativeLayout>
-
-            <include
-                android:id="@+id/dialpad_include"
-                layout="@layout/dialpad"/>
-
-        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -481,4 +411,70 @@
             app:layout_constraintTop_toBottomOf="@+id/call_accept" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/dialpad_wrapper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="@dimen/medium_margin"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/dialpad_bottom_padding"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <RelativeLayout
+            android:id="@+id/dialpad_input_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <org.fossify.commons.views.MyEditText
+                android:id="@+id/dialpad_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dialpad_button_size"
+                android:layout_marginEnd="@dimen/medium_margin"
+                android:layout_toStartOf="@+id/dialpad_close"
+                android:gravity="center"
+                android:inputType="phone"
+                android:textCursorDrawable="@null"
+                android:textSize="@dimen/dialpad_text_size"
+                tools:ignore="SpUsage" />
+
+            <ImageView
+                android:id="@+id/dialpad_close"
+                android:layout_width="@dimen/normal_icon_size"
+                android:layout_height="@dimen/normal_icon_size"
+                android:layout_alignTop="@+id/dialpad_input"
+                android:layout_alignBottom="@+id/dialpad_input"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/activity_margin"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/hide_dialpad"
+                android:elevation="@dimen/medium_margin"
+                android:padding="@dimen/medium_margin"
+                android:src="@drawable/ic_cross_vector" />
+
+        </RelativeLayout>
+
+        <include
+            android:id="@+id/dialpad_include"
+            layout="@layout/dialpad" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/call_end"
+        android:layout_width="@dimen/dialpad_button_size"
+        android:layout_height="@dimen/dialpad_button_size"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/end_call_button_margin"
+        android:contentDescription="@string/end_call"
+        android:elevation="@dimen/big_margin"
+        android:src="@drawable/ic_call_end"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
