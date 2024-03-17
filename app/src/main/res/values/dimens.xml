@@ -5,9 +5,9 @@
     <dimen name="incoming_call_arrow_size">50dp</dimen>
     <dimen name="incoming_call_button_size">72dp</dimen>
     <dimen name="call_notification_button_size">40dp</dimen>
-    <dimen name="incoming_call_avatar_size">156dp</dimen>
+    <dimen name="incoming_call_avatar_size">168dp</dimen>
     <dimen name="end_call_button_margin">34dp</dimen>
-    <dimen name="dialpad_bottom_padding">110dp</dimen>
+    <dimen name="dialpad_bottom_padding">112dp</dimen>
 
     <dimen name="caller_name_text_size">34sp</dimen>
     <dimen name="call_status_text_size">20sp</dimen>

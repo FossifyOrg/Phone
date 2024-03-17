@@ -14,8 +14,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.08"
+        app:layout_constraintTop_toBottomOf="@id/on_hold_status_holder"
+        app:layout_constraintVertical_bias="0.05"
         tools:src="@drawable/ic_call_accept" />
 
     <org.fossify.commons.views.MyTextView
@@ -24,6 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/normal_margin"
         android:gravity="center_horizontal"
+        android:maxLines="1"
         android:paddingStart="@dimen/medium_margin"
         android:paddingEnd="@dimen/medium_margin"
         android:textSize="@dimen/caller_name_text_size"
