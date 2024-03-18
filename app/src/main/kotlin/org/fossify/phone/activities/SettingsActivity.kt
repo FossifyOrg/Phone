@@ -95,8 +95,8 @@ class SettingsActivity : SimpleActivity() {
         binding.apply {
             arrayOf(
                 settingsColorCustomizationSectionLabel,
-                settingsGeneralSettingsLabel,
-                settingsDialpadSettingsLabel,
+                settingsGeneralSectionLabel,
+                settingsDialpadSectionLabel,
                 settingsStartupLabel,
                 settingsCallsLabel,
                 settingsMigrationSectionLabel
