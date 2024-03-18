@@ -8,6 +8,7 @@
     <dimen name="incoming_call_avatar_size">168dp</dimen>
     <dimen name="end_call_button_margin">34dp</dimen>
     <dimen name="dialpad_bottom_padding">114dp</dimen>
+    <dimen name="recyclerview_fab_padding">100dp</dimen>
 
     <dimen name="caller_name_text_size">34sp</dimen>
     <dimen name="call_status_text_size">20sp</dimen>
