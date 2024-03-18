@@ -29,6 +29,7 @@ import org.fossify.phone.adapters.ContactsAdapter
 import org.fossify.phone.databinding.ActivityDialpadBinding
 import org.fossify.phone.extensions.*
 import org.fossify.phone.helpers.DIALPAD_TONE_LENGTH_MS
+import org.fossify.phone.helpers.RecentsHelper
 import org.fossify.phone.helpers.ToneGeneratorHelper
 import org.fossify.phone.models.SpeedDial
 import java.util.Locale
@@ -344,6 +345,13 @@ class DialpadActivity : SimpleActivity() {
                     }
                 } else {
                     startCallIntent(number)
+                }
+            }
+        } else {
+            RecentsHelper(this).getRecentCalls(groupSubsequentCalls = false, maxSize = 1) {
+                val mostRecentNumber = it.firstOrNull()?.phoneNumber
+                if (!mostRecentNumber.isNullOrEmpty()) {
+                    binding.dialpadInput.setText(mostRecentNumber)
                 }
             }
         }
