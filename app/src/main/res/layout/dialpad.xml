@@ -19,6 +19,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:contentDescription="@string/one"
+        android:gravity="center_horizontal"
         app:layout_constraintBottom_toBottomOf="@+id/dialpad_2_holder"
         app:layout_constraintEnd_toStartOf="@+id/dialpad_2_holder"
         app:layout_constraintStart_toStartOf="parent"
