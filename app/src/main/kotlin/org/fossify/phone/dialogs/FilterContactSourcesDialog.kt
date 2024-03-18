@@ -27,16 +27,14 @@ class FilterContactSourcesDialog(val activity: SimpleActivity, private val callb
         contactHelper.getContactSources { contactSources ->
             contactSources.mapTo(this@FilterContactSourcesDialog.contactSources) { it.copy() }
             isContactSourcesReady = true
-            processDataIfReady()
-        }
-
-        contactHelper.getContacts(getAll = true, showOnlyContactsWithNumbers = true) {
-            it.mapTo(contacts) { contact -> contact.copy() }
-            val privateCursor = activity.getMyContactsCursor(false, true)
-            val privateContacts = MyContactsContentProvider.getContacts(activity, privateCursor)
-            this.contacts.addAll(privateContacts)
-            isContactsReady = true
-            processDataIfReady()
+            contactHelper.getContacts(getAll = true, showOnlyContactsWithNumbers = true) {
+                it.mapTo(contacts) { contact -> contact.copy() }
+                val privateCursor = activity.getMyContactsCursor(false, true)
+                val privateContacts = MyContactsContentProvider.getContacts(activity, privateCursor)
+                this.contacts.addAll(privateContacts)
+                isContactsReady = true
+                processDataIfReady()
+            }
         }
     }
 
@@ -52,7 +50,9 @@ class FilterContactSourcesDialog(val activity: SimpleActivity, private val callb
             } else {
                 -1
             }
-            contactSourcesWithCount.add(contactSource.copy(count = count))
+            if (count > 0) {
+                contactSourcesWithCount.add(contactSource.copy(count = count))
+            }
         }
 
         contactSources.clear()
