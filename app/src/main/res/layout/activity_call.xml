@@ -23,7 +23,7 @@
         android:id="@+id/caller_name_label"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/normal_margin"
+        android:layout_marginTop="@dimen/activity_margin"
         android:gravity="center_horizontal"
         android:maxLines="1"
         android:paddingStart="@dimen/medium_margin"
