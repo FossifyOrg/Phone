@@ -92,16 +92,26 @@ class RecentsFragment(context: Context, attributeSet: AttributeSet) : MyViewPage
             }
 
             if (binding.recentsList.adapter == null) {
-                recentsAdapter = RecentCallsAdapter(activity as SimpleActivity, recents.toMutableList(), binding.recentsList, this, true) {
-                    val recentCall = it as RecentCall
-                    if (context.config.showCallConfirmation) {
-                        CallConfirmationDialog(activity as SimpleActivity, recentCall.name) {
+                recentsAdapter = RecentCallsAdapter(
+                    activity = activity as SimpleActivity,
+                    recentCalls = recents.toMutableList(),
+                    recyclerView = binding.recentsList,
+                    refreshItemsListener = this,
+                    showOverflowMenu = true,
+                    itemDelete = { deleted ->
+                        allRecentCalls = allRecentCalls.filter { it !in deleted }
+                    },
+                    itemClick = {
+                        val recentCall = it as RecentCall
+                        if (context.config.showCallConfirmation) {
+                            CallConfirmationDialog(activity as SimpleActivity, recentCall.name) {
+                                activity?.launchCallIntent(recentCall.phoneNumber)
+                            }
+                        } else {
                             activity?.launchCallIntent(recentCall.phoneNumber)
                         }
-                    } else {
-                        activity?.launchCallIntent(recentCall.phoneNumber)
                     }
-                }
+                )
 
                 binding.recentsList.adapter = recentsAdapter
 

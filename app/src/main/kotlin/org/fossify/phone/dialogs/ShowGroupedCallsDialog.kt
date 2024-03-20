@@ -19,8 +19,14 @@ class ShowGroupedCallsDialog(val activity: BaseSimpleActivity, callIds: ArrayLis
         RecentsHelper(activity).getRecentCalls(false) { allRecents ->
             val recents = allRecents.filter { callIds.contains(it.id) }.toMutableList() as ArrayList<RecentCall>
             activity.runOnUiThread {
-                RecentCallsAdapter(activity as SimpleActivity, recents, binding.selectGroupedCallsList, null, false) {
-                }.apply {
+                RecentCallsAdapter(
+                    activity = activity as SimpleActivity,
+                    recentCalls = recents,
+                    recyclerView = binding.selectGroupedCallsList,
+                    refreshItemsListener = null,
+                    showOverflowMenu = false,
+                    itemClick = {}
+                ).apply {
                     binding.selectGroupedCallsList.adapter = this
                 }
             }

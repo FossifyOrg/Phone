@@ -32,7 +32,8 @@ class RecentCallsAdapter(
     recyclerView: MyRecyclerView,
     private val refreshItemsListener: RefreshItemsListener?,
     private val showOverflowMenu: Boolean,
-    itemClick: (Any) -> Unit
+    private val itemDelete: (List<RecentCall>) -> Unit = {},
+    itemClick: (Any) -> Unit,
 ) : MyRecyclerViewAdapter(activity, recyclerView, itemClick) {
 
     private lateinit var outgoingCallIcon: Drawable
@@ -243,6 +244,7 @@ class RecentCallsAdapter(
         }
 
         RecentsHelper(activity).removeRecentCalls(idsToRemove) {
+            itemDelete(callsToRemove)
             recentCalls.removeAll(callsToRemove)
             activity.runOnUiThread {
                 refreshItemsListener?.refreshItems()
