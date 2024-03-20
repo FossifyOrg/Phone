@@ -108,6 +108,7 @@
             layout="@layout/dialpad"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/medium_margin"
             app:layout_constraintBottom_toTopOf="@+id/dialpad_call_button" />
 
         <ImageView
@@ -117,7 +118,7 @@
             android:layout_marginBottom="@dimen/activity_margin"
             android:background="@drawable/circle_button_background_ripple"
             android:contentDescription="@string/call_number"
-            android:elevation="@dimen/medium_margin"
+            android:elevation="@dimen/small_margin"
             android:padding="@dimen/normal_margin"
             android:src="@drawable/ic_phone_vector"
             app:layout_constraintBottom_toBottomOf="parent"

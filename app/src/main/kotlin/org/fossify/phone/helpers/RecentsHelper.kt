@@ -13,12 +13,20 @@ import org.fossify.phone.extensions.getAvailableSIMCardLabels
 import org.fossify.phone.models.RecentCall
 
 class RecentsHelper(private val context: Context) {
-    private val COMPARABLE_PHONE_NUMBER_LENGTH = 9
-    private val QUERY_LIMIT = 200
+    companion object {
+        private const val COMPARABLE_PHONE_NUMBER_LENGTH = 9
+        private const val QUERY_LIMIT = 200
+    }
+
     private val contentUri = Calls.CONTENT_URI
 
-    fun getRecentCalls(groupSubsequentCalls: Boolean, maxSize: Int = QUERY_LIMIT, callback: (List<RecentCall>) -> Unit) {
-        val privateCursor = context.getMyContactsCursor(false, true)
+    fun getRecentCalls(
+        groupSubsequentCalls: Boolean,
+        maxSize: Int = QUERY_LIMIT,
+        previousRecents: List<RecentCall> = ArrayList(),
+        callback: (List<RecentCall>) -> Unit,
+    ) {
+        val privateCursor = context.getMyContactsCursor(favoritesOnly = false, withPhoneNumbersOnly = true)
         ensureBackgroundThread {
             if (!context.hasPermission(PERMISSION_READ_CALL_LOG)) {
                 callback(ArrayList())
@@ -31,14 +39,19 @@ class RecentsHelper(private val context: Context) {
                     contacts.addAll(privateContacts)
                 }
 
-                getRecents(contacts, groupSubsequentCalls, maxSize, callback = callback)
+                getRecents(contacts, groupSubsequentCalls, maxSize, previousRecents, callback = callback)
             }
         }
     }
 
     @SuppressLint("NewApi")
-    private fun getRecents(contacts: List<Contact>, groupSubsequentCalls: Boolean, maxSize: Int, callback: (List<RecentCall>) -> Unit) {
-
+    private fun getRecents(
+        contacts: List<Contact>,
+        groupSubsequentCalls: Boolean,
+        maxSize: Int,
+        previousRecents: List<RecentCall>,
+        callback: (List<RecentCall>) -> Unit,
+    ) {
         val recentCalls = mutableListOf<RecentCall>()
         var previousRecentCallFrom = ""
         var previousStartTS = 0
@@ -61,16 +74,25 @@ class RecentsHelper(private val context: Context) {
             accountIdToSimIDMap[it.handle.id] = it.id
         }
 
+        var selection: String? = null
+        var selectionParams: Array<String>? = null
+
+        val lastDate = previousRecents.lastOrNull()?.startTS
+        if (lastDate != null) {
+            selection = "${Calls.DATE} < ?"
+            selectionParams = arrayOf((lastDate * 1000L).toString())
+        }
+
         val cursor = if (isNougatPlus()) {
             // https://issuetracker.google.com/issues/175198972?pli=1#comment6
             val limitedUri = contentUri.buildUpon()
                 .appendQueryParameter(Calls.LIMIT_PARAM_KEY, QUERY_LIMIT.toString())
                 .build()
             val sortOrder = "${Calls.DATE} DESC"
-            context.contentResolver.query(limitedUri, projection, null, null, sortOrder)
+            context.contentResolver.query(limitedUri, projection, selection, selectionParams, sortOrder)
         } else {
             val sortOrder = "${Calls.DATE} DESC LIMIT $QUERY_LIMIT"
-            context.contentResolver.query(contentUri, projection, null, null, sortOrder)
+            context.contentResolver.query(contentUri, projection, selection, selectionParams, sortOrder)
         }
 
         val contactsWithMultipleNumbers = contacts.filter { it.phoneNumbers.size > 1 }
@@ -196,7 +218,7 @@ class RecentsHelper(private val context: Context) {
         val recentResult = recentCalls
             .filter { !context.isNumberBlocked(it.phoneNumber, blockedNumbers) }
 
-        callback(recentResult)
+        callback(previousRecents.plus(recentResult))
     }
 
     fun removeRecentCalls(ids: List<Int>, callback: () -> Unit) {
@@ -223,8 +245,8 @@ class RecentsHelper(private val context: Context) {
     }
 
     fun restoreRecentCalls(activity: SimpleActivity, objects: List<RecentCall>, callback: () -> Unit) {
-        activity.handlePermission(PERMISSION_WRITE_CALL_LOG) {
-            if (it) {
+        activity.handlePermission(PERMISSION_WRITE_CALL_LOG) { granted ->
+            if (granted) {
                 ensureBackgroundThread {
                     val values = objects
                         .sortedBy { it.startTS }
