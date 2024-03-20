@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="default_phone_app_prompt">لطفا این برنامه را به عنوان پیش‌گزیده تنظیم کنید</string>
-    <string name="allow_displaying_over_other_apps">برای عملکرد صحیح برنامه لطفا اجازه دهید روی برنامه‌های دیگر نمایش داده شود</string>
+    <string name="allow_displaying_over_other_apps">برای عملکرد درست برنامه لطفا اجازه دهید روی برنامه‌های دیگر نمایش داده شود</string>
     <string name="could_not_access_contacts">دسترسی به مخاطبین شما امکان‌پذیر نیست</string>
     <string name="no_previous_calls">هیچ تماس قبلی پیدا نشد</string>
     <string name="could_not_access_the_call_history">دسترسی به تاریخچهٔ تماس شما امکان‌پذیر نیست</string>
     <string name="request_access">درخواست دسترسی</string>
     <string name="remove_confirmation">مطمئنید که می‌خواهید مورد انتخاب شده را از تاریخچه تماس حدف کنید؟</string>
-    <string name="clear_history_confirmation">مطمئنید که می‌خواهید تمام تاریخچه تماس حدف کنید؟</string>
+    <string name="clear_history_confirmation">از پاک کردن تمام تاریخچه تماس مطمئن هستید؟</string>
     <string name="show_grouped_calls">نمایش تماس‌های گروه‌بندی شده</string>
     <string name="clear_call_history">پاک کردن تاریخچه تماس</string>
-    <string name="show_call_details">نمایش اطلاعات تماس</string>
+    <string name="show_call_details">نمایش جزئیات تماس</string>
     <string name="dialpad">شماره گیر</string>
     <string name="asterisk">ستاره</string>
     <string name="hashtag">مربع</string>
@@ -63,4 +63,10 @@
     <string name="import_call_history">وارد کردن تاریخچهٔ تماس</string>
     <string name="faq_1_title">من صدای تماس ورودی را می‌شنوم اما نمایشگر روشن نمی‌شود. باید چه کاری انجام دهم؟</string>
     <string name="faq_1_text">این مشکل ممکن است بسته به دلایل مشکلات مختلفی در دستگاه و سامانه رخ دهد، بنابراین جواب کلی برای آن سخت است. باید تنظیمات دستگاهتان را بررسی کنید و مطمئن شوید که برنامه اجازه دارد در پس‌زمینه اجرا شود و روی برنامه‌های دیگر نمایش داده شود.</string>
+    <string name="app_launcher_name">تلفن</string>
+    <string name="call_merge">یکی کردن تماس ها</string>
+    <string name="call_split">جدا کردن تماس ها</string>
+    <string name="conference_manage">مدیریت تماس های رایزنی</string>
+    <string name="call_swap">رفتن به تماس دیگر</string>
+    <string name="conference">رایزنی</string>
 </resources>

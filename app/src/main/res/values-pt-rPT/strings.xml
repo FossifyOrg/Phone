@@ -36,7 +36,7 @@
     <string name="hide_dialpad">Ocultar marcador</string>
     <string name="default_phone_app_prompt">Tornar aplicação de Chamadas padrão</string>
     <string name="show_grouped_calls">Mostrar chamadas agrupadas</string>
-    <string name="allow_displaying_over_other_apps">Permitir que esta aplicação tenha permissão sobre outras aplicações para obter um comportamento fiável</string>
+    <string name="allow_displaying_over_other_apps">Permitir que esta aplicação tenha permissão sobre outras aplicações para obter um comportamento estável</string>
     <string name="unset_default_sim">Despromover de SIM padrão</string>
     <string name="calls">Chamadas</string>
     <string name="accept">Aceitar</string>
@@ -47,4 +47,5 @@
     <string name="conference">Conferência</string>
     <string name="turn_speaker_off">Desligar alta-voz</string>
     <string name="remove_confirmation">Tens a certeza de que desejas remover os itens selecionados do histórico de chamadas?</string>
+    <string name="app_launcher_name">Telefone</string>
 </resources>

@@ -65,4 +65,8 @@
     <string name="hide_dialpad_numbers">Tárcsázószámok elrejtése</string>
     <string name="faq_1_title">Bejövő hívást hallok, de a képernyő nem kapcsol be. Mit tehetek\?</string>
     <string name="faq_1_text">Az ilyen problémáknak számos eszköz- és rendszerfüggő oka lehet, általánosságban nehéz megmondani. Nézzen körül az eszközbeállításokban, és győződjön meg róla, hogy az alkalmazás előbújhat-e a háttérből, és megjelenhet-e más alkalmazások felett.</string>
+    <string name="app_launcher_name">Telefon</string>
+    <string name="audio_route_bluetooth">Bluetooth</string>
+    <string name="export_call_history">Hívásnapló exportálása</string>
+    <string name="import_call_history">Hívásnapló importálása</string>
 </resources>
