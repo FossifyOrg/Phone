@@ -23,14 +23,14 @@ data class RecentCall(
     val isUnknownNumber: Boolean,
 ) {
     fun doesContainPhoneNumber(text: String): Boolean {
-        if (text.toIntOrNull() != null) {
+        return if (text.toIntOrNull() != null) {
             val normalizedText = text.normalizePhoneNumber()
-            return PhoneNumberUtils.compare(phoneNumber.normalizePhoneNumber(), normalizedText) ||
+            PhoneNumberUtils.compare(phoneNumber.normalizePhoneNumber(), normalizedText) ||
                 phoneNumber.contains(text) ||
                 phoneNumber.normalizePhoneNumber().contains(normalizedText) ||
                 phoneNumber.contains(normalizedText)
         } else {
-            return false
+            false
         }
     }
 }
