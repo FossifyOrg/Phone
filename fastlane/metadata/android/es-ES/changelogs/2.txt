@@ -1,0 +1,9 @@
+* Eliminación del límite del historial de llamadas (https://github.com/FossifyOrg/Phone/issues/125).
+* Se ha añadido la función de rellamada rápida (https://github.com/FossifyOrg/Phone/issues/60).
+* El botón de colgar está ahora siempre visible en la interfaz de llamada (https://github.com/FossifyOrg/Phone/issues/9).
+* Se ha mejorado el tamaño del avatar de la persona que llama y de los botones de la interfaz de llamada (https://github.com/FossifyOrg/Phone/issues/118).
+* Reorganización de las preferencias del teclado de marcación en su propia sección (https://github.com/FossifyOrg/Phone/issues/116).
+* Añadido un avatar para números desconocidos y contactos sin foto.
+* Añadido un indicador de progreso para indicar la recuperación del historial de llamadas.
+* Añadido relleno inferior en las listas para permitir el desplazamiento por encima del botón de acción flotante.
+* Añadidas algunas traducciones.
