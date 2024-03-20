@@ -23,7 +23,7 @@ import org.fossify.phone.models.RecentCall
 class RecentsFragment(context: Context, attributeSet: AttributeSet) : MyViewPagerFragment<MyViewPagerFragment.RecentsInnerBinding>(context, attributeSet),
     RefreshItemsListener {
     private lateinit var binding: FragmentRecentsBinding
-    private var allRecentCalls = mutableListOf<RecentCall>()
+    private var allRecentCalls = listOf<RecentCall>()
     private var recentsAdapter: RecentCallsAdapter? = null
 
     override fun onFinishInflate() {
@@ -65,8 +65,7 @@ class RecentsFragment(context: Context, attributeSet: AttributeSet) : MyViewPage
             ContactsHelper(context).getContacts(showOnlyContactsWithNumbers = true) { contacts ->
                 val privateContacts = MyContactsContentProvider.getContacts(context, privateCursor)
 
-                allRecentCalls.clear()
-                allRecentCalls += recents
+                allRecentCalls = recents
                     .setNamesIfEmpty(contacts, privateContacts)
                     .hidePrivateContacts(privateContacts, SMT_PRIVATE in context.baseConfig.ignoredContactSources)
 
@@ -78,7 +77,7 @@ class RecentsFragment(context: Context, attributeSet: AttributeSet) : MyViewPage
         }
     }
 
-    private fun gotRecents(recents: MutableList<RecentCall>) {
+    private fun gotRecents(recents: List<RecentCall>) {
         if (recents.isEmpty()) {
             binding.apply {
                 showOrHidePlaceholder(true)
@@ -93,7 +92,7 @@ class RecentsFragment(context: Context, attributeSet: AttributeSet) : MyViewPage
             }
 
             if (binding.recentsList.adapter == null) {
-                recentsAdapter = RecentCallsAdapter(activity as SimpleActivity, recents, binding.recentsList, this, true) {
+                recentsAdapter = RecentCallsAdapter(activity as SimpleActivity, recents.toMutableList(), binding.recentsList, this, true) {
                     val recentCall = it as RecentCall
                     if (context.config.showCallConfirmation) {
                         CallConfirmationDialog(activity as SimpleActivity, recentCall.name) {
@@ -131,8 +130,7 @@ class RecentsFragment(context: Context, attributeSet: AttributeSet) : MyViewPage
             ContactsHelper(context).getContacts(showOnlyContactsWithNumbers = true) { contacts ->
                 val privateContacts = MyContactsContentProvider.getContacts(context, privateCursor)
 
-                allRecentCalls.clear()
-                allRecentCalls += recents
+                allRecentCalls = recents
                     .setNamesIfEmpty(contacts, privateContacts)
                     .hidePrivateContacts(privateContacts, SMT_PRIVATE in context.baseConfig.ignoredContactSources)
 
@@ -152,7 +150,7 @@ class RecentsFragment(context: Context, attributeSet: AttributeSet) : MyViewPage
                 val groupSubsequentCalls = context?.config?.groupSubsequentCalls ?: false
                 RecentsHelper(context).getRecentCalls(groupSubsequentCalls) { recents ->
                     activity?.runOnUiThread {
-                        gotRecents(recents.toMutableList())
+                        gotRecents(recents)
                     }
                 }
             }
