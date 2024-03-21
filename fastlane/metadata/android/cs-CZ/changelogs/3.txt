@@ -1,0 +1,9 @@
+* Odstraněn limit historie volání.
+* Přidána funkce rychlého zpětného vytáčení.
+* Tlačítko zavěšení je nyní v uživatelském rozhraní hovoru vždy viditelné.
+* Zvětšena velikost avatara volajícího a tlačítek v uživatelském rozhraní hovoru.
+* Reorganizovány předvolby číselníku do vlastní vyhrazené části.
+* Přidán zástupný avatar pro neznámá čísla a kontakty bez fotografie.
+* Přidán ukazatel průběhu, který indikuje načtení historie hovorů.
+* Přidáno spodní odsazení v seznamech.
+* Přidány překlady.
