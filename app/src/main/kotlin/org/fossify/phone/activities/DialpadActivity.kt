@@ -347,6 +347,9 @@ class DialpadActivity : SimpleActivity() {
                     startCallIntent(number)
                 }
             }
+            Handler().postDelayed({
+                binding.dialpadInput.setText("")
+            }, 1000)
         } else {
             RecentsHelper(this).getRecentCalls(groupSubsequentCalls = false, maxSize = 1) {
                 val mostRecentNumber = it.firstOrNull()?.phoneNumber
