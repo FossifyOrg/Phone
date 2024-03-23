@@ -347,6 +347,7 @@ class DialpadActivity : SimpleActivity() {
                     startCallIntent(number)
                 }
             }
+
             Handler().postDelayed({
                 binding.dialpadInput.setText("")
             }, 1000)
