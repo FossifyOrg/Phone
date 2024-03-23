@@ -17,13 +17,16 @@ import org.fossify.commons.dialogs.RadioGroupDialog
 import org.fossify.commons.extensions.*
 import org.fossify.commons.helpers.*
 import org.fossify.commons.models.RadioItem
-import org.fossify.phone.R
+import org.fossify.commons.R
 import org.fossify.phone.databinding.ActivitySettingsBinding
 import org.fossify.phone.dialogs.ExportCallHistoryDialog
 import org.fossify.phone.dialogs.ManageVisibleTabsDialog
 import org.fossify.phone.extensions.config
 import org.fossify.phone.helpers.RecentsHelper
 import org.fossify.phone.models.RecentCall
+import org.fossify.phone.helpers.DialpadT9
+import org.fossify.phone.helpers.LANGUAGE_NONE
+import org.fossify.phone.helpers.SECONDARY_LANGUAGE_NONE_ID
 import java.util.Locale
 import kotlin.system.exitProcess
 
@@ -80,6 +83,7 @@ class SettingsActivity : SimpleActivity() {
         setupDialpadVibrations()
         setupDialpadNumbers()
         setupDialpadBeeps()
+        setupDialpadSecondaryLanguage()
         setupShowCallConfirmation()
         setupDisableProximitySensor()
         setupDisableSwipeToAnswer()
@@ -91,7 +95,8 @@ class SettingsActivity : SimpleActivity() {
         binding.apply {
             arrayOf(
                 settingsColorCustomizationSectionLabel,
-                settingsGeneralSettingsLabel,
+                settingsGeneralSectionLabel,
+                settingsDialpadSectionLabel,
                 settingsStartupLabel,
                 settingsCallsLabel,
                 settingsMigrationSectionLabel
@@ -279,6 +284,52 @@ class SettingsActivity : SimpleActivity() {
             settingsDialpadBeepsHolder.setOnClickListener {
                 settingsDialpadBeeps.toggle()
                 config.dialpadBeeps = settingsDialpadBeeps.isChecked
+            }
+        }
+    }
+
+    private fun getLanguageName(lang: String?): String? {
+        return if (lang == LANGUAGE_NONE) {
+            getString(R.string.none)
+        } else {
+            val currentLocale = Locale.getDefault()
+            val locale = Locale(lang!!)
+            locale.getDisplayLanguage(currentLocale)
+        }
+    }
+
+    private fun setupDialpadSecondaryLanguage() {
+        binding.settingsDialpadSecondaryLanguage.text = getLanguageName(config.dialpadSecondaryLanguage)
+        binding.settingsDialpadSecondaryLanguageHolder.setOnClickListener {
+            val items: ArrayList<RadioItem> = arrayListOf(RadioItem(SECONDARY_LANGUAGE_NONE_ID, getString(R.string.none)))
+            val supportedLanguages = DialpadT9.getSupportedSecondaryLanguages()
+            for (i in supportedLanguages.indices) {
+                items.add(RadioItem(i, getLanguageName(supportedLanguages[i])!!))
+            }
+
+            RadioGroupDialog(this@SettingsActivity, items, supportedLanguages.indexOf(config.dialpadSecondaryLanguage)) {
+                val index = it as Int
+                if (index == -1 || index >= supportedLanguages.size) {
+                    config.dialpadSecondaryLanguage = LANGUAGE_NONE
+                } else {
+                    config.dialpadSecondaryLanguage = supportedLanguages[it]
+                }
+                binding.settingsDialpadSecondaryLanguage.text = getLanguageName(config.dialpadSecondaryLanguage)
+            }
+        }
+
+        binding.settingsFontSize.text = getFontSizeText()
+        binding.settingsFontSizeHolder.setOnClickListener {
+            val items = arrayListOf(
+                RadioItem(FONT_SIZE_SMALL, getString(R.string.small)),
+                RadioItem(FONT_SIZE_MEDIUM, getString(R.string.medium)),
+                RadioItem(FONT_SIZE_LARGE, getString(R.string.large)),
+                RadioItem(FONT_SIZE_EXTRA_LARGE, getString(R.string.extra_large))
+            )
+
+            RadioGroupDialog(this@SettingsActivity, items, config.fontSize) {
+                config.fontSize = it as Int
+                binding.settingsFontSize.text = getFontSizeText()
             }
         }
     }
