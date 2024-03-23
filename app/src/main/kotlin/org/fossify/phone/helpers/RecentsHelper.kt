@@ -11,6 +11,7 @@ import org.fossify.phone.R
 import org.fossify.phone.activities.SimpleActivity
 import org.fossify.phone.extensions.getAvailableSIMCardLabels
 import org.fossify.phone.models.RecentCall
+import org.fossify.phone.models.SIMAccount
 
 class RecentsHelper(private val context: Context) {
     companion object {
@@ -69,9 +70,9 @@ class RecentsHelper(private val context: Context) {
             Calls.PHONE_ACCOUNT_ID
         )
 
-        val accountIdToSimIDMap = HashMap<String, Int>()
+        val accountIdToSimAccountMap = HashMap<String, SIMAccount>()
         context.getAvailableSIMCardLabels().forEach {
-            accountIdToSimIDMap[it.handle.id] = it.id
+            accountIdToSimAccountMap[it.handle.id] = it
         }
 
         var selection: String? = null
@@ -172,7 +173,7 @@ class RecentsHelper(private val context: Context) {
                 val duration = cursor.getIntValue(Calls.DURATION)
                 val type = cursor.getIntValue(Calls.TYPE)
                 val accountId = cursor.getStringValue(Calls.PHONE_ACCOUNT_ID)
-                val simID = accountIdToSimIDMap[accountId] ?: -1
+                val simAccount = accountIdToSimAccountMap[accountId]
                 val neighbourIDs = mutableListOf<Int>()
                 var specificNumber = ""
                 var specificType = ""
@@ -196,20 +197,21 @@ class RecentsHelper(private val context: Context) {
                     duration = duration,
                     type = type,
                     neighbourIDs = neighbourIDs,
-                    simID = simID,
+                    simID = simAccount?.id ?: -1,
+                    simColor = simAccount?.color ?: -1,
                     specificNumber = specificNumber,
                     specificType = specificType,
                     isUnknownNumber = isUnknownNumber
                 )
 
                 // if we have multiple missed calls from the same number, show it just once
-                if (!groupSubsequentCalls || "$number$name$simID" != previousRecentCallFrom) {
+                if (!groupSubsequentCalls || "$number$name${simAccount?.id ?: -1}" != previousRecentCallFrom) {
                     recentCalls.add(recentCall)
                 } else {
                     recentCalls.lastOrNull()?.neighbourIDs?.add(id)
                 }
 
-                previousRecentCallFrom = "$number$name$simID"
+                previousRecentCallFrom = "$number$name${simAccount?.id ?: -1}"
             } while (cursor.moveToNext() && recentCalls.size < maxSize)
         }
 

@@ -155,26 +155,32 @@ class DialpadActivity : SimpleActivity() {
         }
 
         val properPrimaryColor = getProperPrimaryColor()
-        val callIconId = if (areMultipleSIMsAvailable()) {
-            val callIcon = resources.getColoredDrawableWithColor(R.drawable.ic_phone_two_vector, properPrimaryColor.getContrastColor())
+        val properBackgroundColor = getProperBackgroundColor()
+        if (areMultipleSIMsAvailable()) {
+            val simInfo = getAvailableSIMCardLabels()
+            val callColor1 = if (simInfo.size > 1) simInfo[0].color.adjustSimColorForBackground(properBackgroundColor) else properPrimaryColor
+            val callColor2 = if (simInfo.size > 1) simInfo[1].color.adjustSimColorForBackground(properBackgroundColor) else properPrimaryColor
+            val callIcon1 = resources.getColoredDrawableWithColor(R.drawable.ic_phone_one_vector, callColor1.getContrastColor())
+            val callIcon2 = resources.getColoredDrawableWithColor(R.drawable.ic_phone_two_vector, callColor2.getContrastColor())
             binding.apply {
-                dialpadCallTwoButton.setImageDrawable(callIcon)
-                dialpadCallTwoButton.background.applyColorFilter(properPrimaryColor)
+                dialpadCallButton.setImageDrawable(callIcon1)
+                dialpadCallButton.background.applyColorFilter(callColor1)
+                dialpadCallTwoButton.setImageDrawable(callIcon2)
+                dialpadCallTwoButton.background.applyColorFilter(callColor2)
                 dialpadCallTwoButton.beVisible()
                 dialpadCallTwoButton.setOnClickListener {
                     initCall(dialpadInput.value, 1)
                 }
             }
-
-            R.drawable.ic_phone_one_vector
         } else {
-            R.drawable.ic_phone_vector
+            binding.apply {
+                val callIcon1 = resources.getColoredDrawableWithColor(R.drawable.ic_phone_vector, properPrimaryColor.getContrastColor())
+                dialpadCallButton.setImageDrawable(callIcon1)
+                dialpadCallButton.background.applyColorFilter(properPrimaryColor)
+            }
         }
 
         binding.apply {
-            val callIcon = resources.getColoredDrawableWithColor(callIconId, properPrimaryColor.getContrastColor())
-            dialpadCallButton.setImageDrawable(callIcon)
-            dialpadCallButton.background.applyColorFilter(properPrimaryColor)
 
             letterFastscroller.textColor = getProperTextColor().getColorStateList()
             letterFastscroller.pressedTextColor = properPrimaryColor

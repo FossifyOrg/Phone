@@ -28,7 +28,7 @@ fun Context.getAvailableSIMCardLabels(): List<SIMAccount> {
                 label += " ($address)"
             }
 
-            val SIM = SIMAccount(index + 1, phoneAccount.accountHandle, label, address.substringAfter("tel:"))
+            val SIM = SIMAccount(index + 1, phoneAccount.accountHandle, label, address.substringAfter("tel:"), phoneAccount.highlightColor)
             SIMAccounts.add(SIM)
         }
     } catch (ignored: Exception) {

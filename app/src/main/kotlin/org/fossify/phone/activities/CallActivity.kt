@@ -606,14 +606,15 @@ class CallActivity : SimpleActivity() {
     @SuppressLint("MissingPermission")
     private fun checkCalledSIMCard() {
         try {
-            val accounts = telecomManager.callCapablePhoneAccounts
-            if (accounts.size > 1) {
-                accounts.forEachIndexed { index, account ->
-                    if (account == CallManager.getPrimaryCall()?.details?.accountHandle) {
+            val simLabels = getAvailableSIMCardLabels()
+            if (simLabels.size > 1) {
+                simLabels.forEachIndexed { index, sim ->
+                    if (sim.handle == CallManager.getPrimaryCall()?.details?.accountHandle) {
                         binding.apply {
-                            callSimId.text = "${index + 1}"
+                            callSimId.text = sim.id.toString()
                             callSimId.beVisible()
                             callSimImage.beVisible()
+                            callSimImage.applyColorFilter(sim.color.adjustSimColorForBackground(getProperBackgroundColor()))
                         }
 
                         val acceptDrawableId = when (index) {

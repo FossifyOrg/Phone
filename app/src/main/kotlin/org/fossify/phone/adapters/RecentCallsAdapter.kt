@@ -332,8 +332,8 @@ class RecentCallsAdapter(
             itemRecentsSimImage.beVisibleIf(areMultipleSIMsAvailable && call.simID != -1)
             itemRecentsSimId.beVisibleIf(areMultipleSIMsAvailable && call.simID != -1)
             if (areMultipleSIMsAvailable && call.simID != -1) {
-                itemRecentsSimImage.applyColorFilter(textColor)
-                itemRecentsSimId.setTextColor(textColor.getContrastColor())
+                itemRecentsSimImage.applyColorFilter(call.simColor.adjustSimColorForBackground(backgroundColor))
+                itemRecentsSimId.setTextColor(backgroundColor)
                 itemRecentsSimId.text = call.simID.toString()
             }
 
