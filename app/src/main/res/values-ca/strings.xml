@@ -56,11 +56,11 @@
     <string name="calling_blocked_number">El número al qual esteu trucant està bloquejat</string>
     <string name="speed_dial">Marcatge ràpid</string>
     <string name="manage_speed_dial">Gestiona el marcatge ràpid</string>
-    <string name="speed_dial_label">Feu clic en un número per assignar-li un contacte. A continuació, podeu trucar ràpidament al contacte indicat prement prolongadament el número assignat al marcador.</string>
+    <string name="speed_dial_label">Feu clic en un número per a assignar-li un contacte. A continuació, podeu trucar ràpidament al contacte indicat prement prolongadament el número assignat al marcador.</string>
     <string name="group_subsequent_calls">Agrupa les trucades posteriors amb el mateix número al registre de trucades</string>
     <string name="open_dialpad_by_default">Obre el teclat de marcatge de manera predeterminada quan s\'obri l\'aplicació</string>
     <string name="disable_proximity_sensor">Desactiva el sensor de proximitat durant les trucades</string>
-    <string name="disable_swipe_to_answer">Substitueix el lliscament en respondre a les trucades entrants per fer clic</string>
+    <string name="disable_swipe_to_answer">Substitueix el lliscament en respondre a les trucades entrants amb un clic</string>
     <string name="show_incoming_calls_full_screen">Mostra sempre les trucades entrants a pantalla completa</string>
     <string name="hide_dialpad_numbers">Oculta els números del teclat numèric</string>
     <string name="export_call_history">Exporta l\'historial de trucades</string>
