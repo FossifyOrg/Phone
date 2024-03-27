@@ -2,7 +2,7 @@
 <resources>
     <string name="default_phone_app_prompt">Mohon jadikan aplikasi ini sebagai aplikasi Telepon bawaan</string>
     <string name="allow_displaying_over_other_apps">Mohon izinkan tampilkan di atas aplikasi lain demi kelancaran aplikasi ini</string>
-    <string name="could_not_access_contacts">Tidak dapat mengakses kontak anda</string>
+    <string name="could_not_access_contacts">Tidak dapat mengakses kontak Anda</string>
     <string name="no_previous_calls">Tidak ada panggilan sebelumnya yang ditemukan</string>
     <string name="could_not_access_the_call_history">Tidak dapat mengakses riwayat panggilan</string>
     <string name="request_access">Akses diminta</string>

@@ -1,0 +1,9 @@
+* Rimosso il limite alla cronologia delle chiamate (https://github.com/FossifyOrg/Phone/issues/125).
+* Aggiunta la funzione di richiamo rapido (https://github.com/FossifyOrg/Phone/issues/60).
+* Il pulsante per chiudere le chiamate è ora sempre visibile nell'interfaccia utente della chiamate (https://github.com/FossifyOrg/Phone/issues/9).
+* Migliorate le dimensioni dell'avatar del chiamante e dei pulsanti nell'interfaccia utente delle chiamate (https://github.com/FossifyOrg/Phone/issues/118).
+* Le preferenze del tastierino numerico sono state riorganizzate in una sezione dedicata (https://github.com/FossifyOrg/Phone/issues/116).
+* Aggiunto un avatar di default per i numeri sconosciuti e per i contatti senza foto.
+* Aggiunto un indicatore di avanzamento per indicare il recupero della cronologia delle chiamate.
+* Aggiunto dello spazio sotto gli elenchi per consentire lo scorrimento sopra il pulsante di azione fluttuante.
+* Aggiunte alcune traduzioni.

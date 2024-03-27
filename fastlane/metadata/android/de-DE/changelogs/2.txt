@@ -1,0 +1,6 @@
+* Anruflistenbegrenzung aufgehoben (https://github.com/FossifyOrg/Phone/issues/125).
+* Schnelle Rückruffunktion (https://github.com/FossifyOrg/Phone/issues/60).
+* Auflegen-Taste in der Anrufoberfläche nun immer sichtbar (https://github.com/FossifyOrg/Phone/issues/9).
+* Größe der Avatare und Schaltflächen in der Anrufoberfläche verbessert (https://github.com/FossifyOrg/Phone/issues/118).
+* Wähltastenfeld-Einstellungen nun in separatem Abschnitt (https://github.com/FossifyOrg/Phone/issues/116).
+…

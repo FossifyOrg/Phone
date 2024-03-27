@@ -1,0 +1,9 @@
+* Sin límite del historial de llamadas.
+* Añadida la función de marcación rápida.
+* Botón de colgar siempre visible en la llamada.
+* Aumento del tamaño del avatar de la persona que llama y de los botones en la llamada.
+* Cambiar las preferencias del marcador en su propia sección.
+* Nuevo avatar para números desconocidos y contactos sin foto.
+* Nueva barra de progreso para indicar la recuperación del historial de llamadas.
+* Añadida sangría inferior en las listas.
+* Añadidas traducciones.
