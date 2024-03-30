@@ -64,6 +64,10 @@
     <string name="audio_route_wired_or_earpiece">Wired or Earpiece</string>
     <string name="choose_audio_route">Choose audio route</string>
     <string name="calling_blocked_number">The number you are calling is blocked</string>
+    <string name="accessibility">Accessibility</string>
+    <string name="accessibility_layout">Only show speaker button in-call</string>
+    <string name="speaker_auto_on">Automatically turn on in-call speaker</string>
+    <string name="volume_auto_set">Automatically set in-call volume to %s%%</string>
 
     <!-- Speed dial -->
     <string name="speed_dial">Speed dial</string>

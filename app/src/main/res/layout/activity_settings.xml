@@ -335,6 +335,76 @@
             </RelativeLayout>
 
             <include
+                android:id="@+id/settings_accessibility_divider"
+                layout="@layout/divider" />
+
+            <TextView
+                android:id="@+id/settings_accesibility_layout"
+                style="@style/SettingsSectionLabelStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/accessibility" />
+
+            <RelativeLayout
+                android:id="@+id/settings_accessibility_layout_holder"
+                style="@style/SettingsHolderCheckboxStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <org.fossify.commons.views.MyAppCompatCheckbox
+                    android:id="@+id/settings_accessibility_layout"
+                    style="@style/SettingsCheckboxStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/accessibility_layout" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/settings_speaker_auto_on_holder"
+                style="@style/SettingsHolderCheckboxStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <org.fossify.commons.views.MyAppCompatCheckbox
+                    android:id="@+id/settings_speaker_auto_on"
+                    style="@style/SettingsCheckboxStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/speaker_auto_on" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/settings_volume_auto_set_holder"
+                style="@style/SettingsHolderCheckboxStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <org.fossify.commons.views.MyAppCompatCheckbox
+                    android:id="@+id/settings_volume_auto_set"
+                    style="@style/SettingsCheckboxStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/volume_auto_set" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/settings_volume_auto_set_percent_holder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <SeekBar
+                    android:id="@+id/settings_volume_auto_set_percent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/medium_margin"
+                    android:layout_marginRight="@dimen/medium_margin"
+                    android:progress="10" />
+            </RelativeLayout>
+
+            <include
                 android:id="@+id/settings_dialpad_divider"
                 layout="@layout/divider" />
 

@@ -79,6 +79,20 @@ class CallActivity : SimpleActivity() {
         addLockScreenFlags()
         CallManager.addListener(callCallback)
         updateCallContactInfo(CallManager.getPrimaryCall())
+
+        binding.apply {
+            if (!isSpeakerOn && config.speakerAutoOn) {
+                callToggleSpeaker.performClick()
+            }
+            if (config.volumeAutoSet) {
+                val volumePercentage = audioManager.getStreamMaxVolume(AudioManager.STREAM_VOICE_CALL) * (config.volumeAutoSetPercent / 100.0)
+                audioManager.setStreamVolume(AudioManager.STREAM_VOICE_CALL, volumePercentage.toInt(), 0)
+            }
+            if (config.accessibilityLayout) {
+                callToggleSpeaker.layoutParams.height = resources.getDimensionPixelSize(R.dimen.dialpad_button_size_large)
+                callToggleSpeaker.layoutParams.width = resources.getDimensionPixelSize(R.dimen.dialpad_button_size_large)
+            }
+        }
     }
 
     override fun onNewIntent(intent: Intent?) {
@@ -674,6 +688,8 @@ class CallActivity : SimpleActivity() {
             updateCallState(phoneState.active)
             updateCallOnHoldState(phoneState.onHold)
         }
+        if (config.accessibilityLayout)
+            hideButtonsForAccessibilityLayout()
 
         updateCallAudioState(CallManager.getCallAudioRoute())
     }
@@ -856,6 +872,16 @@ class CallActivity : SimpleActivity() {
         } else {
             view.background.applyColorFilter(getInactiveButtonColor())
             view.applyColorFilter(getProperBackgroundColor().getContrastColor())
+        }
+    }
+
+    private fun hideButtonsForAccessibilityLayout() {
+        binding.apply {
+            arrayOf(
+                callToggleMicrophone, callDialpad, callToggleHold, callAdd, callSwap, callMerge, callManage
+            ).forEach { imageView ->
+                imageView.visibility = View.GONE
+            }
         }
     }
 }

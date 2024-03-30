@@ -89,4 +89,20 @@ class Config(context: Context) : BaseConfig(context) {
     var alwaysShowFullscreen: Boolean
         get() = prefs.getBoolean(ALWAYS_SHOW_FULLSCREEN, false)
         set(alwaysShowFullscreen) = prefs.edit().putBoolean(ALWAYS_SHOW_FULLSCREEN, alwaysShowFullscreen).apply()
+
+    var accessibilityLayout: Boolean
+        get() = prefs.getBoolean(ACCESSIBILITY_LAYOUT, false)
+        set(accessibilityLayout) = prefs.edit().putBoolean(ACCESSIBILITY_LAYOUT, accessibilityLayout).apply()
+
+    var speakerAutoOn: Boolean
+        get() = prefs.getBoolean(SPEAKER_AUTO_ON, false)
+        set(speakerAutoOn) = prefs.edit().putBoolean(SPEAKER_AUTO_ON, speakerAutoOn).apply()
+
+    var volumeAutoSet: Boolean
+        get() = prefs.getBoolean(VOLUME_AUTO_SET, false)
+        set(volumeAutoSet) = prefs.edit().putBoolean(VOLUME_AUTO_SET, volumeAutoSet).apply()
+
+    var volumeAutoSetPercent: Int
+        get() = prefs.getInt(VOLUME_AUTO_SET_PERCENT, 100)
+        set(volumeAutoSetPercent) = prefs.edit().putInt(VOLUME_AUTO_SET_PERCENT, volumeAutoSetPercent).apply()
 }

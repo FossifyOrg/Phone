@@ -6,6 +6,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.view.Menu
+import android.widget.SeekBar
 import androidx.activity.result.contract.ActivityResultContracts
 import kotlinx.serialization.SerializationException
 import kotlinx.serialization.encodeToString
@@ -86,6 +87,10 @@ class SettingsActivity : SimpleActivity() {
         setupAlwaysShowFullscreen()
         setupCallsExport()
         setupCallsImport()
+        setupAccessibilityLayout()
+        setupSpeakerAutoOn()
+        setupVolumeAutoSet()
+        setupVolumeAutoSetPercent()
         updateTextColors(binding.settingsHolder)
 
         binding.apply {
@@ -377,6 +382,57 @@ class SettingsActivity : SimpleActivity() {
             } catch (e: Exception) {
                 showErrorToast(e)
             }
+        }
+    }
+
+    private fun setupAccessibilityLayout() {
+        binding.apply {
+            settingsAccessibilityLayout.isChecked = config.accessibilityLayout
+            settingsAccessibilityLayoutHolder.setOnClickListener {
+                settingsAccessibilityLayout.toggle()
+                config.accessibilityLayout = settingsAccessibilityLayout.isChecked
+            }
+        }
+    }
+
+    private fun setupSpeakerAutoOn() {
+        binding.apply {
+            settingsSpeakerAutoOn.isChecked = config.speakerAutoOn
+            settingsSpeakerAutoOnHolder.setOnClickListener {
+                settingsSpeakerAutoOn.toggle()
+                config.speakerAutoOn = settingsSpeakerAutoOn.isChecked
+            }
+        }
+    }
+
+    private fun setupVolumeAutoSet() {
+        binding.apply {
+            settingsVolumeAutoSet.isChecked = config.volumeAutoSet
+            settingsVolumeAutoSetHolder.setOnClickListener {
+                settingsVolumeAutoSet.toggle()
+                config.volumeAutoSet = settingsVolumeAutoSet.isChecked
+            }
+        }
+    }
+
+    private fun setupVolumeAutoSetPercent() {
+        binding.apply {
+            settingsVolumeAutoSetPercent.progress = config.volumeAutoSetPercent
+            settingsVolumeAutoSet.text = getString(R.string.volume_auto_set, config.volumeAutoSetPercent.toString())
+            settingsVolumeAutoSetPercent.max = 100
+
+            settingsVolumeAutoSetPercent.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+                override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
+                    settingsVolumeAutoSet.text = getString(R.string.volume_auto_set, progress.toString())
+                }
+
+                override fun onStartTrackingTouch(seekBar: SeekBar) {
+                }
+
+                override fun onStopTrackingTouch(seekBar: SeekBar) {
+                    config.volumeAutoSetPercent = settingsVolumeAutoSetPercent.progress
+                }
+            })
         }
     }
 }

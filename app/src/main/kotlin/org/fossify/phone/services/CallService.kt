@@ -28,6 +28,11 @@ class CallService : InCallService() {
     }
 
     override fun onCallAdded(call: Call) {
+        // Disable call waiting if accessibility layout is enabled
+        if (config.accessibilityLayout && CallManager.getPhoneState() != NoCall) {
+            call.disconnect()
+            return
+        }
         super.onCallAdded(call)
         CallManager.onCallAdded(call)
         CallManager.inCallService = this

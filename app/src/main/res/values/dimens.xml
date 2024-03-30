@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="dialpad_button_size">68dp</dimen>
+    <dimen name="dialpad_button_size_large">80dp</dimen>
     <dimen name="dialpad_button_size_small">50dp</dimen>
     <dimen name="incoming_call_arrow_size">50dp</dimen>
     <dimen name="incoming_call_button_size">72dp</dimen>
