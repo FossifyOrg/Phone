@@ -1,0 +1,9 @@
+* Eemaldasime kõneajaloo salvestamise piirangu (https://github.com/FossifyOrg/Phone/issues/125).
+* Lisasime mugava tagasihelistamise võimaluse (https://github.com/FossifyOrg/Phone/issues/60).
+* Kõne lõpetamise nupp on nüüd alati helistamise vaates näha (https://github.com/FossifyOrg/Phone/issues/9).
+* Kohendasime helistaja tunnuspildi ja nuppude suurust helistamise vaates (https://github.com/FossifyOrg/Phone/issues/118).
+* Viisime klahvistiku eelistused seadistustes omaette sektsiooni (https://github.com/FossifyOrg/Phone/issues/116).
+* Lisasime tundmatute helistajate ja pildita kontaktide jaoks üldise tunnuspildi
+* Kõneajaloo päringute jaoks on nüüd olemas olekuindikaator.
+* Kohendasime loendites kirjete vaheruumi, et nad oleks eri olukordades paremini loetavad.
+* Lisasime mõned tõlked.
