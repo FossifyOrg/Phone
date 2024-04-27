@@ -22,7 +22,7 @@ class RecentsHelper(private val context: Context) {
 
     fun getRecentCalls(
         groupSubsequentCalls: Boolean,
-        maxSize: Int = QUERY_LIMIT,
+        queryLimit: Int = QUERY_LIMIT,
         previousRecents: List<RecentCall> = ArrayList(),
         callback: (List<RecentCall>) -> Unit,
     ) {
@@ -39,7 +39,7 @@ class RecentsHelper(private val context: Context) {
                     contacts.addAll(privateContacts)
                 }
 
-                getRecents(contacts, groupSubsequentCalls, maxSize, previousRecents, callback = callback)
+                getRecents(contacts, groupSubsequentCalls, queryLimit, previousRecents, callback = callback)
             }
         }
     }
@@ -48,7 +48,7 @@ class RecentsHelper(private val context: Context) {
     private fun getRecents(
         contacts: List<Contact>,
         groupSubsequentCalls: Boolean,
-        maxSize: Int,
+        queryLimit: Int,
         previousRecents: List<RecentCall>,
         callback: (List<RecentCall>) -> Unit,
     ) {
@@ -210,7 +210,7 @@ class RecentsHelper(private val context: Context) {
                 }
 
                 previousRecentCallFrom = "$number$name$simID"
-            } while (cursor.moveToNext() && recentCalls.size < maxSize)
+            } while (cursor.moveToNext() && recentCalls.size < queryLimit)
         }
 
         val blockedNumbers = context.getBlockedNumbers()

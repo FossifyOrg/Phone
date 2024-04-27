@@ -352,7 +352,7 @@ class DialpadActivity : SimpleActivity() {
                 binding.dialpadInput.setText("")
             }, 1000)
         } else {
-            RecentsHelper(this).getRecentCalls(groupSubsequentCalls = false, maxSize = 1) {
+            RecentsHelper(this).getRecentCalls(groupSubsequentCalls = false, queryLimit = 1) {
                 val mostRecentNumber = it.firstOrNull()?.phoneNumber
                 if (!mostRecentNumber.isNullOrEmpty()) {
                     binding.dialpadInput.setText(mostRecentNumber)
