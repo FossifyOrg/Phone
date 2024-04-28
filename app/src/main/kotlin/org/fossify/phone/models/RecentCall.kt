@@ -13,14 +13,14 @@ data class RecentCall(
     val phoneNumber: String,
     val name: String,
     val photoUri: String,
-    val startTS: Int,
+    val startTS: Long,
     val duration: Int,
     val type: Int,
-    val neighbourIDs: MutableList<Int>,
     val simID: Int,
     val specificNumber: String,
     val specificType: String,
     val isUnknownNumber: Boolean,
+    val groupedCalls: MutableList<RecentCall> = mutableListOf(),
 ) {
     fun doesContainPhoneNumber(text: String): Boolean {
         return if (text.toIntOrNull() != null) {

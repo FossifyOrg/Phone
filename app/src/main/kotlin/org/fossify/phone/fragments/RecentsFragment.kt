@@ -60,8 +60,7 @@ class RecentsFragment(context: Context, attributeSet: AttributeSet) : MyViewPage
 
     override fun refreshItems(callback: (() -> Unit)?) {
         val privateCursor = context?.getMyContactsCursor(favoritesOnly = false, withPhoneNumbersOnly = true)
-        val groupSubsequentCalls = context?.config?.groupSubsequentCalls ?: false
-        RecentsHelper(context).getRecentCalls(groupSubsequentCalls, MIN_RECENTS_THRESHOLD, allRecentCalls) { recents ->
+        getRecentCalls { recents ->
             ContactsHelper(context).getContacts(showOnlyContactsWithNumbers = true) { contacts ->
                 val privateContacts = MyContactsContentProvider.getContacts(context, privateCursor)
 
@@ -74,6 +73,14 @@ class RecentsFragment(context: Context, attributeSet: AttributeSet) : MyViewPage
                     gotRecents(allRecentCalls)
                 }
             }
+        }
+    }
+
+    private fun getRecentCalls(callback: (List<RecentCall>) -> Unit) {
+        if (context?.config?.groupSubsequentCalls == true) {
+            RecentsHelper(context).getGroupedRecentCalls(MIN_RECENTS_THRESHOLD, allRecentCalls, callback)
+        } else {
+            RecentsHelper(context).getRecentCalls(MIN_RECENTS_THRESHOLD, allRecentCalls, callback)
         }
     }
 
@@ -135,8 +142,7 @@ class RecentsFragment(context: Context, attributeSet: AttributeSet) : MyViewPage
 
     private fun getMoreRecentCalls() {
         val privateCursor = context?.getMyContactsCursor(favoritesOnly = false, withPhoneNumbersOnly = true)
-        val groupSubsequentCalls = context?.config?.groupSubsequentCalls ?: false
-        RecentsHelper(context).getRecentCalls(groupSubsequentCalls, MIN_RECENTS_THRESHOLD, allRecentCalls) { recents ->
+        getRecentCalls { recents ->
             ContactsHelper(context).getContacts(showOnlyContactsWithNumbers = true) { contacts ->
                 val privateContacts = MyContactsContentProvider.getContacts(context, privateCursor)
 
@@ -157,8 +163,7 @@ class RecentsFragment(context: Context, attributeSet: AttributeSet) : MyViewPage
                 binding.recentsPlaceholder.text = context.getString(R.string.no_previous_calls)
                 binding.recentsPlaceholder2.beGone()
 
-                val groupSubsequentCalls = context?.config?.groupSubsequentCalls ?: false
-                RecentsHelper(context).getRecentCalls(groupSubsequentCalls) { recents ->
+                getRecentCalls { recents ->
                     activity?.runOnUiThread {
                         gotRecents(recents)
                     }

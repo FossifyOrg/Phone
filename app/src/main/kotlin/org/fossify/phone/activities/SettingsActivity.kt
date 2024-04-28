@@ -43,7 +43,7 @@ class SettingsActivity : SimpleActivity() {
     private val saveDocument = registerForActivityResult(ActivityResultContracts.CreateDocument(CALL_HISTORY_FILE_TYPE)) { uri ->
         if (uri != null) {
             toast(R.string.exporting)
-            RecentsHelper(this).getRecentCalls(false, Int.MAX_VALUE) { recents ->
+            RecentsHelper(this).getRecentCalls(queryLimit = Int.MAX_VALUE) { recents ->
                 exportCallHistory(recents, uri)
             }
         }

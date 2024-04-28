@@ -19,9 +19,9 @@ class RecentsHelper(private val context: Context) {
     }
 
     private val contentUri = Calls.CONTENT_URI
+    private var queryLimit = QUERY_LIMIT
 
     fun getRecentCalls(
-        groupSubsequentCalls: Boolean,
         queryLimit: Int = QUERY_LIMIT,
         previousRecents: List<RecentCall> = ArrayList(),
         callback: (List<RecentCall>) -> Unit,
@@ -39,22 +39,77 @@ class RecentsHelper(private val context: Context) {
                     contacts.addAll(privateContacts)
                 }
 
-                getRecents(contacts, groupSubsequentCalls, queryLimit, previousRecents, callback = callback)
+                this.queryLimit = queryLimit
+                val recentCalls = if (previousRecents.isNotEmpty()) {
+                    val newerRecents = getRecents(
+                        contacts = contacts,
+                        selection = "${Calls.DATE} > ?",
+                        selectionParams = arrayOf("${previousRecents.first().startTS}")
+                    )
+
+                    val olderRecents = getRecents(
+                        contacts = contacts,
+                        selection = "${Calls.DATE} < ?",
+                        selectionParams = arrayOf("${previousRecents.last().startTS}")
+                    )
+
+                    newerRecents + previousRecents + olderRecents
+                } else {
+                    getRecents(contacts)
+                }
+
+                callback(recentCalls)
             }
         }
+    }
+
+    fun getGroupedRecentCalls(
+        queryLimit: Int = QUERY_LIMIT,
+        previousRecents: List<RecentCall> = ArrayList(),
+        callback: (List<RecentCall>) -> Unit,
+    ) {
+        getRecentCalls(
+            queryLimit = queryLimit,
+            previousRecents = previousRecents,
+        ) { recentCalls ->
+            callback(
+                groupSubsequentCalls(
+                    list = recentCalls,
+                    condition = { a, b ->
+                        "${a.phoneNumber}${a.name}${a.simID}" == "${b.phoneNumber}${b.name}${b.simID}"
+                    }
+                )
+            )
+        }
+    }
+
+    private fun groupSubsequentCalls(list: List<RecentCall>, condition: (RecentCall, RecentCall) -> Boolean): List<RecentCall> {
+        val result = mutableListOf<RecentCall>()
+        if (list.isEmpty()) return result
+
+        var currentGroup = list[0]
+        for (i in 1 until list.size) {
+            val recentCall = list[i]
+            if (condition(currentGroup, recentCall)) {
+                currentGroup.groupedCalls.add(recentCall)
+            } else {
+                result.add(currentGroup)
+                currentGroup = recentCall
+            }
+        }
+
+        result.add(currentGroup)
+        return result
     }
 
     @SuppressLint("NewApi")
     private fun getRecents(
         contacts: List<Contact>,
-        groupSubsequentCalls: Boolean,
-        queryLimit: Int,
-        previousRecents: List<RecentCall>,
-        callback: (List<RecentCall>) -> Unit,
-    ) {
+        selection: String? = null,
+        selectionParams: Array<String>? = null,
+    ): List<RecentCall> {
         val recentCalls = mutableListOf<RecentCall>()
-        var previousRecentCallFrom = ""
-        var previousStartTS = 0
+        var previousStartTS = 0L
         val contactsNumbersMap = HashMap<String, String>()
         val contactPhotosMap = HashMap<String, String>()
 
@@ -72,15 +127,6 @@ class RecentsHelper(private val context: Context) {
         val accountIdToSimIDMap = HashMap<String, Int>()
         context.getAvailableSIMCardLabels().forEach {
             accountIdToSimIDMap[it.handle.id] = it.id
-        }
-
-        var selection: String? = null
-        var selectionParams: Array<String>? = null
-
-        val lastDate = previousRecents.lastOrNull()?.startTS
-        if (lastDate != null) {
-            selection = "${Calls.DATE} < ?"
-            selectionParams = arrayOf((lastDate * 1000L).toString())
         }
 
         val cursor = if (isNougatPlus()) {
@@ -162,7 +208,7 @@ class RecentsHelper(private val context: Context) {
                     }
                 }
 
-                val startTS = (cursor.getLongValue(Calls.DATE) / 1000L).toInt()
+                val startTS = cursor.getLongValue(Calls.DATE)
                 if (previousStartTS == startTS) {
                     continue
                 } else {
@@ -173,7 +219,6 @@ class RecentsHelper(private val context: Context) {
                 val type = cursor.getIntValue(Calls.TYPE)
                 val accountId = cursor.getStringValue(Calls.PHONE_ACCOUNT_ID)
                 val simID = accountIdToSimIDMap[accountId] ?: -1
-                val neighbourIDs = mutableListOf<Int>()
                 var specificNumber = ""
                 var specificType = ""
 
@@ -187,38 +232,28 @@ class RecentsHelper(private val context: Context) {
                     }
                 }
 
-                val recentCall = RecentCall(
-                    id = id,
-                    phoneNumber = number.orEmpty(),
-                    name = name,
-                    photoUri = photoUri,
-                    startTS = startTS,
-                    duration = duration,
-                    type = type,
-                    neighbourIDs = neighbourIDs,
-                    simID = simID,
-                    specificNumber = specificNumber,
-                    specificType = specificType,
-                    isUnknownNumber = isUnknownNumber
+                recentCalls.add(
+                    RecentCall(
+                        id = id,
+                        phoneNumber = number.orEmpty(),
+                        name = name,
+                        photoUri = photoUri,
+                        startTS = startTS,
+                        duration = duration,
+                        type = type,
+                        simID = simID,
+                        specificNumber = specificNumber,
+                        specificType = specificType,
+                        isUnknownNumber = isUnknownNumber
+                    )
                 )
-
-                // if we have multiple missed calls from the same number, show it just once
-                if (!groupSubsequentCalls || "$number$name$simID" != previousRecentCallFrom) {
-                    recentCalls.add(recentCall)
-                } else {
-                    recentCalls.lastOrNull()?.neighbourIDs?.add(id)
-                }
-
-                previousRecentCallFrom = "$number$name$simID"
             } while (cursor.moveToNext() && recentCalls.size < queryLimit)
         }
 
         val blockedNumbers = context.getBlockedNumbers()
 
-        val recentResult = recentCalls
+        return recentCalls
             .filter { !context.isNumberBlocked(it.phoneNumber, blockedNumbers) }
-
-        callback(previousRecents.plus(recentResult))
     }
 
     fun removeRecentCalls(ids: List<Int>, callback: () -> Unit) {
@@ -254,7 +289,7 @@ class RecentsHelper(private val context: Context) {
                             ContentValues().apply {
                                 put(Calls.NUMBER, it.phoneNumber)
                                 put(Calls.TYPE, it.type)
-                                put(Calls.DATE, it.startTS.toLong() * 1000L)
+                                put(Calls.DATE, it.startTS)
                                 put(Calls.DURATION, it.duration)
                                 put(Calls.CACHED_NAME, it.name)
                             }

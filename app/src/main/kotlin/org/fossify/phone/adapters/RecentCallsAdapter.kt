@@ -211,9 +211,8 @@ class RecentCallsAdapter(
 
     private fun showCallDetails() {
         val recentCall = getSelectedItems().firstOrNull() ?: return
-        val callIds = recentCall.neighbourIDs.map { it }.toMutableList() as ArrayList<Int>
-        callIds.add(recentCall.id)
-        ShowGroupedCallsDialog(activity, callIds)
+        val groupedRecentCalls = listOf(recentCall.copy(groupedCalls = mutableListOf())) + recentCall.groupedCalls
+        ShowGroupedCallsDialog(activity, groupedRecentCalls)
     }
 
     private fun copyNumber() {
@@ -240,7 +239,7 @@ class RecentCallsAdapter(
         val idsToRemove = ArrayList<Int>()
         callsToRemove.forEach {
             idsToRemove.add(it.id)
-            it.neighbourIDs.mapTo(idsToRemove, { it })
+            it.groupedCalls.mapTo(idsToRemove) { call -> call.id }
         }
 
         RecentsHelper(activity).removeRecentCalls(idsToRemove) {
@@ -299,8 +298,8 @@ class RecentCallsAdapter(
                 }
             }
 
-            if (call.neighbourIDs.isNotEmpty()) {
-                nameToShow = SpannableString("$nameToShow (${call.neighbourIDs.size + 1})")
+            if (call.groupedCalls.isNotEmpty()) {
+                nameToShow = SpannableString("$nameToShow (${call.groupedCalls.size + 1})")
             }
 
             if (textToHighlight.isNotEmpty() && nameToShow.contains(textToHighlight, true)) {
@@ -314,7 +313,7 @@ class RecentCallsAdapter(
             }
 
             itemRecentsDateTime.apply {
-                text = call.startTS.formatDateOrTime(context, refreshItemsListener != null, false)
+                text = (call.startTS / 1000).toInt().formatDateOrTime(context, refreshItemsListener != null, false)
                 setTextColor(if (call.type == Calls.MISSED_TYPE) redColor else textColor)
                 setTextSize(TypedValue.COMPLEX_UNIT_PX, currentFontSize * 0.8f)
             }
