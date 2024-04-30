@@ -41,19 +41,23 @@ class RecentsHelper(private val context: Context) {
 
                 this.queryLimit = queryLimit
                 val recentCalls = if (previousRecents.isNotEmpty()) {
+                    val previousRecentCalls = previousRecents.flatMap {
+                        it.groupedCalls ?: listOf(it)
+                    }
+
                     val newerRecents = getRecents(
                         contacts = contacts,
                         selection = "${Calls.DATE} > ?",
-                        selectionParams = arrayOf("${previousRecents.first().startTS}")
+                        selectionParams = arrayOf("${previousRecentCalls.first().startTS}")
                     )
 
                     val olderRecents = getRecents(
                         contacts = contacts,
                         selection = "${Calls.DATE} < ?",
-                        selectionParams = arrayOf("${previousRecents.last().startTS}")
+                        selectionParams = arrayOf("${previousRecentCalls.last().startTS}")
                     )
 
-                    newerRecents + previousRecents + olderRecents
+                    newerRecents + previousRecentCalls + olderRecents
                 } else {
                     getRecents(contacts)
                 }
@@ -74,8 +78,8 @@ class RecentsHelper(private val context: Context) {
         ) { recentCalls ->
             callback(
                 groupSubsequentCalls(
-                    list = recentCalls,
-                    condition = { a, b ->
+                    calls = recentCalls,
+                    shouldGroup = { a, b ->
                         "${a.phoneNumber}${a.name}${a.simID}" == "${b.phoneNumber}${b.name}${b.simID}"
                     }
                 )
@@ -83,22 +87,29 @@ class RecentsHelper(private val context: Context) {
         }
     }
 
-    private fun groupSubsequentCalls(list: List<RecentCall>, condition: (RecentCall, RecentCall) -> Boolean): List<RecentCall> {
+    private fun groupSubsequentCalls(calls: List<RecentCall>, shouldGroup: (RecentCall, RecentCall) -> Boolean): List<RecentCall> {
         val result = mutableListOf<RecentCall>()
-        if (list.isEmpty()) return result
+        if (calls.isEmpty()) return result
 
-        var currentGroup = list[0]
-        for (i in 1 until list.size) {
-            val recentCall = list[i]
-            if (condition(currentGroup, recentCall)) {
-                currentGroup.groupedCalls.add(recentCall)
+        var currentCall = calls[0]
+        val groupedCalls = mutableListOf<RecentCall>()
+        for (i in 1 until calls.size) {
+            val nextCall = calls[i]
+            if (shouldGroup(currentCall, nextCall)) {
+                groupedCalls += nextCall
             } else {
-                result.add(currentGroup)
-                currentGroup = recentCall
+                if (groupedCalls.isNotEmpty()) {
+                    result += currentCall.copy(groupedCalls = listOf(currentCall) + groupedCalls)
+                    groupedCalls.clear()
+                } else {
+                    result += currentCall
+                }
+
+                currentCall = nextCall
             }
         }
 
-        result.add(currentGroup)
+        result.add(currentCall)
         return result
     }
 

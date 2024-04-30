@@ -211,8 +211,8 @@ class RecentCallsAdapter(
 
     private fun showCallDetails() {
         val recentCall = getSelectedItems().firstOrNull() ?: return
-        val groupedRecentCalls = listOf(recentCall.copy(groupedCalls = mutableListOf())) + recentCall.groupedCalls
-        ShowGroupedCallsDialog(activity, groupedRecentCalls)
+        val recentCalls = recentCall.groupedCalls ?: listOf(recentCall)
+        ShowGroupedCallsDialog(activity, recentCalls)
     }
 
     private fun copyNumber() {
@@ -239,7 +239,7 @@ class RecentCallsAdapter(
         val idsToRemove = ArrayList<Int>()
         callsToRemove.forEach {
             idsToRemove.add(it.id)
-            it.groupedCalls.mapTo(idsToRemove) { call -> call.id }
+            it.groupedCalls?.mapTo(idsToRemove) { call -> call.id }
         }
 
         RecentsHelper(activity).removeRecentCalls(idsToRemove) {
@@ -298,8 +298,8 @@ class RecentCallsAdapter(
                 }
             }
 
-            if (call.groupedCalls.isNotEmpty()) {
-                nameToShow = SpannableString("$nameToShow (${call.groupedCalls.size + 1})")
+            if (call.groupedCalls != null) {
+                nameToShow = SpannableString("$nameToShow (${call.groupedCalls.size})")
             }
 
             if (textToHighlight.isNotEmpty() && nameToShow.contains(textToHighlight, true)) {

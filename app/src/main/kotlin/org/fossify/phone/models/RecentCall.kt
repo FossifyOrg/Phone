@@ -20,7 +20,7 @@ data class RecentCall(
     val specificNumber: String,
     val specificType: String,
     val isUnknownNumber: Boolean,
-    val groupedCalls: MutableList<RecentCall> = mutableListOf(),
+    val groupedCalls: List<RecentCall>? = null,
 ) {
     fun doesContainPhoneNumber(text: String): Boolean {
         return if (text.toIntOrNull() != null) {
