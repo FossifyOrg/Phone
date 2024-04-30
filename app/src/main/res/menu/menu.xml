@@ -23,7 +23,7 @@
         android:id="@+id/clear_call_history"
         android:icon="@drawable/ic_delete_vector"
         android:title="@string/clear_call_history"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="never" />
     <item
         android:id="@+id/change_view_type"
         android:icon="@drawable/ic_change_view_vector"
