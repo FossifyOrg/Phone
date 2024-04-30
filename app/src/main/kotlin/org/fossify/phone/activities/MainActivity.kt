@@ -41,6 +41,10 @@ import org.fossify.phone.fragments.RecentsFragment
 import org.fossify.phone.helpers.OPEN_DIAL_PAD_AT_LAUNCH
 import org.fossify.phone.helpers.RecentsHelper
 import org.fossify.phone.helpers.tabsList
+import org.fossify.phone.models.Events
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 
 class MainActivity : SimpleActivity() {
     private val binding by viewBinding(ActivityMainBinding::inflate)
@@ -60,6 +64,7 @@ class MainActivity : SimpleActivity() {
         refreshMenuItems()
         updateMaterialActivityViews(binding.mainCoordinator, binding.mainHolder, useTransparentNavigation = false, useTopSearchMenu = true)
 
+        EventBus.getDefault().register(this)
         launchedDialer = savedInstanceState?.getBoolean(OPEN_DIAL_PAD_AT_LAUNCH) ?: false
 
         if (isDefaultDialer()) {
@@ -173,6 +178,11 @@ class MainActivity : SimpleActivity() {
         } else {
             super.onBackPressed()
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        EventBus.getDefault().unregister(this)
     }
 
     private fun refreshMenuItems() {
@@ -611,5 +621,10 @@ class MainActivity : SimpleActivity() {
             cachedContacts.addAll(contacts)
         } catch (e: Exception) {
         }
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun refreshCallLog(event: Events.RefreshCallLog) {
+        getRecentsFragment()?.refreshItems()
     }
 }
