@@ -16,7 +16,7 @@ import org.fossify.phone.models.RecentCall
 class RecentsHelper(private val context: Context) {
     companion object {
         private const val COMPARABLE_PHONE_NUMBER_LENGTH = 9
-        private const val QUERY_LIMIT = 50
+        private const val QUERY_LIMIT = 100
     }
 
     private val contentUri = Calls.CONTENT_URI
@@ -70,9 +70,10 @@ class RecentsHelper(private val context: Context) {
 
     fun getGroupedRecentCalls(
         previousRecents: List<RecentCall> = ArrayList(),
+        queryLimit: Int = QUERY_LIMIT,
         callback: (List<RecentCall>) -> Unit,
     ) {
-        getRecentCalls(previousRecents) { recentCalls ->
+        getRecentCalls(previousRecents, queryLimit) { recentCalls ->
             callback(
                 groupSubsequentCalls(calls = recentCalls)
             )
