@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
 import android.provider.CallLog.Calls
+import android.telephony.PhoneNumberUtils
 import org.fossify.commons.extensions.*
 import org.fossify.commons.helpers.*
 import org.fossify.commons.models.contacts.Contact
@@ -15,15 +16,15 @@ import org.fossify.phone.models.RecentCall
 class RecentsHelper(private val context: Context) {
     companion object {
         private const val COMPARABLE_PHONE_NUMBER_LENGTH = 9
-        private const val QUERY_LIMIT = 200
+        private const val QUERY_LIMIT = 50
     }
 
     private val contentUri = Calls.CONTENT_URI
     private var queryLimit = QUERY_LIMIT
 
     fun getRecentCalls(
-        queryLimit: Int = QUERY_LIMIT,
         previousRecents: List<RecentCall> = ArrayList(),
+        queryLimit: Int = QUERY_LIMIT,
         callback: (List<RecentCall>) -> Unit,
     ) {
         val privateCursor = context.getMyContactsCursor(favoritesOnly = false, withPhoneNumbersOnly = true)
@@ -68,26 +69,26 @@ class RecentsHelper(private val context: Context) {
     }
 
     fun getGroupedRecentCalls(
-        queryLimit: Int = QUERY_LIMIT,
         previousRecents: List<RecentCall> = ArrayList(),
         callback: (List<RecentCall>) -> Unit,
     ) {
-        getRecentCalls(
-            queryLimit = queryLimit,
-            previousRecents = previousRecents,
-        ) { recentCalls ->
+        getRecentCalls(previousRecents) { recentCalls ->
             callback(
-                groupSubsequentCalls(
-                    calls = recentCalls,
-                    shouldGroup = { a, b ->
-                        "${a.phoneNumber}${a.name}${a.simID}" == "${b.phoneNumber}${b.name}${b.simID}"
-                    }
-                )
+                groupSubsequentCalls(calls = recentCalls)
             )
         }
     }
 
-    private fun groupSubsequentCalls(calls: List<RecentCall>, shouldGroup: (RecentCall, RecentCall) -> Boolean): List<RecentCall> {
+    private fun shouldGroupCalls(callA: RecentCall, callB: RecentCall): Boolean {
+        if (callA.simID != callB.simID || callA.name != callB.name || callA.getDayCode() != callB.getDayCode()) {
+            return false
+        }
+
+        @Suppress("DEPRECATION")
+        return PhoneNumberUtils.compare(callA.phoneNumber, callB.phoneNumber)
+    }
+
+    private fun groupSubsequentCalls(calls: List<RecentCall>): List<RecentCall> {
         val result = mutableListOf<RecentCall>()
         if (calls.isEmpty()) return result
 
@@ -95,7 +96,7 @@ class RecentsHelper(private val context: Context) {
         val groupedCalls = mutableListOf<RecentCall>()
         for (i in 1 until calls.size) {
             val nextCall = calls[i]
-            if (shouldGroup(currentCall, nextCall)) {
+            if (shouldGroupCalls(currentCall, nextCall)) {
                 groupedCalls += nextCall
             } else {
                 if (groupedCalls.isNotEmpty()) {

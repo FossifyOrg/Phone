@@ -1,5 +1,6 @@
 package org.fossify.phone.adapters
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.provider.CallLog.Calls
@@ -20,15 +21,18 @@ import org.fossify.phone.R
 import org.fossify.phone.activities.MainActivity
 import org.fossify.phone.activities.SimpleActivity
 import org.fossify.phone.databinding.ItemRecentCallBinding
+import org.fossify.phone.databinding.ItemRecentsDateBinding
 import org.fossify.phone.dialogs.ShowGroupedCallsDialog
 import org.fossify.phone.extensions.*
 import org.fossify.phone.helpers.RecentsHelper
 import org.fossify.phone.interfaces.RefreshItemsListener
+import org.fossify.phone.models.CallLogItem
 import org.fossify.phone.models.RecentCall
+import org.joda.time.DateTime
 
 class RecentCallsAdapter(
     activity: SimpleActivity,
-    private var recentCalls: MutableList<RecentCall>,
+    private var recentCalls: MutableList<CallLogItem>,
     recyclerView: MyRecyclerView,
     private val refreshItemsListener: RefreshItemsListener?,
     private val showOverflowMenu: Boolean,
@@ -92,32 +96,48 @@ class RecentCallsAdapter(
         }
     }
 
-    override fun getSelectableItemCount() = recentCalls.size
+    override fun getSelectableItemCount() = recentCalls.filterIsInstance<RecentCall>().size
 
-    override fun getIsItemSelectable(position: Int) = true
+    override fun getIsItemSelectable(position: Int) = recentCalls[position] is RecentCall
 
-    override fun getItemSelectionKey(position: Int) = recentCalls.getOrNull(position)?.id
+    override fun getItemSelectionKey(position: Int) = recentCalls.getOrNull(position)?.getItemId()
 
-    override fun getItemKeyPosition(key: Int) = recentCalls.indexOfFirst { it.id == key }
+    override fun getItemKeyPosition(key: Int) = recentCalls.indexOfFirst { it.getItemId() == key }
 
     override fun onActionModeCreated() {}
 
     override fun onActionModeDestroyed() {}
 
+    override fun getItemViewType(position: Int): Int {
+        return when (recentCalls[position]) {
+            is CallLogItem.Date -> VIEW_TYPE_DATE
+            is RecentCall -> VIEW_TYPE_CALL
+        }
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return createViewHolder(ItemRecentCallBinding.inflate(layoutInflater, parent, false).root)
+        val viewHolder = when (viewType) {
+            VIEW_TYPE_DATE -> RecentCallDateViewHolder(
+                ItemRecentsDateBinding.inflate(layoutInflater, parent, false)
+            )
+
+            VIEW_TYPE_CALL -> RecentCallViewHolder(
+                ItemRecentCallBinding.inflate(layoutInflater, parent, false)
+            )
+
+            else -> throw IllegalArgumentException("Unknown view type: $viewType")
+        }
+
+        return viewHolder
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val recentCall = recentCalls[position]
-        holder.bindView(
-            any = recentCall,
-            allowSingleClick = refreshItemsListener != null && !recentCall.isUnknownNumber,
-            allowLongClick = refreshItemsListener != null && !recentCall.isUnknownNumber
-        ) { itemView, _ ->
-            val binding = ItemRecentCallBinding.bind(itemView)
-            setupView(binding, recentCall)
+        val callRecord = recentCalls[position]
+        when (holder) {
+            is RecentCallDateViewHolder -> holder.bind(callRecord as CallLogItem.Date)
+            is RecentCallViewHolder -> holder.bind(callRecord as RecentCall)
         }
+
         bindViewHolder(holder)
     }
 
@@ -126,8 +146,8 @@ class RecentCallsAdapter(
     override fun onViewRecycled(holder: ViewHolder) {
         super.onViewRecycled(holder)
         if (!activity.isDestroyed && !activity.isFinishing) {
-            ItemRecentCallBinding.bind(holder.itemView).apply {
-                Glide.with(activity).clear(itemRecentsImage)
+            if (holder is RecentCallViewHolder) {
+                Glide.with(activity).clear(holder.binding.itemRecentsImage)
             }
         }
     }
@@ -266,7 +286,9 @@ class RecentCallsAdapter(
         }
     }
 
-    fun updateItems(newItems: List<RecentCall>, highlightText: String = "") {
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateItems(newItems: List<CallLogItem>, highlightText: String = "") {
+        textColor = activity.getProperTextColor()
         if (newItems.hashCode() != recentCalls.hashCode()) {
             recentCalls = newItems.toMutableList()
             textToHighlight = highlightText
@@ -279,83 +301,10 @@ class RecentCallsAdapter(
         }
     }
 
-    private fun getSelectedItems() = recentCalls.filter { selectedKeys.contains(it.id) } as ArrayList<RecentCall>
+    private fun getSelectedItems() = recentCalls.filterIsInstance<RecentCall>()
+        .filter { selectedKeys.contains(it.getItemId()) }
 
     private fun getSelectedPhoneNumber() = getSelectedItems().firstOrNull()?.phoneNumber
-
-    private fun setupView(binding: ItemRecentCallBinding, call: RecentCall) {
-        binding.apply {
-            val currentFontSize = fontSize
-            itemRecentsHolder.isSelected = selectedKeys.contains(call.id)
-            val name = findContactByCall(call)?.getNameToDisplay() ?: call.name
-            var nameToShow = SpannableString(name)
-            if (call.specificType.isNotEmpty()) {
-                nameToShow = SpannableString("${name} - ${call.specificType}")
-
-                // show specific number at "Show call details" dialog too
-                if (refreshItemsListener == null) {
-                    nameToShow = SpannableString("${name} - ${call.specificType}, ${call.specificNumber}")
-                }
-            }
-
-            if (call.groupedCalls != null) {
-                nameToShow = SpannableString("$nameToShow (${call.groupedCalls.size})")
-            }
-
-            if (textToHighlight.isNotEmpty() && nameToShow.contains(textToHighlight, true)) {
-                nameToShow = SpannableString(nameToShow.toString().highlightTextPart(textToHighlight, properPrimaryColor))
-            }
-
-            itemRecentsName.apply {
-                text = nameToShow
-                setTextColor(textColor)
-                setTextSize(TypedValue.COMPLEX_UNIT_PX, currentFontSize)
-            }
-
-            itemRecentsDateTime.apply {
-                text = (call.startTS / 1000).toInt().formatDateOrTime(context, refreshItemsListener != null, false)
-                setTextColor(if (call.type == Calls.MISSED_TYPE) redColor else textColor)
-                setTextSize(TypedValue.COMPLEX_UNIT_PX, currentFontSize * 0.8f)
-            }
-
-            itemRecentsDuration.apply {
-                text = call.duration.getFormattedDuration()
-                setTextColor(textColor)
-                beVisibleIf(call.type != Calls.MISSED_TYPE && call.type != Calls.REJECTED_TYPE && call.duration > 0)
-                setTextSize(TypedValue.COMPLEX_UNIT_PX, currentFontSize * 0.8f)
-                if (!showOverflowMenu) {
-                    itemRecentsDuration.setPadding(0, 0, durationPadding, 0)
-                }
-            }
-
-            itemRecentsSimImage.beVisibleIf(areMultipleSIMsAvailable && call.simID != -1)
-            itemRecentsSimId.beVisibleIf(areMultipleSIMsAvailable && call.simID != -1)
-            if (areMultipleSIMsAvailable && call.simID != -1) {
-                itemRecentsSimImage.applyColorFilter(textColor)
-                itemRecentsSimId.setTextColor(textColor.getContrastColor())
-                itemRecentsSimId.text = call.simID.toString()
-            }
-
-            SimpleContactsHelper(root.context).loadContactImage(call.photoUri, itemRecentsImage, call.name)
-
-            val drawable = when (call.type) {
-                Calls.OUTGOING_TYPE -> outgoingCallIcon
-                Calls.MISSED_TYPE -> incomingMissedCallIcon
-                else -> incomingCallIcon
-            }
-
-            itemRecentsType.setImageDrawable(drawable)
-
-            overflowMenuIcon.beVisibleIf(showOverflowMenu)
-            overflowMenuIcon.drawable.apply {
-                mutate()
-                setTint(activity.getProperTextColor())
-            }
-            overflowMenuIcon.setOnClickListener {
-                showPopupMenu(overflowMenuAnchor, call)
-            }
-        }
-    }
 
     private fun showPopupMenu(view: View, call: RecentCall) {
         finishActMode()
@@ -458,5 +407,112 @@ class RecentCallsAdapter(
         selectedKeys.add(callId)
         callback()
         selectedKeys.remove(callId)
+    }
+
+    private inner class RecentCallViewHolder(val binding: ItemRecentCallBinding) : ViewHolder(binding.root) {
+        fun bind(call: RecentCall) = bindView(
+            any = call,
+            allowSingleClick = refreshItemsListener != null && !call.isUnknownNumber,
+            allowLongClick = refreshItemsListener != null && !call.isUnknownNumber
+        ) { _, _ ->
+            binding.apply {
+                val currentFontSize = fontSize
+                itemRecentsHolder.isSelected = selectedKeys.contains(call.id)
+                val name = findContactByCall(call)?.getNameToDisplay() ?: call.name
+                var nameToShow = SpannableString(name)
+                if (call.specificType.isNotEmpty()) {
+                    nameToShow = SpannableString("$name - ${call.specificType}")
+
+                    // show specific number at "Show call details" dialog too
+                    if (refreshItemsListener == null) {
+                        nameToShow = SpannableString("$name - ${call.specificType}, ${call.specificNumber}")
+                    }
+                }
+
+                if (call.groupedCalls != null) {
+                    nameToShow = SpannableString("$nameToShow (${call.groupedCalls.size})")
+                }
+
+                if (textToHighlight.isNotEmpty() && nameToShow.contains(textToHighlight, true)) {
+                    nameToShow = SpannableString(nameToShow.toString().highlightTextPart(textToHighlight, properPrimaryColor))
+                }
+
+                itemRecentsName.apply {
+                    text = nameToShow
+                    setTextColor(textColor)
+                    setTextSize(TypedValue.COMPLEX_UNIT_PX, currentFontSize)
+                }
+
+                itemRecentsDateTime.apply {
+                    text = if (refreshItemsListener == null) {
+                        call.startTS.formatDateOrTime(context, hideTimeAtOtherDays = false, showYearEvenIfCurrent = false)
+                    } else {
+                        call.startTS.formatTime(activity)
+                    }
+
+                    setTextColor(if (call.type == Calls.MISSED_TYPE) redColor else textColor)
+                    setTextSize(TypedValue.COMPLEX_UNIT_PX, currentFontSize * 0.8f)
+                }
+
+                itemRecentsDuration.apply {
+                    text = call.duration.getFormattedDuration()
+                    setTextColor(textColor)
+                    beVisibleIf(call.type != Calls.MISSED_TYPE && call.type != Calls.REJECTED_TYPE && call.duration > 0)
+                    setTextSize(TypedValue.COMPLEX_UNIT_PX, currentFontSize * 0.8f)
+                    if (!showOverflowMenu) {
+                        itemRecentsDuration.setPadding(0, 0, durationPadding, 0)
+                    }
+                }
+
+                itemRecentsSimImage.beVisibleIf(areMultipleSIMsAvailable && call.simID != -1)
+                itemRecentsSimId.beVisibleIf(areMultipleSIMsAvailable && call.simID != -1)
+                if (areMultipleSIMsAvailable && call.simID != -1) {
+                    itemRecentsSimImage.applyColorFilter(textColor)
+                    itemRecentsSimId.setTextColor(textColor.getContrastColor())
+                    itemRecentsSimId.text = call.simID.toString()
+                }
+
+                SimpleContactsHelper(root.context).loadContactImage(call.photoUri, itemRecentsImage, call.name)
+
+                val drawable = when (call.type) {
+                    Calls.OUTGOING_TYPE -> outgoingCallIcon
+                    Calls.MISSED_TYPE -> incomingMissedCallIcon
+                    else -> incomingCallIcon
+                }
+
+                itemRecentsType.setImageDrawable(drawable)
+
+                overflowMenuIcon.beVisibleIf(showOverflowMenu)
+                overflowMenuIcon.drawable.apply {
+                    mutate()
+                    setTint(activity.getProperTextColor())
+                }
+
+                overflowMenuIcon.setOnClickListener {
+                    showPopupMenu(overflowMenuAnchor, call)
+                }
+            }
+        }
+    }
+
+    private inner class RecentCallDateViewHolder(val binding: ItemRecentsDateBinding) : ViewHolder(binding.root) {
+        fun bind(date: CallLogItem.Date) {
+            binding.dateTextView.apply {
+                setTextColor(textColor.adjustAlpha(0.6f))
+                setTextSize(TypedValue.COMPLEX_UNIT_PX, fontSize * 0.76f)
+
+                val now = DateTime.now()
+                text = when (date.dayCode) {
+                    now.millis.toDayCode() -> activity.getString(R.string.today)
+                    now.minusDays(1).millis.toDayCode() -> activity.getString(R.string.yesterday)
+                    else -> date.timestamp.formatDateOrTime(activity, hideTimeAtOtherDays = true, showYearEvenIfCurrent = false)
+                }
+            }
+        }
+    }
+
+    companion object {
+        private const val VIEW_TYPE_DATE = 0
+        private const val VIEW_TYPE_CALL = 1
     }
 }

@@ -97,7 +97,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/item_recents_type"
         app:layout_constraintTop_toBottomOf="@id/item_recents_name"
-        tools:text="18.11.2022" />
+        tools:text="4 July, 04:37 PM" />
 
     <TextView
         android:id="@+id/item_recents_duration"

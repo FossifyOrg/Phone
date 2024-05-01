@@ -15,15 +15,15 @@ import org.fossify.phone.activities.SimpleActivity
 import org.fossify.phone.adapters.RecentCallsAdapter
 import org.fossify.phone.databinding.FragmentRecentsBinding
 import org.fossify.phone.extensions.config
-import org.fossify.phone.helpers.MIN_RECENTS_THRESHOLD
 import org.fossify.phone.helpers.RecentsHelper
 import org.fossify.phone.interfaces.RefreshItemsListener
+import org.fossify.phone.models.CallLogItem
 import org.fossify.phone.models.RecentCall
 
 class RecentsFragment(context: Context, attributeSet: AttributeSet) : MyViewPagerFragment<MyViewPagerFragment.RecentsInnerBinding>(context, attributeSet),
     RefreshItemsListener {
     private lateinit var binding: FragmentRecentsBinding
-    private var allRecentCalls = listOf<RecentCall>()
+    private var allRecentCalls = listOf<CallLogItem>()
     private var recentsAdapter: RecentCallsAdapter? = null
 
     override fun onFinishInflate() {
@@ -76,15 +76,44 @@ class RecentsFragment(context: Context, attributeSet: AttributeSet) : MyViewPage
         }
     }
 
-    private fun getRecentCalls(callback: (List<RecentCall>) -> Unit) {
-        if (context?.config?.groupSubsequentCalls == true) {
-            RecentsHelper(context).getGroupedRecentCalls(MIN_RECENTS_THRESHOLD, allRecentCalls, callback)
+    private fun getRecentCalls(callback: (List<CallLogItem>) -> Unit) {
+        val context = context ?: return
+        val recentsHelper = RecentsHelper(context)
+        val previousRecents = allRecentCalls.filterIsInstance<RecentCall>()
+
+        if (context.config.groupSubsequentCalls) {
+            recentsHelper.getGroupedRecentCalls(previousRecents) {
+                callback(prepareCallLog(it))
+            }
         } else {
-            RecentsHelper(context).getRecentCalls(MIN_RECENTS_THRESHOLD, allRecentCalls, callback)
+            recentsHelper.getRecentCalls(previousRecents) {
+                callback(prepareCallLog(it))
+            }
         }
     }
 
-    private fun gotRecents(recents: List<RecentCall>) {
+    private fun prepareCallLog(recentCalls: List<RecentCall>): List<CallLogItem> {
+        if (recentCalls.isEmpty()) {
+            return emptyList()
+        }
+
+        val log = mutableListOf<CallLogItem>()
+        var lastDayCode = ""
+
+        for (call in recentCalls) {
+            val currentDayCode = call.getDayCode()
+            if (currentDayCode != lastDayCode) {
+                log += CallLogItem.Date(timestamp = call.startTS, dayCode = currentDayCode)
+                lastDayCode = currentDayCode
+            }
+
+            log += call
+        }
+
+        return log
+    }
+
+    private fun gotRecents(recents: List<CallLogItem>) {
         if (recents.isEmpty()) {
             binding.apply {
                 showOrHidePlaceholder(true)
@@ -179,11 +208,12 @@ class RecentsFragment(context: Context, attributeSet: AttributeSet) : MyViewPage
 
     override fun onSearchQueryChanged(text: String) {
         val fixedText = text.trim().replace("\\s+".toRegex(), " ")
-        val recentCalls = allRecentCalls.filter {
-            it.name.contains(fixedText, true) || it.doesContainPhoneNumber(fixedText)
-        }.sortedByDescending {
-            it.name.startsWith(fixedText, true)
-        }.toMutableList() as ArrayList<RecentCall>
+        val recentCalls = allRecentCalls
+            .filter {
+                it is CallLogItem.Date || it is RecentCall && (it.name.contains(fixedText, true) || it.doesContainPhoneNumber(fixedText))
+            }.sortedByDescending {
+                it is CallLogItem.Date || it is RecentCall && it.name.startsWith(fixedText, true)
+            }
 
         showOrHidePlaceholder(recentCalls.isEmpty())
         recentsAdapter?.updateItems(recentCalls, fixedText)
@@ -199,31 +229,54 @@ class RecentsFragment(context: Context, attributeSet: AttributeSet) : MyViewPage
 }
 
 // hide private contacts from recent calls
-private fun List<RecentCall>.hidePrivateContacts(privateContacts: List<Contact>, shouldHide: Boolean): List<RecentCall> {
+private fun List<CallLogItem>.hidePrivateContacts(privateContacts: List<Contact>, shouldHide: Boolean): List<CallLogItem> {
     return if (shouldHide) {
-        filterNot { recent ->
-            val privateNumbers = privateContacts.flatMap { it.phoneNumbers }.map { it.value }
-            recent.phoneNumber in privateNumbers
+        val privateNumbers = privateContacts.flatMap { it.phoneNumbers }.map { it.value }
+        filterNot { record ->
+            when (record) {
+                is CallLogItem.Date -> false
+                is RecentCall -> record.phoneNumber in privateNumbers
+            }
         }
     } else {
         this
     }
 }
 
-private fun List<RecentCall>.setNamesIfEmpty(contacts: List<Contact>, privateContacts: List<Contact>): ArrayList<RecentCall> {
-    val contactsWithNumbers = contacts.filter { it.phoneNumbers.isNotEmpty() }
-    return map { recent ->
-        if (recent.phoneNumber == recent.name) {
-            val privateContact = privateContacts.firstOrNull { it.doesContainPhoneNumber(recent.phoneNumber) }
-            val contact = contactsWithNumbers.firstOrNull { it.phoneNumbers.first().normalizedNumber == recent.phoneNumber }
+private fun List<CallLogItem>.setNamesIfEmpty(contacts: List<Contact>, privateContacts: List<Contact>): List<CallLogItem> {
+    if (isEmpty()) return mutableListOf()
 
-            when {
-                privateContact != null -> recent.copy(name = privateContact.getNameToDisplay())
-                contact != null -> recent.copy(name = contact.getNameToDisplay())
-                else -> recent
+    val contactsWithNumbers = contacts.filter { it.phoneNumbers.isNotEmpty() }
+    val result = mutableListOf<CallLogItem>()
+
+    forEach { record ->
+        when (record) {
+            is CallLogItem.Date -> result += record
+            is RecentCall -> {
+                result += if (record.phoneNumber == record.name) {
+                    val privateContact = privateContacts.firstOrNull { it.doesContainPhoneNumber(record.phoneNumber) }
+                    val contact = contactsWithNumbers.firstOrNull { it.phoneNumbers.first().normalizedNumber == record.phoneNumber }
+
+                    when {
+                        privateContact != null -> record.copyWithName(name = privateContact.getNameToDisplay())
+                        contact != null -> record.copyWithName(name = contact.getNameToDisplay())
+                        else -> record
+                    }
+                } else {
+                    record
+                }
             }
-        } else {
-            recent
         }
-    } as ArrayList
+    }
+
+    return result
+}
+
+private fun RecentCall.copyWithName(name: String): RecentCall {
+    return copy(
+        name = name,
+        groupedCalls = groupedCalls
+            ?.map { it.copy(name = name) }
+            ?.ifEmpty { null }
+    )
 }

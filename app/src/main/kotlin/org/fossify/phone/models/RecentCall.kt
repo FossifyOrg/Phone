@@ -2,6 +2,7 @@ package org.fossify.phone.models
 
 import android.telephony.PhoneNumberUtils
 import org.fossify.commons.extensions.normalizePhoneNumber
+import org.fossify.commons.extensions.toDayCode
 
 /**
  * Used at displaying recent calls.
@@ -21,7 +22,7 @@ data class RecentCall(
     val specificType: String,
     val isUnknownNumber: Boolean,
     val groupedCalls: List<RecentCall>? = null,
-) {
+) : CallLogItem() {
     fun doesContainPhoneNumber(text: String): Boolean {
         return if (text.toIntOrNull() != null) {
             val normalizedText = text.normalizePhoneNumber()
@@ -33,4 +34,6 @@ data class RecentCall(
             false
         }
     }
+
+    fun getDayCode() = startTS.toDayCode()
 }
