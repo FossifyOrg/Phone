@@ -445,7 +445,7 @@ class RecentCallsAdapter(
 
                 itemRecentsDateTime.apply {
                     text = if (refreshItemsListener == null) {
-                        call.startTS.formatDateOrTime(context, hideTimeAtOtherDays = false, showYearEvenIfCurrent = false)
+                        call.startTS.formatDateOrTime(context, hideTimeOnOtherDays = false, showCurrentYear = false, hideTodaysDate = false)
                     } else {
                         call.startTS.formatTime(activity)
                     }
@@ -505,7 +505,7 @@ class RecentCallsAdapter(
                 text = when (date.dayCode) {
                     now.millis.toDayCode() -> activity.getString(R.string.today)
                     now.minusDays(1).millis.toDayCode() -> activity.getString(R.string.yesterday)
-                    else -> date.timestamp.formatDateOrTime(activity, hideTimeAtOtherDays = true, showYearEvenIfCurrent = false)
+                    else -> date.timestamp.formatDateOrTime(activity, hideTimeOnOtherDays = true, showCurrentYear = false)
                 }
             }
         }
