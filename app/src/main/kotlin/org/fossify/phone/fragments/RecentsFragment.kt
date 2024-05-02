@@ -2,12 +2,11 @@ package org.fossify.phone.fragments
 
 import android.content.Context
 import android.util.AttributeSet
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import org.fossify.commons.dialogs.CallConfirmationDialog
 import org.fossify.commons.extensions.*
-import org.fossify.commons.helpers.ContactsHelper
-import org.fossify.commons.helpers.MyContactsContentProvider
-import org.fossify.commons.helpers.PERMISSION_READ_CALL_LOG
-import org.fossify.commons.helpers.SMT_PRIVATE
+import org.fossify.commons.helpers.*
 import org.fossify.commons.models.contacts.Contact
 import org.fossify.commons.views.MyRecyclerView
 import org.fossify.phone.R
@@ -20,11 +19,16 @@ import org.fossify.phone.interfaces.RefreshItemsListener
 import org.fossify.phone.models.CallLogItem
 import org.fossify.phone.models.RecentCall
 
-class RecentsFragment(context: Context, attributeSet: AttributeSet) : MyViewPagerFragment<MyViewPagerFragment.RecentsInnerBinding>(context, attributeSet),
-    RefreshItemsListener {
+
+class RecentsFragment(
+    context: Context, attributeSet: AttributeSet,
+) : MyViewPagerFragment<MyViewPagerFragment.RecentsInnerBinding>(context, attributeSet), RefreshItemsListener {
+
     private lateinit var binding: FragmentRecentsBinding
     private var allRecentCalls = listOf<CallLogItem>()
     private var recentsAdapter: RecentCallsAdapter? = null
+
+    private var searchQuery: String? = null
 
     override fun onFinishInflate() {
         super.onFinishInflate()
@@ -58,62 +62,59 @@ class RecentsFragment(context: Context, attributeSet: AttributeSet) : MyViewPage
         }
     }
 
-    override fun refreshItems(callback: (() -> Unit)?) {
-        val privateCursor = context?.getMyContactsCursor(favoritesOnly = false, withPhoneNumbersOnly = true)
-        getRecentCalls { recents ->
-            ContactsHelper(context).getContacts(showOnlyContactsWithNumbers = true) { contacts ->
-                val privateContacts = MyContactsContentProvider.getContacts(context, privateCursor)
+    override fun refreshItems(callback: (() -> Unit)?) = refreshCallLog()
 
-                allRecentCalls = recents
-                    .setNamesIfEmpty(contacts, privateContacts)
-                    .hidePrivateContacts(privateContacts, SMT_PRIVATE in context.baseConfig.ignoredContactSources)
+    override fun onSearchClosed() {
+        searchQuery = null
+        showOrHidePlaceholder(allRecentCalls.isEmpty())
+        recentsAdapter?.updateItems(allRecentCalls)
+    }
 
+    override fun onSearchQueryChanged(text: String) {
+        searchQuery = text
+        updateSearchResult()
+    }
+
+    @Suppress("UNCHECKED_CAST")
+    private fun updateSearchResult() {
+        ensureBackgroundThread {
+            val fixedText = searchQuery!!.trim().replace("\\s+".toRegex(), " ")
+            val recentCalls = allRecentCalls
+                .filter {
+                    it is RecentCall && (it.name.contains(fixedText, true) || it.doesContainPhoneNumber(fixedText))
+                }.sortedByDescending {
+                    it is RecentCall && it.name.startsWith(fixedText, true)
+                } as List<RecentCall>
+
+            prepareCallLog(recentCalls) {
                 activity?.runOnUiThread {
-                    binding.progressIndicator.hide()
-                    gotRecents(allRecentCalls)
+                    showOrHidePlaceholder(recentCalls.isEmpty())
+                    recentsAdapter?.updateItems(it, fixedText)
                 }
             }
         }
     }
 
-    private fun getRecentCalls(callback: (List<CallLogItem>) -> Unit) {
-        val context = context ?: return
-        val recentsHelper = RecentsHelper(context)
-        val previousRecents = allRecentCalls.filterIsInstance<RecentCall>()
-
-        if (context.config.groupSubsequentCalls) {
-            recentsHelper.getGroupedRecentCalls(previousRecents) {
-                callback(prepareCallLog(it))
-            }
-        } else {
-            recentsHelper.getRecentCalls(previousRecents) {
-                callback(prepareCallLog(it))
+    private fun requestCallLogPermission() {
+        activity?.handlePermission(PERMISSION_READ_CALL_LOG) {
+            if (it) {
+                binding.recentsPlaceholder.text = context.getString(R.string.no_previous_calls)
+                binding.recentsPlaceholder2.beGone()
+                refreshCallLog()
             }
         }
     }
 
-    private fun prepareCallLog(recentCalls: List<RecentCall>): List<CallLogItem> {
-        if (recentCalls.isEmpty()) {
-            return emptyList()
+    private fun showOrHidePlaceholder(show: Boolean) {
+        if (show && !binding.progressIndicator.isVisible()) {
+            binding.recentsPlaceholder.beVisible()
+        } else {
+            binding.recentsPlaceholder.beGone()
         }
-
-        val log = mutableListOf<CallLogItem>()
-        var lastDayCode = ""
-
-        for (call in recentCalls) {
-            val currentDayCode = call.getDayCode()
-            if (currentDayCode != lastDayCode) {
-                log += CallLogItem.Date(timestamp = call.startTS, dayCode = currentDayCode)
-                lastDayCode = currentDayCode
-            }
-
-            log += call
-        }
-
-        return log
     }
 
     private fun gotRecents(recents: List<CallLogItem>) {
+        binding.progressIndicator.hide()
         if (recents.isEmpty()) {
             binding.apply {
                 showOrHidePlaceholder(true)
@@ -156,127 +157,131 @@ class RecentsFragment(context: Context, attributeSet: AttributeSet) : MyViewPage
                 }
 
                 binding.recentsList.endlessScrollListener = object : MyRecyclerView.EndlessScrollListener {
-                    override fun updateTop() {}
-
-                    override fun updateBottom() {
-                        getMoreRecentCalls()
-                    }
+                    override fun updateTop() = Unit
+                    override fun updateBottom() = refreshCallLog()
                 }
 
+                binding.recentsList.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                    val layoutManager = binding.recentsList.layoutManager as LinearLayoutManager
+                    override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                        if (dx == 0 && dy == 0 && layoutManager.findLastVisibleItemPosition() == layoutManager.getItemCount() - 1) {
+                            refreshCallLog()
+                        }
+                    }
+                })
             } else {
                 recentsAdapter?.updateItems(recents)
             }
         }
     }
 
-    private fun getMoreRecentCalls() {
-        val privateCursor = context?.getMyContactsCursor(favoritesOnly = false, withPhoneNumbersOnly = true)
-        getRecentCalls { recents ->
-            ContactsHelper(context).getContacts(showOnlyContactsWithNumbers = true) { contacts ->
-                val privateContacts = MyContactsContentProvider.getContacts(context, privateCursor)
+    private fun refreshCallLog() {
+        getRecentCalls {
+            allRecentCalls = it
+            if (searchQuery.isNullOrEmpty()) {
+                activity?.runOnUiThread { gotRecents(it) }
+            } else {
+                updateSearchResult()
+            }
+        }
+    }
 
-                allRecentCalls = recents
-                    .setNamesIfEmpty(contacts, privateContacts)
-                    .hidePrivateContacts(privateContacts, SMT_PRIVATE in context.baseConfig.ignoredContactSources)
+    private fun getRecentCalls(callback: (List<CallLogItem>) -> Unit) {
+        val context = context ?: return
+        val existingRecentCalls = allRecentCalls.filterIsInstance<RecentCall>()
 
-                activity?.runOnUiThread {
-                    gotRecents(allRecentCalls)
+        with(RecentsHelper(context)) {
+            if (context.config.groupSubsequentCalls) {
+                getGroupedRecentCalls(existingRecentCalls) {
+                    prepareCallLog(it, callback)
+                }
+            } else {
+                getRecentCalls(existingRecentCalls) {
+                    prepareCallLog(it, callback)
                 }
             }
         }
     }
 
-    private fun requestCallLogPermission() {
-        activity?.handlePermission(PERMISSION_READ_CALL_LOG) {
-            if (it) {
-                binding.recentsPlaceholder.text = context.getString(R.string.no_previous_calls)
-                binding.recentsPlaceholder2.beGone()
+    private fun prepareCallLog(calls: List<RecentCall>, callback: (List<CallLogItem>) -> Unit) {
+        if (calls.isEmpty()) {
+            callback(emptyList())
+            return
+        }
 
-                getRecentCalls { recents ->
-                    activity?.runOnUiThread {
-                        gotRecents(recents)
-                    }
-                }
+        ContactsHelper(context).getContacts(showOnlyContactsWithNumbers = true) { contacts ->
+            ensureBackgroundThread {
+                val privateContacts = getPrivateContacts()
+                val updatedCalls = updateNamesIfEmpty(
+                    calls = maybeFilterPrivateCalls(calls, privateContacts),
+                    contacts = contacts,
+                    privateContacts = privateContacts
+                )
+
+                callback(
+                    groupCallsByDate(updatedCalls)
+                )
             }
         }
     }
 
-    override fun onSearchClosed() {
-        showOrHidePlaceholder(allRecentCalls.isEmpty())
-        recentsAdapter?.updateItems(allRecentCalls)
+    private fun getPrivateContacts(): ArrayList<Contact> {
+        val privateCursor = context.getMyContactsCursor(favoritesOnly = false, withPhoneNumbersOnly = true)
+        return MyContactsContentProvider.getContacts(context, privateCursor)
     }
 
-    override fun onSearchQueryChanged(text: String) {
-        val fixedText = text.trim().replace("\\s+".toRegex(), " ")
-        val recentCalls = allRecentCalls
-            .filter {
-                it is CallLogItem.Date || it is RecentCall && (it.name.contains(fixedText, true) || it.doesContainPhoneNumber(fixedText))
-            }.sortedByDescending {
-                it is CallLogItem.Date || it is RecentCall && it.name.startsWith(fixedText, true)
-            }
-
-        showOrHidePlaceholder(recentCalls.isEmpty())
-        recentsAdapter?.updateItems(recentCalls, fixedText)
-    }
-
-    private fun showOrHidePlaceholder(show: Boolean) {
-        if (show && !binding.progressIndicator.isVisible()) {
-            binding.recentsPlaceholder.beVisible()
+    private fun maybeFilterPrivateCalls(calls: List<RecentCall>, privateContacts: List<Contact>): List<RecentCall> {
+        val ignoredSources = context.baseConfig.ignoredContactSources
+        return if (SMT_PRIVATE in ignoredSources) {
+            val privateNumbers = privateContacts.flatMap { it.phoneNumbers }.map { it.value }
+            calls.filterNot { it.phoneNumber in privateNumbers }
         } else {
-            binding.recentsPlaceholder.beGone()
+            calls
         }
     }
-}
 
-// hide private contacts from recent calls
-private fun List<CallLogItem>.hidePrivateContacts(privateContacts: List<Contact>, shouldHide: Boolean): List<CallLogItem> {
-    return if (shouldHide) {
-        val privateNumbers = privateContacts.flatMap { it.phoneNumbers }.map { it.value }
-        filterNot { record ->
-            when (record) {
-                is CallLogItem.Date -> false
-                is RecentCall -> record.phoneNumber in privateNumbers
-            }
-        }
-    } else {
-        this
-    }
-}
+    private fun updateNamesIfEmpty(calls: List<RecentCall>, contacts: List<Contact>, privateContacts: List<Contact>): List<RecentCall> {
+        if (calls.isEmpty()) return mutableListOf()
 
-private fun List<CallLogItem>.setNamesIfEmpty(contacts: List<Contact>, privateContacts: List<Contact>): List<CallLogItem> {
-    if (isEmpty()) return mutableListOf()
+        val contactsWithNumbers = contacts.filter { it.phoneNumbers.isNotEmpty() }
+        return calls.map { call ->
+            if (call.phoneNumber == call.name) {
+                val privateContact = privateContacts.firstOrNull { it.doesContainPhoneNumber(call.phoneNumber) }
+                val contact = contactsWithNumbers.firstOrNull { it.phoneNumbers.first().normalizedNumber == call.phoneNumber }
 
-    val contactsWithNumbers = contacts.filter { it.phoneNumbers.isNotEmpty() }
-    val result = mutableListOf<CallLogItem>()
-
-    forEach { record ->
-        when (record) {
-            is CallLogItem.Date -> result += record
-            is RecentCall -> {
-                result += if (record.phoneNumber == record.name) {
-                    val privateContact = privateContacts.firstOrNull { it.doesContainPhoneNumber(record.phoneNumber) }
-                    val contact = contactsWithNumbers.firstOrNull { it.phoneNumbers.first().normalizedNumber == record.phoneNumber }
-
-                    when {
-                        privateContact != null -> record.copyWithName(name = privateContact.getNameToDisplay())
-                        contact != null -> record.copyWithName(name = contact.getNameToDisplay())
-                        else -> record
-                    }
-                } else {
-                    record
+                when {
+                    privateContact != null -> withUpdatedName(call = call, name = privateContact.getNameToDisplay())
+                    contact != null -> withUpdatedName(call = call, name = contact.getNameToDisplay())
+                    else -> call
                 }
+            } else {
+                call
             }
         }
     }
 
-    return result
-}
+    private fun withUpdatedName(call: RecentCall, name: String): RecentCall {
+        return call.copy(
+            name = name,
+            groupedCalls = call.groupedCalls
+                ?.map { it.copy(name = name) }
+                ?.ifEmpty { null }
+        )
+    }
 
-private fun RecentCall.copyWithName(name: String): RecentCall {
-    return copy(
-        name = name,
-        groupedCalls = groupedCalls
-            ?.map { it.copy(name = name) }
-            ?.ifEmpty { null }
-    )
+    private fun groupCallsByDate(recentCalls: List<RecentCall>): MutableList<CallLogItem> {
+        val callLog = mutableListOf<CallLogItem>()
+        var lastDayCode = ""
+        for (call in recentCalls) {
+            val currentDayCode = call.getDayCode()
+            if (currentDayCode != lastDayCode) {
+                callLog += CallLogItem.Date(timestamp = call.startTS, dayCode = currentDayCode)
+                lastDayCode = currentDayCode
+            }
+
+            callLog += call
+        }
+
+        return callLog
+    }
 }
