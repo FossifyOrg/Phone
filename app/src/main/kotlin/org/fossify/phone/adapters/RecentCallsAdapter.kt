@@ -419,7 +419,12 @@ class RecentCallsAdapter(
                 val currentFontSize = fontSize
                 itemRecentsHolder.isSelected = selectedKeys.contains(call.id)
                 val name = findContactByCall(call)?.getNameToDisplay() ?: call.name
-                var nameToShow = SpannableString(name)
+                var nameToShow = if (name == call.phoneNumber) {
+                    SpannableString(name.formatPhoneNumber())
+                } else {
+                    SpannableString(name)
+                }
+
                 if (call.specificType.isNotEmpty()) {
                     nameToShow = SpannableString("$name - ${call.specificType}")
 
