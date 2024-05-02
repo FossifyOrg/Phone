@@ -21,7 +21,7 @@ data class RecentCall(
     val specificNumber: String,
     val specificType: String,
     val isUnknownNumber: Boolean,
-    val groupedCalls: List<RecentCall>? = null,
+    val groupedCalls: MutableList<RecentCall>? = null,
 ) : CallLogItem() {
     fun doesContainPhoneNumber(text: String): Boolean {
         return if (text.toIntOrNull() != null) {

@@ -265,6 +265,7 @@ class RecentsFragment(
             name = name,
             groupedCalls = call.groupedCalls
                 ?.map { it.copy(name = name) }
+                ?.toMutableList()
                 ?.ifEmpty { null }
         )
     }

@@ -98,19 +98,16 @@ class RecentsHelper(private val context: Context) {
         if (calls.isEmpty()) return result
 
         var currentCall = calls[0]
-        val groupedCalls = mutableListOf<RecentCall>()
         for (i in 1 until calls.size) {
             val nextCall = calls[i]
             if (shouldGroupCalls(currentCall, nextCall)) {
-                groupedCalls += nextCall
-            } else {
-                if (groupedCalls.isNotEmpty()) {
-                    result += currentCall.copy(groupedCalls = listOf(currentCall) + groupedCalls)
-                    groupedCalls.clear()
-                } else {
-                    result += currentCall
+                if (currentCall.groupedCalls.isNullOrEmpty()) {
+                    currentCall = currentCall.copy(groupedCalls = mutableListOf(currentCall))
                 }
 
+                currentCall.groupedCalls?.add(nextCall)
+            } else {
+                result += currentCall
                 currentCall = nextCall
             }
         }
