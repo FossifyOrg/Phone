@@ -32,6 +32,7 @@ import org.fossify.phone.adapters.ViewPagerAdapter
 import org.fossify.phone.databinding.ActivityMainBinding
 import org.fossify.phone.dialogs.ChangeSortingDialog
 import org.fossify.phone.dialogs.FilterContactSourcesDialog
+import org.fossify.phone.extensions.clearMissedCalls
 import org.fossify.phone.extensions.config
 import org.fossify.phone.extensions.launchCreateNewContactIntent
 import org.fossify.phone.fragments.ContactsFragment
@@ -385,10 +386,6 @@ class MainActivity : SimpleActivity() {
                 // open the Recents tab if we got here by clicking a missed call notification
                 if (intent.action == Intent.ACTION_VIEW && config.showTabs and TAB_CALL_HISTORY > 0) {
                     wantedTab = binding.mainTabsHolder.tabCount - 1
-
-                    ensureBackgroundThread {
-                        clearMissedCalls()
-                    }
                 }
 
                 binding.mainTabsHolder.getTabAt(wantedTab)?.select()
@@ -432,6 +429,11 @@ class MainActivity : SimpleActivity() {
                 binding.mainMenu.closeSearch()
                 binding.viewPager.currentItem = it.position
                 updateBottomTabItemColors(it.customView, true, getSelectedTabDrawableIds()[it.position])
+
+                val lastPosition = binding.mainTabsHolder.tabCount - 1
+                if (it.position == lastPosition && config.showTabs and TAB_CALL_HISTORY > 0) {
+                    clearMissedCalls()
+                }
             }
         )
 
@@ -542,17 +544,6 @@ class MainActivity : SimpleActivity() {
                     0
                 }
             }
-        }
-    }
-
-    @SuppressLint("MissingPermission")
-    private fun clearMissedCalls() {
-        try {
-            // notification cancellation triggers MissedCallNotifier.clearMissedCalls() which, in turn,
-            // should update the database and reset the cached missed call count in MissedCallNotifier.java
-            // https://android.googlesource.com/platform/packages/services/Telecomm/+/master/src/com/android/server/telecom/ui/MissedCallNotifierImpl.java#170
-            telecomManager.cancelMissedCallsNotification()
-        } catch (ignored: Exception) {
         }
     }
 
