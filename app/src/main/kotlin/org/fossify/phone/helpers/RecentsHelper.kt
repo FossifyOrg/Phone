@@ -81,7 +81,11 @@ class RecentsHelper(private val context: Context) {
     }
 
     private fun shouldGroupCalls(callA: RecentCall, callB: RecentCall): Boolean {
-        if (callA.simID != callB.simID || callA.name != callB.name || callA.getDayCode() != callB.getDayCode()) {
+        if (
+            callA.simID != callB.simID
+            || (callA.name != callB.name && callA.name != callA.phoneNumber && callB.name != callB.phoneNumber)
+            || callA.getDayCode() != callB.getDayCode()
+        ) {
             return false
         }
 
