@@ -203,7 +203,7 @@ class RecentsHelper(private val context: Context) {
                                     }
                                 }
                                 false
-                            }?.name ?: number
+                            }?.name ?: number.formatPhoneNumber()
                         }
                     }
                 }

@@ -425,7 +425,7 @@ class RecentCallsAdapter(
 
                     // show specific number at "Show call details" dialog too
                     if (refreshItemsListener == null) {
-                        nameToShow = SpannableString("$name - ${call.specificType}, ${call.specificNumber}")
+                        nameToShow = SpannableString("$name - ${call.specificType}, ${call.specificNumber.formatPhoneNumber()}")
                     }
                 }
 

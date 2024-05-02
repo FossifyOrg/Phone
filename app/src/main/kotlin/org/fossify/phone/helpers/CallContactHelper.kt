@@ -3,6 +3,7 @@ package org.fossify.phone.helpers
 import android.content.Context
 import android.net.Uri
 import android.telecom.Call
+import org.fossify.commons.extensions.formatPhoneNumber
 import org.fossify.commons.extensions.getMyContactsCursor
 import org.fossify.commons.extensions.getPhoneNumberTypeText
 import org.fossify.commons.helpers.ContactsHelper
@@ -18,7 +19,7 @@ fun getCallContact(context: Context, call: Call?, callback: (CallContact) -> Uni
         return
     }
 
-    val privateCursor = context.getMyContactsCursor(false, true)
+    val privateCursor = context.getMyContactsCursor(favoritesOnly = false, withPhoneNumbersOnly = true)
     ensureBackgroundThread {
         val callContact = CallContact("", "", "", "")
         val handle = try {
@@ -50,7 +51,7 @@ fun getCallContact(context: Context, call: Call?, callback: (CallContact) -> Uni
                     }
                 }
 
-                callContact.number = number
+                callContact.number = number.formatPhoneNumber()
                 val contact = contacts.firstOrNull { it.doesHavePhoneNumber(number) }
                 if (contact != null) {
                     callContact.name = contact.getNameToDisplay()
@@ -63,8 +64,9 @@ fun getCallContact(context: Context, call: Call?, callback: (CallContact) -> Uni
                         }
                     }
                 } else {
-                    callContact.name = number
+                    callContact.name = callContact.number
                 }
+
                 callback(callContact)
             }
         }
