@@ -55,7 +55,6 @@ class CallActivity : SimpleActivity() {
     private var proximityWakeLock: PowerManager.WakeLock? = null
     private var screenOnWakeLock: PowerManager.WakeLock? = null
     private var callDuration = 0
-    private val callContactAvatarHelper by lazy { CallContactAvatarHelper(this) }
     private val callDurationHandler = Handler(Looper.getMainLooper())
     private var dragDownX = 0f
     private var stopAnimation = false
@@ -566,12 +565,13 @@ class CallActivity : SimpleActivity() {
         }
 
         binding.apply {
-            callerNameLabel.text = callContact!!.name.ifEmpty { getString(R.string.unknown_caller) }
-            if (callContact!!.number.isNotEmpty() && callContact!!.number != callContact!!.name) {
-                callerNumber.text = callContact!!.number
+            val (name, _, number, numberLabel) = callContact!!
+            callerNameLabel.text = name.ifEmpty { getString(R.string.unknown_caller) }
+            if (number.isNotEmpty() && number != name) {
+                callerNumber.text = number
 
-                if (callContact!!.numberLabel.isNotEmpty()) {
-                    callerNumber.text = "${callContact!!.number} - ${callContact!!.numberLabel}"
+                if (numberLabel.isNotEmpty()) {
+                    callerNumber.text = "$number - $numberLabel"
                 }
             } else {
                 callerNumber.beGone()
