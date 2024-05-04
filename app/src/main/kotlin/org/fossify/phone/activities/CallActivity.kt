@@ -20,6 +20,7 @@ import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.OvershootInterpolator
 import android.widget.ImageView
 import androidx.core.content.res.ResourcesCompat
+import androidx.core.os.postDelayed
 import androidx.core.view.children
 import androidx.core.view.setPadding
 import androidx.core.view.updatePadding
@@ -508,9 +509,8 @@ class CallActivity : SimpleActivity() {
     }
 
     private fun findVisibleViewsUnderDialpad(): Sequence<Pair<View, Float>> {
-        val ignored = listOf(binding.buttonGrid, binding.controlsSingleCall, binding.controlsTwoCalls)
         return binding.ongoingCallHolder.children
-            .filter { it !in ignored && it.isVisible() }
+            .filter { it is ImageView && it.isVisible() }
             .map { view -> Pair(view, view.alpha) }
     }
 
@@ -660,9 +660,9 @@ class CallActivity : SimpleActivity() {
                 callStatusLabel.text = getString(statusTextId)
             }
 
-            callManage.beVisibleIf(call.hasCapability(Call.Details.CAPABILITY_MANAGE_CONFERENCE))
-            setActionButtonEnabled(callSwap, state == Call.STATE_ACTIVE)
-            setActionButtonEnabled(callMerge, state == Call.STATE_ACTIVE)
+            callManage.beVisibleIf(!isCallEnded && call.hasCapability(Call.Details.CAPABILITY_MANAGE_CONFERENCE))
+            setActionButtonEnabled(callSwap, enabled = !isCallEnded && state == Call.STATE_ACTIVE)
+            setActionButtonEnabled(callMerge, enabled = !isCallEnded && state == Call.STATE_ACTIVE)
         }
     }
 
@@ -672,7 +672,7 @@ class CallActivity : SimpleActivity() {
             updateCallState(phoneState.call)
             updateCallOnHoldState(null)
             val state = phoneState.call.getStateCompat()
-            val isSingleCallActionsEnabled = (state == Call.STATE_ACTIVE || state == Call.STATE_DISCONNECTED
+            val isSingleCallActionsEnabled = !isCallEnded && (state == Call.STATE_ACTIVE || state == Call.STATE_DISCONNECTED
                 || state == Call.STATE_DISCONNECTING || state == Call.STATE_HOLDING)
             setActionButtonEnabled(binding.callToggleHold, isSingleCallActionsEnabled)
             setActionButtonEnabled(binding.callAdd, isSingleCallActionsEnabled)
@@ -762,16 +762,19 @@ class CallActivity : SimpleActivity() {
         }
 
         isCallEnded = true
-        if (callDuration > 0) {
-            runOnUiThread {
+        runOnUiThread {
+            if (callDuration > 0) {
+                disableAllActionButtons()
+                @SuppressLint("SetTextI18n")
                 binding.callStatusLabel.text = "${callDuration.getFormattedDuration()} (${getString(R.string.call_ended)})"
-                Handler().postDelayed({
+                Handler(mainLooper).postDelayed(3000) {
                     finishAndRemoveTask()
-                }, 3000)
+                }
+            } else {
+                disableAllActionButtons()
+                binding.callStatusLabel.text = getString(R.string.call_ended)
+                finish()
             }
-        } else {
-            binding.callStatusLabel.text = getString(R.string.call_ended)
-            finish()
         }
     }
 
@@ -841,6 +844,14 @@ class CallActivity : SimpleActivity() {
         if (proximityWakeLock?.isHeld == true) {
             proximityWakeLock!!.release()
         }
+    }
+
+    private fun disableAllActionButtons() {
+        (binding.ongoingCallHolder.children + binding.callEnd)
+            .filter { it is ImageView && it.isVisible() }
+            .forEach { view ->
+                setActionButtonEnabled(button = view as ImageView, enabled = false)
+            }
     }
 
     private fun setActionButtonEnabled(button: ImageView, enabled: Boolean) {
