@@ -22,6 +22,7 @@ import android.widget.ImageView
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.children
 import androidx.core.view.setPadding
+import androidx.core.view.updatePadding
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import org.fossify.commons.extensions.*
@@ -507,13 +508,18 @@ class CallActivity : SimpleActivity() {
     }
 
     private fun findVisibleViewsUnderDialpad(): Sequence<Pair<View, Float>> {
-        return binding.ongoingCallHolder.children.map { it }
-            .filter { it.isVisible() }
+        val ignored = listOf(binding.buttonGrid, binding.controlsSingleCall, binding.controlsTwoCalls)
+        return binding.ongoingCallHolder.children
+            .filter { it !in ignored && it.isVisible() }
             .map { view -> Pair(view, view.alpha) }
     }
 
     private fun showDialpad() {
         binding.dialpadWrapper.apply {
+            updatePadding(
+                bottom = binding.root.bottom - binding.callEnd.top + resources.getDimensionPixelSize(R.dimen.activity_margin)
+            )
+
             translationY = dialpadHeight
             alpha = 0f
             animate()
@@ -556,7 +562,7 @@ class CallActivity : SimpleActivity() {
         val isOnHold = CallManager.toggleHold()
         toggleButtonColor(binding.callToggleHold, isOnHold)
         binding.callToggleHold.contentDescription = getString(if (isOnHold) R.string.resume_call else R.string.hold_call)
-        binding.holdStatusLabel.beVisibleIf(isOnHold)
+        binding.holdStatusLabel.beInvisibleIf(!isOnHold)
     }
 
     private fun updateOtherPersonsInfo(avatarUri: String?) {
