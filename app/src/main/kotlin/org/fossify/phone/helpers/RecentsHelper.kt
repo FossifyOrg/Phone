@@ -28,13 +28,13 @@ class RecentsHelper(private val context: Context) {
         callback: (List<RecentCall>) -> Unit,
     ) {
         val privateCursor = context.getMyContactsCursor(favoritesOnly = false, withPhoneNumbersOnly = true)
-        ensureBackgroundThread {
-            if (!context.hasPermission(PERMISSION_READ_CALL_LOG)) {
-                callback(ArrayList())
-                return@ensureBackgroundThread
-            }
+        if (!context.hasPermission(PERMISSION_READ_CALL_LOG)) {
+            callback(ArrayList())
+            return
+        }
 
-            ContactsHelper(context).getContacts(showOnlyContactsWithNumbers = true) { contacts ->
+        ContactsHelper(context).getContacts(showOnlyContactsWithNumbers = true) { contacts ->
+            ensureBackgroundThread {
                 val privateContacts = MyContactsContentProvider.getContacts(context, privateCursor)
                 if (privateContacts.isNotEmpty()) {
                     contacts.addAll(privateContacts)
@@ -146,12 +146,12 @@ class RecentsHelper(private val context: Context) {
         val cursor = if (isNougatPlus()) {
             // https://issuetracker.google.com/issues/175198972?pli=1#comment6
             val limitedUri = contentUri.buildUpon()
-                .appendQueryParameter(Calls.LIMIT_PARAM_KEY, QUERY_LIMIT.toString())
+                .appendQueryParameter(Calls.LIMIT_PARAM_KEY, queryLimit.toString())
                 .build()
             val sortOrder = "${Calls.DATE} DESC"
             context.contentResolver.query(limitedUri, projection, selection, selectionParams, sortOrder)
         } else {
-            val sortOrder = "${Calls.DATE} DESC LIMIT $QUERY_LIMIT"
+            val sortOrder = "${Calls.DATE} DESC LIMIT $queryLimit"
             context.contentResolver.query(contentUri, projection, selection, selectionParams, sortOrder)
         }
 
