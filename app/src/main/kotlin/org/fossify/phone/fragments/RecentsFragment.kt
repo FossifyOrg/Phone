@@ -131,7 +131,6 @@ class RecentsFragment(
             if (binding.recentsList.adapter == null) {
                 recentsAdapter = RecentCallsAdapter(
                     activity = activity as SimpleActivity,
-                    recentCalls = recents.toMutableList(),
                     recyclerView = binding.recentsList,
                     refreshItemsListener = this,
                     showOverflowMenu = true,
@@ -151,6 +150,7 @@ class RecentsFragment(
                 )
 
                 binding.recentsList.adapter = recentsAdapter
+                recentsAdapter?.updateItems(recents)
 
                 if (context.areSystemAnimationsEnabled) {
                     binding.recentsList.scheduleLayoutAnimation()

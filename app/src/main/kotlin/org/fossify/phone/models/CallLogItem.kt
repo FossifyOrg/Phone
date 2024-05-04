@@ -8,7 +8,7 @@ sealed class CallLogItem {
 
     fun getItemId(): Int {
         return when (this) {
-            is Date -> timestamp.hashCode()
+            is Date -> dayCode.hashCode()
             is RecentCall -> id
         }
     }

@@ -18,13 +18,13 @@ class ShowGroupedCallsDialog(val activity: BaseSimpleActivity, recentCalls: List
         activity.runOnUiThread {
             RecentCallsAdapter(
                 activity = activity as SimpleActivity,
-                recentCalls = recentCalls.toMutableList(),
                 recyclerView = binding.selectGroupedCallsList,
                 refreshItemsListener = null,
                 showOverflowMenu = false,
                 itemClick = {}
             ).apply {
                 binding.selectGroupedCallsList.adapter = this
+                updateItems(recentCalls)
             }
         }
 

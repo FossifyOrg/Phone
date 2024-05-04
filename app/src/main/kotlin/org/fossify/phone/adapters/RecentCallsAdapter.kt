@@ -9,8 +9,9 @@ import android.text.TextUtils
 import android.util.TypedValue
 import android.view.*
 import android.widget.PopupMenu
+import androidx.recyclerview.widget.DiffUtil
 import com.bumptech.glide.Glide
-import org.fossify.commons.adapters.MyRecyclerViewAdapter
+import org.fossify.commons.adapters.MyRecyclerViewListAdapter
 import org.fossify.commons.dialogs.ConfirmationDialog
 import org.fossify.commons.dialogs.FeatureLockedDialog
 import org.fossify.commons.extensions.*
@@ -32,13 +33,12 @@ import org.joda.time.DateTime
 
 class RecentCallsAdapter(
     activity: SimpleActivity,
-    private var recentCalls: MutableList<CallLogItem>,
     recyclerView: MyRecyclerView,
     private val refreshItemsListener: RefreshItemsListener?,
     private val showOverflowMenu: Boolean,
     private val itemDelete: (List<RecentCall>) -> Unit = {},
     itemClick: (Any) -> Unit,
-) : MyRecyclerViewAdapter(activity, recyclerView, itemClick) {
+) : MyRecyclerViewListAdapter<CallLogItem>(activity, recyclerView, RecentCallsDiffCallback(), itemClick) {
 
     private lateinit var outgoingCallIcon: Drawable
     private lateinit var incomingCallIcon: Drawable
@@ -52,6 +52,8 @@ class RecentCallsAdapter(
     init {
         initDrawables()
         setupDragListener(true)
+        setHasStableIds(true)
+        recyclerView.itemAnimator?.changeDuration = 0
     }
 
     override fun getActionMenuId() = R.menu.cab_recent_calls
@@ -96,20 +98,22 @@ class RecentCallsAdapter(
         }
     }
 
-    override fun getSelectableItemCount() = recentCalls.filterIsInstance<RecentCall>().size
+    override fun getItemId(position: Int) = currentList[position].getItemId().toLong()
 
-    override fun getIsItemSelectable(position: Int) = recentCalls[position] is RecentCall
+    override fun getSelectableItemCount() = currentList.filterIsInstance<RecentCall>().size
 
-    override fun getItemSelectionKey(position: Int) = recentCalls.getOrNull(position)?.getItemId()
+    override fun getIsItemSelectable(position: Int) = currentList[position] is RecentCall
 
-    override fun getItemKeyPosition(key: Int) = recentCalls.indexOfFirst { it.getItemId() == key }
+    override fun getItemSelectionKey(position: Int) = currentList.getOrNull(position)?.getItemId()
+
+    override fun getItemKeyPosition(key: Int) = currentList.indexOfFirst { it.getItemId() == key }
 
     override fun onActionModeCreated() {}
 
     override fun onActionModeDestroyed() {}
 
     override fun getItemViewType(position: Int): Int {
-        return when (recentCalls[position]) {
+        return when (currentList[position]) {
             is CallLogItem.Date -> VIEW_TYPE_DATE
             is RecentCall -> VIEW_TYPE_CALL
         }
@@ -132,7 +136,7 @@ class RecentCallsAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val callRecord = recentCalls[position]
+        val callRecord = currentList[position]
         when (holder) {
             is RecentCallDateViewHolder -> holder.bind(callRecord as CallLogItem.Date)
             is RecentCallViewHolder -> holder.bind(callRecord as RecentCall)
@@ -141,14 +145,20 @@ class RecentCallsAdapter(
         bindViewHolder(holder)
     }
 
-    override fun getItemCount() = recentCalls.size
-
     override fun onViewRecycled(holder: ViewHolder) {
         super.onViewRecycled(holder)
         if (!activity.isDestroyed && !activity.isFinishing) {
             if (holder is RecentCallViewHolder) {
                 Glide.with(activity).clear(holder.binding.itemRecentsImage)
             }
+        }
+    }
+
+    override fun submitList(list: List<CallLogItem>?) {
+        val layoutManager = recyclerView.layoutManager!!
+        val recyclerViewState = layoutManager.onSaveInstanceState()
+        super.submitList(list) {
+            layoutManager.onRestoreInstanceState(recyclerViewState)
         }
     }
 
@@ -198,16 +208,14 @@ class RecentCallsAdapter(
         }
 
         val callsToBlock = getSelectedItems()
-        val positions = getSelectedItemPositions()
-        recentCalls.removeAll(callsToBlock)
-
         ensureBackgroundThread {
             callsToBlock.map { it.phoneNumber }.forEach { number ->
                 activity.addBlockedNumber(number)
             }
 
+            val recentCalls = currentList.toMutableList().also { it.removeAll(callsToBlock) }
             activity.runOnUiThread {
-                removeSelectedItems(positions)
+                submitList(recentCalls)
                 finishActMode()
             }
         }
@@ -255,7 +263,6 @@ class RecentCallsAdapter(
         }
 
         val callsToRemove = getSelectedItems()
-        val positions = getSelectedItemPositions()
         val idsToRemove = ArrayList<Int>()
         callsToRemove.forEach {
             idsToRemove.add(it.id)
@@ -264,14 +271,11 @@ class RecentCallsAdapter(
 
         RecentsHelper(activity).removeRecentCalls(idsToRemove) {
             itemDelete(callsToRemove)
-            recentCalls.removeAll(callsToRemove)
+            val recentCalls = currentList.toMutableList().also { it.removeAll(callsToRemove) }
             activity.runOnUiThread {
                 refreshItemsListener?.refreshItems()
-                if (recentCalls.isEmpty()) {
-                    finishActMode()
-                } else {
-                    removeSelectedItems(positions)
-                }
+                submitList(recentCalls)
+                finishActMode()
             }
         }
     }
@@ -289,19 +293,17 @@ class RecentCallsAdapter(
     @SuppressLint("NotifyDataSetChanged")
     fun updateItems(newItems: List<CallLogItem>, highlightText: String = "") {
         textColor = activity.getProperTextColor()
-        if (newItems.hashCode() != recentCalls.hashCode()) {
-            recentCalls = newItems.toMutableList()
+        if (textToHighlight != highlightText) {
             textToHighlight = highlightText
-            recyclerView.resetItemCount()
+            submitList(newItems)
             notifyDataSetChanged()
             finishActMode()
-        } else if (textToHighlight != highlightText) {
-            textToHighlight = highlightText
-            notifyDataSetChanged()
+        } else {
+            submitList(newItems)
         }
     }
 
-    private fun getSelectedItems() = recentCalls.filterIsInstance<RecentCall>()
+    private fun getSelectedItems() = currentList.filterIsInstance<RecentCall>()
         .filter { selectedKeys.contains(it.getItemId()) }
 
     private fun getSelectedPhoneNumber() = getSelectedItems().firstOrNull()?.phoneNumber
@@ -411,11 +413,13 @@ class RecentCallsAdapter(
 
     private inner class RecentCallViewHolder(val binding: ItemRecentCallBinding) : ViewHolder(binding.root) {
         fun bind(call: RecentCall) = bindView(
-            any = call,
+            item = call,
             allowSingleClick = refreshItemsListener != null && !call.isUnknownNumber,
             allowLongClick = refreshItemsListener != null && !call.isUnknownNumber
         ) { _, _ ->
             binding.apply {
+                root.setupViewBackground(activity)
+
                 val currentFontSize = fontSize
                 itemRecentsHolder.isSelected = selectedKeys.contains(call.id)
                 val name = findContactByCall(call)?.getNameToDisplay() ?: call.name
@@ -519,5 +523,31 @@ class RecentCallsAdapter(
     companion object {
         private const val VIEW_TYPE_DATE = 0
         private const val VIEW_TYPE_CALL = 1
+    }
+}
+
+class RecentCallsDiffCallback : DiffUtil.ItemCallback<CallLogItem>() {
+
+    override fun areItemsTheSame(oldItem: CallLogItem, newItem: CallLogItem) = oldItem.getItemId() == newItem.getItemId()
+
+    override fun areContentsTheSame(oldItem: CallLogItem, newItem: CallLogItem): Boolean {
+        return when {
+            oldItem is CallLogItem.Date && newItem is CallLogItem.Date -> oldItem.timestamp == newItem.timestamp && oldItem.dayCode == newItem.dayCode
+            oldItem is RecentCall && newItem is RecentCall -> {
+                oldItem.phoneNumber == newItem.phoneNumber &&
+                    oldItem.name == newItem.name &&
+                    oldItem.photoUri == newItem.photoUri &&
+                    oldItem.startTS == newItem.startTS &&
+                    oldItem.duration == newItem.duration &&
+                    oldItem.type == newItem.type &&
+                    oldItem.simID == newItem.simID &&
+                    oldItem.specificNumber == newItem.specificNumber &&
+                    oldItem.specificType == newItem.specificType &&
+                    oldItem.isUnknownNumber == newItem.isUnknownNumber &&
+                    oldItem.groupedCalls?.size == newItem.groupedCalls?.size
+            }
+
+            else -> false
+        }
     }
 }
