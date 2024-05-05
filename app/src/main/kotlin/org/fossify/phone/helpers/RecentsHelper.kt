@@ -16,7 +16,7 @@ import org.fossify.phone.models.RecentCall
 class RecentsHelper(private val context: Context) {
     companion object {
         private const val COMPARABLE_PHONE_NUMBER_LENGTH = 9
-        private const val QUERY_LIMIT = 100
+        const val QUERY_LIMIT = 100
     }
 
     private val contentUri = Calls.CONTENT_URI

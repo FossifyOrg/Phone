@@ -2,8 +2,6 @@ package org.fossify.phone.fragments
 
 import android.content.Context
 import android.util.AttributeSet
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import org.fossify.commons.dialogs.CallConfirmationDialog
 import org.fossify.commons.extensions.*
 import org.fossify.commons.helpers.*
@@ -19,7 +17,6 @@ import org.fossify.phone.interfaces.RefreshItemsListener
 import org.fossify.phone.models.CallLogItem
 import org.fossify.phone.models.RecentCall
 
-
 class RecentsFragment(
     context: Context, attributeSet: AttributeSet,
 ) : MyViewPagerFragment<MyViewPagerFragment.RecentsInnerBinding>(context, attributeSet), RefreshItemsListener {
@@ -29,6 +26,7 @@ class RecentsFragment(
     private var recentsAdapter: RecentCallsAdapter? = null
 
     private var searchQuery: String? = null
+    private var recentsHelper = RecentsHelper(context)
 
     override fun onFinishInflate() {
         super.onFinishInflate()
@@ -62,7 +60,11 @@ class RecentsFragment(
         }
     }
 
-    override fun refreshItems(callback: (() -> Unit)?) = refreshCallLog()
+    override fun refreshItems(callback: (() -> Unit)?) {
+        refreshCallLog(loadAll = false) {
+            refreshCallLog(loadAll = true)
+        }
+    }
 
     override fun onSearchClosed() {
         searchQuery = null
@@ -160,43 +162,36 @@ class RecentsFragment(
                     override fun updateTop() = Unit
                     override fun updateBottom() = refreshCallLog()
                 }
-
-                binding.recentsList.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-                    val layoutManager = binding.recentsList.layoutManager as LinearLayoutManager
-                    override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                        if (dx == 0 && dy == 0 && layoutManager.findLastVisibleItemPosition() == layoutManager.getItemCount() - 1) {
-                            refreshCallLog()
-                        }
-                    }
-                })
             } else {
                 recentsAdapter?.updateItems(recents)
             }
         }
     }
 
-    private fun refreshCallLog() {
-        getRecentCalls {
+    private fun refreshCallLog(loadAll: Boolean = false, callback: (() -> Unit)? = null) {
+        getRecentCalls(loadAll) {
             allRecentCalls = it
             if (searchQuery.isNullOrEmpty()) {
                 activity?.runOnUiThread { gotRecents(it) }
             } else {
                 updateSearchResult()
             }
+
+            callback?.invoke()
         }
     }
 
-    private fun getRecentCalls(callback: (List<CallLogItem>) -> Unit) {
-        val context = context ?: return
+    private fun getRecentCalls(loadAll: Boolean, callback: (List<CallLogItem>) -> Unit) {
+        val queryCount = if (loadAll) Int.MAX_VALUE else RecentsHelper.QUERY_LIMIT
         val existingRecentCalls = allRecentCalls.filterIsInstance<RecentCall>()
 
-        with(RecentsHelper(context)) {
+        with(recentsHelper) {
             if (context.config.groupSubsequentCalls) {
-                getGroupedRecentCalls(existingRecentCalls) {
+                getGroupedRecentCalls(existingRecentCalls, queryCount) {
                     prepareCallLog(it, callback)
                 }
             } else {
-                getRecentCalls(existingRecentCalls) {
+                getRecentCalls(existingRecentCalls, queryCount) {
                     prepareCallLog(it, callback)
                 }
             }
