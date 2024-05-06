@@ -55,8 +55,8 @@ class RecentsFragment(
         binding.recentsPlaceholder2.setTextColor(properPrimaryColor)
 
         recentsAdapter?.apply {
-            initDrawables()
             updateTextColor(textColor)
+            initDrawables()
         }
     }
 

@@ -45,7 +45,8 @@ class RecentCallsAdapter(
     private lateinit var incomingMissedCallIcon: Drawable
     var fontSize: Float = activity.getTextSize()
     private val areMultipleSIMsAvailable = activity.areMultipleSIMsAvailable()
-    private val redColor = resources.getColor(R.color.md_red_700)
+    private var missedCallColor = resources.getColor(R.color.color_missed_call)
+    private var secondaryTextColor = textColor.adjustAlpha(0.6f)
     private var textToHighlight = ""
     private var durationPadding = resources.getDimension(R.dimen.normal_margin).toInt()
 
@@ -163,9 +164,15 @@ class RecentCallsAdapter(
     }
 
     fun initDrawables() {
-        outgoingCallIcon = resources.getColoredDrawableWithColor(R.drawable.ic_outgoing_call_vector, activity.getProperTextColor())
-        incomingCallIcon = resources.getColoredDrawableWithColor(R.drawable.ic_incoming_call_vector, activity.getProperTextColor())
-        incomingMissedCallIcon = resources.getColoredDrawableWithColor(R.drawable.ic_incoming_call_vector, redColor)
+        val theme = activity.theme
+        missedCallColor = resources.getColor(R.color.color_missed_call, theme)
+        secondaryTextColor = textColor.adjustAlpha(0.6f)
+
+        val outgoingCallColor = resources.getColor(R.color.color_outgoing_call, theme)
+        val incomingCallColor = resources.getColor(R.color.color_incoming_call, theme)
+        outgoingCallIcon = resources.getColoredDrawableWithColor(R.drawable.ic_call_made_vector, outgoingCallColor)
+        incomingCallIcon = resources.getColoredDrawableWithColor(R.drawable.ic_call_received_vector, incomingCallColor)
+        incomingMissedCallIcon = resources.getColoredDrawableWithColor(R.drawable.ic_call_missed_vector, missedCallColor)
     }
 
     private fun callContact(useSimOne: Boolean) {
@@ -292,7 +299,6 @@ class RecentCallsAdapter(
 
     @SuppressLint("NotifyDataSetChanged")
     fun updateItems(newItems: List<CallLogItem>, highlightText: String = "") {
-        textColor = activity.getProperTextColor()
         if (textToHighlight != highlightText) {
             textToHighlight = highlightText
             submitList(newItems)
@@ -459,7 +465,7 @@ class RecentCallsAdapter(
                         call.startTS.formatTime(activity)
                     }
 
-                    setTextColor(if (call.type == Calls.MISSED_TYPE) redColor else textColor)
+                    setTextColor(if (call.type == Calls.MISSED_TYPE) missedCallColor else secondaryTextColor)
                     setTextSize(TypedValue.COMPLEX_UNIT_PX, currentFontSize * 0.8f)
                 }
 
@@ -507,7 +513,7 @@ class RecentCallsAdapter(
     private inner class RecentCallDateViewHolder(val binding: ItemRecentsDateBinding) : ViewHolder(binding.root) {
         fun bind(date: CallLogItem.Date) {
             binding.dateTextView.apply {
-                setTextColor(textColor.adjustAlpha(0.6f))
+                setTextColor(secondaryTextColor)
                 setTextSize(TypedValue.COMPLEX_UNIT_PX, fontSize * 0.76f)
 
                 val now = DateTime.now()
