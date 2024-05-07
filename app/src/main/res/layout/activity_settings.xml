@@ -184,6 +184,21 @@
 
             </RelativeLayout>
 
+            <RelativeLayout
+                android:id="@+id/settings_format_phone_numbers_holder"
+                style="@style/SettingsHolderCheckboxStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <org.fossify.commons.views.MyAppCompatCheckbox
+                    android:id="@+id/settings_format_phone_numbers"
+                    style="@style/SettingsCheckboxStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/format_phone_numbers" />
+
+            </RelativeLayout>
+
             <include
                 android:id="@+id/settings_general_settings_divider"
                 layout="@layout/divider" />

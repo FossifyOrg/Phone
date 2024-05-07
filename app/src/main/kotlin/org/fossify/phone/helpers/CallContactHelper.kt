@@ -10,6 +10,7 @@ import org.fossify.commons.helpers.ContactsHelper
 import org.fossify.commons.helpers.MyContactsContentProvider
 import org.fossify.commons.helpers.ensureBackgroundThread
 import org.fossify.phone.R
+import org.fossify.phone.extensions.config
 import org.fossify.phone.extensions.isConference
 import org.fossify.phone.models.CallContact
 
@@ -51,7 +52,12 @@ fun getCallContact(context: Context, call: Call?, callback: (CallContact) -> Uni
                     }
                 }
 
-                callContact.number = number.formatPhoneNumber()
+                callContact.number = if (context.config.formatPhoneNumbers) {
+                    number.formatPhoneNumber()
+                } else {
+                    number
+                }
+
                 val contact = contacts.firstOrNull { it.doesHavePhoneNumber(number) }
                 if (contact != null) {
                     callContact.name = contact.getNameToDisplay()

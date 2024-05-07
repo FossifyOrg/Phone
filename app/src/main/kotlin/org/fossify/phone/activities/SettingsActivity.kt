@@ -77,6 +77,7 @@ class SettingsActivity : SimpleActivity() {
         setupDialPadOpen()
         setupGroupSubsequentCalls()
         setupStartNameWithSurname()
+        setupFormatPhoneNumbers()
         setupDialpadVibrations()
         setupDialpadNumbers()
         setupDialpadBeeps()
@@ -250,6 +251,14 @@ class SettingsActivity : SimpleActivity() {
                 settingsStartNameWithSurname.toggle()
                 config.startNameWithSurname = settingsStartNameWithSurname.isChecked
             }
+        }
+    }
+
+    private fun setupFormatPhoneNumbers() {
+        binding.settingsFormatPhoneNumbers.isChecked = config.formatPhoneNumbers
+        binding.settingsFormatPhoneNumbersHolder.setOnClickListener {
+            binding.settingsFormatPhoneNumbers.toggle()
+            config.formatPhoneNumbers = binding.settingsFormatPhoneNumbers.isChecked
         }
     }
 

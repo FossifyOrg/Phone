@@ -429,7 +429,8 @@ class RecentCallsAdapter(
                 val currentFontSize = fontSize
                 itemRecentsHolder.isSelected = selectedKeys.contains(call.id)
                 val name = findContactByCall(call)?.getNameToDisplay() ?: call.name
-                var nameToShow = if (name == call.phoneNumber) {
+                val formatPhoneNumbers = activity.config.formatPhoneNumbers
+                var nameToShow = if (name == call.phoneNumber && formatPhoneNumbers) {
                     SpannableString(name.formatPhoneNumber())
                 } else {
                     SpannableString(name)
@@ -440,7 +441,11 @@ class RecentCallsAdapter(
 
                     // show specific number at "Show call details" dialog too
                     if (refreshItemsListener == null) {
-                        nameToShow = SpannableString("$name - ${call.specificType}, ${call.specificNumber.formatPhoneNumber()}")
+                        nameToShow = if (formatPhoneNumbers) {
+                            SpannableString("$name - ${call.specificType}, ${call.specificNumber.formatPhoneNumber()}")
+                        } else {
+                            SpannableString("$name - ${call.specificType}, ${call.specificNumber}")
+                        }
                     }
                 }
 
