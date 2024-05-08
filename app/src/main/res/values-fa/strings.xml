@@ -11,10 +11,10 @@
     <string name="show_grouped_calls">نمایش تماس‌های گروه‌بندی شده</string>
     <string name="clear_call_history">پاک کردن تاریخچه تماس</string>
     <string name="show_call_details">نمایش جزئیات تماس</string>
-    <string name="dialpad">شماره گیر</string>
+    <string name="dialpad">شماره‌گیر</string>
     <string name="asterisk">ستاره</string>
     <string name="hashtag">مربع</string>
-    <string name="call_number">شماره تماس</string>
+    <string name="call_number">تماس با شماره</string>
     <string name="dialpad_beeps">فعال کردن صدا هنگام لمس دکمه‌های شماره‌گیر</string>
     <string name="dialpad_vibrations">فعال کردن لرزش هنگام لمس دکمه‌های شماره‌گیر</string>
     <string name="dialer">تلفن</string>
