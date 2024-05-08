@@ -1,6 +1,25 @@
 Changelog
 ==========
 
+Version 1.2.0 *(2024-05-08)*
+----------------------------
+
+- Fixed an issue where call history wasn't refreshing (https://github.com/FossifyOrg/Phone/issues/146).
+- Fixed a problem where search items would disappear (https://github.com/FossifyOrg/Phone/issues/98).
+- Fixed UI freeze that happened when loading call history.
+- Fixed a bug that caused search not to find older call logs (https://github.com/FossifyOrg/Phone/issues/97).
+- Fixed a crash that occurred when using the dialpad quick callback feature.
+- Missed call notifications are now automatically dismissed when you view your call history (https://github.com/FossifyOrg/Phone/issues/88).
+- Moved some actions back into the popup menu to reduce visual clutter (https://github.com/FossifyOrg/General-Discussion/issues/67).
+- Updated menu design for better UI/UX.
+- Disabled call action buttons after a call ends for better UI/UX (https://github.com/FossifyOrg/Phone/issues/181).
+- Grouped call history entries by date (https://github.com/FossifyOrg/Phone/issues/96).
+- Added an option to format phone numbers in the call log (https://github.com/FossifyOrg/Contacts/issues/15).
+- Always show the date in the call details dialog (https://github.com/FossifyOrg/Phone/issues/133).
+- Updated call direction icons and colors in the call history for better clarity (https://github.com/FossifyOrg/Phone/issues/81).
+- Restructured the in-call UI to be more responsive to different screen sizes (https://github.com/FossifyOrg/Phone/issues/147).
+- Added some translations.
+
 Version 1.1.1 *(2024-03-21)*
 ----------------------------
 
