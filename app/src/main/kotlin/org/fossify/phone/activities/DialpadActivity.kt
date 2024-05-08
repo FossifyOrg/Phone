@@ -355,7 +355,9 @@ class DialpadActivity : SimpleActivity() {
             RecentsHelper(this).getRecentCalls(queryLimit = 1) {
                 val mostRecentNumber = it.firstOrNull()?.phoneNumber
                 if (!mostRecentNumber.isNullOrEmpty()) {
-                    binding.dialpadInput.setText(mostRecentNumber)
+                    runOnUiThread {
+                        binding.dialpadInput.setText(mostRecentNumber)
+                    }
                 }
             }
         }
