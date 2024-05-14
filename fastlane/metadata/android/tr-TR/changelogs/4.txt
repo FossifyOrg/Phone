@@ -1,0 +1,15 @@
+- Arama geçmişinin yenilenmemesine neden olan bir sorun düzeltildi.
+- Arama öğelerinin kaybolmasına neden olan bir sorun düzeltildi.
+- Arama geçmişi yüklenirken meydana gelen kullanıcı arayüzü donması düzeltildi.
+- Aramanın eski arama kayıtlarını bulamamasına neden olan bir hata düzeltildi.
+- Dialpad hızlı geri arama özelliği kullanılırken meydana gelen bir çökme düzeltildi.
+- Arama geçmişinizi görüntülediğinizde cevapsız arama bildirimleri artık otomatik olarak reddediliyor.
+- Görsel karmaşayı azaltmak için bazı eylemler açılır menüye geri taşındı.
+- Daha iyi UI/UX için menü tasarımı güncellendi.
+- Daha iyi UI/UX için bir arama bittikten sonra arama eylem düğmeleri devre dışı bırakıldı.
+- Arama geçmişi girişleri tarihe göre gruplandırıldı.
+- Arama kaydındaki telefon numaralarını biçimlendirme seçeneği eklendi.
+- Arama ayrıntıları iletişim kutusunda her zaman tarihi gösterin.
+- Daha iyi anlaşılırlık için arama geçmişindeki arama yönü simgeleri ve renkleri güncellendi.
+- Farklı ekran boyutlarına daha duyarlı olması için çağrı içi kullanıcı arayüzü yeniden yapılandırıldı.
+- Bazı çeviriler eklendi.
