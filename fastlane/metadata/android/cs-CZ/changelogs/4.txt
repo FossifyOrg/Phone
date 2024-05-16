@@ -1,0 +1,7 @@
+- Byl opraven problém, kdy se neobnovovala historie hovorů.
+- Opraven problém, při kterém mizely položky vyhledávání.
+- Opraveno zamrznutí uživatelského rozhraní, ke kterému docházelo při načítání historie hovorů.
+- Opravena chyba, která způsobovala, že vyhledávání nenašlo starší záznamy hovorů.
+- Opraven pád, ke kterému docházelo při použití funkce rychlého zpětného volání na číselníku.
+- Oznámení o zmeškaných hovorech se nyní při zobrazení historie hovorů automaticky zruší.
+a další...
