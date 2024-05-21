@@ -57,7 +57,7 @@
     <string name="manage_speed_dial">Управління швидким викликом</string>
     <string name="speed_dial_label">Натисніть на номер, щоб призначити йому контакт. Потім ви зможете швидко зателефонувати вказаному контакту, довго натискаючи вказаний номер на цифровій панелі.</string>
     <string name="group_subsequent_calls">Групувати наступні дзвінки з тим самим номером у журналі викликів</string>
-    <string name="open_dialpad_by_default">За замовчуванням відкривати цифрову панель при запуску застосунку</string>
+    <string name="open_dialpad_by_default">Типово відкривати цифрову панель при запуску застосунку</string>
     <string name="disable_proximity_sensor">Вимикати датник наближення під час викликів</string>
     <string name="disable_swipe_to_answer">Замінити перетягування на натискання під час відповіді на вхідні виклики</string>
     <string name="show_incoming_calls_full_screen">Завжди відображати вхідні дзвінки на весь екран</string>
