@@ -1,9 +1,9 @@
 – Nicht aktualisierende Anrufliste behoben.
-– Verschwindende Suchbegriffe behoben.
-– Einfrieren des UIs beim Laden der Anrufliste behoben.
-– Nicht gefundene ältere Einträge in der Anrufliste behoben.
-– Absturz beim Verwenden des Wähltastenfeld-Rückrufs behoben.
-– Benachrichtigungen über verpasste Anrufe beim Ansehen der Anrufliste werden nun automatisch verworfen.
-– Einige Aktionen in das Popup-Menü verschoben, wegen besserer Übersicht.
+– Durch Suche nicht gefundene ältere Anruflisten behoben.
 – Aktualisiertes Menüdesign für bessere UI/UX.
-…
+– Deaktivieren der Aktionsschaltflächen nach Anrufende.
+– Einträge in Anrufliste nach Datum gruppiert.
+– Formatierungsoption für Telefonnummern in der Anrufliste.
+– Aktualisierte Symbole und Farben in der Anrufliste.
+– UI während eines Anrufs neu geordnet, um besser auf unterschiedliche Bildschirmgrößen zu passen.
+– Einige Übersetzungen hinzugefügt.
