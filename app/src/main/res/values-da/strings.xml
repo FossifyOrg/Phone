@@ -8,10 +8,10 @@
 <string name="could_not_access_contacts">Kunne ikke få adgang til dine kontakter</string>
 
 <!-- Recents -->
-<string name="no_previous_calls">Der blev ikke fundet nogle tidligere opkald</string>
+<string name="no_previous_calls">Der blev ikke fundet nogen tidligere opkald</string>
 <string name="could_not_access_the_call_history">Kunne ikke få adgang til opkaldshistorikken</string>
 <string name="request_access">Anmod om adgang</string>
-<string name="remove_confirmation">Er du sikker på du vil fjerne de valgte emner fra opkaldshistorikken?</string>
+<string name="remove_confirmation">Er du sikker på du vil fjerne de valgte opkald fra opkaldshistorikken?</string>
 <string name="clear_history_confirmation">Er du sikker på at du vil fjerne alt i opkaldshistorikken?</string>
 <string name="show_grouped_calls">Vis grupperede opkald</string>
 <string name="clear_call_history">Ryd opkaldshistorik</string>
