@@ -1,15 +1,9 @@
-- Se ha corregido un problema por el que el historial de llamadas no se actualizaba.
-- Se ha corregido un problema por el que desaparecían los elementos de búsqueda.
-- Se ha corregido el bloqueo de la interfaz de usuario al cargar el historial de llamadas.
-- Se ha corregido un error por el que la búsqueda no encontraba registros de llamadas antiguos.
-- Se ha corregido un bloqueo que se producía al utilizar la función de rellamada rápida del teclado de marcación.
-- Las notificaciones de llamadas perdidas ahora se descartan automáticamente al ver el historial de llamadas.
-- Se han reubicado algunas acciones en el menú emergente para reducir el desorden visual.
-- Se ha actualizado el diseño del menú para mejorar la interfaz de usuario.
-- Desactivación de los botones de acción de llamada una vez finalizada la llamada para mejorar la interfaz de usuario.
-- Agrupación de las entradas del historial de llamadas por fecha.
-- Añadida una opción para dar formato a los números de teléfono en el registro de llamadas.
-- Mostrar siempre la fecha en el diálogo de detalles de llamada.
-- Se han actualizado los iconos y colores de la dirección de la llamada en el historial de llamadas para mayor claridad.
-- Reestructuración de la interfaz de llamada para adaptarla mejor a los distintos tamaños de pantalla.
-- Se han añadido algunas traducciones.
+– Se corrigió el historial de llamadas que no se actualizaba.
+– Se corrigieron listas de llamadas antiguas que no se encontraban mediante la búsqueda.
+– Diseño de menú actualizado para una mejor UI/UX.
+– Deshabilite los botones de acción después de que finalice la llamada.
+– Entradas en lista de llamadas agrupadas por fecha.
+– Opción de formato para números de teléfono en el historial de llamadas.
+– Iconos y colores actualizados en el historial de llamadas.
+– Interfaz de usuario reordenada durante las llamadas para adaptarse mejor a diferentes tamaños de pantalla.
+– Se agregaron algunas traducciones.
