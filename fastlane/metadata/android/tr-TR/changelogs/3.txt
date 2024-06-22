@@ -1,0 +1,9 @@
+* Arama geçmişi sınırı kaldırıldı.
+* Hızlı geri arama özelliği eklendi.
+* Kapatma düğmesi artık çağrı kullanıcı arayüzünde her zaman görünür.
+* Çağrı arayüzündeki arayan avatarının ve düğmelerin boyutu geliştirildi.
+* Çevirmeli tuş takımı tercihleri kendi özel bölümlerinde yeniden düzenlendi.
+* Bilinmeyen numaralar ve fotoğrafsız kişiler için yer tutucu avatar eklendi.
+* Arama geçmişinin alındığını göstermek için bir ilerleme göstergesi eklendi.
+* Yüzen eylem düğmesinin üzerinde kaydırmaya izin vermek için listelere alt dolgu eklendi.
+* Bazı çeviriler eklendi.

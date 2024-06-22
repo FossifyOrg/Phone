@@ -1,0 +1,9 @@
+- Corregido fallo en el historial de llamadas no se actualizaba.
+- Corregido fallo, no había registros de llamadas antiguos.
+- Menú actualizado para una mejor UI/UX.
+- Botones de llamada deshabilitados después de acabar una llamada para una mejor UI/UX.
+- Historial de llamadas agrupadas por fecha.
+- Borrar teléfonos en el registro de llamadas.
+- Iconos y colores de llamadas actualizados.
+- Se cambió la interfaz de usuario en las llamadas,en diferentes tamaños de pantalla.
+- Nuevas traducciones

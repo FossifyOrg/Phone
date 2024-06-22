@@ -1,0 +1,9 @@
+– Nicht aktualisierende Anrufliste behoben.
+– Durch Suche nicht gefundene ältere Anruflisten behoben.
+– Aktualisiertes Menüdesign für bessere UI/UX.
+– Deaktivieren der Aktionsschaltflächen nach Anrufende.
+– Einträge in Anrufliste nach Datum gruppiert.
+– Formatierungsoption für Telefonnummern in der Anrufliste.
+– Aktualisierte Symbole und Farben in der Anrufliste.
+– UI während eines Anrufs neu geordnet, um besser auf unterschiedliche Bildschirmgrößen zu passen.
+– Einige Übersetzungen hinzugefügt.
