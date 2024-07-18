@@ -1,0 +1,9 @@
+- Opraven problém, kdy se neobnovovala historie hovorů.
+- Opravena chyba, že vyhledávání nenašlo starší záznamy hovorů.
+- Upraven design nabídky pro lepší UI/UX.
+- Zakázána tlačítka akcí po ukončení hovoru pro lepší UI/UX.
+- Seskupení záznamů historie hovorů podle data.
+- Možnost formátování telefonních čísel v protokolu hovorů.
+- Aktualizovány ikony a barvy směru hovoru v historii hovorů.
+- Přestavěno UI během hovoru, aby lépe reagovalo na různé velikosti obrazovky.
+- Přidány některé překlady.

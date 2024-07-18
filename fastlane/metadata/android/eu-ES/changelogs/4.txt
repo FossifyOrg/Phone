@@ -1,0 +1,9 @@
+- Deien historia freskatzen ez zen arazo bat konpondu da.
+- Bilaketak dei-erregistro zaharragoak ez aurkitzea eragiten zuen akats bat konpondu du.
+- Menuaren diseinu eguneratua UI/UX hobea izateko.
+- Deiak egiteko botoiak desgaitu dira deia amaitu ondoren UI/UX hobea izateko.
+- Deien historiako sarrerak dataren arabera taldekatuta.
+- Telefono-zenbakiak deien erregistroan formateatzeko aukera bat gehitu da.
+- Deien norabidearen ikonoak eta koloreak eguneratuak deien historian.
+- Deian barneko interfazea berregituratu du pantaila-tamaina desberdinetara.
+- Itzulpen batzuk gehitu ditu.
