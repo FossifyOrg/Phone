@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.pm.ShortcutInfo
 import android.graphics.drawable.Icon
 import android.net.Uri
+import android.telephony.PhoneNumberUtils
 import android.text.TextUtils
 import android.util.TypedValue
 import android.view.*
@@ -368,7 +369,7 @@ class ContactsAdapter(
                     if (name.contains(textToHighlight, true)) {
                         name.highlightTextPart(textToHighlight, properPrimaryColor)
                     } else {
-                        name.highlightTextFromNumbers(textToHighlight, properPrimaryColor)
+                        name.highlightTextFromNumbers(textToHighlight.replace('1', ' '), properPrimaryColor)
                     }
                 }
             }
