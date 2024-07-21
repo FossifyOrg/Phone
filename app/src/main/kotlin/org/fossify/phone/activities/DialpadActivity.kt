@@ -313,6 +313,9 @@ class DialpadActivity : SimpleActivity() {
             } else {
                 startCallIntent(contact.getPrimaryNumber() ?: return@ContactsAdapter)
             }
+            Handler().postDelayed({
+                binding.dialpadInput.setText("")
+            }, 1000)
         }.apply {
             binding.dialpadList.adapter = this
         }

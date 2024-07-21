@@ -1,0 +1,9 @@
+* Deien historiaren muga kendu da (https://github.com/FossifyOrg/Phone/issues/125).
+* Markatze bizkorreko funtzioa gehitu da (https://github.com/FossifyOrg/Phone/issues/60).
+* Eskegitzeko botoia orain beti dago ikusgai deien IU-n (https://github.com/FossifyOrg/Phone/issues/9).
+* Deiaren avatar eta botoien tamaina hobetu da (https://github.com/FossifyOrg/Phone/issues/118).
+* Markagailuaren hobespenak bere atal propioan berrantolatu dira (https://github.com/FossifyOrg/Phone/issues/116).
+* Leku-markaren avatarra gehitu da argazkirik gabeko zenbaki eta kontaktu ezezagunetarako.
+* Aurrerapen adierazle bat gehitu da deien historia berreskuratzea adierazteko.
+* Zerrendetan beheko betegarria gehitu da ekintza mugikorren botoiaren gainetik mugitzeko.
+* Itzulpen batzuk gehitu dira.

@@ -1,0 +1,9 @@
+* Deien historiaren muga kendu da.
+* Markatze bizkorreko funtzioa gehitu da.
+* Eskegitzeko botoia orain beti dago ikusgai deien UI-n.
+* Dei-egilearen avatar eta botoien tamaina hobetu da deiaren interfazean.
+* Markatze-teklatuaren hobespenak bere sekzio propioan berrantolatu dira.
+* Leku-markaren avatarra gehitu da argazkirik gabeko zenbaki eta kontaktu ezezagunetarako.
+* Aurrerapen adierazle bat gehitu da deien historia berreskuratzea adierazteko.
+* Zerrendetan beheko betegarria gehitu da ekintza mugikorren botoiaren gainetik mugitzeko.
+* Itzulpen batzuk gehitu dira.
