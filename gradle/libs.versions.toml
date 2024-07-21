@@ -5,7 +5,7 @@ kotlinxSerializationJson = "1.5.1"
 #Eventbus
 eventbus = "3.3.1"
 #Fossify
-commons = "f056aa71e7"
+commons = "b53047c2dd"
 #Gradle
 gradlePlugins-agp = "8.3.2"
 #Other
