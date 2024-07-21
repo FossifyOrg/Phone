@@ -592,10 +592,12 @@ class CallActivity : SimpleActivity() {
                     applyColorFilter(bgColor.getContrastColor())
                     background.applyColorFilter(bgColor)
                 } else {
-                    Glide.with(this)
-                        .load(avatarUri)
-                        .apply(RequestOptions.circleCropTransform())
-                        .into(this)
+                    if (!isFinishing && !isDestroyed) {
+                        Glide.with(this)
+                            .load(avatarUri)
+                            .apply(RequestOptions.circleCropTransform())
+                            .into(this)
+                    }
                 }
             }
         }
