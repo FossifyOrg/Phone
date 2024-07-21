@@ -426,10 +426,9 @@ class MainActivity : SimpleActivity() {
                 updateBottomTabItemColors(it.customView, false, getDeselectedTabDrawableIds()[it.position])
             },
             tabSelectedAction = {
-                binding.mainMenu.closeSearch()
+                getCurrentFragment()?.onSearchQueryChanged(binding.mainMenu.getCurrentQuery())
                 binding.viewPager.currentItem = it.position
                 updateBottomTabItemColors(it.customView, true, getSelectedTabDrawableIds()[it.position])
-
                 val lastPosition = binding.mainTabsHolder.tabCount - 1
                 if (it.position == lastPosition && config.showTabs and TAB_CALL_HISTORY > 0) {
                     clearMissedCalls()
