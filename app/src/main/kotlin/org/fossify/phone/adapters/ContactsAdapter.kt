@@ -369,7 +369,19 @@ class ContactsAdapter(
                     if (name.contains(textToHighlight, true)) {
                         name.highlightTextPart(textToHighlight, properPrimaryColor)
                     } else {
-                        name.highlightTextFromNumbers(textToHighlight.replace('1', ' '), properPrimaryColor)
+                        var spacedTextToHighlight = textToHighlight
+                        val strippedName = PhoneNumberUtils.convertKeypadLettersToDigits(name.filterNot { it.isWhitespace() })
+                        val startIndex = strippedName.indexOf(textToHighlight)
+
+                        if ( strippedName.contains(textToHighlight)) {
+                            for (i in 0..spacedTextToHighlight.length) {
+                                if (name[startIndex+i].isWhitespace()) {
+                                    spacedTextToHighlight = spacedTextToHighlight.replaceRange(i, i, " ")
+                                }
+                            }
+                        }
+
+                        name.highlightTextFromNumbers(spacedTextToHighlight, properPrimaryColor)
                     }
                 }
             }
