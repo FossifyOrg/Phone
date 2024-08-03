@@ -38,6 +38,7 @@
     <string name="speed_dial">Hurtigvalg</string>
     <string name="manage_speed_dial">Administrer hurtigvalg</string>
     <string name="speed_dial_label">Klikk på et nummer for å tilordne en kontakt til det. Du kan deretter raskt ringe den oppgitte kontakten ved å trykke lenge på det gitte nummeret på oppringeren.</string>
+    <string name="show_contact_thumbnails">Vis kontaktminiatyrbilder</string>
     <string name="group_subsequent_calls">Grupper påfølgende anrop med samme nummer i anropsloggen</string>
     <string name="open_dialpad_by_default">Åpne talltastaturet som standard når appen åpnes</string>
     <string name="disable_proximity_sensor">Deaktiver nærhetssensor under samtaler</string>

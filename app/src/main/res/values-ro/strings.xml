@@ -49,6 +49,7 @@
     <string name="speed_dial">Apelare rapidă</string>
     <string name="manage_speed_dial">Gestionați apelarea rapidă</string>
     <string name="speed_dial_label">Apăsaţi pe un număr pentru a-i atribui un contact. Apoi, puteți apela rapid contactul dat prin apăsarea lungă a numărului dat în dialer.</string>
+    <string name="show_contact_thumbnails">Afișați miniaturi de contact</string>
     <string name="group_subsequent_calls">Grupaţi apelurile ulterioare cu același număr în jurnalul de apeluri</string>
     <string name="open_dialpad_by_default">Deschideți în mod implicit tastatura telefonică la deschiderea aplicației</string>
     <string name="disable_proximity_sensor">Dezactivați senzorul de proximitate în timpul apelurilor</string>

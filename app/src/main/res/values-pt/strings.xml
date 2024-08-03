@@ -57,6 +57,7 @@
     <string name="speed_dial">Ligação rápida</string>
     <string name="manage_speed_dial">Gerir ligações rápidas</string>
     <string name="speed_dial_label">Clique num número para o atribuir a um contacto. Poderá assim, ligar diretamente ao contacto ao premir longamente a tecla de ligação rápida.</string>
+    <string name="show_contact_thumbnails">Mostrar miniatura do contacto</string>
     <string name="group_subsequent_calls">Agrupar, no registo, as chamadas para o mesmo contacto</string>
     <string name="open_dialpad_by_default">Mostrar marcador ao abrir a aplicação</string>
     <string name="disable_proximity_sensor">Desativar sensor de proximidade durante as chamadas</string>

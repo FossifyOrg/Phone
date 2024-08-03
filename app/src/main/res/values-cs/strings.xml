@@ -57,6 +57,7 @@
     <string name="speed_dial">Rychlé vytáčení</string>
     <string name="manage_speed_dial">Spravovat rychlá vytáčení</string>
     <string name="speed_dial_label">Kliknutím na číslo mu přiřadíte kontakt. Potom můžete rychle zavolat danému kontaktu dlouhým stisknutím daného čísla na číselníku.</string>
+    <string name="show_contact_thumbnails">Zobrazit obrázky kontaktů</string>
     <string name="group_subsequent_calls">Seskupit v protokolu hovorů další hovory se stejným číslem</string>
     <string name="open_dialpad_by_default">Otevřít číselník vždy po spuštění aplikace</string>
     <string name="disable_proximity_sensor">Vypnout senzor přiblížení během hovoru</string>

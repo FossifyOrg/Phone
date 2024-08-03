@@ -57,6 +57,7 @@
     <string name="speed_dial">Быстрый вызов</string>
     <string name="manage_speed_dial">Управление быстрым вызовом</string>
     <string name="speed_dial_label">Нажмите на цифру, чтобы назначить ей контакт. Затем вы сможете быстро вызвать данный контакт длительным нажатием на выбранную цифру в номеронабирателе.</string>
+    <string name="show_contact_thumbnails">Показывать фото контакта</string>
     <string name="group_subsequent_calls">Группировать последующие вызовы с тем же номером в журнале вызовов</string>
     <string name="open_dialpad_by_default">По умолчанию открывать номеронабиратель при запуске приложения</string>
     <string name="disable_proximity_sensor">Отключать датчик приближения во время вызовов</string>

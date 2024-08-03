@@ -51,6 +51,7 @@
     <string name="calling_blocked_number">Deitzen ari zaren zenbakia blokeatuta dago</string>
     <string name="manage_speed_dial">Kudeatu markatze bizkorra</string>
     <string name="speed_dial">Markatze bizkorra</string>
+    <string name="show_contact_thumbnails">Kontaktuen miniaturak erakutsi</string>
     <string name="group_subsequent_calls">Taldekatu ondorengo deiak zenbaki berarekin deien erregistroan</string>
     <string name="open_dialpad_by_default">Ireki markagailua lehenespenez aplikazioa irekitzen denean</string>
     <string name="disable_proximity_sensor">Desgaitu hurbiltasun-sentsorea deietan zehar</string>

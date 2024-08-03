@@ -57,6 +57,7 @@
     <string name="speed_dial">Бързо набиране</string>
     <string name="manage_speed_dial">Управление на бързото набиране</string>
     <string name="speed_dial_label">Докоснете цифра, за да изберете контакт към нея. След това можете бързо да наберете така избрания контакт, чрез задържане върху цифрата в панела за набиране.</string>
+    <string name="show_contact_thumbnails">Показване на миниатюра на контакта</string>
     <string name="group_subsequent_calls">Групиране на последователните обаждания от един номер в дневника на обажданията</string>
     <string name="open_dialpad_by_default">При стартиране се отваря панела за набиране</string>
     <string name="disable_proximity_sensor">Изключване на сензора за близост по време на обаждания</string>

@@ -57,7 +57,8 @@
     <string name="speed_dial">Kurzwahl</string>
     <string name="manage_speed_dial">Kurzwahlnummern verwalten</string>
     <string name="speed_dial_label">Auf eine Zahl klicken, um einen Kontakt zuzuweisen. Danach kann der Kontakt durch langes Drücken der entsprechenden Zahl schnell angerufen werden.</string>
-    <string name="group_subsequent_calls">In der Anrufliste aufeinanderfolgende Anrufe mit derselben Nummer gruppieren</string>
+    <string name="show_contact_thumbnails">Vorschaubilder der Kontakte zeigen</string>
+    <string name="group_subsequent_calls">Aufeinanderfolgende Anrufe mit derselben Nummer gruppieren</string>
     <string name="open_dialpad_by_default">Beim Öffnen der App immer das Wähltastenfeld öffnen</string>
     <string name="disable_proximity_sensor">Näherungssensor bei Anrufen deaktivieren</string>
     <string name="disable_swipe_to_answer">Anrufe durch Klicken statt durch Streichen annehmen</string>

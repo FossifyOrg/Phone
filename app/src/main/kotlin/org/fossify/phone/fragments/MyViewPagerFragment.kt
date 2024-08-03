@@ -44,6 +44,20 @@ abstract class MyViewPagerFragment<BINDING : MyViewPagerFragment.InnerBinding>(c
         }
     }
 
+    fun showContactThumbnailsChanged(showContactThumbnails: Boolean) {
+        config.showContactThumbnails = showContactThumbnails
+
+        if (this is RecentsFragment) {
+            (innerBinding.recentsList.adapter as? RecentCallsAdapter)?.apply {
+                (this@MyViewPagerFragment.activity!! as MainActivity).refreshFragments()
+            }
+        } else {
+            (innerBinding.fragmentList?.adapter as? ContactsAdapter)?.apply {
+                (this@MyViewPagerFragment.activity!! as MainActivity).refreshFragments()
+            }
+        }
+    }
+
     fun finishActMode() {
         (innerBinding.fragmentList?.adapter as? MyRecyclerViewAdapter)?.finishActMode()
         (innerBinding.recentsList?.adapter as? MyRecyclerViewAdapter)?.finishActMode()

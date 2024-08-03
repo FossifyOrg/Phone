@@ -58,6 +58,7 @@
     <string name="speed_dial">快速拨号</string>
     <string name="manage_speed_dial">管理快速拨号</string>
     <string name="speed_dial_label">点击一个数字来分配一个联系人。之后您可以在拨号盘长按指定的号码来快速呼叫指定的联系人。</string>
+    <string name="show_contact_thumbnails">显示联系人缩图</string>
     <string name="group_subsequent_calls">在通话记录中将同一号码的后续呼叫合并为一组</string>
     <string name="open_dialpad_by_default">应用程序打开时默认打开拨号盘</string>
     <string name="disable_proximity_sensor">在通话期间禁用接近传感器</string>

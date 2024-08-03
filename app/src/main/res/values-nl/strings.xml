@@ -57,6 +57,7 @@
     <string name="speed_dial">Snelkiesnummer</string>
     <string name="manage_speed_dial">Snelkiezen beheren</string>
     <string name="speed_dial_label">Klik op een cijfer om er een contact aan toe te wijzen. Vervolgens kan dit contact direct gebeld worden door lang op het gekoppelde cijfer te drukken.</string>
+    <string name="show_contact_thumbnails">Miniaturen van contacten weergeven</string>
     <string name="group_subsequent_calls">In de gespreksgeschiedenis opeenvolgende gesprekken met hetzelfde nummer groeperen</string>
     <string name="open_dialpad_by_default">Standaard het toetsenblok openen bij starten</string>
     <string name="disable_proximity_sensor">Nabijheidssensor uitschakelen tijdens bellen</string>

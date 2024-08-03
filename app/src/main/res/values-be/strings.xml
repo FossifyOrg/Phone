@@ -51,6 +51,7 @@
     <string name="speed_dial">Хуткі набор</string>
     <string name="manage_speed_dial">Кіраванне хуткім наборам</string>
     <string name="speed_dial_label">Націсніце на лічбу, каб прызначыць ёй кантакт. Затым вы можаце хутка патэлефанаваць дадзенаму кантакту доўгім націсканнем на абранай лічбе на панэлі набору нумароў.</string>
+    <string name="show_contact_thumbnails">Паказваць фота кантакту</string>
     <string name="group_subsequent_calls">Групаваць наступныя выклікі з тым жа нумарам у журнале выклікаў</string>
     <string name="open_dialpad_by_default">Адкрываць панэль набору нумароў пры запуску</string>
     <string name="disable_proximity_sensor">Адключаць датчык набліжэння падчас выклікаў</string>

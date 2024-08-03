@@ -49,6 +49,7 @@
     <string name="speed_dial">Spartusis rinkimas</string>
     <string name="manage_speed_dial">Tvarkyti spartųjį rinkimą</string>
     <string name="speed_dial_label">Spustelėkite ant skaitmens, kad priskirtumėte jam adresatą. Tuomet, numerio rinkiklyje ilgai laikydami nurodytą skaitmenį, galėsite greitai pradėti skambinti nurodytam adresatui.</string>
+    <string name="show_contact_thumbnails">Rodyti adresatų miniatiūras</string>
     <string name="group_subsequent_calls">Skambučių žurnale sugrupuokite paskesnius skambučius su tuo pačiu numeriu</string>
     <string name="open_dialpad_by_default">Atveriant programėlę, automatiškai pagal numatymą atverti numerio rinkiklį</string>
     <string name="disable_proximity_sensor">Skambučių metu išjungti artumo jutiklį</string>

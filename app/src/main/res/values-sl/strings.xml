@@ -56,6 +56,7 @@
     <string name="speed_dial">Hitro klicanje</string>
     <string name="manage_speed_dial">Upravljanje hitrega klica</string>
     <string name="speed_dial_label">Kliknite številko, če ji želite dodeliti stik. Nato lahko hitro pokličete določen stik z dolgim pritiskom na določeno številko na številčnici.</string>
+    <string name="show_contact_thumbnails">Prikaži sličice stikov</string>
     <string name="group_subsequent_calls">Združi zaporedne klice z isto številko v dnevniku klicev</string>
     <string name="open_dialpad_by_default">Privzeto odpri številčnico ob odprtju aplikacije</string>
     <string name="disable_proximity_sensor">Onemogoči senzor bližine med klici</string>

@@ -57,6 +57,7 @@
     <string name="speed_dial">Snabbuppringning</string>
     <string name="manage_speed_dial">Hantera snabbuppringning</string>
     <string name="speed_dial_label">Tryck på en siffra för att tilldela en kontakt till den. Du kan sedan snabbt ringa kontakten genom att trycka länge på siffran på knappsatsen.</string>
+    <string name="show_contact_thumbnails">Visa kontaktminiatyrer</string>
     <string name="group_subsequent_calls">Gruppera samtal till och från samma nummer i samtalshistoriken</string>
     <string name="open_dialpad_by_default">Öppna knappsatsen som standard när appen öppnas</string>
     <string name="disable_proximity_sensor">Inaktivera närhetssensor under samtal</string>

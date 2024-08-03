@@ -57,6 +57,7 @@
     <string name="speed_dial">Ταχεία κλήση</string>
     <string name="manage_speed_dial">Διαχείριση ταχείας κλήσης</string>
     <string name="speed_dial_label">Κάντε κλικ σε έναν αριθμό για να αντιστοιχίσετε μια επαφή σε αυτόν. Στη συνέχεια, μπορείτε να καλέσετε γρήγορα τη δεδομένη επαφή πατώντας τον αριθμό αυτόν.</string>
+    <string name="show_contact_thumbnails">Εμφάνιση μικρογραφιών επαφής</string>
     <string name="group_subsequent_calls">Ομαδοποίηση των επόμενων κλήσεων του ίδιου αριθμού στο αρχείο καταγραφής κλήσεων</string>
     <string name="open_dialpad_by_default">Άνοιγμα του πληκτρολογίου από προεπιλογή όταν ανοίγει η εφαρμογή</string>
     <string name="disable_proximity_sensor">Απενεργοποίηση του αισθητήρα εγγύτητας κατά τη διάρκεια κλήσεων</string>

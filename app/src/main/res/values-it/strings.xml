@@ -57,6 +57,7 @@
     <string name="speed_dial">Contatti veloci</string>
     <string name="manage_speed_dial">Gestisci i contatti veloci</string>
     <string name="speed_dial_label">Seleziona un numero per assegnargli un contatto. In questo modo puoi chiamarlo rapidamente tenendo premuto sul numero scelto nel tastierino.</string>
+    <string name="show_contact_thumbnails">Mostra le anteprime dei contatti</string>
     <string name="group_subsequent_calls">Raggruppa chiamate successive con lo stesso numero nel registro delle chiamate</string>
     <string name="open_dialpad_by_default">Apri il tastierino per impostazione predefinita quando l\'app si apre</string>
     <string name="disable_proximity_sensor">Disattiva il sensore di prossimità durante le chiamate</string>

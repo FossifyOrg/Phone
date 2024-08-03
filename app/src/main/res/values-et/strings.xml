@@ -57,6 +57,7 @@
     <string name="speed_dial">Kiirvalimine</string>
     <string name="speed_dial_label">Klõpsa numbrit ja seosta ta konkreetse telefoniraamatu kirjega. Hiljem saad samale numbrile pikalt vajutades alustada kõnet määratud telefoninumbrile.</string>
     <string name="manage_speed_dial">Halda kiirvalimist</string>
+    <string name="show_contact_thumbnails">Näita kontaktide pisipilte</string>
     <string name="group_subsequent_calls">Rühmita kõnelogis samale numbrile tehtud järjest kõned</string>
     <string name="open_dialpad_by_default">Rakenduse avamisel näita vaikimisi numbriklahvistikku</string>
     <string name="disable_proximity_sensor">Kõnede ajaks lülita lähedusandur välja</string>

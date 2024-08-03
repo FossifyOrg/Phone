@@ -57,6 +57,7 @@
     <string name="speed_dial">Marcado rápido</string>
     <string name="manage_speed_dial">Administrar marcado rápido</string>
     <string name="speed_dial_label">Toca un número para asignarle un contacto. Entonces podrás llamarlo rápidamente manteniendo presionado el número asignado en el teclado de marcado.</string>
+    <string name="show_contact_thumbnails">Mostrar minaturas de contactos</string>
     <string name="group_subsequent_calls">Agrupar llamadas subsecuentes con el mísmo número en el registro de llamadas</string>
     <string name="open_dialpad_by_default">Abrir el teclado de marcado de forma predeterminada al abrir la aplicación</string>
     <string name="disable_proximity_sensor">Deshabilitar el sensor de proximidad durante las llamadas</string>

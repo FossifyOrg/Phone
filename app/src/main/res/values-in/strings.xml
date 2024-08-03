@@ -55,6 +55,7 @@
     <string name="speed_dial">Panggilan cepat</string>
     <string name="manage_speed_dial">Kelola panggilan cepat</string>
     <string name="speed_dial_label">Klik pada nomor untuk menetapkan kontak atasnya. Anda kemudian dapat segera memanggil kontak tersebut dengan menekan lama nomor yang diberikan di dialer.</string>
+    <string name="show_contact_thumbnails">Tampilkan foto kontak</string>
     <string name="group_subsequent_calls">Kelompokkan panggilan berikutnya dengan nomor yang sama pada log panggilan</string>
     <string name="open_dialpad_by_default">Buka tombol nomor secara default ketika aplikasi dibuka</string>
     <string name="disable_proximity_sensor">Nonaktifkan sensor kedekatan selama melakukan panggilan</string>

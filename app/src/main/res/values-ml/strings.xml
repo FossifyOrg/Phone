@@ -48,6 +48,7 @@
     <string name="speed_dial">സ്പീഡ് ഡയൽ</string>
     <string name="manage_speed_dial">സ്പീഡ് ഡയൽ നിയന്ത്രിക്കുക</string>
     <string name="speed_dial_label">കോൺ‌ടാക്റ്റ് നൽകുന്നതിന് ഒരു നമ്പറിൽ ക്ലിക്കുചെയ്യുക. ഡയലറിൽ നൽകിയ നമ്പർ ദീർഘനേരം അമർത്തിയാൽ, നിങ്ങൾ നൽകിയ കോൺടാക്റ്റിനെ വേഗത്തിൽ വിളിക്കാം.</string>
+    <string name="show_contact_thumbnails">കോണ്ടാക്ടിന്റെ ലഘുചിത്രങ്ങൾ കാണിക്കുക</string>
     <string name="group_subsequent_calls">കോൾ ലോഗിൽ അതേ നമ്പറുള്ള കോളുകൾ ഗ്രൂപ്പുചെയ്യുക</string>
     <string name="open_dialpad_by_default">ആപ്പ് തുറക്കുമ്പോൾ ഡിഫോൾട്ടായി ഡയൽപാഡ് തുറക്കുക</string>
     <string name="disable_proximity_sensor">കോളുകൾക്കിടയിൽ പ്രോക്സിമിറ്റി സെൻസർ പ്രവർത്തനരഹിതമാക്കുക</string>
