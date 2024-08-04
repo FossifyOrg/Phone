@@ -57,6 +57,7 @@
     <string name="speed_dial">Quay số nhanh</string>
     <string name="manage_speed_dial">Quản lý quay số nhanh</string>
     <string name="speed_dial_label">Bấm vào một số để chỉ định một số liên lạc cho nó. Sau đó, bạn có thể nhanh chóng gọi cho số liên lạc đã cho bằng cách nhấn và giữ số đã cho ở trình quay số.</string>
+    <string name="show_contact_thumbnails">Hiển thị hình thu nhỏ của liên hệ</string>
     <string name="group_subsequent_calls">Nhóm các cuộc gọi tiếp theo với cùng một số trong nhật ký cuộc gọi</string>
     <string name="open_dialpad_by_default">Mở bàn phím quay số theo mặc định khi mở ứng dụng</string>
     <string name="disable_proximity_sensor">Tắt cảm biến tiệm cận trong khi gọi</string>
