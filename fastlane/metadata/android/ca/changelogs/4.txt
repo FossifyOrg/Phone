@@ -1,0 +1,9 @@
+- Corregida la no actualització d'historial.
+- Corregit error si la cerca no troba registres antics.
+- Disseny de menú actualitzat per a IU/UX millor.
+- Botons de trucada desactivats en finalitzar una trucada per a IU/UX millor.
+- Entrades agrupades per data a l'historial.
+- Afegida opció de format als números de telèfon del registre.
+- Icones de direcció de trucada i colors actualitzats a l'historial.
+- Reestructurada la IU de trucades per a adaptar a mides de pantalles.
+- Traduccions noves.
