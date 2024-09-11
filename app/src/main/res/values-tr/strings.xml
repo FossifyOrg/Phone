@@ -5,7 +5,7 @@
     <string name="could_not_access_contacts">Kişilerinize erişilemedi</string>
     <string name="no_previous_calls">Geçmiş aramalar yok</string>
     <string name="could_not_access_the_call_history">Arama geçmişine erişilemedi</string>
-    <string name="request_access">Erişim isteği</string>
+    <string name="request_access">Erişim iste</string>
     <string name="remove_confirmation">Seçilen ögeleri Arama Geçmişinden kaldırmak istediğinize emin misiniz?</string>
     <string name="clear_history_confirmation">Arama Geçmişindeki her şeyi kaldırmak istediğinize emin misiniz?</string>
     <string name="show_grouped_calls">Gruplandırılmış aramaları göster</string>
@@ -56,11 +56,11 @@
     <string name="calling_blocked_number">Aradığınız numara engellendi</string>
     <string name="speed_dial">Hızlı arama</string>
     <string name="manage_speed_dial">Hızlı aramayı yönet</string>
-    <string name="speed_dial_label">Bir kişiye atamak için bir numaraya tıklayın. Daha sonra numarayı çeviricide verilen numaraya uzun basarak hızlıca arayabilirsiniz.</string>
+    <string name="speed_dial_label">Bir kişiye atamak için bir numaraya tıklayın. Çeviricide bu numaraya uzun basarak bu kişiyi hızlıca arayabilirsiniz.</string>
     <string name="group_subsequent_calls">Arama kaydında aynı numaraya sahip sonraki aramaları gruplandır</string>
     <string name="open_dialpad_by_default">Uygulama açıldığında tuş takımını aç</string>
     <string name="disable_proximity_sensor">Aramalar sırasında yakınlık sensörünü devre dışı bırak</string>
-    <string name="disable_swipe_to_answer">Gelen aramalara yanıt vermek için kaydırmayı tıklamayla değiştir</string>
+    <string name="disable_swipe_to_answer">Gelen aramalara yanıt vermek için kaydırma hareketini tıklamayla değiştir</string>
     <string name="show_incoming_calls_full_screen">Gelen aramaları her zaman tam ekranda görüntüle</string>
     <string name="hide_dialpad_numbers">Tuş takımı numaralarını gizle</string>
     <string name="export_call_history">Arama geçmişini dışa aktar</string>
