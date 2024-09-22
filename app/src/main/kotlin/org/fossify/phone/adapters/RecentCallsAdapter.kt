@@ -12,7 +12,6 @@ import android.widget.PopupMenu
 import androidx.recyclerview.widget.DiffUtil
 import com.bumptech.glide.Glide
 import org.fossify.commons.adapters.MyRecyclerViewListAdapter
-import org.fossify.commons.dialogs.CallConfirmationDialog
 import org.fossify.commons.dialogs.ConfirmationDialog
 import org.fossify.commons.dialogs.FeatureLockedDialog
 import org.fossify.commons.extensions.*
@@ -180,26 +179,14 @@ class RecentCallsAdapter(
         val phoneNumber = getSelectedPhoneNumber() ?: return
         val name = getSelectedName() ?: return
 
-        if (activity.config.showCallConfirmation) {
-            CallConfirmationDialog(activity, name) {
-                activity.callContactWithSim(phoneNumber, useSimOne)
-            }
-        } else {
-            activity.callContactWithSim(phoneNumber, useSimOne)
-        }
+        activity.callContactWithSimWithConfirmationCheck(phoneNumber, name, useSimOne)
     }
 
     private fun callContact() {
         val phoneNumber = getSelectedPhoneNumber() ?: return
         val name = getSelectedName() ?: return
 
-        if (activity.config.showCallConfirmation) {
-            CallConfirmationDialog(activity, name) {
-                (activity as SimpleActivity).startCallIntent(phoneNumber)
-            }
-        } else {
-            (activity as SimpleActivity).startCallIntent(phoneNumber)
-        }
+        (activity as SimpleActivity).startCallWithConfirmationCheck(phoneNumber, name)
     }
 
     private fun removeDefaultSIM() {
