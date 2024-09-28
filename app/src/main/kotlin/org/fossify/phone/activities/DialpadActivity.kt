@@ -20,7 +20,6 @@ import android.view.ViewConfiguration
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.isVisible
 import com.reddit.indicatorfastscroll.FastScrollItemIndicator
-import org.fossify.commons.dialogs.CallConfirmationDialog
 import org.fossify.commons.extensions.*
 import org.fossify.commons.helpers.*
 import org.fossify.commons.models.contacts.Contact
@@ -306,13 +305,7 @@ class DialpadActivity : SimpleActivity() {
             highlightText = text
         ) {
             val contact = it as Contact
-            if (config.showCallConfirmation) {
-                CallConfirmationDialog(this@DialpadActivity, contact.getNameToDisplay()) {
-                    startCallIntent(contact.getPrimaryNumber() ?: return@CallConfirmationDialog)
-                }
-            } else {
-                startCallIntent(contact.getPrimaryNumber() ?: return@ContactsAdapter)
-            }
+            startCallWithConfirmationCheck(contact.getPrimaryNumber() ?: return@ContactsAdapter, contact.getNameToDisplay())
             Handler().postDelayed({
                 binding.dialpadInput.setText("")
             }, 1000)
@@ -334,21 +327,9 @@ class DialpadActivity : SimpleActivity() {
     private fun initCall(number: String = binding.dialpadInput.value, handleIndex: Int) {
         if (number.isNotEmpty()) {
             if (handleIndex != -1 && areMultipleSIMsAvailable()) {
-                if (config.showCallConfirmation) {
-                    CallConfirmationDialog(this, number) {
-                        callContactWithSim(number, handleIndex == 0)
-                    }
-                } else {
-                    callContactWithSim(number, handleIndex == 0)
-                }
+                callContactWithSimWithConfirmationCheck(number, number, handleIndex == 0)
             } else {
-                if (config.showCallConfirmation) {
-                    CallConfirmationDialog(this, number) {
-                        startCallIntent(number)
-                    }
-                } else {
-                    startCallIntent(number)
-                }
+                startCallWithConfirmationCheck(number, number)
             }
 
             Handler().postDelayed({

@@ -9,6 +9,7 @@ import android.telecom.PhoneAccount
 import android.telecom.PhoneAccountHandle
 import android.telecom.TelecomManager
 import org.fossify.commons.activities.BaseSimpleActivity
+import org.fossify.commons.dialogs.CallConfirmationDialog
 import org.fossify.commons.extensions.*
 import org.fossify.commons.helpers.*
 import org.fossify.commons.models.contacts.Contact
@@ -26,6 +27,16 @@ fun SimpleActivity.startCallIntent(recipient: String) {
     }
 }
 
+fun SimpleActivity.startCallWithConfirmationCheck(recipient: String, name: String) {
+    if (config.showCallConfirmation) {
+        CallConfirmationDialog(this, name) {
+            startCallIntent(recipient)
+        }
+    } else {
+        startCallIntent(recipient)
+    }
+}
+
 fun SimpleActivity.launchCreateNewContactIntent() {
     Intent().apply {
         action = Intent.ACTION_INSERT
@@ -39,6 +50,16 @@ fun BaseSimpleActivity.callContactWithSim(recipient: String, useMainSIM: Boolean
         val wantedSimIndex = if (useMainSIM) 0 else 1
         val handle = getAvailableSIMCardLabels().sortedBy { it.id }.getOrNull(wantedSimIndex)?.handle
         launchCallIntent(recipient, handle)
+    }
+}
+
+fun BaseSimpleActivity.callContactWithSimWithConfirmationCheck(recipient: String, name: String, useMainSIM: Boolean) {
+    if (config.showCallConfirmation) {
+        CallConfirmationDialog(this, name) {
+            callContactWithSim(recipient, useMainSIM)
+        }
+    } else {
+        callContactWithSim(recipient, useMainSIM)
     }
 }
 
