@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<issues format="6" by="lint 8.3.2" type="baseline" client="gradle" dependencies="false" name="AGP (8.3.2)" variant="all" version="8.3.2">
+<issues format="6" by="lint 8.6.1" type="baseline" client="gradle" dependencies="false" name="AGP (8.6.1)" variant="all" version="8.6.1">
 
     <issue
         id="MissingPermission"
         message="Missing permissions required by TelecomManager.cancelMissedCallsNotification: android.permission.MODIFY_PHONE_STATE"
-        errorLine1="    ensureBackgroundThread {"
-        errorLine2="    ^">
+        errorLine1="            telecomManager.cancelMissedCallsNotification()"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/kotlin/org/fossify/phone/extensions/Context.kt"
-            line="50"
-            column="5"/>
+            line="55"
+            column="13"/>
     </issue>
 
     <issue
@@ -109,39 +109,6 @@
             file="src/main/AndroidManifest.xml"
             line="10"
             column="22"/>
-    </issue>
-
-    <issue
-        id="AndroidGradlePluginVersion"
-        message="A newer version of com.android.application than 8.3.2 is available: 8.6.1"
-        errorLine1="gradlePlugins-agp = &quot;8.3.2&quot;"
-        errorLine2="                    ~~~~~~~">
-        <location
-            file="$HOME/Projects/Community/FossifyOrg/Phone/gradle/libs.versions.toml"
-            line="12"
-            column="21"/>
-    </issue>
-
-    <issue
-        id="AndroidGradlePluginVersion"
-        message="A newer version of com.android.application than 8.3.2 is available: 8.6.1"
-        errorLine1="gradlePlugins-agp = &quot;8.3.2&quot;"
-        errorLine2="                    ~~~~~~~">
-        <location
-            file="$HOME/Projects/Community/FossifyOrg/Phone/gradle/libs.versions.toml"
-            line="12"
-            column="21"/>
-    </issue>
-
-    <issue
-        id="AndroidGradlePluginVersion"
-        message="A newer version of com.android.application than 8.3.2 is available: 8.6.1"
-        errorLine1="gradlePlugins-agp = &quot;8.3.2&quot;"
-        errorLine2="                    ~~~~~~~">
-        <location
-            file="$HOME/Projects/Community/FossifyOrg/Phone/gradle/libs.versions.toml"
-            line="12"
-            column="21"/>
     </issue>
 
     <issue
@@ -1198,11 +1165,11 @@
         id="Wakelock"
         message="Wakelocks should be released in `onPause`, not `onDestroy`"
         errorLine1="            screenOnWakeLock!!.release()"
-        errorLine2="                               ~~~~~~~">
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/kotlin/org/fossify/phone/activities/CallActivity.kt"
             line="106"
-            column="32"/>
+            column="13"/>
     </issue>
 
     <issue
@@ -1544,6 +1511,17 @@
             file="src/main/kotlin/org/fossify/phone/dialogs/ExportCallHistoryDialog.kt"
             line="13"
             column="48"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        message="Number formatting does not take into account locale settings. Consider using `String.format` instead."
+        errorLine1="                    itemRecentsSimId.text = call.simID.toString()"
+        errorLine2="                                            ~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/kotlin/org/fossify/phone/adapters/RecentCallsAdapter.kt"
+            line="498"
+            column="45"/>
     </issue>
 
     <issue
