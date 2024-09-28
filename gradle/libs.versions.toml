@@ -2,12 +2,14 @@
 #jetbrains
 kotlin = "1.9.23"
 kotlinxSerializationJson = "1.5.1"
+#Detekt
+detekt = "1.23.3"
 #Eventbus
 eventbus = "3.3.1"
 #Fossify
 commons = "b53047c2dd"
 #Gradle
-gradlePlugins-agp = "8.3.2"
+gradlePlugins-agp = "8.6.1"
 #Other
 indicatorFastScroll = "4524cd0b61"
 autofitTextView = "0.2.1"
@@ -35,3 +37,4 @@ autofit-text-view = { module = "me.grantland:autofittextview", version.ref = "au
 android = { id = "com.android.application", version.ref = "gradlePlugins-agp" }
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
