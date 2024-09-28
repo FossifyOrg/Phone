@@ -20,7 +20,7 @@ class Config(context: Context) : BaseConfig(context) {
         val speedDialValues = Gson().fromJson<ArrayList<SpeedDial>>(speedDial, speedDialType) ?: ArrayList(1)
 
         for (i in 1..9) {
-            val speedDial = SpeedDial(i, "", "")
+            val speedDial = SpeedDial(i, "", "", "")
             if (speedDialValues.firstOrNull { it.id == i } == null) {
                 speedDialValues.add(speedDial)
             }

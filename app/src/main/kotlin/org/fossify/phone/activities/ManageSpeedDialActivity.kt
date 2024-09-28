@@ -1,14 +1,18 @@
 package org.fossify.phone.activities
 
+import android.content.Intent
+import android.content.pm.ShortcutInfo
+import android.graphics.drawable.Icon
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import com.google.gson.Gson
 import org.fossify.commons.dialogs.RadioGroupDialog
 import org.fossify.commons.extensions.getMyContactsCursor
+import org.fossify.commons.extensions.shortcutManager
 import org.fossify.commons.extensions.updateTextColors
 import org.fossify.commons.extensions.viewBinding
-import org.fossify.commons.helpers.ContactsHelper
-import org.fossify.commons.helpers.MyContactsContentProvider
-import org.fossify.commons.helpers.NavigationIcon
+import org.fossify.commons.helpers.*
 import org.fossify.commons.models.PhoneNumber
 import org.fossify.commons.models.RadioItem
 import org.fossify.commons.models.contacts.Contact
@@ -80,6 +84,7 @@ class ManageSpeedDialActivity : SimpleActivity(), RemoveSpeedDialListener {
                         speedDialValues.first { it.id == clickedContact.id }.apply {
                             displayName = selectedContact.getNameToDisplay()
                             number = selectedNumber.normalizedNumber
+                            photoUri = selectedContact.photoUri
                         }
                         updateAdapter()
                     }
@@ -87,10 +92,30 @@ class ManageSpeedDialActivity : SimpleActivity(), RemoveSpeedDialListener {
                     speedDialValues.first { it.id == clickedContact.id }.apply {
                         displayName = selectedContact.getNameToDisplay()
                         number = selectedContact.phoneNumbers.first().normalizedNumber
+                        photoUri = selectedContact.photoUri
                     }
                     updateAdapter()
                 }
-
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                    speedDialValues.filter { it.number.isNotBlank() }.take(3).forEach {
+                        this.handlePermission(PERMISSION_CALL_PHONE) { hasPermission ->
+                            val action = if (hasPermission) Intent.ACTION_CALL else Intent.ACTION_DIAL
+                            val intent = Intent(action).apply {
+                                data = Uri.fromParts("tel", it.number, null)
+                            }
+                            SimpleContactsHelper(this).getShortcutImage(it.photoUri, it.displayName) { image ->
+                                this.runOnUiThread {
+                                    val shortcut = ShortcutInfo.Builder(this, "sd${it.id}")
+                                        .setShortLabel(it.displayName)
+                                        .setIcon(Icon.createWithAdaptiveBitmap(image))
+                                        .setIntent(intent)
+                                        .build()
+                                    this.shortcutManager.pushDynamicShortcut(shortcut)
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }.apply {
             binding.speedDialList.adapter = this
@@ -98,12 +123,15 @@ class ManageSpeedDialActivity : SimpleActivity(), RemoveSpeedDialListener {
     }
 
     override fun removeSpeedDial(ids: ArrayList<Int>) {
-        ids.forEach {
-            val dialId = it
+        ids.forEach { dialId ->
             speedDialValues.first { it.id == dialId }.apply {
                 displayName = ""
                 number = ""
+                photoUri = ""
             }
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            this.shortcutManager.removeDynamicShortcuts(ids.map { "sd$it" })
         }
         updateAdapter()
     }
