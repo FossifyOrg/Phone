@@ -177,12 +177,16 @@ class RecentCallsAdapter(
 
     private fun callContact(useSimOne: Boolean) {
         val phoneNumber = getSelectedPhoneNumber() ?: return
-        activity.callContactWithSim(phoneNumber, useSimOne)
+        val name = getSelectedName() ?: return
+
+        activity.callContactWithSimWithConfirmationCheck(phoneNumber, name, useSimOne)
     }
 
     private fun callContact() {
         val phoneNumber = getSelectedPhoneNumber() ?: return
-        (activity as SimpleActivity).startCallIntent(phoneNumber)
+        val name = getSelectedName() ?: return
+
+        (activity as SimpleActivity).startCallWithConfirmationCheck(phoneNumber, name)
     }
 
     private fun removeDefaultSIM() {
@@ -313,6 +317,8 @@ class RecentCallsAdapter(
         .filter { selectedKeys.contains(it.getItemId()) }
 
     private fun getSelectedPhoneNumber() = getSelectedItems().firstOrNull()?.phoneNumber
+
+    private fun getSelectedName() = getSelectedItems().firstOrNull()?.name
 
     private fun showPopupMenu(view: View, call: RecentCall) {
         finishActMode()
