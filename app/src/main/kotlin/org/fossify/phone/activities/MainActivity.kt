@@ -301,7 +301,7 @@ class MainActivity : SimpleActivity() {
             val starred = cachedContacts.filter { it.starred == 1 && it.phoneNumbers.isNotEmpty() }
             this.config.favoritesContactsOrder.let { order ->
                 if (order.isEmpty()) {
-                    starred
+                    starred.sorted()
                 } else {
                     val orderList = Converters().jsonToStringList(order).withIndex().associate { it.value to it.index }
                     starred.sortedBy { orderList[it.contactId.toString()] }
