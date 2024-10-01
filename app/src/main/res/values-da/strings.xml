@@ -59,6 +59,7 @@
     <string name="speed_dial">Hurtigopkald</string>
     <string name="manage_speed_dial">Administrér hurtigopkald</string>
     <string name="speed_dial_label">Klik på et nummer for at tilknytte en kontakt til det. Derefter kan du hurtigt ringe op til den givne kontkakt ved at trykke længe på det givne nummer via det numeriske tastatur.</string>
+    <string name="show_contact_thumbnails">Vis kontakt miniature-billede</string>
     <string name="group_subsequent_calls">Gruppér efterfølgende opkald med samme nummer i opkaldsloggen</string>
     <string name="open_dialpad_by_default">Åben det numeriske tastatur som standard når appen åbner</string>
     <string name="disable_proximity_sensor">Deaktivér nærhedssensor under opkald</string>

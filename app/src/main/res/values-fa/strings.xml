@@ -53,6 +53,7 @@
     <string name="speed_dial">شماره‌گیری سریع</string>
     <string name="manage_speed_dial">مدیریت شماره‌گیری سریع</string>
     <string name="speed_dial_label">یک شماره را انتخاب کنید تا مخاطبی را به آن اختصاص دهید. با لمس طولانی آن شماره در شماره‌گیر می‌توانید به سرعت با آن تماس بگیرید.</string>
+    <string name="show_contact_thumbnails">نمایش نمایه های مخاطب</string>
     <string name="group_subsequent_calls">گروه‌بندی تماس‌های پشت‌هم از یک شماره در تاریخچهٔ تماس</string>
     <string name="open_dialpad_by_default">باز کردن شماره‌گیر به طور پیش‌فرض هنگام باز شدن برنامه</string>
     <string name="disable_swipe_to_answer">پاسخ دادن به تماس با استفاده از کلیک به جای کشیدن</string>

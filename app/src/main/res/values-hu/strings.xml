@@ -57,6 +57,7 @@
     <string name="speed_dial">Gyors tárcsázó</string>
     <string name="manage_speed_dial">Gyors tárcsázó kezelése</string>
     <string name="speed_dial_label">Koppintson egy számra, hogy névjegyet rendeljen hozzá. Aztán gyorsan felhívhatja az adott szám hosszú érintésével a tárcsázón.</string>
+    <string name="show_contact_thumbnails">Névjegyek bélyegképének megjelenítése</string>
     <string name="group_subsequent_calls">Ugyanazon szám egymást követő hívásainak csoportosítása a hívásnaplóban</string>
     <string name="open_dialpad_by_default">Tárcsázó alapértelmezett kinyitása az alkalmazás megnyitásakor</string>
     <string name="disable_proximity_sensor">Közelségérzékelő kikapcsolása a hívások során</string>
