@@ -539,6 +539,7 @@ class MainActivity : SimpleActivity() {
         getContactsFragment()?.refreshItems()
         getFavoritesFragment()?.refreshItems()
         getRecentsFragment()?.refreshItems()
+        pushStarredShortcuts()
     }
 
     private fun getAllFragments(): ArrayList<MyViewPagerFragment<*>?> {
