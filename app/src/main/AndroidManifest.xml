@@ -205,6 +205,15 @@
             </intent-filter>
         </receiver>
 
+        <receiver
+            android:name=".receivers.MissedCallReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.telecom.action.SHOW_MISSED_CALLS_NOTIFICATION" />
+            </intent-filter>
+        </receiver>
+
         <activity-alias
             android:name=".activities.SplashActivity.Red"
             android:enabled="false"
