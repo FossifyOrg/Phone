@@ -300,7 +300,7 @@ class MainActivity : SimpleActivity() {
         if (VERSION.SDK_INT >= VERSION_CODES.R) {
             val starred = cachedContacts.filter { it.starred == 1 && it.phoneNumbers.isNotEmpty() }
             this.config.favoritesContactsOrder.let { order ->
-                if (order.isEmpty()) {
+                if (!config.isCustomOrderSelected) {
                     starred.sorted()
                 } else {
                     val orderList = Converters().jsonToStringList(order).withIndex().associate { it.value to it.index }
