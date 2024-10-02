@@ -65,6 +65,17 @@
     <string name="choose_audio_route">Choose audio route</string>
     <string name="calling_blocked_number">The number you are calling is blocked</string>
 
+    <!-- Notifications -->
+    <string name="missed_call_channel">Missed Calls</string>
+    <plurals name="missed_calls">
+        <item quantity="one">Missed call</item>
+        <item quantity="few">%d missed calls</item>
+        <item quantity="other">%d missed calls</item>
+    </plurals>
+    <string name="missed_call_from">Missed call from %s</string>
+    <string name="call_back">Call back</string>
+    <string name="message">Message</string>
+
     <!-- Speed dial -->
     <string name="speed_dial">Speed dial</string>
     <string name="manage_speed_dial">Manage speed dial</string>
@@ -83,13 +94,6 @@
     <!-- FAQ -->
     <string name="faq_1_title">I hear incoming calls, but the screen doesn\'t turn on. What can I do?</string>
     <string name="faq_1_text">Such issues can have many device and system specific reasons, hard to say in general. You should look around in your device settings and make sure that the app is allowed to pop up when in background and allow displaying over other apps.</string>
-
-    <!-- Notifications -->
-    <string name="missed_call_channel">Missed Calls</string>
-    <string name="missed_call">Missed call</string>
-    <string name="missed_call_from">Missed call from %s</string>
-    <string name="call_back">Call back</string>
-    <string name="message">Message</string>
 
     <!--
         Haven't found some strings? There's more at
