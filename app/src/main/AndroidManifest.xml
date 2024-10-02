@@ -211,6 +211,9 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.telecom.action.SHOW_MISSED_CALLS_NOTIFICATION" />
+                <action android:name="org.fossify.phone.action.MISSED_CALL_BACK" />
+                <action android:name="org.fossify.phone.action.MISSED_CALL_MESSAGE" />
+                <action android:name="org.fossify.phone.action.MISSED_CALL_CANCEL" />
             </intent-filter>
         </receiver>
 
