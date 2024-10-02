@@ -66,7 +66,7 @@
     <string name="calling_blocked_number">The number you are calling is blocked</string>
 
     <!-- Notifications -->
-    <string name="missed_call_channel">Missed Calls</string>
+    <string name="missed_call_channel">Missed calls</string>
     <plurals name="missed_calls">
         <item quantity="one">Missed call</item>
         <item quantity="few">%d missed calls</item>
