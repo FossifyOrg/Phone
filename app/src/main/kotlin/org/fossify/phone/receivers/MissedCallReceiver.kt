@@ -11,7 +11,6 @@ import android.graphics.drawable.Icon
 import android.net.Uri
 import android.os.Build
 import android.telecom.TelecomManager
-import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import org.fossify.commons.extensions.getLaunchIntent
@@ -35,10 +34,10 @@ class MissedCallReceiver : BroadcastReceiver() {
 
         when (intent.action) {
             TelecomManager.ACTION_SHOW_MISSED_CALLS_NOTIFICATION -> {
-                notificationId = Random.nextInt()
-                phoneNumber = extras.getString(TelecomManager.EXTRA_NOTIFICATION_PHONE_NUMBER)
                 val notificationCount = extras.getInt(TelecomManager.EXTRA_NOTIFICATION_COUNT)
                 if (notificationCount != 0) {
+                    notificationId = Random.nextInt()
+                    phoneNumber = extras.getString(TelecomManager.EXTRA_NOTIFICATION_PHONE_NUMBER)
                     createNotificationChannel(context)
                     notificationManager.notify(MISSED_CALLS.hashCode(), getNotificationGroup(context))
                     notificationManager.notify(notificationId, buildNotification(context, notificationId, phoneNumber ?: return))
@@ -67,7 +66,6 @@ class MissedCallReceiver : BroadcastReceiver() {
 
             else -> null
         }?.let {
-            Log.d("MISSEDCALL", it.toString())
             context.startActivity(it)
             context.notificationManager.cancel(notificationId)
         }
@@ -78,14 +76,14 @@ class MissedCallReceiver : BroadcastReceiver() {
         val channel = NotificationChannel(
             "missed_call_channel",
             context.getString(R.string.missed_call_channel),
-            NotificationManager.IMPORTANCE_LOW
+            NotificationManager.IMPORTANCE_DEFAULT
         )
         notificationManager.createNotificationChannel(channel)
     }
 
     private fun launchIntent(context: Context): PendingIntent {
         return PendingIntent.getActivity(
-            context, 0, context.getLaunchIntent(), PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+            context, 0, context.getLaunchIntent(), PendingIntent.FLAG_IMMUTABLE
         )
     }
 
@@ -110,7 +108,7 @@ class MissedCallReceiver : BroadcastReceiver() {
             putExtra("phoneNumber", phoneNumber)
         }
         val callBackIntent = PendingIntent.getBroadcast(
-            context, 0, callBack, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+            context, notificationId, callBack, PendingIntent.FLAG_IMMUTABLE
         )
 
         val smsIntent = Intent(context, MissedCallReceiver::class.java).apply {
@@ -119,7 +117,7 @@ class MissedCallReceiver : BroadcastReceiver() {
             putExtra("phoneNumber", phoneNumber)
         }
         val messageIntent = PendingIntent.getBroadcast(
-            context, 0, smsIntent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+            context, notificationId, smsIntent, PendingIntent.FLAG_IMMUTABLE
         )
 
         val cancel = Intent(context, MissedCallReceiver::class.java).apply {
@@ -128,7 +126,7 @@ class MissedCallReceiver : BroadcastReceiver() {
             putExtra("phoneNumber", phoneNumber)
         }
         val cancelIntent = PendingIntent.getActivity(
-            context, 0, cancel, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+            context, notificationId, cancel, PendingIntent.FLAG_IMMUTABLE
         )
 
         return NotificationCompat.Builder(context, "missed_call_channel")
