@@ -2,8 +2,4 @@
 * Afegeix la funció de marcació ràpida (https://github.com/FossifyOrg/Phone/issues/60).
 * Botó de penjar sempre és visible a la interfície d'usuari de les trucades (https://github.com/FossifyOrg/Phone/issues/9).
 * Millora la mida de l'avatar de qui truca i els botons a la interfície d'usuari de trucades (https://github.com/FossifyOrg/Phone/issues/118).
-* Reorganitza les preferències de marcació en la seva pròpia secció dedicada (https://github.com/FossifyOrg/Phone/issues/116).
-* Afegeix un avatar per a números desconeguts i contactes sense foto.
-* Afegeix un indicador de progrés per a indicar la recuperació de l'historial de trucades.
-* Afegeix un farciment inferior a les llistes per permetre desplaçaments per sobre del botó d'acció flotant.
-* Afegeix traduccions.
+* Reorganitza les preferències de [... i altres].

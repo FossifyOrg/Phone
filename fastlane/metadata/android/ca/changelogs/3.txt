@@ -5,5 +5,4 @@
 * Reorganitza les preferències de marcació en la seva pròpia secció dedicada.
 * Afegeix un avatar per a números desconeguts i contactes sense foto.
 * Afegeix un indicador de progrés per a indicar la recuperació de l'historial de trucades.
-* Afegeix un farciment inferior a les llistes per a permetre desplaçaments per sobre del botó d'acció flotant.
-* Afegeix traduccions.
+* Afegeix un farciment [... i altres].
