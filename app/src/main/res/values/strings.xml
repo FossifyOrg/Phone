@@ -65,6 +65,17 @@
     <string name="choose_audio_route">Choose audio route</string>
     <string name="calling_blocked_number">The number you are calling is blocked</string>
 
+    <!-- Notifications -->
+    <string name="missed_call_channel">Missed calls</string>
+    <plurals name="missed_calls">
+        <item quantity="one">Missed call</item>
+        <item quantity="few">%d missed calls</item>
+        <item quantity="other">%d missed calls</item>
+    </plurals>
+    <string name="missed_call_from">Missed call from %s</string>
+    <string name="call_back">Call back</string>
+    <string name="message">Message</string>
+
     <!-- Speed dial -->
     <string name="speed_dial">Speed dial</string>
     <string name="manage_speed_dial">Manage speed dial</string>
