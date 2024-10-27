@@ -33,6 +33,11 @@
     <queries>
         <package android:name="org.fossify.contacts.debug" />
         <package android:name="org.fossify.contacts" />
+
+        <!-- Required for loading contact accounts -->
+        <intent>
+            <action android:name="android.accounts.AccountAuthenticator" />
+        </intent>
     </queries>
 
     <application
