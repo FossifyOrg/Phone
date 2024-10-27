@@ -1,15 +1,15 @@
 [versions]
 #jetbrains
-kotlin = "1.9.23"
-kotlinxSerializationJson = "1.5.1"
+kotlin = "1.9.25"
+kotlinxSerializationJson = "1.6.0"
 #Detekt
 detekt = "1.23.3"
 #Eventbus
 eventbus = "3.3.1"
 #Fossify
-commons = "b53047c2dd"
+commons = "3788b3609c"
 #Gradle
-gradlePlugins-agp = "8.6.1"
+gradlePlugins-agp = "8.7.1"
 #Other
 indicatorFastScroll = "4524cd0b61"
 autofitTextView = "0.2.1"
