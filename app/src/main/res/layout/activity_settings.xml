@@ -80,13 +80,13 @@
 
             <RelativeLayout
                 android:id="@+id/settings_use_english_holder"
-                style="@style/SettingsHolderCheckboxStyle"
+                style="@style/SettingsHolderSwitchStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <org.fossify.commons.views.MyAppCompatCheckbox
+                <org.fossify.commons.views.MyMaterialSwitch
                     android:id="@+id/settings_use_english"
-                    style="@style/SettingsCheckboxStyle"
+                    style="@style/SettingsSwitchStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/use_english_language" />
@@ -171,13 +171,13 @@
 
             <RelativeLayout
                 android:id="@+id/settings_start_name_with_surname_holder"
-                style="@style/SettingsHolderCheckboxStyle"
+                style="@style/SettingsHolderSwitchStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <org.fossify.commons.views.MyAppCompatCheckbox
+                <org.fossify.commons.views.MyMaterialSwitch
                     android:id="@+id/settings_start_name_with_surname"
-                    style="@style/SettingsCheckboxStyle"
+                    style="@style/SettingsSwitchStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/start_name_with_surname" />
@@ -186,13 +186,13 @@
 
             <RelativeLayout
                 android:id="@+id/settings_format_phone_numbers_holder"
-                style="@style/SettingsHolderCheckboxStyle"
+                style="@style/SettingsHolderSwitchStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <org.fossify.commons.views.MyAppCompatCheckbox
+                <org.fossify.commons.views.MyMaterialSwitch
                     android:id="@+id/settings_format_phone_numbers"
-                    style="@style/SettingsCheckboxStyle"
+                    style="@style/SettingsSwitchStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/format_phone_numbers" />
@@ -250,13 +250,13 @@
 
             <RelativeLayout
                 android:id="@+id/settings_open_dialpad_at_launch_holder"
-                style="@style/SettingsHolderCheckboxStyle"
+                style="@style/SettingsHolderSwitchStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <org.fossify.commons.views.MyAppCompatCheckbox
+                <org.fossify.commons.views.MyMaterialSwitch
                     android:id="@+id/settings_open_dialpad_at_launch"
-                    style="@style/SettingsCheckboxStyle"
+                    style="@style/SettingsSwitchStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/open_dialpad_by_default" />
@@ -276,13 +276,13 @@
 
             <RelativeLayout
                 android:id="@+id/settings_group_subsequent_calls_holder"
-                style="@style/SettingsHolderCheckboxStyle"
+                style="@style/SettingsHolderSwitchStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <org.fossify.commons.views.MyAppCompatCheckbox
+                <org.fossify.commons.views.MyMaterialSwitch
                     android:id="@+id/settings_group_subsequent_calls"
-                    style="@style/SettingsCheckboxStyle"
+                    style="@style/SettingsSwitchStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/group_subsequent_calls" />
@@ -291,13 +291,13 @@
 
             <RelativeLayout
                 android:id="@+id/settings_show_call_confirmation_holder"
-                style="@style/SettingsHolderCheckboxStyle"
+                style="@style/SettingsHolderSwitchStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <org.fossify.commons.views.MyAppCompatCheckbox
+                <org.fossify.commons.views.MyMaterialSwitch
                     android:id="@+id/settings_show_call_confirmation"
-                    style="@style/SettingsCheckboxStyle"
+                    style="@style/SettingsSwitchStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/show_call_confirmation_dialog" />
@@ -306,13 +306,13 @@
 
             <RelativeLayout
                 android:id="@+id/settings_disable_proximity_sensor_holder"
-                style="@style/SettingsHolderCheckboxStyle"
+                style="@style/SettingsHolderSwitchStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <org.fossify.commons.views.MyAppCompatCheckbox
+                <org.fossify.commons.views.MyMaterialSwitch
                     android:id="@+id/settings_disable_proximity_sensor"
-                    style="@style/SettingsCheckboxStyle"
+                    style="@style/SettingsSwitchStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/disable_proximity_sensor" />
@@ -321,13 +321,13 @@
 
             <RelativeLayout
                 android:id="@+id/settings_disable_swipe_to_answer_holder"
-                style="@style/SettingsHolderCheckboxStyle"
+                style="@style/SettingsHolderSwitchStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <org.fossify.commons.views.MyAppCompatCheckbox
+                <org.fossify.commons.views.MyMaterialSwitch
                     android:id="@+id/settings_disable_swipe_to_answer"
-                    style="@style/SettingsCheckboxStyle"
+                    style="@style/SettingsSwitchStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/disable_swipe_to_answer" />
@@ -336,13 +336,13 @@
 
             <RelativeLayout
                 android:id="@+id/settings_always_show_fullscreen_holder"
-                style="@style/SettingsHolderCheckboxStyle"
+                style="@style/SettingsHolderSwitchStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <org.fossify.commons.views.MyAppCompatCheckbox
+                <org.fossify.commons.views.MyMaterialSwitch
                     android:id="@+id/settings_always_show_fullscreen"
-                    style="@style/SettingsCheckboxStyle"
+                    style="@style/SettingsSwitchStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/show_incoming_calls_full_screen" />
@@ -377,13 +377,13 @@
 
             <RelativeLayout
                 android:id="@+id/settings_hide_dialpad_numbers_holder"
-                style="@style/SettingsHolderCheckboxStyle"
+                style="@style/SettingsHolderSwitchStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <org.fossify.commons.views.MyAppCompatCheckbox
+                <org.fossify.commons.views.MyMaterialSwitch
                     android:id="@+id/settings_hide_dialpad_numbers"
-                    style="@style/SettingsCheckboxStyle"
+                    style="@style/SettingsSwitchStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/hide_dialpad_numbers" />
@@ -392,13 +392,13 @@
 
             <RelativeLayout
                 android:id="@+id/settings_dialpad_vibration_holder"
-                style="@style/SettingsHolderCheckboxStyle"
+                style="@style/SettingsHolderSwitchStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <org.fossify.commons.views.MyAppCompatCheckbox
+                <org.fossify.commons.views.MyMaterialSwitch
                     android:id="@+id/settings_dialpad_vibration"
-                    style="@style/SettingsCheckboxStyle"
+                    style="@style/SettingsSwitchStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/dialpad_vibrations" />
@@ -407,13 +407,13 @@
 
             <RelativeLayout
                 android:id="@+id/settings_dialpad_beeps_holder"
-                style="@style/SettingsHolderCheckboxStyle"
+                style="@style/SettingsHolderSwitchStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <org.fossify.commons.views.MyAppCompatCheckbox
+                <org.fossify.commons.views.MyMaterialSwitch
                     android:id="@+id/settings_dialpad_beeps"
-                    style="@style/SettingsCheckboxStyle"
+                    style="@style/SettingsSwitchStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/dialpad_beeps" />
