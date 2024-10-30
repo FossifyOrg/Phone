@@ -93,6 +93,13 @@ android {
         warningsAsErrors = true
         baseline = file("lint-baseline.xml")
     }
+
+    bundle {
+        language {
+            @Suppress("UnstableApiUsage")
+            enableSplit = false
+        }
+    }
 }
 
 detekt {
