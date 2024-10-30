@@ -7,7 +7,7 @@ detekt = "1.23.3"
 #Eventbus
 eventbus = "3.3.1"
 #Fossify
-commons = "3788b3609c"
+commons = "c4110dc7c2"
 #Gradle
 gradlePlugins-agp = "8.7.1"
 #Other
@@ -16,7 +16,7 @@ autofitTextView = "0.2.1"
 #build
 app-build-compileSDKVersion = "34"
 app-build-targetSDK = "34"
-app-build-minimumSDK = "23"
+app-build-minimumSDK = "26"
 app-build-javaVersion = "VERSION_17"
 app-build-kotlinJVMTarget = "17"
 #versioning
