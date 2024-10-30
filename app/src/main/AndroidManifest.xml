@@ -41,7 +41,7 @@
     </queries>
 
     <application
-        android:name="org.fossify.phone.App"
+        android:name="org.fossify.commons.FossifyApp"
         android:allowBackup="true"
         android:appCategory="productivity"
         android:icon="@mipmap/ic_launcher"
