@@ -8,19 +8,17 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.Icon
-import android.net.Uri
 import android.os.Build
 import android.telecom.TelecomManager
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import org.fossify.commons.extensions.getLaunchIntent
 import org.fossify.commons.extensions.notificationManager
-import org.fossify.commons.extensions.telecomManager
 import org.fossify.commons.helpers.SimpleContactsHelper
 import org.fossify.phone.R
+import org.fossify.phone.activities.MissedCallNotificationActivity
 import org.fossify.phone.helpers.MISSED_CALLS
 import org.fossify.phone.helpers.MISSED_CALL_BACK
-import org.fossify.phone.helpers.MISSED_CALL_CANCEL
 import org.fossify.phone.helpers.MISSED_CALL_MESSAGE
 import kotlin.random.Random
 
@@ -28,46 +26,19 @@ import kotlin.random.Random
 class MissedCallReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         val extras = intent.extras ?: return
-        var phoneNumber = extras.getString("phoneNumber")
-        var notificationId = extras.getInt("notificationId", -1)
         val notificationManager = context.notificationManager
 
         when (intent.action) {
             TelecomManager.ACTION_SHOW_MISSED_CALLS_NOTIFICATION -> {
                 val notificationCount = extras.getInt(TelecomManager.EXTRA_NOTIFICATION_COUNT)
                 if (notificationCount != 0) {
-                    notificationId = Random.nextInt()
-                    phoneNumber = extras.getString(TelecomManager.EXTRA_NOTIFICATION_PHONE_NUMBER)
+                    val notificationId = Random.nextInt()
+                    val phoneNumber = extras.getString(TelecomManager.EXTRA_NOTIFICATION_PHONE_NUMBER)
                     createNotificationChannel(context)
                     notificationManager.notify(MISSED_CALLS.hashCode(), getNotificationGroup(context))
                     notificationManager.notify(notificationId, buildNotification(context, notificationId, phoneNumber ?: return))
                 }
-                null
             }
-
-            MISSED_CALL_BACK -> phoneNumber?.let {
-                Intent(Intent.ACTION_CALL).apply {
-                    data = Uri.fromParts("tel", it, null)
-                    flags = Intent.FLAG_ACTIVITY_NEW_TASK
-                }
-            }
-
-            MISSED_CALL_MESSAGE -> phoneNumber?.let {
-                Intent(Intent.ACTION_VIEW).apply {
-                    data = Uri.fromParts("sms", it, null)
-                    flags = Intent.FLAG_ACTIVITY_NEW_TASK
-                }
-            }
-
-            MISSED_CALL_CANCEL -> {
-                context.telecomManager.cancelMissedCallsNotification()
-                null
-            }
-
-            else -> null
-        }?.let {
-            context.startActivity(it)
-            context.notificationManager.cancel(notificationId)
         }
     }
 
@@ -102,31 +73,24 @@ class MissedCallReceiver : BroadcastReceiver() {
         val name = helper.getNameFromPhoneNumber(phoneNumber)
         val photoUri = helper.getPhotoUriFromPhoneNumber(phoneNumber)
 
-        val callBack = Intent(context, MissedCallReceiver::class.java).apply {
+        val callBack = Intent(context, MissedCallNotificationActivity::class.java).apply {
             action = MISSED_CALL_BACK
             putExtra("notificationId", notificationId)
             putExtra("phoneNumber", phoneNumber)
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         }
-        val callBackIntent = PendingIntent.getBroadcast(
+        val callBackIntent = PendingIntent.getActivity(
             context, notificationId, callBack, PendingIntent.FLAG_IMMUTABLE
         )
 
-        val smsIntent = Intent(context, MissedCallReceiver::class.java).apply {
+        val smsIntent = Intent(context, MissedCallNotificationActivity::class.java).apply {
             action = MISSED_CALL_MESSAGE
             putExtra("notificationId", notificationId)
             putExtra("phoneNumber", phoneNumber)
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         }
-        val messageIntent = PendingIntent.getBroadcast(
+        val messageIntent = PendingIntent.getActivity(
             context, notificationId, smsIntent, PendingIntent.FLAG_IMMUTABLE
-        )
-
-        val cancel = Intent(context, MissedCallReceiver::class.java).apply {
-            action = MISSED_CALL_CANCEL
-            putExtra("notificationId", notificationId)
-            putExtra("phoneNumber", phoneNumber)
-        }
-        val cancelIntent = PendingIntent.getActivity(
-            context, notificationId, cancel, PendingIntent.FLAG_IMMUTABLE
         )
 
         return NotificationCompat.Builder(context, "missed_call_channel")
@@ -137,9 +101,8 @@ class MissedCallReceiver : BroadcastReceiver() {
             .setAutoCancel(true)
             .setGroup(MISSED_CALLS)
             .setContentIntent(launchIntent(context))
-            .addAction(0, context.getString(R.string.call_back), callBackIntent)
-            .addAction(0, context.getString(R.string.message), messageIntent)
-            .setDeleteIntent(cancelIntent)
+            .addAction(android.R.drawable.sym_action_call, context.getString(R.string.call_back), callBackIntent)
+            .addAction(android.R.drawable.sym_action_chat, context.getString(R.string.message), messageIntent)
             .build()
     }
 }
