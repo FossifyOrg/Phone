@@ -1,28 +1,28 @@
 [versions]
 #jetbrains
-kotlin = "1.9.23"
-kotlinxSerializationJson = "1.5.1"
+kotlin = "1.9.25"
+kotlinxSerializationJson = "1.6.0"
 #Detekt
 detekt = "1.23.3"
 #Eventbus
 eventbus = "3.3.1"
 #Fossify
-commons = "b53047c2dd"
+commons = "c4110dc7c2"
 #Gradle
-gradlePlugins-agp = "8.6.1"
+gradlePlugins-agp = "8.7.1"
 #Other
 indicatorFastScroll = "4524cd0b61"
 autofitTextView = "0.2.1"
 #build
 app-build-compileSDKVersion = "34"
 app-build-targetSDK = "34"
-app-build-minimumSDK = "23"
+app-build-minimumSDK = "26"
 app-build-javaVersion = "VERSION_17"
 app-build-kotlinJVMTarget = "17"
 #versioning
 app-version-appId = "org.fossify.phone"
-app-version-versionCode = "4"
-app-version-versionName = "1.2.0"
+app-version-versionCode = "5"
+app-version-versionName = "1.3.0"
 [libraries]
 #Fossify
 fossify-commons = { module = "org.fossify:commons", version.ref = "commons" }

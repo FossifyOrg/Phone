@@ -82,7 +82,7 @@ class CallActivity : SimpleActivity() {
         updateCallContactInfo(CallManager.getPrimaryCall())
     }
 
-    override fun onNewIntent(intent: Intent?) {
+    override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
         updateState()
     }
@@ -92,7 +92,7 @@ class CallActivity : SimpleActivity() {
         updateState()
         updateNavigationBarColor(getProperBackgroundColor())
 
-        if (config.isUsingSystemTheme) {
+        if (isDynamicTheme()) {
             updateStatusbarColor(getProperBackgroundColor())
         }
     }
@@ -219,7 +219,7 @@ class CallActivity : SimpleActivity() {
         }
 
         dialpadWrapper.setBackgroundColor(
-            if (isUsingSystemDarkTheme()) {
+            if (isSystemInDarkMode()) {
                 getProperBackgroundColor().lightenColor(2)
             } else {
                 getProperBackgroundColor()
