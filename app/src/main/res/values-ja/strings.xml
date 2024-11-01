@@ -56,7 +56,7 @@
     <string name="calling_blocked_number">その番号はブロックした番号です</string>
     <string name="speed_dial">スピードダイヤル</string>
     <string name="manage_speed_dial">スピードダイヤルの管理</string>
-    <string name="speed_dial_label">番号をタップすると連絡先を割り当てることが出来ます。ダイヤルパッドで割り当てた番号を長押しすると、割り当てた連絡先に素早く電話をかけることが出来ます。</string>
+    <string name="speed_dial_label">番号をタップすると連絡先を割り当てることができます。ダイヤルパッドで割り当てた番号を長押しすると、割り当てた連絡先に素早く電話をかけることができます。</string>
     <string name="show_contact_thumbnails">連絡先のサムネイルを表示</string>
     <string name="group_subsequent_calls">発着信履歴で同じ番号による連続した通話をグループ化する</string>
     <string name="open_dialpad_by_default">アプリを開いたときにデフォルトでダイヤルパッドを開く</string>
@@ -66,4 +66,8 @@
     <string name="hide_dialpad_numbers">ダイヤルパッドの番号を表示しない</string>
     <string name="faq_1_title">着信音は聞こえるのですが、画面がつきません。どうしたらよいですか？</string>
     <string name="faq_1_text">このような問題は、端末やシステム固有の理由が多く、一概には言えません。端末の設定を見て、アプリがバックグラウンドでポップアップすることを許可しているか、他のアプリの上に表示することを許可しているかを確認する必要があります。</string>
+    <string name="app_launcher_name">電話</string>
+    <string name="audio_route_bluetooth">Bluetooth</string>
+    <string name="export_call_history">通話履歴をエクスポート</string>
+    <string name="import_call_history">通話履歴をインポート</string>
 </resources>

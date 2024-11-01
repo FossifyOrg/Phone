@@ -69,4 +69,5 @@
     <string name="import_call_history">匯入通話紀錄</string>
     <string name="faq_1_title">我聽到來電，但螢幕沒有亮起。我該怎麼辦？</string>
     <string name="faq_1_text">這種問題可能有許多與裝置和系統特定的原因，一般來說很難確定。您應該查看您的裝置設定，並確保 app 被允許在背景時彈出並允許在其他 app 上顯示。</string>
+    <string name="app_launcher_name">電話</string>
 </resources>
