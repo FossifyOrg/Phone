@@ -30,5 +30,6 @@ const val DECLINE_CALL = PATH + "decline_call"
 const val MISSED_CALLS = PATH + "missed_call"
 const val MISSED_CALL_BACK = PATH + "missed_call_back"
 const val MISSED_CALL_MESSAGE = PATH + "missed_call_message"
+const val MISSED_CALL_CANCEL = PATH + "missed_call_cancel"
 
 const val DIALPAD_TONE_LENGTH_MS = 150L // The length of DTMF tones in milliseconds

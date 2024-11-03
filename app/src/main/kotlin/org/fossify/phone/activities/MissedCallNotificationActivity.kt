@@ -4,9 +4,10 @@ import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import org.fossify.commons.extensions.notificationManager
 import org.fossify.phone.helpers.MISSED_CALL_BACK
+import org.fossify.phone.helpers.MISSED_CALL_CANCEL
 import org.fossify.phone.helpers.MISSED_CALL_MESSAGE
+import org.fossify.phone.receivers.MissedCallReceiver
 
 class MissedCallNotificationActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,7 +34,13 @@ class MissedCallNotificationActivity : Activity() {
             else -> null
         }?.let {
             startActivity(it)
-            notificationManager.cancel(notificationId)
+            startActivity(
+                Intent(this, MissedCallReceiver::class.java).apply {
+                    action = MISSED_CALL_CANCEL
+                    putExtra("notificationId", notificationId)
+                    flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                }
+            )
         }
 
         finish()

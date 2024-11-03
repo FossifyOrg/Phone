@@ -212,6 +212,7 @@
             <intent-filter>
                 <action android:name="org.fossify.phone.action.ACCEPT_CALL" />
                 <action android:name="org.fossify.phone.action.DECLINE_CALL" />
+                <action android:name="org.fossify.phone.action.MISSED_CALL_CANCEL" />
             </intent-filter>
         </receiver>
 
