@@ -34,7 +34,7 @@ class MissedCallNotificationActivity : Activity() {
             else -> null
         }?.let {
             startActivity(it)
-            startActivity(
+            sendBroadcast(
                 Intent(this, MissedCallReceiver::class.java).apply {
                     action = MISSED_CALL_CANCEL
                     putExtra("notificationId", notificationId)

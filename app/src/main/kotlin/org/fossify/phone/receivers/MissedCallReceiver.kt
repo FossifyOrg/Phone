@@ -25,6 +25,10 @@ import kotlin.random.Random
 
 @RequiresApi(Build.VERSION_CODES.O)
 class MissedCallReceiver : BroadcastReceiver() {
+    companion object {
+        private var notifications = 0
+    }
+
     override fun onReceive(context: Context, intent: Intent) {
         val extras = intent.extras ?: return
         val notificationManager = context.notificationManager
@@ -36,17 +40,20 @@ class MissedCallReceiver : BroadcastReceiver() {
                     val notificationId = Random.nextInt()
                     val phoneNumber = extras.getString(TelecomManager.EXTRA_NOTIFICATION_PHONE_NUMBER)
                     createNotificationChannel(context)
+                    notifications++
                     notificationManager.notify(MISSED_CALLS.hashCode(), getNotificationGroup(context))
                     notifyMissedCall(context, notificationId, phoneNumber ?: return)
-                } else {
-                    notificationManager.cancel(MISSED_CALLS.hashCode())
                 }
             }
 
             MISSED_CALL_CANCEL -> {
                 val notificationId = intent.extras?.getInt("notificationId", -1) ?: return
                 notificationManager.cancel(notificationId)
-                context.telecomManager.cancelMissedCallsNotification()
+                notifications--
+                if (notifications <= 0) {
+                    notificationManager.cancel(MISSED_CALLS.hashCode())
+                    context.telecomManager.cancelMissedCallsNotification()
+                }
             }
         }
     }
@@ -92,9 +99,12 @@ class MissedCallReceiver : BroadcastReceiver() {
             }
             val name = helper.getNameFromPhoneNumber(phoneNumber)
             val photoUri = helper.getPhotoUriFromPhoneNumber(phoneNumber)
-            val numberLabel = if (contact != null && phone != null && contact.phoneNumbers.size > 1) {
+            var numberLabel = if (contact != null && phone != null && contact.phoneNumbers.size > 1) {
                 context.getPhoneNumberTypeText(phone!!.type, phone!!.label)
             } else ""
+            if (numberLabel.isNotEmpty()) {
+                numberLabel = " - $numberLabel"
+            }
 
             val callBack = Intent(context, MissedCallNotificationActivity::class.java).apply {
                 action = MISSED_CALL_BACK
@@ -128,7 +138,7 @@ class MissedCallReceiver : BroadcastReceiver() {
             val notification = NotificationCompat.Builder(context, "missed_call_channel")
                 .setSmallIcon(android.R.drawable.sym_call_missed)
                 .setContentTitle(context.resources.getQuantityString(R.plurals.missed_calls, 1, 1))
-                .setContentText(context.getString(R.string.missed_call_from, name) + " - $numberLabel")
+                .setContentText(context.getString(R.string.missed_call_from, name) + numberLabel)
                 .setLargeIcon(Icon.createWithContentUri(photoUri))
                 .setAutoCancel(true)
                 .setGroup(MISSED_CALLS)
