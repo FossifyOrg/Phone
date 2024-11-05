@@ -13,7 +13,8 @@ import android.telecom.TelecomManager
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import org.fossify.commons.extensions.*
-import org.fossify.commons.helpers.SimpleContactsHelper
+import org.fossify.commons.helpers.ContactsHelper
+import org.fossify.commons.helpers.MyContactsContentProvider
 import org.fossify.commons.models.PhoneNumber
 import org.fossify.phone.R
 import org.fossify.phone.activities.MissedCallNotificationActivity
@@ -85,8 +86,11 @@ class MissedCallReceiver : BroadcastReceiver() {
     }
 
     private fun notifyMissedCall(context: Context, notificationId: Int, phoneNumber: String) {
-        val helper = SimpleContactsHelper(context)
-        helper.getAvailableContacts(false) { contactList ->
+        val privateCursor = context.getMyContactsCursor(favoritesOnly = false, withPhoneNumbersOnly = true)
+        ContactsHelper(context).getContacts(getAll = true, showOnlyContactsWithNumbers = true) { contactList ->
+            val privateContacts = MyContactsContentProvider.getContacts(context, privateCursor)
+            contactList.addAll(privateContacts)
+            contactList.sort()
             var phone: PhoneNumber? = null
             val contact = contactList.firstOrNull {
                 it.phoneNumbers.any {
@@ -97,8 +101,9 @@ class MissedCallReceiver : BroadcastReceiver() {
                     false
                 }
             }
-            val name = helper.getNameFromPhoneNumber(phoneNumber)
-            val photoUri = helper.getPhotoUriFromPhoneNumber(phoneNumber)
+
+            val name = contact?.name ?: phoneNumber
+            val photoUri = contact?.photoUri
             var numberLabel = if (contact != null && phone != null && contact.phoneNumbers.size > 1) {
                 context.getPhoneNumberTypeText(phone!!.type, phone!!.label)
             } else ""
