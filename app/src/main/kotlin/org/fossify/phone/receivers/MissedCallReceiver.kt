@@ -142,7 +142,7 @@ class MissedCallReceiver : BroadcastReceiver() {
 
             val notification = NotificationCompat.Builder(context, "missed_call_channel")
                 .setSmallIcon(android.R.drawable.sym_call_missed)
-                .setContentTitle(context.resources.getQuantityString(R.plurals.missed_calls, 1, 1))
+                .setContentTitle(context.resources.getString(R.string.missed_calls))
                 .setContentText(context.getString(R.string.missed_call_from, name) + numberLabel)
                 .setAutoCancel(true)
                 .setGroup(MISSED_CALLS)
