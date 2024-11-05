@@ -144,16 +144,18 @@ class MissedCallReceiver : BroadcastReceiver() {
                 .setSmallIcon(android.R.drawable.sym_call_missed)
                 .setContentTitle(context.resources.getQuantityString(R.plurals.missed_calls, 1, 1))
                 .setContentText(context.getString(R.string.missed_call_from, name) + numberLabel)
-                .setLargeIcon(Icon.createWithContentUri(photoUri))
                 .setAutoCancel(true)
                 .setGroup(MISSED_CALLS)
                 .setContentIntent(launchIntent(context))
                 .addAction(android.R.drawable.sym_action_call, context.getString(R.string.call_back), callBackIntent)
                 .addAction(android.R.drawable.sym_action_chat, context.getString(R.string.message), messageIntent)
                 .setDeleteIntent(cancelPendingIntent)
-                .build()
 
-            context.notificationManager.notify(notificationId, notification)
+            if (!photoUri.isNullOrBlank()) {
+                notification.setLargeIcon(Icon.createWithContentUri(photoUri))
+            }
+
+            context.notificationManager.notify(notificationId, notification.build())
         }
     }
 }
