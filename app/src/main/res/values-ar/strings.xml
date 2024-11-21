@@ -58,6 +58,7 @@
     <string name="speed_dial">اتصال سريع</string>
     <string name="manage_speed_dial">إدارة الاتصال السريع</string>
     <string name="speed_dial_label">انقر فوق رقم لتعيين جهة اتصال له. يمكنك بعد ذلك الاتصال بجهة الاتصال المحددة بسرعة عن طريق الضغط لفترة طويلة على الرقم المحدد في الهاتف.</string>
+    <string name="show_contact_thumbnails">عرض صور مصغرة لجهات الإتصال</string>
     <string name="group_subsequent_calls">تجميع المكالمات اللاحقة مع نفس الرقم في سجل المكالمات</string>
     <string name="open_dialpad_by_default">افتح لوحة الاتصال افتراضيًا عند فتح التطبيق</string>
     <string name="disable_proximity_sensor">تعطيل مستشعر القرب أثناء المكالمات</string>

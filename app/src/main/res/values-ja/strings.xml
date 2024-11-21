@@ -57,6 +57,7 @@
     <string name="speed_dial">スピードダイヤル</string>
     <string name="manage_speed_dial">スピードダイヤルの管理</string>
     <string name="speed_dial_label">番号をタップすると連絡先を割り当てることができます。ダイヤルパッドで割り当てた番号を長押しすると、割り当てた連絡先に素早く電話をかけることができます。</string>
+    <string name="show_contact_thumbnails">連絡先のサムネイルを表示</string>
     <string name="group_subsequent_calls">発着信履歴で同じ番号による連続した通話をグループ化する</string>
     <string name="open_dialpad_by_default">アプリを開いたときにデフォルトでダイヤルパッドを開く</string>
     <string name="disable_proximity_sensor">通話中に近接センサーを無効にする</string>

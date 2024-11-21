@@ -57,6 +57,7 @@
     <string name="speed_dial">Marcatge ràpid</string>
     <string name="manage_speed_dial">Gestiona el marcatge ràpid</string>
     <string name="speed_dial_label">Feu clic en un número per a assignar-li un contacte. A continuació, podeu trucar ràpidament al contacte indicat prement prolongadament el número assignat al marcador.</string>
+    <string name="show_contact_thumbnails">Mostra les miniatures dels contactes</string>
     <string name="group_subsequent_calls">Agrupa les trucades posteriors amb el mateix número al registre de trucades</string>
     <string name="open_dialpad_by_default">Obre el teclat de marcatge de manera predeterminada quan s\'obri l\'aplicació</string>
     <string name="disable_proximity_sensor">Desactiva el sensor de proximitat durant les trucades</string>

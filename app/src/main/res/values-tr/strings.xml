@@ -57,6 +57,7 @@
     <string name="speed_dial">Hızlı arama</string>
     <string name="manage_speed_dial">Hızlı aramayı yönet</string>
     <string name="speed_dial_label">Bir kişiye atamak için bir numaraya tıklayın. Tuş takımında bu numaraya uzun basarak bu kişiyi hızlıca arayabilirsiniz.</string>
+    <string name="show_contact_thumbnails">Kişi küçük resimlerini göster</string>
     <string name="group_subsequent_calls">Arama kaydında aynı numaradan gelen aramaları gruplandır</string>
     <string name="open_dialpad_by_default">Uygulama açıldığında tuş takımını aç</string>
     <string name="disable_proximity_sensor">Aramalar sırasında yakınlık sensörünü devre dışı bırak</string>

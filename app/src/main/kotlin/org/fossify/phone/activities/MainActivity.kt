@@ -54,6 +54,8 @@ class MainActivity : SimpleActivity() {
     private var storedShowTabs = 0
     private var storedFontSize = 0
     private var storedStartNameWithSurname = false
+    private var storedShowContactThumbnails = false
+
     var cachedContacts = ArrayList<Contact>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -127,6 +129,14 @@ class MainActivity : SimpleActivity() {
             storedStartNameWithSurname = config.startNameWithSurname
         }
 
+        val configShowContactThumbnails = config.showContactThumbnails
+        if (storedShowContactThumbnails != configShowContactThumbnails) {
+            getContactsFragment()?.showContactThumbnailsChanged(configShowContactThumbnails)
+            getFavoritesFragment()?.showContactThumbnailsChanged(configShowContactThumbnails)
+            getRecentsFragment()?.showContactThumbnailsChanged(configShowContactThumbnails)
+            storedShowContactThumbnails = config.showContactThumbnails
+        }
+
         if (!binding.mainMenu.isSearchOpen) {
             refreshItems(true)
         }
@@ -148,6 +158,7 @@ class MainActivity : SimpleActivity() {
         super.onPause()
         storedShowTabs = config.showTabs
         storedStartNameWithSurname = config.startNameWithSurname
+        storedShowContactThumbnails = config.showContactThumbnails
         config.lastUsedViewPagerPage = binding.viewPager.currentItem
     }
 
@@ -440,6 +451,7 @@ class MainActivity : SimpleActivity() {
         binding.mainTabsHolder.beGoneIf(binding.mainTabsHolder.tabCount == 1)
         storedShowTabs = config.showTabs
         storedStartNameWithSurname = config.startNameWithSurname
+        storedShowContactThumbnails = config.showContactThumbnails
     }
 
     private fun getTabIcon(position: Int): Drawable {

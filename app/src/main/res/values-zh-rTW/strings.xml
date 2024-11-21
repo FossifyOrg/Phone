@@ -58,6 +58,7 @@
     <string name="speed_dial">快速撥號</string>
     <string name="manage_speed_dial">管理快速撥號</string>
     <string name="speed_dial_label">點選一個號碼以指定聯絡人。然後您可以在撥號器長按該號碼快速撥打給該聯絡人。</string>
+    <string name="show_contact_thumbnails">顯示聯絡人縮圖</string>
     <string name="group_subsequent_calls">將通話紀錄中相同號碼的連續通話分組</string>
     <string name="open_dialpad_by_default">當 app 開啟時預設開啟撥號鍵盤</string>
     <string name="disable_proximity_sensor">通話時停用接近感應器</string>
