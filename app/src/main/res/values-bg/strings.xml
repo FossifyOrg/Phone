@@ -24,7 +24,7 @@
     <string name="decline_call">Отказване на обаждането</string>
     <string name="unknown_caller">Неизвестен номер</string>
     <string name="is_calling">Звъни…</string>
-    <string name="dialing">Набиране на номера…</string>
+    <string name="dialing">Набиране на телефонния номер…</string>
     <string name="call_ended">Край на разговора</string>
     <string name="call_ending">Завършване на разговора</string>
     <string name="ongoing_call">Текущ разговор</string>
@@ -62,7 +62,7 @@
     <string name="disable_proximity_sensor">Изключване на сензора за близост по време на обаждания</string>
     <string name="disable_swipe_to_answer">Смяна на плъзгането с докосване при отговаряне на обаждания</string>
     <string name="show_incoming_calls_full_screen">Входящите повиквания са на цял екран</string>
-    <string name="hide_dialpad_numbers">Скриване на номерата на клавиатурата за набиране</string>
+    <string name="hide_dialpad_numbers">Скриване на цифрите от бутоните за набиране</string>
     <string name="export_call_history">Изнасяне на дневника на обажданията</string>
     <string name="import_call_history">Внасяне на дневника на обажданията</string>
     <string name="faq_1_title">Чувам входящи повиквания, но екранът не се включва. Какво да направя?</string>
