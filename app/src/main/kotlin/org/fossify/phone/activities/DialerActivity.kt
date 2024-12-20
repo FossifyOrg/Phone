@@ -11,6 +11,8 @@ import org.fossify.commons.extensions.*
 import org.fossify.commons.helpers.REQUEST_CODE_SET_DEFAULT_DIALER
 import org.fossify.phone.R
 import org.fossify.phone.extensions.getHandleToUse
+import org.fossify.phone.extensions.config
+import org.fossify.phone.helpers.fixInvalidNumbers
 
 class DialerActivity : SimpleActivity() {
     private var callNumber: Uri? = null
@@ -42,13 +44,18 @@ class DialerActivity : SimpleActivity() {
                 return
             }
 
+
+            var actualCallNumber = callNumber
+            if (config.fixInvalidNumbers) {
+                actualCallNumber = fixInvalidNumbers(callNumber, this.getApplicationContext()) 
+            }
             getHandleToUse(intent, callNumber.toString()) { handle ->
                 if (handle != null) {
                     Bundle().apply {
                         putParcelable(TelecomManager.EXTRA_PHONE_ACCOUNT_HANDLE, handle)
                         putBoolean(TelecomManager.EXTRA_START_CALL_WITH_VIDEO_STATE, false)
                         putBoolean(TelecomManager.EXTRA_START_CALL_WITH_SPEAKERPHONE, false)
-                        telecomManager.placeCall(callNumber, this)
+                        telecomManager.placeCall(actualCallNumber, this)
                     }
                 }
                 finish()

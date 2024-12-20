@@ -349,6 +349,21 @@
 
             </RelativeLayout>
 
+            <RelativeLayout
+                android:id="@+id/settings_fix_invalid_numbers_holder"
+                style="@style/SettingsHolderSwitchStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <org.fossify.commons.views.MyMaterialSwitch
+                    android:id="@+id/settings_fix_invalid_numbers"
+                    style="@style/SettingsSwitchStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fix_invalid_numbers_desc" />
+
+            </RelativeLayout>
+
             <include
                 android:id="@+id/settings_dialpad_divider"
                 layout="@layout/divider" />

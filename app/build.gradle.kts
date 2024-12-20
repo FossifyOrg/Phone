@@ -112,4 +112,7 @@ dependencies {
     implementation(libs.autofit.text.view)
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.eventbus)
+
+    testImplementation("junit:junit:4.13.2")
+    testImplementation("org.robolectric:robolectric:4.14")
 }
