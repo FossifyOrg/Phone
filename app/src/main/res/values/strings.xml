@@ -76,7 +76,6 @@
     <string name="disable_proximity_sensor">Disable proximity sensor during calls</string>
     <string name="disable_swipe_to_answer">Replace swiping at responding to incoming calls with clicking</string>
     <string name="show_incoming_calls_full_screen">Always display incoming calls on full screen</string>
-    <string name="fix_invalid_numbers_desc">Fix Brazil numbers before placing calls (adds leading 9)</string>
     <string name="hide_dialpad_numbers">Hide dialpad numbers</string>
     <string name="export_call_history">Export call history</string>
     <string name="import_call_history">Import call history</string>

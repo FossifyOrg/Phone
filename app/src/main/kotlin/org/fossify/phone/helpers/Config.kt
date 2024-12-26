@@ -89,8 +89,4 @@ class Config(context: Context) : BaseConfig(context) {
     var alwaysShowFullscreen: Boolean
         get() = prefs.getBoolean(ALWAYS_SHOW_FULLSCREEN, false)
         set(alwaysShowFullscreen) = prefs.edit().putBoolean(ALWAYS_SHOW_FULLSCREEN, alwaysShowFullscreen).apply()
-
-    var fixInvalidNumbers: Boolean
-        get() = prefs.getBoolean(FIX_INVALID_NUMBERS, false)
-        set(fixInvalidNumbers) = prefs.edit().putBoolean(FIX_INVALID_NUMBERS, fixInvalidNumbers).apply()
 }

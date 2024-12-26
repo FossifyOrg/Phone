@@ -85,7 +85,6 @@ class SettingsActivity : SimpleActivity() {
         setupDisableProximitySensor()
         setupDisableSwipeToAnswer()
         setupAlwaysShowFullscreen()
-        setupFixInvalidNumbers()
         setupCallsExport()
         setupCallsImport()
         updateTextColors(binding.settingsHolder)
@@ -329,16 +328,6 @@ class SettingsActivity : SimpleActivity() {
             settingsAlwaysShowFullscreenHolder.setOnClickListener {
                 settingsAlwaysShowFullscreen.toggle()
                 config.alwaysShowFullscreen = settingsAlwaysShowFullscreen.isChecked
-            }
-        }
-    }
-
-    private fun setupFixInvalidNumbers() {
-        binding.apply {
-            settingsFixInvalidNumbers.isChecked = config.fixInvalidNumbers
-            settingsFixInvalidNumbersHolder.setOnClickListener {
-                settingsFixInvalidNumbers.toggle()
-                config.fixInvalidNumbers = settingsFixInvalidNumbers.isChecked
             }
         }
     }

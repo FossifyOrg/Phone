@@ -11,7 +11,6 @@ import org.fossify.commons.extensions.*
 import org.fossify.commons.helpers.REQUEST_CODE_SET_DEFAULT_DIALER
 import org.fossify.phone.R
 import org.fossify.phone.extensions.getHandleToUse
-import org.fossify.phone.extensions.config
 import org.fossify.phone.helpers.fixInvalidNumbers
 
 class DialerActivity : SimpleActivity() {
@@ -45,10 +44,7 @@ class DialerActivity : SimpleActivity() {
             }
 
 
-            var actualCallNumber = callNumber
-            if (config.fixInvalidNumbers) {
-                actualCallNumber = fixInvalidNumbers(callNumber, this.getApplicationContext()) 
-            }
+            val actualCallNumber = fixInvalidNumbers(callNumber, this.getApplicationContext()) 
             getHandleToUse(intent, callNumber.toString()) { handle ->
                 if (handle != null) {
                     Bundle().apply {

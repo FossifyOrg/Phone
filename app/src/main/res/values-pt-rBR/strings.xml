@@ -60,7 +60,6 @@
     <string name="disable_proximity_sensor">Desativar sensor de proximidade durante as chamadas</string>
     <string name="disable_swipe_to_answer">Clicar em vez de deslizar para responder chamadas</string>
     <string name="show_incoming_calls_full_screen">Sempre exibir as chamadas recebidas em tela cheia</string>
-    <string name="fix_invalid_numbers_desc">Corrigir números antes de realizar a chamada (adiciona o 9 caso esteja faltando)</string>
     <string name="hide_dialpad_numbers">Ocultar números do teclado</string>
     <string name="faq_1_title">Ouço chamadas recebidas, mas a tela não liga. O que eu posso fazer?</string>
     <string name="faq_1_text">Esses problemas podem ter muitos motivos específicos do dispositivo e do sistema, difíceis de dizer em geral. Você deve olhar em volta nas configurações do seu dispositivo e certificar-se de que o aplicativo pode aparecer quando estiver em segundo plano e permitir a exibição sobre outros aplicativos.</string>
