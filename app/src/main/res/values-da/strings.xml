@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+<<<<<<< HEAD
 <string name="app_launcher_name">Opkald</string>
 <string name="default_phone_app_prompt">Vælg venligst denne app som standard til opkald</string>
 <string name="allow_displaying_over_other_apps">Tillad venligst visning over andre apps for pålidelig adfærd</string>
@@ -69,8 +70,10 @@
 <string name="speed_dial">Hurtigopkald</string>
 <string name="manage_speed_dial">Administrer hurtigopkald</string>
 <string name="speed_dial_label">Klik på et nummer for at tilknytte en kontakt til det. Derefter kan du hurtigt ringe op til den givne kontkakt ved at holde nede på det givne nummer via det numeriske tastatur.</string>
+<string name="show_contact_thumbnails">Vis kontakt miniature-billede</string>
 
 <!-- Settings -->
+<string name="show_contact_thumbnails">Vis kontakt miniature-billede</string>
 <string name="group_subsequent_calls">Gruppér efterfølgende opkald med samme nummer i opkaldsloggen</string>
 <string name="open_dialpad_by_default">Åbn det numeriske tastatur som standard når appen åbner</string>
 <string name="disable_proximity_sensor">Deaktivér nærhedssensor under opkald</string>
