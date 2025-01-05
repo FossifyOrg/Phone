@@ -181,9 +181,23 @@ class FavoritesFragment(context: Context, attributeSet: AttributeSet) : MyViewPa
     }
 
     private fun setupLetterFastScroller(contacts: List<Contact>) {
+        val sorting = context.config.sorting
         binding.letterFastscroller.setupWithRecyclerView(binding.fragmentList, { position ->
             try {
-                val name = contacts[position].getNameToDisplay()
+                val contact = contacts[position]
+                var name = when {
+                    contact.isABusinessContact() -> contact.getFullCompany()
+                    sorting and SORT_BY_SURNAME != 0 && contact.surname.isNotEmpty() -> contact.surname
+                    sorting and SORT_BY_MIDDLE_NAME != 0 && contact.middleName.isNotEmpty() -> contact.middleName
+                    sorting and SORT_BY_FIRST_NAME != 0 && contact.firstName.isNotEmpty() -> contact.firstName
+                    context.config.startNameWithSurname -> contact.surname
+                    else -> contact.firstName
+                }
+
+                if (name.isEmpty()) {
+                    name = contact.getNameToDisplay()
+                }
+
                 val character = if (name.isNotEmpty()) name.substring(0, 1) else ""
                 FastScrollItemIndicator.Text(character.uppercase(Locale.getDefault()).normalizeString())
             } catch (e: Exception) {
