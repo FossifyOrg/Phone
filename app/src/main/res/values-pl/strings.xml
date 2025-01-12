@@ -69,4 +69,6 @@
     <string name="faq_1_text">Takie problemy mogą mieć wiele przyczyn specyficznych dla urządzenia i systemu; ogólnie trudno powiedzieć. Powinieneś/powinnaś rozejrzeć się w ustawieniach swojego urządzenia i upewnić się, że aplikacja może pojawiać się, gdy jest w tle, i wyświetlać się nad innymi aplikacjami.</string>
     <string name="audio_route_bluetooth">Bluetooth</string>
     <string name="app_launcher_name">Telefon</string>
+    <string name="faq_2_text">Ze względu na ograniczenia systemowe połączenia alarmowe mogą być wykonywane tylko przez domyślną systemową aplikację do dzwonienia. Aby mieć pewność, że połączenia alarmowe działają prawidłowo, musisz mieć zainstalowaną i włączoną aplikację systemową.</string>
+    <string name="faq_2_title">Dlaczego połączenia alarmowe nie działają prawidłowo?</string>
 </resources>
