@@ -365,17 +365,20 @@ class ContactsAdapter(
                 setTextSize(TypedValue.COMPLEX_UNIT_PX, fontSize)
 
                 val name = contact.getNameToDisplay()
-                text = if (textToHighlight.isEmpty()) name else {
+                text = if (textToHighlight.isEmpty()) {
+                    name
+                } else {
                     if (name.contains(textToHighlight, true)) {
                         name.highlightTextPart(textToHighlight, properPrimaryColor)
                     } else {
                         var spacedTextToHighlight = textToHighlight
-                        val strippedName = PhoneNumberUtils.convertKeypadLettersToDigits(name.filterNot { it.isWhitespace() })
-                        val startIndex = strippedName.indexOf(textToHighlight)
+                        val strippedName = name.filterNot { it.isWhitespace() }
+                        val strippedDigits = PhoneNumberUtils.convertKeypadLettersToDigits(strippedName)
+                        val startIndex = strippedDigits.indexOf(textToHighlight)
 
-                        if ( strippedName.contains(textToHighlight)) {
+                        if (strippedDigits.contains(textToHighlight)) {
                             for (i in 0..spacedTextToHighlight.length) {
-                                if (name[startIndex+i].isWhitespace()) {
+                                if (name[startIndex + i].isWhitespace()) {
                                     spacedTextToHighlight = spacedTextToHighlight.replaceRange(i, i, " ")
                                 }
                             }
