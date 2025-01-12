@@ -70,4 +70,6 @@
     <string name="asterisk">Зірочка</string>
     <string name="audio_route_bluetooth">Bluetooth</string>
     <string name="call_is_being_connected">Триває з\'єднання…</string>
+    <string name="faq_2_title">Чому екстрені виклики не працюють належним чином?</string>
+    <string name="faq_2_text">Через системні обмеження екстрені виклики можна здійснювати лише через стандартний набір номера або телефонний застосунок вашої системи. Щоби екстрені виклики працювали належним чином, вам потрібно тримати системний застосунок встановленим та увімкненим.</string>
 </resources>
