@@ -271,8 +271,10 @@ class DialpadActivity : SimpleActivity() {
 
         (binding.dialpadList.adapter as? ContactsAdapter)?.finishActMode()
 
-        val filtered = allContacts.filter {
-            var convertedName = PhoneNumberUtils.convertKeypadLettersToDigits(it.name.normalizeString()).filterNot { it.isWhitespace() }
+        val filtered = allContacts.filter { contact ->
+            var convertedName = PhoneNumberUtils.convertKeypadLettersToDigits(
+                contact.name.normalizeString()
+            ).filterNot { it.isWhitespace() }
 
             if (hasRussianLocale) {
                 var currConvertedName = ""
@@ -283,7 +285,7 @@ class DialpadActivity : SimpleActivity() {
                 convertedName = currConvertedName
             }
 
-            it.doesContainPhoneNumber(text) || (convertedName.contains(text, true))
+            contact.doesContainPhoneNumber(text) || (convertedName.contains(text, true))
         }.sortedWith(compareBy {
             !it.doesContainPhoneNumber(text)
         }).toMutableList() as ArrayList<Contact>
