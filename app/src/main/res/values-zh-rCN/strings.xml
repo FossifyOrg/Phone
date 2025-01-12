@@ -69,4 +69,6 @@
     <string name="faq_1_title">我听到来电声音，但屏幕不亮。我该怎么办\?</string>
     <string name="faq_1_text">这样的问题可能有很多设备和系统的具体原因，很难笼统地说。你应该查看你的设备设置，确保应用在后台时被允许弹出，并允许其显示在其他应用上方。</string>
     <string name="app_launcher_name">电话</string>
+    <string name="faq_2_text">由于系统限制，紧急呼叫只能通过系统默认拨号器或电话应用拨打。为确保紧急呼叫正常工作，您需要保持系统应用安装并启用。</string>
+    <string name="faq_2_title">为什么紧急呼叫无法正常工作？</string>
 </resources>
