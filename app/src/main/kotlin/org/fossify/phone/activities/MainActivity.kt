@@ -557,6 +557,7 @@ class MainActivity : SimpleActivity() {
 
         val faqItems = arrayListOf(
             FAQItem(R.string.faq_1_title, R.string.faq_1_text),
+            FAQItem(R.string.faq_2_title, R.string.faq_2_text),
             FAQItem(R.string.faq_9_title_commons, R.string.faq_9_text_commons)
         )
 
