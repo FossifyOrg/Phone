@@ -70,7 +70,7 @@ class ContactsFragment(context: Context, attributeSet: AttributeSet) : MyViewPag
         }
     }
 
-    override fun refreshItems(callback: (() -> Unit)?) {
+    override fun refreshItems(invalidate: Boolean, callback: (() -> Unit)?) {
         val privateCursor = context?.getMyContactsCursor(false, true)
         ContactsHelper(context).getContacts(showOnlyContactsWithNumbers = true) { contacts ->
             allContacts = contacts

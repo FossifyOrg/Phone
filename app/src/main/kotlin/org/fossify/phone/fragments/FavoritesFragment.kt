@@ -54,7 +54,7 @@ class FavoritesFragment(context: Context, attributeSet: AttributeSet) : MyViewPa
         }
     }
 
-    override fun refreshItems(callback: (() -> Unit)?) {
+    override fun refreshItems(invalidate: Boolean, callback: (() -> Unit)?) {
         ContactsHelper(context).getContacts(showOnlyContactsWithNumbers = true) { contacts ->
             allContacts = contacts
 

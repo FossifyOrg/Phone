@@ -271,7 +271,7 @@ class MainActivity : SimpleActivity() {
         ConfirmationDialog(this, confirmationText) {
             RecentsHelper(this).removeAllRecentCalls(this) {
                 runOnUiThread {
-                    getRecentsFragment()?.refreshItems()
+                    getRecentsFragment()?.refreshItems(invalidate = true)
                 }
             }
         }
