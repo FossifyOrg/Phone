@@ -72,4 +72,6 @@
     <string name="faq_2_text">Ze względu na ograniczenia systemowe połączenia alarmowe mogą być wykonywane tylko przez domyślną systemową aplikację do dzwonienia. Aby mieć pewność, że połączenia alarmowe działają prawidłowo, musisz mieć zainstalowaną i włączoną aplikację systemową.</string>
     <string name="faq_2_title">Dlaczego połączenia alarmowe nie działają prawidłowo?</string>
     <string name="call_is_being_connected">Trwa nawiązywanie połączenia…</string>
+    <string name="faq_3_text">Fossify Phone wyświetla tylko te kontakty, które mają przypisany numer telefonu. Kontakty bez numeru telefonu nie są wyświetlane w aplikacji.</string>
+    <string name="faq_3_title">Dlaczego niektórych moich kontaktów brakuje w aplikacji?</string>
 </resources>
