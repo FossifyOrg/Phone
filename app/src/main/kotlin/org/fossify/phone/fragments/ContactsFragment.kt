@@ -71,7 +71,7 @@ class ContactsFragment(context: Context, attributeSet: AttributeSet) : MyViewPag
     }
 
     override fun refreshItems(invalidate: Boolean, callback: (() -> Unit)?) {
-        val privateCursor = context?.getMyContactsCursor(false, true)
+        val privateCursor = context?.getMyContactsCursor(favoritesOnly = false, withPhoneNumbersOnly = true)
         ContactsHelper(context).getContacts(showOnlyContactsWithNumbers = true) { contacts ->
             allContacts = contacts
 
@@ -141,19 +141,19 @@ class ContactsFragment(context: Context, attributeSet: AttributeSet) : MyViewPag
     override fun onSearchQueryChanged(text: String) {
         val fixedText = text.trim().replace("\\s+".toRegex(), " ")
         val shouldNormalize = fixedText.normalizeString() == fixedText
-        val filtered = allContacts.filter {
-            getProperText(it.getNameToDisplay(), shouldNormalize).contains(fixedText, true) ||
-                getProperText(it.nickname, shouldNormalize).contains(fixedText, true) ||
-                (fixedText.toIntOrNull() != null && it.phoneNumbers.any {
+        val filtered = allContacts.filter { contact ->
+            getProperText(contact.getNameToDisplay(), shouldNormalize).contains(fixedText, true) ||
+                getProperText(contact.nickname, shouldNormalize).contains(fixedText, true) ||
+                (fixedText.toIntOrNull() != null && contact.phoneNumbers.any {
                     fixedText.normalizePhoneNumber().isNotEmpty() && it.normalizedNumber.contains(fixedText.normalizePhoneNumber(), true)
                 }) ||
-                it.emails.any { it.value.contains(fixedText, true) } ||
-                it.addresses.any { getProperText(it.value, shouldNormalize).contains(fixedText, true) } ||
-                it.IMs.any { it.value.contains(fixedText, true) } ||
-                getProperText(it.notes, shouldNormalize).contains(fixedText, true) ||
-                getProperText(it.organization.company, shouldNormalize).contains(fixedText, true) ||
-                getProperText(it.organization.jobPosition, shouldNormalize).contains(fixedText, true) ||
-                it.websites.any { it.contains(fixedText, true) }
+                contact.emails.any { it.value.contains(fixedText, true) } ||
+                contact.addresses.any { getProperText(it.value, shouldNormalize).contains(fixedText, true) } ||
+                contact.IMs.any { it.value.contains(fixedText, true) } ||
+                getProperText(contact.notes, shouldNormalize).contains(fixedText, true) ||
+                getProperText(contact.organization.company, shouldNormalize).contains(fixedText, true) ||
+                getProperText(contact.organization.jobPosition, shouldNormalize).contains(fixedText, true) ||
+                contact.websites.any { it.contains(fixedText, true) }
         } as ArrayList
 
         filtered.sortBy {

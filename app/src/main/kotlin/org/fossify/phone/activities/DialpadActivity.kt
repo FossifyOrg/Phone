@@ -1,11 +1,9 @@
 package org.fossify.phone.activities
 
 import android.annotation.SuppressLint
-import android.annotation.TargetApi
 import android.content.Intent
 import android.database.Cursor
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -251,7 +249,6 @@ class DialpadActivity : SimpleActivity() {
         }
     }
 
-    @TargetApi(Build.VERSION_CODES.O)
     private fun dialpadValueChanged(text: String) {
         val len = text.length
         if (len > 8 && text.startsWith("*#*#") && text.endsWith("#*#*")) {

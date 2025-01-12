@@ -59,7 +59,7 @@ class FavoritesFragment(context: Context, attributeSet: AttributeSet) : MyViewPa
             allContacts = contacts
 
             if (SMT_PRIVATE !in context.baseConfig.ignoredContactSources) {
-                val privateCursor = context?.getMyContactsCursor(true, true)
+                val privateCursor = context?.getMyContactsCursor(favoritesOnly = true, withPhoneNumbersOnly = true)
                 val privateContacts = MyContactsContentProvider.getContacts(context, privateCursor).map {
                     it.copy(starred = 1)
                 }
@@ -112,16 +112,16 @@ class FavoritesFragment(context: Context, attributeSet: AttributeSet) : MyViewPa
                 viewType = viewType,
                 showDeleteButton = false,
                 enableDrag = true,
-            ) {
+            ) { contact ->
                 if (context.config.showCallConfirmation) {
-                    CallConfirmationDialog(activity as SimpleActivity, (it as Contact).getNameToDisplay()) {
+                    CallConfirmationDialog(activity as SimpleActivity, (contact as Contact).getNameToDisplay()) {
                         activity?.apply {
-                            initiateCall(it) { launchCallIntent(it) }
+                            initiateCall(contact) { launchCallIntent(it) }
                         }
                     }
                 } else {
                     activity?.apply {
-                        initiateCall(it as Contact) { launchCallIntent(it) }
+                        initiateCall(contact as Contact) { launchCallIntent(it) }
                     }
                 }
             }.apply {
