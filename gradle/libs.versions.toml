@@ -9,7 +9,7 @@ eventbus = "3.3.1"
 #Fossify
 commons = "30b338e429"
 #Gradle
-gradlePlugins-agp = "8.7.1"
+gradlePlugins-agp = "8.7.3"
 #Other
 indicatorFastScroll = "4524cd0b61"
 autofitTextView = "0.2.1"
