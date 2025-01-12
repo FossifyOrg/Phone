@@ -69,4 +69,6 @@
     <string name="audio_route_bluetooth">Bluetooth</string>
     <string name="export_call_history">Hívásnapló exportálása</string>
     <string name="import_call_history">Hívásnapló importálása</string>
+    <string name="faq_2_title">Miért nem működnek rendesen a segélyhívások?</string>
+    <string name="faq_2_text">A rendszer korlátozása miatt a segélyhívásokat csak a rendszer alapértelmezett tárcsázóján vagy telefonos alkalmazásán keresztül lehet kezdeményezni. A segélyhívások megfelelő működésének biztosítása érdekében a rendszeralkalmazást telepítve és engedélyezve kell tartania.</string>
 </resources>
