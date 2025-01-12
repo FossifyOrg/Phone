@@ -2,7 +2,6 @@ package org.fossify.phone.fragments
 
 import android.content.Context
 import android.util.AttributeSet
-import com.reddit.indicatorfastscroll.FastScrollItemIndicator
 import org.fossify.commons.adapters.MyRecyclerViewAdapter
 import org.fossify.commons.extensions.*
 import org.fossify.commons.helpers.*
@@ -13,11 +12,10 @@ import org.fossify.phone.activities.SimpleActivity
 import org.fossify.phone.adapters.ContactsAdapter
 import org.fossify.phone.databinding.FragmentContactsBinding
 import org.fossify.phone.databinding.FragmentLettersLayoutBinding
-import org.fossify.phone.extensions.config
 import org.fossify.phone.extensions.launchCreateNewContactIntent
+import org.fossify.phone.extensions.setupWithContacts
 import org.fossify.phone.extensions.startContactDetailsIntent
 import org.fossify.phone.interfaces.RefreshItemsListener
-import java.util.Locale
 
 class ContactsFragment(context: Context, attributeSet: AttributeSet) : MyViewPagerFragment<MyViewPagerFragment.LettersInnerBinding>(context, attributeSet),
     RefreshItemsListener {
@@ -131,29 +129,7 @@ class ContactsFragment(context: Context, attributeSet: AttributeSet) : MyViewPag
     }
 
     private fun setupLetterFastScroller(contacts: ArrayList<Contact>) {
-        val sorting = context.config.sorting
-        binding.letterFastscroller.setupWithRecyclerView(binding.fragmentList, { position ->
-            try {
-                val contact = contacts[position]
-                var name = when {
-                    contact.isABusinessContact() -> contact.getFullCompany()
-                    sorting and SORT_BY_SURNAME != 0 && contact.surname.isNotEmpty() -> contact.surname
-                    sorting and SORT_BY_MIDDLE_NAME != 0 && contact.middleName.isNotEmpty() -> contact.middleName
-                    sorting and SORT_BY_FIRST_NAME != 0 && contact.firstName.isNotEmpty() -> contact.firstName
-                    context.config.startNameWithSurname -> contact.surname
-                    else -> contact.firstName
-                }
-
-                if (name.isEmpty()) {
-                    name = contact.getNameToDisplay()
-                }
-
-                val character = if (name.isNotEmpty()) name.substring(0, 1) else ""
-                FastScrollItemIndicator.Text(character.uppercase(Locale.getDefault()).normalizeString())
-            } catch (e: Exception) {
-                FastScrollItemIndicator.Text("")
-            }
-        })
+        binding.letterFastscroller.setupWithContacts(binding.fragmentList, contacts)
     }
 
     override fun onSearchClosed() {
