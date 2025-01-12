@@ -64,6 +64,7 @@
     <string name="audio_route_wired_or_earpiece">Wired or Earpiece</string>
     <string name="choose_audio_route">Choose audio route</string>
     <string name="calling_blocked_number">The number you are calling is blocked</string>
+    <string name="call_is_being_connected">Your call is being connected…</string>
 
     <!-- Speed dial -->
     <string name="speed_dial">Speed dial</string>
