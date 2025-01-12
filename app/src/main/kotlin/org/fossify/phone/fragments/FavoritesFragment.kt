@@ -3,7 +3,6 @@ package org.fossify.phone.fragments
 import android.content.Context
 import android.util.AttributeSet
 import com.google.gson.Gson
-import com.reddit.indicatorfastscroll.FastScrollItemIndicator
 import org.fossify.commons.adapters.MyRecyclerViewAdapter
 import org.fossify.commons.dialogs.CallConfirmationDialog
 import org.fossify.commons.extensions.*
@@ -17,8 +16,8 @@ import org.fossify.phone.adapters.ContactsAdapter
 import org.fossify.phone.databinding.FragmentFavoritesBinding
 import org.fossify.phone.databinding.FragmentLettersLayoutBinding
 import org.fossify.phone.extensions.config
+import org.fossify.phone.extensions.setupWithContacts
 import org.fossify.phone.interfaces.RefreshItemsListener
-import java.util.Locale
 
 class FavoritesFragment(context: Context, attributeSet: AttributeSet) : MyViewPagerFragment<MyViewPagerFragment.LettersInnerBinding>(context, attributeSet),
     RefreshItemsListener {
@@ -181,15 +180,7 @@ class FavoritesFragment(context: Context, attributeSet: AttributeSet) : MyViewPa
     }
 
     private fun setupLetterFastScroller(contacts: List<Contact>) {
-        binding.letterFastscroller.setupWithRecyclerView(binding.fragmentList, { position ->
-            try {
-                val name = contacts[position].getNameToDisplay()
-                val character = if (name.isNotEmpty()) name.substring(0, 1) else ""
-                FastScrollItemIndicator.Text(character.uppercase(Locale.getDefault()).normalizeString())
-            } catch (e: Exception) {
-                FastScrollItemIndicator.Text("")
-            }
-        })
+        binding.letterFastscroller.setupWithContacts(binding.fragmentList, contacts)
     }
 
     override fun onSearchClosed() {

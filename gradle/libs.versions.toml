@@ -7,7 +7,7 @@ detekt = "1.23.3"
 #Eventbus
 eventbus = "3.3.1"
 #Fossify
-commons = "c4110dc7c2"
+commons = "30b338e429"
 #Gradle
 gradlePlugins-agp = "8.7.1"
 #Other
