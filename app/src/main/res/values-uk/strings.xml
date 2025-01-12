@@ -69,4 +69,5 @@
     <string name="app_launcher_name">Телефон</string>
     <string name="asterisk">Зірочка</string>
     <string name="audio_route_bluetooth">Bluetooth</string>
+    <string name="call_is_being_connected">Триває з\'єднання…</string>
 </resources>
