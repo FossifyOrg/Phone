@@ -6,7 +6,7 @@
     <string name="no_previous_calls">Aucun appel précédent n\'a été trouvé</string>
     <string name="could_not_access_the_call_history">Impossible d\'accéder à l\'historique des appels</string>
     <string name="request_access">Demande d\'accès</string>
-    <string name="remove_confirmation">Êtes-vous sûr(e) de vouloir effacer de l\'historique les éléments sélectionnés \?</string>
+    <string name="remove_confirmation">Êtes-vous sûr(e) de vouloir effacer les éléments sélectionnés de l\'historique ?</string>
     <string name="clear_history_confirmation">Êtes-vous sûr(e) de vouloir supprimer votre historique d\'appel \?</string>
     <string name="show_grouped_calls">Afficher les appels groupés</string>
     <string name="clear_call_history">Nettoyer l\'historique d\'appel</string>
@@ -30,7 +30,7 @@
     <string name="ongoing_call">Appel en cours</string>
     <string name="select_sim">Sélectionnez une carte SIM pour cet appel</string>
     <string name="always_use_this_sim">Toujours utiliser cette carte SIM pour ce numéro</string>
-    <string name="unset_default_sim">Désassocier la SIM par défaut</string>
+    <string name="unset_default_sim">Désactiver la SIM par défaut</string>
     <string name="calls">Appels</string>
     <string name="turn_microphone_on">Activer le microphone</string>
     <string name="turn_microphone_off">Désactiver le microphone</string>
@@ -69,4 +69,9 @@
     <string name="faq_1_text">Ces problèmes peuvent avoir de nombreuses raisons spécifiques à l\'appareil et au système, il est difficile d\'en parler en général. Vous devriez consulter les paramètres de votre appareil et vous assurer que l\'application est autorisée à apparaître en arrière-plan et à s\'afficher au-dessus des autres applications.</string>
     <string name="app_launcher_name">Téléphone</string>
     <string name="audio_route_bluetooth">Bluetooth</string>
+    <string name="faq_3_text">Fossify Phone n\'affiche que les contacts auxquels un numéro de téléphone est associé. Les contacts sans numéro de téléphone ne sont pas affichés dans l\'application.</string>
+    <string name="faq_2_title">Pourquoi les appels d\'urgence ne fonctionnent-ils pas correctement ?</string>
+    <string name="faq_2_text">En raison des restrictions imposées par le système, les appels d\'urgence ne peuvent être effectués que par l\'intermédiaire du composeur par défaut ou de l\'application téléphonique de votre système. Pour que les appels d\'urgence fonctionnent correctement, l\'application système doit être installée et activée.</string>
+    <string name="call_is_being_connected">Votre appel est en cours de connexion…</string>
+    <string name="faq_3_title">Pourquoi certains de mes contacts sont-ils absents de l\'application ?</string>
 </resources>
