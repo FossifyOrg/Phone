@@ -17,7 +17,6 @@ import android.view.View
 import android.view.ViewConfiguration
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.isVisible
-import com.reddit.indicatorfastscroll.FastScrollItemIndicator
 import org.fossify.commons.extensions.*
 import org.fossify.commons.helpers.*
 import org.fossify.commons.models.contacts.Contact
@@ -287,15 +286,7 @@ class DialpadActivity : SimpleActivity() {
             !it.doesContainPhoneNumber(text)
         }).toMutableList() as ArrayList<Contact>
 
-        binding.letterFastscroller.setupWithRecyclerView(binding.dialpadList, { position ->
-            try {
-                val name = filtered[position].getNameToDisplay()
-                val character = if (name.isNotEmpty()) name.substring(0, 1) else ""
-                FastScrollItemIndicator.Text(character.uppercase(Locale.getDefault()))
-            } catch (e: Exception) {
-                FastScrollItemIndicator.Text("")
-            }
-        })
+        binding.letterFastscroller.setupWithContacts(binding.dialpadList, filtered)
 
         ContactsAdapter(
             activity = this,
