@@ -381,8 +381,8 @@ class ContactsAdapter(
                         val startIndex = strippedDigits.indexOf(textToHighlight)
 
                         if (strippedDigits.contains(textToHighlight)) {
-                            for (i in 0..spacedTextToHighlight.length) {
-                                if (name[startIndex + i].isWhitespace()) {
+                            for (i in spacedTextToHighlight.indices) {
+                                if (startIndex + i < name.length && name[startIndex + i].isWhitespace()) {
                                     spacedTextToHighlight = spacedTextToHighlight.replaceRange(i, i, " ")
                                 }
                             }
