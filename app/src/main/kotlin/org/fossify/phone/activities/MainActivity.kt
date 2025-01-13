@@ -191,6 +191,7 @@ class MainActivity : SimpleActivity() {
         binding.mainMenu.getToolbar().menu.apply {
             findItem(R.id.clear_call_history).isVisible = currentFragment == getRecentsFragment()
             findItem(R.id.sort).isVisible = currentFragment != getRecentsFragment()
+            findItem(R.id.filter).isVisible = currentFragment != getRecentsFragment()
             findItem(R.id.create_new_contact).isVisible = currentFragment == getContactsFragment()
             findItem(R.id.change_view_type).isVisible = currentFragment == getFavoritesFragment()
             findItem(R.id.column_count).isVisible = currentFragment == getFavoritesFragment() && config.viewType == VIEW_TYPE_GRID

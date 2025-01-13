@@ -33,7 +33,7 @@ class RecentsHelper(private val context: Context) {
             return
         }
 
-        ContactsHelper(context).getContacts(showOnlyContactsWithNumbers = true) { contacts ->
+        ContactsHelper(context).getContacts(getAll = true, showOnlyContactsWithNumbers = true) { contacts ->
             ensureBackgroundThread {
                 val privateContacts = MyContactsContentProvider.getContacts(context, privateCursor)
                 if (privateContacts.isNotEmpty()) {
