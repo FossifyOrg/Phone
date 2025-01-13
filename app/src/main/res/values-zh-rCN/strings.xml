@@ -11,7 +11,7 @@
     <string name="show_grouped_calls">显示分组呼叫</string>
     <string name="clear_call_history">清除通话记录</string>
     <string name="show_call_details">显示通话详情</string>
-    <string name="dialpad">拨号盘</string>
+    <string name="dialpad">拨号键盘</string>
     <string name="asterisk">星号键</string>
     <string name="hashtag">标签</string>
     <string name="call_number">呼叫号码</string>
@@ -72,4 +72,6 @@
     <string name="faq_2_text">由于系统限制，紧急呼叫只能通过系统默认拨号器或电话应用拨打。为确保紧急呼叫正常工作，您需要保持系统应用安装并启用。</string>
     <string name="faq_2_title">为什么紧急呼叫无法正常工作？</string>
     <string name="faq_3_title">为什么应用中缺少我的一些联系人？</string>
+    <string name="faq_3_text">Fossify 电话仅显示有电话号码的联系人。没有电话号码的联系人不会显示在应用中。</string>
+    <string name="call_is_being_connected">正在连接您的通话…</string>
 </resources>
