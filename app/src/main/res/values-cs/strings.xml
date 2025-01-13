@@ -72,4 +72,6 @@
     <string name="call_is_being_connected">Probíhá spojování…</string>
     <string name="faq_2_title">Proč nefungují správně nouzové hovory?</string>
     <string name="faq_2_text">Kvůli systémovým omezením lze nouzové hovory provádět pouze prostřednictvím vaší systémové aplikace k telefonování. Aby nouzové hovory fungovaly správně, ponechte systémovou aplikaci nainstalovanou a aktivovanou.</string>
+    <string name="faq_3_title">Proč v aplikaci nevidím některé své kontakty?</string>
+    <string name="faq_3_text">Telefon Fossify zobrazuje pouze kontakty, které mají telefonní číslo. Kontakty bez telefonního čísla nejsou v aplikaci zobrazeny.</string>
 </resources>
