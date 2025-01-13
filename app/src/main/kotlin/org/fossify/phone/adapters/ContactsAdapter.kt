@@ -5,7 +5,6 @@ import android.content.Intent
 import android.content.pm.ShortcutInfo
 import android.graphics.drawable.Icon
 import android.net.Uri
-import android.telephony.PhoneNumberUtils
 import android.text.TextUtils
 import android.util.TypedValue
 import android.view.*
@@ -377,7 +376,7 @@ class ContactsAdapter(
                     } else {
                         var spacedTextToHighlight = textToHighlight
                         val strippedName = name.filterNot { it.isWhitespace() }
-                        val strippedDigits = PhoneNumberUtils.convertKeypadLettersToDigits(strippedName)
+                        val strippedDigits = KeypadHelper.convertKeypadLettersToDigits(strippedName)
                         val startIndex = strippedDigits.indexOf(textToHighlight)
 
                         if (strippedDigits.contains(textToHighlight)) {

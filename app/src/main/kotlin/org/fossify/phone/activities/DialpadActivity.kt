@@ -8,7 +8,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.provider.Telephony.Sms.Intents.SECRET_CODE_ACTION
-import android.telephony.PhoneNumberUtils
 import android.telephony.TelephonyManager
 import android.util.TypedValue
 import android.view.KeyEvent
@@ -268,7 +267,7 @@ class DialpadActivity : SimpleActivity() {
         (binding.dialpadList.adapter as? ContactsAdapter)?.finishActMode()
 
         val filtered = allContacts.filter { contact ->
-            var convertedName = PhoneNumberUtils.convertKeypadLettersToDigits(
+            var convertedName = KeypadHelper.convertKeypadLettersToDigits(
                 contact.name.normalizeString()
             ).filterNot { it.isWhitespace() }
 
