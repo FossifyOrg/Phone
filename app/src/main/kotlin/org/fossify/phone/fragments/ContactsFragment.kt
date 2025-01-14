@@ -2,7 +2,6 @@ package org.fossify.phone.fragments
 
 import android.content.Context
 import android.util.AttributeSet
-import com.reddit.indicatorfastscroll.FastScrollItemIndicator
 import org.fossify.commons.adapters.MyRecyclerViewAdapter
 import org.fossify.commons.extensions.*
 import org.fossify.commons.helpers.*
@@ -14,9 +13,9 @@ import org.fossify.phone.adapters.ContactsAdapter
 import org.fossify.phone.databinding.FragmentContactsBinding
 import org.fossify.phone.databinding.FragmentLettersLayoutBinding
 import org.fossify.phone.extensions.launchCreateNewContactIntent
+import org.fossify.phone.extensions.setupWithContacts
 import org.fossify.phone.extensions.startContactDetailsIntent
 import org.fossify.phone.interfaces.RefreshItemsListener
-import java.util.Locale
 
 class ContactsFragment(context: Context, attributeSet: AttributeSet) : MyViewPagerFragment<MyViewPagerFragment.LettersInnerBinding>(context, attributeSet),
     RefreshItemsListener {
@@ -71,8 +70,8 @@ class ContactsFragment(context: Context, attributeSet: AttributeSet) : MyViewPag
         }
     }
 
-    override fun refreshItems(callback: (() -> Unit)?) {
-        val privateCursor = context?.getMyContactsCursor(false, true)
+    override fun refreshItems(invalidate: Boolean, callback: (() -> Unit)?) {
+        val privateCursor = context?.getMyContactsCursor(favoritesOnly = false, withPhoneNumbersOnly = true)
         ContactsHelper(context).getContacts(showOnlyContactsWithNumbers = true) { contacts ->
             allContacts = contacts
 
@@ -83,7 +82,7 @@ class ContactsFragment(context: Context, attributeSet: AttributeSet) : MyViewPag
                     allContacts.sort()
                 }
             }
-            (activity as MainActivity).cacheContacts(allContacts)
+            (activity as MainActivity).cacheContacts()
 
             activity?.runOnUiThread {
                 gotContacts(contacts)
@@ -130,15 +129,7 @@ class ContactsFragment(context: Context, attributeSet: AttributeSet) : MyViewPag
     }
 
     private fun setupLetterFastScroller(contacts: ArrayList<Contact>) {
-        binding.letterFastscroller.setupWithRecyclerView(binding.fragmentList, { position ->
-            try {
-                val name = contacts[position].getNameToDisplay()
-                val character = if (name.isNotEmpty()) name.substring(0, 1) else ""
-                FastScrollItemIndicator.Text(character.uppercase(Locale.getDefault()).normalizeString())
-            } catch (e: Exception) {
-                FastScrollItemIndicator.Text("")
-            }
-        })
+        binding.letterFastscroller.setupWithContacts(binding.fragmentList, contacts)
     }
 
     override fun onSearchClosed() {
@@ -150,19 +141,19 @@ class ContactsFragment(context: Context, attributeSet: AttributeSet) : MyViewPag
     override fun onSearchQueryChanged(text: String) {
         val fixedText = text.trim().replace("\\s+".toRegex(), " ")
         val shouldNormalize = fixedText.normalizeString() == fixedText
-        val filtered = allContacts.filter {
-            getProperText(it.getNameToDisplay(), shouldNormalize).contains(fixedText, true) ||
-                getProperText(it.nickname, shouldNormalize).contains(fixedText, true) ||
-                (fixedText.toIntOrNull() != null && it.phoneNumbers.any {
+        val filtered = allContacts.filter { contact ->
+            getProperText(contact.getNameToDisplay(), shouldNormalize).contains(fixedText, true) ||
+                getProperText(contact.nickname, shouldNormalize).contains(fixedText, true) ||
+                (fixedText.toIntOrNull() != null && contact.phoneNumbers.any {
                     fixedText.normalizePhoneNumber().isNotEmpty() && it.normalizedNumber.contains(fixedText.normalizePhoneNumber(), true)
                 }) ||
-                it.emails.any { it.value.contains(fixedText, true) } ||
-                it.addresses.any { getProperText(it.value, shouldNormalize).contains(fixedText, true) } ||
-                it.IMs.any { it.value.contains(fixedText, true) } ||
-                getProperText(it.notes, shouldNormalize).contains(fixedText, true) ||
-                getProperText(it.organization.company, shouldNormalize).contains(fixedText, true) ||
-                getProperText(it.organization.jobPosition, shouldNormalize).contains(fixedText, true) ||
-                it.websites.any { it.contains(fixedText, true) }
+                contact.emails.any { it.value.contains(fixedText, true) } ||
+                contact.addresses.any { getProperText(it.value, shouldNormalize).contains(fixedText, true) } ||
+                contact.IMs.any { it.value.contains(fixedText, true) } ||
+                getProperText(contact.notes, shouldNormalize).contains(fixedText, true) ||
+                getProperText(contact.organization.company, shouldNormalize).contains(fixedText, true) ||
+                getProperText(contact.organization.jobPosition, shouldNormalize).contains(fixedText, true) ||
+                contact.websites.any { it.contains(fixedText, true) }
         } as ArrayList
 
         filtered.sortBy {

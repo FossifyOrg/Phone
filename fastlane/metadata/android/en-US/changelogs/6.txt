@@ -1,0 +1,6 @@
+* Fixed an issue where call history wasn't refreshing
+* Fixed index letter sorting in the contacts list
+* Fixed dialpad search for some characters
+* Fixed an issues where call hangs up immediately after back press
+* Other minor bug fixes and improvements
+* Added more translations

@@ -60,7 +60,11 @@ class RecentsFragment(
         }
     }
 
-    override fun refreshItems(callback: (() -> Unit)?) {
+    override fun refreshItems(invalidate: Boolean, callback: (() -> Unit)?) {
+        if (invalidate) {
+            allRecentCalls = emptyList()
+        }
+
         refreshCallLog(loadAll = false) {
             refreshCallLog(loadAll = true)
         }

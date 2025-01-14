@@ -5,7 +5,6 @@ import android.view.KeyEvent
 import android.view.inputmethod.EditorInfo
 import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
-import com.reddit.indicatorfastscroll.FastScrollItemIndicator
 import org.fossify.commons.extensions.*
 import org.fossify.commons.models.contacts.Contact
 import org.fossify.commons.views.MySearchMenu
@@ -13,7 +12,7 @@ import org.fossify.phone.R
 import org.fossify.phone.activities.SimpleActivity
 import org.fossify.phone.adapters.ContactsAdapter
 import org.fossify.phone.databinding.DialogSelectContactBinding
-import java.util.Locale
+import org.fossify.phone.extensions.setupWithContacts
 
 class SelectContactDialog(val activity: SimpleActivity, val contacts: List<Contact>, val callback: (selectedContact: Contact) -> Unit) {
     private val binding by activity.viewBinding(DialogSelectContactBinding::inflate)
@@ -52,15 +51,7 @@ class SelectContactDialog(val activity: SimpleActivity, val contacts: List<Conta
     }
 
     private fun setupLetterFastScroller(contacts: List<Contact>) {
-        binding.letterFastscroller.setupWithRecyclerView(binding.selectContactList, { position ->
-            try {
-                val name = contacts[position].getNameToDisplay()
-                val character = if (name.isNotEmpty()) name.substring(0, 1) else ""
-                FastScrollItemIndicator.Text(character.uppercase(Locale.getDefault()))
-            } catch (e: Exception) {
-                FastScrollItemIndicator.Text("")
-            }
-        })
+        binding.letterFastscroller.setupWithContacts(binding.selectContactList, contacts)
     }
 
     private fun configureSearchView() = with(binding.contactSearchView) {

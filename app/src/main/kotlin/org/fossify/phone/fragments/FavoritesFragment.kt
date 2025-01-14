@@ -3,7 +3,6 @@ package org.fossify.phone.fragments
 import android.content.Context
 import android.util.AttributeSet
 import com.google.gson.Gson
-import com.reddit.indicatorfastscroll.FastScrollItemIndicator
 import org.fossify.commons.adapters.MyRecyclerViewAdapter
 import org.fossify.commons.dialogs.CallConfirmationDialog
 import org.fossify.commons.extensions.*
@@ -17,8 +16,8 @@ import org.fossify.phone.adapters.ContactsAdapter
 import org.fossify.phone.databinding.FragmentFavoritesBinding
 import org.fossify.phone.databinding.FragmentLettersLayoutBinding
 import org.fossify.phone.extensions.config
+import org.fossify.phone.extensions.setupWithContacts
 import org.fossify.phone.interfaces.RefreshItemsListener
-import java.util.Locale
 
 class FavoritesFragment(context: Context, attributeSet: AttributeSet) : MyViewPagerFragment<MyViewPagerFragment.LettersInnerBinding>(context, attributeSet),
     RefreshItemsListener {
@@ -55,12 +54,12 @@ class FavoritesFragment(context: Context, attributeSet: AttributeSet) : MyViewPa
         }
     }
 
-    override fun refreshItems(callback: (() -> Unit)?) {
+    override fun refreshItems(invalidate: Boolean, callback: (() -> Unit)?) {
         ContactsHelper(context).getContacts(showOnlyContactsWithNumbers = true) { contacts ->
             allContacts = contacts
 
             if (SMT_PRIVATE !in context.baseConfig.ignoredContactSources) {
-                val privateCursor = context?.getMyContactsCursor(true, true)
+                val privateCursor = context?.getMyContactsCursor(favoritesOnly = true, withPhoneNumbersOnly = true)
                 val privateContacts = MyContactsContentProvider.getContacts(context, privateCursor).map {
                     it.copy(starred = 1)
                 }
@@ -113,16 +112,16 @@ class FavoritesFragment(context: Context, attributeSet: AttributeSet) : MyViewPa
                 viewType = viewType,
                 showDeleteButton = false,
                 enableDrag = true,
-            ) {
+            ) { contact ->
                 if (context.config.showCallConfirmation) {
-                    CallConfirmationDialog(activity as SimpleActivity, (it as Contact).getNameToDisplay()) {
+                    CallConfirmationDialog(activity as SimpleActivity, (contact as Contact).getNameToDisplay()) {
                         activity?.apply {
-                            initiateCall(it) { launchCallIntent(it) }
+                            initiateCall(contact) { launchCallIntent(it) }
                         }
                     }
                 } else {
                     activity?.apply {
-                        initiateCall(it as Contact) { launchCallIntent(it) }
+                        initiateCall(contact as Contact) { launchCallIntent(it) }
                     }
                 }
             }.apply {
@@ -182,15 +181,7 @@ class FavoritesFragment(context: Context, attributeSet: AttributeSet) : MyViewPa
     }
 
     private fun setupLetterFastScroller(contacts: List<Contact>) {
-        binding.letterFastscroller.setupWithRecyclerView(binding.fragmentList, { position ->
-            try {
-                val name = contacts[position].getNameToDisplay()
-                val character = if (name.isNotEmpty()) name.substring(0, 1) else ""
-                FastScrollItemIndicator.Text(character.uppercase(Locale.getDefault()).normalizeString())
-            } catch (e: Exception) {
-                FastScrollItemIndicator.Text("")
-            }
-        })
+        binding.letterFastscroller.setupWithContacts(binding.fragmentList, contacts)
     }
 
     override fun onSearchClosed() {

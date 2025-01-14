@@ -1,6 +1,16 @@
 Changelog
 ==========
 
+Version 1.3.1 *(2025-01-14)*
+----------------------------
+
+* Fixed an issue where call history wasn't refreshing (https://github.com/FossifyOrg/Phone/issues/183)
+* Fixed index letter sorting in the contacts list (https://github.com/FossifyOrg/Phone/issues/186)
+* Fixed dialpad search for some characters (https://github.com/FossifyOrg/Phone/issues/139)
+* Fixed an issues where call hangs up immediately after back press (https://github.com/FossifyOrg/Phone/issues/237)
+* Other minor bug fixes and improvements
+* Added more translations
+
 Version 1.3.0 *(2024-10-30)*
 ----------------------------
 

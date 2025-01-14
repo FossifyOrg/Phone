@@ -5,7 +5,6 @@ import android.content.Intent
 import android.content.pm.ShortcutInfo
 import android.graphics.drawable.Icon
 import android.net.Uri
-import android.telephony.PhoneNumberUtils
 import android.text.TextUtils
 import android.util.TypedValue
 import android.view.*
@@ -128,10 +127,12 @@ class ContactsAdapter(
 
     override fun getItemKeyPosition(key: Int) = contacts.indexOfFirst { it.rawId == key }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onActionModeCreated() {
         notifyDataSetChanged()
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onActionModeDestroyed() {
         notifyDataSetChanged()
     }
@@ -147,7 +148,7 @@ class ContactsAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val contact = contacts[position]
-        holder.bindView(contact, true, allowLongClick) { itemView, layoutPosition ->
+        holder.bindView(contact, true, allowLongClick) { itemView, _ ->
             val viewType = getItemViewType(position)
             setupView(Binding.getByItemViewType(viewType).bind(itemView), contact, holder)
         }
@@ -221,6 +222,7 @@ class ContactsAdapter(
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun updateItems(newItems: List<Contact>, highlightText: String = "") {
         if (newItems.hashCode() != contacts.hashCode()) {
             contacts = ArrayList(newItems)
@@ -356,6 +358,7 @@ class ContactsAdapter(
         }
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private fun setupView(binding: ItemViewBinding, contact: Contact, holder: ViewHolder) {
         binding.apply {
             root.setupViewBackground(activity)
@@ -373,12 +376,12 @@ class ContactsAdapter(
                     } else {
                         var spacedTextToHighlight = textToHighlight
                         val strippedName = name.filterNot { it.isWhitespace() }
-                        val strippedDigits = PhoneNumberUtils.convertKeypadLettersToDigits(strippedName)
+                        val strippedDigits = KeypadHelper.convertKeypadLettersToDigits(strippedName)
                         val startIndex = strippedDigits.indexOf(textToHighlight)
 
                         if (strippedDigits.contains(textToHighlight)) {
-                            for (i in 0..spacedTextToHighlight.length) {
-                                if (name[startIndex + i].isWhitespace()) {
+                            for (i in spacedTextToHighlight.indices) {
+                                if (startIndex + i < name.length && name[startIndex + i].isWhitespace()) {
                                     spacedTextToHighlight = spacedTextToHighlight.replaceRange(i, i, " ")
                                 }
                             }
