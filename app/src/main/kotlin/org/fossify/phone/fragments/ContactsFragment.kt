@@ -82,7 +82,7 @@ class ContactsFragment(context: Context, attributeSet: AttributeSet) : MyViewPag
                     allContacts.sort()
                 }
             }
-            (activity as MainActivity).cacheContacts(allContacts)
+            (activity as MainActivity).cacheContacts()
 
             activity?.runOnUiThread {
                 gotContacts(contacts)
