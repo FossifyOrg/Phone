@@ -1,0 +1,6 @@
+* Corregeix un problema en què l'historial de trucades no s'actualitzava
+* Corregeix l'ordenació de les lletres d'índex a la llista de contactes
+* Corregeix la cerca d'alguns caràcters al teclat de marcatge
+* Corregeix un problema en què la trucada es penja immediatament després de prémer enrere
+* Altres correccions i millores menors
+* S'han afegit més traduccions
