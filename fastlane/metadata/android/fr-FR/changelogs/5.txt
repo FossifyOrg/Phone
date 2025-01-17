@@ -1,0 +1,5 @@
+* Correction du problème avec les contacts qui ne s'affichaient pas sur Android 14 et versions ultérieures
+* Remplacement des cases à cocher par des commutateurs
+* Suppression de la prise en charge d'Android 7 et des versions antérieures
+* Autres corrections de bugs et améliorations mineures
+* Ajout de traductions supplémentaires
