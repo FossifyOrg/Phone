@@ -5,5 +5,5 @@
 * Réorganisation des préférences du clavier de numérotation dans leur propre section dédiée (https://github.com/FossifyOrg/Phone/issues/116).
 * Ajout d'un avatar d'espace réservé pour les numéros inconnus et les contacts sans photo.
 * Ajout d'un indicateur de progression pour indiquer la récupération de l'historique des appels.
-* Ajout d'un remplissage inférieur dans les listes pour permettre le défilement au-dessus du bouton d'action flottant.
+* Ajout d'un espace en bas dans les listes pour permettre le défilement au-dessus du bouton d'action flottant.
 * Ajout de traductions.
