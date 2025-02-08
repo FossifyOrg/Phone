@@ -69,4 +69,9 @@
     <string name="faq_1_text">Tali problemi possono avere molte ragioni specifiche per il dispositivo e il sistema, è difficile identificarle in generale. Dovresti dare un\'occhiata alle impostazioni del dispositivo e assicurarti che l\'app sia autorizzata a comparire quando è in background e che permetta la visualizzazione sopra le altre app.</string>
     <string name="app_launcher_name">Telefono</string>
     <string name="audio_route_bluetooth">Bluetooth</string>
+    <string name="faq_2_title">Perché le chiamate di emergenza non funzionano correttamente?</string>
+    <string name="faq_3_title">Perché non sono presenti alcuni dei miei contatti nell\'app?</string>
+    <string name="faq_3_text">Fossify Phone mostra solo i contatti che hanno un numero di telefono associato. I contatti senza un numero di telefono non vengono mostrati nell\'app.</string>
+    <string name="faq_2_text">A causa delle restrizioni del sistema, le chiamate di emergenza possono essere effettuate solo attraverso il dialer o l\'app telefonica predefinita del sistema. Per garantire il corretto funzionamento delle chiamate di emergenza, è necessario mantenere l\'app di sistema installata e abilitata.</string>
+    <string name="call_is_being_connected">La tua chiamata si sta connettendo…</string>
 </resources>

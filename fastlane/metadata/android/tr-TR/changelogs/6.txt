@@ -1,0 +1,6 @@
+* Arama geçmişi yenilenmeme sorunu düzeltildi
+* Kişiler listesindeki dizin harfi sıralaması sorunu düzeltildi
+* Bazı karakterler için arama sorunu düzeltildi
+* Geri düğmesine basıldıktan hemen sonra aramanın kapandığı sorun düzeltildi
+* Diğer küçük hata düzeltmeleri ve iyileştirmeleri
+* Daha fazla çeviri eklendi

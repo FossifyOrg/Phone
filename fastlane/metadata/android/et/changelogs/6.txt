@@ -1,0 +1,6 @@
+* parandasime vea, kus kõnede ajalugu ei uuendunud
+* parandasime kontaktiloendi järjestamise tähtede indeksi alusel
+* parandasime otsingu numbriklahvistikust
+* parandasime kõnede hangumise kohe peale tagas-nupu vajutust
+* muud väikesed veaparandused ja täiendused
+* lisasime veel tõlkeid

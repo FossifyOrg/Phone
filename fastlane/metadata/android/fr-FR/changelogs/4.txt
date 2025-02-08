@@ -1,0 +1,9 @@
+- Correction d'un problème où l'historique des appels n'était pas actualisé.
+- Correction d'un bug qui empêchait la recherche d'anciens journaux d'appels.
+- Conception du menu mise à jour pour une meilleure interface utilisateur/UX.
+- Boutons d'action d'appel désactivés après la fin d'un appel pour une meilleure interface utilisateur/UX.
+- Entrées de l'historique des appels regroupées par date.
+- Ajout d'une option pour formater les numéros de téléphone dans le journal des appels.
+- Mise à jour des icônes de direction des appels et des couleurs dans l'historique des appels.
+- Restructuration de l'interface utilisateur en cours d'appel pour qu'elle soit plus réactive aux différentes tailles d'écran.
+- Ajout de traductions.

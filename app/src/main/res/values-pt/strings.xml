@@ -69,4 +69,6 @@
     <string name="faq_1_text">Esses problemas podem ter muitos motivos específicos do dispositivo e do sistema, difíceis de dizer em geral. Aceda às definições do sistema e certifique-se de que concedeu as permissões necessárias tais como permitir exibição por cima das outras aplicações.</string>
     <string name="audio_route_bluetooth">Bluetooth</string>
     <string name="app_launcher_name">Telefone</string>
+    <string name="call_is_being_connected">A chamada está a ser efetuada…</string>
+    <string name="faq_2_title">Que chamadas de emergência não estão a funcionar corretamente?</string>
 </resources>

@@ -6,8 +6,8 @@
     <string name="no_previous_calls">Geçmiş aramalar yok</string>
     <string name="could_not_access_the_call_history">Arama geçmişine erişilemedi</string>
     <string name="request_access">Erişim iste</string>
-    <string name="remove_confirmation">Seçilen ögeleri Arama Geçmişinden kaldırmak istediğinize emin misiniz?</string>
-    <string name="clear_history_confirmation">Arama Geçmişindeki her şeyi kaldırmak istediğinize emin misiniz?</string>
+    <string name="remove_confirmation">Seçilen ögeleri arama geçmişinden kaldırmak istediğinize emin misiniz?</string>
+    <string name="clear_history_confirmation">Arama geçmişindeki her şeyi kaldırmak istediğinize emin misiniz?</string>
     <string name="show_grouped_calls">Gruplandırılmış aramaları göster</string>
     <string name="clear_call_history">Arama geçmişini temizle</string>
     <string name="show_call_details">Arama ayrıntılarını göster</string>
@@ -69,4 +69,9 @@
     <string name="faq_1_text">Bu tür sorunların cihaza ve sisteme göre birçok nedeni olabilir. Cihaz ayarlarında uygulamanın arka plandayken açılmasına ve diğer uygulamaların üzerinde görüntülenmesine izin verildiğinden emin olmalısınız.</string>
     <string name="audio_route_bluetooth">Bluetooth</string>
     <string name="app_launcher_name">Telefon</string>
+    <string name="call_is_being_connected">Aramanız bağlanıyor…</string>
+    <string name="faq_2_text">Sistem kısıtlamaları nedeniyle, acil durum çağrıları yalnızca sisteminizin varsayılan çeviricisi veya telefon uygulaması aracılığıyla yapılabilir. Acil durum çağrılarının düzgün çalışmasını sağlamak için sistem uygulamasını yüklemeli ve etkin tutmanız gerekir.</string>
+    <string name="faq_2_title">Acil durum çağrıları neden düzgün çalışmıyor?</string>
+    <string name="faq_3_title">Neden uygulamada bazı kişiler eksik?</string>
+    <string name="faq_3_text">Fossify telefon yalnızca kendileriyle ilişkili bir telefon numarası olan kişileri görüntüler. Telefon numarası olmayan kişiler uygulamada gösterilmemiştir.</string>
 </resources>

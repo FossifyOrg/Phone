@@ -1,0 +1,5 @@
+* Android 14 ve üstünde görüntülenmeyen kişilerle ilgili sorun düzeltildi
+* Onay kutuları düğmelerle değiştirdi
+* Android 7 ve daha eski sürümler için destek kaldırıldı
+* Diğer küçük hata düzeltmeleri ve iyileştirmeleri
+* Daha fazla çeviri eklendi

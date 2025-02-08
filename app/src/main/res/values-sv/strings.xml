@@ -19,7 +19,7 @@
     <string name="dialpad_vibrations">Aktivera knappsatsvibration</string>
     <string name="dialer">Telefon</string>
     <string name="accept">Svara</string>
-    <string name="accept_call">Acceptera samtal</string>
+    <string name="accept_call">Besvara samtal</string>
     <string name="decline">Avvisa</string>
     <string name="decline_call">Avvisa samtal</string>
     <string name="unknown_caller">Okänd uppringare</string>
@@ -69,4 +69,5 @@
     <string name="faq_1_text">Sådana problem kan bero specifikt på apparat eller ditt sytem, det är svårt att svara på generellt. Du bör kolla i dina inställningar och säkerställa att appen har behörighet att synas i förgrunden och tillåts att synas över andra appar.</string>
     <string name="app_launcher_name">Telefon</string>
     <string name="audio_route_bluetooth">Blåtand</string>
+    <string name="call_is_being_connected">Samtalet kopplas…</string>
 </resources>

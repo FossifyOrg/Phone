@@ -64,9 +64,14 @@
     <string name="faq_1_title">Saya mendengar panggilan masuk, tetapi layarnya tidak menyala\? Apa yang bisa saya lakukan\?</string>
     <string name="faq_1_text">Beberapa masalah dapat memiliki alasan perangkat dan sistem yang spesifik, sehingga sulit untuk dijelaskan secara umum. Anda sebaiknya melihat pengaturan perangkat Anda dan memastikan bahwa aplikasi ini diperbolehkan untuk muncul pada latar belakang dan memperbolehkannya untuk muncul menimpa aplikasi lain.</string>
     <string name="audio_route_bluetooth">Bluetooth</string>
-    <string name="audio_route_speaker">Speaker</string>
+    <string name="audio_route_speaker">Pengeras suara</string>
     <string name="dialer">Pemanggil</string>
     <string name="export_call_history">Ekspor riwayat panggilan</string>
     <string name="import_call_history">Impor riwayat panggilan</string>
     <string name="app_launcher_name">Telepon</string>
+    <string name="faq_3_text">Fossify Phone hanya menampilkan kontak yang memiliki nomor telepon terkait. Kontak tanpa nomor telepon tidak akan ditampilkan di aplikasi.</string>
+    <string name="call_is_being_connected">Panggilan Anda sedang dihubungkan…</string>
+    <string name="faq_2_title">Mengapa panggilan darurat tidak berfungsi dengan baik?</string>
+    <string name="faq_2_text">Karena pembatasan sistem, panggilan darurat hanya dapat dilakukan melalui aplikasi dialer atau telepon bawaan sistem Anda. Untuk memastikan panggilan darurat berfungsi dengan baik, Anda perlu mempertahankan aplikasi sistem terpasang dan aktif.</string>
+    <string name="faq_3_title">Kenapa beberapa kontak saya hilang dari aplikasi?</string>
 </resources>

@@ -1,0 +1,6 @@
+* Correction d'un problème où l'historique des appels ne s'actualisait pas
+* Correction du tri des lettres (index) dans la liste des contacts
+* Correction de la recherche du clavier numérique pour certains caractères
+* Correction d'un problème où l'appel raccroche immédiatement après avoir appuyé sur la touche arrière
+* Autres corrections de bugs et améliorations mineures
+* Ajout de traductions supplémentaires

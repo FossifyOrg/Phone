@@ -69,4 +69,9 @@
     <string name="faq_1_title">Cloisim glaonna isteach, ach ní chuireann an scáileán ar siúl. Cad is féidir liom a dhéanamh?</string>
     <string name="faq_1_text">Is féidir go leor cúiseanna a bhaineann go sonrach le feiste agus córais a bheith i gceist le saincheisteanna den sórt sin, ar deacair a rá go ginearálta. Ba chóir duit breathnú thart i socruithe do ghléis agus a chinntiú go bhfuil cead ag an aip pop suas agus tú sa chúlra agus cead a thabhairt é a thaispeáint thar aipeanna eile.</string>
     <string name="speed_dial_label">Cliceáil ar uimhir chun teagmhálaí a shannadh dó. Is féidir leat glaoch go tapa ar an teagmhálaí a thugtar ansin ach an uimhir a thugtar a bhrú go fada ag an dialer.</string>
+    <string name="call_is_being_connected">Tá do ghlao á nascadh…</string>
+    <string name="faq_2_title">Cén fáth nach n-oibríonn glaonna éigeandála i gceart?</string>
+    <string name="faq_3_title">Cén fáth a bhfuil cuid de mo theagmhálaithe in easnamh ón aip?</string>
+    <string name="faq_3_text">Ní thaispeánann Fossify Phone ach teagmhálaithe a bhfuil uimhir theileafóin bainteach leo. Ní thaispeántar teagmhálacha gan uimhir theileafóin san aip.</string>
+    <string name="faq_2_text">Mar gheall ar shrianta córais, ní féidir glaonna éigeandála a dhéanamh ach trí dhiailer réamhshocraithe nó aip ghutháin do chórais. Chun a chinntiú go n-oibríonn glaonna éigeandála i gceart, ní mór duit aip an chórais a choinneáil suiteáilte agus cumasaithe.</string>
 </resources>
