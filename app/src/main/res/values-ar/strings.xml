@@ -74,24 +74,4 @@
     <string name="faq_2_text">نظرًا لقيود النظام، لا يمكن إجراء مكالمات الطوارئ إلا بواسطة تطبيق الهاتف الافتراضي للنظام. لضمان عمل مكالمات الطوارئ بشكل صحيح، يرجى ترك تطبيق الهاتف الخاص بالنظام مثبتًا ومفعلًا.</string>
     <string name="faq_3_title">لماذا بعض جهات الاتصال غير موجودة التطبيق؟</string>
     <string name="faq_3_text">يعرض تطبيق الهاتف من Fossify جهات الاتصال التي لها رقم هاتف مرتبط بها فقط. لا يعرض التطبيق جهات الاتصال التي لا تحتوي على رقم هاتف.</string>
-    <string name="send_sms">إرسال رسالة نصية</string>
-    <string name="view_contact_details">عرض تفاصيل جهة الاتصال</string>
-    <string name="add_number_to_contact">إضافة إلى جهات الاتصال</string>
-    <string name="block_number">حظر</string>
-    <string name="block_contact">حظر</string>
-    <string name="format_phone_numbers">تنسيق أرقام الهواتف</string>
-    <string name="auto_light_dark_theme">تلقائي فاتح / داكن</string>
-    <string name="white">أبيض</string>
-    <string name="support">الدعم</string>
-    <string name="known_issues">المشاكل المعروفة</string>
-    <string name="help_us">ساهم</string>
-    <string name="donate_to_fossify">تبرع لـ Fossify</string>
-    <string name="platforms">المنصات</string>
-    <string name="little_to_no_fee">رسوم قليلة أو بدون رسوم</string>
-    <string name="fee_up_to_pct">رسوم تصل إلى %1$d%%</string>
-    <string name="cryptocurrency">العملات المشفرة</string>
-    <string name="social">اجتماعي</string>
-    <string name="other">أخرى</string>
-    <string name="app_version">إصدار التطبيق: %s</string>
-    <string name="version_placeholder">الإصدار %s</string>
 </resources>
