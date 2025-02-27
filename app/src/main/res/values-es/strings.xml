@@ -30,7 +30,7 @@
     <string name="ongoing_call">Llamada en curso</string>
     <string name="select_sim">Selecciona una tarjeta SIM para esta llamada</string>
     <string name="always_use_this_sim">Siempre usar esta tarjeta SIM para este número</string>
-    <string name="unset_default_sim">Desarmado predeterminado SIM</string>
+    <string name="unset_default_sim">Desactivar la SIM por defecto</string>
     <string name="calls">Llamadas</string>
     <string name="turn_microphone_on">Encender el micrófono</string>
     <string name="turn_microphone_off">Apagar el micrófono</string>
