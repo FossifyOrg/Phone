@@ -51,7 +51,7 @@
     <string name="audio_route_speaker">Altavoz</string>
     <string name="audio_route_earpiece">Auricular</string>
     <string name="audio_route_wired_headset">Auricular con cable</string>
-    <string name="audio_route_wired_or_earpiece">Auricular inalámbrico</string>
+    <string name="audio_route_wired_or_earpiece">Cableada o audífonos</string>
     <string name="choose_audio_route">Elija la salida del audio</string>
     <string name="calling_blocked_number">El número al que llamas está bloqueado</string>
     <string name="speed_dial">Marcado rápido</string>
