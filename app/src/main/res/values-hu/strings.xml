@@ -70,7 +70,7 @@
     <string name="export_call_history">Hívásnapló exportálása</string>
     <string name="import_call_history">Hívásnapló importálása</string>
     <string name="faq_2_title">Miért nem működnek rendesen a segélyhívások?</string>
-    <string name="faq_2_text">A rendszer korlátozása miatt a segélyhívásokat csak a rendszer alapértelmezett tárcsázóján vagy telefonos alkalmazásán keresztül lehet kezdeményezni. A segélyhívások megfelelő működésének biztosítása érdekében a rendszeralkalmazást telepítve és engedélyezve kell tartania.</string>
+    <string name="faq_2_text">A rendszer korlátozása miatt segélyhívásokat csak a rendszer alapértelmezett tárcsázóján vagy telefonalkalmazásán keresztül lehet kezdeményezni. A segélyhívások megfelelő működésének biztosítása érdekében, a rendszeralkalmazást telepítve és engedélyezve kell tartania.</string>
     <string name="call_is_being_connected">Híváskapcsolás folyamatban…</string>
     <string name="faq_3_title">Miért hiányzik néhány névjegyem az alkalmazásból?</string>
     <string name="faq_3_text">A Fossify Telefon csak azokat a névjegyeket jeleníti meg, amelyekhez telefonszám is tartozik. A telefonszám nélküli névjegyek nem jelennek meg az alkalmazásban.</string>

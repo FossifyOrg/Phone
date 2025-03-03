@@ -11,7 +11,7 @@
     <string name="show_grouped_calls">Групиране на обажданията</string>
     <string name="clear_call_history">Изчистване на дневника с обажданията</string>
     <string name="show_call_details">Подробности за обаждането</string>
-    <string name="dialpad">Панел за набиране</string>
+    <string name="dialpad">Набиране на телефонни номера</string>
     <string name="asterisk">Звездичка</string>
     <string name="hashtag">Диез</string>
     <string name="call_number">Номер</string>
