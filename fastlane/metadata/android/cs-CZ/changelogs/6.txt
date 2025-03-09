@@ -1,0 +1,6 @@
+* Opraven problém, kdy se neobnovovala historie volání.
+* Opraveno řazení písmen indexu v seznamu kontaktů
+* Opraveno vyhledávání některých znaků na číselníku
+* Opraven problém, kdy se hovor zavěsil ihned po stisknutí tlačítka zpět
+* Další drobné opravy chyb a vylepšení
+* Přidány další překlady
