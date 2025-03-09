@@ -30,15 +30,23 @@ import kotlin.system.exitProcess
 class SettingsActivity : SimpleActivity() {
     companion object {
         private const val CALL_HISTORY_FILE_TYPE = "application/json"
+        private val IMPORT_CALL_HISTORY_FILE_TYPES = buildList {
+            add("application/json")
+            if (!isQPlus()) {
+                // Workaround for https://github.com/FossifyOrg/Messages/issues/88
+                add("application/octet-stream")
+            }
+        }
     }
 
     private val binding by viewBinding(ActivitySettingsBinding::inflate)
-    private val getContent = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
-        if (uri != null) {
-            toast(R.string.importing)
-            importCallHistory(uri)
+    private val getContent =
+        registerForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
+            if (uri != null) {
+                toast(R.string.importing)
+                importCallHistory(uri)
+            }
         }
-    }
 
     private val saveDocument = registerForActivityResult(ActivityResultContracts.CreateDocument(CALL_HISTORY_FILE_TYPE)) { uri ->
         if (uri != null) {
@@ -342,7 +350,7 @@ class SettingsActivity : SimpleActivity() {
 
     private fun setupCallsImport() {
         binding.settingsImportCallsHolder.setOnClickListener {
-            getContent.launch(CALL_HISTORY_FILE_TYPE)
+            getContent.launch(IMPORT_CALL_HISTORY_FILE_TYPES.toTypedArray())
         }
     }
 
