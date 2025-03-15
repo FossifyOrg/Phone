@@ -343,7 +343,7 @@ class SettingsActivity : SimpleActivity() {
     private fun setupCallsExport() {
         binding.settingsExportCallsHolder.setOnClickListener {
             ExportCallHistoryDialog(this) { filename ->
-                saveDocument.launch(filename)
+                saveDocument.launch("$filename.json")
             }
         }
     }
