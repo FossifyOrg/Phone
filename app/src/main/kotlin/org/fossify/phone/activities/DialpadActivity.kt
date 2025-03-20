@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.provider.Telephony.Sms.Intents.SECRET_CODE_ACTION
+import android.telephony.PhoneNumberUtils
 import android.telephony.TelephonyManager
 import android.util.TypedValue
 import android.view.KeyEvent
@@ -26,6 +27,8 @@ import org.fossify.phone.extensions.*
 import org.fossify.phone.helpers.DIALPAD_TONE_LENGTH_MS
 import org.fossify.phone.helpers.RecentsHelper
 import org.fossify.phone.helpers.ToneGeneratorHelper
+import org.fossify.phone.models.RecentCall
+import org.fossify.phone.models.RecentCallContact
 import org.fossify.phone.models.SpeedDial
 import java.util.Locale
 import kotlin.math.roundToInt
@@ -33,7 +36,7 @@ import kotlin.math.roundToInt
 class DialpadActivity : SimpleActivity() {
     private val binding by viewBinding(ActivityDialpadBinding::inflate)
 
-    private var allContacts = ArrayList<Contact>()
+    private var allCallItems = ArrayList<RecentCallContact>()
     private var speedDialValues = ArrayList<SpeedDial>()
     private val russianCharsMap = HashMap<Char, Int>()
     private var hasRussianLocale = false
@@ -145,10 +148,6 @@ class DialpadActivity : SimpleActivity() {
             dialpadInput.disableKeyboard()
         }
 
-        ContactsHelper(this).getContacts(showOnlyContactsWithNumbers = true) { allContacts ->
-            gotContacts(allContacts)
-        }
-
         val properPrimaryColor = getProperPrimaryColor()
         val callIconId = if (areMultipleSIMsAvailable()) {
             val callIcon = resources.getColoredDrawableWithColor(R.drawable.ic_phone_two_vector, properPrimaryColor.getContrastColor())
@@ -185,6 +184,7 @@ class DialpadActivity : SimpleActivity() {
         binding.dialpadClearChar.applyColorFilter(getProperTextColor())
         updateNavigationBarColor(getProperBackgroundColor())
         setupToolbar(binding.dialpadToolbar, NavigationIcon.Arrow)
+        handleGetItems()
     }
 
     private fun setupOptionsMenu() {
@@ -231,13 +231,27 @@ class DialpadActivity : SimpleActivity() {
         binding.dialpadInput.setText("")
     }
 
-    private fun gotContacts(newContacts: ArrayList<Contact>) {
-        allContacts = newContacts
+    private fun handleGetItems() {
+        val items = ArrayList<RecentCallContact>()
+
+        ContactsHelper(this).getContacts(showOnlyContactsWithNumbers = true) { contacts ->
+            items.addAll(contacts.map { RecentCallContact(it) })
+            RecentsHelper(this).getRecentCalls(queryLimit = Int.MAX_VALUE) { recentCalls ->
+                val recentCallsNonContact = filterContactsInRecentCalls(recentCalls.distinctBy { it.phoneNumber }, contacts)
+                recentCallsNonContact.forEach { items.add(RecentCallContact(it)) }
+
+                gotContacts(items)
+            }
+        }
+    }
+
+    private fun gotContacts(newItems: ArrayList<RecentCallContact>) {
+        allCallItems = newItems
 
         val privateContacts = MyContactsContentProvider.getContacts(this, privateCursor)
         if (privateContacts.isNotEmpty()) {
-            allContacts.addAll(privateContacts)
-            allContacts.sort()
+            allCallItems.addAll(privateContacts.map { RecentCallContact(it) })
+            allCallItems.sort()
         }
 
         runOnUiThread {
@@ -266,9 +280,9 @@ class DialpadActivity : SimpleActivity() {
 
         (binding.dialpadList.adapter as? ContactsAdapter)?.finishActMode()
 
-        val filtered = allContacts.filter { contact ->
+        val filtered = allCallItems.filter { item ->
             var convertedName = KeypadHelper.convertKeypadLettersToDigits(
-                contact.name.normalizeString()
+                item.contact.name.normalizeString()
             ).filterNot { it.isWhitespace() }
 
             if (hasRussianLocale) {
@@ -280,10 +294,10 @@ class DialpadActivity : SimpleActivity() {
                 convertedName = currConvertedName
             }
 
-            contact.doesContainPhoneNumber(text) || (convertedName.contains(text, true))
+            item.contact.doesContainPhoneNumber(text) || (convertedName.contains(text, true))
         }.sortedWith(compareBy {
-            !it.doesContainPhoneNumber(text)
-        }).toMutableList() as ArrayList<Contact>
+            !it.contact.doesContainPhoneNumber(text)
+        }).sorted().map { it.contact }.toMutableList()
 
         binding.letterFastscroller.setupWithContacts(binding.dialpadList, filtered)
 
@@ -439,5 +453,10 @@ class DialpadActivity : SimpleActivity() {
             }
             false
         }
+    }
+
+    private fun filterContactsInRecentCalls(recentCalls: List<RecentCall>, contacts: List<Contact>): List<RecentCall> {
+        val contactNumbers = contacts.flatMap { it.phoneNumbers }.map { it.value }
+        return recentCalls.filterNot { recentCall -> contactNumbers.any { contactNumber -> PhoneNumberUtils.compare(this, recentCall.phoneNumber, contactNumber) } }
     }
 }
