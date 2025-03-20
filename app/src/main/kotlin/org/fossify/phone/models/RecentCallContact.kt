@@ -25,16 +25,18 @@ class RecentCallContact : Comparable<RecentCallContact> {
     }
 
     override fun compareTo(other: RecentCallContact): Int {
-        return if(isContact) {
-            if(other.isContact)
+        return if (isContact) {
+            if (other.isContact) {
                 contact.compareTo(other.contact)
-            else
+            } else {
                 -1
+            }
         } else {
-            if(other.isContact)
+            if (other.isContact) {
                 1
-            else
+            } else {
                 other.recentCall!!.startTS.compareTo(recentCall!!.startTS)
+            }
         }
     }
 }

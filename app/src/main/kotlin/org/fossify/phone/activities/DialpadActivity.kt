@@ -457,6 +457,14 @@ class DialpadActivity : SimpleActivity() {
 
     private fun filterContactsInRecentCalls(recentCalls: List<RecentCall>, contacts: List<Contact>): List<RecentCall> {
         val contactNumbers = contacts.flatMap { it.phoneNumbers }.map { it.value }
-        return recentCalls.filterNot { recentCall -> contactNumbers.any { contactNumber -> PhoneNumberUtils.compare(this, recentCall.phoneNumber, contactNumber) } }
+        return recentCalls.filterNot { recentCall ->
+            contactNumbers.any { contactNumber ->
+                PhoneNumberUtils.compare(
+                    this,
+                    recentCall.phoneNumber,
+                    contactNumber
+                )
+            }
+        }
     }
 }
