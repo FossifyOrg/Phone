@@ -8,6 +8,9 @@ import android.content.res.Configuration
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.Icon
 import android.graphics.drawable.LayerDrawable
+import android.net.Uri
+import android.os.Build.VERSION
+import android.os.Build.VERSION_CODES
 import android.os.Bundle
 import android.os.Handler
 import android.provider.Settings
@@ -24,6 +27,7 @@ import org.fossify.commons.dialogs.RadioGroupDialog
 import org.fossify.commons.extensions.*
 import org.fossify.commons.helpers.*
 import org.fossify.commons.models.FAQItem
+import org.fossify.commons.models.PhoneNumber
 import org.fossify.commons.models.RadioItem
 import org.fossify.commons.models.contacts.Contact
 import org.fossify.phone.BuildConfig
@@ -290,6 +294,51 @@ class MainActivity : SimpleActivity() {
             } catch (ignored: Exception) {
             }
         }
+        pushStarredShortcuts()
+    }
+
+    private fun pushStarredShortcuts() {
+        if (VERSION.SDK_INT >= VERSION_CODES.R) {
+            val starred = cachedContacts.filter { it.starred == 1 && it.phoneNumbers.isNotEmpty() }
+            this.config.favoritesContactsOrder.let { order ->
+                if (!config.isCustomOrderSelected) {
+                    starred.sorted()
+                } else {
+                    val orderList = Converters().jsonToStringList(order).withIndex().associate { it.value to it.index }
+                    starred.sortedBy { orderList[it.contactId.toString()] }
+                }
+            }.take(3).forEachIndexed { index, contact ->
+                var number = if (contact.phoneNumbers.size == 1) {
+                    contact.phoneNumbers[0].normalizedNumber
+                } else {
+                    contact.phoneNumbers.firstOrNull { it.isPrimary }?.normalizedNumber
+                }
+                if (number == null) {
+                    val radioItems = contact.phoneNumbers.mapIndexed { index, item ->
+                        RadioItem(index, item.normalizedNumber, item)
+                    }
+                    RadioGroupDialog(this, ArrayList(radioItems)) {
+                        number = (it as PhoneNumber).normalizedNumber
+                    }
+                }
+                this.handlePermission(PERMISSION_CALL_PHONE) { hasPermission ->
+                    val action = if (hasPermission) Intent.ACTION_CALL else Intent.ACTION_DIAL
+                    val intent = Intent(action).apply {
+                        data = Uri.fromParts("tel", number, null)
+                    }
+                    SimpleContactsHelper(this).getShortcutImage(contact.photoUri, contact.getNameToDisplay()) { image ->
+                        this.runOnUiThread {
+                            val shortcut = ShortcutInfo.Builder(this, "sd$index")
+                                .setShortLabel(contact.getNameToDisplay())
+                                .setIcon(Icon.createWithAdaptiveBitmap(image))
+                                .setIntent(intent)
+                                .build()
+                            this.shortcutManager.pushDynamicShortcut(shortcut)
+                        }
+                    }
+                }
+            }
+        }
     }
 
     @SuppressLint("NewApi")
@@ -491,6 +540,7 @@ class MainActivity : SimpleActivity() {
         getContactsFragment()?.refreshItems()
         getFavoritesFragment()?.refreshItems()
         getRecentsFragment()?.refreshItems()
+        pushStarredShortcuts()
     }
 
     private fun getAllFragments(): ArrayList<MyViewPagerFragment<*>?> {
