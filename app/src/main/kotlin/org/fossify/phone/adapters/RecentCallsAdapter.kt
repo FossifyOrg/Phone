@@ -434,7 +434,8 @@ class RecentCallsAdapter(
 
                 val currentFontSize = fontSize
                 itemRecentsHolder.isSelected = selectedKeys.contains(call.id)
-                val name = findContactByCall(call)?.getNameToDisplay() ?: call.name
+                val matchingContact = findContactByCall(call)
+                val name = matchingContact?.getNameToDisplay() ?: call.name
                 val formatPhoneNumbers = activity.config.formatPhoneNumbers
                 var nameToShow = if (name == call.phoneNumber && formatPhoneNumbers) {
                     SpannableString(name.formatPhoneNumber())
@@ -499,6 +500,14 @@ class RecentCallsAdapter(
                 }
 
                 SimpleContactsHelper(root.context).loadContactImage(call.photoUri, itemRecentsImage, call.name)
+
+                itemRecentsImage.apply {
+                    if (matchingContact != null) {
+                        setOnClickListener {
+                            activity.startContactDetailsIntent(matchingContact)
+                        }
+                    }
+                }
 
                 val drawable = when (call.type) {
                     Calls.OUTGOING_TYPE -> outgoingCallIcon

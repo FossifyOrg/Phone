@@ -363,6 +363,13 @@ class ContactsAdapter(
         binding.apply {
             root.setupViewBackground(activity)
             itemContactFrame.isSelected = selectedKeys.contains(contact.rawId)
+
+            itemContactImage.apply {
+                setOnClickListener {
+                    activity.startContactDetailsIntent(contact)
+                }
+            }
+
             itemContactName.apply {
                 setTextColor(textColor)
                 setTextSize(TypedValue.COMPLEX_UNIT_PX, fontSize)
