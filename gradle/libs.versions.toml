@@ -10,6 +10,9 @@ eventbus = "3.3.1"
 commons = "4f91781981"
 #Gradle
 gradlePlugins-agp = "8.7.3"
+#Tests
+junit = "4.13.2"
+roboelectric =  "4.14"
 #Other
 indicatorFastScroll = "4524cd0b61"
 autofitTextView = "0.2.1"
@@ -30,6 +33,9 @@ fossify-commons = { module = "org.fossify:commons", version.ref = "commons" }
 eventbus = { module = "org.greenrobot:eventbus", version.ref = "eventbus" }
 #Kotlin
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
+#Tests
+junit = { module = "junit:junit", name = "junit", version.ref = "junit" }
+roboelectric = { module = "org.robolectric:robolectric", name = "roboelectric", version.ref = "roboelectric" }
 #Other
 indicator-fast-scroll = { module = "org.fossify:IndicatorFastScroll", version.ref = "indicatorFastScroll" }
 autofit-text-view = { module = "me.grantland:autofittextview", version.ref = "autofitTextView" }

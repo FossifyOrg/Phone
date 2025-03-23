@@ -113,6 +113,6 @@ dependencies {
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.eventbus)
 
-    testImplementation("junit:junit:4.13.2")
-    testImplementation("org.robolectric:robolectric:4.14")
+    testImplementation(libs.junit)
+    testImplementation(libs.roboelectric)
 }
