@@ -34,12 +34,31 @@
         android:textAlignment="viewStart"
         android:textDirection="locale"
         android:textSize="@dimen/bigger_text_size"
-        app:layout_constraintBottom_toTopOf="@id/item_recents_date_time"
+        app:layout_constraintBottom_toTopOf="@id/item_recents_number"
         app:layout_constraintEnd_toStartOf="@+id/overflow_menu_icon"
         app:layout_constraintStart_toEndOf="@+id/item_recents_image"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="spread_inside"
+        app:layout_constraintVertical_chainStyle="packed"
         tools:text="John Doe" />
+
+    <TextView
+        android:id="@+id/item_recents_number"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/small_margin"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textAlignment="viewStart"
+        android:textDirection="locale"
+        android:textSize="@dimen/normal_text_size"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@id/item_recents_date_time"
+        app:layout_constraintEnd_toEndOf="@+id/item_recents_name"
+        app:layout_constraintStart_toStartOf="@+id/item_recents_name"
+        app:layout_constraintTop_toBottomOf="@id/item_recents_name"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:layout_constraintStart_toStartOf="@id/item_recents_name"
+        tools:text="012-345-6789" />
 
     <ImageView
         android:id="@+id/item_recents_sim_image"
@@ -52,7 +71,7 @@
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/item_recents_date_time"
         app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintStart_toEndOf="@+id/item_recents_image"
+        app:layout_constraintStart_toStartOf="@+id/item_recents_name"
         app:layout_constraintTop_toTopOf="@id/item_recents_date_time"
         tools:visibility="visible" />
 
@@ -89,11 +108,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/tiny_margin"
+        android:layout_marginTop="4dp"
         android:maxLines="1"
         android:textSize="@dimen/normal_text_size"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/item_recents_type"
-        app:layout_constraintTop_toBottomOf="@id/item_recents_name"
+        app:layout_constraintTop_toBottomOf="@id/item_recents_number"
         tools:text="4 July, 04:37 PM"
         tools:textColor="@color/color_missed_call" />
 
@@ -101,13 +121,13 @@
         android:id="@+id/item_recents_duration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/item_recents_name"
+        android:layout_below="@id/item_recents_number"
         android:layout_marginEnd="@dimen/small_margin"
         android:alpha="0.6"
         android:gravity="end"
         android:textSize="@dimen/normal_text_size"
         app:layout_constraintBottom_toBottomOf="@id/item_recents_date_time"
-        app:layout_constraintEnd_toStartOf="@+id/overflow_menu_icon"
+        app:layout_constraintEnd_toEndOf="@id/item_recents_name"
         app:layout_constraintTop_toTopOf="@id/item_recents_date_time"
         tools:text="00:10" />
 

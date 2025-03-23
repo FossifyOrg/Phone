@@ -434,7 +434,8 @@ class RecentCallsAdapter(
 
                 val currentFontSize = fontSize
                 itemRecentsHolder.isSelected = selectedKeys.contains(call.id)
-                val name = findContactByCall(call)?.getNameToDisplay() ?: call.name
+                val matchingContact = findContactByCall(call)
+                val name = matchingContact?.getNameToDisplay() ?: call.name
                 val formatPhoneNumbers = activity.config.formatPhoneNumbers
                 var nameToShow = if (name == call.phoneNumber && formatPhoneNumbers) {
                     SpannableString(name.formatPhoneNumber())
@@ -467,6 +468,13 @@ class RecentCallsAdapter(
                     text = nameToShow
                     setTextColor(textColor)
                     setTextSize(TypedValue.COMPLEX_UNIT_PX, currentFontSize)
+                }
+
+                itemRecentsNumber.apply {
+                    text = call.phoneNumber.formatPhoneNumber()
+                    setTextColor(textColor)
+                    setTextSize(TypedValue.COMPLEX_UNIT_PX, currentFontSize * 0.8f)
+                    beVisibleIf(matchingContact != null)
                 }
 
                 itemRecentsDateTime.apply {
