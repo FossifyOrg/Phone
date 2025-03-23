@@ -21,14 +21,14 @@ import org.fossify.commons.extensions.*
 import org.fossify.commons.helpers.*
 import org.fossify.commons.models.contacts.Contact
 import org.fossify.phone.R
-import org.fossify.phone.adapters.ContactsAdapter
+import org.fossify.phone.adapters.DialpadAdapter
 import org.fossify.phone.databinding.ActivityDialpadBinding
 import org.fossify.phone.extensions.*
 import org.fossify.phone.helpers.DIALPAD_TONE_LENGTH_MS
 import org.fossify.phone.helpers.RecentsHelper
 import org.fossify.phone.helpers.ToneGeneratorHelper
 import org.fossify.phone.models.RecentCall
-import org.fossify.phone.models.RecentCallContact
+import org.fossify.phone.models.DialpadItem
 import org.fossify.phone.models.SpeedDial
 import java.util.Locale
 import kotlin.math.roundToInt
@@ -36,7 +36,8 @@ import kotlin.math.roundToInt
 class DialpadActivity : SimpleActivity() {
     private val binding by viewBinding(ActivityDialpadBinding::inflate)
 
-    private var allCallItems = ArrayList<RecentCallContact>()
+    private var allCallItems = ArrayList<DialpadItem>()
+    private var dialpadAdapter: DialpadAdapter? = null
     private var speedDialValues = ArrayList<SpeedDial>()
     private val russianCharsMap = HashMap<Char, Int>()
     private var hasRussianLocale = false
@@ -232,26 +233,27 @@ class DialpadActivity : SimpleActivity() {
     }
 
     private fun handleGetItems() {
-        val items = ArrayList<RecentCallContact>()
+        val newItems = ArrayList<DialpadItem>()
+        newItems.add(DialpadItem("Contacts"))
 
         ContactsHelper(this).getContacts(showOnlyContactsWithNumbers = true) { contacts ->
-            items.addAll(contacts.map { RecentCallContact(it) })
+            newItems.addAll(contacts.map { DialpadItem(it) })
+            newItems.add(DialpadItem("Call History"))
             RecentsHelper(this).getRecentCalls(queryLimit = Int.MAX_VALUE) { recentCalls ->
                 val recentCallsNonContact = filterContactsInRecentCalls(recentCalls.distinctBy { it.phoneNumber }, contacts)
-                recentCallsNonContact.forEach { items.add(RecentCallContact(it)) }
+                recentCallsNonContact.forEach { newItems.add(DialpadItem(it)) }
 
-                gotContacts(items)
+                gotContacts(newItems)
             }
         }
     }
 
-    private fun gotContacts(newItems: ArrayList<RecentCallContact>) {
+    private fun gotContacts(newItems: ArrayList<DialpadItem>) {
         allCallItems = newItems
 
         val privateContacts = MyContactsContentProvider.getContacts(this, privateCursor)
         if (privateContacts.isNotEmpty()) {
-            allCallItems.addAll(privateContacts.map { RecentCallContact(it) })
-            allCallItems.sort()
+            allCallItems.addAll(privateContacts.map { DialpadItem(it) })
         }
 
         runOnUiThread {
@@ -278,9 +280,9 @@ class DialpadActivity : SimpleActivity() {
             return
         }
 
-        (binding.dialpadList.adapter as? ContactsAdapter)?.finishActMode()
+        (binding.dialpadList.adapter as? DialpadAdapter)?.finishActMode()
 
-        val filtered = allCallItems.filter { item ->
+        /*val filtered = allCallItems.filter { item ->
             var convertedName = KeypadHelper.convertKeypadLettersToDigits(
                 item.contact.name.normalizeString()
             ).filterNot { it.isWhitespace() }
@@ -297,30 +299,38 @@ class DialpadActivity : SimpleActivity() {
             item.contact.doesContainPhoneNumber(text) || (convertedName.contains(text, true))
         }.sortedWith(compareBy {
             !it.contact.doesContainPhoneNumber(text)
-        }).sorted().map { it.contact }.toMutableList()
+        }).sorted().map { it.contact }.toMutableList()*/
 
-        binding.letterFastscroller.setupWithContacts(binding.dialpadList, filtered)
+        binding.letterFastscroller.setupWithDialpadItems(binding.dialpadList, allCallItems)
 
-        ContactsAdapter(
-            activity = this,
-            contacts = filtered,
-            recyclerView = binding.dialpadList,
-            highlightText = text,
-            itemClick = {
-                val contact = it as Contact
-                startCallWithConfirmationCheck(contact.getPrimaryNumber() ?: return@ContactsAdapter, contact.getNameToDisplay())
-                Handler().postDelayed({
-                    binding.dialpadInput.setText("")
-                }, 1000)
-            },
-            profileIconClick = {
-                startContactDetailsIntent(it as Contact)
-            }).apply {
-            binding.dialpadList.adapter = this
+        if (binding.dialpadList.adapter == null) {
+            dialpadAdapter = DialpadAdapter(
+                activity = this,
+                recyclerView = binding.dialpadList,
+                highlightText = text,
+                itemClick = {
+                    val dialpadItem = it as DialpadItem
+
+                    if (!dialpadItem.isHeader()) {
+                        startCallWithConfirmationCheck(
+                            dialpadItem.contact?.getPrimaryNumber() ?: dialpadItem.recentCall!!.phoneNumber,
+                            dialpadItem.contact?.getNameToDisplay() ?: dialpadItem.recentCall!!.phoneNumber
+                        )
+                        Handler().postDelayed({
+                            binding.dialpadInput.setText("")
+                        }, 1000)
+                    }
+                }, profileIconClick = {
+                    startContactDetailsIntent(it as Contact)
+                }).apply {
+                binding.dialpadList.adapter = dialpadAdapter
+            }
         }
 
-        binding.dialpadPlaceholder.beVisibleIf(filtered.isEmpty())
-        binding.dialpadList.beVisibleIf(filtered.isNotEmpty())
+        dialpadAdapter?.updateItems(allCallItems, text)
+
+        binding.dialpadPlaceholder.beVisibleIf(allCallItems.isEmpty())
+        binding.dialpadList.beVisibleIf(allCallItems.isNotEmpty())
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {
