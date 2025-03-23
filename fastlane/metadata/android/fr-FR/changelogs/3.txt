@@ -6,4 +6,4 @@
 * Ajout d'un avatar de remplacement pour les numéros inconnus et les contacts sans photo.
 * Ajout d'un indicateur de progression pour indiquer la récupération de l'historique des appels.
 * Ajout d'une marge inférieure dans les listes pour permettre le défilement au-dessus du bouton d'action flottant.
-* Ajout de quelques traductions.
+* Ajout de traductions.

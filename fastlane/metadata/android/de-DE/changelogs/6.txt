@@ -1,0 +1,6 @@
+* Ein Problem behoben, bei dem die Anrufliste nicht aktualisiert wurde
+* Sortierung der Indexbuchstaben in der Kontaktliste korrigiert
+* Wähltastenfeld-Suche für einige Zeichen korrigiert
+* Ein Problem behoben, bei dem ein Anruf sofort nach dem Drücken der Rücktaste beendet wurde
+* Weitere kleinere Fehlerbehebungen und Verbesserungen
+* Weitere Übersetzungen hinzugefügt

@@ -1,9 +1,9 @@
 * Suppression de la limite de l'historique des appels (https://github.com/FossifyOrg/Phone/issues/125).
 * Ajout d'une fonction de rappel rapide (https://github.com/FossifyOrg/Phone/issues/60).
-* Le bouton de raccrochage est désormais toujours visible dans l'interface d'appel (https://github.com/FossifyOrg/Phone/issues/9).
-* Amélioration de la taille de l'avatar de l'appelant et des boutons dans l'interface d'appel (https://github.com/FossifyOrg/Phone/issues/118).
-* Les préférences du clavier ont été réorganisées dans une section dédiée (https://github.com/FossifyOrg/Phone/issues/116).
-* Ajout d'un avatar de remplacement pour les numéros inconnus et les contacts sans photo.
+* Le bouton raccrocher est désormais toujours visible dans l'interface utilisateur d'appel (https://github.com/FossifyOrg/Phone/issues/9).
+* Amélioration de la taille de l'avatar de l'appelant et des boutons dans l'interface utilisateur d'appel (https://github.com/FossifyOrg/Phone/issues/118).
+* Réorganisation des préférences du clavier de numérotation dans leur propre section dédiée (https://github.com/FossifyOrg/Phone/issues/116).
+* Ajout d'un avatar d'espace réservé pour les numéros inconnus et les contacts sans photo.
 * Ajout d'un indicateur de progression pour indiquer la récupération de l'historique des appels.
-* Ajout d'une marge inférieure dans les listes pour permettre le défilement au-dessus du bouton d'action flottant.
-* Ajout de quelques traductions.
+* Ajout d'un espace en bas dans les listes pour permettre le défilement au-dessus du bouton d'action flottant.
+* Ajout de traductions.
