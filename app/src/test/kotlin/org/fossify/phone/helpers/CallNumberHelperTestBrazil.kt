@@ -131,7 +131,7 @@ class CallNumberHelperTestBrazil {
 	}
 
 	@Test
-	fun testlLandLocalAreaNumber() {
+	fun testLandLocalAreaNumber() {
 		val inputNumber = Uri.parse("tel:30000000")
 		val expectedNumber = Uri.parse("tel:30000000")
 		val outputNumber = fixInvalidNumbers(inputNumber, context)
