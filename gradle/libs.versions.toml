@@ -1,5 +1,6 @@
 [versions]
 #jetbrains
+geocoderVersion = "3.1"
 kotlin = "1.9.25"
 kotlinxSerializationJson = "1.6.0"
 #Detekt
@@ -23,16 +24,19 @@ app-build-kotlinJVMTarget = "17"
 app-version-appId = "org.fossify.phone"
 app-version-versionCode = "6"
 app-version-versionName = "1.3.1"
+libphonenumberVersion = "9.0.1"
 [libraries]
 #Fossify
 fossify-commons = { module = "org.fossify:commons", version.ref = "commons" }
 #EventBus
 eventbus = { module = "org.greenrobot:eventbus", version.ref = "eventbus" }
 #Kotlin
+geocoder = { module = "com.googlecode.libphonenumber:geocoder", version.ref = "geocoderVersion" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
 #Other
 indicator-fast-scroll = { module = "org.fossify:IndicatorFastScroll", version.ref = "indicatorFastScroll" }
 autofit-text-view = { module = "me.grantland:autofittextview", version.ref = "autofitTextView" }
+libphonenumber = { module = "com.googlecode.libphonenumber:libphonenumber", version.ref = "libphonenumberVersion" }
 [plugins]
 android = { id = "com.android.application", version.ref = "gradlePlugins-agp" }
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }

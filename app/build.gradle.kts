@@ -112,4 +112,6 @@ dependencies {
     implementation(libs.autofit.text.view)
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.eventbus)
+    implementation(libs.libphonenumber)
+    implementation(libs.geocoder)
 }

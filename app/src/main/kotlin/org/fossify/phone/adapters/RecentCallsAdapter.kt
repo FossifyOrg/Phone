@@ -11,6 +11,9 @@ import android.view.*
 import android.widget.PopupMenu
 import androidx.recyclerview.widget.DiffUtil
 import com.bumptech.glide.Glide
+import com.google.i18n.phonenumbers.NumberParseException
+import com.google.i18n.phonenumbers.PhoneNumberUtil
+import com.google.i18n.phonenumbers.geocoding.PhoneNumberOfflineGeocoder
 import org.fossify.commons.adapters.MyRecyclerViewListAdapter
 import org.fossify.commons.dialogs.ConfirmationDialog
 import org.fossify.commons.dialogs.FeatureLockedDialog
@@ -30,6 +33,7 @@ import org.fossify.phone.interfaces.RefreshItemsListener
 import org.fossify.phone.models.CallLogItem
 import org.fossify.phone.models.RecentCall
 import org.joda.time.DateTime
+import java.util.Locale
 
 class RecentCallsAdapter(
     activity: SimpleActivity,
@@ -478,6 +482,22 @@ class RecentCallsAdapter(
 
                     setTextColor(if (call.type == Calls.MISSED_TYPE) missedCallColor else secondaryTextColor)
                     setTextSize(TypedValue.COMPLEX_UNIT_PX, currentFontSize * 0.8f)
+                }
+
+                itemRecentsLocation.apply {
+                    try {
+                        val phoneNumber = PhoneNumberUtil.getInstance().parse(call.phoneNumber, Locale.getDefault().country)
+                        //This function in com.googlecode.libphonenumber:geocoder has not yet implemented concatenating the country name as of version 3.1
+                        val location =
+                            PhoneNumberOfflineGeocoder.getInstance().getDescriptionForNumber(phoneNumber, Locale.getDefault(), Locale.getDefault().country)
+
+                        text = location
+                        setTextColor(textColor)
+                        setTextSize(TypedValue.COMPLEX_UNIT_PX, currentFontSize * 0.8f)
+                        beVisible()
+                    } catch (_: NumberParseException) {
+                        beInvisible()
+                    }
                 }
 
                 itemRecentsDuration.apply {
