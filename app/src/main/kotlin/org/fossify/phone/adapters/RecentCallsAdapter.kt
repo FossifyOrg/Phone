@@ -503,7 +503,11 @@ class RecentCallsAdapter(
                 itemRecentsDuration.apply {
                     text = call.duration.getFormattedDuration()
                     setTextColor(textColor)
-                    beVisibleIf(call.type != Calls.MISSED_TYPE && call.type != Calls.REJECTED_TYPE && call.duration > 0)
+                    if(call.type != Calls.MISSED_TYPE && call.type != Calls.REJECTED_TYPE && call.duration > 0) {
+                        beVisible()
+                    } else {
+                        beInvisible()
+                    }
                     setTextSize(TypedValue.COMPLEX_UNIT_PX, currentFontSize * 0.8f)
                     if (!showOverflowMenu) {
                         itemRecentsDuration.setPadding(0, 0, durationPadding, 0)
