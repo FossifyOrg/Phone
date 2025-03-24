@@ -298,6 +298,9 @@ class DialpadActivity : SimpleActivity() {
                 Handler().postDelayed({
                     binding.dialpadInput.setText("")
                 }, 1000)
+            },
+            profileIconClick = {
+                startContactDetailsIntent(it as Contact)
             }).apply {
             binding.dialpadList.adapter = this
         }
