@@ -364,17 +364,12 @@ class ContactsAdapter(
         binding.apply {
             root.setupViewBackground(activity)
             itemContactFrame.isSelected = selectedKeys.contains(contact.rawId)
-            (root as ViewGroup).setAddStatesFromChildren(true)
-
-            val profileImageRippleX = (itemContactImage.left + (itemContactImage.width / 2)).toFloat()
-            val profileImageRippleY = (itemContactImage.top + (itemContactImage.height / 2)).toFloat()
-            root.background.setHotspot(profileImageRippleX, profileImageRippleY)
 
             itemContactImage.apply {
+                setBackgroundResource(R.drawable.selector_clickable_circle)
+
                 if (profileIconClick != null) {
                     setOnClickListener {
-                        root.background.setHotspot(profileImageRippleX, profileImageRippleY)
-
                         if (!actModeCallback.isSelectable) {
                             profileIconClick.invoke(contact)
                         } else {
@@ -382,7 +377,6 @@ class ContactsAdapter(
                         }
                     }
                     setOnLongClickListener {
-                        root.background.setHotspot(profileImageRippleX, profileImageRippleY)
                         holder.viewLongClicked()
                         true
                     }
