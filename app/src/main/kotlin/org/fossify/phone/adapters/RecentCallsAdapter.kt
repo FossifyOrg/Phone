@@ -432,6 +432,11 @@ class RecentCallsAdapter(
         ) { _, _ ->
             binding.apply {
                 root.setupViewBackground(activity)
+                (root as ViewGroup).setAddStatesFromChildren(true)
+
+                val profileImageRippleX = (itemRecentsImage.left + (itemRecentsImage.width / 2)).toFloat()
+                val profileImageRippleY = (itemRecentsImage.top + (itemRecentsImage.height / 2)).toFloat()
+                root.background.setHotspot(profileImageRippleX, profileImageRippleY)
 
                 val currentFontSize = fontSize
                 itemRecentsHolder.isSelected = selectedKeys.contains(call.id)
@@ -505,15 +510,16 @@ class RecentCallsAdapter(
                 itemRecentsImage.apply {
                     if (profileIconClick != null) {
                         setOnClickListener {
-                            this@RecentCallViewHolder.apply {
-                                if (!actModeCallback.isSelectable) {
-                                    profileIconClick.invoke(call)
-                                } else {
-                                    viewClicked(call)
-                                }
+                            root.background.setHotspot(profileImageRippleX, profileImageRippleY)
+
+                            if (!actModeCallback.isSelectable) {
+                                profileIconClick.invoke(call)
+                            } else {
+                                viewClicked(call)
                             }
                         }
                         setOnLongClickListener {
+                            root.background.setHotspot(profileImageRippleX, profileImageRippleY)
                             viewLongClicked()
                             true
                         }
