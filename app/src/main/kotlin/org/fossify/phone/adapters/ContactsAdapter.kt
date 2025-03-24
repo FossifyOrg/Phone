@@ -47,7 +47,8 @@ class ContactsAdapter(
     private val showDeleteButton: Boolean = true,
     private val enableDrag: Boolean = false,
     private val allowLongClick: Boolean = true,
-    itemClick: (Any) -> Unit
+    itemClick: (Any) -> Unit,
+    val profileIconClick: ((Any) -> Unit)? = null
 ) : MyRecyclerViewAdapter(activity, recyclerView, itemClick),
     ItemTouchHelperContract, MyRecyclerView.MyZoomListener {
 
@@ -365,8 +366,20 @@ class ContactsAdapter(
             itemContactFrame.isSelected = selectedKeys.contains(contact.rawId)
 
             itemContactImage.apply {
-                setOnClickListener {
-                    activity.startContactDetailsIntent(contact)
+                if (profileIconClick != null) {
+                    setOnClickListener {
+                        holder.apply {
+                            if (!actModeCallback.isSelectable) {
+                                profileIconClick.invoke(contact)
+                            } else {
+                                holder.viewClicked(contact)
+                            }
+                        }
+                    }
+                    setOnLongClickListener {
+                        holder.viewLongClicked()
+                        true
+                    }
                 }
             }
 

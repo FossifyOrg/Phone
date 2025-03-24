@@ -38,6 +38,7 @@ class RecentCallsAdapter(
     private val showOverflowMenu: Boolean,
     private val itemDelete: (List<RecentCall>) -> Unit = {},
     itemClick: (Any) -> Unit,
+    val profileIconClick: ((Any) -> Unit)? = null
 ) : MyRecyclerViewListAdapter<CallLogItem>(activity, recyclerView, RecentCallsDiffCallback(), itemClick) {
 
     private lateinit var outgoingCallIcon: Drawable
@@ -502,9 +503,19 @@ class RecentCallsAdapter(
                 SimpleContactsHelper(root.context).loadContactImage(call.photoUri, itemRecentsImage, call.name)
 
                 itemRecentsImage.apply {
-                    if (matchingContact != null) {
+                    if (profileIconClick != null) {
                         setOnClickListener {
-                            activity.startContactDetailsIntent(matchingContact)
+                            this@RecentCallViewHolder.apply {
+                                if (!actModeCallback.isSelectable) {
+                                    profileIconClick.invoke(call)
+                                } else {
+                                    viewClicked(call)
+                                }
+                            }
+                        }
+                        setOnLongClickListener {
+                            viewLongClicked()
+                            true
                         }
                     }
                 }

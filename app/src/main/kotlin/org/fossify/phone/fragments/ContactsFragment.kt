@@ -111,11 +111,10 @@ class ContactsFragment(context: Context, attributeSet: AttributeSet) : MyViewPag
                     activity = activity as SimpleActivity,
                     contacts = contacts,
                     recyclerView = binding.fragmentList,
-                    refreshItemsListener = this
-                ) {
-                    val contact = it as Contact
-                    activity?.startContactDetailsIntent(contact)
-                }.apply {
+                    refreshItemsListener = this,
+                    itemClick = {
+                        activity?.startContactDetailsIntent(it as Contact)
+                    }).apply {
                     binding.fragmentList.adapter = this
                 }
 
