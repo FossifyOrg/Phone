@@ -1,8 +1,0 @@
-* Die Anruflistenbegrenzung aufgehoben.
-* Schnelle Rückruffunktion hinzugefügt.
-* Die Auflegen-Schaltfläche ist jetzt immer in der Anrufoberfläche sichtbar.
-* Die Größe der Avatare und Schaltflächen in der Anrufoberfläche verbessert.
-* Die Wähltastenfeld-Einstellungen in einen eigenen Bereich umorganisiert.
-* Platzhalter-Avatar für unbekannte Nummern und Kontakte ohne Foto hinzugefügt.
-* Eine Fortschrittsanzeige hinzugefügt, um den Abruf der Anrufliste anzuzeigen.
-…

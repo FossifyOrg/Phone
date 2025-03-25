@@ -1,9 +1,0 @@
-- Arama geçmişi yenilenmeme sorunu düzeltildi.
-- Eski arama günlüklerinin bulunamama sorunu düzeltildi.
-- Menü tasarımı güncellendi.
-- Arama bittikten sonra arama eylem düğmeleri devre dışı bırakıldı.
-- Arama geçmişi girişleri tarihe göre gruplandırıldı.
-- Arama kaydındaki telefon numaralarını biçimlendirme seçeneği eklendi.
-- Arama geçmişindeki arama yönü simge ve renkleri güncellendi.
-- Farklı çözünürlüklere duyarlı olması için arama arayüzü yeniden yapılandırıldı.
-- Bazı çeviriler eklendi.

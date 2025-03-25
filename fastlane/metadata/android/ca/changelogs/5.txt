@@ -1,5 +1,0 @@
-* Corregeix un problema amb contactes que no es mostren a l'Android 14 o superior
-* Caselles de selecció reemplaçades per commutadors
-* Elimina la implementació per a Android 7 i versions anteriors
-* Altres correccions menors d'errors i millores
-* S'han afegit més traduccions

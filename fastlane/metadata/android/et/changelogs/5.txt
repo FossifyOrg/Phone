@@ -1,5 +1,0 @@
-* Parandasime kontaktide mittekuvamise Androidi versioonis 14 ja uuemates
-* Asendasime märkeruudud liugurlülititega
-* Eemaldasime Androidi versiooni 7 ja vanemate toe
-* Muud väiksemad parandused ja täiendused
-* Lisasime tõlkeid

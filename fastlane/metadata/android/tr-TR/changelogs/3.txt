@@ -1,9 +1,0 @@
-* Arama geçmişi sınırı kaldırıldı.
-* Hızlı arama özelliği eklendi.
-* Kapat düğmesi artık arama arayüzünde her zaman görülebilir.
-* Arama arayüzündeki arayan görselinin ve düğmelerin boyutu geliştirildi.
-* Tuş takımı tercihlerini kendi bölümlerinde yeniden düzenlendi.
-* Bilinmeyen numaralar ve kişiler için yer tutucu görsel eklendi.
-* Arama geçmişinin alındığını göstermek için gösterge eklendi.
-* Yüzen eylem düğmesinin üzerinde kaydırmaya izin vermek için dolgu eklendi.
-* Bazı çeviriler eklendi.
