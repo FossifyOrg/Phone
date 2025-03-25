@@ -29,10 +29,10 @@ class SelectContactDialog(val activity: SimpleActivity, val contacts: List<Conta
             setupLetterFastScroller(contacts)
             configureSearchView()
 
-            selectContactList.adapter = ContactsAdapter(activity, contacts.toMutableList(), selectContactList, allowLongClick = false) {
+            selectContactList.adapter = ContactsAdapter(activity, contacts.toMutableList(), selectContactList, allowLongClick = false, itemClick = {
                 callback(it as Contact)
                 dialog?.dismiss()
-            }
+            })
         }
 
         activity.getAlertDialogBuilder()

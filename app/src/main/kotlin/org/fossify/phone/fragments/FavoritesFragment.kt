@@ -17,6 +17,7 @@ import org.fossify.phone.databinding.FragmentFavoritesBinding
 import org.fossify.phone.databinding.FragmentLettersLayoutBinding
 import org.fossify.phone.extensions.config
 import org.fossify.phone.extensions.setupWithContacts
+import org.fossify.phone.extensions.startContactDetailsIntent
 import org.fossify.phone.interfaces.RefreshItemsListener
 
 class FavoritesFragment(context: Context, attributeSet: AttributeSet) : MyViewPagerFragment<MyViewPagerFragment.LettersInnerBinding>(context, attributeSet),
@@ -112,19 +113,22 @@ class FavoritesFragment(context: Context, attributeSet: AttributeSet) : MyViewPa
                 viewType = viewType,
                 showDeleteButton = false,
                 enableDrag = true,
-            ) { contact ->
-                if (context.config.showCallConfirmation) {
-                    CallConfirmationDialog(activity as SimpleActivity, (contact as Contact).getNameToDisplay()) {
+                itemClick = { it ->
+                    if (context.config.showCallConfirmation) {
+                        CallConfirmationDialog(activity as SimpleActivity, (it as Contact).getNameToDisplay()) {
+                            activity?.apply {
+                                initiateCall(it) { launchCallIntent(it) }
+                            }
+                        }
+                    } else {
                         activity?.apply {
-                            initiateCall(contact) { launchCallIntent(it) }
+                            initiateCall(it as Contact) { launchCallIntent(it) }
                         }
                     }
-                } else {
-                    activity?.apply {
-                        initiateCall(contact as Contact) { launchCallIntent(it) }
-                    }
-                }
-            }.apply {
+                },
+                profileIconClick = {
+                    activity?.startContactDetailsIntent(it as Contact)
+                }).apply {
                 binding.fragmentList.adapter = this
 
                 onDragEndListener = {
