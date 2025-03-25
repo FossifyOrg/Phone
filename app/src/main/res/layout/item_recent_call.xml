@@ -105,7 +105,7 @@
         android:alpha="0.6"
         android:ellipsize="end"
         android:gravity="center"
-        android:maxLines="2"
+        android:maxLines="1"
         android:textSize="@dimen/normal_text_size"
         app:layout_constraintBottom_toBottomOf="@id/item_recents_date_time"
         app:layout_constraintEnd_toStartOf="@id/item_recents_duration"
