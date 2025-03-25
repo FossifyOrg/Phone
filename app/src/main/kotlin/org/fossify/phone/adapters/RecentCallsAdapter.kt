@@ -503,9 +503,9 @@ class RecentCallsAdapter(
                 SimpleContactsHelper(root.context).loadContactImage(call.photoUri, itemRecentsImage, call.name)
 
                 itemRecentsImage.apply {
-                    setBackgroundResource(R.drawable.selector_clickable)
-
                     if (profileIconClick != null) {
+                        setBackgroundResource(R.drawable.selector_clickable_circle)
+
                         setOnClickListener {
                             if (!actModeCallback.isSelectable) {
                                 profileIconClick.invoke(call)

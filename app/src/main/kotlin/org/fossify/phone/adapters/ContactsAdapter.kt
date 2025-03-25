@@ -366,9 +366,9 @@ class ContactsAdapter(
             itemContactFrame.isSelected = selectedKeys.contains(contact.rawId)
 
             itemContactImage.apply {
-                setBackgroundResource(R.drawable.selector_clickable_circle)
-
                 if (profileIconClick != null) {
+                    setBackgroundResource(R.drawable.selector_clickable_circle)
+
                     setOnClickListener {
                         if (!actModeCallback.isSelectable) {
                             profileIconClick.invoke(contact)
