@@ -487,30 +487,30 @@ class RecentCallsAdapter(
                 }
 
                 itemRecentsLocation.apply {
-                    ensureBackgroundThread {
-                        try {
-                            val phoneNumber = PhoneNumberUtil.getInstance().parse(call.phoneNumber, Locale.getDefault().country)
-                            //This function in com.googlecode.libphonenumber:geocoder has not yet implemented concatenating the country name as of version 3.1
-                            val location =
-                                PhoneNumberOfflineGeocoder.getInstance().getDescriptionForNumber(phoneNumber, Locale.getDefault(), Locale.getDefault().country)
-
-                            if (
-                                phoneNumber.countryCodeSource != Phonenumber.PhoneNumber.CountryCodeSource.FROM_DEFAULT_COUNTRY &&
-                                !(location == Locale.getDefault().displayCountry && matchingContact != null)
-                            ) {
-                                activity.runOnUiThread {
-                                    text = location
-                                    setTextColor(textColor)
-                                    setTextSize(TypedValue.COMPLEX_UNIT_PX, currentFontSize * 0.8f)
-                                    beVisible()
-                                }
-                            }
-                        } catch (_: NumberParseException) {
-                            activity.runOnUiThread {
-                                beInvisible()
-                            }
-                        }
+                    val locale = Locale.getDefault()
+                    val defaultCountryCode = locale.country
+                    val phoneNumber = try {
+                        PhoneNumberUtil.getInstance()
+                            .parse(call.phoneNumber, defaultCountryCode)
+                    } catch (_: NumberParseException) {
+                        null
                     }
+
+                    val location = if (phoneNumber != null) {
+                        PhoneNumberOfflineGeocoder.getInstance()
+                            .getDescriptionForNumber(phoneNumber, locale, defaultCountryCode)
+                    } else {
+                        null
+                    }
+
+                    text = location
+                    setTextColor(textColor)
+                    setTextSize(TypedValue.COMPLEX_UNIT_PX, currentFontSize * 0.8f)
+                    beVisibleIf(
+                        phoneNumber != null 
+                            && phoneNumber.countryCodeSource != CountryCodeSource.FROM_DEFAULT_COUNTRY
+                            && (location != locale.displayCountry || matchingContact == null)
+                    )
                 }
 
                 itemRecentsDuration.apply {
