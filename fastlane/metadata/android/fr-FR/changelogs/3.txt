@@ -1,9 +1,0 @@
-* Suppression de la limite de l'historique des appels.
-* Ajout d'une fonction de rappel rapide.
-* Le bouton de raccrochage est désormais toujours visible dans l'interface d'appel.
-* Amélioration de la taille de l'avatar de l'appelant et des boutons dans l'interface utilisateur.
-* Les préférences du clavier ont été réorganisées dans une section dédiée.
-* Ajout d'un avatar de remplacement pour les numéros inconnus et les contacts sans photo.
-* Ajout d'un indicateur de progression pour indiquer la récupération de l'historique des appels.
-* Ajout d'une marge inférieure dans les listes pour permettre le défilement au-dessus du bouton d'action flottant.
-* Ajout de traductions.

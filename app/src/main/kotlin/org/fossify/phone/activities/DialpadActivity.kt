@@ -291,14 +291,17 @@ class DialpadActivity : SimpleActivity() {
             activity = this,
             contacts = filtered,
             recyclerView = binding.dialpadList,
-            highlightText = text
-        ) {
-            val contact = it as Contact
-            startCallWithConfirmationCheck(contact.getPrimaryNumber() ?: return@ContactsAdapter, contact.getNameToDisplay())
-            Handler().postDelayed({
-                binding.dialpadInput.setText("")
-            }, 1000)
-        }.apply {
+            highlightText = text,
+            itemClick = {
+                val contact = it as Contact
+                startCallWithConfirmationCheck(contact.getPrimaryNumber() ?: return@ContactsAdapter, contact.getNameToDisplay())
+                Handler().postDelayed({
+                    binding.dialpadInput.setText("")
+                }, 1000)
+            },
+            profileIconClick = {
+                startContactDetailsIntent(it as Contact)
+            }).apply {
             binding.dialpadList.adapter = this
         }
 

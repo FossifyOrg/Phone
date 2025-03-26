@@ -1,5 +1,0 @@
-* Corregido el problema con los contactos que no se muestran en Android 14 y superiores.
-* Sustitución de casillas de verificación por interruptores.
-* Eliminado el soporte para Android 7 y versiones anteriores
-* Otras mejoras y correcciones menores
-* Añadidas más traducciones

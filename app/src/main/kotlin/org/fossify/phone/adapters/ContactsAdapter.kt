@@ -47,7 +47,8 @@ class ContactsAdapter(
     private val showDeleteButton: Boolean = true,
     private val enableDrag: Boolean = false,
     private val allowLongClick: Boolean = true,
-    itemClick: (Any) -> Unit
+    itemClick: (Any) -> Unit,
+    val profileIconClick: ((Any) -> Unit)? = null
 ) : MyRecyclerViewAdapter(activity, recyclerView, itemClick),
     ItemTouchHelperContract, MyRecyclerView.MyZoomListener {
 
@@ -363,6 +364,25 @@ class ContactsAdapter(
         binding.apply {
             root.setupViewBackground(activity)
             itemContactFrame.isSelected = selectedKeys.contains(contact.rawId)
+
+            itemContactImage.apply {
+                if (profileIconClick != null) {
+                    setBackgroundResource(R.drawable.selector_clickable_circle)
+
+                    setOnClickListener {
+                        if (!actModeCallback.isSelectable) {
+                            profileIconClick.invoke(contact)
+                        } else {
+                            holder.viewClicked(contact)
+                        }
+                    }
+                    setOnLongClickListener {
+                        holder.viewLongClicked()
+                        true
+                    }
+                }
+            }
+
             itemContactName.apply {
                 setTextColor(textColor)
                 setTextSize(TypedValue.COMPLEX_UNIT_PX, fontSize)
