@@ -493,11 +493,7 @@ class RecentCallsAdapter(
                     text = "•"
                     setTextSize(TypedValue.COMPLEX_UNIT_PX, currentFontSize * 0.8f)
                     setTextColor(textColor)
-                    if (shouldShowDuration) {
-                        beVisible()
-                    } else {
-                        beInvisible()
-                    }
+                    beVisibleIf(shouldShowDuration)
                 }
 
                 itemRecentsDuration.apply {
