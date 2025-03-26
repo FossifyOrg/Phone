@@ -128,6 +128,8 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_below="@+id/item_recents_name"
+        android:layout_marginStart="@dimen/normal_margin"
+        android:layout_marginEnd="@dimen/small_margin"
         android:alpha="0.6"
         android:ellipsize="end"
         android:gravity="end"
