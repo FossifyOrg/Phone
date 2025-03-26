@@ -503,11 +503,7 @@ class RecentCallsAdapter(
                 itemRecentsDuration.apply {
                     text = context.formatSecondsToShortTimeString(call.duration)
                     setTextColor(textColor)
-                    if (shouldShowDuration) {
-                        beVisible()
-                    } else {
-                        beInvisible()
-                    }
+                    beVisibleIf(shouldShowDuration)
                     setTextSize(TypedValue.COMPLEX_UNIT_PX, currentFontSize * 0.8f)
                     if (!showOverflowMenu) {
                         itemRecentsDuration.setPadding(0, 0, durationPadding, 0)
