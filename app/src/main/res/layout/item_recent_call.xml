@@ -121,7 +121,7 @@
         app:layout_constraintBottom_toBottomOf="@id/item_recents_date_time"
         app:layout_constraintStart_toEndOf="@id/item_recents_date_time_duration_separator"
         app:layout_constraintTop_toTopOf="@id/item_recents_date_time"
-        tools:text="00:10" />
+        tools:text="42m 17s" />
 
     <TextView
         android:id="@+id/item_recents_location"
