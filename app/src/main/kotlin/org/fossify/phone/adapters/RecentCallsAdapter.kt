@@ -54,6 +54,8 @@ class RecentCallsAdapter(
     private var secondaryTextColor = textColor.adjustAlpha(0.6f)
     private var textToHighlight = ""
     private var durationPadding = resources.getDimension(R.dimen.normal_margin).toInt()
+    private var phoneNumberUtilInstance: PhoneNumberUtil = PhoneNumberUtil.getInstance()
+    private var phoneNumberOfflineGeocoderInstance: PhoneNumberOfflineGeocoder = PhoneNumberOfflineGeocoder.getInstance()
 
     init {
         initDrawables()
@@ -490,14 +492,14 @@ class RecentCallsAdapter(
                     val locale = Locale.getDefault()
                     val defaultCountryCode = locale.country
                     val phoneNumber = try {
-                        PhoneNumberUtil.getInstance()
+                        phoneNumberUtilInstance
                             .parse(call.phoneNumber, defaultCountryCode)
                     } catch (_: NumberParseException) {
                         null
                     }
 
                     val location = if (phoneNumber != null) {
-                        PhoneNumberOfflineGeocoder.getInstance()
+                        phoneNumberOfflineGeocoderInstance
                             .getDescriptionForNumber(phoneNumber, locale, defaultCountryCode)
                     } else {
                         null
@@ -507,8 +509,8 @@ class RecentCallsAdapter(
                     setTextColor(textColor)
                     setTextSize(TypedValue.COMPLEX_UNIT_PX, currentFontSize * 0.8f)
                     beVisibleIf(
-                        phoneNumber != null 
-                            && phoneNumber.countryCodeSource != CountryCodeSource.FROM_DEFAULT_COUNTRY
+                        phoneNumber != null
+                            && phoneNumber.countryCodeSource != Phonenumber.PhoneNumber.CountryCodeSource.FROM_DEFAULT_COUNTRY
                             && (location != locale.displayCountry || matchingContact == null)
                     )
                 }
