@@ -449,6 +449,7 @@ class RecentCallsAdapter(
                 } else {
                     SpannableString(name)
                 }
+                val shouldShowDuration = call.type != Calls.MISSED_TYPE && call.type != Calls.REJECTED_TYPE && call.duration > 0
 
                 if (call.specificType.isNotEmpty()) {
                     nameToShow = SpannableString("$name - ${call.specificType}")
@@ -488,6 +489,31 @@ class RecentCallsAdapter(
                     setTextSize(TypedValue.COMPLEX_UNIT_PX, currentFontSize * 0.8f)
                 }
 
+                itemRecentsDateTimeDurationSeparator.apply {
+                    text = " • "
+                    setTextSize(TypedValue.COMPLEX_UNIT_PX, currentFontSize * 0.8f)
+                    setTextColor(textColor)
+                    if (shouldShowDuration) {
+                        beVisible()
+                    } else {
+                        beInvisible()
+                    }
+                }
+
+                itemRecentsDuration.apply {
+                    text = context.formatSecondsToShortTimeString(call.duration)
+                    setTextColor(textColor)
+                    if (shouldShowDuration) {
+                        beVisible()
+                    } else {
+                        beInvisible()
+                    }
+                    setTextSize(TypedValue.COMPLEX_UNIT_PX, currentFontSize * 0.8f)
+                    if (!showOverflowMenu) {
+                        itemRecentsDuration.setPadding(0, 0, durationPadding, 0)
+                    }
+                }
+
                 itemRecentsLocation.apply {
                     val locale = Locale.getDefault()
                     val defaultCountryCode = locale.country
@@ -513,20 +539,6 @@ class RecentCallsAdapter(
                             && phoneNumber.countryCodeSource != Phonenumber.PhoneNumber.CountryCodeSource.FROM_DEFAULT_COUNTRY
                             && (location != locale.displayCountry || matchingContact == null)
                     )
-                }
-
-                itemRecentsDuration.apply {
-                    text = call.duration.getFormattedDuration()
-                    setTextColor(textColor)
-                    if (call.type != Calls.MISSED_TYPE && call.type != Calls.REJECTED_TYPE && call.duration > 0) {
-                        beVisible()
-                    } else {
-                        beInvisible()
-                    }
-                    setTextSize(TypedValue.COMPLEX_UNIT_PX, currentFontSize * 0.8f)
-                    if (!showOverflowMenu) {
-                        itemRecentsDuration.setPadding(0, 0, durationPadding, 0)
-                    }
                 }
 
                 itemRecentsSimImage.beVisibleIf(areMultipleSIMsAvailable && call.simID != -1)
