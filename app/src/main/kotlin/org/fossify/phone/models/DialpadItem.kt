@@ -1,16 +1,17 @@
 package org.fossify.phone.models
 
-import org.fossify.commons.models.PhoneNumber
 import org.fossify.commons.models.contacts.Contact
 
 class DialpadItem {
     val header: String?
+    val isHeaderForContacts: Boolean
     val contact: Contact?
     val recentCall: RecentCall?
     val itemType: DialpadItemType
 
-    constructor(header: String) {
+    constructor(header: String, isHeaderForContacts: Boolean) {
         this.header = header
+        this.isHeaderForContacts = isHeaderForContacts
         this.contact = null
         this.recentCall = null
         this.itemType = DialpadItemType.HEADER
@@ -18,6 +19,7 @@ class DialpadItem {
 
     constructor(contact: Contact) {
         this.header = null
+        isHeaderForContacts = false
         this.contact = contact
         this.recentCall = null
         this.itemType = DialpadItemType.CONTACT
@@ -25,6 +27,7 @@ class DialpadItem {
 
     constructor(recentCall: RecentCall) {
         this.header = null
+        isHeaderForContacts = false
         this.contact = null
         this.recentCall = recentCall
         this.itemType = DialpadItemType.RECENTCALL
@@ -37,7 +40,7 @@ class DialpadItem {
     fun isRecentCall(): Boolean = recentCall != null
 
     fun getItemId(): Int {
-        if(isContact()) {
+        if (isContact()) {
             return contact!!.rawId
         }
 
@@ -47,22 +50,6 @@ class DialpadItem {
 
         return 0
     }
-
-    /*override fun compareTo(other: DialpadItem): Int {
-        return if (isContact) {
-            if (other.isContact) {
-                contact.compareTo(other.contact)
-            } else {
-                -1
-            }
-        } else {
-            if (other.isContact) {
-                1
-            } else {
-                other.recentCall!!.startTS.compareTo(recentCall!!.startTS)
-            }
-        }
-    }*/
 
     enum class DialpadItemType {
         HEADER,

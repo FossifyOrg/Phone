@@ -1,46 +1,60 @@
 package org.fossify.phone.adapters
 
 import android.annotation.SuppressLint
+import android.graphics.drawable.Drawable
+import android.provider.CallLog.Calls
 import android.text.SpannableString
-import android.util.Log
 import android.util.TypedValue
-import android.view.*
+import android.view.LayoutInflater
+import android.view.Menu
+import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.DiffUtil
 import androidx.viewbinding.ViewBinding
 import com.bumptech.glide.Glide
+import com.google.i18n.phonenumbers.NumberParseException
+import com.google.i18n.phonenumbers.PhoneNumberUtil
+import com.google.i18n.phonenumbers.Phonenumber
+import com.google.i18n.phonenumbers.geocoding.PhoneNumberOfflineGeocoder
 import org.fossify.commons.adapters.MyRecyclerViewListAdapter
 import org.fossify.commons.databinding.ItemContactWithoutNumberBinding
-import org.fossify.commons.databinding.ItemContactWithoutNumberGridBinding
 import org.fossify.commons.extensions.*
 import org.fossify.commons.helpers.KeypadHelper
 import org.fossify.commons.helpers.SimpleContactsHelper
-import org.fossify.commons.helpers.VIEW_TYPE_GRID
 import org.fossify.commons.models.contacts.Contact
 import org.fossify.commons.views.MyRecyclerView
 import org.fossify.phone.R
-import org.fossify.phone.activities.MainActivity
 import org.fossify.phone.activities.SimpleActivity
 import org.fossify.phone.databinding.ItemDialpadHeaderBinding
 import org.fossify.phone.databinding.ItemRecentCallBinding
+import org.fossify.phone.extensions.areMultipleSIMsAvailable
 import org.fossify.phone.extensions.config
-import org.fossify.phone.interfaces.RefreshItemsListener
-import org.fossify.phone.models.RecentCall
 import org.fossify.phone.models.DialpadItem
+import org.fossify.phone.models.RecentCall
+import java.util.Locale
 
 class DialpadAdapter(
     activity: SimpleActivity,
     recyclerView: MyRecyclerView,
     highlightText: String = "",
-    private val refreshItemsListener: RefreshItemsListener? = null,
-    itemClick: (Any) -> Unit
+    itemClick: (Any) -> Unit,
+    val profileIconClick: ((Any) -> Unit)? = null
 ) : MyRecyclerViewListAdapter<DialpadItem>(activity, recyclerView, DialpadItemsDiffCallback(), itemClick) {
 
+    private lateinit var outgoingCallIcon: Drawable
+    private lateinit var incomingCallIcon: Drawable
+    private lateinit var incomingMissedCallIcon: Drawable
     private var textToHighlight = highlightText
     var fontSize: Float = activity.getTextSize()
+    private val areMultipleSIMsAvailable = activity.areMultipleSIMsAvailable()
+    private var missedCallColor = resources.getColor(R.color.color_missed_call)
     private var secondaryTextColor = textColor.adjustAlpha(0.6f)
+    private var noOverflowIconPadding = resources.getDimension(R.dimen.normal_margin).toInt()
+    private var phoneNumberUtilInstance: PhoneNumberUtil = PhoneNumberUtil.getInstance()
+    private var phoneNumberOfflineGeocoderInstance: PhoneNumberOfflineGeocoder = PhoneNumberOfflineGeocoder.getInstance()
 
     init {
         initDrawables()
@@ -66,9 +80,15 @@ class DialpadAdapter(
 
     override fun getItemKeyPosition(key: Int) = currentList.indexOfFirst { it.getItemId() == key }
 
-    override fun onActionModeCreated() {}
+    @SuppressLint("NotifyDataSetChanged")
+    override fun onActionModeCreated() {
+        notifyDataSetChanged()
+    }
 
-    override fun onActionModeDestroyed() {}
+    @SuppressLint("NotifyDataSetChanged")
+    override fun onActionModeDestroyed() {
+        notifyDataSetChanged()
+    }
 
     override fun getItemViewType(position: Int): Int {
         val currentItem = currentList[position]
@@ -86,7 +106,9 @@ class DialpadAdapter(
                 ItemDialpadHeaderBinding.inflate(layoutInflater, parent, false)
             )
 
-            VIEW_TYPE_CONTACT -> createViewHolder(ContactBinding.getByItemViewType(viewType).inflate(layoutInflater, parent, false).root)
+            VIEW_TYPE_CONTACT -> ContactViewHolder(
+                ContactBinding.ItemContact.inflate(layoutInflater, parent, false)
+            )
 
             VIEW_TYPE_CALL -> RecentCallViewHolder(
                 ItemRecentCallBinding.inflate(layoutInflater, parent, false)
@@ -102,6 +124,7 @@ class DialpadAdapter(
         val dialpadItem = currentList[position]
         when (holder) {
             is HeaderViewHolder -> dialpadItem.header?.let { holder.bind(it) }
+            is ContactViewHolder -> holder.bind(dialpadItem)
             is RecentCallViewHolder -> holder.bind(dialpadItem)
         }
 
@@ -113,8 +136,8 @@ class DialpadAdapter(
         if (!activity.isDestroyed && !activity.isFinishing) {
             if (holder is RecentCallViewHolder) {
                 Glide.with(activity).clear(holder.binding.itemRecentsImage)
-            } else if(holder is ContactViewBinding) {
-                ContactBinding.getByItemViewType(holder.itemViewType).bind(holder.itemView).apply {
+            } else if (holder is ContactViewBinding) {
+                ContactBinding.ItemContact.bind(holder.itemView).apply {
                     Glide.with(activity).clear(itemContactImage)
                 }
             }
@@ -130,11 +153,15 @@ class DialpadAdapter(
     }
 
     fun initDrawables() {
+        val theme = activity.theme
+        missedCallColor = resources.getColor(R.color.color_missed_call, theme)
         secondaryTextColor = textColor.adjustAlpha(0.6f)
-    }
 
-    private fun findContactByCall(recentCall: RecentCall): Contact? {
-        return (activity as MainActivity).cachedContacts.find { it.name == recentCall.name && it.doesHavePhoneNumber(recentCall.phoneNumber) }
+        val outgoingCallColor = resources.getColor(R.color.color_outgoing_call, theme)
+        val incomingCallColor = resources.getColor(R.color.color_incoming_call, theme)
+        outgoingCallIcon = resources.getColoredDrawableWithColor(R.drawable.ic_call_made_vector, outgoingCallColor)
+        incomingCallIcon = resources.getColoredDrawableWithColor(R.drawable.ic_call_received_vector, incomingCallColor)
+        incomingMissedCallIcon = resources.getColoredDrawableWithColor(R.drawable.ic_call_missed_vector, missedCallColor)
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -149,51 +176,6 @@ class DialpadAdapter(
         }
     }
 
-    @SuppressLint("ClickableViewAccessibility")
-    private fun setupView(binding: ContactViewBinding, contact: Contact, holder: ViewHolder) {
-        binding.apply {
-            root.setupViewBackground(activity)
-            itemContactFrame.isSelected = selectedKeys.contains(contact.rawId)
-            itemContactName.apply {
-                setTextColor(textColor)
-                setTextSize(TypedValue.COMPLEX_UNIT_PX, fontSize)
-
-                val name = contact.getNameToDisplay()
-                text = if (textToHighlight.isEmpty()) {
-                    name
-                } else {
-                    if (name.contains(textToHighlight, true)) {
-                        name.highlightTextPart(textToHighlight, properPrimaryColor)
-                    } else {
-                        var spacedTextToHighlight = textToHighlight
-                        val strippedName = name.filterNot { it.isWhitespace() }
-                        val strippedDigits = KeypadHelper.convertKeypadLettersToDigits(strippedName)
-                        val startIndex = strippedDigits.indexOf(textToHighlight)
-
-                        if (strippedDigits.contains(textToHighlight)) {
-                            for (i in spacedTextToHighlight.indices) {
-                                if (startIndex + i < name.length && name[startIndex + i].isWhitespace()) {
-                                    spacedTextToHighlight = spacedTextToHighlight.replaceRange(i, i, " ")
-                                }
-                            }
-                        }
-
-                        name.highlightTextFromNumbers(spacedTextToHighlight, properPrimaryColor)
-                    }
-                }
-            }
-
-            dragHandleIcon.apply {
-                beGone()
-                setOnTouchListener(null)
-            }
-
-            if (!activity.isDestroyed) {
-                SimpleContactsHelper(root.context).loadContactImage(contact.photoUri, itemContactImage, contact.getNameToDisplay())
-            }
-        }
-    }
-
     private inner class HeaderViewHolder(val binding: ItemDialpadHeaderBinding) : ViewHolder(binding.root) {
         fun bind(header: String) {
             binding.headerTextView.apply {
@@ -204,26 +186,82 @@ class DialpadAdapter(
         }
     }
 
-    private sealed interface ContactBinding {
-        companion object {
-            fun getByItemViewType(viewType: Int): ContactBinding {
-                return ItemContact
+    private inner class ContactViewHolder(val binding: ContactViewBinding) : ViewHolder(binding.root) {
+        fun bind(item: DialpadItem) = bindView(
+            item = item,
+            allowSingleClick = true,
+            allowLongClick = true
+        ) { _, _ ->
+            binding.apply {
+                root.setupViewBackground(activity)
+
+                val contact: Contact = item.contact!!
+
+                itemContactFrame.isSelected = selectedKeys.contains(contact.rawId)
+
+                itemContactImage.apply {
+                    if (profileIconClick != null) {
+                        setBackgroundResource(R.drawable.selector_clickable_circle)
+
+                        setOnClickListener {
+                            if (!actModeCallback.isSelectable) {
+                                profileIconClick.invoke(item)
+                            } else {
+                                viewClicked(item)
+                            }
+                        }
+                        setOnLongClickListener {
+                            viewLongClicked()
+                            true
+                        }
+                    }
+                }
+
+                itemContactName.apply {
+                    setTextColor(textColor)
+                    setTextSize(TypedValue.COMPLEX_UNIT_PX, fontSize)
+
+                    val name = contact.getNameToDisplay()
+                    text = if (textToHighlight.isEmpty()) {
+                        name
+                    } else {
+                        if (name.contains(textToHighlight, true)) {
+                            name.highlightTextPart(textToHighlight, properPrimaryColor)
+                        } else {
+                            var spacedTextToHighlight = textToHighlight
+                            val strippedName = name.filterNot { it.isWhitespace() }
+                            val strippedDigits = KeypadHelper.convertKeypadLettersToDigits(strippedName)
+                            val startIndex = strippedDigits.indexOf(textToHighlight)
+
+                            if (strippedDigits.contains(textToHighlight)) {
+                                for (i in spacedTextToHighlight.indices) {
+                                    if (startIndex + i < name.length && name[startIndex + i].isWhitespace()) {
+                                        spacedTextToHighlight = spacedTextToHighlight.replaceRange(i, i, " ")
+                                    }
+                                }
+                            }
+
+                            name.highlightTextFromNumbers(spacedTextToHighlight, properPrimaryColor)
+                        }
+                    }
+                }
+
+                dragHandleIcon.apply {
+                    beGone()
+                    setOnTouchListener(null)
+                }
+
+                if (!activity.isDestroyed) {
+                    SimpleContactsHelper(root.context).loadContactImage(contact.photoUri, itemContactImage, contact.getNameToDisplay())
+                }
             }
         }
+    }
 
+    private sealed interface ContactBinding {
         fun inflate(layoutInflater: LayoutInflater, viewGroup: ViewGroup, attachToRoot: Boolean): ContactViewBinding
 
         fun bind(view: View): ContactViewBinding
-
-        data object ItemContactGrid : ContactBinding {
-            override fun inflate(layoutInflater: LayoutInflater, viewGroup: ViewGroup, attachToRoot: Boolean): ContactViewBinding {
-                return ContactGridBindingAdapter(ItemContactWithoutNumberGridBinding.inflate(layoutInflater, viewGroup, attachToRoot))
-            }
-
-            override fun bind(view: View): ContactViewBinding {
-                return ContactGridBindingAdapter(ItemContactWithoutNumberGridBinding.bind(view))
-            }
-        }
 
         data object ItemContact : ContactBinding {
             override fun inflate(layoutInflater: LayoutInflater, viewGroup: ViewGroup, attachToRoot: Boolean): ContactViewBinding {
@@ -243,15 +281,6 @@ class DialpadAdapter(
         val dragHandleIcon: ImageView
     }
 
-    private class ContactGridBindingAdapter(val binding: ItemContactWithoutNumberGridBinding) : ContactViewBinding {
-        override val itemContactName = binding.itemContactName
-        override val itemContactImage = binding.itemContactImage
-        override val itemContactFrame = binding.itemContactFrame
-        override val dragHandleIcon = binding.dragHandleIcon
-
-        override fun getRoot(): View = binding.root
-    }
-
     private class ContactBindingAdapter(val binding: ItemContactWithoutNumberBinding) : ContactViewBinding {
         override val itemContactName = binding.itemContactName
         override val itemContactImage = binding.itemContactImage
@@ -262,15 +291,15 @@ class DialpadAdapter(
     }
 
     private inner class RecentCallViewHolder(val binding: ItemRecentCallBinding) : ViewHolder(binding.root) {
-        fun bind(call: DialpadItem) = bindView(
-            item = call,
-            allowSingleClick = refreshItemsListener != null && !call.recentCall!!.isUnknownNumber,
-            allowLongClick = refreshItemsListener != null && !call.recentCall!!.isUnknownNumber
+        fun bind(item: DialpadItem) = bindView(
+            item = item,
+            allowSingleClick = !item.recentCall!!.isUnknownNumber,
+            allowLongClick = !item.recentCall.isUnknownNumber
         ) { _, _ ->
             binding.apply {
                 root.setupViewBackground(activity)
 
-                val recentCall: RecentCall = call.recentCall!!
+                val recentCall: RecentCall = item.recentCall
 
                 val currentFontSize = fontSize
                 itemRecentsHolder.isSelected = selectedKeys.contains(recentCall.id)
@@ -281,17 +310,15 @@ class DialpadAdapter(
                 } else {
                     SpannableString(name)
                 }
+                val shouldShowDuration = recentCall.type != Calls.MISSED_TYPE && recentCall.type != Calls.REJECTED_TYPE && recentCall.duration > 0
 
                 if (recentCall.specificType.isNotEmpty()) {
                     nameToShow = SpannableString("$name - ${recentCall.specificType}")
 
-                    // show specific number at "Show call details" dialog too
-                    if (refreshItemsListener == null) {
-                        nameToShow = if (formatPhoneNumbers) {
-                            SpannableString("$name - ${recentCall.specificType}, ${recentCall.specificNumber.formatPhoneNumber()}")
-                        } else {
-                            SpannableString("$name - ${recentCall.specificType}, ${recentCall.specificNumber}")
-                        }
+                    nameToShow = if (formatPhoneNumbers) {
+                        SpannableString("$name - ${recentCall.specificType}, ${recentCall.specificNumber.formatPhoneNumber()}")
+                    } else {
+                        SpannableString("$name - ${recentCall.specificType}, ${recentCall.specificNumber}")
                     }
                 }
 
@@ -309,7 +336,91 @@ class DialpadAdapter(
                     setTextSize(TypedValue.COMPLEX_UNIT_PX, currentFontSize)
                 }
 
+                itemRecentsDateTime.apply {
+                    text = recentCall.startTS.formatDateOrTime(context, hideTimeOnOtherDays = false, showCurrentYear = false, hideTodaysDate = false)
+
+                    setTextColor(if (recentCall.type == Calls.MISSED_TYPE) missedCallColor else secondaryTextColor)
+                    setTextSize(TypedValue.COMPLEX_UNIT_PX, currentFontSize * 0.8f)
+                }
+
+                itemRecentsDateTimeDurationSeparator.apply {
+                    text = "•"
+                    setTextSize(TypedValue.COMPLEX_UNIT_PX, currentFontSize * 0.8f)
+                    setTextColor(textColor)
+                    beVisibleIf(shouldShowDuration)
+                }
+
+                itemRecentsDuration.apply {
+                    text = context.formatSecondsToShortTimeString(recentCall.duration)
+                    setTextColor(textColor)
+                    beVisibleIf(shouldShowDuration)
+                    setTextSize(TypedValue.COMPLEX_UNIT_PX, currentFontSize * 0.8f)
+                }
+
+                itemRecentsLocation.apply {
+                    val locale = Locale.getDefault()
+                    val defaultCountryCode = locale.country
+                    val phoneNumber = try {
+                        phoneNumberUtilInstance
+                            .parse(recentCall.phoneNumber, defaultCountryCode)
+                    } catch (_: NumberParseException) {
+                        null
+                    }
+
+                    val location = if (phoneNumber != null) {
+                        phoneNumberOfflineGeocoderInstance
+                            .getDescriptionForNumber(phoneNumber, locale, defaultCountryCode)
+                    } else {
+                        null
+                    }
+
+                    text = location
+                    setTextColor(textColor)
+                    setTextSize(TypedValue.COMPLEX_UNIT_PX, currentFontSize * 0.8f)
+                    beVisibleIf(
+                        phoneNumber != null
+                            && phoneNumber.countryCodeSource != Phonenumber.PhoneNumber.CountryCodeSource.FROM_DEFAULT_COUNTRY
+                    )
+                    setPadding(0, 0, noOverflowIconPadding, 0)
+                }
+
+                itemRecentsSimImage.beVisibleIf(areMultipleSIMsAvailable && recentCall.simID != -1)
+                itemRecentsSimId.beVisibleIf(areMultipleSIMsAvailable && recentCall.simID != -1)
+                if (areMultipleSIMsAvailable && recentCall.simID != -1) {
+                    itemRecentsSimImage.applyColorFilter(textColor)
+                    itemRecentsSimId.setTextColor(textColor.getContrastColor())
+                    itemRecentsSimId.text = recentCall.simID.toString()
+                }
+
                 SimpleContactsHelper(root.context).loadContactImage(recentCall.photoUri, itemRecentsImage, recentCall.name)
+
+                itemRecentsImage.apply {
+                    if (profileIconClick != null) {
+                        setBackgroundResource(R.drawable.selector_clickable_circle)
+
+                        setOnClickListener {
+                            if (!actModeCallback.isSelectable) {
+                                profileIconClick.invoke(item)
+                            } else {
+                                viewClicked(item)
+                            }
+                        }
+                        setOnLongClickListener {
+                            viewLongClicked()
+                            true
+                        }
+                    }
+                }
+
+                val drawable = when (recentCall.type) {
+                    Calls.OUTGOING_TYPE -> outgoingCallIcon
+                    Calls.MISSED_TYPE -> incomingMissedCallIcon
+                    else -> incomingCallIcon
+                }
+
+                itemRecentsType.setImageDrawable(drawable)
+
+                overflowMenuIcon.beGone()
             }
         }
     }
@@ -324,7 +435,7 @@ class DialpadAdapter(
 class DialpadItemsDiffCallback : DiffUtil.ItemCallback<DialpadItem>() {
 
     override fun areItemsTheSame(oldItem: DialpadItem, newItem: DialpadItem): Boolean {
-        if(oldItem.isHeader() != newItem.isHeader() || oldItem.isContact() != newItem.isContact() || oldItem.isRecentCall() != newItem.isRecentCall()) {
+        if (oldItem.isHeader() != newItem.isHeader() || oldItem.isContact() != newItem.isContact() || oldItem.isRecentCall() != newItem.isRecentCall()) {
             return false
         }
 
@@ -336,7 +447,7 @@ class DialpadItemsDiffCallback : DiffUtil.ItemCallback<DialpadItem>() {
     }
 
     override fun areContentsTheSame(oldItem: DialpadItem, newItem: DialpadItem): Boolean {
-        if(oldItem.isHeader() != newItem.isHeader() || oldItem.isContact() != newItem.isContact() || oldItem.isRecentCall() != newItem.isRecentCall()) {
+        if (oldItem.isHeader() != newItem.isHeader() || oldItem.isContact() != newItem.isContact() || oldItem.isRecentCall() != newItem.isRecentCall()) {
             return false
         }
 
@@ -367,6 +478,7 @@ class DialpadItemsDiffCallback : DiffUtil.ItemCallback<DialpadItem>() {
                     oldItem.contact?.mimetype == newItem.contact?.mimetype &&
                     oldItem.contact?.ringtone == newItem.contact?.ringtone
             }
+
             DialpadItem.DialpadItemType.RECENTCALL -> {
                 oldItem.recentCall?.phoneNumber == newItem.recentCall?.phoneNumber &&
                     oldItem.recentCall?.name == newItem.recentCall?.name &&
