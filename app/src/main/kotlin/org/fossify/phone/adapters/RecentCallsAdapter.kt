@@ -54,7 +54,7 @@ class RecentCallsAdapter(
     private var missedCallColor = resources.getColor(R.color.color_missed_call)
     private var secondaryTextColor = textColor.adjustAlpha(0.6f)
     private var textToHighlight = ""
-    private var durationPadding = resources.getDimension(R.dimen.normal_margin).toInt()
+    private var noOverflowIconPadding = resources.getDimension(R.dimen.normal_margin).toInt()
     private var phoneNumberUtilInstance: PhoneNumberUtil = PhoneNumberUtil.getInstance()
     private var phoneNumberOfflineGeocoderInstance: PhoneNumberOfflineGeocoder = PhoneNumberOfflineGeocoder.getInstance()
 
@@ -502,9 +502,6 @@ class RecentCallsAdapter(
                     setTextColor(textColor)
                     beVisibleIf(shouldShowDuration)
                     setTextSize(TypedValue.COMPLEX_UNIT_PX, currentFontSize * 0.8f)
-                    if (!showOverflowMenu) {
-                        itemRecentsDuration.setPadding(0, 0, durationPadding, 0)
-                    }
                 }
 
                 itemRecentsLocation.apply {
@@ -532,6 +529,9 @@ class RecentCallsAdapter(
                             && phoneNumber.countryCodeSource != Phonenumber.PhoneNumber.CountryCodeSource.FROM_DEFAULT_COUNTRY
                             && (location != locale.displayCountry || matchingContact == null)
                     )
+                    if (!showOverflowMenu) {
+                        setPadding(0, 0, noOverflowIconPadding, 0)
+                    }
                 }
 
                 itemRecentsSimImage.beVisibleIf(areMultipleSIMsAvailable && call.simID != -1)

@@ -1,5 +1,6 @@
 package org.fossify.phone.extensions
 
+import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 import com.reddit.indicatorfastscroll.FastScrollItemIndicator
 import com.reddit.indicatorfastscroll.FastScrollerView
@@ -24,15 +25,20 @@ fun FastScrollerView.setupWithDialpadItems(
     recyclerView: RecyclerView,
     dialpadItems: List<DialpadItem>,
 ) = setupWithRecyclerView(recyclerView, { position ->
-    val dialpadItem = dialpadItems[position]
+    Log.e(dialpadItems.size.toString(), position.toString())
+    if (position < dialpadItems.size) {
+        val dialpadItem = dialpadItems[position]
 
-    when (dialpadItem.itemType) {
-        DialpadItem.DialpadItemType.HEADER -> null
-        DialpadItem.DialpadItemType.CONTACT -> try {
-            FastScrollItemIndicator.Text(dialpadItem.contact!!.getFirstLetter())
-        } catch (e: IndexOutOfBoundsException) {
-            FastScrollItemIndicator.Text("")
+        when (dialpadItem.itemType) {
+            DialpadItem.DialpadItemType.HEADER -> null
+            DialpadItem.DialpadItemType.CONTACT -> try {
+                FastScrollItemIndicator.Text(dialpadItem.contact!!.getFirstLetter())
+            } catch (e: IndexOutOfBoundsException) {
+                FastScrollItemIndicator.Text("")
+            }
+
+            DialpadItem.DialpadItemType.RECENTCALL -> FastScrollItemIndicator.Icon(R.drawable.ic_clock_vector)
         }
-        DialpadItem.DialpadItemType.RECENTCALL -> FastScrollItemIndicator.Icon(R.drawable.ic_clock_vector)
     }
+    null
 })
