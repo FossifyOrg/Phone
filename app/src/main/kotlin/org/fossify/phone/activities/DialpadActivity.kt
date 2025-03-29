@@ -10,6 +10,7 @@ import android.os.Looper
 import android.provider.Telephony.Sms.Intents.SECRET_CODE_ACTION
 import android.telephony.PhoneNumberUtils
 import android.telephony.TelephonyManager
+import android.util.Log
 import android.util.TypedValue
 import android.view.KeyEvent
 import android.view.MotionEvent
@@ -323,6 +324,10 @@ class DialpadActivity : SimpleActivity() {
                 DialpadItem.DialpadItemType.CONTACT -> true
                 DialpadItem.DialpadItemType.RECENTCALL -> true
             }
+        }
+
+        for (a in filtered) {
+            Log.e("test", a.getItemId().toString())
         }
 
         if (dialpadAdapter == null) {
