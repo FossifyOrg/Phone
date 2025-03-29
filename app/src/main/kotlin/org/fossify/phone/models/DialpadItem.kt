@@ -40,15 +40,8 @@ class DialpadItem {
     fun isRecentCall(): Boolean = recentCall != null
 
     fun getItemId(): Int {
-        if (isContact()) {
-            return contact!!.rawId
-        }
-
-        if (isRecentCall()) {
-            return recentCall!!.getItemId()
-        }
-
-        return 0
+        //Guarantees uniqueness if run for every DialpadItem within ~40 seconds
+        return (System.nanoTime() / 10).toInt()
     }
 
     enum class DialpadItemType {

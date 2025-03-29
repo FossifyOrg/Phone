@@ -1,9 +1,14 @@
 package org.fossify.phone.adapters
 
 import android.annotation.SuppressLint
+import android.content.Intent
+import android.content.pm.ShortcutInfo
 import android.graphics.drawable.Drawable
+import android.graphics.drawable.Icon
+import android.net.Uri
 import android.provider.CallLog.Calls
 import android.text.SpannableString
+import android.text.TextUtils
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.Menu
@@ -21,17 +26,19 @@ import com.google.i18n.phonenumbers.Phonenumber
 import com.google.i18n.phonenumbers.geocoding.PhoneNumberOfflineGeocoder
 import org.fossify.commons.adapters.MyRecyclerViewListAdapter
 import org.fossify.commons.databinding.ItemContactWithoutNumberBinding
+import org.fossify.commons.dialogs.ConfirmationDialog
+import org.fossify.commons.dialogs.FeatureLockedDialog
 import org.fossify.commons.extensions.*
-import org.fossify.commons.helpers.KeypadHelper
-import org.fossify.commons.helpers.SimpleContactsHelper
+import org.fossify.commons.helpers.*
 import org.fossify.commons.models.contacts.Contact
 import org.fossify.commons.views.MyRecyclerView
 import org.fossify.phone.R
 import org.fossify.phone.activities.SimpleActivity
 import org.fossify.phone.databinding.ItemDialpadHeaderBinding
 import org.fossify.phone.databinding.ItemRecentCallBinding
-import org.fossify.phone.extensions.areMultipleSIMsAvailable
-import org.fossify.phone.extensions.config
+import org.fossify.phone.dialogs.ShowGroupedCallsDialog
+import org.fossify.phone.extensions.*
+import org.fossify.phone.helpers.RecentsHelper
 import org.fossify.phone.models.DialpadItem
 import org.fossify.phone.models.RecentCall
 import java.util.Locale
@@ -62,14 +69,54 @@ class DialpadAdapter(
         recyclerView.itemAnimator?.changeDuration = 0
     }
 
-    override fun getActionMenuId() = R.menu.cab_contacts
+    override fun getActionMenuId() = R.menu.cab_dialpad
 
     override fun prepareActionMode(menu: Menu) {
+        val hasMultipleSIMs = activity.areMultipleSIMsAvailable()
+        val selectedItems = getSelectedItems()
+        val isOneItemSelected = isOneItemSelected()
+        val selectedNumber = "tel:${getSelectedPhoneNumber()}"
 
+        menu.apply {
+            findItem(R.id.cab_call_sim_1).isVisible = hasMultipleSIMs && isOneItemSelected
+            findItem(R.id.cab_call_sim_2).isVisible = hasMultipleSIMs && isOneItemSelected
+            findItem(R.id.cab_remove_default_sim).isVisible = isOneItemSelected && (activity.config.getCustomSIM(selectedNumber) ?: "") != ""
+
+            findItem(R.id.cab_block_number).title = activity.addLockedLabelIfNeeded(R.string.block_number)
+            findItem(R.id.cab_block_number).isVisible = isNougatPlus() && selectedItems.none { it.isContact() }
+            findItem(R.id.cab_add_number).isVisible = isOneItemSelected && selectedItems.first().isRecentCall()
+            findItem(R.id.cab_copy_number).isVisible = isOneItemSelected && selectedItems.first().isRecentCall()
+            findItem(R.id.cab_show_call_details).isVisible = isOneItemSelected && selectedItems.first().isRecentCall()
+            findItem(R.id.cab_view_details).isVisible = isOneItemSelected && selectedItems.first().isContact()
+            findItem(R.id.cab_create_shortcut).title = activity.addLockedLabelIfNeeded(R.string.create_shortcut)
+            findItem(R.id.cab_create_shortcut).isVisible = isOneItemSelected && isOreoPlus() && selectedItems.first().isContact()
+            findItem(R.id.cab_block_unblock_contact).isVisible = isOneItemSelected && isNougatPlus()
+            getCabBlockContactTitle { title ->
+                findItem(R.id.cab_block_unblock_contact).title = title
+            }
+        }
     }
 
     override fun actionItemPressed(id: Int) {
+        if (selectedKeys.isEmpty()) {
+            return
+        }
 
+        when (id) {
+            R.id.cab_block_unblock_contact -> tryBlockingUnblocking()
+            R.id.cab_call_sim_1 -> callContact(true)
+            R.id.cab_call_sim_2 -> callContact(false)
+            R.id.cab_remove_default_sim -> removeDefaultSIM()
+            R.id.cab_block_number -> tryBlocking()
+            R.id.cab_add_number -> addNumberToContact()
+            R.id.cab_send_sms -> sendSMS()
+            R.id.cab_show_call_details -> showCallDetails()
+            R.id.cab_copy_number -> copyNumber()
+            R.id.cab_remove -> askConfirmRemove()
+            R.id.cab_create_shortcut -> tryCreateShortcut()
+            R.id.cab_select_all -> selectAll()
+            R.id.cab_view_details -> viewContactDetails()
+        }
     }
 
     override fun getSelectableItemCount() = currentList.count { !it.isHeader() }
@@ -131,6 +178,20 @@ class DialpadAdapter(
         bindViewHolder(holder)
     }
 
+    private fun getCabBlockContactTitle(callback: (String) -> Unit) {
+        val contact = getSelectedItems().firstOrNull()?.contact ?: return callback("")
+
+        activity.isContactBlocked(contact) { blocked ->
+            val cabItemTitleRes = if (blocked) {
+                R.string.unblock_contact
+            } else {
+                R.string.block_contact
+            }
+
+            callback(activity.addLockedLabelIfNeeded(cabItemTitleRes))
+        }
+    }
+
     override fun onViewRecycled(holder: ViewHolder) {
         super.onViewRecycled(holder)
         if (!activity.isDestroyed && !activity.isFinishing) {
@@ -164,6 +225,298 @@ class DialpadAdapter(
         incomingMissedCallIcon = resources.getColoredDrawableWithColor(R.drawable.ic_call_missed_vector, missedCallColor)
     }
 
+    private fun callContact(useSimOne: Boolean) {
+        val phoneNumber = getSelectedPhoneNumber() ?: return
+        val selectedItem = getSelectedItems().first()
+
+        if (selectedItem.isContact()) {
+            activity.callContactWithSim(phoneNumber, useSimOne)
+        } else if (selectedItem.isRecentCall()) {
+            val name = getSelectedName() ?: return
+
+            activity.callContactWithSimWithConfirmationCheck(phoneNumber, name, useSimOne)
+        }
+    }
+
+    private fun removeDefaultSIM() {
+        val phoneNumber = getSelectedPhoneNumber() ?: return
+        activity.config.removeCustomSIM("tel:$phoneNumber")
+        finishActMode()
+    }
+
+    private fun tryBlocking() {
+        if (activity.isOrWasThankYouInstalled()) {
+            askConfirmBlock()
+        } else {
+            FeatureLockedDialog(activity) { }
+        }
+    }
+
+    private fun askConfirmBlock() {
+        val callsToBlock = getSelectedItems()
+
+        if (callsToBlock.isEmpty() || callsToBlock.any { !it.isRecentCall() }) {
+            return
+        }
+
+        val numbers = TextUtils.join(", ", callsToBlock.distinctBy { it.recentCall!!.phoneNumber }.map { it.recentCall!!.phoneNumber })
+        val baseString = R.string.block_confirmation
+        val question = String.format(resources.getString(baseString), numbers)
+
+        ConfirmationDialog(activity, question) {
+            blockNumbers()
+        }
+    }
+
+    private fun blockNumbers() {
+        val callsToBlock = getSelectedItems()
+
+        if (callsToBlock.isEmpty() || callsToBlock.any { !it.isRecentCall() }) {
+            return
+        }
+
+        ensureBackgroundThread {
+            callsToBlock.map { it.recentCall!!.phoneNumber }.forEach { number ->
+                activity.addBlockedNumber(number)
+            }
+
+            val newItems = currentList.toMutableList().also { it.removeAll(callsToBlock) }
+            activity.runOnUiThread {
+                submitList(newItems)
+                finishActMode()
+            }
+        }
+    }
+
+    private fun addNumberToContact() {
+        val phoneNumber = getSelectedPhoneNumber() ?: return
+        Intent().apply {
+            action = Intent.ACTION_INSERT_OR_EDIT
+            type = "vnd.android.cursor.item/contact"
+            putExtra(KEY_PHONE, phoneNumber)
+            activity.launchActivityIntent(this)
+        }
+    }
+
+    private fun sendSMS() {
+        val numbers = ArrayList<String>()
+
+        for (selectedItem in getSelectedItems()) {
+            if (selectedItem.isContact()) {
+                val contactNumbers = selectedItem.contact!!.phoneNumbers
+                val primaryNumber = contactNumbers.firstOrNull { it.isPrimary }
+                val normalizedNumber = primaryNumber?.normalizedNumber ?: contactNumbers.firstOrNull()?.normalizedNumber
+
+                if (normalizedNumber != null) {
+                    numbers.add(normalizedNumber)
+                }
+            } else if (selectedItem.isRecentCall()) {
+                numbers.add(selectedItem.recentCall!!.phoneNumber)
+            }
+        }
+
+        val recipient = TextUtils.join(";", numbers)
+        activity.launchSendSMSIntent(recipient)
+    }
+
+    private fun showCallDetails() {
+        val recentCall = getSelectedItems().firstOrNull()?.recentCall ?: return
+        val recentCalls = recentCall.groupedCalls ?: listOf(recentCall)
+        ShowGroupedCallsDialog(activity, recentCalls)
+    }
+
+    private fun copyNumber() {
+        val recentCall = getSelectedItems().firstOrNull()?.recentCall ?: return
+        activity.copyToClipboard(recentCall.phoneNumber)
+        finishActMode()
+    }
+
+    private fun askConfirmRemove() {
+        val selectedItems = getSelectedItems().filter { !it.isHeader() }
+
+        if (selectedItems.isEmpty()) {
+            return
+        }
+
+        if (selectedItems.all { it.isContact() }) {
+            val itemsCnt = selectedItems.size
+            val firstItem = selectedItems.first().contact!!
+            val items = if (itemsCnt == 1) {
+                "\"${firstItem.getNameToDisplay()}\""
+            } else {
+                resources.getQuantityString(R.plurals.delete_contacts, itemsCnt, itemsCnt)
+            }
+
+            val baseString = R.string.deletion_confirmation
+            val question = String.format(resources.getString(baseString), items)
+
+            ConfirmationDialog(activity, question) {
+                activity.handlePermission(PERMISSION_WRITE_CONTACTS) {
+                    removeSelected()
+                }
+            }
+        } else if (selectedItems.all { it.isRecentCall() }) {
+            ConfirmationDialog(activity, activity.getString(R.string.remove_confirmation)) {
+                activity.handlePermission(PERMISSION_WRITE_CALL_LOG) {
+                    removeSelected()
+                }
+            }
+        } else {
+            val selectedContacts = getSelectedItems().filter { it.isContact() }
+
+            val contactsCnt = selectedContacts.size
+            val firstItem = selectedContacts.first().contact!!
+            val items = if (contactsCnt == 1) {
+                "\"${firstItem.getNameToDisplay()}\""
+            } else {
+                resources.getQuantityString(R.plurals.delete_contacts, contactsCnt, contactsCnt)
+            }
+
+            val baseString = R.string.delete_and_remove_confirmation
+            val question = String.format(resources.getString(baseString), items)
+
+            ConfirmationDialog(activity, question) {
+                activity.handlePermission(PERMISSION_WRITE_CONTACTS) {
+                    activity.handlePermission(PERMISSION_WRITE_CALL_LOG) {
+                        removeSelected()
+                    }
+                }
+            }
+        }
+    }
+
+    private fun removeSelected() {
+        val contactsToRemove = getSelectedItems().filter { it.isContact() }
+        val recentsToRemove = getSelectedItems().filter { it.isRecentCall() }
+
+        if (contactsToRemove.isEmpty() && recentsToRemove.isEmpty()) {
+            return
+        }
+
+        val newItems = currentList.toMutableList().also { it.removeAll(contactsToRemove + recentsToRemove) }
+        val contactIdsToRemove = contactsToRemove.mapNotNull { it.contact?.rawId }.toMutableList() as ArrayList<Int>
+        val recentIdsToRemove = ArrayList<Int>()
+        recentsToRemove.forEach {
+            recentIdsToRemove.add(it.recentCall!!.id)
+            it.recentCall.groupedCalls?.mapTo(recentIdsToRemove) { call -> call.id }
+        }
+
+        if (contactIdsToRemove.isNotEmpty() && recentIdsToRemove.isNotEmpty()) {
+            SimpleContactsHelper(activity).deleteContactRawIDs(contactIdsToRemove) {
+                RecentsHelper(activity).removeRecentCalls(recentIdsToRemove) {
+                    activity.runOnUiThread {
+                        submitList(newItems)
+                        finishActMode()
+                    }
+                }
+            }
+        } else if (contactIdsToRemove.isNotEmpty()) {
+            SimpleContactsHelper(activity).deleteContactRawIDs(contactIdsToRemove) {
+                activity.runOnUiThread {
+                    submitList(newItems)
+                    finishActMode()
+                }
+            }
+        } else if (recentIdsToRemove.isNotEmpty()) {
+            RecentsHelper(activity).removeRecentCalls(recentIdsToRemove) {
+                activity.runOnUiThread {
+                    submitList(newItems)
+                    finishActMode()
+                }
+            }
+        }
+    }
+
+    private fun tryCreateShortcut() {
+        if (activity.isOrWasThankYouInstalled()) {
+            createShortcut()
+        } else {
+            FeatureLockedDialog(activity) { }
+        }
+    }
+
+    private fun viewContactDetails() {
+        val contact = getSelectedItems().firstOrNull()?.contact ?: return
+        activity.startContactDetailsIntent(contact)
+    }
+
+    @SuppressLint("NewApi")
+    private fun createShortcut() {
+        val contact = getSelectedItems().firstOrNull()?.contact ?: return
+        val manager = activity.shortcutManager
+        if (manager.isRequestPinShortcutSupported) {
+            SimpleContactsHelper(activity).getShortcutImage(contact.photoUri, contact.getNameToDisplay()) { image ->
+                activity.runOnUiThread {
+                    activity.handlePermission(PERMISSION_CALL_PHONE) { hasPermission ->
+                        val action = if (hasPermission) Intent.ACTION_CALL else Intent.ACTION_DIAL
+                        val intent = Intent(action).apply {
+                            data = Uri.fromParts("tel", getSelectedPhoneNumber(), null)
+                        }
+
+                        val shortcut = ShortcutInfo.Builder(activity, contact.hashCode().toString())
+                            .setShortLabel(contact.getNameToDisplay())
+                            .setIcon(Icon.createWithBitmap(image))
+                            .setIntent(intent)
+                            .build()
+
+                        manager.requestPinShortcut(shortcut, null)
+                    }
+                }
+            }
+        }
+    }
+
+    private fun tryBlockingUnblocking() {
+        val contact = getSelectedItems().firstOrNull()?.contact ?: return
+
+        if (activity.isOrWasThankYouInstalled()) {
+            activity.isContactBlocked(contact) { blocked ->
+                if (blocked) {
+                    tryUnblocking(contact)
+                } else {
+                    tryBlocking(contact)
+                }
+            }
+        } else {
+            FeatureLockedDialog(activity) { }
+        }
+    }
+
+    private fun tryBlocking(contact: Contact) {
+        askConfirmBlock(contact) { contactBlocked ->
+            val resultMsg = if (contactBlocked) {
+                R.string.block_contact_success
+            } else {
+                R.string.block_contact_fail
+            }
+
+            activity.toast(resultMsg)
+            finishActMode()
+        }
+    }
+
+    private fun tryUnblocking(contact: Contact) {
+        val contactUnblocked = activity.unblockContact(contact)
+        val resultMsg = if (contactUnblocked) {
+            R.string.unblock_contact_success
+        } else {
+            R.string.unblock_contact_fail
+        }
+
+        activity.toast(resultMsg)
+        finishActMode()
+    }
+
+    private fun askConfirmBlock(contact: Contact, callback: (Boolean) -> Unit) {
+        val baseString = R.string.block_confirmation
+        val question = String.format(resources.getString(baseString), contact.name)
+
+        ConfirmationDialog(activity, question) {
+            val contactBlocked = activity.blockContact(contact)
+            callback(contactBlocked)
+        }
+    }
+
     @SuppressLint("NotifyDataSetChanged")
     fun updateItems(newItems: List<DialpadItem>, highlightText: String = "") {
         if (textToHighlight != highlightText) {
@@ -175,6 +528,21 @@ class DialpadAdapter(
             submitList(newItems)
         }
     }
+
+    private fun getSelectedItems() = currentList.filter { selectedKeys.contains(it.getItemId()) }
+
+    private fun getSelectedPhoneNumber(): String? {
+        val firstSelectedItem = getSelectedItems().firstOrNull()
+
+        return when (firstSelectedItem?.itemType) {
+            DialpadItem.DialpadItemType.HEADER -> null
+            DialpadItem.DialpadItemType.CONTACT -> firstSelectedItem.contact!!.getPrimaryNumber()
+            DialpadItem.DialpadItemType.RECENTCALL -> firstSelectedItem.recentCall!!.phoneNumber
+            null -> null
+        }
+    }
+
+    private fun getSelectedName() = getSelectedItems().firstOrNull()?.recentCall?.name
 
     private inner class HeaderViewHolder(val binding: ItemDialpadHeaderBinding) : ViewHolder(binding.root) {
         fun bind(header: String) {
