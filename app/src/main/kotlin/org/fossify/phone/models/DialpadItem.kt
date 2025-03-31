@@ -3,6 +3,7 @@ package org.fossify.phone.models
 import org.fossify.commons.models.contacts.Contact
 
 class DialpadItem {
+    val id: Int
     val header: String?
     val isHeaderForContacts: Boolean
     val contact: Contact?
@@ -10,6 +11,7 @@ class DialpadItem {
     val itemType: DialpadItemType
 
     constructor(header: String, isHeaderForContacts: Boolean) {
+        this.id = increment()
         this.header = header
         this.isHeaderForContacts = isHeaderForContacts
         this.contact = null
@@ -18,6 +20,7 @@ class DialpadItem {
     }
 
     constructor(contact: Contact) {
+        this.id = increment()
         this.header = null
         isHeaderForContacts = false
         this.contact = contact
@@ -26,6 +29,7 @@ class DialpadItem {
     }
 
     constructor(recentCall: RecentCall) {
+        this.id = increment()
         this.header = null
         isHeaderForContacts = false
         this.contact = null
@@ -39,14 +43,19 @@ class DialpadItem {
 
     fun isRecentCall(): Boolean = recentCall != null
 
-    fun getItemId(): Int {
-        //Guarantees uniqueness if run for every DialpadItem within ~40 seconds
-        return (System.nanoTime() / 10).toInt()
-    }
+    fun getItemId(): Int = this.id
 
     enum class DialpadItemType {
         HEADER,
         CONTACT,
         RECENTCALL
+    }
+
+    companion object {
+        private var idCount = 0
+
+        fun increment(): Int {
+            return ++idCount
+        }
     }
 }

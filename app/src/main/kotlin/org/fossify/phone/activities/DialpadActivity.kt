@@ -10,7 +10,6 @@ import android.os.Looper
 import android.provider.Telephony.Sms.Intents.SECRET_CODE_ACTION
 import android.telephony.PhoneNumberUtils
 import android.telephony.TelephonyManager
-import android.util.Log
 import android.util.TypedValue
 import android.view.KeyEvent
 import android.view.MotionEvent
@@ -28,13 +27,14 @@ import org.fossify.phone.extensions.*
 import org.fossify.phone.helpers.DIALPAD_TONE_LENGTH_MS
 import org.fossify.phone.helpers.RecentsHelper
 import org.fossify.phone.helpers.ToneGeneratorHelper
+import org.fossify.phone.interfaces.CachedContacts
 import org.fossify.phone.models.DialpadItem
 import org.fossify.phone.models.RecentCall
 import org.fossify.phone.models.SpeedDial
 import java.util.Locale
 import kotlin.math.roundToInt
 
-class DialpadActivity : SimpleActivity() {
+class DialpadActivity : SimpleActivity(), CachedContacts {
     private val binding by viewBinding(ActivityDialpadBinding::inflate)
 
     private var allCallItems = ArrayList<DialpadItem>()
@@ -47,6 +47,7 @@ class DialpadActivity : SimpleActivity() {
     private val longPressTimeout = ViewConfiguration.getLongPressTimeout().toLong()
     private val longPressHandler = Handler(Looper.getMainLooper())
     private val pressedKeys = mutableSetOf<Char>()
+    override var cachedContacts = ArrayList<Contact>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -324,10 +325,6 @@ class DialpadActivity : SimpleActivity() {
                 DialpadItem.DialpadItemType.CONTACT -> true
                 DialpadItem.DialpadItemType.RECENTCALL -> true
             }
-        }
-
-        for (a in filtered) {
-            Log.e("test", a.getItemId().toString())
         }
 
         if (dialpadAdapter == null) {
