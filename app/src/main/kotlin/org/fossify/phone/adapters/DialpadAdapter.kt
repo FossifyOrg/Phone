@@ -38,7 +38,6 @@ import org.fossify.phone.databinding.ItemDialpadHeaderBinding
 import org.fossify.phone.databinding.ItemRecentCallBinding
 import org.fossify.phone.dialogs.ShowGroupedCallsDialog
 import org.fossify.phone.extensions.*
-import org.fossify.phone.helpers.RecentsHelper
 import org.fossify.phone.models.DialpadItem
 import org.fossify.phone.models.RecentCall
 import java.util.Locale
@@ -82,6 +81,7 @@ class DialpadAdapter(
             findItem(R.id.cab_call_sim_2).isVisible = hasMultipleSIMs && isOneItemSelected
             findItem(R.id.cab_remove_default_sim).isVisible = isOneItemSelected && (activity.config.getCustomSIM(selectedNumber) ?: "") != ""
 
+            findItem(R.id.cab_delete).isVisible = selectedItems.all { it.isContact() }
             findItem(R.id.cab_block_number).title = activity.addLockedLabelIfNeeded(R.string.block_number)
             findItem(R.id.cab_block_number).isVisible = isNougatPlus() && selectedItems.all { it.isRecentCall() }
             findItem(R.id.cab_add_number).isVisible = isOneItemSelected && selectedItems.first().isRecentCall()
@@ -112,7 +112,7 @@ class DialpadAdapter(
             R.id.cab_send_sms -> sendSMS()
             R.id.cab_show_call_details -> showCallDetails()
             R.id.cab_copy_number -> copyNumber()
-            R.id.cab_remove -> askConfirmRemove()
+            R.id.cab_delete -> askConfirmDelete()
             R.id.cab_create_shortcut -> tryCreateShortcut()
             R.id.cab_select_all -> selectAll()
             R.id.cab_view_details -> viewContactDetails()
@@ -331,98 +331,45 @@ class DialpadAdapter(
         finishActMode()
     }
 
-    private fun askConfirmRemove() {
-        val selectedItems = getSelectedItems().filter { !it.isHeader() }
+    private fun askConfirmDelete() {
+        val selectedItems = getSelectedItems().filter { it.isContact() }
 
         if (selectedItems.isEmpty()) {
             return
         }
 
-        if (selectedItems.all { it.isContact() }) {
-            val itemsCnt = selectedItems.size
-            val firstItem = selectedItems.first().contact!!
-            val items = if (itemsCnt == 1) {
-                "\"${firstItem.getNameToDisplay()}\""
-            } else {
-                resources.getQuantityString(R.plurals.delete_contacts, itemsCnt, itemsCnt)
-            }
-
-            val baseString = R.string.deletion_confirmation
-            val question = String.format(resources.getString(baseString), items)
-
-            ConfirmationDialog(activity, question) {
-                activity.handlePermission(PERMISSION_WRITE_CONTACTS) {
-                    removeSelected()
-                }
-            }
-        } else if (selectedItems.all { it.isRecentCall() }) {
-            ConfirmationDialog(activity, activity.getString(R.string.remove_confirmation)) {
-                activity.handlePermission(PERMISSION_WRITE_CALL_LOG) {
-                    removeSelected()
-                }
-            }
+        val itemsCnt = selectedItems.size
+        val firstItem = selectedItems.first().contact!!
+        val items = if (itemsCnt == 1) {
+            "\"${firstItem.getNameToDisplay()}\""
         } else {
-            val selectedContacts = getSelectedItems().filter { it.isContact() }
+            resources.getQuantityString(R.plurals.delete_contacts, itemsCnt, itemsCnt)
+        }
 
-            val contactsCnt = selectedContacts.size
-            val firstItem = selectedContacts.first().contact!!
-            val items = if (contactsCnt == 1) {
-                "\"${firstItem.getNameToDisplay()}\""
-            } else {
-                resources.getQuantityString(R.plurals.delete_contacts, contactsCnt, contactsCnt)
-            }
+        val baseString = R.string.deletion_confirmation
+        val question = String.format(resources.getString(baseString), items)
 
-            val baseString = R.string.delete_and_remove_confirmation
-            val question = String.format(resources.getString(baseString), items)
-
-            ConfirmationDialog(activity, question) {
-                activity.handlePermission(PERMISSION_WRITE_CONTACTS) {
-                    activity.handlePermission(PERMISSION_WRITE_CALL_LOG) {
-                        removeSelected()
-                    }
-                }
+        ConfirmationDialog(activity, question) {
+            activity.handlePermission(PERMISSION_WRITE_CONTACTS) {
+                deleteContacts()
             }
         }
     }
 
-    private fun removeSelected() {
-        val contactsToRemove = getSelectedItems().filter { it.isContact() }
-        val recentsToRemove = getSelectedItems().filter { it.isRecentCall() }
+    private fun deleteContacts() {
+        val contactsToRemove = getSelectedItems()
 
-        if (contactsToRemove.isEmpty() && recentsToRemove.isEmpty()) {
+        if (contactsToRemove.isEmpty() || contactsToRemove.any { !it.isContact() }) {
             return
         }
 
-        val newItems = currentList.toMutableList().also { it.removeAll(contactsToRemove + recentsToRemove) }
-        val contactIdsToRemove = contactsToRemove.mapNotNull { it.contact?.rawId }.toMutableList() as ArrayList<Int>
-        val recentIdsToRemove = ArrayList<Int>()
-        recentsToRemove.forEach {
-            recentIdsToRemove.add(it.recentCall!!.id)
-            it.recentCall.groupedCalls?.mapTo(recentIdsToRemove) { call -> call.id }
-        }
+        val newItems = currentList.toMutableList().also { it.removeAll(contactsToRemove) }
+        val contactIdsToRemove = contactsToRemove.map { it.contact!!.rawId }.toMutableList() as ArrayList<Int>
 
-        if (contactIdsToRemove.isNotEmpty() && recentIdsToRemove.isNotEmpty()) {
-            SimpleContactsHelper(activity).deleteContactRawIDs(contactIdsToRemove) {
-                RecentsHelper(activity).removeRecentCalls(recentIdsToRemove) {
-                    activity.runOnUiThread {
-                        submitList(newItems)
-                        finishActMode()
-                    }
-                }
-            }
-        } else if (contactIdsToRemove.isNotEmpty()) {
-            SimpleContactsHelper(activity).deleteContactRawIDs(contactIdsToRemove) {
-                activity.runOnUiThread {
-                    submitList(newItems)
-                    finishActMode()
-                }
-            }
-        } else if (recentIdsToRemove.isNotEmpty()) {
-            RecentsHelper(activity).removeRecentCalls(recentIdsToRemove) {
-                activity.runOnUiThread {
-                    submitList(newItems)
-                    finishActMode()
-                }
+        SimpleContactsHelper(activity).deleteContactRawIDs(contactIdsToRemove) {
+            activity.runOnUiThread {
+                submitList(newItems)
+                finishActMode()
             }
         }
     }
