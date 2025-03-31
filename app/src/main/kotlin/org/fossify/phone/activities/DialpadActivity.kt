@@ -48,6 +48,7 @@ class DialpadActivity : SimpleActivity(), CachedContacts {
     private val longPressHandler = Handler(Looper.getMainLooper())
     private val pressedKeys = mutableSetOf<Char>()
     override var cachedContacts = ArrayList<Contact>()
+    private var cachedRecentCalls = emptyList<RecentCall>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -187,7 +188,9 @@ class DialpadActivity : SimpleActivity(), CachedContacts {
         binding.dialpadClearChar.applyColorFilter(getProperTextColor())
         updateNavigationBarColor(getProperBackgroundColor())
         setupToolbar(binding.dialpadToolbar, NavigationIcon.Arrow)
-        handleGetItems()
+        refreshCallItems {
+            refreshCallItems(true)
+        }
     }
 
     private fun setupOptionsMenu() {
@@ -234,33 +237,54 @@ class DialpadActivity : SimpleActivity(), CachedContacts {
         binding.dialpadInput.setText("")
     }
 
-    private fun handleGetItems() {
+    private fun refreshCallItems(loadAllRecents: Boolean = false, callback: (() -> Unit)? = null) {
         val newItems = ArrayList<DialpadItem>()
-        newItems.add(DialpadItem("Contacts", true))
 
+        getContacts { contacts ->
+            if (contacts.isNotEmpty()) {
+                newItems.add(DialpadItem("Contacts", true))
+                newItems.addAll(contacts.map { DialpadItem(it) })
+            }
+
+            getRecents(contacts, loadAllRecents) { recentCalls ->
+                if (recentCalls.isNotEmpty()) {
+                    newItems.add(DialpadItem("Call History", false))
+                    newItems.addAll(recentCalls.map { DialpadItem(it) })
+                }
+            }
+        }
+
+        allCallItems = newItems
+    }
+
+    private fun getContacts(callback: (List<Contact>) -> Unit) {
         ContactsHelper(this).getContacts(showOnlyContactsWithNumbers = true) { contacts ->
-            newItems.addAll(contacts.map { DialpadItem(it) })
-            newItems.add(DialpadItem("Call History", false))
-            RecentsHelper(this).getRecentCalls(queryLimit = Int.MAX_VALUE) { recentCalls ->
-                val recentCallsNonContact = filterContactsInRecentCalls(recentCalls.distinctBy { it.phoneNumber }, contacts)
-                recentCallsNonContact.forEach { newItems.add(DialpadItem(it)) }
-
-                gotContacts(newItems)
+            ensureBackgroundThread {
+                callback(contacts)
             }
         }
     }
 
-    private fun gotContacts(newItems: ArrayList<DialpadItem>) {
-        allCallItems = newItems
+    private fun getRecents(contacts: List<Contact>, loadAllRecents: Boolean, callback: (List<RecentCall>) -> Unit) {
+        val queryCount = if (loadAllRecents) Int.MAX_VALUE else RecentsHelper.QUERY_LIMIT
 
-        val privateContacts = MyContactsContentProvider.getContacts(this, privateCursor)
-        if (privateContacts.isNotEmpty()) {
-            allCallItems.addAll(privateContacts.map { DialpadItem(it) })
-        }
+        RecentsHelper(this).getRecentCalls(cachedRecentCalls, queryCount) { recentCalls ->
+            ensureBackgroundThread {
+                cachedRecentCalls = recentCalls
+                val recentCallsNonContact = filterContactsInRecentCalls(recentCalls.distinctBy { it.phoneNumber }, contacts)
 
-        runOnUiThread {
-            if (!checkDialIntent() && binding.dialpadInput.value.isEmpty()) {
-                dialpadValueChanged("")
+                val privateContacts = MyContactsContentProvider.getContacts(this, privateCursor)
+                if (privateContacts.isNotEmpty()) {
+                    allCallItems.addAll(privateContacts.map { DialpadItem(it) })
+                }
+
+                runOnUiThread {
+                    if (!checkDialIntent() && binding.dialpadInput.value.isEmpty()) {
+                        dialpadValueChanged("")
+                    }
+                }
+
+                callback(recentCallsNonContact)
             }
         }
     }
@@ -307,10 +331,14 @@ class DialpadActivity : SimpleActivity(), CachedContacts {
                 }
 
                 DialpadItem.DialpadItemType.RECENTCALL -> {
-                    val recentCall = item.recentCall!!
-                    val fixedText = text.trim().replace("\\s+".toRegex(), " ")
+                    if (len > 0) {
+                        val recentCall = item.recentCall!!
+                        val fixedText = text.trim().replace("\\s+".toRegex(), " ")
 
-                    recentCall.name.contains(fixedText, true) || recentCall.doesContainPhoneNumber(fixedText)
+                        recentCall.name.contains(fixedText, true) || recentCall.doesContainPhoneNumber(fixedText)
+                    } else {
+                        false
+                    }
                 }
             }
         }
