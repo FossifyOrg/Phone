@@ -83,14 +83,14 @@ class DialpadAdapter(
             findItem(R.id.cab_remove_default_sim).isVisible = isOneItemSelected && (activity.config.getCustomSIM(selectedNumber) ?: "") != ""
 
             findItem(R.id.cab_block_number).title = activity.addLockedLabelIfNeeded(R.string.block_number)
-            findItem(R.id.cab_block_number).isVisible = isNougatPlus() && selectedItems.none { it.isContact() }
+            findItem(R.id.cab_block_number).isVisible = isNougatPlus() && selectedItems.all { it.isRecentCall() }
             findItem(R.id.cab_add_number).isVisible = isOneItemSelected && selectedItems.first().isRecentCall()
             findItem(R.id.cab_copy_number).isVisible = isOneItemSelected && selectedItems.first().isRecentCall()
             findItem(R.id.cab_show_call_details).isVisible = isOneItemSelected && selectedItems.first().isRecentCall()
             findItem(R.id.cab_view_details).isVisible = isOneItemSelected && selectedItems.first().isContact()
             findItem(R.id.cab_create_shortcut).title = activity.addLockedLabelIfNeeded(R.string.create_shortcut)
             findItem(R.id.cab_create_shortcut).isVisible = isOneItemSelected && isOreoPlus() && selectedItems.first().isContact()
-            findItem(R.id.cab_block_unblock_contact).isVisible = isOneItemSelected && isNougatPlus()
+            findItem(R.id.cab_block_unblock_contact).isVisible = isOneItemSelected && isNougatPlus() && selectedItems.first().isContact()
             getCabBlockContactTitle { title ->
                 findItem(R.id.cab_block_unblock_contact).title = title
             }

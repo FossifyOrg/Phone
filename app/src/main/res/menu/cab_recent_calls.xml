@@ -38,11 +38,6 @@
         android:title="@string/send_sms"
         app:showAsAction="always" />
     <item
-        android:id="@+id/cab_block_unblock_contact"
-        android:icon="@drawable/ic_minus_circle_vector"
-        android:title="@string/block_contact"
-        app:showAsAction="ifRoom" />
-    <item
         android:id="@+id/cab_block_number"
         android:icon="@drawable/ic_minus_circle_vector"
         android:title="@string/block_number"
@@ -56,11 +51,6 @@
         android:id="@+id/cab_copy_number"
         android:showAsAction="never"
         android:title="@string/copy_number_to_clipboard"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/cab_create_shortcut"
-        android:showAsAction="never"
-        android:title="@string/create_shortcut"
         app:showAsAction="never" />
     <item
         android:id="@+id/cab_remove_default_sim"
