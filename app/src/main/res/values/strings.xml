@@ -24,7 +24,6 @@
     <string name="call_number">Call number</string>
     <string name="dialpad_beeps">Enable beeps on dialpad button clicks</string>
     <string name="dialpad_vibrations">Enable vibrations on dialpad button clicks</string>
-    <string name="delete_and_remove_confirmation">Are you sure you want to delete %s and remove the selected items from the Call History?</string>
 
     <!-- Dialer -->
     <string name="dialer">Dialer</string>

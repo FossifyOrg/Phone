@@ -14,7 +14,7 @@
         android:title="@string/call_from_sim_2"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/cab_remove"
+        android:id="@+id/cab_delete"
         android:icon="@drawable/ic_delete_vector"
         android:showAsAction="always"
         android:title="@string/delete"
