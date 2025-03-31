@@ -512,7 +512,7 @@ class DialpadAdapter(
 
                 val contact: Contact = item.contact!!
 
-                itemContactFrame.isSelected = selectedKeys.contains(contact.rawId)
+                itemContactFrame.isSelected = getSelectedItems().any { it.contact?.id == contact.id }
 
                 itemContactImage.apply {
                     if (profileIconClick != null) {
@@ -617,7 +617,7 @@ class DialpadAdapter(
                 val recentCall: RecentCall = item.recentCall
 
                 val currentFontSize = fontSize
-                itemRecentsHolder.isSelected = selectedKeys.contains(recentCall.id)
+                itemRecentsHolder.isSelected = getSelectedItems().any { it.recentCall?.id == recentCall.id }
                 val name = /*findContactByCall(recentCall)?.getNameToDisplay() ?:*/ recentCall.name
                 val formatPhoneNumbers = activity.config.formatPhoneNumbers
                 var nameToShow = if (name == recentCall.phoneNumber && formatPhoneNumbers) {
