@@ -1,6 +1,15 @@
 Changelog
 ==========
 
+Version 1.4.0 *(2025-04-01)*
+----------------------------
+
+* Added support for caller location (state/country) in call history (#39)
+* Added option to open contact details when contact photo is tapped (#35)
+* Removed storage permission requirement
+* Other minor bug fixes and improvements
+* Added more translations
+
 Version 1.3.1 *(2025-01-14)*
 ----------------------------
 
