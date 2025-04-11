@@ -366,7 +366,7 @@ class ContactsAdapter(
             itemContactFrame.isSelected = selectedKeys.contains(contact.rawId)
 
             itemContactImage.apply {
-                if (profileIconClick != null) {
+                if (profileIconClick != null && viewType != VIEW_TYPE_GRID) {
                     setBackgroundResource(R.drawable.selector_clickable_circle)
 
                     setOnClickListener {
