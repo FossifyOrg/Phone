@@ -139,7 +139,7 @@ class DialpadActivity : SimpleActivity() {
         binding.apply {
             dialpadClearChar.setOnClickListener { clearChar(it) }
             dialpadClearChar.setOnLongClickListener { clearInput(); true }
-            dialpadCallButton.setOnClickListener { initCall(dialpadInput.value, 0) }
+            dialpadCallButton.setOnClickListener { initCall(dialpadInput.value) }
             dialpadInput.onTextChangeListener { dialpadValueChanged(it) }
             dialpadInput.requestFocus()
             dialpadInput.disableKeyboard()
@@ -150,24 +150,8 @@ class DialpadActivity : SimpleActivity() {
         }
 
         val properPrimaryColor = getProperPrimaryColor()
-        val callIconId = if (areMultipleSIMsAvailable()) {
-            val callIcon = resources.getColoredDrawableWithColor(R.drawable.ic_phone_two_vector, properPrimaryColor.getContrastColor())
-            binding.apply {
-                dialpadCallTwoButton.setImageDrawable(callIcon)
-                dialpadCallTwoButton.background.applyColorFilter(properPrimaryColor)
-                dialpadCallTwoButton.beVisible()
-                dialpadCallTwoButton.setOnClickListener {
-                    initCall(dialpadInput.value, 1)
-                }
-            }
-
-            R.drawable.ic_phone_one_vector
-        } else {
-            R.drawable.ic_phone_vector
-        }
-
         binding.apply {
-            val callIcon = resources.getColoredDrawableWithColor(callIconId, properPrimaryColor.getContrastColor())
+            val callIcon = resources.getColoredDrawableWithColor(R.drawable.ic_phone_vector, properPrimaryColor.getContrastColor())
             dialpadCallButton.setImageDrawable(callIcon)
             dialpadCallButton.background.applyColorFilter(properPrimaryColor)
 
@@ -316,13 +300,9 @@ class DialpadActivity : SimpleActivity() {
         }
     }
 
-    private fun initCall(number: String = binding.dialpadInput.value, handleIndex: Int) {
+    private fun initCall(number: String = binding.dialpadInput.value) {
         if (number.isNotEmpty()) {
-            if (handleIndex != -1 && areMultipleSIMsAvailable()) {
-                callContactWithSimWithConfirmationCheck(number, number, handleIndex == 0)
-            } else {
-                startCallWithConfirmationCheck(number, number)
-            }
+            startCallWithConfirmationCheck(number, number)
 
             Handler().postDelayed({
                 binding.dialpadInput.setText("")
@@ -343,7 +323,7 @@ class DialpadActivity : SimpleActivity() {
         if (binding.dialpadInput.value.length == 1) {
             val speedDial = speedDialValues.firstOrNull { it.id == id }
             if (speedDial?.isValid() == true) {
-                initCall(speedDial.number, -1)
+                initCall(speedDial.number)
                 return true
             }
         }
