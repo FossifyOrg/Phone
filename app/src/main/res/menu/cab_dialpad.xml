@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="AppCompatResource,AlwaysShowAction">
+    <item
+        android:id="@+id/cab_call_sim_1"
+        android:icon="@drawable/ic_phone_one_vector"
+        android:title="@string/call_from_sim_1"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/cab_call_sim_2"
+        android:icon="@drawable/ic_phone_two_vector"
+        android:title="@string/call_from_sim_2"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/cab_delete"
+        android:icon="@drawable/ic_delete_vector"
+        android:showAsAction="always"
+        android:title="@string/delete"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/cab_view_details"
+        android:icon="@drawable/ic_view_contact_details_vector"
+        android:showAsAction="always"
+        android:title="@string/view_contact_details"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/cab_add_number"
+        android:icon="@drawable/ic_add_person_vector"
+        android:showAsAction="always"
+        android:title="@string/add_number_to_contact"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/cab_send_sms"
+        android:icon="@drawable/ic_sms_vector"
+        android:showAsAction="always"
+        android:title="@string/send_sms"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/cab_block_unblock_contact"
+        android:icon="@drawable/ic_minus_circle_vector"
+        android:title="@string/block_contact"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/cab_block_number"
+        android:icon="@drawable/ic_minus_circle_vector"
+        android:title="@string/block_number"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/cab_show_call_details"
+        android:showAsAction="never"
+        android:title="@string/show_call_details"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/cab_copy_number"
+        android:showAsAction="never"
+        android:title="@string/copy_number_to_clipboard"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/cab_create_shortcut"
+        android:showAsAction="never"
+        android:title="@string/create_shortcut"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/cab_remove_default_sim"
+        android:showAsAction="never"
+        android:title="@string/unset_default_sim"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/cab_select_all"
+        android:showAsAction="never"
+        android:title="@string/select_all"
+        app:showAsAction="never" />
+</menu>
