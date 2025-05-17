@@ -66,6 +66,13 @@
     <string name="calling_blocked_number">The number you are calling is blocked</string>
     <string name="call_is_being_connected">Your call is being connected…</string>
 
+    <!-- Notifications -->
+    <string name="missed_call_channel">Missed calls</string>
+    <string name="missed_calls">Missed call</string>
+    <string name="missed_call_from">Missed call from %s</string>
+    <string name="call_back">Call back</string>
+    <string name="message">Message</string>
+
     <!-- Speed dial -->
     <string name="speed_dial">Speed dial</string>
     <string name="manage_speed_dial">Manage speed dial</string>
