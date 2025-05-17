@@ -11,4 +11,5 @@
     android:maxLines="1"
     android:padding="@dimen/activity_margin"
     android:singleLine="true"
+    android:textDirection="firstStrongLtr"
     android:textSize="@dimen/bigger_text_size" />

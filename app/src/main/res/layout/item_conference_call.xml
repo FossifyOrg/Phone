@@ -27,6 +27,7 @@
         android:ellipsize="end"
         android:maxLines="1"
         android:textSize="@dimen/bigger_text_size"
+        android:textDirection="firstStrongLtr"
         app:layout_constraintBottom_toBottomOf="@+id/item_conference_call_image"
         app:layout_constraintEnd_toStartOf="@+id/item_conference_call_split"
         app:layout_constraintStart_toEndOf="@+id/item_conference_call_image"

@@ -16,6 +16,7 @@
         android:layout_marginEnd="@dimen/medium_margin"
         android:background="@null"
         android:clickable="false"
+        android:textDirection="firstStrongLtr"
         android:paddingStart="@dimen/small_margin" />
 
 </RelativeLayout>
