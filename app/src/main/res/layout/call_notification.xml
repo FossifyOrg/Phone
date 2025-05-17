@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/notification_holder"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:background="#fff">
 
     <TextView
         android:id="@+id/notification_caller_name"
@@ -12,6 +13,7 @@
         android:layout_height="wrap_content"
         android:textSize="@dimen/bigger_text_size"
         android:textStyle="bold"
+        android:textDirection="firstStrongLtr"
         tools:text="Caller name" />
 
     <TextView
@@ -21,6 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/notification_caller_name"
         android:alpha="0.8"
+        android:textDirection="firstStrongLtr"
         tools:text="123 456 789" />
 
     <ImageView
