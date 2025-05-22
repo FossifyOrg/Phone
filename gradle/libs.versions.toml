@@ -2,7 +2,7 @@
 #jetbrains
 geocoderVersion = "3.5"
 kotlin = "2.1.21"
-kotlinxSerializationJson = "1.6.3"
+kotlinxSerializationJson = "1.8.1"
 #Detekt
 detekt = "1.23.8"
 #Eventbus
