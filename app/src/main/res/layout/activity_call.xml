@@ -40,6 +40,7 @@
             app:layout_constraintEnd_toStartOf="@+id/on_hold_label"
             app:layout_constraintStart_toEndOf="@+id/imageView"
             app:layout_constraintTop_toTopOf="parent"
+            android:textDirection="firstStrongLtr"
             tools:text="0912 345 678" />
 
         <org.fossify.commons.views.MyTextView
@@ -86,6 +87,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/caller_avatar"
+        android:textDirection="firstStrongLtr"
         tools:text="Caller name" />
 
     <org.fossify.commons.views.MyTextView
@@ -99,6 +101,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/caller_name_label"
+        android:textDirection="firstStrongLtr"
         tools:text="+1 (123) 456-7890" />
 
     <org.fossify.commons.views.MyTextView
