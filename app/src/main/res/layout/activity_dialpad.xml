@@ -125,21 +125,5 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <ImageView
-            android:id="@+id/dialpad_call_two_button"
-            android:layout_width="@dimen/dialpad_button_size_small"
-            android:layout_height="@dimen/dialpad_button_size_small"
-            android:layout_marginBottom="@dimen/activity_margin"
-            android:background="@drawable/circle_button_background_ripple"
-            android:contentDescription="@string/call_number"
-            android:elevation="@dimen/medium_margin"
-            android:padding="@dimen/normal_margin"
-            android:src="@drawable/ic_phone_two_vector"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/dialpad_call_button"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/dialpad_call_button" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
