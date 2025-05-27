@@ -32,7 +32,7 @@
         android:ellipsize="end"
         android:maxLines="1"
         android:textAlignment="viewStart"
-        android:textDirection="locale"
+        android:textDirection="firstStrongLtr"
         android:textSize="@dimen/bigger_text_size"
         app:layout_constraintBottom_toTopOf="@id/item_recents_date_time"
         app:layout_constraintEnd_toStartOf="@+id/overflow_menu_icon"
