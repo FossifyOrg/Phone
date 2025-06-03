@@ -66,7 +66,7 @@
     <string name="export_call_history">Exporter l\'historique d\'appels</string>
     <string name="import_call_history">Importer l\'historique d\'appels</string>
     <string name="faq_1_title">J\'entends les appels entrants, mais l\'écran ne s\'allume pas. Que puis-je faire \?</string>
-    <string name="faq_1_text">Ces problèmes peuvent avoir de nombreuses raisons spécifiques à l\'appareil et au système, il est difficile d\'en parler en général. Vous devriez consulter les paramètres de votre appareil et vous assurer que l\'application est autorisée à apparaître en arrière-plan et à s\'afficher au-dessus des autres applications.</string>
+    <string name="faq_1_text">C\'est en général difficile à dire puisque ces problèmes peuvent avoir de nombreuses raisons spécifiques à l\'appareil et au système. Vous devriez consulter les paramètres de votre appareil et vous assurer que l\'application est autorisée à apparaître en arrière-plan et à s\'afficher au-dessus des autres applications.</string>
     <string name="app_launcher_name">Téléphone</string>
     <string name="audio_route_bluetooth">Bluetooth</string>
     <string name="faq_3_text">Fossify Phone n\'affiche que les contacts auxquels un numéro de téléphone est associé. Les contacts sans numéro de téléphone ne sont pas affichés dans l\'application.</string>
