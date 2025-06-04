@@ -59,7 +59,7 @@
     <string name="manage_speed_dial">管理快速撥號</string>
     <string name="speed_dial_label">點選一個號碼以指定聯絡人。然後您可以在撥號器長按該號碼快速撥打給該聯絡人。</string>
     <string name="group_subsequent_calls">將通話紀錄中相同號碼的連續通話分組</string>
-    <string name="open_dialpad_by_default">當 app 開啟時預設開啟撥號鍵盤</string>
+    <string name="open_dialpad_by_default">開啟應用程式時預設開啟撥號鍵盤</string>
     <string name="disable_proximity_sensor">通話時停用接近感應器</string>
     <string name="disable_swipe_to_answer">用點選來取代滑動回應來電</string>
     <string name="show_incoming_calls_full_screen">總是全螢幕顯示來電</string>
@@ -69,4 +69,9 @@
     <string name="faq_1_title">我聽到來電，但螢幕沒有亮起。我該怎麼辦？</string>
     <string name="faq_1_text">這種問題可能有許多與裝置和系統特定的原因，一般來說很難確定。您應該查看您的裝置設定，並確保 app 被允許在背景時彈出並允許在其他 app 上顯示。</string>
     <string name="app_launcher_name">電話</string>
+    <string name="faq_3_title">為什麼我的部份聯絡人從應用程式中消失了？</string>
+    <string name="faq_3_text">Fossify Phone 只會顯示有電話號碼的聯絡人。沒有電話號碼的聯絡人不會顯示在應用程式中。</string>
+    <string name="faq_2_text">因為系統限制，緊急電話只能透過系統預設的撥號程式或電話應用程式撥打。為了確保緊急通話正常運作，您需要維持系統應用程式已安裝並啟用。</string>
+    <string name="call_is_being_connected">正在接通您的通話……</string>
+    <string name="faq_2_title">為什麼緊急電話無法正常運作？</string>
 </resources>

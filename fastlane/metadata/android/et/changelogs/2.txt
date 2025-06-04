@@ -1,9 +1,0 @@
-* Eemaldasime kõneajaloo salvestamise piirangu.
-* Lisasime mugava tagasihelistamise võimaluse.
-* Kõne lõpetamise nupp on nüüd alati helistamisel näha.
-* Kohendasime helistaja tunnuspildi ja nuppude suurust helistamisel.
-* Viisime klahvistiku eelistused seadistustes omaette sektsiooni.
-* Lisasime tundmatute helistajate ja pildita kontaktide jaoks üldise tunnuspildi
-* Kõneajaloo päringute jaoks on nüüd olemas olekuindikaator.
-* Kohendasime loendites kirjete vaheruumi.
-* Lisasime mõned tõlked.

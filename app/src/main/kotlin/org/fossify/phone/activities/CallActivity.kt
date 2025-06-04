@@ -118,7 +118,7 @@ class CallActivity : SimpleActivity() {
 
         val callState = CallManager.getState()
         if (callState == Call.STATE_CONNECTING || callState == Call.STATE_DIALING) {
-            endCall()
+            toast(R.string.call_is_being_connected)
         }
     }
 

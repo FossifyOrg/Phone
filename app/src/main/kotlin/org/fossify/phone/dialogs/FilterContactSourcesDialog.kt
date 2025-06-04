@@ -32,7 +32,7 @@ class FilterContactSourcesDialog(val activity: SimpleActivity, private val callb
 
         contactHelper.getContacts(getAll = true, showOnlyContactsWithNumbers = true) {
             it.mapTo(contacts) { contact -> contact.copy() }
-            val privateCursor = activity.getMyContactsCursor(false, true)
+            val privateCursor = activity.getMyContactsCursor(favoritesOnly = false, withPhoneNumbersOnly = true)
             val privateContacts = MyContactsContentProvider.getContacts(activity, privateCursor)
             this.contacts.addAll(privateContacts)
             isContactsReady = true
@@ -48,7 +48,7 @@ class FilterContactSourcesDialog(val activity: SimpleActivity, private val callb
         val contactSourcesWithCount = ArrayList<ContactSource>()
         for (contactSource in contactSources) {
             val count = if (isContactsReady) {
-                contacts.filter { it.source == contactSource.name }.count()
+                contacts.count { it.source == contactSource.name }
             } else {
                 -1
             }
@@ -64,7 +64,7 @@ class FilterContactSourcesDialog(val activity: SimpleActivity, private val callb
 
             if (dialog == null) {
                 activity.getAlertDialogBuilder()
-                    .setPositiveButton(R.string.ok) { dialogInterface, i -> confirmContactSources() }
+                    .setPositiveButton(R.string.ok) { _, _ -> confirmContactSources() }
                     .setNegativeButton(R.string.cancel, null)
                     .apply {
                         activity.setupDialogStuff(binding.root, this) { alertDialog ->

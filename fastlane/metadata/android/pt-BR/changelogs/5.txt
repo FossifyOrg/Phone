@@ -1,5 +1,0 @@
-* Problema com contatos não sendo exibidos no Android 14 e acima consertado
-* Checkboxes trocadas por switches
-* Suporte à Android 7 e versões mais antigas removido
-* Outras menores correções de bugs e melhorias
-* Mais traduções adicionadas
