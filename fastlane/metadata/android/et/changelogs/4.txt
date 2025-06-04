@@ -1,9 +1,0 @@
-- Parandasime olukorra, kus kõneajalugu ei uuenenud.
-- Parandasime vea, kus otsing ei leidnud vanu logisid.
-- Parema kasutajaliidese nimel on menüü kujundus senisest parem.
-- Parema kasutajaliidese nimel eemaldasime tegevuste nupud kõne lõpuvaatest.
-- Kõneajaloo kirjeid rühmitame kuupäeva alusel.
-- Lisasime võimaluse vormindada numbreid ajaloos.
-- Uuendasime värve ja ikoone kõnede ajaloos.
-- Muutsime käimasoleva kõne vaadet sobivamaks eri ekraanimõõtude puhul.
-- Lisasime mõned tõlked.

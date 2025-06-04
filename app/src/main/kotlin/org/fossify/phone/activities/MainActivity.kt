@@ -191,6 +191,7 @@ class MainActivity : SimpleActivity() {
         binding.mainMenu.getToolbar().menu.apply {
             findItem(R.id.clear_call_history).isVisible = currentFragment == getRecentsFragment()
             findItem(R.id.sort).isVisible = currentFragment != getRecentsFragment()
+            findItem(R.id.filter).isVisible = currentFragment != getRecentsFragment()
             findItem(R.id.create_new_contact).isVisible = currentFragment == getContactsFragment()
             findItem(R.id.change_view_type).isVisible = currentFragment == getFavoritesFragment()
             findItem(R.id.column_count).isVisible = currentFragment == getFavoritesFragment() && config.viewType == VIEW_TYPE_GRID
@@ -487,6 +488,7 @@ class MainActivity : SimpleActivity() {
     }
 
     fun refreshFragments() {
+        cacheContacts()
         getContactsFragment()?.refreshItems()
         getFavoritesFragment()?.refreshItems()
         getRecentsFragment()?.refreshItems()
@@ -558,6 +560,7 @@ class MainActivity : SimpleActivity() {
         val faqItems = arrayListOf(
             FAQItem(R.string.faq_1_title, R.string.faq_1_text),
             FAQItem(R.string.faq_2_title, R.string.faq_2_text),
+            FAQItem(R.string.faq_3_title, R.string.faq_3_text),
             FAQItem(R.string.faq_9_title_commons, R.string.faq_9_text_commons)
         )
 
@@ -607,11 +610,22 @@ class MainActivity : SimpleActivity() {
         }
     }
 
-    fun cacheContacts(contacts: List<Contact>) {
-        try {
-            cachedContacts.clear()
-            cachedContacts.addAll(contacts)
-        } catch (e: Exception) {
+    fun cacheContacts() {
+        val privateCursor = getMyContactsCursor(favoritesOnly = false, withPhoneNumbersOnly = true)
+        ContactsHelper(this).getContacts(getAll = true, showOnlyContactsWithNumbers = true) { contacts ->
+            if (SMT_PRIVATE !in config.ignoredContactSources) {
+                val privateContacts = MyContactsContentProvider.getContacts(this, privateCursor)
+                if (privateContacts.isNotEmpty()) {
+                    contacts.addAll(privateContacts)
+                    contacts.sort()
+                }
+            }
+
+            try {
+                cachedContacts.clear()
+                cachedContacts.addAll(contacts)
+            } catch (ignored: Exception) {
+            }
         }
     }
 

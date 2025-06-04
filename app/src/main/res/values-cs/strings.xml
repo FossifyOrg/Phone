@@ -69,4 +69,9 @@
     <string name="faq_1_text">Takové problémy mohou mít mnoho důvodů specifických pro zařízení a systém, takže je těžké říci něco obecně. Měli byste zkontrolovat nastavení zařízení a ujistit se, že se aplikace může otevřít, když běží na pozadí, a umožnit zobrazení přes jiné aplikace.</string>
     <string name="audio_route_bluetooth">Bluetooth</string>
     <string name="app_launcher_name">Telefon</string>
+    <string name="call_is_being_connected">Probíhá spojování…</string>
+    <string name="faq_2_title">Proč nefungují správně nouzové hovory?</string>
+    <string name="faq_2_text">Kvůli systémovým omezením lze nouzové hovory provádět pouze prostřednictvím vaší systémové aplikace k telefonování. Aby nouzové hovory fungovaly správně, ponechte systémovou aplikaci nainstalovanou a aktivovanou.</string>
+    <string name="faq_3_title">Proč v aplikaci nevidím některé své kontakty?</string>
+    <string name="faq_3_text">Telefon Fossify zobrazuje pouze kontakty, které mají telefonní číslo. Kontakty bez telefonního čísla nejsou v aplikaci zobrazeny.</string>
 </resources>

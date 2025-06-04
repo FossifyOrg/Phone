@@ -68,4 +68,10 @@
     <string name="app_launcher_name">Telefone</string>
     <string name="import_call_history">Importar histórico de chamadas</string>
     <string name="audio_route_wired_or_earpiece">Com fio ou fone de ouvido</string>
+    <string name="call_is_being_connected">Sua chamada está sendo conectada…</string>
+    <string name="faq_3_title">Por que alguns dos meus contatos estão faltando no aplicativo?</string>
+    <string name="hashtag">Jogo da velha</string>
+    <string name="faq_2_title">Por que as chamadas de emergência não funcionam corretamente?</string>
+    <string name="faq_2_text">Devido a restrições do sistema, chamadas de emergência só podem ser feitas por meio do discador padrão do seu sistema ou do aplicativo de telefone. Para garantir que as chamadas de emergência funcionem corretamente, você precisa manter o aplicativo do sistema instalado e habilitado.</string>
+    <string name="faq_3_text">O Fossify Phone exibe apenas contatos que tenham um número de telefone associado a eles. Contatos sem um número de telefone não são exibidos no aplicativo.</string>
 </resources>

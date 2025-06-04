@@ -69,4 +69,9 @@
     <string name="speed_dial_label">Egin klik zenbaki batean kontaktu bat esleitzeko. Ondoren, emandako kontaktuari azkar dei diezaiokezu markatzailean emandako zenbakia luze sakatuz.</string>
     <string name="export_call_history">Esportatu deien historia</string>
     <string name="faq_1_text">Horrelako arazoek gailu eta sistemaren arrazoi zehatz asko izan ditzakete, oro har esatea zaila. Zure gailuaren ezarpenak begiratu beharko zenuke eta ziurtatu aplikazioa atzeko planoan agertzeko baimena duela eta beste aplikazio batzuen gainean bistaratzeko aukera ematen duela.</string>
+    <string name="call_is_being_connected">Zure deia konektatzen ari da…</string>
+    <string name="faq_2_title">Zergatik ez dute larrialde deiek ondo funtzionatzen?</string>
+    <string name="faq_2_text">Sistemaren murriztapenak direla eta, larrialdi deiak zure gailuaren defektuzko telefono aplikazioak bakarrik egin ditzake. Larrialdi deiek ondo funtziontzen dutela ziurtatzeko, sistemako aplikazioa instalatuta eta aktibatuta mantentu behar duzu.</string>
+    <string name="faq_3_title">Zergatik falta dira nire kontaktu batzuk?</string>
+    <string name="faq_3_text">Fossify Telefonoak telefono zenbakiren bat duten kontaktuak bakarrik erakusten ditu. Telefono zenbakirik ez duten kontaktuak ez dira aplikazioan erakusten.</string>
 </resources>

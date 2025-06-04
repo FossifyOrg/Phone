@@ -5,7 +5,6 @@ import android.content.Intent
 import android.content.pm.ShortcutInfo
 import android.graphics.drawable.Icon
 import android.net.Uri
-import android.telephony.PhoneNumberUtils
 import android.text.TextUtils
 import android.util.TypedValue
 import android.view.*
@@ -48,7 +47,8 @@ class ContactsAdapter(
     private val showDeleteButton: Boolean = true,
     private val enableDrag: Boolean = false,
     private val allowLongClick: Boolean = true,
-    itemClick: (Any) -> Unit
+    itemClick: (Any) -> Unit,
+    val profileIconClick: ((Any) -> Unit)? = null
 ) : MyRecyclerViewAdapter(activity, recyclerView, itemClick),
     ItemTouchHelperContract, MyRecyclerView.MyZoomListener {
 
@@ -364,6 +364,25 @@ class ContactsAdapter(
         binding.apply {
             root.setupViewBackground(activity)
             itemContactFrame.isSelected = selectedKeys.contains(contact.rawId)
+
+            itemContactImage.apply {
+                if (profileIconClick != null) {
+                    setBackgroundResource(R.drawable.selector_clickable_circle)
+
+                    setOnClickListener {
+                        if (!actModeCallback.isSelectable) {
+                            profileIconClick.invoke(contact)
+                        } else {
+                            holder.viewClicked(contact)
+                        }
+                    }
+                    setOnLongClickListener {
+                        holder.viewLongClicked()
+                        true
+                    }
+                }
+            }
+
             itemContactName.apply {
                 setTextColor(textColor)
                 setTextSize(TypedValue.COMPLEX_UNIT_PX, fontSize)
@@ -377,12 +396,12 @@ class ContactsAdapter(
                     } else {
                         var spacedTextToHighlight = textToHighlight
                         val strippedName = name.filterNot { it.isWhitespace() }
-                        val strippedDigits = PhoneNumberUtils.convertKeypadLettersToDigits(strippedName)
+                        val strippedDigits = KeypadHelper.convertKeypadLettersToDigits(strippedName)
                         val startIndex = strippedDigits.indexOf(textToHighlight)
 
                         if (strippedDigits.contains(textToHighlight)) {
-                            for (i in 0..spacedTextToHighlight.length) {
-                                if (name[startIndex + i].isWhitespace()) {
+                            for (i in spacedTextToHighlight.indices) {
+                                if (startIndex + i < name.length && name[startIndex + i].isWhitespace()) {
                                     spacedTextToHighlight = spacedTextToHighlight.replaceRange(i, i, " ")
                                 }
                             }
