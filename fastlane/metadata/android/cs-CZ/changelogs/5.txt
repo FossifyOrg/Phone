@@ -1,5 +1,0 @@
-* Opraven problém se zobrazováním kontaktů v systému Android 14 a novějším
-* Zaškrtávací políčka nahrazena přepínači
-* Odstraněna podpora systému Android 7 a starších verzí
-* Další drobné opravy chyb a vylepšení
-* Přidány další překlady

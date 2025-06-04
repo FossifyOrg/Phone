@@ -11,6 +11,10 @@ import android.view.*
 import android.widget.PopupMenu
 import androidx.recyclerview.widget.DiffUtil
 import com.bumptech.glide.Glide
+import com.google.i18n.phonenumbers.NumberParseException
+import com.google.i18n.phonenumbers.PhoneNumberUtil
+import com.google.i18n.phonenumbers.Phonenumber
+import com.google.i18n.phonenumbers.geocoding.PhoneNumberOfflineGeocoder
 import org.fossify.commons.adapters.MyRecyclerViewListAdapter
 import org.fossify.commons.dialogs.ConfirmationDialog
 import org.fossify.commons.dialogs.FeatureLockedDialog
@@ -30,6 +34,7 @@ import org.fossify.phone.interfaces.RefreshItemsListener
 import org.fossify.phone.models.CallLogItem
 import org.fossify.phone.models.RecentCall
 import org.joda.time.DateTime
+import java.util.Locale
 
 class RecentCallsAdapter(
     activity: SimpleActivity,
@@ -38,6 +43,7 @@ class RecentCallsAdapter(
     private val showOverflowMenu: Boolean,
     private val itemDelete: (List<RecentCall>) -> Unit = {},
     itemClick: (Any) -> Unit,
+    val profileIconClick: ((Any) -> Unit)? = null
 ) : MyRecyclerViewListAdapter<CallLogItem>(activity, recyclerView, RecentCallsDiffCallback(), itemClick) {
 
     private lateinit var outgoingCallIcon: Drawable
@@ -49,6 +55,8 @@ class RecentCallsAdapter(
     private var secondaryTextColor = textColor.adjustAlpha(0.6f)
     private var textToHighlight = ""
     private var durationPadding = resources.getDimension(R.dimen.normal_margin).toInt()
+    private var phoneNumberUtilInstance: PhoneNumberUtil = PhoneNumberUtil.getInstance()
+    private var phoneNumberOfflineGeocoderInstance: PhoneNumberOfflineGeocoder = PhoneNumberOfflineGeocoder.getInstance()
 
     init {
         initDrawables()
@@ -434,13 +442,15 @@ class RecentCallsAdapter(
 
                 val currentFontSize = fontSize
                 itemRecentsHolder.isSelected = selectedKeys.contains(call.id)
-                val name = findContactByCall(call)?.getNameToDisplay() ?: call.name
+                val matchingContact = findContactByCall(call)
+                val name = matchingContact?.getNameToDisplay() ?: call.name
                 val formatPhoneNumbers = activity.config.formatPhoneNumbers
                 var nameToShow = if (name == call.phoneNumber && formatPhoneNumbers) {
                     SpannableString(name.formatPhoneNumber())
                 } else {
                     SpannableString(name)
                 }
+                val shouldShowDuration = call.type != Calls.MISSED_TYPE && call.type != Calls.REJECTED_TYPE && call.duration > 0
 
                 if (call.specificType.isNotEmpty()) {
                     nameToShow = SpannableString("$name - ${call.specificType}")
@@ -482,14 +492,48 @@ class RecentCallsAdapter(
                     setTextSize(TypedValue.COMPLEX_UNIT_PX, currentFontSize * 0.8f)
                 }
 
-                itemRecentsDuration.apply {
-                    text = call.duration.getFormattedDuration()
+                itemRecentsDateTimeDurationSeparator.apply {
+                    text = "•"
+                    setTextSize(TypedValue.COMPLEX_UNIT_PX, currentFontSize * 0.8f)
                     setTextColor(textColor)
-                    beVisibleIf(call.type != Calls.MISSED_TYPE && call.type != Calls.REJECTED_TYPE && call.duration > 0)
+                    beVisibleIf(shouldShowDuration)
+                }
+
+                itemRecentsDuration.apply {
+                    text = context.formatSecondsToShortTimeString(call.duration)
+                    setTextColor(textColor)
+                    beVisibleIf(shouldShowDuration)
                     setTextSize(TypedValue.COMPLEX_UNIT_PX, currentFontSize * 0.8f)
                     if (!showOverflowMenu) {
                         itemRecentsDuration.setPadding(0, 0, durationPadding, 0)
                     }
+                }
+
+                itemRecentsLocation.apply {
+                    val locale = Locale.getDefault()
+                    val defaultCountryCode = locale.country
+                    val phoneNumber = try {
+                        phoneNumberUtilInstance
+                            .parse(call.phoneNumber, defaultCountryCode)
+                    } catch (_: NumberParseException) {
+                        null
+                    }
+
+                    val location = if (phoneNumber != null) {
+                        phoneNumberOfflineGeocoderInstance
+                            .getDescriptionForNumber(phoneNumber, locale, defaultCountryCode)
+                    } else {
+                        null
+                    }
+
+                    text = location
+                    setTextColor(textColor)
+                    setTextSize(TypedValue.COMPLEX_UNIT_PX, currentFontSize * 0.8f)
+                    beVisibleIf(
+                        phoneNumber != null
+                            && phoneNumber.countryCodeSource != Phonenumber.PhoneNumber.CountryCodeSource.FROM_DEFAULT_COUNTRY
+                            && (location != locale.displayCountry || matchingContact == null)
+                    )
                 }
 
                 itemRecentsSimImage.beVisibleIf(areMultipleSIMsAvailable && call.simID != -1)
@@ -501,6 +545,24 @@ class RecentCallsAdapter(
                 }
 
                 SimpleContactsHelper(root.context).loadContactImage(call.photoUri, itemRecentsImage, call.name)
+
+                itemRecentsImage.apply {
+                    if (profileIconClick != null) {
+                        setBackgroundResource(R.drawable.selector_clickable_circle)
+
+                        setOnClickListener {
+                            if (!actModeCallback.isSelectable) {
+                                profileIconClick.invoke(call)
+                            } else {
+                                viewClicked(call)
+                            }
+                        }
+                        setOnLongClickListener {
+                            viewLongClicked()
+                            true
+                        }
+                    }
+                }
 
                 val drawable = when (call.type) {
                     Calls.OUTGOING_TYPE -> outgoingCallIcon

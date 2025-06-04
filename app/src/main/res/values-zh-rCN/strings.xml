@@ -11,7 +11,7 @@
     <string name="show_grouped_calls">显示分组呼叫</string>
     <string name="clear_call_history">清除通话记录</string>
     <string name="show_call_details">显示通话详情</string>
-    <string name="dialpad">拨号盘</string>
+    <string name="dialpad">拨号键盘</string>
     <string name="asterisk">星号键</string>
     <string name="hashtag">标签</string>
     <string name="call_number">呼叫号码</string>
@@ -36,8 +36,8 @@
     <string name="turn_microphone_off">关闭麦克风</string>
     <string name="turn_speaker_on">打开扬声器</string>
     <string name="turn_speaker_off">关闭扬声器</string>
-    <string name="show_dialpad">显示拨号盘</string>
-    <string name="hide_dialpad">隐藏拨号盘</string>
+    <string name="show_dialpad">显示拨号键盘</string>
+    <string name="hide_dialpad">隐藏拨号键盘</string>
     <string name="end_call">结束通话</string>
     <string name="hold_call">保持通话</string>
     <string name="resume_call">继续通话</string>
@@ -60,7 +60,7 @@
     <string name="speed_dial_label">点击一个数字来分配一个联系人。之后您可以在拨号盘长按指定的号码来快速呼叫指定的联系人。</string>
     <string name="show_contact_thumbnails">显示联系人缩图</string>
     <string name="group_subsequent_calls">在通话记录中将同一号码的后续呼叫合并为一组</string>
-    <string name="open_dialpad_by_default">应用程序打开时默认打开拨号盘</string>
+    <string name="open_dialpad_by_default">应用打开时默认打开拨号键盘</string>
     <string name="disable_proximity_sensor">在通话期间禁用接近传感器</string>
     <string name="disable_swipe_to_answer">用点击代替滑动来接听来电</string>
     <string name="show_incoming_calls_full_screen">始终全屏显示来电</string>
@@ -70,4 +70,9 @@
     <string name="faq_1_title">我听到来电声音，但屏幕不亮。我该怎么办\?</string>
     <string name="faq_1_text">这样的问题可能有很多设备和系统的具体原因，很难笼统地说。你应该查看你的设备设置，确保应用在后台时被允许弹出，并允许其显示在其他应用上方。</string>
     <string name="app_launcher_name">电话</string>
+    <string name="faq_2_text">由于系统限制，紧急呼叫只能通过系统默认拨号器或电话应用拨打。为确保紧急呼叫正常工作，您需要保持系统应用安装并启用。</string>
+    <string name="faq_2_title">为什么紧急呼叫无法正常工作？</string>
+    <string name="faq_3_title">为什么应用中缺少我的一些联系人？</string>
+    <string name="faq_3_text">Fossify 电话仅显示有电话号码与之相关联的联系人。没有电话号码的联系人不会显示在应用中。</string>
+    <string name="call_is_being_connected">正在连接您的通话…</string>
 </resources>

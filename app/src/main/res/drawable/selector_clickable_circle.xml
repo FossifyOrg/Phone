@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- this handles the background of clickable items at long pressing, like an SMS conversation -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <selector>
+            <item
+                android:state_selected="true" >
+                <shape android:shape="oval">
+                    <solid android:drawable="@color/activated_item_foreground" />
+                </shape>
+            </item>
+            <item android:drawable="@drawable/ripple_selector_background_circle" />
+        </selector>
+    </item>
+</layer-list>

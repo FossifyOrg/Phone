@@ -1,9 +1,0 @@
-* 删除了通话记录限制 (https://github.com/FossifyOrg/Phone/issues/125)。
-* 添加了快速回拨功能 (https://github.com/FossifyOrg/Phone/issues/60)。
-* 挂断按钮现在始终显示在通话 UI 中 (https://github.com/FossifyOrg/Phone/issues/9)。
-* 增强了通话 UI 中呼叫者头像和按钮的大小 (https://github.com/FossifyOrg/Phone/issues/118)。
-* 将拨号键盘首选项重新组织到其专用部分 (https://github.com/FossifyOrg/Phone/issues/116)。
-* 为未知号码和没有照片的联系人添加了占位符头像。
-* 添加了进度指示器以指示通话记录检索。
-* 在列表中添加了底部填充，以允许在浮动操作按钮上方滚动。
-* 添加了一些翻译。

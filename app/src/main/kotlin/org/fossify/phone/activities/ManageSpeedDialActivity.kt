@@ -42,7 +42,7 @@ class ManageSpeedDialActivity : SimpleActivity(), RemoveSpeedDialListener {
         ContactsHelper(this).getContacts(showOnlyContactsWithNumbers = true) { contacts ->
             allContacts.addAll(contacts)
 
-            val privateCursor = getMyContactsCursor(false, true)
+            val privateCursor = getMyContactsCursor(favoritesOnly = false, withPhoneNumbersOnly = true)
             val privateContacts = MyContactsContentProvider.getContacts(this, privateCursor)
             allContacts.addAll(privateContacts)
             allContacts.sort()
@@ -62,8 +62,8 @@ class ManageSpeedDialActivity : SimpleActivity(), RemoveSpeedDialListener {
     }
 
     private fun updateAdapter() {
-        SpeedDialAdapter(this, speedDialValues, this, binding.speedDialList) {
-            val clickedContact = it as SpeedDial
+        SpeedDialAdapter(this, speedDialValues, this, binding.speedDialList) { any ->
+            val clickedContact = any as SpeedDial
             if (allContacts.isEmpty()) {
                 return@SpeedDialAdapter
             }
@@ -98,8 +98,7 @@ class ManageSpeedDialActivity : SimpleActivity(), RemoveSpeedDialListener {
     }
 
     override fun removeSpeedDial(ids: ArrayList<Int>) {
-        ids.forEach {
-            val dialId = it
+        ids.forEach { dialId ->
             speedDialValues.first { it.id == dialId }.apply {
                 displayName = ""
                 number = ""

@@ -22,7 +22,7 @@
     <string name="decline_call">לדחות שיחה</string>
     <string name="unknown_caller">מספר חסוי</string>
     <string name="is_calling">מתקשר…</string>
-    <string name="dialing">חיוג…</string>
+    <string name="dialing">מחייג…</string>
     <string name="call_ended">השיחה הסתיימה</string>
     <string name="call_ending">סיום שיחה</string>
     <string name="ongoing_call">שיחה פעילה</string>
@@ -53,5 +53,26 @@
     <string name="group_subsequent_calls">מזג שיחות עוקבות עם אותו מספר ביומן השיחות</string>
     <string name="open_dialpad_by_default">פתח את לוח החיוג כברירת מחדל כאשר האפליקציה נפתחת</string>
     <string name="disable_proximity_sensor">השבת את חיישן הקרבה במהלך שיחות</string>
-    <string name="disable_swipe_to_answer">החלף החלקה בתגובה לשיחות נכנסות בלחיצה</string>
+    <string name="disable_swipe_to_answer">הפעל לחיצה במקום החלקה במענה לשיחות נכנסות</string>
+    <string name="show_incoming_calls_full_screen">הצג תמיד שיחות נכנסות במסך מלא</string>
+    <string name="call_is_being_connected">השיחה שלך מחוברת…</string>
+    <string name="export_call_history">ייצוא היסטוריית שיחות</string>
+    <string name="import_call_history">ייבא היסטוריית שיחות</string>
+    <string name="faq_1_title">אני שומע שיחות נכנסות, אבל המסך לא נדלק. מה אפשר לעשות?</string>
+    <string name="faq_1_text">לבעיות כאלה יכולות להיות סיבות רבות למכשיר ולמערכת, שקשה לומר באופן כללי. כדאי להסתכל בהגדרות המכשיר ולוודא בהגדרות סוללה שהאפליקציה מורשית ברקע ולאפשר הצגה מעל אפליקציות אחרות.</string>
+    <string name="faq_2_text">בשל הגבלות המערכת, ניתן לבצע שיחות חירום רק דרך חייגן ברירת המחדל של המערכת או אפליקציית הטלפון. כדי להבטיח ששיחות חירום פועלות כראוי, עליך להשאיר את אפליקציית המערכת מותקנת ומופעלת.</string>
+    <string name="faq_3_title">מדוע חלק מאנשי הקשר שלי חסרים באפליקציה?</string>
+    <string name="faq_3_text">Fossify טלפון מציג רק אנשי קשר שיש להם מספר טלפון המשויך אליהם. אנשי קשר ללא מספר טלפון אינם מוצגים באפליקציה.</string>
+    <string name="dialpad_beeps">אפשר צפצופים בלחיצות על לחצני לוח החיוג</string>
+    <string name="audio_route_bluetooth">בלוטות\'</string>
+    <string name="audio_route_wired_headset">אוזניות חוט</string>
+    <string name="audio_route_wired_or_earpiece">חוטי או אוזנייה</string>
+    <string name="hide_dialpad_numbers">הסתר מספרי לוח החיוג</string>
+    <string name="audio_route_earpiece">אוזנייה</string>
+    <string name="calling_blocked_number">המספר שאתה מתקשר אליו חסום</string>
+    <string name="choose_audio_route">בחר איך לשמוע</string>
+    <string name="faq_2_title">מדוע שיחות חירום אינן פועלות כראוי?</string>
+    <string name="app_launcher_name">טלפון</string>
+    <string name="dialpad_vibrations">אפשר רטט בלחיצות על לחצני לוח החיוג</string>
+    <string name="audio_route_speaker">רמקול</string>
 </resources>

@@ -70,4 +70,9 @@
     <string name="faq_1_text">Dit soort problemen kan vele oorzaken hebben, specifiek voor bepaalde apparaten en software. Controleer in ieder geval of voor deze app in de systeeminstellingen \"Weergeven vóór andere apps\" is toegestaan en of bij meldingen voor inkomende gesprekken \"Weergeven op scherm\" is ingeschakeld.</string>
     <string name="audio_route_bluetooth">Bluetooth</string>
     <string name="app_launcher_name">Telefoon</string>
+    <string name="faq_2_title">Waarom werken noodoproepen niet goed?</string>
+    <string name="call_is_being_connected">Verbinding maken…</string>
+    <string name="faq_3_text">Fossify Telefoon toont alleen contacten waaraan een telefoonnummer is gekoppeld. Contacten zonder telefoonnummer worden dus niet weergegeven in de app.</string>
+    <string name="faq_3_title">Waarom ontbreken sommige van mijn contacten in de app?</string>
+    <string name="faq_2_text">Wegens systeembeperkingen kunnen noodoproepen alleen worden gedaan via de telefoonapp van je systeem. Om ervoor te zorgen dat noodoproepen goed werken, moet de systeemapp geïnstalleerd en ingeschakeld blijven.</string>
 </resources>

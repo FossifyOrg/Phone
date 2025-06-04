@@ -99,18 +99,50 @@
         tools:textColor="@color/color_missed_call" />
 
     <TextView
-        android:id="@+id/item_recents_duration"
+        android:id="@+id/item_recents_date_time_duration_separator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/item_recents_name"
-        android:layout_marginEnd="@dimen/small_margin"
+        android:layout_marginStart="@dimen/small_margin"
         android:alpha="0.6"
         android:gravity="end"
         android:textSize="@dimen/normal_text_size"
         app:layout_constraintBottom_toBottomOf="@id/item_recents_date_time"
-        app:layout_constraintEnd_toStartOf="@+id/overflow_menu_icon"
+        app:layout_constraintStart_toEndOf="@+id/item_recents_date_time"
         app:layout_constraintTop_toTopOf="@id/item_recents_date_time"
-        tools:text="00:10" />
+        tools:text="•" />
+
+    <TextView
+        android:id="@+id/item_recents_duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/item_recents_name"
+        android:layout_marginStart="@dimen/small_margin"
+        android:alpha="0.6"
+        android:gravity="end"
+        android:textSize="@dimen/normal_text_size"
+        app:layout_constraintBottom_toBottomOf="@id/item_recents_date_time"
+        app:layout_constraintStart_toEndOf="@id/item_recents_date_time_duration_separator"
+        app:layout_constraintTop_toTopOf="@id/item_recents_date_time"
+        tools:text="42m 17s" />
+
+    <TextView
+        android:id="@+id/item_recents_location"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_below="@+id/item_recents_name"
+        android:layout_marginStart="@dimen/normal_margin"
+        android:layout_marginEnd="@dimen/small_margin"
+        android:alpha="0.6"
+        android:ellipsize="end"
+        android:gravity="end"
+        android:maxLines="1"
+        android:textSize="@dimen/normal_text_size"
+        app:layout_constraintBottom_toBottomOf="@id/item_recents_date_time"
+        app:layout_constraintEnd_toStartOf="@+id/overflow_menu_icon"
+        app:layout_constraintStart_toEndOf="@+id/item_recents_duration"
+        app:layout_constraintTop_toTopOf="@id/item_recents_date_time"
+        tools:text="Australia" />
 
     <ImageView
         android:id="@+id/overflow_menu_icon"

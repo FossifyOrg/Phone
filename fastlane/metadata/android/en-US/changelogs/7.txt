@@ -1,0 +1,5 @@
+* Added support for caller location (state/country) in call history
+* Added option to open contact details when contact photo is tapped
+* Removed storage permission requirement
+* Other minor bug fixes and improvements
+* Added more translations

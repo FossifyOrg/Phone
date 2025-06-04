@@ -68,4 +68,11 @@
     <string name="import_call_history">Tuo puheluhistoria</string>
     <string name="faq_1_title">Kuulen saapuvat puhelut, mutta näyttö on pimeänä. Mitä voin tehdä\?</string>
     <string name="faq_1_text">Tällaisiin ongelmiin voi olla monia laite- ja järjestelmäkohtaisia syitä, joiden yleistäminen on hankalaa. Kannattaa tutkia laitteen asetuksia ja varmistaa, että sovelluksella on oikeus ponnahtaa esiin taustalta ja näkyä muiden sovellusten päällä.</string>
+    <string name="app_launcher_name">Puhelin</string>
+    <string name="call_is_being_connected">Puheluasi yhdistetään…</string>
+    <string name="faq_2_title">Miksi hätäpuhelut eivät toimi kunnolla?</string>
+    <string name="audio_route_bluetooth">Bluetooth</string>
+    <string name="faq_2_text">Järjestelmän rajoitusten vuoksi, hätäpuhelut voidaan soittaa vain järjestelmän oletuspuhelinsovelluksella. Varmistaaksesi hätäpuheluiden toiminnan, pidä oletuspuhelinsovellus asennettuna ja päälle kytkettynä.</string>
+    <string name="faq_3_title">Minkä takia osa kontakteistani puuttuu?</string>
+    <string name="faq_3_text">Fossify Phone näyttää vain kontaktit joissa on puhelinnumero. Sovelluksessa ei näytetä kontakteja, joissa ei ole puhelinnumeroa.</string>
 </resources>
