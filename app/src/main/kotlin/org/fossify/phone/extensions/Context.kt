@@ -18,7 +18,7 @@ val Context.powerManager: PowerManager get() = getSystemService(Context.POWER_SE
 
 @SuppressLint("MissingPermission")
 fun Context.getAvailableSIMCardLabels(): List<SIMAccount> {
-    val SIMAccounts = mutableListOf<SIMAccount>()
+    val simAccounts = mutableListOf<SIMAccount>()
     try {
         telecomManager.callCapablePhoneAccounts.forEachIndexed { index, account ->
             val phoneAccount = telecomManager.getPhoneAccount(account)
@@ -29,12 +29,20 @@ fun Context.getAvailableSIMCardLabels(): List<SIMAccount> {
                 label += " ($address)"
             }
 
-            val SIM = SIMAccount(index + 1, phoneAccount.accountHandle, label, address.substringAfter("tel:"), phoneAccount.highlightColor)
-            SIMAccounts.add(SIM)
+            simAccounts.add(
+                SIMAccount(
+                    id = index + 1,
+                    handle = phoneAccount.accountHandle,
+                    label = label,
+                    phoneNumber = address.substringAfter("tel:"),
+                    color = phoneAccount.highlightColor
+                )
+            )
         }
     } catch (ignored: Exception) {
     }
-    return SIMAccounts
+
+    return simAccounts
 }
 
 @SuppressLint("MissingPermission")

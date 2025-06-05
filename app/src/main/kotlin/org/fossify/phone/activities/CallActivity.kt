@@ -625,7 +625,9 @@ class CallActivity : SimpleActivity() {
                             callSimId.text = sim.id.toString()
                             callSimId.beVisible()
                             callSimImage.beVisible()
-                            callSimImage.applyColorFilter(sim.color.adjustSimColorForBackground(getProperBackgroundColor()))
+                            val simColor = sim.color.adjustForContrast(getProperBackgroundColor())
+                            callSimId.setTextColor(simColor.getContrastColor())
+                            callSimImage.applyColorFilter(simColor)
                         }
 
                         val acceptDrawableId = when (index) {

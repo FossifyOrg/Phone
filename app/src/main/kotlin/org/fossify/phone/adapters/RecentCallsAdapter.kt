@@ -57,6 +57,7 @@ class RecentCallsAdapter(
     private var durationPadding = resources.getDimension(R.dimen.normal_margin).toInt()
     private var phoneNumberUtilInstance: PhoneNumberUtil = PhoneNumberUtil.getInstance()
     private var phoneNumberOfflineGeocoderInstance: PhoneNumberOfflineGeocoder = PhoneNumberOfflineGeocoder.getInstance()
+    private val cachedSimColors = HashMap<Pair<Int,Int>, Int>()
 
     init {
         initDrawables()
@@ -537,8 +538,9 @@ class RecentCallsAdapter(
                 itemRecentsSimImage.beVisibleIf(areMultipleSIMsAvailable && call.simID != -1)
                 itemRecentsSimId.beVisibleIf(areMultipleSIMsAvailable && call.simID != -1)
                 if (areMultipleSIMsAvailable && call.simID != -1) {
-                    itemRecentsSimImage.applyColorFilter(call.simColor.adjustSimColorForBackground(backgroundColor))
-                    itemRecentsSimId.setTextColor(backgroundColor)
+                    val simColor = getAdjustedSimColor(call.simColor)
+                    itemRecentsSimImage.applyColorFilter(simColor)
+                    itemRecentsSimId.setTextColor(simColor.getContrastColor())
                     itemRecentsSimId.text = call.simID.toString()
                 }
 
@@ -580,6 +582,12 @@ class RecentCallsAdapter(
                     showPopupMenu(overflowMenuAnchor, call)
                 }
             }
+        }
+    }
+
+    private fun getAdjustedSimColor(simColor: Int): Int {
+        return cachedSimColors.getOrPut(simColor to backgroundColor) {
+            simColor.adjustForContrast(backgroundColor)
         }
     }
 
