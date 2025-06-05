@@ -446,13 +446,29 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <ImageView
+                android:id="@+id/dialpad_close"
+                android:layout_width="@dimen/normal_icon_size"
+                android:layout_height="@dimen/normal_icon_size"
+                android:layout_alignTop="@+id/dialpad_input"
+                android:layout_alignBottom="@+id/dialpad_input"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/activity_margin"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/hide_dialpad"
+                android:elevation="@dimen/medium_margin"
+                android:padding="@dimen/medium_margin"
+                android:src="@drawable/ic_cross_vector" />
+
             <org.fossify.commons.views.MyEditText
                 android:id="@+id/dialpad_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dialpad_button_size"
+                android:layout_marginStart="@dimen/medium_margin"
                 android:layout_marginEnd="@dimen/medium_margin"
-                android:layout_toStartOf="@+id/dialpad_close"
+                android:layout_toEndOf="@id/dialpad_close"
+                android:layout_toStartOf="@+id/dialpad_clear_char"
                 android:gravity="center"
                 android:inputType="phone"
                 android:textCursorDrawable="@null"
@@ -460,7 +476,7 @@
                 tools:ignore="SpUsage" />
 
             <ImageView
-                android:id="@+id/dialpad_close"
+                android:id="@+id/dialpad_clear_char"
                 android:layout_width="@dimen/normal_icon_size"
                 android:layout_height="@dimen/normal_icon_size"
                 android:layout_alignTop="@+id/dialpad_input"
@@ -469,10 +485,9 @@
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="@dimen/activity_margin"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                android:contentDescription="@string/hide_dialpad"
                 android:elevation="@dimen/medium_margin"
                 android:padding="@dimen/medium_margin"
-                android:src="@drawable/ic_cross_vector" />
+                android:src="@drawable/ic_clear_vector" />
 
         </RelativeLayout>
 

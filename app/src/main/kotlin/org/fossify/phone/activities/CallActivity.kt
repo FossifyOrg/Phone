@@ -13,6 +13,7 @@ import android.os.Looper
 import android.os.PowerManager
 import android.telecom.Call
 import android.telecom.CallAudioState
+import android.view.KeyEvent
 import android.view.MotionEvent
 import android.view.View
 import android.view.WindowManager
@@ -82,7 +83,7 @@ class CallActivity : SimpleActivity() {
         updateCallContactInfo(CallManager.getPrimaryCall())
     }
 
-    override fun onNewIntent(intent: Intent?) {
+    override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
         updateState()
     }
@@ -92,7 +93,7 @@ class CallActivity : SimpleActivity() {
         updateState()
         updateNavigationBarColor(getProperBackgroundColor())
 
-        if (config.isUsingSystemTheme) {
+        if (isDynamicTheme()) {
             updateStatusbarColor(getProperBackgroundColor())
         }
     }
@@ -117,7 +118,7 @@ class CallActivity : SimpleActivity() {
 
         val callState = CallManager.getState()
         if (callState == Call.STATE_CONNECTING || callState == Call.STATE_DIALING) {
-            endCall()
+            toast(R.string.call_is_being_connected)
         }
     }
 
@@ -216,17 +217,19 @@ class CallActivity : SimpleActivity() {
             dialpad0Holder.setOnLongClickListener { dialpadPressed('+'); true }
             dialpadAsteriskHolder.setOnClickListener { dialpadPressed('*') }
             dialpadHashtagHolder.setOnClickListener { dialpadPressed('#') }
+            dialpadClearChar.setOnClickListener { clearChar(it) }
+            dialpadClearChar.setOnLongClickListener { clearInput() }
         }
 
         dialpadWrapper.setBackgroundColor(
-            if (isUsingSystemDarkTheme()) {
+            if (isSystemInDarkMode()) {
                 getProperBackgroundColor().lightenColor(2)
             } else {
                 getProperBackgroundColor()
             }
         )
 
-        arrayOf(dialpadClose, callSimImage).forEach {
+        arrayOf(dialpadClose, callSimImage, dialpadClearChar).forEach {
             it.applyColorFilter(getProperTextColor())
         }
 
@@ -876,5 +879,14 @@ class CallActivity : SimpleActivity() {
             view.background.applyColorFilter(getInactiveButtonColor())
             view.applyColorFilter(getProperBackgroundColor().getContrastColor())
         }
+    }
+
+    private fun clearChar(view: View) {
+        binding.dialpadInput.dispatchKeyEvent(binding.dialpadInput.getKeyEvent(KeyEvent.KEYCODE_DEL))
+    }
+
+    private fun clearInput(): Boolean {
+        binding.dialpadInput.setText("");
+        return true;
     }
 }

@@ -23,20 +23,21 @@
     <uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
 
     <uses-permission
-        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-        android:maxSdkVersion="28" />
-
-    <uses-permission
         android:name="android.permission.USE_FINGERPRINT"
         tools:node="remove" />
 
     <queries>
         <package android:name="org.fossify.contacts.debug" />
         <package android:name="org.fossify.contacts" />
+
+        <!-- Required for loading contact accounts -->
+        <intent>
+            <action android:name="android.accounts.AccountAuthenticator" />
+        </intent>
     </queries>
 
     <application
-        android:name="org.fossify.phone.App"
+        android:name="org.fossify.commons.FossifyApp"
         android:allowBackup="true"
         android:appCategory="productivity"
         android:icon="@mipmap/ic_launcher"

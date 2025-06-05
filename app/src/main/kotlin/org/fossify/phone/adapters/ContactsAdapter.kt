@@ -47,7 +47,8 @@ class ContactsAdapter(
     private val showDeleteButton: Boolean = true,
     private val enableDrag: Boolean = false,
     private val allowLongClick: Boolean = true,
-    itemClick: (Any) -> Unit
+    itemClick: (Any) -> Unit,
+    val profileIconClick: ((Any) -> Unit)? = null
 ) : MyRecyclerViewAdapter(activity, recyclerView, itemClick),
     ItemTouchHelperContract, MyRecyclerView.MyZoomListener {
 
@@ -127,10 +128,12 @@ class ContactsAdapter(
 
     override fun getItemKeyPosition(key: Int) = contacts.indexOfFirst { it.rawId == key }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onActionModeCreated() {
         notifyDataSetChanged()
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onActionModeDestroyed() {
         notifyDataSetChanged()
     }
@@ -146,7 +149,7 @@ class ContactsAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val contact = contacts[position]
-        holder.bindView(contact, true, allowLongClick) { itemView, layoutPosition ->
+        holder.bindView(contact, true, allowLongClick) { itemView, _ ->
             val viewType = getItemViewType(position)
             setupView(Binding.getByItemViewType(viewType).bind(itemView), contact, holder)
         }
@@ -220,6 +223,7 @@ class ContactsAdapter(
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun updateItems(newItems: List<Contact>, highlightText: String = "") {
         if (newItems.hashCode() != contacts.hashCode()) {
             contacts = ArrayList(newItems)
@@ -355,20 +359,55 @@ class ContactsAdapter(
         }
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private fun setupView(binding: ItemViewBinding, contact: Contact, holder: ViewHolder) {
         binding.apply {
             root.setupViewBackground(activity)
             itemContactFrame.isSelected = selectedKeys.contains(contact.rawId)
+
+            itemContactImage.apply {
+                if (profileIconClick != null) {
+                    setBackgroundResource(R.drawable.selector_clickable_circle)
+
+                    setOnClickListener {
+                        if (!actModeCallback.isSelectable) {
+                            profileIconClick.invoke(contact)
+                        } else {
+                            holder.viewClicked(contact)
+                        }
+                    }
+                    setOnLongClickListener {
+                        holder.viewLongClicked()
+                        true
+                    }
+                }
+            }
+
             itemContactName.apply {
                 setTextColor(textColor)
                 setTextSize(TypedValue.COMPLEX_UNIT_PX, fontSize)
 
                 val name = contact.getNameToDisplay()
-                text = if (textToHighlight.isEmpty()) name else {
+                text = if (textToHighlight.isEmpty()) {
+                    name
+                } else {
                     if (name.contains(textToHighlight, true)) {
                         name.highlightTextPart(textToHighlight, properPrimaryColor)
                     } else {
-                        name.highlightTextFromNumbers(textToHighlight, properPrimaryColor)
+                        var spacedTextToHighlight = textToHighlight
+                        val strippedName = name.filterNot { it.isWhitespace() }
+                        val strippedDigits = KeypadHelper.convertKeypadLettersToDigits(strippedName)
+                        val startIndex = strippedDigits.indexOf(textToHighlight)
+
+                        if (strippedDigits.contains(textToHighlight)) {
+                            for (i in spacedTextToHighlight.indices) {
+                                if (startIndex + i < name.length && name[startIndex + i].isWhitespace()) {
+                                    spacedTextToHighlight = spacedTextToHighlight.replaceRange(i, i, " ")
+                                }
+                            }
+                        }
+
+                        name.highlightTextFromNumbers(spacedTextToHighlight, properPrimaryColor)
                     }
                 }
             }
