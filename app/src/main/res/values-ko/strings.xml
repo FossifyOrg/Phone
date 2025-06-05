@@ -3,7 +3,7 @@
     <string name="app_launcher_name">전화</string>
     <string name="default_phone_app_prompt">이 앱을 기본 전화 앱으로 설정 해주세요</string>
     <string name="allow_displaying_over_other_apps">안정적인 동작을 위해 다른 앱 위에 표시를 허용해주세요</string>
-    <string name="request_access">엑세스 요청</string>
+    <string name="request_access">액세스 요청</string>
     <string name="clear_call_history">통화 내역 지우기</string>
     <string name="show_call_details">통화 세부 정보 보기</string>
     <string name="dialpad">키패드</string>
@@ -48,8 +48,8 @@
     <string name="export_call_history">통화 기록 내보내기</string>
     <string name="faq_1_title">전화가 걸려오는 소리는 나는데 화면이 안 켜져요. 어떻게 해야 하나요?</string>
     <string name="no_previous_calls">이전 통화를 찾을 수 없음</string>
-    <string name="could_not_access_contacts">연락처에 엑세스할 수 없음</string>
-    <string name="could_not_access_the_call_history">통화 기록에 엑세스할 수 없음</string>
+    <string name="could_not_access_contacts">연락처에 액세스할 수 없음</string>
+    <string name="could_not_access_the_call_history">통화 기록에 액세스할 수 없음</string>
     <string name="remove_confirmation">선택된 통화 내역을 삭제하겠습니까?</string>
     <string name="clear_history_confirmation">모든 통화 내역을 삭제하겠습니까?</string>
     <string name="show_grouped_calls">그룹 통화 표시</string>

@@ -1,8 +1,0 @@
-* Elimina el límit d'historial de trucades.
-* Afegeix la funció de marcació ràpida.
-* Botó de penjar sempre visible a la IU de les trucades.
-* Millora la mida de l'avatar de qui truca i els botons a la IU de trucades.
-* Reorganitza les preferències de marcació en la seva pròpia secció dedicada.
-* Afegeix un avatar per a números desconeguts i contactes sense foto.
-* Afegeix un indicador de progrés per a indicar la recuperació de l'historial de trucades.
-* Afegeix un farciment [... i altres].

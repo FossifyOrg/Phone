@@ -69,4 +69,9 @@
     <string name="unset_default_sim">डिफ़ॉल्ट SIM अनसेट करें</string>
     <string name="app_launcher_name">फ़ोन</string>
     <string name="accept">स्वीकार</string>
+    <string name="faq_2_title">आपातकालीन कॉल क्यों काम नहीं कर रहे?</string>
+    <string name="faq_2_text">सिस्टम प्रतिबंधों के कारण, आपातकालीन कॉल केवल आपके सिस्टम के डिफ़ॉल्ट डायलर या फ़ोन ऐप के ज़रिए ही की जा सकती हैं। यह सुनिश्चित करने के लिए कि आपातकालीन कॉल ठीक से काम करें, आपको सिस्टम ऐप को इंस्टॉल और सक्षम रखना होगा।</string>
+    <string name="faq_3_title">इस ऐप में मेरे कॉन्टैक्ट्स क्यों नहीं दिख रहे?</string>
+    <string name="call_is_being_connected">आपका कॉल कनेक्ट किया जा रहा है…</string>
+    <string name="faq_3_text">Fossify Phone केवल उन संपर्कों को प्रदर्शित करता है जिनके साथ फ़ोन नंबर संबद्ध होता है। बिना फ़ोन नंबर वाले संपर्क ऐप में नहीं दिखाए जाते हैं।</string>
 </resources>

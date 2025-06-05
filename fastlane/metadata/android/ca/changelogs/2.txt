@@ -1,5 +1,0 @@
-* Elimina el límit d'historial de trucades (https://github.com/FossifyOrg/Phone/issues/125).
-* Afegeix la funció de marcació ràpida (https://github.com/FossifyOrg/Phone/issues/60).
-* Botó de penjar sempre és visible a la interfície d'usuari de les trucades (https://github.com/FossifyOrg/Phone/issues/9).
-* Millora la mida de l'avatar de qui truca i els botons a la interfície d'usuari de trucades (https://github.com/FossifyOrg/Phone/issues/118).
-* Reorganitza les preferències de [... i altres].

@@ -1,87 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<string name="app_launcher_name">Opkald</string>
-<string name="default_phone_app_prompt">Vælg venligst denne app som standard til opkald</string>
-<string name="allow_displaying_over_other_apps">Tillad venligst visning over andre apps for pålidelig adfærd</string>
-
-<!-- Contacts -->
+    <string name="app_launcher_name">Opkald</string>
+    <string name="default_phone_app_prompt">Gør venligst denne app til standardopkaldsappen</string>
+    <string name="allow_displaying_over_other_apps">Tillad venligst visning over andre apps for pålidelig adfærd</string>
+    <!-- Contacts -->
 <string name="could_not_access_contacts">Kunne ikke få adgang til dine kontakter</string>
-
-<!-- Recents -->
+    <!-- Recents -->
 <string name="no_previous_calls">Der blev ikke fundet nogen tidligere opkald</string>
-<string name="could_not_access_the_call_history">Kunne ikke få adgang til opkaldshistorikken</string>
-<string name="request_access">Anmod om adgang</string>
-<string name="remove_confirmation">Er du sikker på du vil fjerne de valgte opkald fra opkaldshistorikken?</string>
-<string name="clear_history_confirmation">Er du sikker på at du vil fjerne alt i opkaldshistorikken?</string>
-<string name="show_grouped_calls">Vis grupperede opkald</string>
-<string name="clear_call_history">Ryd opkaldshistorik</string>
-<string name="show_call_details">Vis opkaldsdetaljer</string>
-
-<!-- Dialpad -->
+    <string name="could_not_access_the_call_history">Kunne ikke få adgang til opkaldshistorikken</string>
+    <string name="request_access">Anmod om adgang</string>
+    <string name="remove_confirmation">Er du sikker på du vil fjerne de valgte opkald fra opkaldshistorikken?</string>
+    <string name="clear_history_confirmation">Er du sikker på at du vil fjerne alt i opkaldshistorikken?</string>
+    <string name="show_grouped_calls">Vis grupperede opkald</string>
+    <string name="clear_call_history">Ryd opkaldshistorik</string>
+    <string name="show_call_details">Vis opkaldsdetaljer</string>
+    <!-- Dialpad -->
 <string name="dialpad">Numerisk tastatur</string>
-<string name="asterisk">Stjerne</string>
-<string name="hashtag">Hashtag</string>
-<string name="call_number">Opkaldsnummer</string>
-<string name="dialpad_beeps">Aktiver bip ved klik på tastatur</string>
-<string name="dialpad_vibrations">Aktiver vibration ved klik på tastatur</string>
-
-<!-- Dialer -->
+    <string name="asterisk">Stjerne</string>
+    <string name="hashtag">Hashtag</string>
+    <string name="call_number">Opkaldsnummer</string>
+    <string name="dialpad_beeps">Aktiver bip ved klik på tastatur</string>
+    <string name="dialpad_vibrations">Aktiver vibration ved klik på tastatur</string>
+    <!-- Dialer -->
 <string name="dialer">Opkald</string>
-<string name="accept">Acceptér</string>
-<string name="accept_call">Accepter opkald</string>
-<string name="decline">Afvis</string>
-<string name="decline_call">Afvis opkald</string>
-<string name="unknown_caller">Ukendt nummer</string>
-<string name="is_calling">Ringer…</string>
-<string name="dialing">Ringer op…</string>
-<string name="call_ended">Opkald afsluttet</string>
-<string name="call_ending">Opkald afsluttes</string>
-<string name="ongoing_call">Igangværende opkald</string>
-<string name="select_sim">Vælg et SIM-kort til dette opkald</string>
-<string name="always_use_this_sim">Brug altid dette SIM-kort til dette nummer</string>
-<string name="unset_default_sim">Fravælg standard SIM</string>
-<string name="calls">Opkald</string>
-<string name="turn_microphone_on">Slå mikrofon til</string>
-<string name="turn_microphone_off">Sluk mikrofonen</string>
-<string name="turn_speaker_on">Tænd for højttaleren</string>
-<string name="turn_speaker_off">Sluk højttaleren</string>
-<string name="show_dialpad">Vis opkaldstastatur</string>
-<string name="hide_dialpad">Skjul opkaldstastatur</string>
-<string name="end_call">Afslut opkald</string>
-<string name="hold_call">Parker opkald</string>
-<string name="resume_call">Forsæt opkald</string>
-<string name="call_on_hold">Opkald parkeret</string>
-<string name="call_swap">Ombyt opkald</string>
-<string name="call_merge">Sammenflet opkald</string>
-<string name="call_split">Split opkald op</string>
-<string name="call_add">Tilføj opkald</string>
-<string name="conference_manage">Administrer konferenceopkald</string>
-<string name="conference">Konference</string>
-<string name="audio_route_speaker">Højtaler</string>
-<string name="audio_route_earpiece">Øretelefon</string>
-<string name="audio_route_bluetooth">Bluetooth</string>
-<string name="audio_route_wired_headset">Kablet hovedtelefon</string>
-<string name="audio_route_wired_or_earpiece">Kablet øretelefon</string>
-<string name="choose_audio_route">Vælg audio rute</string>
-<string name="calling_blocked_number">Nummeret du ringer til, er blokeret</string>
-
-<!-- Speed dial -->
+    <string name="accept">Acceptér</string>
+    <string name="accept_call">Accepter opkald</string>
+    <string name="decline">Afvis</string>
+    <string name="decline_call">Afvis opkald</string>
+    <string name="unknown_caller">Ukendt nummer</string>
+    <string name="is_calling">Ringer…</string>
+    <string name="dialing">Ringer op…</string>
+    <string name="call_ended">Opkald afsluttet</string>
+    <string name="call_ending">Opkald afsluttes</string>
+    <string name="ongoing_call">Igangværende opkald</string>
+    <string name="select_sim">Vælg et SIM-kort til dette opkald</string>
+    <string name="always_use_this_sim">Brug altid dette SIM-kort til dette nummer</string>
+    <string name="unset_default_sim">Fravælg standard SIM</string>
+    <string name="calls">Opkald</string>
+    <string name="turn_microphone_on">Tænd mikrofonen</string>
+    <string name="turn_microphone_off">Sluk mikrofonen</string>
+    <string name="turn_speaker_on">Tænd for højttaleren</string>
+    <string name="turn_speaker_off">Sluk højttaleren</string>
+    <string name="show_dialpad">Vis opkaldstastatur</string>
+    <string name="hide_dialpad">Skjul opkaldstastatur</string>
+    <string name="end_call">Afslut opkald</string>
+    <string name="hold_call">Parker opkald</string>
+    <string name="resume_call">Forsæt opkald</string>
+    <string name="call_on_hold">Opkald parkeret</string>
+    <string name="call_swap">Ombyt opkald</string>
+    <string name="call_merge">Sammenflet opkald</string>
+    <string name="call_split">Split opkald op</string>
+    <string name="call_add">Tilføj opkald</string>
+    <string name="conference_manage">Administrer konferenceopkald</string>
+    <string name="conference">Konference</string>
+    <string name="audio_route_speaker">Højtaler</string>
+    <string name="audio_route_earpiece">Øretelefon</string>
+    <string name="audio_route_bluetooth">Bluetooth</string>
+    <string name="audio_route_wired_headset">Kablet hovedtelefon</string>
+    <string name="audio_route_wired_or_earpiece">Kablet øretelefon</string>
+    <string name="choose_audio_route">Vælg audio rute</string>
+    <string name="calling_blocked_number">Nummeret du ringer til, er blokeret</string>
+    <!-- Speed dial -->
 <string name="speed_dial">Hurtigopkald</string>
-<string name="manage_speed_dial">Administrer hurtigopkald</string>
-<string name="speed_dial_label">Klik på et nummer for at tilknytte en kontakt til det. Derefter kan du hurtigt ringe op til den givne kontkakt ved at holde nede på det givne nummer via det numeriske tastatur.</string>
-
-<!-- Settings -->
+    <string name="manage_speed_dial">Administrer hurtigopkald</string>
+    <string name="speed_dial_label">Klik på et nummer for at tilknytte en kontakt til det. Derefter kan du hurtigt ringe op til den givne kontkakt ved at holde nede på det givne nummer via det numeriske tastatur.</string>
+    <!-- Settings -->
 <string name="group_subsequent_calls">Gruppér efterfølgende opkald med samme nummer i opkaldsloggen</string>
-<string name="open_dialpad_by_default">Åbn det numeriske tastatur som standard når appen åbner</string>
-<string name="disable_proximity_sensor">Deaktivér nærhedssensor under opkald</string>
-<string name="disable_swipe_to_answer">Erstat swipe ved besvarelse af indgående opkald med berøring</string>
-<string name="show_incoming_calls_full_screen">Vis altid indkomne opkald i fuld skærm</string>
-<string name="hide_dialpad_numbers">Skjul numre på tastaturet</string>
-<string name="export_call_history">Eksporter opkaldshistorik</string>
-<string name="import_call_history">Importer opkaldshistorik</string>
-
-<!-- FAQ -->
+    <string name="open_dialpad_by_default">Åbn det numeriske tastatur som standard når appen åbner</string>
+    <string name="disable_proximity_sensor">Deaktivér nærhedssensor under opkald</string>
+    <string name="disable_swipe_to_answer">Erstat swipe ved besvarelse af indgående opkald med berøring</string>
+    <string name="show_incoming_calls_full_screen">Vis altid indkomne opkald i fuld skærm</string>
+    <string name="hide_dialpad_numbers">Skjul numre på tastaturet</string>
+    <string name="export_call_history">Eksporter opkaldshistorik</string>
+    <string name="import_call_history">Importer opkaldshistorik</string>
+    <!-- FAQ -->
 <string name="faq_1_title">Jeg hører indgående opkald, men skærmen tænder ikke. Hvad kan jeg gøre?</string>
-<string name="faq_1_text">Sådanne problemer kan have mange enheds- og systemspecifikke årsager, så det er svært at sige noget generelt. Du bør se dig omkring i dine enhedsindstillinger og sikre dig, at appen får lov til at poppe op, når den er i baggrunden, og tillade visning over andre apps.</string>
-
+    <string name="faq_1_text">Sådanne problemer kan have mange enheds- og systemspecifikke årsager, så det er svært at sige noget generelt. Du bør se dig omkring i dine enhedsindstillinger og sikre dig, at appen får lov til at poppe op, når den er i baggrunden, og tillade visning over andre apps.</string>
+    <string name="call_is_being_connected">Dit opkald bliver tilsluttet…</string>
+    <string name="faq_3_title">Hvorfor mangler nogle af mine kontakter i appen?</string>
+    <string name="faq_2_title">Hvorfor fungerer nødopkald ikke korrekt?</string>
+    <string name="faq_3_text">Fossify Opkald viser kun kontakter med et telefonnummer. Kontakter uden telefonnummer vises ikke.</string>
+    <string name="faq_2_text">Grundet systembegrænsninger kan nødopkald kun foretages via systemets standardopkaldsapp. Sørg for, at den er installeret og aktiveret for at sikre, at nødopkald virker.</string>
 </resources>
