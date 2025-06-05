@@ -8,21 +8,23 @@ import org.fossify.commons.extensions.viewBinding
 import org.fossify.phone.activities.SimpleActivity
 import org.fossify.phone.adapters.RecentCallsAdapter
 import org.fossify.phone.databinding.DialogShowGroupedCallsBinding
-import org.fossify.phone.helpers.RecentsHelper
 import org.fossify.phone.models.RecentCall
 
-class ShowGroupedCallsDialog(val activity: BaseSimpleActivity, callIds: ArrayList<Int>) {
+class ShowGroupedCallsDialog(val activity: BaseSimpleActivity, recentCalls: List<RecentCall>) {
     private var dialog: AlertDialog? = null
     private val binding by activity.viewBinding(DialogShowGroupedCallsBinding::inflate)
 
     init {
-        RecentsHelper(activity).getRecentCalls(false) { allRecents ->
-            val recents = allRecents.filter { callIds.contains(it.id) }.toMutableList() as ArrayList<RecentCall>
-            activity.runOnUiThread {
-                RecentCallsAdapter(activity as SimpleActivity, recents, binding.selectGroupedCallsList, null, false) {
-                }.apply {
-                    binding.selectGroupedCallsList.adapter = this
-                }
+        activity.runOnUiThread {
+            RecentCallsAdapter(
+                activity = activity as SimpleActivity,
+                recyclerView = binding.selectGroupedCallsList,
+                refreshItemsListener = null,
+                showOverflowMenu = false,
+                itemClick = {}
+            ).apply {
+                binding.selectGroupedCallsList.adapter = this
+                updateItems(recentCalls)
             }
         }
 

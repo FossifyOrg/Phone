@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_missed_call">@color/md_red_400</color>
+    <color name="color_outgoing_call">@color/md_green_300</color>
+    <color name="color_incoming_call">@color/md_blue_300</color>
+</resources>

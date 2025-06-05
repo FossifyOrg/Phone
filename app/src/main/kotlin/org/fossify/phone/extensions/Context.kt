@@ -6,6 +6,7 @@ import android.media.AudioManager
 import android.net.Uri
 import android.os.PowerManager
 import org.fossify.commons.extensions.telecomManager
+import org.fossify.commons.helpers.ensureBackgroundThread
 import org.fossify.phone.helpers.Config
 import org.fossify.phone.models.SIMAccount
 
@@ -42,5 +43,17 @@ fun Context.areMultipleSIMsAvailable(): Boolean {
         telecomManager.callCapablePhoneAccounts.size > 1
     } catch (ignored: Exception) {
         false
+    }
+}
+
+fun Context.clearMissedCalls() {
+    ensureBackgroundThread {
+        try {
+            // notification cancellation triggers MissedCallNotifier.clearMissedCalls() which, in turn,
+            // should update the database and reset the cached missed call count in MissedCallNotifier.java
+            // https://android.googlesource.com/platform/packages/services/Telecomm/+/master/src/com/android/server/telecom/ui/MissedCallNotifierImpl.java#170
+            telecomManager.cancelMissedCallsNotification()
+        } catch (ignored: Exception) {
+        }
     }
 }

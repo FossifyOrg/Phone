@@ -8,22 +8,22 @@
         android:icon="@drawable/ic_sort_vector"
         android:showAsAction="always"
         android:title="@string/sort_by"
-        app:showAsAction="always" />
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/filter"
         android:icon="@drawable/ic_filter_vector"
         android:title="@string/filter"
-        app:showAsAction="always" />
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/create_new_contact"
         android:icon="@drawable/ic_plus_vector"
         android:title="@string/create_new_contact"
-        app:showAsAction="always" />
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/clear_call_history"
         android:icon="@drawable/ic_delete_vector"
         android:title="@string/clear_call_history"
-        app:showAsAction="always" />
+        app:showAsAction="never" />
     <item
         android:id="@+id/change_view_type"
         android:icon="@drawable/ic_change_view_vector"
@@ -33,20 +33,20 @@
         android:id="@+id/column_count"
         android:icon="@drawable/ic_column_count_vector"
         android:title="@string/column_count"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="never" />
     <item
         android:id="@+id/settings"
         android:icon="@drawable/ic_settings_cog_vector"
         android:title="@string/settings"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="never" />
     <item
         android:id="@+id/about"
         android:icon="@drawable/ic_info_vector"
         android:title="@string/about"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="never" />
     <item
         android:id="@+id/more_apps_from_us"
         android:icon="@drawable/ic_google_play_vector"
-        android:title="@string/more_apps_from_us"
-        app:showAsAction="ifRoom" />
+        android:title="@string/more_fossify_apps"
+        app:showAsAction="never" />
 </menu>

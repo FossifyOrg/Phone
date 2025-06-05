@@ -56,15 +56,22 @@
     <string name="calling_blocked_number">El número al qual esteu trucant està bloquejat</string>
     <string name="speed_dial">Marcatge ràpid</string>
     <string name="manage_speed_dial">Gestiona el marcatge ràpid</string>
-    <string name="speed_dial_label">Feu clic en un número per assignar-li un contacte. A continuació, podeu trucar ràpidament al contacte indicat prement prolongadament el número assignat al marcador.</string>
+    <string name="speed_dial_label">Feu clic en un número per a assignar-li un contacte. A continuació, podeu trucar ràpidament al contacte indicat prement prolongadament el número assignat al marcador.</string>
     <string name="group_subsequent_calls">Agrupa les trucades posteriors amb el mateix número al registre de trucades</string>
     <string name="open_dialpad_by_default">Obre el teclat de marcatge de manera predeterminada quan s\'obri l\'aplicació</string>
     <string name="disable_proximity_sensor">Desactiva el sensor de proximitat durant les trucades</string>
-    <string name="disable_swipe_to_answer">Substitueix el lliscament en respondre a les trucades entrants per fer clic</string>
+    <string name="disable_swipe_to_answer">Substitueix el lliscament en respondre a les trucades entrants amb un clic</string>
     <string name="show_incoming_calls_full_screen">Mostra sempre les trucades entrants a pantalla completa</string>
     <string name="hide_dialpad_numbers">Oculta els números del teclat numèric</string>
     <string name="export_call_history">Exporta l\'historial de trucades</string>
     <string name="import_call_history">Importa l\'historial de trucades</string>
     <string name="faq_1_title">Sento trucades entrants, però la pantalla no s\'encén. Què puc fer\?</string>
     <string name="faq_1_text">Aquests problemes poden tenir moltes raons específiques del dispositiu i del sistema, difícils de dir en general. Hauríeu de mirar per la configuració del dispositiu i assegurar-vos que l\'aplicació pugui aparèixer en segon pla i permetre que es mostri sobre altres aplicacions.</string>
+    <string name="app_launcher_name">Telèfon</string>
+    <string name="audio_route_bluetooth">Bluetooth</string>
+    <string name="faq_2_title">Per què les trucades d\'emergència no funcionen correctament?</string>
+    <string name="faq_3_title">Per què falten alguns dels meus contactes a l\'aplicació?</string>
+    <string name="call_is_being_connected">La trucada s\'està connectant…</string>
+    <string name="faq_2_text">A causa de les restriccions del sistema, les trucades d\'emergència només es poden fer a través de l\'aplicació de marcació o de telèfon predeterminada del sistema. Per a garantir que les trucades d\'emergència funcionin correctament, cal mantenir l\'aplicació del sistema instal·lada i habilitada.</string>
+    <string name="faq_3_text">El Fossify Phone només mostra els contactes que tenen un número de telèfon associat a ells. Els contactes sense número de telèfon no es mostren a l\'aplicació.</string>
 </resources>

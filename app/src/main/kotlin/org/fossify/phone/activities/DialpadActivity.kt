@@ -1,16 +1,13 @@
 package org.fossify.phone.activities
 
 import android.annotation.SuppressLint
-import android.annotation.TargetApi
 import android.content.Intent
 import android.database.Cursor
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.provider.Telephony.Sms.Intents.SECRET_CODE_ACTION
-import android.telephony.PhoneNumberUtils
 import android.telephony.TelephonyManager
 import android.util.TypedValue
 import android.view.KeyEvent
@@ -19,8 +16,6 @@ import android.view.View
 import android.view.ViewConfiguration
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.isVisible
-import com.reddit.indicatorfastscroll.FastScrollItemIndicator
-import org.fossify.commons.dialogs.CallConfirmationDialog
 import org.fossify.commons.extensions.*
 import org.fossify.commons.helpers.*
 import org.fossify.commons.models.contacts.Contact
@@ -29,6 +24,7 @@ import org.fossify.phone.adapters.ContactsAdapter
 import org.fossify.phone.databinding.ActivityDialpadBinding
 import org.fossify.phone.extensions.*
 import org.fossify.phone.helpers.DIALPAD_TONE_LENGTH_MS
+import org.fossify.phone.helpers.RecentsHelper
 import org.fossify.phone.helpers.ToneGeneratorHelper
 import org.fossify.phone.models.SpeedDial
 import java.util.Locale
@@ -257,7 +253,6 @@ class DialpadActivity : SimpleActivity() {
         }
     }
 
-    @TargetApi(Build.VERSION_CODES.O)
     private fun dialpadValueChanged(text: String) {
         val len = text.length
         if (len > 8 && text.startsWith("*#*#") && text.endsWith("#*#*")) {
@@ -277,8 +272,10 @@ class DialpadActivity : SimpleActivity() {
 
         (binding.dialpadList.adapter as? ContactsAdapter)?.finishActMode()
 
-        val filtered = allContacts.filter {
-            var convertedName = PhoneNumberUtils.convertKeypadLettersToDigits(it.name.normalizeString())
+        val filtered = allContacts.filter { contact ->
+            var convertedName = KeypadHelper.convertKeypadLettersToDigits(
+                contact.name.normalizeString()
+            ).filterNot { it.isWhitespace() }
 
             if (hasRussianLocale) {
                 var currConvertedName = ""
@@ -289,36 +286,28 @@ class DialpadActivity : SimpleActivity() {
                 convertedName = currConvertedName
             }
 
-            it.doesContainPhoneNumber(text) || (convertedName.contains(text, true))
+            contact.doesContainPhoneNumber(text) || (convertedName.contains(text, true))
         }.sortedWith(compareBy {
             !it.doesContainPhoneNumber(text)
         }).toMutableList() as ArrayList<Contact>
 
-        binding.letterFastscroller.setupWithRecyclerView(binding.dialpadList, { position ->
-            try {
-                val name = filtered[position].getNameToDisplay()
-                val character = if (name.isNotEmpty()) name.substring(0, 1) else ""
-                FastScrollItemIndicator.Text(character.uppercase(Locale.getDefault()))
-            } catch (e: Exception) {
-                FastScrollItemIndicator.Text("")
-            }
-        })
+        binding.letterFastscroller.setupWithContacts(binding.dialpadList, filtered)
 
         ContactsAdapter(
             activity = this,
             contacts = filtered,
             recyclerView = binding.dialpadList,
-            highlightText = text
-        ) {
-            val contact = it as Contact
-            if (config.showCallConfirmation) {
-                CallConfirmationDialog(this@DialpadActivity, contact.getNameToDisplay()) {
-                    startCallIntent(contact.getPrimaryNumber() ?: return@CallConfirmationDialog)
-                }
-            } else {
-                startCallIntent(contact.getPrimaryNumber() ?: return@ContactsAdapter)
-            }
-        }.apply {
+            highlightText = text,
+            itemClick = {
+                val contact = it as Contact
+                startCallWithConfirmationCheck(contact.getPrimaryNumber() ?: return@ContactsAdapter, contact.getNameToDisplay())
+                Handler().postDelayed({
+                    binding.dialpadInput.setText("")
+                }, 1000)
+            },
+            profileIconClick = {
+                startContactDetailsIntent(it as Contact)
+            }).apply {
             binding.dialpadList.adapter = this
         }
 
@@ -336,20 +325,21 @@ class DialpadActivity : SimpleActivity() {
     private fun initCall(number: String = binding.dialpadInput.value, handleIndex: Int) {
         if (number.isNotEmpty()) {
             if (handleIndex != -1 && areMultipleSIMsAvailable()) {
-                if (config.showCallConfirmation) {
-                    CallConfirmationDialog(this, number) {
-                        callContactWithSim(number, handleIndex == 0)
-                    }
-                } else {
-                    callContactWithSim(number, handleIndex == 0)
-                }
+                callContactWithSimWithConfirmationCheck(number, number, handleIndex == 0)
             } else {
-                if (config.showCallConfirmation) {
-                    CallConfirmationDialog(this, number) {
-                        startCallIntent(number)
+                startCallWithConfirmationCheck(number, number)
+            }
+
+            Handler().postDelayed({
+                binding.dialpadInput.setText("")
+            }, 1000)
+        } else {
+            RecentsHelper(this).getRecentCalls(queryLimit = 1) {
+                val mostRecentNumber = it.firstOrNull()?.phoneNumber
+                if (!mostRecentNumber.isNullOrEmpty()) {
+                    runOnUiThread {
+                        binding.dialpadInput.setText(mostRecentNumber)
                     }
-                } else {
-                    startCallIntent(number)
                 }
             }
         }

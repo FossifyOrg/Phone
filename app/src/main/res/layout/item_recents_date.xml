@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<org.fossify.commons.views.MyTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/date_text_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/activity_margin"
+    android:layout_marginVertical="@dimen/normal_margin"
+    android:textStyle="bold"
+    tools:text="4 July, 2030" />

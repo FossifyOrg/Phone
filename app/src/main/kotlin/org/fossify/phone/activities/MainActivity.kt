@@ -32,6 +32,7 @@ import org.fossify.phone.adapters.ViewPagerAdapter
 import org.fossify.phone.databinding.ActivityMainBinding
 import org.fossify.phone.dialogs.ChangeSortingDialog
 import org.fossify.phone.dialogs.FilterContactSourcesDialog
+import org.fossify.phone.extensions.clearMissedCalls
 import org.fossify.phone.extensions.config
 import org.fossify.phone.extensions.launchCreateNewContactIntent
 import org.fossify.phone.fragments.ContactsFragment
@@ -41,6 +42,10 @@ import org.fossify.phone.fragments.RecentsFragment
 import org.fossify.phone.helpers.OPEN_DIAL_PAD_AT_LAUNCH
 import org.fossify.phone.helpers.RecentsHelper
 import org.fossify.phone.helpers.tabsList
+import org.fossify.phone.models.Events
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 
 class MainActivity : SimpleActivity() {
     private val binding by viewBinding(ActivityMainBinding::inflate)
@@ -60,6 +65,7 @@ class MainActivity : SimpleActivity() {
         refreshMenuItems()
         updateMaterialActivityViews(binding.mainCoordinator, binding.mainHolder, useTransparentNavigation = false, useTopSearchMenu = true)
 
+        EventBus.getDefault().register(this)
         launchedDialer = savedInstanceState?.getBoolean(OPEN_DIAL_PAD_AT_LAUNCH) ?: false
 
         if (isDefaultDialer()) {
@@ -175,11 +181,17 @@ class MainActivity : SimpleActivity() {
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        EventBus.getDefault().unregister(this)
+    }
+
     private fun refreshMenuItems() {
         val currentFragment = getCurrentFragment()
         binding.mainMenu.getToolbar().menu.apply {
             findItem(R.id.clear_call_history).isVisible = currentFragment == getRecentsFragment()
             findItem(R.id.sort).isVisible = currentFragment != getRecentsFragment()
+            findItem(R.id.filter).isVisible = currentFragment != getRecentsFragment()
             findItem(R.id.create_new_contact).isVisible = currentFragment == getContactsFragment()
             findItem(R.id.change_view_type).isVisible = currentFragment == getFavoritesFragment()
             findItem(R.id.column_count).isVisible = currentFragment == getFavoritesFragment() && config.viewType == VIEW_TYPE_GRID
@@ -260,7 +272,7 @@ class MainActivity : SimpleActivity() {
         ConfirmationDialog(this, confirmationText) {
             RecentsHelper(this).removeAllRecentCalls(this) {
                 runOnUiThread {
-                    getRecentsFragment()?.refreshItems()
+                    getRecentsFragment()?.refreshItems(invalidate = true)
                 }
             }
         }
@@ -375,10 +387,6 @@ class MainActivity : SimpleActivity() {
                 // open the Recents tab if we got here by clicking a missed call notification
                 if (intent.action == Intent.ACTION_VIEW && config.showTabs and TAB_CALL_HISTORY > 0) {
                     wantedTab = binding.mainTabsHolder.tabCount - 1
-
-                    ensureBackgroundThread {
-                        clearMissedCalls()
-                    }
                 }
 
                 binding.mainTabsHolder.getTabAt(wantedTab)?.select()
@@ -419,9 +427,14 @@ class MainActivity : SimpleActivity() {
                 updateBottomTabItemColors(it.customView, false, getDeselectedTabDrawableIds()[it.position])
             },
             tabSelectedAction = {
-                binding.mainMenu.closeSearch()
+                getCurrentFragment()?.onSearchQueryChanged(binding.mainMenu.getCurrentQuery())
                 binding.viewPager.currentItem = it.position
                 updateBottomTabItemColors(it.customView, true, getSelectedTabDrawableIds()[it.position])
+
+                val lastPosition = binding.mainTabsHolder.tabCount - 1
+                if (it.position == lastPosition && config.showTabs and TAB_CALL_HISTORY > 0) {
+                    clearMissedCalls()
+                }
             }
         )
 
@@ -475,6 +488,7 @@ class MainActivity : SimpleActivity() {
     }
 
     fun refreshFragments() {
+        cacheContacts()
         getContactsFragment()?.refreshItems()
         getFavoritesFragment()?.refreshItems()
         getRecentsFragment()?.refreshItems()
@@ -535,17 +549,6 @@ class MainActivity : SimpleActivity() {
         }
     }
 
-    @SuppressLint("MissingPermission")
-    private fun clearMissedCalls() {
-        try {
-            // notification cancellation triggers MissedCallNotifier.clearMissedCalls() which, in turn,
-            // should update the database and reset the cached missed call count in MissedCallNotifier.java
-            // https://android.googlesource.com/platform/packages/services/Telecomm/+/master/src/com/android/server/telecom/ui/MissedCallNotifierImpl.java#170
-            telecomManager.cancelMissedCallsNotification()
-        } catch (ignored: Exception) {
-        }
-    }
-
     private fun launchSettings() {
         hideKeyboard()
         startActivity(Intent(applicationContext, SettingsActivity::class.java))
@@ -556,6 +559,8 @@ class MainActivity : SimpleActivity() {
 
         val faqItems = arrayListOf(
             FAQItem(R.string.faq_1_title, R.string.faq_1_text),
+            FAQItem(R.string.faq_2_title, R.string.faq_2_text),
+            FAQItem(R.string.faq_3_title, R.string.faq_3_text),
             FAQItem(R.string.faq_9_title_commons, R.string.faq_9_text_commons)
         )
 
@@ -605,11 +610,27 @@ class MainActivity : SimpleActivity() {
         }
     }
 
-    fun cacheContacts(contacts: List<Contact>) {
-        try {
-            cachedContacts.clear()
-            cachedContacts.addAll(contacts)
-        } catch (e: Exception) {
+    fun cacheContacts() {
+        val privateCursor = getMyContactsCursor(favoritesOnly = false, withPhoneNumbersOnly = true)
+        ContactsHelper(this).getContacts(getAll = true, showOnlyContactsWithNumbers = true) { contacts ->
+            if (SMT_PRIVATE !in config.ignoredContactSources) {
+                val privateContacts = MyContactsContentProvider.getContacts(this, privateCursor)
+                if (privateContacts.isNotEmpty()) {
+                    contacts.addAll(privateContacts)
+                    contacts.sort()
+                }
+            }
+
+            try {
+                cachedContacts.clear()
+                cachedContacts.addAll(contacts)
+            } catch (ignored: Exception) {
+            }
         }
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun refreshCallLog(event: Events.RefreshCallLog) {
+        getRecentsFragment()?.refreshItems()
     }
 }

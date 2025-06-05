@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="default_phone_app_prompt">Por favor, torne este aplicativo o aplicativo de telefone padrão</string>
+    <string name="default_phone_app_prompt">Por favor, torne este o aplicativo de telefone padrão</string>
     <string name="allow_displaying_over_other_apps">Por favor, permita a sobreposição sobre outros aplicativos para um comportamento mais estável</string>
     <string name="could_not_access_contacts">Não foi possível acessar seus contatos</string>
     <string name="no_previous_calls">Nenhuma chamada anterior foi encontrada</string>
@@ -21,7 +21,7 @@
     <string name="accept_call">Aceitar chamada</string>
     <string name="decline">Rejeitar</string>
     <string name="decline_call">Rejeitar chamada</string>
-    <string name="unknown_caller">Número desconocido</string>
+    <string name="unknown_caller">Chamada Desconhecida</string>
     <string name="is_calling">Está chamando…</string>
     <string name="dialing">Discando…</string>
     <string name="call_ended">Chamada encerrada</string>
@@ -50,7 +50,7 @@
     <string name="audio_route_speaker">Alto falante</string>
     <string name="audio_route_earpiece">Fone de ouvido</string>
     <string name="audio_route_wired_headset">Headset com fio</string>
-    <string name="choose_audio_route">Escolha a rota de áudio</string>
+    <string name="choose_audio_route">Escolher a rota de áudio</string>
     <string name="calling_blocked_number">O número que você está ligando está bloqueado</string>
     <string name="speed_dial">Ligação rápida</string>
     <string name="manage_speed_dial">Gerenciar ligações rápidas</string>
@@ -63,4 +63,15 @@
     <string name="hide_dialpad_numbers">Ocultar números do teclado</string>
     <string name="faq_1_title">Ouço chamadas recebidas, mas a tela não liga. O que eu posso fazer?</string>
     <string name="faq_1_text">Esses problemas podem ter muitos motivos específicos do dispositivo e do sistema, difíceis de dizer em geral. Você deve olhar em volta nas configurações do seu dispositivo e certificar-se de que o aplicativo pode aparecer quando estiver em segundo plano e permitir a exibição sobre outros aplicativos.</string>
+    <string name="export_call_history">Exportar histórico de chamadas</string>
+    <string name="audio_route_bluetooth">Bluetooth</string>
+    <string name="app_launcher_name">Telefone - Fossify</string>
+    <string name="import_call_history">Importar histórico de chamadas</string>
+    <string name="audio_route_wired_or_earpiece">Com fio ou fone de ouvido</string>
+    <string name="call_is_being_connected">Sua chamada está sendo conectada…</string>
+    <string name="faq_3_title">Por que alguns dos meus contatos estão faltando no aplicativo?</string>
+    <string name="hashtag">Jogo da velha</string>
+    <string name="faq_2_title">Por que as chamadas de emergência não funcionam corretamente?</string>
+    <string name="faq_2_text">Devido a restrições do sistema, chamadas de emergência só podem ser feitas por meio do discador padrão do seu sistema ou do aplicativo de telefone. Para garantir que as chamadas de emergência funcionem corretamente, você precisa manter o aplicativo do sistema instalado e habilitado.</string>
+    <string name="faq_3_text">O Fossify Phone exibe apenas contatos que tenham um número de telefone associado a eles. Contatos sem um número de telefone não são exibidos no aplicativo.</string>
 </resources>

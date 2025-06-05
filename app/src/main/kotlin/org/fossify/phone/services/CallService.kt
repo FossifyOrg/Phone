@@ -12,6 +12,8 @@ import org.fossify.phone.extensions.powerManager
 import org.fossify.phone.helpers.CallManager
 import org.fossify.phone.helpers.CallNotificationManager
 import org.fossify.phone.helpers.NoCall
+import org.fossify.phone.models.Events
+import org.greenrobot.eventbus.EventBus
 
 class CallService : InCallService() {
     private val callNotificationManager by lazy { CallNotificationManager(this) }
@@ -61,6 +63,8 @@ class CallService : InCallService() {
                 startActivity(CallActivity.getStartIntent(this))
             }
         }
+
+        EventBus.getDefault().post(Events.RefreshCallLog)
     }
 
     override fun onCallAudioStateChanged(audioState: CallAudioState?) {

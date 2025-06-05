@@ -1,0 +1,9 @@
+- Fixed an issue where call history wasn't refreshing.
+- Fixed a bug that caused search not to find older call logs.
+- Updated menu design for better UI/UX.
+- Disabled call action buttons after a call ends for better UI/UX.
+- Grouped call history entries by date.
+- Added an option to format phone numbers in the call log.
+- Updated call direction icons and colors in the call history.
+- Restructured the in-call UI to be more responsive to different screen sizes.
+- Added some translations.
