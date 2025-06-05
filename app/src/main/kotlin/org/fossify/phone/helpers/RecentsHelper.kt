@@ -12,6 +12,7 @@ import org.fossify.phone.R
 import org.fossify.phone.activities.SimpleActivity
 import org.fossify.phone.extensions.getAvailableSIMCardLabels
 import org.fossify.phone.models.RecentCall
+import org.fossify.phone.models.SIMAccount
 
 class RecentsHelper(private val context: Context) {
     companion object {
@@ -138,9 +139,9 @@ class RecentsHelper(private val context: Context) {
             Calls.PHONE_ACCOUNT_ID
         )
 
-        val accountIdToSimIDMap = HashMap<String, Int>()
+        val accountIdToSimAccountMap = HashMap<String, SIMAccount>()
         context.getAvailableSIMCardLabels().forEach {
-            accountIdToSimIDMap[it.handle.id] = it.id
+            accountIdToSimAccountMap[it.handle.id] = it
         }
 
         val cursor = if (isNougatPlus()) {
@@ -232,7 +233,7 @@ class RecentsHelper(private val context: Context) {
                 val duration = cursor.getIntValue(Calls.DURATION)
                 val type = cursor.getIntValue(Calls.TYPE)
                 val accountId = cursor.getStringValue(Calls.PHONE_ACCOUNT_ID)
-                val simID = accountIdToSimIDMap[accountId] ?: -1
+                val simAccount = accountIdToSimAccountMap[accountId]
                 var specificNumber = ""
                 var specificType = ""
 
@@ -255,7 +256,8 @@ class RecentsHelper(private val context: Context) {
                         startTS = startTS,
                         duration = duration,
                         type = type,
-                        simID = simID,
+                        simID = simAccount?.id ?: -1,
+                        simColor = simAccount?.color ?: -1,
                         specificNumber = specificNumber,
                         specificType = specificType,
                         isUnknownNumber = isUnknownNumber

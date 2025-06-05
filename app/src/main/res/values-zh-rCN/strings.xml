@@ -72,6 +72,6 @@
     <string name="faq_2_text">由于系统限制，紧急呼叫只能通过系统默认拨号器或电话应用拨打。为确保紧急呼叫正常工作，您需要保持系统应用安装并启用。</string>
     <string name="faq_2_title">为什么紧急呼叫无法正常工作？</string>
     <string name="faq_3_title">为什么应用中缺少我的一些联系人？</string>
-    <string name="faq_3_text">Fossify 电话仅显示有电话号码的联系人。没有电话号码的联系人不会显示在应用中。</string>
+    <string name="faq_3_text">Fossify 电话仅显示有电话号码与之相关联的联系人。没有电话号码的联系人不会显示在应用中。</string>
     <string name="call_is_being_connected">正在连接您的通话…</string>
 </resources>

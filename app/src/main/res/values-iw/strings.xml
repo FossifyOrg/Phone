@@ -22,7 +22,7 @@
     <string name="decline_call">לדחות שיחה</string>
     <string name="unknown_caller">מספר חסוי</string>
     <string name="is_calling">מתקשר…</string>
-    <string name="dialing">חיוג…</string>
+    <string name="dialing">מחייג…</string>
     <string name="call_ended">השיחה הסתיימה</string>
     <string name="call_ending">סיום שיחה</string>
     <string name="ongoing_call">שיחה פעילה</string>
@@ -52,7 +52,7 @@
     <string name="group_subsequent_calls">מזג שיחות עוקבות עם אותו מספר ביומן השיחות</string>
     <string name="open_dialpad_by_default">פתח את לוח החיוג כברירת מחדל כאשר האפליקציה נפתחת</string>
     <string name="disable_proximity_sensor">השבת את חיישן הקרבה במהלך שיחות</string>
-    <string name="disable_swipe_to_answer">החלף החלקה בתגובה לשיחות נכנסות בלחיצה</string>
+    <string name="disable_swipe_to_answer">הפעל לחיצה במקום החלקה במענה לשיחות נכנסות</string>
     <string name="show_incoming_calls_full_screen">הצג תמיד שיחות נכנסות במסך מלא</string>
     <string name="call_is_being_connected">השיחה שלך מחוברת…</string>
     <string name="export_call_history">ייצוא היסטוריית שיחות</string>
