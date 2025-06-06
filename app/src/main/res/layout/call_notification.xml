@@ -23,7 +23,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/notification_caller_name"
         android:alpha="0.8"
-        android:textDirection="firstStrongLtr"
         tools:text="123 456 789" />
 
     <ImageView
