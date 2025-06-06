@@ -57,6 +57,7 @@ class RecentCallsAdapter(
     private var durationPadding = resources.getDimension(R.dimen.normal_margin).toInt()
     private var phoneNumberUtilInstance: PhoneNumberUtil = PhoneNumberUtil.getInstance()
     private var phoneNumberOfflineGeocoderInstance: PhoneNumberOfflineGeocoder = PhoneNumberOfflineGeocoder.getInstance()
+    private val cachedSimColors = HashMap<Pair<Int,Int>, Int>()
 
     init {
         initDrawables()
@@ -529,16 +530,17 @@ class RecentCallsAdapter(
                     setTextSize(TypedValue.COMPLEX_UNIT_PX, currentFontSize * 0.8f)
                     beVisibleIf(
                         phoneNumber != null
-                            && phoneNumber.countryCodeSource != Phonenumber.PhoneNumber.CountryCodeSource.FROM_DEFAULT_COUNTRY
-                            && (location != locale.displayCountry || matchingContact == null)
+                                && phoneNumber.countryCodeSource != Phonenumber.PhoneNumber.CountryCodeSource.FROM_DEFAULT_COUNTRY
+                                && (location != locale.displayCountry || matchingContact == null)
                     )
                 }
 
                 itemRecentsSimImage.beVisibleIf(areMultipleSIMsAvailable && call.simID != -1)
                 itemRecentsSimId.beVisibleIf(areMultipleSIMsAvailable && call.simID != -1)
                 if (areMultipleSIMsAvailable && call.simID != -1) {
-                    itemRecentsSimImage.applyColorFilter(textColor)
-                    itemRecentsSimId.setTextColor(textColor.getContrastColor())
+                    val simColor = getAdjustedSimColor(call.simColor)
+                    itemRecentsSimImage.applyColorFilter(simColor)
+                    itemRecentsSimId.setTextColor(simColor.getContrastColor())
                     itemRecentsSimId.text = call.simID.toString()
                 }
 
@@ -583,6 +585,12 @@ class RecentCallsAdapter(
         }
     }
 
+    private fun getAdjustedSimColor(simColor: Int): Int {
+        return cachedSimColors.getOrPut(simColor to backgroundColor) {
+            simColor.adjustForContrast(backgroundColor)
+        }
+    }
+
     private inner class RecentCallDateViewHolder(val binding: ItemRecentsDateBinding) : ViewHolder(binding.root) {
         fun bind(date: CallLogItem.Date) {
             binding.dateTextView.apply {
@@ -614,16 +622,16 @@ class RecentCallsDiffCallback : DiffUtil.ItemCallback<CallLogItem>() {
             oldItem is CallLogItem.Date && newItem is CallLogItem.Date -> oldItem.timestamp == newItem.timestamp && oldItem.dayCode == newItem.dayCode
             oldItem is RecentCall && newItem is RecentCall -> {
                 oldItem.phoneNumber == newItem.phoneNumber &&
-                    oldItem.name == newItem.name &&
-                    oldItem.photoUri == newItem.photoUri &&
-                    oldItem.startTS == newItem.startTS &&
-                    oldItem.duration == newItem.duration &&
-                    oldItem.type == newItem.type &&
-                    oldItem.simID == newItem.simID &&
-                    oldItem.specificNumber == newItem.specificNumber &&
-                    oldItem.specificType == newItem.specificType &&
-                    oldItem.isUnknownNumber == newItem.isUnknownNumber &&
-                    oldItem.groupedCalls?.size == newItem.groupedCalls?.size
+                        oldItem.name == newItem.name &&
+                        oldItem.photoUri == newItem.photoUri &&
+                        oldItem.startTS == newItem.startTS &&
+                        oldItem.duration == newItem.duration &&
+                        oldItem.type == newItem.type &&
+                        oldItem.simID == newItem.simID &&
+                        oldItem.specificNumber == newItem.specificNumber &&
+                        oldItem.specificType == newItem.specificType &&
+                        oldItem.isUnknownNumber == newItem.isUnknownNumber &&
+                        oldItem.groupedCalls?.size == newItem.groupedCalls?.size
             }
 
             else -> false

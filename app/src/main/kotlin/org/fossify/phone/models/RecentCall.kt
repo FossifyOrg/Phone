@@ -18,6 +18,7 @@ data class RecentCall(
     val duration: Int,
     val type: Int,
     val simID: Int,
+    val simColor: Int,
     val specificNumber: String,
     val specificType: String,
     val isUnknownNumber: Boolean,
