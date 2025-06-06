@@ -264,15 +264,45 @@
             </RelativeLayout>
 
             <include
-                android:id="@+id/settings_startup_divider"
+                android:id="@+id/settings_main_screen_divider"
                 layout="@layout/divider" />
 
             <TextView
-                android:id="@+id/settings_calls_label"
+                android:id="@+id/settings_list_view_label"
                 style="@style/SettingsSectionLabelStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/calls" />
+                android:text="@string/list_view" />
+
+            <RelativeLayout
+                android:id="@+id/settings_show_contact_thumbnails_holder"
+                style="@style/SettingsHolderCheckboxStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <org.fossify.commons.views.MyAppCompatCheckbox
+                    android:id="@+id/settings_show_contact_thumbnails"
+                    style="@style/SettingsCheckboxStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/show_contact_thumbnails" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/settings_start_name_with_surname_holder"
+                style="@style/SettingsHolderCheckboxStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <org.fossify.commons.views.MyAppCompatCheckbox
+                    android:id="@+id/settings_start_name_with_surname"
+                    style="@style/SettingsCheckboxStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/start_name_with_surname" />
+
+            </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/settings_group_subsequent_calls_holder"
@@ -288,6 +318,17 @@
                     android:text="@string/group_subsequent_calls" />
 
             </RelativeLayout>
+
+            <include
+                android:id="@+id/settings_startup_divider"
+                layout="@layout/divider" />
+
+            <TextView
+                android:id="@+id/settings_calls_label"
+                style="@style/SettingsSectionLabelStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/calls" />
 
             <RelativeLayout
                 android:id="@+id/settings_show_call_confirmation_holder"

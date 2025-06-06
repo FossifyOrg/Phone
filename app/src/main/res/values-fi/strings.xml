@@ -57,6 +57,7 @@
     <string name="speed_dial">Pikavalinta</string>
     <string name="manage_speed_dial">Hallitse pikavalintoja</string>
     <string name="speed_dial_label">Paina numeroa määrittääksesi siihen yhteystiedon. Voit soittaa yhteystiedolle painamalla puhelimen numeronäppäimistöä pitkään.</string>
+    <string name="show_contact_thumbnails">Näytä yhteystietojen kuvakkeet</string>
     <string name="group_subsequent_calls">Ryhmittele samojen numeroiden puhelut puheluhistoriassa</string>
     <string name="open_dialpad_by_default">Avaa sovellus numeronäppäimiin</string>
     <string name="disable_proximity_sensor">Poista läheisyysanturi käytöstä puheluiden ajaksi</string>

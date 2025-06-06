@@ -57,6 +57,7 @@
     <string name="speed_dial">Marcación rápida</string>
     <string name="manage_speed_dial">Xestionar marcacións rápidas</string>
     <string name="speed_dial_label">Preme no número para atribuír un contacto á marcación rápida. Así, poderás chamar directamente ao contacto a través da tecla da marcación rápida.</string>
+    <string name="show_contact_thumbnails">Mostrar miniatura do contacto</string>
     <string name="group_subsequent_calls">Agrupar, no rexisto, as chamadas para o mesmo contacto</string>
     <string name="open_dialpad_by_default">Por defecto, abrir o marcador ao abrir a app</string>
     <string name="disable_proximity_sensor">Desactivar sensor de proximidade durante as chamadas</string>

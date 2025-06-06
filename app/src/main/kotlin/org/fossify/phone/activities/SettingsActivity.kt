@@ -84,6 +84,7 @@ class SettingsActivity : SimpleActivity() {
         setupDefaultTab()
         setupDialPadOpen()
         setupGroupSubsequentCalls()
+        setupShowContactThumbnails()
         setupStartNameWithSurname()
         setupFormatPhoneNumbers()
         setupDialpadVibrations()
@@ -248,6 +249,16 @@ class SettingsActivity : SimpleActivity() {
             settingsGroupSubsequentCallsHolder.setOnClickListener {
                 settingsGroupSubsequentCalls.toggle()
                 config.groupSubsequentCalls = settingsGroupSubsequentCalls.isChecked
+            }
+        }
+    }
+
+    private fun setupShowContactThumbnails() {
+        binding.apply {
+            settingsShowContactThumbnails.isChecked = config.showContactThumbnails
+            settingsShowContactThumbnailsHolder.setOnClickListener {
+                settingsShowContactThumbnails.toggle()
+                config.showContactThumbnails = settingsShowContactThumbnails.isChecked
             }
         }
     }

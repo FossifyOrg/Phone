@@ -55,6 +55,7 @@
     <string name="speed_dial">Ligação rápida</string>
     <string name="manage_speed_dial">Gerenciar ligações rápidas</string>
     <string name="speed_dial_label">Clique em um número para atribuir um contato a ele. Você pode então ligar rapidamente para o contato com um toque longo neste número no discador.</string>
+    <string name="show_contact_thumbnails">Mostrar miniatura do contato</string>
     <string name="group_subsequent_calls">Agrupar as chamadas consecutivas com o mesmo número no histórico de chamadas</string>
     <string name="open_dialpad_by_default">Mostrar o discador ao abrir o aplicativo</string>
     <string name="disable_proximity_sensor">Desativar sensor de proximidade durante as chamadas</string>

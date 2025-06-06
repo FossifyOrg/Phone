@@ -57,6 +57,7 @@
     <string name="speed_dial">Брзо бирање</string>
     <string name="manage_speed_dial">Управљајте брзим бирањем</string>
     <string name="speed_dial_label">Кликните на број да бисте му доделили контакт. Затим можете брзо да позовете дати контакт дугим притиском на дати број на бирачу.</string>
+    <string name="show_contact_thumbnails">Прикажи сличице контаката</string>
     <string name="group_subsequent_calls">Групирајте следеће позиве са истим бројем у евиденцији позива</string>
     <string name="open_dialpad_by_default">Подразумевано отворите тастатуру за бирање бројева када се апликација отвори</string>
     <string name="disable_proximity_sensor">Онемогућите сензор близине током позива</string>

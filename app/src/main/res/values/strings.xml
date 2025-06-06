@@ -72,7 +72,8 @@
     <string name="speed_dial_label">Click on a number to assign a contact to it. You can then quickly call the given contact by long pressing the given number at the dialer.</string>
 
     <!-- Settings -->
-    <string name="group_subsequent_calls">Group subsequent calls with the same number at the call log</string>
+    <string name="show_contact_thumbnails">Show contact thumbnails</string>
+    <string name="group_subsequent_calls">Group subsequent calls with the same number</string>
     <string name="open_dialpad_by_default">Open the dialpad by default when the app opens</string>
     <string name="disable_proximity_sensor">Disable proximity sensor during calls</string>
     <string name="disable_swipe_to_answer">Replace swiping at responding to incoming calls with clicking</string>

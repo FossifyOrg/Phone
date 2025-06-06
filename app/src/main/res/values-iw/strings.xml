@@ -49,6 +49,7 @@
     <string name="speed_dial">חיוג מהיר</string>
     <string name="manage_speed_dial">נהל חיוג מהיר</string>
     <string name="speed_dial_label">לחץ על מספר כדי להקצות לו איש קשר. לאחר מכן תוכל להתקשר במהירות לאיש הקשר שבחרת על ידי לחיצה ארוכה על המספר הנבחר בחייגן.</string>
+    <string name="show_contact_thumbnails">הצג תמונות ממוזערות של אנשי קשר</string>
     <string name="group_subsequent_calls">מזג שיחות עוקבות עם אותו מספר ביומן השיחות</string>
     <string name="open_dialpad_by_default">פתח את לוח החיוג כברירת מחדל כאשר האפליקציה נפתחת</string>
     <string name="disable_proximity_sensor">השבת את חיישן הקרבה במהלך שיחות</string>

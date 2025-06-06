@@ -474,6 +474,8 @@ class RecentCallsAdapter(
                     nameToShow = SpannableString(nameToShow.toString().highlightTextPart(textToHighlight, properPrimaryColor))
                 }
 
+                itemRecentsImage.beVisibleIf(activity.config.showContactThumbnails)
+
                 itemRecentsName.apply {
                     text = nameToShow
                     setTextColor(textColor)

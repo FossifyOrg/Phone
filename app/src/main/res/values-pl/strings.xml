@@ -57,6 +57,7 @@
     <string name="speed_dial">Szybkie wybieranie</string>
     <string name="manage_speed_dial">Zarządzaj szybkim wybieraniem</string>
     <string name="speed_dial_label">Naciśnij cyfrę, aby przypisać do niej kontakt. Możesz wtedy szybko zadzwonić do danego kontaktu przez długie naciśnięcie odpowiedniej cyfry na panelu wybierania.</string>
+    <string name="show_contact_thumbnails">Pokazuj miniaturki kontaktów</string>
     <string name="group_subsequent_calls">Grupuj kolejne połączenia z tym samym numerem w rejestrze połączeń</string>
     <string name="open_dialpad_by_default">Otwieraj panel wybierania numeru domyślnie przy uruchomieniu aplikacji</string>
     <string name="disable_proximity_sensor">Wyłączaj czujnik zbliżeniowy podczas połączeń</string>
