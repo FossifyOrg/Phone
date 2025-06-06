@@ -96,9 +96,9 @@
             android:layout_marginEnd="@dimen/activity_margin"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:layoutDirection="ltr"
-            android:paddingStart="@dimen/normal_margin"
-            android:paddingEnd="@dimen/normal_margin"
-            android:src="@drawable/ic_clear_vector"
+            android:paddingStart="@dimen/medium_margin"
+            android:paddingEnd="@dimen/medium_margin"
+            android:src="@drawable/ic_clear_outline_vector"
             app:layout_constraintBottom_toBottomOf="@+id/dialpad_input"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/dialpad_input" />
