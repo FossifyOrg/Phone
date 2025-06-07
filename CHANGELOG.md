@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Dialpad screen now respects the default SIM preference ([#50])
+
 ## [1.5.0] - 2025-06-06
 
 ### Added
@@ -157,6 +161,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#15]: https://github.com/FossifyOrg/Contacts/issues/15
 [#35]: https://github.com/FossifyOrg/Phone/issues/35
 [#39]: https://github.com/FossifyOrg/Phone/issues/39
+[#50]: https://github.com/FossifyOrg/Phone/issues/50
 [#60]: https://github.com/FossifyOrg/Phone/issues/60
 [#81]: https://github.com/FossifyOrg/Phone/issues/81
 [#88]: https://github.com/FossifyOrg/Phone/issues/88
