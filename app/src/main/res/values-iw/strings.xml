@@ -56,7 +56,7 @@
     <string name="show_incoming_calls_full_screen">הצג תמיד שיחות נכנסות במסך מלא</string>
     <string name="call_is_being_connected">השיחה שלך מחוברת…</string>
     <string name="export_call_history">ייצוא היסטוריית שיחות</string>
-    <string name="import_call_history">ייבא היסטוריית שיחות</string>
+    <string name="import_call_history">ייבוא היסטוריית שיחות</string>
     <string name="faq_1_title">אני שומע שיחות נכנסות, אבל המסך לא נדלק. מה אפשר לעשות?</string>
     <string name="faq_1_text">לבעיות כאלה יכולות להיות סיבות רבות למכשיר ולמערכת, שקשה לומר באופן כללי. כדאי להסתכל בהגדרות המכשיר ולוודא בהגדרות סוללה שהאפליקציה מורשית ברקע ולאפשר הצגה מעל אפליקציות אחרות.</string>
     <string name="faq_2_text">בשל הגבלות המערכת, ניתן לבצע שיחות חירום רק דרך חייגן ברירת המחדל של המערכת או אפליקציית הטלפון. כדי להבטיח ששיחות חירום פועלות כראוי, עליך להשאיר את אפליקציית המערכת מותקנת ומופעלת.</string>
