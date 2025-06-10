@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="default_phone_app_prompt">אנא הפוך את האפליקציה הזו לחייגן ברירת המחדל</string>
-    <string name="allow_displaying_over_other_apps">אנא אפשר הצגה מעל אפליקציות אחרות לצורך התנהגות אמינה</string>
+    <string name="allow_displaying_over_other_apps">אנא אפשר הצגה מעל אפליקציות אחרות לצורך פעילות תקינה</string>
     <string name="could_not_access_contacts">לא ניתן היה לגשת לאנשי הקשר שלך נא אפשר ידנית דרך הגדרות האפליקציה</string>
     <string name="no_previous_calls">לא נמצאו שיחות קודמות</string>
     <string name="could_not_access_the_call_history">לא ניתן היה לגשת להיסטוריית השיחות נא התקן מחדש או אפשר הרשאות</string>
