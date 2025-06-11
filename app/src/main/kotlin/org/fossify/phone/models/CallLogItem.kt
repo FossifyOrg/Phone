@@ -1,5 +1,7 @@
 package org.fossify.phone.models
 
+import org.fossify.commons.helpers.DAY_SECONDS
+
 sealed class CallLogItem {
     data class Date(
         val timestamp: Long,
@@ -8,7 +10,7 @@ sealed class CallLogItem {
 
     fun getItemId(): Int {
         return when (this) {
-            is Date -> dayCode.hashCode()
+            is Date -> -(timestamp / (DAY_SECONDS * 1000L)).toInt()
             is RecentCall -> id
         }
     }

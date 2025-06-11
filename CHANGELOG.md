@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Fixes crash when searching in call history ([#378])
+
 ## [1.5.0] - 2025-06-06
 
 ### Added
@@ -179,3 +183,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#347]: https://github.com/FossifyOrg/Phone/issues/347
 [#357]: https://github.com/FossifyOrg/Phone/issues/357
 [#359]: https://github.com/FossifyOrg/Phone/issues/359
+[#378]: https://github.com/FossifyOrg/Phone/issues/378

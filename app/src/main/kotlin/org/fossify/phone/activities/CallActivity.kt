@@ -760,7 +760,7 @@ class CallActivity : SimpleActivity() {
         audioRouteChooserDialog?.dismissAllowingStateLoss()
 
         if (isCallEnded) {
-            finishAndRemoveTask()
+            safeFinishAndRemoveTask()
             return
         }
 
@@ -776,13 +776,25 @@ class CallActivity : SimpleActivity() {
                 @SuppressLint("SetTextI18n")
                 binding.callStatusLabel.text = "${callDuration.getFormattedDuration()} (${getString(R.string.call_ended)})"
                 Handler(mainLooper).postDelayed(3000) {
-                    finishAndRemoveTask()
+                    safeFinishAndRemoveTask()
                 }
             } else {
                 disableAllActionButtons()
                 binding.callStatusLabel.text = getString(R.string.call_ended)
                 finish()
             }
+        }
+    }
+
+    private fun safeFinishAndRemoveTask() {
+        try {
+            if (intent != null) {
+                finishAndRemoveTask()
+            } else {
+                finish()
+            }
+        } catch (_: Exception) {
+            finish()
         }
     }
 
