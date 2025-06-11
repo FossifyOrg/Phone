@@ -11,7 +11,7 @@
     <string name="show_grouped_calls">הצג שיחות מקובצות</string>
     <string name="clear_call_history">נקה היסטוריית שיחות</string>
     <string name="show_call_details">הצג פרטי שיחה</string>
-    <string name="dialpad">חייגן</string>
+    <string name="dialpad">לוח חיוג</string>
     <string name="asterisk">כוכבית</string>
     <string name="hashtag">סולמית</string>
     <string name="call_number">מספר שיחה</string>
@@ -34,8 +34,8 @@
     <string name="turn_microphone_off">כבה את המיקרופון</string>
     <string name="turn_speaker_on">הפעל את הרמקול</string>
     <string name="turn_speaker_off">כבה את הרמקול</string>
-    <string name="show_dialpad">הצג חייגן</string>
-    <string name="hide_dialpad">הסתר חייגן</string>
+    <string name="show_dialpad">הצג לוח חיוג</string>
+    <string name="hide_dialpad">הסתר לוח חיוג</string>
     <string name="end_call">נתק שיחה</string>
     <string name="hold_call">השהה שיחה</string>
     <string name="resume_call">המשך שיחה</string>
