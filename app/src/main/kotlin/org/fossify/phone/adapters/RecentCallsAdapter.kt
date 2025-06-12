@@ -112,7 +112,7 @@ class RecentCallsAdapter(
 
     override fun getSelectableItemCount() = currentList.filterIsInstance<RecentCall>().size
 
-    override fun getIsItemSelectable(position: Int) = currentList[position] is RecentCall
+    override fun getIsItemSelectable(position: Int) = currentList.getOrNull(position) is RecentCall
 
     override fun getItemSelectionKey(position: Int) = currentList.getOrNull(position)?.getItemId()
 
