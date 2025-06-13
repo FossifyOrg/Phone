@@ -12,7 +12,7 @@ commons = "3.0.3"
 #Gradle
 gradlePlugins-agp = "8.10.1"
 #Other
-indicatorFastScroll = "4524cd0b61"
+indicatorFastScroll = "c7873f7168"
 autofitTextView = "0.2.1"
 libphonenumberVersion = "9.0.7"
 #build
