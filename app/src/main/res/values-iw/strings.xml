@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="default_phone_app_prompt">אנא הפוך את האפליקציה הזו לחייגן ברירת המחדל</string>
-    <string name="allow_displaying_over_other_apps">אנא אפשר הצגה מעל אפליקציות אחרות לצורך התנהגות אמינה</string>
+    <string name="allow_displaying_over_other_apps">אנא אפשר הצגה מעל אפליקציות אחרות לצורך פעילות תקינה</string>
     <string name="could_not_access_contacts">לא ניתן היה לגשת לאנשי הקשר שלך נא אפשר ידנית דרך הגדרות האפליקציה</string>
     <string name="no_previous_calls">לא נמצאו שיחות קודמות</string>
     <string name="could_not_access_the_call_history">לא ניתן היה לגשת להיסטוריית השיחות נא התקן מחדש או אפשר הרשאות</string>
@@ -11,7 +11,7 @@
     <string name="show_grouped_calls">הצג שיחות מקובצות</string>
     <string name="clear_call_history">נקה היסטוריית שיחות</string>
     <string name="show_call_details">הצג פרטי שיחה</string>
-    <string name="dialpad">חייגן</string>
+    <string name="dialpad">לוח חיוג</string>
     <string name="asterisk">כוכבית</string>
     <string name="hashtag">סולמית</string>
     <string name="call_number">מספר שיחה</string>
@@ -34,8 +34,8 @@
     <string name="turn_microphone_off">כבה את המיקרופון</string>
     <string name="turn_speaker_on">הפעל את הרמקול</string>
     <string name="turn_speaker_off">כבה את הרמקול</string>
-    <string name="show_dialpad">הצג חייגן</string>
-    <string name="hide_dialpad">הסתר חייגן</string>
+    <string name="show_dialpad">הצג לוח חיוג</string>
+    <string name="hide_dialpad">הסתר לוח חיוג</string>
     <string name="end_call">נתק שיחה</string>
     <string name="hold_call">השהה שיחה</string>
     <string name="resume_call">המשך שיחה</string>
@@ -56,7 +56,7 @@
     <string name="show_incoming_calls_full_screen">הצג תמיד שיחות נכנסות במסך מלא</string>
     <string name="call_is_being_connected">השיחה שלך מחוברת…</string>
     <string name="export_call_history">ייצוא היסטוריית שיחות</string>
-    <string name="import_call_history">ייבא היסטוריית שיחות</string>
+    <string name="import_call_history">ייבוא היסטוריית שיחות</string>
     <string name="faq_1_title">אני שומע שיחות נכנסות, אבל המסך לא נדלק. מה אפשר לעשות?</string>
     <string name="faq_1_text">לבעיות כאלה יכולות להיות סיבות רבות למכשיר ולמערכת, שקשה לומר באופן כללי. כדאי להסתכל בהגדרות המכשיר ולוודא בהגדרות סוללה שהאפליקציה מורשית ברקע ולאפשר הצגה מעל אפליקציות אחרות.</string>
     <string name="faq_2_text">בשל הגבלות המערכת, ניתן לבצע שיחות חירום רק דרך חייגן ברירת המחדל של המערכת או אפליקציית הטלפון. כדי להבטיח ששיחות חירום פועלות כראוי, עליך להשאיר את אפליקציית המערכת מותקנת ומופעלת.</string>
