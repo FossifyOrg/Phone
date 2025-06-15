@@ -1,0 +1,4 @@
+Fixed:
+
+• Fixes crash when searching in call history 
+
