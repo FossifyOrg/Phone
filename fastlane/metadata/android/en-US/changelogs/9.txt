@@ -1,0 +1,16 @@
+Added:
+
+• Backspace button on call screen dialpad
+
+Changed:
+
+• SIM indicators now use system-defined colors
+• Search query is now preserved when switching tabs
+• Updated translations
+
+Fixed:
+
+• Calling from the favorites grid view now works as expected
+• Fixed phone number text direction in RTL layout
+• Fixed incorrect colors on conference call screen
+• Fixes crash when searching in call history 
