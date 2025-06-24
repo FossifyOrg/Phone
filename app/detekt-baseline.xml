@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <SmellBaseline>
-  <ManuallySuppressedIssues></ManuallySuppressedIssues>
+  <ManuallySuppressedIssues/>
   <CurrentIssues>
     <ID>ComplexCondition:Activity.kt$contact.rawId &gt; 1000000 &amp;&amp; contact.contactId &gt; 1000000 &amp;&amp; contact.rawId == contact.contactId &amp;&amp; (isPackageInstalled(simpleContacts) || isPackageInstalled(simpleContactsDebug))</ID>
     <ID>ComplexCondition:CallService.kt$CallService$!powerManager.isInteractive || call.isOutgoing() || isScreenLocked || config.alwaysShowFullscreen</ID>
@@ -9,27 +9,30 @@
     <ID>CyclomaticComplexMethod:CallActivity.kt$CallActivity$@SuppressLint("ClickableViewAccessibility") private fun handleSwipe()</ID>
     <ID>CyclomaticComplexMethod:CallManager.kt$CallManager.Companion$fun getPhoneState(): PhoneState</ID>
     <ID>CyclomaticComplexMethod:CallNotificationManager.kt$CallNotificationManager$@SuppressLint("NewApi") fun setupNotification(forceLowPriority: Boolean = false)</ID>
+    <ID>CyclomaticComplexMethod:ContactsAdapter.kt$ContactsAdapter$@SuppressLint("ClickableViewAccessibility") private fun setupView(binding: ItemViewBinding, contact: Contact, holder: ViewHolder)</ID>
     <ID>CyclomaticComplexMethod:RecentCallsAdapter.kt$RecentCallsAdapter$private fun showPopupMenu(view: View, call: RecentCall)</ID>
     <ID>CyclomaticComplexMethod:RecentCallsAdapter.kt$RecentCallsAdapter.RecentCallViewHolder$fun bind(call: RecentCall)</ID>
     <ID>CyclomaticComplexMethod:RecentCallsAdapter.kt$RecentCallsDiffCallback$override fun areContentsTheSame(oldItem: CallLogItem, newItem: CallLogItem): Boolean</ID>
     <ID>CyclomaticComplexMethod:RecentsHelper.kt$RecentsHelper$@SuppressLint("NewApi") private fun getRecents( contacts: List&lt;Contact&gt;, selection: String? = null, selectionParams: Array&lt;String&gt;? = null, ): List&lt;RecentCall&gt;</ID>
     <ID>DestructuringDeclarationWithTooManyEntries:CallActivity.kt$CallActivity$val (name, _, number, numberLabel) = callContact!!</ID>
     <ID>EmptyCatchBlock:CallActivity.kt$CallActivity${ }</ID>
-    <ID>EmptyCatchBlock:MainActivity.kt$MainActivity${ }</ID>
     <ID>EmptyFunctionBlock:ConferenceCallsAdapter.kt$ConferenceCallsAdapter${}</ID>
     <ID>EmptyFunctionBlock:ContactsAdapter.kt$ContactsAdapter${}</ID>
     <ID>EmptyFunctionBlock:MainActivity.kt$MainActivity.&lt;no name provided&gt;${}</ID>
     <ID>EmptyFunctionBlock:RecentCallsAdapter.kt$RecentCallsAdapter${}</ID>
     <ID>EmptyFunctionBlock:SpeedDialAdapter.kt$SpeedDialAdapter${}</ID>
+    <ID>ExplicitItLambdaParameter:FavoritesFragment.kt$FavoritesFragment${ it -&gt; if (context.config.showCallConfirmation) { CallConfirmationDialog(activity as SimpleActivity, (it as Contact).getNameToDisplay()) { activity?.apply { initiateCall(it) { launchCallIntent(it) } } } } else { activity?.apply { initiateCall(it as Contact) { launchCallIntent(it) } } } }</ID>
     <ID>LargeClass:CallActivity.kt$CallActivity : SimpleActivity</ID>
     <ID>LongMethod:CallActivity.kt$CallActivity$@SuppressLint("ClickableViewAccessibility") private fun handleSwipe()</ID>
     <ID>LongMethod:CallActivity.kt$CallActivity$private fun initButtons()</ID>
     <ID>LongMethod:CallNotificationManager.kt$CallNotificationManager$@SuppressLint("NewApi") fun setupNotification(forceLowPriority: Boolean = false)</ID>
+    <ID>LongMethod:ContactsAdapter.kt$ContactsAdapter$@SuppressLint("ClickableViewAccessibility") private fun setupView(binding: ItemViewBinding, contact: Contact, holder: ViewHolder)</ID>
     <ID>LongMethod:DialpadActivity.kt$DialpadActivity$override fun onCreate(savedInstanceState: Bundle?)</ID>
     <ID>LongMethod:RecentCallsAdapter.kt$RecentCallsAdapter$private fun showPopupMenu(view: View, call: RecentCall)</ID>
     <ID>LongMethod:RecentCallsAdapter.kt$RecentCallsAdapter.RecentCallViewHolder$fun bind(call: RecentCall)</ID>
     <ID>LongMethod:RecentsHelper.kt$RecentsHelper$@SuppressLint("NewApi") private fun getRecents( contacts: List&lt;Contact&gt;, selection: String? = null, selectionParams: Array&lt;String&gt;? = null, ): List&lt;RecentCall&gt;</ID>
-    <ID>LongParameterList:ContactsAdapter.kt$ContactsAdapter$( activity: SimpleActivity, var contacts: MutableList&lt;Contact&gt;, recyclerView: MyRecyclerView, highlightText: String = "", private val refreshItemsListener: RefreshItemsListener? = null, var viewType: Int = VIEW_TYPE_LIST, private val showDeleteButton: Boolean = true, private val enableDrag: Boolean = false, private val allowLongClick: Boolean = true, itemClick: (Any) -&gt; Unit )</ID>
+    <ID>LongParameterList:ContactsAdapter.kt$ContactsAdapter$( activity: SimpleActivity, var contacts: MutableList&lt;Contact&gt;, recyclerView: MyRecyclerView, highlightText: String = "", private val refreshItemsListener: RefreshItemsListener? = null, var viewType: Int = VIEW_TYPE_LIST, private val showDeleteButton: Boolean = true, private val enableDrag: Boolean = false, private val allowLongClick: Boolean = true, itemClick: (Any) -&gt; Unit, val profileIconClick: ((Any) -&gt; Unit)? = null )</ID>
+    <ID>LongParameterList:RecentCallsAdapter.kt$RecentCallsAdapter$( activity: SimpleActivity, recyclerView: MyRecyclerView, private val refreshItemsListener: RefreshItemsListener?, private val showOverflowMenu: Boolean, private val itemDelete: (List&lt;RecentCall&gt;) -&gt; Unit = {}, itemClick: (Any) -&gt; Unit, val profileIconClick: ((Any) -&gt; Unit)? = null )</ID>
     <ID>MagicNumber:Activity.kt$1000000</ID>
     <ID>MagicNumber:Call.kt$1000</ID>
     <ID>MagicNumber:CallActivity.kt$CallActivity$0.10f</ID>
@@ -44,6 +47,7 @@
     <ID>MagicNumber:CallActivity.kt$CallActivity$50f</ID>
     <ID>MagicNumber:CallActivity.kt$CallActivity$60</ID>
     <ID>MagicNumber:CallActivity.kt$CallActivity.&lt;no name provided&gt;$1000</ID>
+    <ID>MagicNumber:CallLogItem.kt$CallLogItem$1000L</ID>
     <ID>MagicNumber:CallNotificationManager.kt$CallNotificationManager$42</ID>
     <ID>MagicNumber:Config.kt$Config$9</ID>
     <ID>MagicNumber:DialpadActivity.kt$DialpadActivity$1000</ID>
@@ -112,6 +116,7 @@
     <ID>MaxLineLength:DialpadActivity.kt$DialpadActivity$updateMaterialActivityViews(dialpadCoordinator, dialpadHolder, useTransparentNavigation = true, useTopSearchMenu = false)</ID>
     <ID>MaxLineLength:DialpadActivity.kt$DialpadActivity$val callIcon = resources.getColoredDrawableWithColor(R.drawable.ic_phone_two_vector, properPrimaryColor.getContrastColor())</ID>
     <ID>MaxLineLength:ExportCallHistoryDialog.kt$ExportCallHistoryDialog$activity.getAlertDialogBuilder().setPositiveButton(R.string.ok, null).setNegativeButton(R.string.cancel, null)</ID>
+    <ID>MaxLineLength:FavoritesFragment.kt$FavoritesFragment$(binding.fragmentList.layoutManager as? MyGridLayoutManager)?.spanCount = context!!.config.contactsGridColumnCount</ID>
     <ID>MaxLineLength:FavoritesFragment.kt$FavoritesFragment$class</ID>
     <ID>MaxLineLength:FilterContactSourcesAdapter.kt$FilterContactSourcesAdapter.ViewHolder$filterContactSourceCheckbox.setColors(activity.getProperTextColor(), activity.getProperPrimaryColor(), activity.getProperBackgroundColor())</ID>
     <ID>MaxLineLength:FilterContactSourcesDialog.kt$FilterContactSourcesDialog$binding.filterContactSourcesList.adapter = FilterContactSourcesAdapter(activity, contactSourcesWithCount, selectedSources)</ID>
@@ -133,13 +138,17 @@
     <ID>MaxLineLength:RecentCallsAdapter.kt$RecentCallsAdapter$findItem(R.id.cab_remove_default_sim).isVisible = isOneItemSelected &amp;&amp; (activity.config.getCustomSIM(selectedNumber) ?: "") != ""</ID>
     <ID>MaxLineLength:RecentCallsAdapter.kt$RecentCallsAdapter$findItem(R.id.cab_view_details).isVisible = isOneItemSelected &amp;&amp; findContactByCall(selectedItems.first()) != null</ID>
     <ID>MaxLineLength:RecentCallsAdapter.kt$RecentCallsAdapter$incomingMissedCallIcon = resources.getColoredDrawableWithColor(R.drawable.ic_call_missed_vector, missedCallColor)</ID>
+    <ID>MaxLineLength:RecentCallsAdapter.kt$RecentCallsAdapter$private var phoneNumberOfflineGeocoderInstance: PhoneNumberOfflineGeocoder = PhoneNumberOfflineGeocoder.getInstance()</ID>
     <ID>MaxLineLength:RecentCallsAdapter.kt$RecentCallsAdapter$return (activity as MainActivity).cachedContacts.find { it.name == recentCall.name &amp;&amp; it.doesHavePhoneNumber(recentCall.phoneNumber) }</ID>
     <ID>MaxLineLength:RecentCallsAdapter.kt$RecentCallsAdapter.RecentCallDateViewHolder$else -&gt; date.timestamp.formatDateOrTime(activity, hideTimeOnOtherDays = true, showCurrentYear = false)</ID>
+    <ID>MaxLineLength:RecentCallsAdapter.kt$RecentCallsAdapter.RecentCallViewHolder$&amp;&amp;</ID>
     <ID>MaxLineLength:RecentCallsAdapter.kt$RecentCallsAdapter.RecentCallViewHolder$call.startTS.formatDateOrTime(context, hideTimeOnOtherDays = false, showCurrentYear = false, hideTodaysDate = false)</ID>
     <ID>MaxLineLength:RecentCallsAdapter.kt$RecentCallsAdapter.RecentCallViewHolder$nameToShow = SpannableString(nameToShow.toString().highlightTextPart(textToHighlight, properPrimaryColor))</ID>
+    <ID>MaxLineLength:RecentCallsAdapter.kt$RecentCallsAdapter.RecentCallViewHolder$val shouldShowDuration = call.type != Calls.MISSED_TYPE &amp;&amp; call.type != Calls.REJECTED_TYPE &amp;&amp; call.duration &gt; 0</ID>
     <ID>MaxLineLength:RecentCallsAdapter.kt$RecentCallsDiffCallback$oldItem is CallLogItem.Date &amp;&amp; newItem is CallLogItem.Date -&gt; oldItem.timestamp == newItem.timestamp &amp;&amp; oldItem.dayCode == newItem.dayCode</ID>
     <ID>MaxLineLength:RecentCallsAdapter.kt$RecentCallsDiffCallback$override fun areItemsTheSame(oldItem: CallLogItem, newItem: CallLogItem)</ID>
     <ID>MaxLineLength:RecentsFragment.kt$RecentsFragment$private</ID>
+    <ID>MaxLineLength:RecentsFragment.kt$RecentsFragment$return (activity as MainActivity).cachedContacts.find { it.name == recentCall.name &amp;&amp; it.doesHavePhoneNumber(recentCall.phoneNumber) }</ID>
     <ID>MaxLineLength:RecentsFragment.kt$RecentsFragment$val contact = contactsWithNumbers.firstOrNull { it.phoneNumbers.first().normalizedNumber == call.phoneNumber }</ID>
     <ID>MaxLineLength:RecentsHelper.kt$RecentsHelper$contacts.firstOrNull { it.contactId == contactIdWithMultipleNumbers }?.phoneNumbers?.firstOrNull { it.value == number }</ID>
     <ID>MaxLineLength:RecentsHelper.kt$RecentsHelper$if</ID>
@@ -153,27 +162,20 @@
     <ID>MaxLineLength:SettingsActivity.kt$SettingsActivity$updateMaterialActivityViews(settingsCoordinator, settingsHolder, useTransparentNavigation = true, useTopSearchMenu = false)</ID>
     <ID>MaxLineLength:SpeedDialAdapter.kt$SpeedDialAdapter$private fun getSelectedItems()</ID>
     <ID>NestedBlockDepth:CallActivity.kt$CallActivity$private fun updateOtherPersonsInfo(avatarUri: String?)</ID>
-    <ID>NestedBlockDepth:ContactsAdapter.kt$ContactsAdapter$private fun setupView(binding: ItemViewBinding, contact: Contact, holder: ViewHolder)</ID>
+    <ID>NestedBlockDepth:ContactsAdapter.kt$ContactsAdapter$@SuppressLint("ClickableViewAccessibility") private fun setupView(binding: ItemViewBinding, contact: Contact, holder: ViewHolder)</ID>
     <ID>NestedBlockDepth:DialerActivity.kt$DialerActivity$override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?)</ID>
     <ID>NestedBlockDepth:MainActivity.kt$MainActivity$private fun getDefaultTab(): Int</ID>
     <ID>NestedBlockDepth:RecentsHelper.kt$RecentsHelper$@SuppressLint("NewApi") private fun getRecents( contacts: List&lt;Contact&gt;, selection: String? = null, selectionParams: Array&lt;String&gt;? = null, ): List&lt;RecentCall&gt;</ID>
+    <ID>NewLineAtEndOfFile:RecentCallsAdapter.kt$org.fossify.phone.adapters.RecentCallsAdapter.kt</ID>
     <ID>SwallowedException:CallActivity.kt$CallActivity$e: Exception</ID>
     <ID>SwallowedException:CallContactHelper.kt$e: NullPointerException</ID>
     <ID>SwallowedException:CallService.kt$CallService$e: Exception</ID>
-    <ID>SwallowedException:ContactsFragment.kt$ContactsFragment$e: Exception</ID>
-    <ID>SwallowedException:DialpadActivity.kt$DialpadActivity$e: Exception</ID>
-    <ID>SwallowedException:FavoritesFragment.kt$FavoritesFragment$e: Exception</ID>
-    <ID>SwallowedException:MainActivity.kt$MainActivity$e: Exception</ID>
-    <ID>SwallowedException:SelectContactDialog.kt$SelectContactDialog$e: Exception</ID>
+    <ID>SwallowedException:FastScrollerView.kt$e: IndexOutOfBoundsException</ID>
     <ID>TooGenericExceptionCaught:CallActivity.kt$CallActivity$e: Exception</ID>
     <ID>TooGenericExceptionCaught:CallContactHelper.kt$e: NullPointerException</ID>
     <ID>TooGenericExceptionCaught:CallService.kt$CallService$e: Exception</ID>
-    <ID>TooGenericExceptionCaught:ContactsFragment.kt$ContactsFragment$e: Exception</ID>
     <ID>TooGenericExceptionCaught:DialerActivity.kt$DialerActivity$e: Exception</ID>
-    <ID>TooGenericExceptionCaught:DialpadActivity.kt$DialpadActivity$e: Exception</ID>
-    <ID>TooGenericExceptionCaught:FavoritesFragment.kt$FavoritesFragment$e: Exception</ID>
-    <ID>TooGenericExceptionCaught:MainActivity.kt$MainActivity$e: Exception</ID>
-    <ID>TooGenericExceptionCaught:SelectContactDialog.kt$SelectContactDialog$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:FastScrollerView.kt$e: IndexOutOfBoundsException</ID>
     <ID>TooGenericExceptionCaught:SettingsActivity.kt$SettingsActivity$e: Exception</ID>
     <ID>TooManyFunctions:CallActivity.kt$CallActivity : SimpleActivity</ID>
     <ID>TooManyFunctions:CallManager.kt$CallManager$Companion</ID>
@@ -186,13 +188,12 @@
     <ID>TooManyFunctions:RecentsFragment.kt$RecentsFragment : MyViewPagerFragmentRefreshItemsListener</ID>
     <ID>TooManyFunctions:SettingsActivity.kt$SettingsActivity : SimpleActivity</ID>
     <ID>TooManyFunctions:SpeedDialAdapter.kt$SpeedDialAdapter : MyRecyclerViewAdapter</ID>
+    <ID>UnusedParameter:CallActivity.kt$CallActivity$view: View</ID>
     <ID>UnusedParameter:MainActivity.kt$MainActivity$event: Events.RefreshCallLog</ID>
     <ID>UtilityClassWithPublicConstructor:CallManager.kt$CallManager</ID>
     <ID>VariableNaming:CallNotificationManager.kt$CallNotificationManager$private val ACCEPT_CALL_CODE = 0</ID>
     <ID>VariableNaming:CallNotificationManager.kt$CallNotificationManager$private val CALL_NOTIFICATION_ID = 42</ID>
     <ID>VariableNaming:CallNotificationManager.kt$CallNotificationManager$private val DECLINE_CALL_CODE = 1</ID>
-    <ID>VariableNaming:Context.kt$val SIM = SIMAccount(index + 1, phoneAccount.accountHandle, label, address.substringAfter("tel:"))</ID>
-    <ID>VariableNaming:Context.kt$val SIMAccounts = mutableListOf&lt;SIMAccount&gt;()</ID>
     <ID>WildcardImport:Activity.kt$import org.fossify.commons.extensions.*</ID>
     <ID>WildcardImport:Activity.kt$import org.fossify.commons.helpers.*</ID>
     <ID>WildcardImport:CallActivity.kt$import org.fossify.commons.extensions.*</ID>
