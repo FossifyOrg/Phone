@@ -1,3 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_launcher_name">Telefòn</string>
+    <string name="conference">Conferéncia</string>
+    <string name="could_not_access_contacts">Impossible d\'accedir als contactes</string>
+    <string name="asterisk">Estela</string>
+    <string name="dialing">Numeritacion</string>
+    <string name="call_on_hold">En espèra</string>
 </resources>
