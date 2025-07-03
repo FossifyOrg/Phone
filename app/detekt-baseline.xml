@@ -24,33 +24,19 @@
     <ID>ExplicitItLambdaParameter:FavoritesFragment.kt$FavoritesFragment${ it -&gt; if (context.config.showCallConfirmation) { CallConfirmationDialog(activity as SimpleActivity, (it as Contact).getNameToDisplay()) { activity?.apply { initiateCall(it) { launchCallIntent(it) } } } } else { activity?.apply { initiateCall(it as Contact) { launchCallIntent(it) } } } }</ID>
     <ID>LargeClass:CallActivity.kt$CallActivity : SimpleActivity</ID>
     <ID>LongMethod:CallActivity.kt$CallActivity$@SuppressLint("ClickableViewAccessibility") private fun handleSwipe()</ID>
-    <ID>LongMethod:CallActivity.kt$CallActivity$private fun initButtons()</ID>
-    <ID>LongMethod:CallNotificationManager.kt$CallNotificationManager$@SuppressLint("NewApi") fun setupNotification(forceLowPriority: Boolean = false)</ID>
-    <ID>LongMethod:ContactsAdapter.kt$ContactsAdapter$@SuppressLint("ClickableViewAccessibility") private fun setupView(binding: ItemViewBinding, contact: Contact, holder: ViewHolder)</ID>
-    <ID>LongMethod:DialpadActivity.kt$DialpadActivity$override fun onCreate(savedInstanceState: Bundle?)</ID>
-    <ID>LongMethod:RecentCallsAdapter.kt$RecentCallsAdapter$private fun showPopupMenu(view: View, call: RecentCall)</ID>
     <ID>LongMethod:RecentCallsAdapter.kt$RecentCallsAdapter.RecentCallViewHolder$fun bind(call: RecentCall)</ID>
     <ID>LongMethod:RecentsHelper.kt$RecentsHelper$@SuppressLint("NewApi") private fun getRecents( contacts: List&lt;Contact&gt;, selection: String? = null, selectionParams: Array&lt;String&gt;? = null, ): List&lt;RecentCall&gt;</ID>
-    <ID>LongParameterList:ContactsAdapter.kt$ContactsAdapter$( activity: SimpleActivity, var contacts: MutableList&lt;Contact&gt;, recyclerView: MyRecyclerView, highlightText: String = "", private val refreshItemsListener: RefreshItemsListener? = null, var viewType: Int = VIEW_TYPE_LIST, private val showDeleteButton: Boolean = true, private val enableDrag: Boolean = false, private val allowLongClick: Boolean = true, itemClick: (Any) -&gt; Unit, val profileIconClick: ((Any) -&gt; Unit)? = null )</ID>
-    <ID>LongParameterList:RecentCallsAdapter.kt$RecentCallsAdapter$( activity: SimpleActivity, recyclerView: MyRecyclerView, private val refreshItemsListener: RefreshItemsListener?, private val showOverflowMenu: Boolean, private val itemDelete: (List&lt;RecentCall&gt;) -&gt; Unit = {}, itemClick: (Any) -&gt; Unit, val profileIconClick: ((Any) -&gt; Unit)? = null )</ID>
     <ID>MagicNumber:Activity.kt$1000000</ID>
-    <ID>MagicNumber:Call.kt$1000</ID>
     <ID>MagicNumber:CallActivity.kt$CallActivity$0.10f</ID>
     <ID>MagicNumber:CallActivity.kt$CallActivity$0.2f</ID>
     <ID>MagicNumber:CallActivity.kt$CallActivity$0.5f</ID>
-    <ID>MagicNumber:CallActivity.kt$CallActivity$1000</ID>
-    <ID>MagicNumber:CallActivity.kt$CallActivity$1000L</ID>
     <ID>MagicNumber:CallActivity.kt$CallActivity$200L</ID>
     <ID>MagicNumber:CallActivity.kt$CallActivity$250L</ID>
     <ID>MagicNumber:CallActivity.kt$CallActivity$3000</ID>
     <ID>MagicNumber:CallActivity.kt$CallActivity$5</ID>
     <ID>MagicNumber:CallActivity.kt$CallActivity$50f</ID>
     <ID>MagicNumber:CallActivity.kt$CallActivity$60</ID>
-    <ID>MagicNumber:CallActivity.kt$CallActivity.&lt;no name provided&gt;$1000</ID>
-    <ID>MagicNumber:CallLogItem.kt$CallLogItem$1000L</ID>
-    <ID>MagicNumber:CallNotificationManager.kt$CallNotificationManager$42</ID>
     <ID>MagicNumber:Config.kt$Config$9</ID>
-    <ID>MagicNumber:DialpadActivity.kt$DialpadActivity$1000</ID>
     <ID>MagicNumber:DialpadActivity.kt$DialpadActivity$3</ID>
     <ID>MagicNumber:DialpadActivity.kt$DialpadActivity$4</ID>
     <ID>MagicNumber:DialpadActivity.kt$DialpadActivity$5</ID>
