@@ -5,6 +5,7 @@ kotlin = "2.2.0"
 kotlinxSerializationJson = "1.8.1"
 #Detekt
 detekt = "1.23.8"
+detektCompose = "0.4.22"
 #Eventbus
 eventbus = "3.3.1"
 #Fossify
@@ -22,6 +23,8 @@ app-build-minimumSDK = "26"
 app-build-javaVersion = "VERSION_17"
 app-build-kotlinJVMTarget = "17"
 [libraries]
+#Compose
+compose-detekt = { module = "io.nlopez.compose.rules:detekt", version.ref = "detektCompose" }
 #Fossify
 fossify-commons = { module = "org.fossify:commons", version.ref = "commons" }
 #EventBus
