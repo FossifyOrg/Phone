@@ -10,14 +10,26 @@ import android.telecom.PhoneAccountHandle
 import android.telecom.TelecomManager
 import org.fossify.commons.activities.BaseSimpleActivity
 import org.fossify.commons.dialogs.CallConfirmationDialog
-import org.fossify.commons.extensions.*
-import org.fossify.commons.helpers.*
+import org.fossify.commons.extensions.isDefaultDialer
+import org.fossify.commons.extensions.isPackageInstalled
+import org.fossify.commons.extensions.launchActivityIntent
+import org.fossify.commons.extensions.launchCallIntent
+import org.fossify.commons.extensions.launchViewContactIntent
+import org.fossify.commons.extensions.telecomManager
+import org.fossify.commons.helpers.CONTACT_ID
+import org.fossify.commons.helpers.IS_PRIVATE
+import org.fossify.commons.helpers.PERMISSION_READ_PHONE_STATE
+import org.fossify.commons.helpers.SimpleContactsHelper
+import org.fossify.commons.helpers.ensureBackgroundThread
 import org.fossify.commons.models.contacts.Contact
 import org.fossify.phone.activities.DialerActivity
 import org.fossify.phone.activities.SimpleActivity
 import org.fossify.phone.dialogs.SelectSIMDialog
 
-fun SimpleActivity.startCallIntent(recipient: String, forceSimSelector: Boolean = false) {
+fun SimpleActivity.startCallIntent(
+    recipient: String,
+    forceSimSelector: Boolean = false
+) {
     if (isDefaultDialer()) {
         getHandleToUse(
             intent = null,
@@ -31,7 +43,11 @@ fun SimpleActivity.startCallIntent(recipient: String, forceSimSelector: Boolean 
     }
 }
 
-fun SimpleActivity.startCallWithConfirmationCheck(recipient: String, name: String, forceSimSelector: Boolean = false) {
+fun SimpleActivity.startCallWithConfirmationCheck(
+    recipient: String,
+    name: String,
+    forceSimSelector: Boolean = false
+) {
     if (config.showCallConfirmation) {
         CallConfirmationDialog(this, name) {
             startCallIntent(recipient, forceSimSelector)
@@ -49,15 +65,24 @@ fun SimpleActivity.launchCreateNewContactIntent() {
     }
 }
 
-fun BaseSimpleActivity.callContactWithSim(recipient: String, useMainSIM: Boolean) {
+fun BaseSimpleActivity.callContactWithSim(
+    recipient: String,
+    useMainSIM: Boolean
+) {
     handlePermission(PERMISSION_READ_PHONE_STATE) {
         val wantedSimIndex = if (useMainSIM) 0 else 1
-        val handle = getAvailableSIMCardLabels().sortedBy { it.id }.getOrNull(wantedSimIndex)?.handle
+        val handle = getAvailableSIMCardLabels()
+            .sortedBy { it.id }
+            .getOrNull(wantedSimIndex)?.handle
         launchCallIntent(recipient, handle)
     }
 }
 
-fun BaseSimpleActivity.callContactWithSimWithConfirmationCheck(recipient: String, name: String, useMainSIM: Boolean) {
+fun BaseSimpleActivity.callContactWithSimWithConfirmationCheck(
+    recipient: String,
+    name: String,
+    useMainSIM: Boolean
+) {
     if (config.showCallConfirmation) {
         CallConfirmationDialog(this, name) {
             callContactWithSim(recipient, useMainSIM)
@@ -78,14 +103,20 @@ fun Activity.startContactDetailsIntent(contact: Contact) {
             action = Intent.ACTION_VIEW
             putExtra(CONTACT_ID, contact.rawId)
             putExtra(IS_PRIVATE, true)
-            `package` = if (isPackageInstalled(simpleContacts)) simpleContacts else simpleContactsDebug
-            setDataAndType(ContactsContract.Contacts.CONTENT_LOOKUP_URI, "vnd.android.cursor.dir/person")
+            `package` =
+                if (isPackageInstalled(simpleContacts)) simpleContacts else simpleContactsDebug
+            setDataAndType(
+                ContactsContract.Contacts.CONTENT_LOOKUP_URI,
+                "vnd.android.cursor.dir/person"
+            )
             launchActivityIntent(this)
         }
     } else {
         ensureBackgroundThread {
-            val lookupKey = SimpleContactsHelper(this).getContactLookupKey((contact).rawId.toString())
-            val publicUri = Uri.withAppendedPath(ContactsContract.Contacts.CONTENT_LOOKUP_URI, lookupKey)
+            val lookupKey =
+                SimpleContactsHelper(this).getContactLookupKey((contact).rawId.toString())
+            val publicUri =
+                Uri.withAppendedPath(ContactsContract.Contacts.CONTENT_LOOKUP_URI, lookupKey)
             runOnUiThread {
                 launchViewContactIntent(publicUri)
             }

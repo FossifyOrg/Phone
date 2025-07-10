@@ -15,14 +15,46 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewConfiguration
 import androidx.core.content.res.ResourcesCompat
+import androidx.core.net.toUri
 import androidx.core.view.isVisible
-import org.fossify.commons.extensions.*
-import org.fossify.commons.helpers.*
+import org.fossify.commons.extensions.applyColorFilter
+import org.fossify.commons.extensions.beVisibleIf
+import org.fossify.commons.extensions.checkAppSideloading
+import org.fossify.commons.extensions.getColorStateList
+import org.fossify.commons.extensions.getColoredDrawableWithColor
+import org.fossify.commons.extensions.getContrastColor
+import org.fossify.commons.extensions.getMyContactsCursor
+import org.fossify.commons.extensions.getProperBackgroundColor
+import org.fossify.commons.extensions.getProperPrimaryColor
+import org.fossify.commons.extensions.getProperTextColor
+import org.fossify.commons.extensions.isDefaultDialer
+import org.fossify.commons.extensions.launchActivityIntent
+import org.fossify.commons.extensions.normalizeString
+import org.fossify.commons.extensions.onTextChangeListener
+import org.fossify.commons.extensions.performHapticFeedback
+import org.fossify.commons.extensions.updateTextColors
+import org.fossify.commons.extensions.value
+import org.fossify.commons.extensions.viewBinding
+import org.fossify.commons.helpers.ContactsHelper
+import org.fossify.commons.helpers.KEY_PHONE
+import org.fossify.commons.helpers.KeypadHelper
+import org.fossify.commons.helpers.LOWER_ALPHA_INT
+import org.fossify.commons.helpers.MyContactsContentProvider
+import org.fossify.commons.helpers.NavigationIcon
+import org.fossify.commons.helpers.REQUEST_CODE_SET_DEFAULT_DIALER
+import org.fossify.commons.helpers.isOreoPlus
 import org.fossify.commons.models.contacts.Contact
 import org.fossify.phone.R
 import org.fossify.phone.adapters.ContactsAdapter
 import org.fossify.phone.databinding.ActivityDialpadBinding
-import org.fossify.phone.extensions.*
+import org.fossify.phone.extensions.addCharacter
+import org.fossify.phone.extensions.boundingBox
+import org.fossify.phone.extensions.config
+import org.fossify.phone.extensions.disableKeyboard
+import org.fossify.phone.extensions.getKeyEvent
+import org.fossify.phone.extensions.setupWithContacts
+import org.fossify.phone.extensions.startCallWithConfirmationCheck
+import org.fossify.phone.extensions.startContactDetailsIntent
 import org.fossify.phone.helpers.DIALPAD_TONE_LENGTH_MS
 import org.fossify.phone.helpers.RecentsHelper
 import org.fossify.phone.helpers.ToneGeneratorHelper
@@ -49,7 +81,12 @@ class DialpadActivity : SimpleActivity() {
         hasRussianLocale = Locale.getDefault().language == "ru"
 
         binding.apply {
-            updateMaterialActivityViews(dialpadCoordinator, dialpadHolder, useTransparentNavigation = true, useTopSearchMenu = false)
+            updateMaterialActivityViews(
+                mainCoordinatorLayout = dialpadCoordinator,
+                nestedView = dialpadHolder,
+                useTransparentNavigation = true,
+                useTopSearchMenu = false
+            )
             setupMaterialScrollListener(dialpadList, dialpadToolbar)
         }
 
@@ -89,7 +126,8 @@ class DialpadActivity : SimpleActivity() {
                 dialpadAsteriskHolder,
                 dialpadHashtagHolder
             ).forEach {
-                it.background = ResourcesCompat.getDrawable(resources, R.drawable.pill_background, theme)
+                it.background =
+                    ResourcesCompat.getDrawable(resources, R.drawable.pill_background, theme)
                 it.background?.alpha = LOWER_ALPHA_INT
             }
         }
@@ -114,7 +152,13 @@ class DialpadActivity : SimpleActivity() {
 
                 val fontSize = resources.getDimension(R.dimen.small_text_size)
                 arrayOf(
-                    dialpad2Letters, dialpad3Letters, dialpad4Letters, dialpad5Letters, dialpad6Letters, dialpad7Letters, dialpad8Letters,
+                    dialpad2Letters,
+                    dialpad3Letters,
+                    dialpad4Letters,
+                    dialpad5Letters,
+                    dialpad6Letters,
+                    dialpad7Letters,
+                    dialpad8Letters,
                     dialpad9Letters
                 ).forEach {
                     it.setTextSize(TypedValue.COMPLEX_UNIT_PX, fontSize)
@@ -159,7 +203,10 @@ class DialpadActivity : SimpleActivity() {
 
         val properPrimaryColor = getProperPrimaryColor()
         binding.apply {
-            val callIcon = resources.getColoredDrawableWithColor(R.drawable.ic_phone_vector, properPrimaryColor.getContrastColor())
+            val callIcon = resources.getColoredDrawableWithColor(
+                drawableId = R.drawable.ic_phone_vector,
+                color = properPrimaryColor.getContrastColor()
+            )
             dialpadCallButton.setImageDrawable(callIcon)
             dialpadCallButton.background.applyColorFilter(properPrimaryColor)
 
@@ -190,7 +237,10 @@ class DialpadActivity : SimpleActivity() {
     }
 
     private fun checkDialIntent(): Boolean {
-        return if ((intent.action == Intent.ACTION_DIAL || intent.action == Intent.ACTION_VIEW) && intent.data != null && intent.dataString?.contains("tel:") == true) {
+        return if (
+            (intent.action == Intent.ACTION_DIAL || intent.action == Intent.ACTION_VIEW)
+            && intent.data != null && intent.dataString?.contains("tel:") == true
+        ) {
             val number = Uri.decode(intent.dataString).substringAfter("tel:")
             binding.dialpadInput.setText(number)
             binding.dialpadInput.setSelection(number.length)
@@ -250,7 +300,8 @@ class DialpadActivity : SimpleActivity() {
                     launchSetDefaultDialerIntent()
                 }
             } else {
-                val intent = Intent(SECRET_CODE_ACTION, Uri.parse("android_secret_code://$secretCode"))
+                val intent =
+                    Intent(SECRET_CODE_ACTION, "android_secret_code://$secretCode".toUri())
                 sendBroadcast(intent)
             }
             return
@@ -286,8 +337,11 @@ class DialpadActivity : SimpleActivity() {
             highlightText = text,
             itemClick = {
                 val contact = it as Contact
-                startCallWithConfirmationCheck(contact.getPrimaryNumber() ?: return@ContactsAdapter, contact.getNameToDisplay())
-                Handler().postDelayed({
+                startCallWithConfirmationCheck(
+                    recipient = contact.getPrimaryNumber() ?: return@ContactsAdapter,
+                    name = contact.getNameToDisplay()
+                )
+                Handler(Looper.getMainLooper()).postDelayed({
                     binding.dialpadInput.setText("")
                 }, 1000)
             },
@@ -312,7 +366,7 @@ class DialpadActivity : SimpleActivity() {
         if (number.isNotEmpty()) {
             startCallWithConfirmationCheck(number, number)
 
-            Handler().postDelayed({
+            Handler(Looper.getMainLooper()).postDelayed({
                 binding.dialpadInput.setText("")
             }, 1000)
         } else {
