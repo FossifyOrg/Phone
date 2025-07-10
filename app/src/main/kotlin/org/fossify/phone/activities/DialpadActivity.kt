@@ -75,6 +75,7 @@ class DialpadActivity : SimpleActivity() {
     private val longPressHandler = Handler(Looper.getMainLooper())
     private val pressedKeys = mutableSetOf<Char>()
 
+    @Suppress("LongMethod")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
