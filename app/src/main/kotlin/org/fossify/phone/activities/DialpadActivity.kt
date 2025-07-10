@@ -140,6 +140,14 @@ class DialpadActivity : SimpleActivity() {
             dialpadClearChar.setOnClickListener { clearChar(it) }
             dialpadClearChar.setOnLongClickListener { clearInput(); true }
             dialpadCallButton.setOnClickListener { initCall(dialpadInput.value) }
+            dialpadCallButton.setOnLongClickListener {
+                startCallWithConfirmationCheck(
+                    recipient = binding.dialpadInput.value,
+                    name = binding.dialpadInput.value,
+                    forceSimSelector = true
+                )
+                true
+            }
             dialpadInput.onTextChangeListener { dialpadValueChanged(it) }
             dialpadInput.requestFocus()
             dialpadInput.disableKeyboard()

@@ -17,9 +17,13 @@ import org.fossify.phone.activities.DialerActivity
 import org.fossify.phone.activities.SimpleActivity
 import org.fossify.phone.dialogs.SelectSIMDialog
 
-fun SimpleActivity.startCallIntent(recipient: String) {
+fun SimpleActivity.startCallIntent(recipient: String, forceSimSelector: Boolean = false) {
     if (isDefaultDialer()) {
-        getHandleToUse(null, recipient) { handle ->
+        getHandleToUse(
+            intent = null,
+            phoneNumber = recipient,
+            forceSimSelector = forceSimSelector
+        ) { handle ->
             launchCallIntent(recipient, handle)
         }
     } else {
@@ -27,13 +31,13 @@ fun SimpleActivity.startCallIntent(recipient: String) {
     }
 }
 
-fun SimpleActivity.startCallWithConfirmationCheck(recipient: String, name: String) {
+fun SimpleActivity.startCallWithConfirmationCheck(recipient: String, name: String, forceSimSelector: Boolean = false) {
     if (config.showCallConfirmation) {
         CallConfirmationDialog(this, name) {
-            startCallIntent(recipient)
+            startCallIntent(recipient, forceSimSelector)
         }
     } else {
-        startCallIntent(recipient)
+        startCallIntent(recipient, forceSimSelector)
     }
 }
 
@@ -91,27 +95,44 @@ fun Activity.startContactDetailsIntent(contact: Contact) {
 
 // used at devices with multiple SIM cards
 @SuppressLint("MissingPermission")
-fun SimpleActivity.getHandleToUse(intent: Intent?, phoneNumber: String, callback: (handle: PhoneAccountHandle?) -> Unit) {
+fun SimpleActivity.getHandleToUse(
+    intent: Intent?,
+    phoneNumber: String,
+    forceSimSelector: Boolean = false,
+    callback: (handle: PhoneAccountHandle?) -> Unit
+) {
     handlePermission(PERMISSION_READ_PHONE_STATE) {
         if (it) {
-            val defaultHandle = telecomManager.getDefaultOutgoingPhoneAccount(PhoneAccount.SCHEME_TEL)
+            val defaultHandle =
+                telecomManager.getDefaultOutgoingPhoneAccount(PhoneAccount.SCHEME_TEL)
             when {
-                intent?.hasExtra(TelecomManager.EXTRA_PHONE_ACCOUNT_HANDLE) == true -> callback(intent.getParcelableExtra(TelecomManager.EXTRA_PHONE_ACCOUNT_HANDLE)!!)
+                forceSimSelector -> showSelectSimDialog(phoneNumber, callback)
+                intent?.hasExtra(TelecomManager.EXTRA_PHONE_ACCOUNT_HANDLE) == true -> {
+                    callback(intent.getParcelableExtra(TelecomManager.EXTRA_PHONE_ACCOUNT_HANDLE)!!)
+                }
+
                 config.getCustomSIM(phoneNumber) != null -> {
                     callback(config.getCustomSIM(phoneNumber))
                 }
 
                 defaultHandle != null -> callback(defaultHandle)
-                else -> {
-                    SelectSIMDialog(this, phoneNumber, onDismiss = {
-                        if (this is DialerActivity) {
-                            finish()
-                        }
-                    }) { handle ->
-                        callback(handle)
-                    }
-                }
+                else -> showSelectSimDialog(phoneNumber, callback)
             }
         }
     }
+}
+
+fun SimpleActivity.showSelectSimDialog(
+    phoneNumber: String,
+    callback: (handle: PhoneAccountHandle?) -> Unit
+) = SelectSIMDialog(
+    activity = this,
+    phoneNumber = phoneNumber,
+    onDismiss = {
+        if (this is DialerActivity) {
+            finish()
+        }
+    }
+) { handle ->
+    callback(handle)
 }
