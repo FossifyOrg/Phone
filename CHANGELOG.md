@@ -70,7 +70,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.2.0] - 2024-05-08
 ### Added
 - Grouped call history entries by date ([#96])
-- Added an option to format phone numbers in the call log ([#15])
+- Added an option to format phone numbers in the call log
 
 ### Changed
 - Missed call notifications are now automatically dismissed when you view your call history ([#88])
@@ -126,7 +126,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Initial release
 
 [#9]: https://github.com/FossifyOrg/Phone/issues/9
-[#15]: https://github.com/FossifyOrg/Phone/issues/15
 [#35]: https://github.com/FossifyOrg/Phone/issues/35
 [#39]: https://github.com/FossifyOrg/Phone/issues/39
 [#50]: https://github.com/FossifyOrg/Phone/issues/50
