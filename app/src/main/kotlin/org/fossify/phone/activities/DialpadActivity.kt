@@ -48,6 +48,7 @@ import org.fossify.phone.R
 import org.fossify.phone.adapters.ContactsAdapter
 import org.fossify.phone.databinding.ActivityDialpadBinding
 import org.fossify.phone.extensions.addCharacter
+import org.fossify.phone.extensions.areMultipleSIMsAvailable
 import org.fossify.phone.extensions.boundingBox
 import org.fossify.phone.extensions.config
 import org.fossify.phone.extensions.disableKeyboard
@@ -185,14 +186,7 @@ class DialpadActivity : SimpleActivity() {
             dialpadClearChar.setOnClickListener { clearChar(it) }
             dialpadClearChar.setOnLongClickListener { clearInput(); true }
             dialpadCallButton.setOnClickListener { initCall(dialpadInput.value) }
-            dialpadCallButton.setOnLongClickListener {
-                startCallWithConfirmationCheck(
-                    recipient = binding.dialpadInput.value,
-                    name = binding.dialpadInput.value,
-                    forceSimSelector = true
-                )
-                true
-            }
+            dialpadCallButton.setOnLongClickListener { initCallWithSimSelector() }
             dialpadInput.onTextChangeListener { dialpadValueChanged(it) }
             dialpadInput.requestFocus()
             dialpadInput.disableKeyboard()
@@ -379,6 +373,20 @@ class DialpadActivity : SimpleActivity() {
                     }
                 }
             }
+        }
+    }
+
+    private fun initCallWithSimSelector(): Boolean {
+        val number = binding.dialpadInput.value
+        return if (areMultipleSIMsAvailable() && number.isNotEmpty()) {
+            startCallWithConfirmationCheck(
+                recipient = number,
+                name = number,
+                forceSimSelector = true
+            )
+            true
+        } else {
+            false
         }
     }
 
