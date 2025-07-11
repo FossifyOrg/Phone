@@ -68,13 +68,25 @@ class DialpadActivity : SimpleActivity() {
 
     private var allContacts = ArrayList<Contact>()
     private var speedDialValues = ArrayList<SpeedDial>()
-    private val russianCharsMap = HashMap<Char, Int>()
-    private var hasRussianLocale = false
     private var privateCursor: Cursor? = null
     private var toneGeneratorHelper: ToneGeneratorHelper? = null
     private val longPressTimeout = ViewConfiguration.getLongPressTimeout().toLong()
     private val longPressHandler = Handler(Looper.getMainLooper())
     private val pressedKeys = mutableSetOf<Char>()
+
+    private var hasRussianLocale = false
+    private val russianCharsMap by lazy {
+        hashMapOf(
+            'а' to 2, 'б' to 2, 'в' to 2, 'г' to 2,
+            'д' to 3, 'е' to 3, 'ё' to 3, 'ж' to 3, 'з' to 3,
+            'и' to 4, 'й' to 4, 'к' to 4, 'л' to 4,
+            'м' to 5, 'н' to 5, 'о' to 5, 'п' to 5,
+            'р' to 6, 'с' to 6, 'т' to 6, 'у' to 6,
+            'ф' to 7, 'х' to 7, 'ц' to 7, 'ч' to 7,
+            'ш' to 8, 'щ' to 8, 'ъ' to 8, 'ы' to 8,
+            'ь' to 9, 'э' to 9, 'ю' to 9, 'я' to 9
+        )
+    }
 
     @Suppress("LongMethod")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -142,7 +154,6 @@ class DialpadActivity : SimpleActivity() {
 
         binding.dialpadWrapper.apply {
             if (hasRussianLocale) {
-                initRussianChars()
                 dialpad2Letters.append("\nАБВГ")
                 dialpad3Letters.append("\nДЕЁЖЗ")
                 dialpad4Letters.append("\nИЙКЛ")
@@ -399,17 +410,6 @@ class DialpadActivity : SimpleActivity() {
             }
         }
         return false
-    }
-
-    private fun initRussianChars() {
-        russianCharsMap['а'] = 2; russianCharsMap['б'] = 2; russianCharsMap['в'] = 2; russianCharsMap['г'] = 2
-        russianCharsMap['д'] = 3; russianCharsMap['е'] = 3; russianCharsMap['ё'] = 3; russianCharsMap['ж'] = 3; russianCharsMap['з'] = 3
-        russianCharsMap['и'] = 4; russianCharsMap['й'] = 4; russianCharsMap['к'] = 4; russianCharsMap['л'] = 4
-        russianCharsMap['м'] = 5; russianCharsMap['н'] = 5; russianCharsMap['о'] = 5; russianCharsMap['п'] = 5
-        russianCharsMap['р'] = 6; russianCharsMap['с'] = 6; russianCharsMap['т'] = 6; russianCharsMap['у'] = 6
-        russianCharsMap['ф'] = 7; russianCharsMap['х'] = 7; russianCharsMap['ц'] = 7; russianCharsMap['ч'] = 7
-        russianCharsMap['ш'] = 8; russianCharsMap['щ'] = 8; russianCharsMap['ъ'] = 8; russianCharsMap['ы'] = 8
-        russianCharsMap['ь'] = 9; russianCharsMap['э'] = 9; russianCharsMap['ю'] = 9; russianCharsMap['я'] = 9
     }
 
     private fun startDialpadTone(char: Char) {
