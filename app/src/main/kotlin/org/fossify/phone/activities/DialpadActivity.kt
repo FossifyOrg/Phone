@@ -17,6 +17,9 @@ import android.view.ViewConfiguration
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.net.toUri
 import androidx.core.view.isVisible
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import org.fossify.commons.extensions.applyColorFilter
 import org.fossify.commons.extensions.beVisibleIf
 import org.fossify.commons.extensions.checkAppSideloading
@@ -279,6 +282,13 @@ class DialpadActivity : SimpleActivity() {
         binding.dialpadInput.setText("")
     }
 
+    private fun clearInputWithDelay() {
+        lifecycleScope.launch {
+            delay(1000)
+            clearInput()
+        }
+    }
+
     private fun gotContacts(newContacts: ArrayList<Contact>) {
         allContacts = newContacts
 
@@ -347,9 +357,7 @@ class DialpadActivity : SimpleActivity() {
                     recipient = contact.getPrimaryNumber() ?: return@ContactsAdapter,
                     name = contact.getNameToDisplay()
                 )
-                Handler(Looper.getMainLooper()).postDelayed({
-                    binding.dialpadInput.setText("")
-                }, 1000)
+                clearInputWithDelay()
             },
             profileIconClick = {
                 startContactDetailsIntent(it as Contact)
@@ -371,10 +379,7 @@ class DialpadActivity : SimpleActivity() {
     private fun initCall(number: String = binding.dialpadInput.value) {
         if (number.isNotEmpty()) {
             startCallWithConfirmationCheck(number, number)
-
-            Handler(Looper.getMainLooper()).postDelayed({
-                binding.dialpadInput.setText("")
-            }, 1000)
+            clearInputWithDelay()
         } else {
             RecentsHelper(this).getRecentCalls(queryLimit = 1) {
                 val mostRecentNumber = it.firstOrNull()?.phoneNumber
