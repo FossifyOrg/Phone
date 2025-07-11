@@ -10,16 +10,32 @@ import android.telecom.PhoneAccountHandle
 import android.telecom.TelecomManager
 import org.fossify.commons.activities.BaseSimpleActivity
 import org.fossify.commons.dialogs.CallConfirmationDialog
-import org.fossify.commons.extensions.*
-import org.fossify.commons.helpers.*
+import org.fossify.commons.extensions.isDefaultDialer
+import org.fossify.commons.extensions.isPackageInstalled
+import org.fossify.commons.extensions.launchActivityIntent
+import org.fossify.commons.extensions.launchCallIntent
+import org.fossify.commons.extensions.launchViewContactIntent
+import org.fossify.commons.extensions.telecomManager
+import org.fossify.commons.helpers.CONTACT_ID
+import org.fossify.commons.helpers.IS_PRIVATE
+import org.fossify.commons.helpers.PERMISSION_READ_PHONE_STATE
+import org.fossify.commons.helpers.SimpleContactsHelper
+import org.fossify.commons.helpers.ensureBackgroundThread
 import org.fossify.commons.models.contacts.Contact
 import org.fossify.phone.activities.DialerActivity
 import org.fossify.phone.activities.SimpleActivity
 import org.fossify.phone.dialogs.SelectSIMDialog
 
-fun SimpleActivity.startCallIntent(recipient: String) {
+fun SimpleActivity.startCallIntent(
+    recipient: String,
+    forceSimSelector: Boolean = false
+) {
     if (isDefaultDialer()) {
-        getHandleToUse(null, recipient) { handle ->
+        getHandleToUse(
+            intent = null,
+            phoneNumber = recipient,
+            forceSimSelector = forceSimSelector
+        ) { handle ->
             launchCallIntent(recipient, handle)
         }
     } else {
@@ -27,13 +43,17 @@ fun SimpleActivity.startCallIntent(recipient: String) {
     }
 }
 
-fun SimpleActivity.startCallWithConfirmationCheck(recipient: String, name: String) {
+fun SimpleActivity.startCallWithConfirmationCheck(
+    recipient: String,
+    name: String,
+    forceSimSelector: Boolean = false
+) {
     if (config.showCallConfirmation) {
         CallConfirmationDialog(this, name) {
-            startCallIntent(recipient)
+            startCallIntent(recipient, forceSimSelector)
         }
     } else {
-        startCallIntent(recipient)
+        startCallIntent(recipient, forceSimSelector)
     }
 }
 
@@ -45,15 +65,24 @@ fun SimpleActivity.launchCreateNewContactIntent() {
     }
 }
 
-fun BaseSimpleActivity.callContactWithSim(recipient: String, useMainSIM: Boolean) {
+fun BaseSimpleActivity.callContactWithSim(
+    recipient: String,
+    useMainSIM: Boolean
+) {
     handlePermission(PERMISSION_READ_PHONE_STATE) {
         val wantedSimIndex = if (useMainSIM) 0 else 1
-        val handle = getAvailableSIMCardLabels().sortedBy { it.id }.getOrNull(wantedSimIndex)?.handle
+        val handle = getAvailableSIMCardLabels()
+            .sortedBy { it.id }
+            .getOrNull(wantedSimIndex)?.handle
         launchCallIntent(recipient, handle)
     }
 }
 
-fun BaseSimpleActivity.callContactWithSimWithConfirmationCheck(recipient: String, name: String, useMainSIM: Boolean) {
+fun BaseSimpleActivity.callContactWithSimWithConfirmationCheck(
+    recipient: String,
+    name: String,
+    useMainSIM: Boolean
+) {
     if (config.showCallConfirmation) {
         CallConfirmationDialog(this, name) {
             callContactWithSim(recipient, useMainSIM)
@@ -74,14 +103,20 @@ fun Activity.startContactDetailsIntent(contact: Contact) {
             action = Intent.ACTION_VIEW
             putExtra(CONTACT_ID, contact.rawId)
             putExtra(IS_PRIVATE, true)
-            `package` = if (isPackageInstalled(simpleContacts)) simpleContacts else simpleContactsDebug
-            setDataAndType(ContactsContract.Contacts.CONTENT_LOOKUP_URI, "vnd.android.cursor.dir/person")
+            `package` =
+                if (isPackageInstalled(simpleContacts)) simpleContacts else simpleContactsDebug
+            setDataAndType(
+                ContactsContract.Contacts.CONTENT_LOOKUP_URI,
+                "vnd.android.cursor.dir/person"
+            )
             launchActivityIntent(this)
         }
     } else {
         ensureBackgroundThread {
-            val lookupKey = SimpleContactsHelper(this).getContactLookupKey((contact).rawId.toString())
-            val publicUri = Uri.withAppendedPath(ContactsContract.Contacts.CONTENT_LOOKUP_URI, lookupKey)
+            val lookupKey =
+                SimpleContactsHelper(this).getContactLookupKey((contact).rawId.toString())
+            val publicUri =
+                Uri.withAppendedPath(ContactsContract.Contacts.CONTENT_LOOKUP_URI, lookupKey)
             runOnUiThread {
                 launchViewContactIntent(publicUri)
             }
@@ -91,27 +126,44 @@ fun Activity.startContactDetailsIntent(contact: Contact) {
 
 // used at devices with multiple SIM cards
 @SuppressLint("MissingPermission")
-fun SimpleActivity.getHandleToUse(intent: Intent?, phoneNumber: String, callback: (handle: PhoneAccountHandle?) -> Unit) {
+fun SimpleActivity.getHandleToUse(
+    intent: Intent?,
+    phoneNumber: String,
+    forceSimSelector: Boolean = false,
+    callback: (handle: PhoneAccountHandle?) -> Unit
+) {
     handlePermission(PERMISSION_READ_PHONE_STATE) {
         if (it) {
-            val defaultHandle = telecomManager.getDefaultOutgoingPhoneAccount(PhoneAccount.SCHEME_TEL)
+            val defaultHandle =
+                telecomManager.getDefaultOutgoingPhoneAccount(PhoneAccount.SCHEME_TEL)
             when {
-                intent?.hasExtra(TelecomManager.EXTRA_PHONE_ACCOUNT_HANDLE) == true -> callback(intent.getParcelableExtra(TelecomManager.EXTRA_PHONE_ACCOUNT_HANDLE)!!)
+                forceSimSelector -> showSelectSimDialog(phoneNumber, callback)
+                intent?.hasExtra(TelecomManager.EXTRA_PHONE_ACCOUNT_HANDLE) == true -> {
+                    callback(intent.getParcelableExtra(TelecomManager.EXTRA_PHONE_ACCOUNT_HANDLE)!!)
+                }
+
                 config.getCustomSIM(phoneNumber) != null -> {
                     callback(config.getCustomSIM(phoneNumber))
                 }
 
                 defaultHandle != null -> callback(defaultHandle)
-                else -> {
-                    SelectSIMDialog(this, phoneNumber, onDismiss = {
-                        if (this is DialerActivity) {
-                            finish()
-                        }
-                    }) { handle ->
-                        callback(handle)
-                    }
-                }
+                else -> showSelectSimDialog(phoneNumber, callback)
             }
         }
     }
+}
+
+fun SimpleActivity.showSelectSimDialog(
+    phoneNumber: String,
+    callback: (handle: PhoneAccountHandle?) -> Unit
+) = SelectSIMDialog(
+    activity = this,
+    phoneNumber = phoneNumber,
+    onDismiss = {
+        if (this is DialerActivity) {
+            finish()
+        }
+    }
+) { handle ->
+    callback(handle)
 }
