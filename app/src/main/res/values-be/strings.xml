@@ -56,4 +56,5 @@
     <string name="disable_proximity_sensor">Адключаць датчык набліжэння падчас выклікаў</string>
     <string name="disable_swipe_to_answer">Выкарыстоўваць націсканне замест перацягвання пры адказе на ўваходныя выклікі</string>
     <string name="show_incoming_calls_full_screen">Заўсёды паказваць уваходныя выклікі ў поўнаэкранным рэжыме</string>
+    <string name="app_launcher_name">Тэлефон</string>
 </resources>
