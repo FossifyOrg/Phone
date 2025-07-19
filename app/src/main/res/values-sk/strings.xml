@@ -67,4 +67,5 @@
     <string name="import_call_history">Importovať históriu volaní</string>
     <string name="faq_1_title">Počujem prichádzajúce hovory, obrazovka sa ale nezapne. Čo s tým?</string>
     <string name="faq_1_text">Takéto problémy majú často dôvody špecifické pre dané zariadenie alebo systém, ťažko teda dať všeobecné riešenie. Mali by ste sa poobzerať v nasteniach zariadenia a uistiť sa, že apka má povolenie na zobrazovanie sa z pozadia a na zobrazovanie sa nad ostatnými apkami.</string>
+    <string name="app_launcher_name">Telefón</string>
 </resources>
