@@ -4,6 +4,7 @@ import android.content.Context
 import android.net.Uri
 import android.telecom.PhoneAccountHandle
 import android.telephony.PhoneNumberUtils
+import android.telephony.TelephonyManager
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import org.fossify.commons.helpers.BaseConfig
@@ -11,10 +12,23 @@ import org.fossify.phone.extensions.getPhoneAccountHandleModel
 import org.fossify.phone.extensions.putPhoneAccountHandle
 import org.fossify.phone.models.SpeedDial
 import androidx.core.content.edit
+import java.util.Locale
 
 class Config(context: Context) : BaseConfig(context) {
     companion object {
         fun newInstance(context: Context) = Config(context)
+    }
+
+    private val regionHint: String by lazy {
+        val telephonyManager = context.getSystemService(TelephonyManager::class.java)
+        listOf(
+            telephonyManager?.simCountryIso,
+            telephonyManager?.networkCountryIso,
+            Locale.getDefault().country
+        )
+            .firstOrNull { !it.isNullOrBlank() }
+            ?.uppercase(Locale.US)
+            .orEmpty()
     }
 
     fun getSpeedDialValues(): ArrayList<SpeedDial> {
@@ -77,12 +91,9 @@ class Config(context: Context) : BaseConfig(context) {
     }
 
     private fun normalizeCustomSIMNumber(number: String): String {
-        val decoded = Uri.decode(number)
-        return PhoneNumberUtils.normalizeNumber(
-            decoded.removePrefix("tel:")
-                .replace(" ", "")
-                .filter { it.isDigit() }
-        )
+        val decoded = Uri.decode(number).removePrefix("tel:")
+        val formatted = PhoneNumberUtils.formatNumberToE164(decoded, regionHint)
+        return formatted ?: PhoneNumberUtils.normalizeNumber(decoded)
     }
 
     var showTabs: Int
