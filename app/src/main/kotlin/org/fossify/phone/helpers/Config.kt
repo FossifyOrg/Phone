@@ -3,6 +3,7 @@ package org.fossify.phone.helpers
 import android.content.ComponentName
 import android.content.Context
 import android.telecom.PhoneAccountHandle
+import android.telephony.PhoneNumberUtils
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import org.fossify.commons.helpers.BaseConfig
@@ -30,24 +31,37 @@ class Config(context: Context) : BaseConfig(context) {
     }
 
     fun saveCustomSIM(number: String, handle: PhoneAccountHandle) {
-        prefs.edit().putPhoneAccountHandle(REMEMBER_SIM_PREFIX + number, handle).apply()
+        prefs.edit().putPhoneAccountHandle(
+            key = getKeyForCustomSIM(number),
+            parcelable = handle
+        ).apply()
     }
 
     fun getCustomSIM(number: String): PhoneAccountHandle? {
-        val myPhoneAccountHandle = prefs.getPhoneAccountHandleModel(REMEMBER_SIM_PREFIX + number, null)
-        return if (myPhoneAccountHandle != null) {
-            val packageName = myPhoneAccountHandle.packageName
-            val className = myPhoneAccountHandle.className
-            val componentName = ComponentName(packageName, className)
-            val id = myPhoneAccountHandle.id
-            PhoneAccountHandle(componentName, id)
-        } else {
-            null
+        prefs.getPhoneAccountHandleModel(
+            key = getKeyForCustomSIM(number),
+            default = null
+        )?.let {
+            return PhoneAccountHandle(
+                ComponentName(it.packageName, it.className), it.id
+            )
         }
+
+        return null
     }
 
     fun removeCustomSIM(number: String) {
-        prefs.edit().remove(REMEMBER_SIM_PREFIX + number).apply()
+        prefs.edit().remove(getKeyForCustomSIM(number)).apply()
+    }
+
+    private fun getKeyForCustomSIM(number: String): String {
+        return REMEMBER_SIM_PREFIX + normalizeCustomSIMNumber(number)
+    }
+
+    private fun normalizeCustomSIMNumber(number: String): String {
+        return PhoneNumberUtils.normalizeNumber(
+            number.removePrefix("tel:").replace(" ", "")
+        )
     }
 
     var showTabs: Int

@@ -84,7 +84,7 @@ class ContactsAdapter(
     override fun prepareActionMode(menu: Menu) {
         val hasMultipleSIMs = activity.areMultipleSIMsAvailable()
         val isOneItemSelected = isOneItemSelected()
-        val selectedNumber = "tel:${getSelectedPhoneNumber()}"
+        val selectedNumber = getSelectedPhoneNumber().orEmpty()
 
         menu.apply {
             findItem(R.id.cab_call_sim_1).isVisible = hasMultipleSIMs && isOneItemSelected
@@ -244,7 +244,7 @@ class ContactsAdapter(
 
     private fun removeDefaultSIM() {
         val phoneNumber = getSelectedPhoneNumber() ?: return
-        activity.config.removeCustomSIM("tel:$phoneNumber")
+        activity.config.removeCustomSIM(phoneNumber)
         finishActMode()
     }
 

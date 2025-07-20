@@ -200,7 +200,7 @@ class RecentCallsAdapter(
 
     private fun removeDefaultSIM() {
         val phoneNumber = getSelectedPhoneNumber() ?: return
-        activity.config.removeCustomSIM("tel:$phoneNumber")
+        activity.config.removeCustomSIM(phoneNumber)
         finishActMode()
     }
 
