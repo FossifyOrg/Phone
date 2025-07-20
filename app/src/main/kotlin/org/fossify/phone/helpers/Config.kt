@@ -45,7 +45,7 @@ class Config(context: Context) : BaseConfig(context) {
         }
 
         // fallback for old unstable keys. should be removed in future versions
-        prefs.all.keys
+        val migratedHandle = prefs.all.keys
             .filterIsInstance<String>()
             .filter { it.startsWith(REMEMBER_SIM_PREFIX) }
             .firstOrNull {
@@ -56,18 +56,16 @@ class Config(context: Context) : BaseConfig(context) {
                 )
             }?.let { legacyKey ->
                 prefs.getPhoneAccountHandleModel(legacyKey, null)?.let {
+                    val handle = it.toPhoneAccountHandle()
                     prefs.edit {
                         remove(legacyKey)
-                        putPhoneAccountHandle(
-                            key = key,
-                            parcelable = it.toPhoneAccountHandle()
-                        )
+                        putPhoneAccountHandle(key, handle)
                     }
-                    return it.toPhoneAccountHandle()
+                    handle
                 }
             }
 
-        return null
+        return migratedHandle
     }
 
     fun removeCustomSIM(number: String) {
