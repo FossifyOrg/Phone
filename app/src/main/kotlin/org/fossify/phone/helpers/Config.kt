@@ -2,6 +2,7 @@ package org.fossify.phone.helpers
 
 import android.content.ComponentName
 import android.content.Context
+import android.net.Uri
 import android.telecom.PhoneAccountHandle
 import android.telephony.PhoneNumberUtils
 import com.google.gson.Gson
@@ -59,8 +60,11 @@ class Config(context: Context) : BaseConfig(context) {
     }
 
     private fun normalizeCustomSIMNumber(number: String): String {
+        val decoded = Uri.decode(number)
         return PhoneNumberUtils.normalizeNumber(
-            number.removePrefix("tel:").replace(" ", "")
+            decoded.removePrefix("tel:")
+                .replace(" ", "")
+                .filter { it.isDigit() }
         )
     }
 
