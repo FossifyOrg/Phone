@@ -1,18 +1,34 @@
 package org.fossify.phone.helpers
 
-import android.content.ComponentName
 import android.content.Context
+import android.net.Uri
 import android.telecom.PhoneAccountHandle
+import android.telephony.PhoneNumberUtils
+import android.telephony.TelephonyManager
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import org.fossify.commons.helpers.BaseConfig
 import org.fossify.phone.extensions.getPhoneAccountHandleModel
 import org.fossify.phone.extensions.putPhoneAccountHandle
 import org.fossify.phone.models.SpeedDial
+import androidx.core.content.edit
+import java.util.Locale
 
 class Config(context: Context) : BaseConfig(context) {
     companion object {
         fun newInstance(context: Context) = Config(context)
+    }
+
+    private val regionHint: String by lazy {
+        val telephonyManager = context.getSystemService(TelephonyManager::class.java)
+        listOf(
+            telephonyManager?.simCountryIso,
+            telephonyManager?.networkCountryIso,
+            Locale.getDefault().country
+        )
+            .firstOrNull { !it.isNullOrBlank() }
+            ?.uppercase(Locale.US)
+            .orEmpty()
     }
 
     fun getSpeedDialValues(): ArrayList<SpeedDial> {
@@ -30,24 +46,54 @@ class Config(context: Context) : BaseConfig(context) {
     }
 
     fun saveCustomSIM(number: String, handle: PhoneAccountHandle) {
-        prefs.edit().putPhoneAccountHandle(REMEMBER_SIM_PREFIX + number, handle).apply()
+        prefs.edit().putPhoneAccountHandle(
+            key = getKeyForCustomSIM(number),
+            parcelable = handle
+        ).apply()
     }
 
     fun getCustomSIM(number: String): PhoneAccountHandle? {
-        val myPhoneAccountHandle = prefs.getPhoneAccountHandleModel(REMEMBER_SIM_PREFIX + number, null)
-        return if (myPhoneAccountHandle != null) {
-            val packageName = myPhoneAccountHandle.packageName
-            val className = myPhoneAccountHandle.className
-            val componentName = ComponentName(packageName, className)
-            val id = myPhoneAccountHandle.id
-            PhoneAccountHandle(componentName, id)
-        } else {
-            null
+        val key = getKeyForCustomSIM(number)
+        prefs.getPhoneAccountHandleModel(key, null)?.let {
+            return it.toPhoneAccountHandle()
         }
+
+        // fallback for old unstable keys. should be removed in future versions
+        val migratedHandle = prefs.all.keys
+            .filterIsInstance<String>()
+            .filter { it.startsWith(REMEMBER_SIM_PREFIX) }
+            .firstOrNull {
+                @Suppress("DEPRECATION")
+                PhoneNumberUtils.compare(
+                    it.removePrefix(REMEMBER_SIM_PREFIX),
+                    normalizeCustomSIMNumber(number)
+                )
+            }?.let { legacyKey ->
+                prefs.getPhoneAccountHandleModel(legacyKey, null)?.let {
+                    val handle = it.toPhoneAccountHandle()
+                    prefs.edit {
+                        remove(legacyKey)
+                        putPhoneAccountHandle(key, handle)
+                    }
+                    handle
+                }
+            }
+
+        return migratedHandle
     }
 
     fun removeCustomSIM(number: String) {
-        prefs.edit().remove(REMEMBER_SIM_PREFIX + number).apply()
+        prefs.edit().remove(getKeyForCustomSIM(number)).apply()
+    }
+
+    private fun getKeyForCustomSIM(number: String): String {
+        return REMEMBER_SIM_PREFIX + normalizeCustomSIMNumber(number)
+    }
+
+    private fun normalizeCustomSIMNumber(number: String): String {
+        val decoded = Uri.decode(number).removePrefix("tel:")
+        val formatted = PhoneNumberUtils.formatNumberToE164(decoded, regionHint)
+        return formatted ?: PhoneNumberUtils.normalizeNumber(decoded)
     }
 
     var showTabs: Int

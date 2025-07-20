@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Fixed
+- It's now possible to unset custom SIM preferences ([#293])
 
 ## [1.6.0] - 2025-07-11
 ### Changed
@@ -147,6 +149,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#183]: https://github.com/FossifyOrg/Phone/issues/183
 [#186]: https://github.com/FossifyOrg/Phone/issues/186
 [#237]: https://github.com/FossifyOrg/Phone/issues/237
+[#293]: https://github.com/FossifyOrg/Phone/issues/293
 [#307]: https://github.com/FossifyOrg/Phone/issues/307
 [#357]: https://github.com/FossifyOrg/Phone/issues/357
 [#359]: https://github.com/FossifyOrg/Phone/issues/359
