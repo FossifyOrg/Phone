@@ -1,6 +1,5 @@
 package org.fossify.phone.helpers
 
-import android.content.ComponentName
 import android.content.Context
 import android.net.Uri
 import android.telecom.PhoneAccountHandle
@@ -11,6 +10,7 @@ import org.fossify.commons.helpers.BaseConfig
 import org.fossify.phone.extensions.getPhoneAccountHandleModel
 import org.fossify.phone.extensions.putPhoneAccountHandle
 import org.fossify.phone.models.SpeedDial
+import androidx.core.content.edit
 
 class Config(context: Context) : BaseConfig(context) {
     companion object {
@@ -39,14 +39,33 @@ class Config(context: Context) : BaseConfig(context) {
     }
 
     fun getCustomSIM(number: String): PhoneAccountHandle? {
-        prefs.getPhoneAccountHandleModel(
-            key = getKeyForCustomSIM(number),
-            default = null
-        )?.let {
-            return PhoneAccountHandle(
-                ComponentName(it.packageName, it.className), it.id
-            )
+        val key = getKeyForCustomSIM(number)
+        prefs.getPhoneAccountHandleModel(key, null)?.let {
+            return it.toPhoneAccountHandle()
         }
+
+        // fallback for old unstable keys. should be removed in future versions
+        prefs.all.keys
+            .filterIsInstance<String>()
+            .filter { it.startsWith(REMEMBER_SIM_PREFIX) }
+            .firstOrNull {
+                @Suppress("DEPRECATION")
+                PhoneNumberUtils.compare(
+                    it.removePrefix(REMEMBER_SIM_PREFIX),
+                    normalizeCustomSIMNumber(number)
+                )
+            }?.let { legacyKey ->
+                prefs.getPhoneAccountHandleModel(legacyKey, null)?.let {
+                    prefs.edit {
+                        remove(legacyKey)
+                        putPhoneAccountHandle(
+                            key = key,
+                            parcelable = it.toPhoneAccountHandle()
+                        )
+                    }
+                    return it.toPhoneAccountHandle()
+                }
+            }
 
         return null
     }
