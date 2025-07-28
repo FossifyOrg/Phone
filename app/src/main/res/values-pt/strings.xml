@@ -71,4 +71,6 @@
     <string name="app_launcher_name">Telefone</string>
     <string name="call_is_being_connected">A chamada está a ser efetuada…</string>
     <string name="faq_2_title">Que chamadas de emergência não estão a funcionar corretamente?</string>
+    <string name="faq_3_title">Por que alguns dos meus contactos faltam na app?</string>
+    <string name="faq_3_text">O Fossify Phone exibe apenas contactos que tenham um número de telefone lhes associados. Contactos sem um número de telefone não são exibidos na app.</string>
 </resources>
