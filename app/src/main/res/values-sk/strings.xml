@@ -68,4 +68,10 @@
     <string name="faq_1_title">Počujem prichádzajúce hovory, obrazovka sa ale nezapne. Čo s tým?</string>
     <string name="faq_1_text">Takéto problémy majú často dôvody špecifické pre dané zariadenie alebo systém, ťažko teda dať všeobecné riešenie. Mali by ste sa poobzerať v nasteniach zariadenia a uistiť sa, že apka má povolenie na zobrazovanie sa z pozadia a na zobrazovanie sa nad ostatnými apkami.</string>
     <string name="app_launcher_name">Telefón</string>
+    <string name="audio_route_bluetooth">Bluetooth</string>
+    <string name="call_is_being_connected">Prebieha spojenie…</string>
+    <string name="faq_2_title">Prečo nefungujú správne núdzové volania?</string>
+    <string name="faq_2_text">Pre systémové obmedzenia smú núdzové hovory byť uskutočnené len cez pôvodnú systémovú aplikáciu pre telefonovanie. Aby ste zaistili funkčnosť núdzových hovorov, musíte ponechať systémovú aplikáciu nainštalovanú a nedeaktivovanú.</string>
+    <string name="faq_3_title">Prečo v aplikácii nevidím niektoré svoje kontakty?</string>
+    <string name="faq_3_text">Fossify Phone zobrazuje iba tie kontakty, ktoré majú pridelené telefónne číslo. Kontakty bez telefónneho čísla sa nezobrazia.</string>
 </resources>
