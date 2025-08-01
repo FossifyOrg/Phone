@@ -50,8 +50,6 @@
     <ID>MagicNumber:RecentCallsAdapter.kt$RecentCallsAdapter.RecentCallDateViewHolder$0.76f</ID>
     <ID>MagicNumber:RecentCallsAdapter.kt$RecentCallsAdapter.RecentCallViewHolder$0.8f</ID>
     <ID>MagicNumber:RecentsHelper.kt$RecentsHelper$30</ID>
-    <ID>MaxLineLength:Activity.kt$fun</ID>
-    <ID>MaxLineLength:Activity.kt$intent?.hasExtra(TelecomManager.EXTRA_PHONE_ACCOUNT_HANDLE) == true -&gt; callback(intent.getParcelableExtra(TelecomManager.EXTRA_PHONE_ACCOUNT_HANDLE)!!)</ID>
     <ID>MaxLineLength:AudioRoute.kt$AudioRoute$WIRED_OR_EARPIECE : AudioRoute</ID>
     <ID>MaxLineLength:CallActivity.kt$CallActivity$SimpleListItem(id = it.route, textRes = it.stringRes, imageRes = it.iconRes, selected = it == callAudioRoute)</ID>
     <ID>MaxLineLength:CallActivity.kt$CallActivity$animate().withStartAction { beVisible() }.setInterpolator(OvershootInterpolator()).scaleX(1f).alpha(alpha).duration = 250L</ID>
@@ -95,12 +93,6 @@
     <ID>MaxLineLength:ContactsFragment.kt$ContactsFragment$!getProperText(nameToDisplay, shouldNormalize).startsWith(fixedText, true) &amp;&amp; !nameToDisplay.contains(fixedText, true)</ID>
     <ID>MaxLineLength:ContactsFragment.kt$ContactsFragment$class</ID>
     <ID>MaxLineLength:ContactsFragment.kt$ContactsFragment$fixedText.normalizePhoneNumber().isNotEmpty() &amp;&amp; it.normalizedNumber.contains(fixedText.normalizePhoneNumber(), true)</ID>
-    <ID>MaxLineLength:DialpadActivity.kt$DialpadActivity$dialpad2Letters</ID>
-    <ID>MaxLineLength:DialpadActivity.kt$DialpadActivity$return</ID>
-    <ID>MaxLineLength:DialpadActivity.kt$DialpadActivity$russianCharsMap['д'] = 3</ID>
-    <ID>MaxLineLength:DialpadActivity.kt$DialpadActivity$startCallWithConfirmationCheck(contact.getPrimaryNumber() ?: return@ContactsAdapter, contact.getNameToDisplay())</ID>
-    <ID>MaxLineLength:DialpadActivity.kt$DialpadActivity$updateMaterialActivityViews(dialpadCoordinator, dialpadHolder, useTransparentNavigation = true, useTopSearchMenu = false)</ID>
-    <ID>MaxLineLength:DialpadActivity.kt$DialpadActivity$val callIcon = resources.getColoredDrawableWithColor(R.drawable.ic_phone_two_vector, properPrimaryColor.getContrastColor())</ID>
     <ID>MaxLineLength:ExportCallHistoryDialog.kt$ExportCallHistoryDialog$activity.getAlertDialogBuilder().setPositiveButton(R.string.ok, null).setNegativeButton(R.string.cancel, null)</ID>
     <ID>MaxLineLength:FavoritesFragment.kt$FavoritesFragment$(binding.fragmentList.layoutManager as? MyGridLayoutManager)?.spanCount = context!!.config.contactsGridColumnCount</ID>
     <ID>MaxLineLength:FavoritesFragment.kt$FavoritesFragment$class</ID>
@@ -180,8 +172,6 @@
     <ID>VariableNaming:CallNotificationManager.kt$CallNotificationManager$private val ACCEPT_CALL_CODE = 0</ID>
     <ID>VariableNaming:CallNotificationManager.kt$CallNotificationManager$private val CALL_NOTIFICATION_ID = 42</ID>
     <ID>VariableNaming:CallNotificationManager.kt$CallNotificationManager$private val DECLINE_CALL_CODE = 1</ID>
-    <ID>WildcardImport:Activity.kt$import org.fossify.commons.extensions.*</ID>
-    <ID>WildcardImport:Activity.kt$import org.fossify.commons.helpers.*</ID>
     <ID>WildcardImport:CallActivity.kt$import org.fossify.commons.extensions.*</ID>
     <ID>WildcardImport:CallActivity.kt$import org.fossify.commons.helpers.*</ID>
     <ID>WildcardImport:CallActivity.kt$import org.fossify.phone.extensions.*</ID>
@@ -194,9 +184,6 @@
     <ID>WildcardImport:ContactsFragment.kt$import org.fossify.commons.extensions.*</ID>
     <ID>WildcardImport:ContactsFragment.kt$import org.fossify.commons.helpers.*</ID>
     <ID>WildcardImport:DialerActivity.kt$import org.fossify.commons.extensions.*</ID>
-    <ID>WildcardImport:DialpadActivity.kt$import org.fossify.commons.extensions.*</ID>
-    <ID>WildcardImport:DialpadActivity.kt$import org.fossify.commons.helpers.*</ID>
-    <ID>WildcardImport:DialpadActivity.kt$import org.fossify.phone.extensions.*</ID>
     <ID>WildcardImport:ExportCallHistoryDialog.kt$import org.fossify.commons.extensions.*</ID>
     <ID>WildcardImport:FavoritesFragment.kt$import org.fossify.commons.extensions.*</ID>
     <ID>WildcardImport:FavoritesFragment.kt$import org.fossify.commons.helpers.*</ID>
