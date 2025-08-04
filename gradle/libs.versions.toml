@@ -9,7 +9,7 @@ detektCompose = "0.4.26"
 #Eventbus
 eventbus = "3.3.1"
 #Fossify
-commons = "4.4.1"
+commons = "4.4.2"
 #Gradle
 gradlePlugins-agp = "8.11.1"
 #Other
