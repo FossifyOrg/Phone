@@ -453,17 +453,20 @@ class RecentCallsAdapter(
                 }
                 val shouldShowDuration = call.type != Calls.MISSED_TYPE && call.type != Calls.REJECTED_TYPE && call.duration > 0
 
-                if (call.specificType.isNotEmpty()) {
-                    nameToShow = SpannableString("$name - ${call.specificType}")
-
+                if (refreshItemsListener == null) {
                     // show specific number at "Show call details" dialog too
-                    if (refreshItemsListener == null) {
-                        nameToShow = if (formatPhoneNumbers) {
-                            SpannableString("$name - ${call.specificType}, ${call.specificNumber.formatPhoneNumber()}")
-                        } else {
-                            SpannableString("$name - ${call.specificType}, ${call.specificNumber}")
-                        }
-                    }
+                    val typePart = call.specificType
+                        .takeIf { it.isNotBlank() }?.let { " - $it" }.orEmpty()
+
+                    val numPart = call.specificNumber
+                        .takeIf { it.isNotBlank() }
+                        ?.let { if (formatPhoneNumbers) it.formatPhoneNumber() else it }
+                        ?.let { ", $it" }
+                        .orEmpty()
+
+                    nameToShow = SpannableString("$name$typePart$numPart")
+                } else if (call.specificType.isNotBlank()) {
+                    nameToShow = SpannableString("$name - ${call.specificType}")
                 }
 
                 if (call.groupedCalls != null) {
