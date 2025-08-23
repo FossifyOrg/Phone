@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Fixed
 - Fixed missing phone number in call history details ([#526])
-- Renamed notification channel names ([#196]) 
+- Renamed notification channels ([#196]) 
 
 ## [1.6.1] - 2025-07-31
 ### Changed
