@@ -1,0 +1,11 @@
+Changed:
+
+• Renamed notification channels to be more user-friendly 
+• Updated translations
+
+Fixed:
+
+• Fixed missing phone number in call history details 
+• Fixed incorrect sorting in call history search results 
+• Fixed frequent crashes in call history 
+
