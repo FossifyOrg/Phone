@@ -602,9 +602,13 @@ class RecentCallsAdapter(
 
                 val now = DateTime.now()
                 text = when (date.dayCode) {
-                    now.millis.toDayCode() -> activity.getString(R.string.today)
-                    now.minusDays(1).millis.toDayCode() -> activity.getString(R.string.yesterday)
-                    else -> date.timestamp.formatDateOrTime(activity, hideTimeOnOtherDays = true, showCurrentYear = false)
+                    now.millis.getDayCode() -> activity.getString(R.string.today)
+                    now.minusDays(1).millis.getDayCode() -> activity.getString(R.string.yesterday)
+                    else -> date.timestamp.formatDateOrTime(
+                        context = activity,
+                        hideTimeOnOtherDays = true,
+                        showCurrentYear = false
+                    )
                 }
             }
         }

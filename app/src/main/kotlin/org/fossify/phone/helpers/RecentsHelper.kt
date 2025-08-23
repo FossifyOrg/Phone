@@ -43,9 +43,9 @@ class RecentsHelper(private val context: Context) {
 
                 this.queryLimit = queryLimit
                 val recentCalls = if (previousRecents.isNotEmpty()) {
-                    val previousRecentCalls = previousRecents.flatMap {
-                        it.groupedCalls ?: listOf(it)
-                    }
+                    val previousRecentCalls = previousRecents
+                        .flatMap { it.groupedCalls ?: listOf(it) }
+                        .map { it.copy(groupedCalls = null) }
 
                     val newerRecents = getRecents(
                         contacts = contacts,
@@ -64,7 +64,11 @@ class RecentsHelper(private val context: Context) {
                     getRecents(contacts)
                 }
 
-                callback(recentCalls)
+                callback(
+                    recentCalls
+                        .sortedByDescending { it.startTS }
+                        .distinctBy { it.id }
+                )
             }
         }
     }
@@ -82,13 +86,14 @@ class RecentsHelper(private val context: Context) {
     }
 
     private fun shouldGroupCalls(callA: RecentCall, callB: RecentCall): Boolean {
-        if (
-            callA.simID != callB.simID
-            || (callA.name != callB.name && callA.name != callA.phoneNumber && callB.name != callB.phoneNumber)
-            || callA.getDayCode() != callB.getDayCode()
-        ) {
-            return false
-        }
+        val differentSim = callA.simID != callB.simID
+        val differentDay = callA.dayCode != callB.dayCode
+        val namesAreBothRealAndDifferent =
+            callA.name != callB.name &&
+                    callA.name != callA.phoneNumber &&
+                    callB.name != callB.phoneNumber
+
+        if (differentSim || differentDay || namesAreBothRealAndDifferent) return false
 
         @Suppress("DEPRECATION")
         return PhoneNumberUtils.compare(callA.phoneNumber, callB.phoneNumber)
