@@ -74,4 +74,6 @@
     <string name="faq_3_text">Fossify telefon näitab vaid kontakte, millega on seotud telefoninumber. Telefonikirjeta kontakte pole rakenduses näha.</string>
     <string name="faq_2_text">Androidi süsteemi poolt seatud piirangute tõttu saab hädaabikõnesid teha vaid süsteemi vaikimisi telefonirakendusega. Selleks, et hädaabikõned alati toimiks, palun hoia süsteemi vaikimisi telefonirakendus paigaldatuna ja kasutatavana.</string>
     <string name="faq_2_title">Miks hädaabikõned ei toimi korralikult?</string>
+    <string name="call_notification_channel">Kõne olek</string>
+    <string name="call_notification_channel_high_priority">Kõne olek (ülioluline)</string>
 </resources>
