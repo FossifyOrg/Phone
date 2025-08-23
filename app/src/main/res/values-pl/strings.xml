@@ -74,4 +74,6 @@
     <string name="call_is_being_connected">Trwa nawiązywanie połączenia…</string>
     <string name="faq_3_text">Fossify Phone wyświetla tylko te kontakty, które mają przypisany numer telefonu. Kontakty bez numeru telefonu nie są wyświetlane w aplikacji.</string>
     <string name="faq_3_title">Dlaczego niektórych moich kontaktów brakuje w aplikacji?</string>
+    <string name="call_notification_channel">Status połączenia</string>
+    <string name="call_notification_channel_high_priority">Status połączenia (wysoki priorytet)</string>
 </resources>
