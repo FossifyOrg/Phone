@@ -24,6 +24,8 @@ data class RecentCall(
     val isUnknownNumber: Boolean,
     val groupedCalls: MutableList<RecentCall>? = null,
 ) : CallLogItem() {
+    val dayCode by lazy(LazyThreadSafetyMode.NONE) { startTS.getDayCode() }
+
     fun doesContainPhoneNumber(text: String): Boolean {
         return if (text.toIntOrNull() != null) {
             val normalizedText = text.normalizePhoneNumber()
@@ -35,6 +37,4 @@ data class RecentCall(
             false
         }
     }
-
-    fun getDayCode() = startTS.getDayCode()
 }

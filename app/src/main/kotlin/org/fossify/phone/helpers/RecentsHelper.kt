@@ -89,7 +89,7 @@ class RecentsHelper(private val context: Context) {
         if (
             callA.simID != callB.simID
             || (callA.name != callB.name && callA.name != callA.phoneNumber && callB.name != callB.phoneNumber)
-            || callA.getDayCode() != callB.getDayCode()
+            || callA.dayCode != callB.dayCode
         ) {
             return false
         }

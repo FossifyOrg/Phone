@@ -93,7 +93,7 @@ class RecentsFragment(
                     it.name.contains(fixedText, true) || it.doesContainPhoneNumber(fixedText)
                 }
                 .sortedWith(
-                    compareByDescending<RecentCall> { it.getDayCode() }
+                    compareByDescending<RecentCall> { it.dayCode }
                         .thenByDescending { it.name.startsWith(fixedText, true) }
                         .thenByDescending { it.startTS }
                 )
@@ -279,7 +279,7 @@ class RecentsFragment(
         val callLog = mutableListOf<CallLogItem>()
         var lastDayCode = ""
         for (call in recentCalls) {
-            val currentDayCode = call.getDayCode()
+            val currentDayCode = call.dayCode
             if (currentDayCode != lastDayCode) {
                 callLog += CallLogItem.Date(timestamp = call.startTS, dayCode = currentDayCode)
                 lastDayCode = currentDayCode
