@@ -5,9 +5,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Changed
+- Renamed notification channels to be more user-friendly ([#196])
+
 ### Fixed
 - Fixed missing phone number in call history details ([#526])
-- Renamed notification channels ([#196]) 
+- Fixed frequent crash in call history ([#378])
 
 ## [1.6.1] - 2025-07-31
 ### Changed

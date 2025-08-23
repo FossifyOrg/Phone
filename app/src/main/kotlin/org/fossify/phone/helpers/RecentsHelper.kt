@@ -43,9 +43,9 @@ class RecentsHelper(private val context: Context) {
 
                 this.queryLimit = queryLimit
                 val recentCalls = if (previousRecents.isNotEmpty()) {
-                    val previousRecentCalls = previousRecents.flatMap {
-                        it.groupedCalls ?: listOf(it)
-                    }
+                    val previousRecentCalls = previousRecents
+                        .flatMap { it.groupedCalls ?: listOf(it) }
+                        .map { it.copy(groupedCalls = null) }
 
                     val newerRecents = getRecents(
                         contacts = contacts,
@@ -64,7 +64,11 @@ class RecentsHelper(private val context: Context) {
                     getRecents(contacts)
                 }
 
-                callback(recentCalls)
+                callback(
+                    recentCalls
+                        .sortedByDescending { it.startTS }
+                        .distinctBy { it.id }
+                )
             }
         }
     }
