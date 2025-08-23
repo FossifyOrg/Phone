@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Fixed
 - Fixed missing phone number in call history details ([#526])
+- Renamed notification channels ([#196]) 
 
 ## [1.6.1] - 2025-07-31
 ### Changed
@@ -155,6 +156,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#181]: https://github.com/FossifyOrg/Phone/issues/181
 [#183]: https://github.com/FossifyOrg/Phone/issues/183
 [#186]: https://github.com/FossifyOrg/Phone/issues/186
+[#196]: https://github.com/FossifyOrg/Phone/issues/196
 [#237]: https://github.com/FossifyOrg/Phone/issues/237
 [#293]: https://github.com/FossifyOrg/Phone/issues/293
 [#307]: https://github.com/FossifyOrg/Phone/issues/307

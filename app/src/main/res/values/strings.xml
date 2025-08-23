@@ -65,6 +65,8 @@
     <string name="choose_audio_route">Choose audio route</string>
     <string name="calling_blocked_number">The number you are calling is blocked</string>
     <string name="call_is_being_connected">Your call is being connected…</string>
+    <string name="call_notification_channel">Call status</string>
+    <string name="call_notification_channel_high_priority">Call status (high priority)</string>
 
     <!-- Speed dial -->
     <string name="speed_dial">Speed dial</string>
