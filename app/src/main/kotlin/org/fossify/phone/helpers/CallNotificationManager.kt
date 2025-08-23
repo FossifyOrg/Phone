@@ -35,7 +35,11 @@ class CallNotificationManager(private val context: Context) {
             val channelId = if (isHighPriority) "simple_dialer_call_high_priority" else "simple_dialer_call"
             if (isOreoPlus()) {
                 val importance = if (isHighPriority) NotificationManager.IMPORTANCE_HIGH else NotificationManager.IMPORTANCE_DEFAULT
-                val name = if (isHighPriority) "call_notification_channel_high_priority" else "call_notification_channel"
+                val name = if (isHighPriority) {
+                    context.getString(R.string.call_notification_channel_high_priority)
+                } else {
+                    context.getString(R.string.call_notification_channel)
+                }
 
                 NotificationChannel(channelId, name, importance).apply {
                     setSound(null, null)
