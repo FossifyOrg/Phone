@@ -9,8 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Renamed notification channels to be more user-friendly ([#196])
 
 ### Fixed
+- Fixed incorrect sorting in call history search results
 - Fixed missing phone number in call history details ([#526])
-- Fixed frequent crash in call history ([#378])
+- Fixed frequent crashes in call history ([#378])
 
 ## [1.6.1] - 2025-07-31
 ### Changed

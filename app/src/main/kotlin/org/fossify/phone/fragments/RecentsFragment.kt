@@ -88,11 +88,15 @@ class RecentsFragment(
         ensureBackgroundThread {
             val fixedText = searchQuery!!.trim().replace("\\s+".toRegex(), " ")
             val recentCalls = allRecentCalls
+                .filterIsInstance<RecentCall>()
                 .filter {
-                    it is RecentCall && (it.name.contains(fixedText, true) || it.doesContainPhoneNumber(fixedText))
-                }.sortedByDescending {
-                    it is RecentCall && it.name.startsWith(fixedText, true)
-                } as List<RecentCall>
+                    it.name.contains(fixedText, true) || it.doesContainPhoneNumber(fixedText)
+                }
+                .sortedWith(
+                    compareByDescending<RecentCall> { it.getDayCode() }
+                        .thenByDescending { it.name.startsWith(fixedText, true) }
+                        .thenByDescending { it.startTS }
+                )
 
             prepareCallLog(recentCalls) {
                 activity?.runOnUiThread {
