@@ -74,4 +74,6 @@
     <string name="call_is_being_connected">La trucada s\'està connectant…</string>
     <string name="faq_2_text">A causa de les restriccions del sistema, les trucades d\'emergència només es poden fer a través de l\'aplicació de marcació o de telèfon predeterminada del sistema. Per a garantir que les trucades d\'emergència funcionin correctament, cal mantenir l\'aplicació del sistema instal·lada i habilitada.</string>
     <string name="faq_3_text">El Fossify Phone només mostra els contactes que tenen un número de telèfon associat a ells. Els contactes sense número de telèfon no es mostren a l\'aplicació.</string>
+    <string name="call_notification_channel">Estat de la trucada</string>
+    <string name="call_notification_channel_high_priority">Estat de la trucada (alta prioritat)</string>
 </resources>
