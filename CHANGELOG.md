@@ -9,8 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Renamed notification channels to be more user-friendly ([#196])
 
 ### Fixed
-- Fixed incorrect sorting in call history search results
 - Fixed missing phone number in call history details ([#526])
+- Fixed incorrect sorting in call history search results ([#535])
 - Fixed frequent crashes in call history ([#378])
 
 ## [1.6.1] - 2025-07-31
@@ -168,6 +168,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#359]: https://github.com/FossifyOrg/Phone/issues/359
 [#378]: https://github.com/FossifyOrg/Phone/issues/378
 [#526]: https://github.com/FossifyOrg/Phone/issues/526
+[#535]: https://github.com/FossifyOrg/Phone/issues/535
 
 [Unreleased]: https://github.com/FossifyOrg/Phone/compare/1.6.1...HEAD
 [1.6.1]: https://github.com/FossifyOrg/Phone/compare/1.6.0...1.6.1
