@@ -1,2 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="call_notification_channel_high_priority">Zvana stāvoklis (augsts svarīgums)</string>
+    <string name="call_notification_channel">Zvana stāvoklis</string>
+    <string name="app_launcher_name">Tālrunis</string>
+    <string name="default_phone_app_prompt">Lūgums padarīt šo lietotni par noklusējuma tālruņa lietotni</string>
+    <string name="allow_displaying_over_other_apps">Lūgums atļaut attēlošanu virs citām lietotnēm, lai nodrošinātu uzticamu darbību</string>
+    <string name="could_not_access_contacts">Nevarēja piekļūt kontaktpersonām</string>
+    <string name="no_previous_calls">Nav atrasts neviens iepriekšējs zvans</string>
+    <string name="could_not_access_the_call_history">Nevarēja piekļūt zvanu vēsturei</string>
+    <string name="request_access">Pieprasīt piekļuvi</string>
+    <string name="remove_confirmation">Vai tiešām izņemt no zvanu vēstures atlasītos vienumus?</string>
+    <string name="clear_history_confirmation">Vai tiešām izņemt visu no zvanu vēstures?</string>
+    <string name="show_grouped_calls">Rādīt apkopotus zvanus</string>
+    <string name="clear_call_history">Notīrīt zvanu vēsturi</string>
+    <string name="show_call_details">Rādīt informāciju par zvanu</string>
+    <string name="dialpad">Ciparnīca</string>
+</resources>
