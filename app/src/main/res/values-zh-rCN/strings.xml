@@ -74,4 +74,6 @@
     <string name="faq_3_title">为什么应用中缺少我的一些联系人？</string>
     <string name="faq_3_text">Fossify 电话仅显示有电话号码与之相关联的联系人。没有电话号码的联系人不会显示在应用中。</string>
     <string name="call_is_being_connected">正在连接您的通话…</string>
+    <string name="call_notification_channel">通话状态</string>
+    <string name="call_notification_channel_high_priority">通话状态（高优先级）</string>
 </resources>
