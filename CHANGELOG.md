@@ -5,8 +5,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [1.6.2] - 2025-08-23
 ### Changed
 - Renamed notification channels to be more user-friendly ([#196])
+- Updated translations
 
 ### Fixed
 - Fixed missing phone number in call history details ([#526])
@@ -170,7 +173,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#526]: https://github.com/FossifyOrg/Phone/issues/526
 [#535]: https://github.com/FossifyOrg/Phone/issues/535
 
-[Unreleased]: https://github.com/FossifyOrg/Phone/compare/1.6.1...HEAD
+[Unreleased]: https://github.com/FossifyOrg/Phone/compare/1.6.2...HEAD
+[1.6.2]: https://github.com/FossifyOrg/Phone/compare/1.6.1...1.6.2
 [1.6.1]: https://github.com/FossifyOrg/Phone/compare/1.6.0...1.6.1
 [1.6.0]: https://github.com/FossifyOrg/Phone/compare/1.5.1...1.6.0
 [1.5.1]: https://github.com/FossifyOrg/Phone/compare/1.5.0...1.5.1
