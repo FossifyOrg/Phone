@@ -4,9 +4,21 @@ import android.content.Context
 import android.util.AttributeSet
 import com.google.gson.Gson
 import org.fossify.commons.adapters.MyRecyclerViewAdapter
-import org.fossify.commons.dialogs.CallConfirmationDialog
-import org.fossify.commons.extensions.*
-import org.fossify.commons.helpers.*
+import org.fossify.commons.extensions.areSystemAnimationsEnabled
+import org.fossify.commons.extensions.baseConfig
+import org.fossify.commons.extensions.beGone
+import org.fossify.commons.extensions.beVisible
+import org.fossify.commons.extensions.beVisibleIf
+import org.fossify.commons.extensions.getColorStateList
+import org.fossify.commons.extensions.getContrastColor
+import org.fossify.commons.extensions.getMyContactsCursor
+import org.fossify.commons.extensions.hasPermission
+import org.fossify.commons.helpers.ContactsHelper
+import org.fossify.commons.helpers.Converters
+import org.fossify.commons.helpers.MyContactsContentProvider
+import org.fossify.commons.helpers.PERMISSION_READ_CONTACTS
+import org.fossify.commons.helpers.SMT_PRIVATE
+import org.fossify.commons.helpers.VIEW_TYPE_GRID
 import org.fossify.commons.models.contacts.Contact
 import org.fossify.commons.views.MyGridLayoutManager
 import org.fossify.commons.views.MyLinearLayoutManager
@@ -17,6 +29,7 @@ import org.fossify.phone.databinding.FragmentFavoritesBinding
 import org.fossify.phone.databinding.FragmentLettersLayoutBinding
 import org.fossify.phone.extensions.config
 import org.fossify.phone.extensions.setupWithContacts
+import org.fossify.phone.extensions.startCallWithConfirmationCheck
 import org.fossify.phone.extensions.startContactDetailsIntent
 import org.fossify.phone.interfaces.RefreshItemsListener
 
@@ -113,18 +126,8 @@ class FavoritesFragment(context: Context, attributeSet: AttributeSet) : MyViewPa
                 viewType = viewType,
                 showDeleteButton = false,
                 enableDrag = true,
-                itemClick = { it ->
-                    if (context.config.showCallConfirmation) {
-                        CallConfirmationDialog(activity as SimpleActivity, (it as Contact).getNameToDisplay()) {
-                            activity?.apply {
-                                initiateCall(it) { launchCallIntent(it) }
-                            }
-                        }
-                    } else {
-                        activity?.apply {
-                            initiateCall(it as Contact) { launchCallIntent(it) }
-                        }
-                    }
+                itemClick = {
+                    activity?.startCallWithConfirmationCheck(it as Contact)
                 },
                 profileIconClick = {
                     activity?.startContactDetailsIntent(it as Contact)

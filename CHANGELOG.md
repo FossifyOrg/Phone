@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Changed
+- Tapping a contact now starts a call; tap the photo for details ([#80])
 
 ## [1.6.2] - 2025-08-23
 ### Changed
@@ -147,6 +149,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#39]: https://github.com/FossifyOrg/Phone/issues/39
 [#50]: https://github.com/FossifyOrg/Phone/issues/50
 [#60]: https://github.com/FossifyOrg/Phone/issues/60
+[#80]: https://github.com/FossifyOrg/Phone/issues/80
 [#81]: https://github.com/FossifyOrg/Phone/issues/81
 [#88]: https://github.com/FossifyOrg/Phone/issues/88
 [#94]: https://github.com/FossifyOrg/Phone/issues/94

@@ -3,8 +3,23 @@ package org.fossify.phone.fragments
 import android.content.Context
 import android.util.AttributeSet
 import org.fossify.commons.adapters.MyRecyclerViewAdapter
-import org.fossify.commons.extensions.*
-import org.fossify.commons.helpers.*
+import org.fossify.commons.extensions.areSystemAnimationsEnabled
+import org.fossify.commons.extensions.baseConfig
+import org.fossify.commons.extensions.beGone
+import org.fossify.commons.extensions.beVisible
+import org.fossify.commons.extensions.beVisibleIf
+import org.fossify.commons.extensions.getColorStateList
+import org.fossify.commons.extensions.getContrastColor
+import org.fossify.commons.extensions.getMyContactsCursor
+import org.fossify.commons.extensions.hasPermission
+import org.fossify.commons.extensions.normalizePhoneNumber
+import org.fossify.commons.extensions.normalizeString
+import org.fossify.commons.extensions.underlineText
+import org.fossify.commons.helpers.ContactsHelper
+import org.fossify.commons.helpers.MyContactsContentProvider
+import org.fossify.commons.helpers.PERMISSION_READ_CONTACTS
+import org.fossify.commons.helpers.SMT_PRIVATE
+import org.fossify.commons.helpers.getProperText
 import org.fossify.commons.models.contacts.Contact
 import org.fossify.phone.R
 import org.fossify.phone.activities.MainActivity
@@ -14,6 +29,7 @@ import org.fossify.phone.databinding.FragmentContactsBinding
 import org.fossify.phone.databinding.FragmentLettersLayoutBinding
 import org.fossify.phone.extensions.launchCreateNewContactIntent
 import org.fossify.phone.extensions.setupWithContacts
+import org.fossify.phone.extensions.startCallWithConfirmationCheck
 import org.fossify.phone.extensions.startContactDetailsIntent
 import org.fossify.phone.interfaces.RefreshItemsListener
 
@@ -113,8 +129,12 @@ class ContactsFragment(context: Context, attributeSet: AttributeSet) : MyViewPag
                     recyclerView = binding.fragmentList,
                     refreshItemsListener = this,
                     itemClick = {
+                        activity?.startCallWithConfirmationCheck(it as Contact)
+                    },
+                    profileIconClick = {
                         activity?.startContactDetailsIntent(it as Contact)
-                    }).apply {
+                    }
+                ).apply {
                     binding.fragmentList.adapter = this
                 }
 
