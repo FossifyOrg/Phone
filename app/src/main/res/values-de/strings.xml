@@ -74,6 +74,6 @@
     <string name="faq_2_text">Aufgrund von Systemeinschränkungen können Notrufe nur über die Standardtelefonie-App des Systems getätigt werden. Um sicherzustellen, dass Notrufe ordnungsgemäß funktionieren, musst du die System-App installiert und aktiviert lassen.</string>
     <string name="faq_3_text">Fossify Phone zeigt nur Kontakte an, die mit einer Telefonnummer verknüpft sind. Kontakte ohne Telefonnummer werden in der App nicht angezeigt.</string>
     <string name="faq_2_title">Warum funktionieren Notrufe nicht richtig?</string>
-    <string name="call_notification_channel">Aufrufstatus</string>
-    <string name="call_notification_channel_high_priority">Aufrufstatus (hohe Priorität)</string>
+    <string name="call_notification_channel">Anrufstatus</string>
+    <string name="call_notification_channel_high_priority">Anrufstatus (hohe Priorität)</string>
 </resources>
