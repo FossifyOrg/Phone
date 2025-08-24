@@ -4,9 +4,21 @@ import android.content.Context
 import android.util.AttributeSet
 import com.google.gson.Gson
 import org.fossify.commons.adapters.MyRecyclerViewAdapter
-import org.fossify.commons.dialogs.CallConfirmationDialog
-import org.fossify.commons.extensions.*
-import org.fossify.commons.helpers.*
+import org.fossify.commons.extensions.areSystemAnimationsEnabled
+import org.fossify.commons.extensions.baseConfig
+import org.fossify.commons.extensions.beGone
+import org.fossify.commons.extensions.beVisible
+import org.fossify.commons.extensions.beVisibleIf
+import org.fossify.commons.extensions.getColorStateList
+import org.fossify.commons.extensions.getContrastColor
+import org.fossify.commons.extensions.getMyContactsCursor
+import org.fossify.commons.extensions.hasPermission
+import org.fossify.commons.helpers.ContactsHelper
+import org.fossify.commons.helpers.Converters
+import org.fossify.commons.helpers.MyContactsContentProvider
+import org.fossify.commons.helpers.PERMISSION_READ_CONTACTS
+import org.fossify.commons.helpers.SMT_PRIVATE
+import org.fossify.commons.helpers.VIEW_TYPE_GRID
 import org.fossify.commons.models.contacts.Contact
 import org.fossify.commons.views.MyGridLayoutManager
 import org.fossify.commons.views.MyLinearLayoutManager
@@ -114,7 +126,7 @@ class FavoritesFragment(context: Context, attributeSet: AttributeSet) : MyViewPa
                 viewType = viewType,
                 showDeleteButton = false,
                 enableDrag = true,
-                itemClick = { it ->
+                itemClick = {
                     activity?.startCallWithConfirmationCheck(it as Contact)
                 },
                 profileIconClick = {
