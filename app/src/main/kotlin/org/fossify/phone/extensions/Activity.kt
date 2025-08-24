@@ -10,6 +10,7 @@ import android.telecom.PhoneAccountHandle
 import android.telecom.TelecomManager
 import org.fossify.commons.activities.BaseSimpleActivity
 import org.fossify.commons.dialogs.CallConfirmationDialog
+import org.fossify.commons.extensions.initiateCall
 import org.fossify.commons.extensions.isDefaultDialer
 import org.fossify.commons.extensions.isPackageInstalled
 import org.fossify.commons.extensions.launchActivityIntent
@@ -54,6 +55,19 @@ fun SimpleActivity.startCallWithConfirmationCheck(
         }
     } else {
         startCallIntent(recipient, forceSimSelector)
+    }
+}
+
+fun SimpleActivity.startCallWithConfirmationCheck(contact: Contact) {
+    if (config.showCallConfirmation) {
+        CallConfirmationDialog(
+            activity = this,
+            callee = contact.getNameToDisplay()
+        ) {
+            initiateCall(contact) { launchCallIntent(it) }
+        }
+    } else {
+        initiateCall(contact) { launchCallIntent(it) }
     }
 }
 
