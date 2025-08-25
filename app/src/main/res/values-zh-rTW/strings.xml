@@ -74,4 +74,6 @@
     <string name="faq_2_text">因為系統限制，緊急電話只能透過系統預設的撥號程式或電話應用程式撥打。為了確保緊急通話正常運作，您需要維持系統應用程式已安裝並啟用。</string>
     <string name="call_is_being_connected">正在接通您的通話……</string>
     <string name="faq_2_title">為什麼緊急電話無法正常運作？</string>
+    <string name="call_notification_channel">通話狀態</string>
+    <string name="call_notification_channel_high_priority">通話狀態（高優先層級）</string>
 </resources>
