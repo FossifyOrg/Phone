@@ -1,0 +1,5 @@
+Changed:
+
+• Tapping a contact now starts a call; tap the photo for details 
+• Updated translations
+
