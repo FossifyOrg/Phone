@@ -74,4 +74,6 @@
     <string name="faq_3_title">Zašto neki moji kontakti nedostaju u aplikaciji?</string>
     <string name="faq_3_text">Fossify Telefon prikazuje samo kontakte koji sadrže telefonski broj. Kontakti bez telefonskog broja ne prikazuju se u aplikaciji.</string>
     <string name="faq_2_text">Zbog ograničenja sustava, pozivi za hitne slučajeve se mogu uputiti samo putem zadanog brojčanika ili telefonske aplikacije tvog sustava. Za pravilan rad poziva za hitne slučajeve, aplikacija sustava mora biti instalirana i aktivirana.</string>
+    <string name="call_notification_channel">Status poziva</string>
+    <string name="call_notification_channel_high_priority">Status poziva (visoki prioritet)</string>
 </resources>
