@@ -76,4 +76,5 @@
     <string name="faq_3_text">Fossify Phone показывает только контакты, к которым привязан номер телефона. Контакты без телефонного номера не отображаются в приложении.</string>
     <string name="call_notification_channel">Статус вызова</string>
     <string name="call_notification_channel_high_priority">Статус вызова (приоритетный)</string>
+    <string name="calling_accounts">Аккаунты вызовов</string>
 </resources>
