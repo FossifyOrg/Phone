@@ -76,4 +76,5 @@
     <string name="faq_3_text">Fossify Phone показує лише ті контакти, з якими пов\'язаний номер телефону. Контакти без номера телефону не показується в застосунку.</string>
     <string name="call_notification_channel">Стан дзвінка</string>
     <string name="call_notification_channel_high_priority">Стан виклику (високий пріоритет)</string>
+    <string name="calling_accounts">Облікові записи для дзвінків</string>
 </resources>
