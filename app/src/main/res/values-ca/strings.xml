@@ -76,4 +76,5 @@
     <string name="faq_3_text">El Fossify Phone només mostra els contactes que tenen un número de telèfon associat a ells. Els contactes sense número de telèfon no es mostren a l\'aplicació.</string>
     <string name="call_notification_channel">Estat de la trucada</string>
     <string name="call_notification_channel_high_priority">Estat de la trucada (alta prioritat)</string>
+    <string name="calling_accounts">Comptes de trucades</string>
 </resources>
