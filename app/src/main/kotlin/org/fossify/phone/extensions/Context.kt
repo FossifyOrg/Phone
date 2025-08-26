@@ -2,9 +2,11 @@ package org.fossify.phone.extensions
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.media.AudioManager
 import android.net.Uri
 import android.os.PowerManager
+import android.telecom.TelecomManager
 import org.fossify.commons.extensions.telecomManager
 import org.fossify.commons.helpers.ensureBackgroundThread
 import org.fossify.phone.helpers.Config
@@ -64,4 +66,13 @@ fun Context.clearMissedCalls() {
         } catch (ignored: Exception) {
         }
     }
+}
+
+fun Context.canLaunchAccountsConfiguration(): Boolean {
+    return Intent(TelecomManager.ACTION_CHANGE_PHONE_ACCOUNTS)
+        .resolveActivity(packageManager) != null
+}
+
+fun Context.launchAccountsConfiguration() {
+    startActivity(Intent(TelecomManager.ACTION_CHANGE_PHONE_ACCOUNTS))
 }
