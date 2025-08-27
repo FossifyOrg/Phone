@@ -76,4 +76,5 @@
     <string name="faq_2_text">Mar gheall ar shrianta córais, ní féidir glaonna éigeandála a dhéanamh ach trí dhiailer réamhshocraithe nó aip ghutháin do chórais. Chun a chinntiú go n-oibríonn glaonna éigeandála i gceart, ní mór duit aip an chórais a choinneáil suiteáilte agus cumasaithe.</string>
     <string name="call_notification_channel">Stádas glaonna</string>
     <string name="call_notification_channel_high_priority">Stádas glao (tosaíocht ard)</string>
+    <string name="calling_accounts">Cuntais ghlaonna</string>
 </resources>
