@@ -76,4 +76,5 @@
     <string name="faq_3_title">Защо някои от контактите ми липсват в приложението?</string>
     <string name="call_notification_channel">Състояние на обаждането</string>
     <string name="call_notification_channel_high_priority">Състояние на обаждането (приоритетно)</string>
+    <string name="calling_accounts">Профили за обаждания</string>
 </resources>
