@@ -114,39 +114,8 @@ class DialpadActivity : SimpleActivity() {
         }
 
         binding.dialpadWrapper.apply {
-            if (config.hideDialpadNumbers) {
-                dialpad1Holder.isVisible = false
-                dialpad2Holder.isVisible = false
-                dialpad3Holder.isVisible = false
-                dialpad4Holder.isVisible = false
-                dialpad5Holder.isVisible = false
-                dialpad6Holder.isVisible = false
-                dialpad7Holder.isVisible = false
-                dialpad8Holder.isVisible = false
-                dialpad9Holder.isVisible = false
-                dialpadPlusHolder.isVisible = true
-                dialpad0Holder.visibility = View.INVISIBLE
-            }
-
-            arrayOf(
-                dialpad0Holder,
-                dialpad1Holder,
-                dialpad2Holder,
-                dialpad3Holder,
-                dialpad4Holder,
-                dialpad5Holder,
-                dialpad6Holder,
-                dialpad7Holder,
-                dialpad8Holder,
-                dialpad9Holder,
-                dialpadPlusHolder,
-                dialpadAsteriskHolder,
-                dialpadHashtagHolder
-            ).forEach {
-                it.background =
-                    ResourcesCompat.getDrawable(resources, R.drawable.pill_background, theme)
-                it.background?.alpha = LOWER_ALPHA_INT
-            }
+            configureDialpadVisibility()
+            setupDialpadBackgrounds()
         }
 
         setupOptionsMenu()
@@ -156,44 +125,8 @@ class DialpadActivity : SimpleActivity() {
         toneGeneratorHelper = ToneGeneratorHelper(this, DIALPAD_TONE_LENGTH_MS)
 
         binding.dialpadWrapper.apply {
-            if (hasRussianLocale) {
-                dialpad2Letters.append("\nАБВГ")
-                dialpad3Letters.append("\nДЕЁЖЗ")
-                dialpad4Letters.append("\nИЙКЛ")
-                dialpad5Letters.append("\nМНОП")
-                dialpad6Letters.append("\nРСТУ")
-                dialpad7Letters.append("\nФХЦЧ")
-                dialpad8Letters.append("\nШЩЪЫ")
-                dialpad9Letters.append("\nЬЭЮЯ")
-
-                val fontSize = resources.getDimension(R.dimen.small_text_size)
-                arrayOf(
-                    dialpad2Letters,
-                    dialpad3Letters,
-                    dialpad4Letters,
-                    dialpad5Letters,
-                    dialpad6Letters,
-                    dialpad7Letters,
-                    dialpad8Letters,
-                    dialpad9Letters
-                ).forEach {
-                    it.setTextSize(TypedValue.COMPLEX_UNIT_PX, fontSize)
-                }
-            }
-
-            setupCharClick(dialpad1Holder, '1')
-            setupCharClick(dialpad2Holder, '2')
-            setupCharClick(dialpad3Holder, '3')
-            setupCharClick(dialpad4Holder, '4')
-            setupCharClick(dialpad5Holder, '5')
-            setupCharClick(dialpad6Holder, '6')
-            setupCharClick(dialpad7Holder, '7')
-            setupCharClick(dialpad8Holder, '8')
-            setupCharClick(dialpad9Holder, '9')
-            setupCharClick(dialpad0Holder, '0')
-            setupCharClick(dialpadPlusHolder, '+', longClickable = false)
-            setupCharClick(dialpadAsteriskHolder, '*', longClickable = false)
-            setupCharClick(dialpadHashtagHolder, '#', longClickable = false)
+            setupRussianLocaleLetters()
+            setupAllDialpadClicks()
         }
 
         binding.apply {
@@ -418,20 +351,18 @@ class DialpadActivity : SimpleActivity() {
     }
 
     private fun startDialpadTone(char: Char) {
-        if (config.dialpadBeeps) {
-            pressedKeys.add(char)
-            toneGeneratorHelper?.startTone(char)
-        }
+        if (!config.dialpadBeeps) return
+        pressedKeys.add(char)
+        toneGeneratorHelper?.startTone(char)
     }
 
     private fun stopDialpadTone(char: Char) {
-        if (config.dialpadBeeps) {
-            if (!pressedKeys.remove(char)) return
-            if (pressedKeys.isEmpty()) {
-                toneGeneratorHelper?.stopTone()
-            } else {
-                startDialpadTone(pressedKeys.last())
-            }
+        if (!config.dialpadBeeps) return
+        if (!pressedKeys.remove(char)) return
+        if (pressedKeys.isEmpty()) {
+            toneGeneratorHelper?.stopTone()
+        } else {
+            startDialpadTone(pressedKeys.last())
         }
     }
 
@@ -458,6 +389,11 @@ class DialpadActivity : SimpleActivity() {
     private fun setupCharClick(view: View, char: Char, longClickable: Boolean = true) {
         view.isClickable = true
         view.isLongClickable = true
+        
+        view.setOnClickListener {
+            dialpadPressed(char, view)
+        }
+        
         view.setOnTouchListener { _, event ->
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
@@ -495,5 +431,89 @@ class DialpadActivity : SimpleActivity() {
             }
             false
         }
+    }
+
+    private fun configureDialpadVisibility() {
+        if (config.hideDialpadNumbers) {
+            arrayOf(
+                binding.dialpadWrapper.dialpad1Holder,
+                binding.dialpadWrapper.dialpad2Holder,
+                binding.dialpadWrapper.dialpad3Holder,
+                binding.dialpadWrapper.dialpad4Holder,
+                binding.dialpadWrapper.dialpad5Holder,
+                binding.dialpadWrapper.dialpad6Holder,
+                binding.dialpadWrapper.dialpad7Holder,
+                binding.dialpadWrapper.dialpad8Holder,
+                binding.dialpadWrapper.dialpad9Holder
+            ).forEach { it.isVisible = false }
+            
+            binding.dialpadWrapper.dialpadPlusHolder.isVisible = true
+            binding.dialpadWrapper.dialpad0Holder.visibility = View.INVISIBLE
+        }
+    }
+
+    private fun setupDialpadBackgrounds() {
+        arrayOf(
+            binding.dialpadWrapper.dialpad0Holder,
+            binding.dialpadWrapper.dialpad1Holder,
+            binding.dialpadWrapper.dialpad2Holder,
+            binding.dialpadWrapper.dialpad3Holder,
+            binding.dialpadWrapper.dialpad4Holder,
+            binding.dialpadWrapper.dialpad5Holder,
+            binding.dialpadWrapper.dialpad6Holder,
+            binding.dialpadWrapper.dialpad7Holder,
+            binding.dialpadWrapper.dialpad8Holder,
+            binding.dialpadWrapper.dialpad9Holder,
+            binding.dialpadWrapper.dialpadPlusHolder,
+            binding.dialpadWrapper.dialpadAsteriskHolder,
+            binding.dialpadWrapper.dialpadHashtagHolder
+        ).forEach {
+            it.background = ResourcesCompat.getDrawable(resources, R.drawable.pill_background, theme)
+            it.background?.alpha = LOWER_ALPHA_INT
+        }
+    }
+
+    private fun setupRussianLocaleLetters() {
+        if (!hasRussianLocale) return
+        
+        val letterData = arrayOf(
+            binding.dialpadWrapper.dialpad2Letters to "\nАБВГ",
+            binding.dialpadWrapper.dialpad3Letters to "\nДЕЁЖЗ",
+            binding.dialpadWrapper.dialpad4Letters to "\nИЙКЛ",
+            binding.dialpadWrapper.dialpad5Letters to "\nМНОП",
+            binding.dialpadWrapper.dialpad6Letters to "\nРСТУ",
+            binding.dialpadWrapper.dialpad7Letters to "\nФХЦЧ",
+            binding.dialpadWrapper.dialpad8Letters to "\nШЩЪЫ",
+            binding.dialpadWrapper.dialpad9Letters to "\nЬЭЮЯ"
+        )
+        
+        val fontSize = resources.getDimension(R.dimen.small_text_size)
+        letterData.forEach { (textView, letters) ->
+            textView.append(letters)
+            textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, fontSize)
+        }
+    }
+
+    private fun setupAllDialpadClicks() {
+        val clickData = arrayOf(
+            binding.dialpadWrapper.dialpad1Holder to '1',
+            binding.dialpadWrapper.dialpad2Holder to '2',
+            binding.dialpadWrapper.dialpad3Holder to '3',
+            binding.dialpadWrapper.dialpad4Holder to '4',
+            binding.dialpadWrapper.dialpad5Holder to '5',
+            binding.dialpadWrapper.dialpad6Holder to '6',
+            binding.dialpadWrapper.dialpad7Holder to '7',
+            binding.dialpadWrapper.dialpad8Holder to '8',
+            binding.dialpadWrapper.dialpad9Holder to '9',
+            binding.dialpadWrapper.dialpad0Holder to '0'
+        )
+        
+        clickData.forEach { (holder, char) ->
+            setupCharClick(holder, char)
+        }
+        
+        setupCharClick(binding.dialpadWrapper.dialpadPlusHolder, '+', longClickable = false)
+        setupCharClick(binding.dialpadWrapper.dialpadAsteriskHolder, '*', longClickable = false)
+        setupCharClick(binding.dialpadWrapper.dialpadHashtagHolder, '#', longClickable = false)
     }
 }
