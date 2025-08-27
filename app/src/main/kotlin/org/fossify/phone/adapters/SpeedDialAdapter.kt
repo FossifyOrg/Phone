@@ -70,7 +70,7 @@ class SpeedDialAdapter(
     private fun setupView(binding: ItemSpeedDialBinding, speedDial: SpeedDial) {
         binding.apply {
             var displayName = "${speedDial.id}. "
-            displayName += if (speedDial.isValid()) speedDial.displayName else ""
+            displayName += if (speedDial.isValid()) speedDial.getName(activity) else ""
 
             speedDialLabel.apply {
                 text = displayName

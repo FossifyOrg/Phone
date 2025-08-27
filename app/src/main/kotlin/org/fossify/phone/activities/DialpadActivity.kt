@@ -410,7 +410,7 @@ class DialpadActivity : SimpleActivity() {
         if (binding.dialpadInput.value.length == 1) {
             val speedDial = speedDialValues.firstOrNull { it.id == id }
             if (speedDial?.isValid() == true) {
-                initCall(speedDial.number, speedDial.displayName)
+                initCall(speedDial.number, speedDial.getName(this))
                 return true
             }
         }
