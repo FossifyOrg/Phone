@@ -76,4 +76,5 @@
     <string name="call_is_being_connected">正在连接您的通话…</string>
     <string name="call_notification_channel">通话状态</string>
     <string name="call_notification_channel_high_priority">通话状态（高优先级）</string>
+    <string name="calling_accounts">通话账号</string>
 </resources>
