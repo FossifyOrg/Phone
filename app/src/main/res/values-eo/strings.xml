@@ -74,4 +74,7 @@
     <string name="speed_dial_label">Alklaku telefonnumeron por asigni kontakton al ĝi. Poste vi povos rapide alvoki tiun kontakton per longe premi la telefonnumeron ĉe la numerumilo.</string>
     <string name="disable_swipe_to_answer">Anstataŭigi glitadon por respondi al envenaj vokoj per alklakado</string>
     <string name="import_call_history">Importi vokan historion</string>
+    <string name="call_notification_channel">Vokostato</string>
+    <string name="call_notification_channel_high_priority">Vokostato (prioritata)</string>
+    <string name="calling_accounts">Vokaj kontoj</string>
 </resources>
