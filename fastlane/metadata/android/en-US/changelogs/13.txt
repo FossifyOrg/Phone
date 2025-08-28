@@ -1,0 +1,14 @@
+Added:
+
+• Option to launch system Calling accounts screen 
+
+Changed:
+
+• Tapping a contact now starts a call; tap the photo for details 
+• Improved speed dial management UX for contacts with multiple numbers
+• Updated translations
+
+Fixed:
+
+• Fixed speed dial not showing contact name 
+
