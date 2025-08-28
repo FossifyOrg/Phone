@@ -76,4 +76,5 @@
     <string name="faq_2_text">Wegens systeembeperkingen kunnen noodoproepen alleen worden gedaan via de telefoonapp van je systeem. Om ervoor te zorgen dat noodoproepen goed werken, moet de systeemapp geïnstalleerd en ingeschakeld blijven.</string>
     <string name="call_notification_channel_high_priority">Oproepstatus (hoge prioriteit)</string>
     <string name="call_notification_channel">Oproepstatus</string>
+    <string name="calling_accounts">Oproepaccounts</string>
 </resources>
