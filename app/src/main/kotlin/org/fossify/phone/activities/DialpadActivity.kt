@@ -376,9 +376,9 @@ class DialpadActivity : SimpleActivity() {
         }
     }
 
-    private fun initCall(number: String = binding.dialpadInput.value) {
+    private fun initCall(number: String = binding.dialpadInput.value, name: String? = null) {
         if (number.isNotEmpty()) {
-            startCallWithConfirmationCheck(number, number)
+            startCallWithConfirmationCheck(number, name ?: number)
             clearInputWithDelay()
         } else {
             RecentsHelper(this).getRecentCalls(queryLimit = 1) {
@@ -410,7 +410,7 @@ class DialpadActivity : SimpleActivity() {
         if (binding.dialpadInput.value.length == 1) {
             val speedDial = speedDialValues.firstOrNull { it.id == id }
             if (speedDial?.isValid() == true) {
-                initCall(speedDial.number)
+                initCall(speedDial.number, speedDial.getName(this))
                 return true
             }
         }

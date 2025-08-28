@@ -4,6 +4,7 @@ import android.os.Bundle
 import com.google.gson.Gson
 import org.fossify.commons.dialogs.RadioGroupDialog
 import org.fossify.commons.extensions.getMyContactsCursor
+import org.fossify.commons.extensions.getPhoneNumberTypeText
 import org.fossify.commons.extensions.updateTextColors
 import org.fossify.commons.extensions.viewBinding
 import org.fossify.commons.helpers.ContactsHelper
@@ -71,7 +72,7 @@ class ManageSpeedDialActivity : SimpleActivity(), RemoveSpeedDialListener {
             SelectContactDialog(this, allContacts) { selectedContact ->
                 if (selectedContact.phoneNumbers.size > 1) {
                     val radioItems = selectedContact.phoneNumbers.mapIndexed { index, item ->
-                        RadioItem(index, item.normalizedNumber, item)
+                        RadioItem(index, "${item.value} (${getPhoneNumberTypeText(item.type, item.label)})", item)
                     }
                     val userPhoneNumbersList = selectedContact.phoneNumbers.map { it.value }
                     val checkedItemId = userPhoneNumbersList.indexOf(clickedContact.number)
@@ -80,6 +81,8 @@ class ManageSpeedDialActivity : SimpleActivity(), RemoveSpeedDialListener {
                         speedDialValues.first { it.id == clickedContact.id }.apply {
                             displayName = selectedContact.getNameToDisplay()
                             number = selectedNumber.normalizedNumber
+                            type = selectedNumber.type
+                            label = selectedNumber.label
                         }
                         updateAdapter()
                     }
@@ -102,6 +105,8 @@ class ManageSpeedDialActivity : SimpleActivity(), RemoveSpeedDialListener {
             speedDialValues.first { it.id == dialId }.apply {
                 displayName = ""
                 number = ""
+                type = null
+                label = null
             }
         }
         updateAdapter()
