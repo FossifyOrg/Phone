@@ -74,4 +74,6 @@
     <string name="faq_2_text">En raison des restrictions imposées par le système, les appels d\'urgence ne peuvent être effectués que par l\'intermédiaire du composeur par défaut ou de l\'application téléphonique de votre système. Pour que les appels d\'urgence fonctionnent correctement, l\'application système doit être installée et activée.</string>
     <string name="call_is_being_connected">Votre appel est en cours de connexion…</string>
     <string name="faq_3_title">Pourquoi certains de mes contacts sont-ils absents de l\'application ?</string>
+    <string name="call_notification_channel_high_priority">Statut d\'appel (haute priorité)</string>
+    <string name="call_notification_channel">Statut d\'appel</string>
 </resources>

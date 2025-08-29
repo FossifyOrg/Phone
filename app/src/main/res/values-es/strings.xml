@@ -74,4 +74,6 @@
     <string name="faq_2_text">Debido a las restricciones del sistema, las llamadas de emergencia sólo se pueden realizar a través del marcador predeterminado del sistema o de la aplicación de teléfono. Para que las llamadas de emergencia funcionen correctamente, debes mantener la aplicación del sistema instalada y activada.</string>
     <string name="faq_3_title">¿Por qué faltan algunos de mis contactos en la aplicación?</string>
     <string name="faq_3_text">El teléfono Fossify sólo muestra los contactos que tienen un número de teléfono asociado. Los contactos sin número de teléfono no se muestran en la aplicación.</string>
+    <string name="call_notification_channel">Estado de llamada</string>
+    <string name="call_notification_channel_high_priority">Estado de llamada (alta prioridad)</string>
 </resources>

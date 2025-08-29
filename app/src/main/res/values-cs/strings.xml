@@ -76,4 +76,5 @@
     <string name="faq_3_text">Telefon Fossify zobrazuje pouze kontakty, které mají telefonní číslo. Kontakty bez telefonního čísla nejsou v aplikaci zobrazeny.</string>
     <string name="call_notification_channel">Stav hovoru</string>
     <string name="call_notification_channel_high_priority">Stav hovoru (vysoká priorita)</string>
+    <string name="calling_accounts">Účty volání</string>
 </resources>

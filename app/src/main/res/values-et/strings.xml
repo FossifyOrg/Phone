@@ -76,4 +76,5 @@
     <string name="faq_2_title">Miks hädaabikõned ei toimi korralikult?</string>
     <string name="call_notification_channel">Kõne olek</string>
     <string name="call_notification_channel_high_priority">Kõne olek (ülioluline)</string>
+    <string name="calling_accounts">Kõnekontod</string>
 </resources>
