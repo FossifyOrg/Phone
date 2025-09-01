@@ -5,7 +5,6 @@
     <ID>ComplexCondition:Activity.kt$contact.rawId &gt; 1000000 &amp;&amp; contact.contactId &gt; 1000000 &amp;&amp; contact.rawId == contact.contactId &amp;&amp; (isPackageInstalled(simpleContacts) || isPackageInstalled(simpleContactsDebug))</ID>
     <ID>ComplexCondition:CallService.kt$CallService$!powerManager.isInteractive || call.isOutgoing() || isScreenLocked || config.alwaysShowFullscreen</ID>
     <ID>ComplexCondition:DialpadActivity.kt$DialpadActivity$(intent.action == Intent.ACTION_DIAL || intent.action == Intent.ACTION_VIEW) &amp;&amp; intent.data != null &amp;&amp; intent.dataString?.contains("tel:") == true</ID>
-    <ID>ComplexCondition:RecentsHelper.kt$RecentsHelper$callA.simID != callB.simID || (callA.name != callB.name &amp;&amp; callA.name != callA.phoneNumber &amp;&amp; callB.name != callB.phoneNumber) || callA.getDayCode() != callB.getDayCode()</ID>
     <ID>CyclomaticComplexMethod:CallActivity.kt$CallActivity$@SuppressLint("ClickableViewAccessibility") private fun handleSwipe()</ID>
     <ID>CyclomaticComplexMethod:CallManager.kt$CallManager.Companion$fun getPhoneState(): PhoneState</ID>
     <ID>CyclomaticComplexMethod:CallNotificationManager.kt$CallNotificationManager$@SuppressLint("NewApi") fun setupNotification(forceLowPriority: Boolean = false)</ID>
@@ -21,7 +20,6 @@
     <ID>EmptyFunctionBlock:MainActivity.kt$MainActivity.&lt;no name provided&gt;${}</ID>
     <ID>EmptyFunctionBlock:RecentCallsAdapter.kt$RecentCallsAdapter${}</ID>
     <ID>EmptyFunctionBlock:SpeedDialAdapter.kt$SpeedDialAdapter${}</ID>
-    <ID>ExplicitItLambdaParameter:FavoritesFragment.kt$FavoritesFragment${ it -&gt; if (context.config.showCallConfirmation) { CallConfirmationDialog(activity as SimpleActivity, (it as Contact).getNameToDisplay()) { activity?.apply { initiateCall(it) { launchCallIntent(it) } } } } else { activity?.apply { initiateCall(it as Contact) { launchCallIntent(it) } } } }</ID>
     <ID>LargeClass:CallActivity.kt$CallActivity : SimpleActivity</ID>
     <ID>LongMethod:CallActivity.kt$CallActivity$@SuppressLint("ClickableViewAccessibility") private fun handleSwipe()</ID>
     <ID>LongMethod:RecentCallsAdapter.kt$RecentCallsAdapter.RecentCallViewHolder$fun bind(call: RecentCall)</ID>
@@ -75,7 +73,6 @@
     <ID>MaxLineLength:CallNotificationManager.kt$CallNotificationManager$setImageViewBitmap(R.id.notification_thumbnail, callContactAvatarHelper.getCircularBitmap(callContactAvatar))</ID>
     <ID>MaxLineLength:CallNotificationManager.kt$CallNotificationManager$val importance = if (isHighPriority) NotificationManager.IMPORTANCE_HIGH else NotificationManager.IMPORTANCE_DEFAULT</ID>
     <ID>MaxLineLength:CallNotificationManager.kt$CallNotificationManager$val isHighPriority = context.powerManager.isInteractive &amp;&amp; callState == Call.STATE_RINGING &amp;&amp; !forceLowPriority</ID>
-    <ID>MaxLineLength:CallNotificationManager.kt$CallNotificationManager$val name = if (isHighPriority) "call_notification_channel_high_priority" else "call_notification_channel"</ID>
     <ID>MaxLineLength:CallNotificationManager.kt$CallNotificationManager$var callerName = if (callContact.name.isNotEmpty()) callContact.name else context.getString(R.string.unknown_caller)</ID>
     <ID>MaxLineLength:CallService.kt$CallService$// seems like startActivity can throw AndroidRuntimeException and ActivityNotFoundException, not yet sure when and why, lets show a notification</ID>
     <ID>MaxLineLength:ChangeSortingDialog.kt$ChangeSortingDialog$class</ID>
@@ -118,7 +115,6 @@
     <ID>MaxLineLength:RecentCallsAdapter.kt$RecentCallsAdapter$incomingMissedCallIcon = resources.getColoredDrawableWithColor(R.drawable.ic_call_missed_vector, missedCallColor)</ID>
     <ID>MaxLineLength:RecentCallsAdapter.kt$RecentCallsAdapter$private var phoneNumberOfflineGeocoderInstance: PhoneNumberOfflineGeocoder = PhoneNumberOfflineGeocoder.getInstance()</ID>
     <ID>MaxLineLength:RecentCallsAdapter.kt$RecentCallsAdapter$return (activity as MainActivity).cachedContacts.find { it.name == recentCall.name &amp;&amp; it.doesHavePhoneNumber(recentCall.phoneNumber) }</ID>
-    <ID>MaxLineLength:RecentCallsAdapter.kt$RecentCallsAdapter.RecentCallDateViewHolder$else -&gt; date.timestamp.formatDateOrTime(activity, hideTimeOnOtherDays = true, showCurrentYear = false)</ID>
     <ID>MaxLineLength:RecentCallsAdapter.kt$RecentCallsAdapter.RecentCallViewHolder$&amp;&amp;</ID>
     <ID>MaxLineLength:RecentCallsAdapter.kt$RecentCallsAdapter.RecentCallViewHolder$call.startTS.formatDateOrTime(context, hideTimeOnOtherDays = false, showCurrentYear = false, hideTodaysDate = false)</ID>
     <ID>MaxLineLength:RecentCallsAdapter.kt$RecentCallsAdapter.RecentCallViewHolder$nameToShow = SpannableString(nameToShow.toString().highlightTextPart(textToHighlight, properPrimaryColor))</ID>
@@ -181,12 +177,8 @@
     <ID>WildcardImport:ContactsAdapter.kt$import android.view.*</ID>
     <ID>WildcardImport:ContactsAdapter.kt$import org.fossify.commons.extensions.*</ID>
     <ID>WildcardImport:ContactsAdapter.kt$import org.fossify.commons.helpers.*</ID>
-    <ID>WildcardImport:ContactsFragment.kt$import org.fossify.commons.extensions.*</ID>
-    <ID>WildcardImport:ContactsFragment.kt$import org.fossify.commons.helpers.*</ID>
     <ID>WildcardImport:DialerActivity.kt$import org.fossify.commons.extensions.*</ID>
     <ID>WildcardImport:ExportCallHistoryDialog.kt$import org.fossify.commons.extensions.*</ID>
-    <ID>WildcardImport:FavoritesFragment.kt$import org.fossify.commons.extensions.*</ID>
-    <ID>WildcardImport:FavoritesFragment.kt$import org.fossify.commons.helpers.*</ID>
     <ID>WildcardImport:FilterContactSourcesDialog.kt$import org.fossify.commons.extensions.*</ID>
     <ID>WildcardImport:MainActivity.kt$import org.fossify.commons.extensions.*</ID>
     <ID>WildcardImport:MainActivity.kt$import org.fossify.commons.helpers.*</ID>
@@ -199,7 +191,5 @@
     <ID>WildcardImport:RecentsHelper.kt$import org.fossify.commons.extensions.*</ID>
     <ID>WildcardImport:RecentsHelper.kt$import org.fossify.commons.helpers.*</ID>
     <ID>WildcardImport:SelectContactDialog.kt$import org.fossify.commons.extensions.*</ID>
-    <ID>WildcardImport:SettingsActivity.kt$import org.fossify.commons.extensions.*</ID>
-    <ID>WildcardImport:SettingsActivity.kt$import org.fossify.commons.helpers.*</ID>
   </CurrentIssues>
 </SmellBaseline>
