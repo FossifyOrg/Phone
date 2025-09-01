@@ -314,8 +314,11 @@ class RecentCallsAdapter(
     fun updateItems(newItems: List<CallLogItem>, highlightText: String = "") {
         if (textToHighlight != highlightText) {
             textToHighlight = highlightText
-            submitList(newItems)
-            notifyDataSetChanged()
+            submitList(newItems) {
+                recyclerView.post {
+                    notifyDataSetChanged()
+                }
+            }
             finishActMode()
         } else {
             submitList(newItems)
