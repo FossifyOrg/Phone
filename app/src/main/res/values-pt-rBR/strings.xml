@@ -74,4 +74,7 @@
     <string name="faq_2_title">Por que as chamadas de emergência não funcionam corretamente?</string>
     <string name="faq_2_text">Devido a restrições do sistema, chamadas de emergência só podem ser feitas por meio do discador padrão do seu sistema ou do aplicativo de telefone. Para garantir que as chamadas de emergência funcionem corretamente, você precisa manter o aplicativo do sistema instalado e habilitado.</string>
     <string name="faq_3_text">O Fossify Phone exibe apenas contatos que tenham um número de telefone associado a eles. Contatos sem um número de telefone não são exibidos no aplicativo.</string>
+    <string name="call_notification_channel">Status da chamada</string>
+    <string name="call_notification_channel_high_priority">Status da chamada (alta prioridade)</string>
+    <string name="calling_accounts">Contas de chamada</string>
 </resources>
