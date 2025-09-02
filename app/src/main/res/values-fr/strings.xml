@@ -76,4 +76,5 @@
     <string name="faq_3_title">Pourquoi certains de mes contacts sont-ils absents de l\'application ?</string>
     <string name="call_notification_channel_high_priority">Statut d\'appel (haute priorité)</string>
     <string name="call_notification_channel">Statut d\'appel</string>
+    <string name="calling_accounts">Comptes d\'appel</string>
 </resources>
