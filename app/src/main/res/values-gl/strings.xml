@@ -69,4 +69,12 @@
     <string name="faq_1_text">Estes problemas poden ter moitas razóns específicas do dispositivo e do sistema, difícil dar unha resposta concreta. Debes mirar na configuración do teu dispositivo e asegurarte de que a aplicación pode aparecer cando está en segundo plano e permitir que se vexa sobre outras aplicacións.</string>
     <string name="audio_route_bluetooth">Bluetooth</string>
     <string name="app_launcher_name">Teléfono</string>
+    <string name="call_is_being_connected">Estase iniciando a chamada…</string>
+    <string name="call_notification_channel">Estado da chamada</string>
+    <string name="call_notification_channel_high_priority">Estado da chamada (alta prioridade)</string>
+    <string name="calling_accounts">Contas para chamar</string>
+    <string name="faq_2_title">Por que non funcionan ben as chamadas de emerxencia?</string>
+    <string name="faq_2_text">Debido a restricións do sistema, as chamadas de emerxencia só se poden facer usando o marcador propio ou app do teléfono. Para asegurar que as chamadas de emerxencia funcionan correctamente tes que manter a app do sistema activada.</string>
+    <string name="faq_3_title">Por que faltan algúns dos meus contactos na app?</string>
+    <string name="faq_3_text">Fossify Phone só mostra os contactos que teñen un número de teléfono asociado a eles. Os contactos sen número de teléfono non se mostran.</string>
 </resources>
