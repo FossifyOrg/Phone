@@ -80,7 +80,7 @@ class ManageSpeedDialActivity : SimpleActivity(), RemoveSpeedDialListener {
                         val selectedNumber = selectedValue as PhoneNumber
                         speedDialValues.first { it.id == clickedContact.id }.apply {
                             displayName = selectedContact.getNameToDisplay()
-                            number = selectedNumber.normalizedNumber
+                            number = selectedNumber.value
                             type = selectedNumber.type
                             label = selectedNumber.label
                         }
@@ -89,7 +89,7 @@ class ManageSpeedDialActivity : SimpleActivity(), RemoveSpeedDialListener {
                 } else {
                     speedDialValues.first { it.id == clickedContact.id }.apply {
                         displayName = selectedContact.getNameToDisplay()
-                        number = selectedContact.phoneNumbers.first().normalizedNumber
+                        number = selectedContact.phoneNumbers.first().value
                     }
                     updateAdapter()
                 }
