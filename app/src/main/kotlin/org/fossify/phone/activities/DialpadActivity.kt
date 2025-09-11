@@ -352,11 +352,7 @@ class DialpadActivity : SimpleActivity() {
             recyclerView = binding.dialpadList,
             highlightText = text,
             itemClick = {
-                val contact = it as Contact
-                startCallWithConfirmationCheck(
-                    recipient = contact.getPrimaryNumber() ?: return@ContactsAdapter,
-                    name = contact.getNameToDisplay()
-                )
+                startCallWithConfirmationCheck(it as Contact)
                 clearInputWithDelay()
             },
             profileIconClick = {
