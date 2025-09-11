@@ -12,7 +12,6 @@ import org.fossify.commons.extensions.getColorStateList
 import org.fossify.commons.extensions.getContrastColor
 import org.fossify.commons.extensions.getMyContactsCursor
 import org.fossify.commons.extensions.hasPermission
-import org.fossify.commons.extensions.normalizePhoneNumber
 import org.fossify.commons.extensions.normalizeString
 import org.fossify.commons.extensions.underlineText
 import org.fossify.commons.helpers.ContactsHelper
