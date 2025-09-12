@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="default_phone_app_prompt">Lütfen bu uygulamayı varsayılan Telefon uygulaması yapın</string>
-    <string name="allow_displaying_over_other_apps">Stabil kullanım için lütfen diğer uygulamaların üzerinde gösterme izni verin</string>
+    <string name="allow_displaying_over_other_apps">Stabil kullanım için lütfen diğer uygulamaların üzerinde gösterilme izni verin</string>
     <string name="could_not_access_contacts">Kişilerinize erişilemedi</string>
     <string name="no_previous_calls">Geçmiş aramalar yok</string>
     <string name="could_not_access_the_call_history">Arama geçmişine erişilemedi</string>
