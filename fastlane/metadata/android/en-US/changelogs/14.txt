@@ -1,0 +1,9 @@
+Changed:
+
+• Updated translations
+
+Fixed:
+
+• Fixed USSD code handling in speed dial 
+• Fixed contact number selection on the dial pad screen
+
