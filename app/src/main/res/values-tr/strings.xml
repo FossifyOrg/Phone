@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="default_phone_app_prompt">Lütfen bu uygulamayı varsayılan Telefon uygulaması yapın</string>
-    <string name="allow_displaying_over_other_apps">Stabil kullanım için lütfen diğer uygulamaların üzerinde gösterme izni verin</string>
+    <string name="allow_displaying_over_other_apps">Stabil kullanım için lütfen diğer uygulamaların üzerinde gösterilme izni verin</string>
     <string name="could_not_access_contacts">Kişilerinize erişilemedi</string>
     <string name="no_previous_calls">Geçmiş aramalar yok</string>
     <string name="could_not_access_the_call_history">Arama geçmişine erişilemedi</string>
@@ -74,4 +74,7 @@
     <string name="faq_2_title">Acil durum çağrıları neden düzgün çalışmıyor?</string>
     <string name="faq_3_title">Neden uygulamada bazı kişiler eksik?</string>
     <string name="faq_3_text">Fossify telefon yalnızca kendileriyle ilişkili bir telefon numarası olan kişileri görüntüler. Telefon numarası olmayan kişiler uygulamada gösterilmemiştir.</string>
+    <string name="call_notification_channel">Arama durumu</string>
+    <string name="call_notification_channel_high_priority">Arama durumu (yüksek öncelik)</string>
+    <string name="calling_accounts">Arama hesapları</string>
 </resources>
