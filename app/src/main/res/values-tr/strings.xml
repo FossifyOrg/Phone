@@ -49,7 +49,7 @@
     <string name="conference_manage">Konferans aramasını yönet</string>
     <string name="conference">Konferans</string>
     <string name="audio_route_speaker">Hoparlör</string>
-    <string name="audio_route_earpiece">Telefon</string>
+    <string name="audio_route_earpiece">Kulaklık</string>
     <string name="audio_route_wired_headset">Kablolu Kulaklık</string>
     <string name="audio_route_wired_or_earpiece">Kablolu veya Telefon</string>
     <string name="choose_audio_route">Ses çıkışını seçin</string>
