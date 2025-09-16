@@ -1,7 +1,7 @@
 [versions]
 #jetbrains
 geocoderVersion = "3.13"
-kotlin = "2.2.10"
+kotlin = "2.2.20"
 kotlinxSerializationJson = "1.9.0"
 #Detekt
 detekt = "1.23.8"
