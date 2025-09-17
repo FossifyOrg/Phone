@@ -5,6 +5,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [1.7.1] - 2025-09-12
+### Changed
+- Updated translations
+
 ### Fixed
 - Fixed USSD code handling in speed dial ([#565])
 - Fixed contact number selection on the dial pad screen
@@ -192,7 +197,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#543]: https://github.com/FossifyOrg/Phone/issues/543
 [#565]: https://github.com/FossifyOrg/Phone/issues/565
 
-[Unreleased]: https://github.com/FossifyOrg/Phone/compare/1.7.0...HEAD
+[Unreleased]: https://github.com/FossifyOrg/Phone/compare/1.7.1...HEAD
+[1.7.1]: https://github.com/FossifyOrg/Phone/compare/1.7.0...1.7.1
 [1.7.0]: https://github.com/FossifyOrg/Phone/compare/1.6.2...1.7.0
 [1.6.2]: https://github.com/FossifyOrg/Phone/compare/1.6.1...1.6.2
 [1.6.1]: https://github.com/FossifyOrg/Phone/compare/1.6.0...1.6.1
