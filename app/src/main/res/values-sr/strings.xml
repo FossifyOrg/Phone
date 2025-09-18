@@ -12,12 +12,12 @@
     <string name="clear_call_history">Обришите историју позива</string>
     <string name="show_call_details">Прикажи детаље позива</string>
     <string name="dialpad">Тастер за бирање бројева</string>
-    <string name="asterisk">Астериск</string>
-    <string name="hashtag">Хаштег</string>
+    <string name="asterisk">Звездица</string>
+    <string name="hashtag">Хештег</string>
     <string name="call_number">Позив број</string>
     <string name="dialpad_beeps">Омогућите звучне сигнале при кликовима на дугме на тастатури</string>
-    <string name="dialpad_vibrations">Омогућите звучне сигнале при кликовима на дугме на тастатури</string>
-    <string name="dialer">Диалер</string>
+    <string name="dialpad_vibrations">Омогућите вибрацију при кликовима на дугме на тастатури</string>
+    <string name="dialer">Бројчаник</string>
     <string name="accept">Прихвати</string>
     <string name="accept_call">Прихвати позив</string>
     <string name="decline">Одбити</string>
@@ -64,4 +64,17 @@
     <string name="show_incoming_calls_full_screen">Увек прикажи долазне позиве преко целог екрана</string>
     <string name="faq_1_title">Чујем долазне позиве, али екран се не укључује. Шта могу да урадим\?</string>
     <string name="faq_1_text">Такви проблеми могу имати много специфичних разлога за уређај и систем, што је уопштено тешко рећи. Требало би да погледате около у подешавањима уређаја и уверите се да је апликацији дозвољено да искаче када је у позадини и да дозволи приказивање преко других апликација.</string>
+    <string name="export_call_history">Извези историју позива</string>
+    <string name="calling_blocked_number">Број који позивате је блокиран</string>
+    <string name="call_is_being_connected">Ваш позив се повезије…</string>
+    <string name="call_notification_channel">Статус позива</string>
+    <string name="call_notification_channel_high_priority">Статус позива (висок приоритет)</string>
+    <string name="import_call_history">Увези историју позива</string>
+    <string name="faq_2_title">Зашто хитни позиви не раде како треба?</string>
+    <string name="faq_2_text">Због ограничења система, хитне позиве можете упутити само преко подразумеване системске апликације за телефонију. Да би хитни позиви исправно радили, морате задржати системску апликацију инсталирану и омогућену.</string>
+    <string name="faq_3_title">Зашто недостају неки моји контакти у апликацији?</string>
+    <string name="faq_3_text">Fossify Phone приказује само контакте који имају додељен број телефона. Контакти без броја телефона се не приказују у апликацији.</string>
+    <string name="app_launcher_name">Телефон</string>
+    <string name="hide_dialpad_numbers">Сакриј бројеве тастатуре</string>
+    <string name="calling_accounts">Позивни налози</string>
 </resources>
