@@ -74,4 +74,7 @@
     <string name="faq_2_text">Järjestelmän rajoitusten vuoksi, hätäpuhelut voidaan soittaa vain järjestelmän oletuspuhelinsovelluksella. Varmistaaksesi hätäpuheluiden toiminnan, pidä oletuspuhelinsovellus asennettuna ja päälle kytkettynä.</string>
     <string name="faq_3_title">Minkä takia osa kontakteistani puuttuu?</string>
     <string name="faq_3_text">Fossify Phone näyttää vain kontaktit joissa on puhelinnumero. Sovelluksessa ei näytetä kontakteja, joissa ei ole puhelinnumeroa.</string>
+    <string name="call_notification_channel">Puhelun tila</string>
+    <string name="call_notification_channel_high_priority">Puhelun tila (korkea prioriteetti)</string>
+    <string name="calling_accounts">Puhelintilit</string>
 </resources>
