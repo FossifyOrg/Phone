@@ -135,4 +135,8 @@ class Config(context: Context) : BaseConfig(context) {
     var alwaysShowFullscreen: Boolean
         get() = prefs.getBoolean(ALWAYS_SHOW_FULLSCREEN, false)
         set(alwaysShowFullscreen) = prefs.edit().putBoolean(ALWAYS_SHOW_FULLSCREEN, alwaysShowFullscreen).apply()
+
+    var autoAnswerCalls: Boolean
+        get() = prefs.getBoolean(AUTO_ANSWER_CALLS, false)
+        set(autoAnswerCalls) = prefs.edit().putBoolean(AUTO_ANSWER_CALLS, autoAnswerCalls).apply()
 }

@@ -53,6 +53,7 @@ class CallActivity : SimpleActivity() {
 
     private var isSpeakerOn = false
     private var isMicrophoneOff = false
+    private var wasAutoMuted = false
     private var isCallEnded = false
     private var callContact: CallContact? = null
     private var proximityWakeLock: PowerManager.WakeLock? = null
@@ -465,7 +466,10 @@ class CallActivity : SimpleActivity() {
 
     private fun updateCallAudioState(route: AudioRoute?) {
         if (route != null) {
-            isMicrophoneOff = audioManager.isMicrophoneMute
+            // Don't override microphone state if it was auto-muted
+            if (!wasAutoMuted) {
+                isMicrophoneOff = audioManager.isMicrophoneMute
+            }
             updateMicrophoneButton()
 
             isSpeakerOn = route == AudioRoute.SPEAKER
@@ -499,6 +503,8 @@ class CallActivity : SimpleActivity() {
         isMicrophoneOff = !isMicrophoneOff
         audioManager.isMicrophoneMute = isMicrophoneOff
         CallManager.inCallService?.setMuted(isMicrophoneOff)
+        // Reset auto-mute flag when user manually toggles microphone
+        wasAutoMuted = false
         updateMicrophoneButton()
     }
 
@@ -735,6 +741,21 @@ class CallActivity : SimpleActivity() {
 
     private fun callRinging() {
         binding.incomingCallHolder.beVisible()
+
+        if (config.autoAnswerCalls) {
+            Handler().postDelayed({
+                // Check if call is still ringing before auto-answering
+                val currentCall = CallManager.getPrimaryCall()
+                if (currentCall?.getStateCompat() == Call.STATE_RINGING) {
+                    acceptCall()
+                    // Mute the call after auto-answering
+                    wasAutoMuted = true
+                    CallManager.inCallService?.setMuted(true)
+                    isMicrophoneOff = true
+                    updateMicrophoneButton()
+                }
+            }, 10000) // 10 seconds delay
+        }
     }
 
     private fun callStarted() {
@@ -770,6 +791,7 @@ class CallActivity : SimpleActivity() {
         }
 
         isCallEnded = true
+        wasAutoMuted = false
         runOnUiThread {
             if (callDuration > 0) {
                 disableAllActionButtons()

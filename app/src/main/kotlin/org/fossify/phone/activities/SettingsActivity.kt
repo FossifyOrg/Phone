@@ -113,6 +113,7 @@ class SettingsActivity : SimpleActivity() {
         setupDisableProximitySensor()
         setupDisableSwipeToAnswer()
         setupAlwaysShowFullscreen()
+        setupAutoAnswerCalls()
         setupCallsExport()
         setupCallsImport()
         updateTextColors(binding.settingsHolder)
@@ -362,6 +363,16 @@ class SettingsActivity : SimpleActivity() {
             settingsAlwaysShowFullscreenHolder.setOnClickListener {
                 settingsAlwaysShowFullscreen.toggle()
                 config.alwaysShowFullscreen = settingsAlwaysShowFullscreen.isChecked
+            }
+        }
+    }
+
+    private fun setupAutoAnswerCalls() {
+        binding.apply {
+            settingsAutoAnswerCalls.isChecked = config.autoAnswerCalls
+            settingsAutoAnswerCallsHolder.setOnClickListener {
+                settingsAutoAnswerCalls.toggle()
+                config.autoAnswerCalls = settingsAutoAnswerCalls.isChecked
             }
         }
     }

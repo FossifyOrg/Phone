@@ -29,6 +29,7 @@
     <string name="dialer">Dialer</string>
     <string name="accept">Accept</string>
     <string name="accept_call">Accept call</string>
+    <string name="auto_answer_calls">Auto answer calls</string>
     <string name="decline">Decline</string>
     <string name="decline_call">Decline call</string>
     <string name="unknown_caller">Unknown Caller</string>
