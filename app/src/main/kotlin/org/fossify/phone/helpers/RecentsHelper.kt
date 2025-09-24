@@ -220,7 +220,7 @@ class RecentsHelper(private val context: Context) {
                     if (contactPhotosMap.containsKey(number)) {
                         photoUri = contactPhotosMap[number]!!
                     } else {
-                        val contact = contacts.firstOrNull { it.doesContainPhoneNumber(number) }
+                        val contact = contacts.firstOrNull { it.doesHavePhoneNumber(number) }
                         if (contact != null) {
                             photoUri = contact.photoUri
                             contactPhotosMap[number] = contact.photoUri
