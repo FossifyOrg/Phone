@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Fixed
+- Fixed wrong contact photo in call history for some contacts ([#585])
 
 ## [1.7.1] - 2025-09-12
 ### Changed
@@ -196,6 +198,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#535]: https://github.com/FossifyOrg/Phone/issues/535
 [#543]: https://github.com/FossifyOrg/Phone/issues/543
 [#565]: https://github.com/FossifyOrg/Phone/issues/565
+[#585]: https://github.com/FossifyOrg/Phone/issues/585
 
 [Unreleased]: https://github.com/FossifyOrg/Phone/compare/1.7.1...HEAD
 [1.7.1]: https://github.com/FossifyOrg/Phone/compare/1.7.0...1.7.1
