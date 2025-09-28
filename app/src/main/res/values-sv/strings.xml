@@ -68,7 +68,7 @@
     <string name="faq_1_title">Jag hör inkommande samtal, men skärmen slås inte på. Vad kan jag göra?</string>
     <string name="faq_1_text">Sådana problem kan ha många enhets- och systemspecifika orsaker, det är svårt att svara på generellt. Titta i enhetens inställningar och se till att appen tillåts visas när den är i bakgrunden och tillåts visas ovanpå andra appar.</string>
     <string name="app_launcher_name">Telefon</string>
-    <string name="audio_route_bluetooth">Blåtand</string>
+    <string name="audio_route_bluetooth">Bluetooth</string>
     <string name="call_is_being_connected">Samtalet kopplas…</string>
     <string name="faq_2_title">Varför fungerar inte nödsamtal korrekt?</string>
     <string name="faq_3_title">Varför saknas vissa av mina kontakter i appen?</string>
@@ -76,4 +76,5 @@
     <string name="call_notification_channel">Samtalsstatus</string>
     <string name="call_notification_channel_high_priority">Samtalsstatus (hög prioritet)</string>
     <string name="calling_accounts">Konton för samtal</string>
+    <string name="faq_2_text">På grund av systembegränsningar går det bara att ringa nödsamtal via systemets standardtelefonapp. För att säkerställa att nödsamtal fungerar korrekt måste du låta systemappen vara installerad och aktiverad.</string>
 </resources>
