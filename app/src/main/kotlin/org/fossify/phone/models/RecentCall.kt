@@ -27,12 +27,12 @@ data class RecentCall(
     val dayCode = startTS.getDayCode()
 
     fun doesContainPhoneNumber(text: String): Boolean {
-        return if (text.toIntOrNull() != null) {
+        return if (text.toLongOrNull() != null) {
             val normalizedText = text.normalizePhoneNumber()
             PhoneNumberUtils.compare(phoneNumber.normalizePhoneNumber(), normalizedText) ||
-                phoneNumber.contains(text) ||
-                phoneNumber.normalizePhoneNumber().contains(normalizedText) ||
-                phoneNumber.contains(normalizedText)
+                    phoneNumber.contains(text) ||
+                    phoneNumber.normalizePhoneNumber().contains(normalizedText) ||
+                    phoneNumber.contains(normalizedText)
         } else {
             false
         }
