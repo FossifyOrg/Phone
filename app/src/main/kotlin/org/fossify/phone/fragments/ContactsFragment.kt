@@ -162,7 +162,7 @@ class ContactsFragment(context: Context, attributeSet: AttributeSet) : MyViewPag
         val filtered = allContacts.filter { contact ->
             getProperText(contact.getNameToDisplay(), shouldNormalize).contains(fixedText, true) ||
                 getProperText(contact.nickname, shouldNormalize).contains(fixedText, true) ||
-                (fixedText.toIntOrNull() != null && contact.doesContainPhoneNumber(fixedText, true)) ||
+                (fixedText.toLongOrNull() != null && contact.doesContainPhoneNumber(fixedText, true)) ||
                 contact.emails.any { it.value.contains(fixedText, true) } ||
                 contact.addresses.any { getProperText(it.value, shouldNormalize).contains(fixedText, true) } ||
                 contact.IMs.any { it.value.contains(fixedText, true) } ||

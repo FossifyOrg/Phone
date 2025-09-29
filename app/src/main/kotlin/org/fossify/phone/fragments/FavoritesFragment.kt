@@ -199,7 +199,7 @@ class FavoritesFragment(context: Context, attributeSet: AttributeSet) : MyViewPa
     override fun onSearchQueryChanged(text: String) {
         val fixedText = text.trim().replace("\\s+".toRegex(), " ")
         val contacts = allContacts.filter {
-            it.name.contains(fixedText, true) || (text.toIntOrNull() != null && it.doesContainPhoneNumber(fixedText))
+            it.name.contains(fixedText, true) || (text.toLongOrNull() != null && it.doesContainPhoneNumber(fixedText))
         }.sortedByDescending {
             it.name.startsWith(fixedText, true)
         }.toMutableList() as ArrayList<Contact>
