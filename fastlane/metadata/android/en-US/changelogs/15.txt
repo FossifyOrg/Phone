@@ -1,0 +1,10 @@
+Changed:
+
+• Updated translations
+
+Fixed:
+
+• Fixed wrong contact photo in call history for some contacts 
+• Fixed hidden/private number detection in call history 
+• Fixed search not matching full phone numbers
+
