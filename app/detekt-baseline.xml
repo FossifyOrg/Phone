@@ -89,7 +89,6 @@
     <ID>MaxLineLength:ContactsAdapter.kt$ContactsAdapter.Binding.ItemContactGrid$return ItemContactGridBindingAdapter(ItemContactWithoutNumberGridBinding.inflate(layoutInflater, viewGroup, attachToRoot))</ID>
     <ID>MaxLineLength:ContactsFragment.kt$ContactsFragment$!getProperText(nameToDisplay, shouldNormalize).startsWith(fixedText, true) &amp;&amp; !nameToDisplay.contains(fixedText, true)</ID>
     <ID>MaxLineLength:ContactsFragment.kt$ContactsFragment$class</ID>
-    <ID>MaxLineLength:ContactsFragment.kt$ContactsFragment$fixedText.normalizePhoneNumber().isNotEmpty() &amp;&amp; it.normalizedNumber.contains(fixedText.normalizePhoneNumber(), true)</ID>
     <ID>MaxLineLength:ExportCallHistoryDialog.kt$ExportCallHistoryDialog$activity.getAlertDialogBuilder().setPositiveButton(R.string.ok, null).setNegativeButton(R.string.cancel, null)</ID>
     <ID>MaxLineLength:FavoritesFragment.kt$FavoritesFragment$(binding.fragmentList.layoutManager as? MyGridLayoutManager)?.spanCount = context!!.config.contactsGridColumnCount</ID>
     <ID>MaxLineLength:FavoritesFragment.kt$FavoritesFragment$class</ID>
