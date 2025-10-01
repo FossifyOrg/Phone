@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Fixed
 - Fixed wrong contact photo in call history for some contacts ([#585])
+- Fixed hidden/private number detection in call history ([#594])
 - Fixed search not matching full phone numbers
 
 ## [1.7.1] - 2025-09-12
@@ -200,6 +201,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#543]: https://github.com/FossifyOrg/Phone/issues/543
 [#565]: https://github.com/FossifyOrg/Phone/issues/565
 [#585]: https://github.com/FossifyOrg/Phone/issues/585
+[#594]: https://github.com/FossifyOrg/Phone/issues/594
 
 [Unreleased]: https://github.com/FossifyOrg/Phone/compare/1.7.1...HEAD
 [1.7.1]: https://github.com/FossifyOrg/Phone/compare/1.7.0...1.7.1

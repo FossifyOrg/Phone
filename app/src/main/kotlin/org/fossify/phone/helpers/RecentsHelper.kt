@@ -4,6 +4,8 @@ import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
 import android.provider.CallLog.Calls
+import android.provider.CallLog.Calls.PRESENTATION_UNAVAILABLE
+import android.provider.CallLog.Calls.PRESENTATION_UNKNOWN
 import android.telephony.PhoneNumberUtils
 import org.fossify.commons.extensions.*
 import org.fossify.commons.helpers.*
@@ -141,7 +143,8 @@ class RecentsHelper(private val context: Context) {
             Calls.DATE,
             Calls.DURATION,
             Calls.TYPE,
-            Calls.PHONE_ACCOUNT_ID
+            Calls.PHONE_ACCOUNT_ID,
+            Calls.NUMBER_PRESENTATION
         )
 
         val accountIdToSimAccountMap = HashMap<String, SIMAccount>()
@@ -179,7 +182,11 @@ class RecentsHelper(private val context: Context) {
                 val id = cursor.getIntValue(Calls._ID)
                 var isUnknownNumber = false
                 val number = cursor.getStringValueOrNull(Calls.NUMBER)
-                if (number == null || number == "-1") {
+                val presentation = cursor.getIntValueOrNull(Calls.NUMBER_PRESENTATION) ?: Calls.PRESENTATION_ALLOWED
+                val presentationBlocked = presentation == PRESENTATION_UNKNOWN
+                        || presentation == PRESENTATION_UNAVAILABLE
+                        || presentation == Calls.PRESENTATION_RESTRICTED
+                if (presentationBlocked || number.isNullOrBlank() || number == "-1") {
                     isUnknownNumber = true
                 }
 
