@@ -19,12 +19,12 @@
     <string name="asterisk">Stjerne</string>
     <string name="hashtag">Hashtag</string>
     <string name="call_number">Opkaldsnummer</string>
-    <string name="dialpad_beeps">Aktiver bip ved klik på tastatur</string>
-    <string name="dialpad_vibrations">Aktiver vibration ved klik på tastatur</string>
+    <string name="dialpad_beeps">Aktivér bip ved klik på numerisk tastatur</string>
+    <string name="dialpad_vibrations">Aktivér vibration ved klik på numerisk tastatur</string>
     <!-- Dialer -->
 <string name="dialer">Opkald</string>
     <string name="accept">Acceptér</string>
-    <string name="accept_call">Accepter opkald</string>
+    <string name="accept_call">Acceptér opkald</string>
     <string name="decline">Afvis</string>
     <string name="decline_call">Afvis opkald</string>
     <string name="unknown_caller">Ukendt nummer</string>
@@ -35,13 +35,13 @@
     <string name="ongoing_call">Igangværende opkald</string>
     <string name="select_sim">Vælg et SIM-kort til dette opkald</string>
     <string name="always_use_this_sim">Brug altid dette SIM-kort til dette nummer</string>
-    <string name="unset_default_sim">Fravælg standard SIM</string>
+    <string name="unset_default_sim">Fravælg standard-SIM</string>
     <string name="calls">Opkald</string>
     <string name="turn_microphone_on">Tænd mikrofonen</string>
     <string name="turn_microphone_off">Sluk mikrofonen</string>
-    <string name="turn_speaker_on">Tænd for højttaleren</string>
+    <string name="turn_speaker_on">Tænd højttaleren</string>
     <string name="turn_speaker_off">Sluk højttaleren</string>
-    <string name="show_dialpad">Vis opkaldstastatur</string>
+    <string name="show_dialpad">Vis numerisk tastatur</string>
     <string name="hide_dialpad">Skjul opkaldstastatur</string>
     <string name="end_call">Afslut opkald</string>
     <string name="hold_call">Parker opkald</string>
