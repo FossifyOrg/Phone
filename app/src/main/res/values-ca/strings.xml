@@ -9,7 +9,7 @@
     <string name="remove_confirmation">Esteu segur que voleu eliminar els elements seleccionats de l\'historial de trucades\?</string>
     <string name="clear_history_confirmation">Esteu segur que voleu suprimir-ho tot de l\'historial de trucades\?</string>
     <string name="show_grouped_calls">Mostra les trucades agrupades</string>
-    <string name="clear_call_history">Neteja l\'historial de trucades</string>
+    <string name="clear_call_history">Esborra l\'historial de trucades</string>
     <string name="show_call_details">Mostra els detalls de la trucada</string>
     <string name="dialpad">Teclat de marcatge</string>
     <string name="asterisk">Asterisc</string>
