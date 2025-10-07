@@ -42,14 +42,14 @@
     <string name="turn_speaker_on">Tænd højttaleren</string>
     <string name="turn_speaker_off">Sluk højttaleren</string>
     <string name="show_dialpad">Vis numerisk tastatur</string>
-    <string name="hide_dialpad">Skjul opkaldstastatur</string>
+    <string name="hide_dialpad">Skjul numerisk tastatur</string>
     <string name="end_call">Afslut opkald</string>
-    <string name="hold_call">Parker opkald</string>
-    <string name="resume_call">Forsæt opkald</string>
-    <string name="call_on_hold">Opkald parkeret</string>
-    <string name="call_swap">Ombyt opkald</string>
+    <string name="hold_call">Sæt opkald på hold</string>
+    <string name="resume_call">Genoptag opkald</string>
+    <string name="call_on_hold">Opkald på hold</string>
+    <string name="call_swap">Skift opkald</string>
     <string name="call_merge">Sammenflet opkald</string>
-    <string name="call_split">Split opkald op</string>
+    <string name="call_split">Opdel opkald</string>
     <string name="call_add">Tilføj opkald</string>
     <string name="conference_manage">Administrer konferenceopkald</string>
     <string name="conference">Konference</string>
@@ -57,16 +57,16 @@
     <string name="audio_route_earpiece">Øretelefon</string>
     <string name="audio_route_bluetooth">Bluetooth</string>
     <string name="audio_route_wired_headset">Kablet hovedtelefon</string>
-    <string name="audio_route_wired_or_earpiece">Kablet øretelefon</string>
-    <string name="choose_audio_route">Vælg audio rute</string>
-    <string name="calling_blocked_number">Nummeret du ringer til, er blokeret</string>
+    <string name="audio_route_wired_or_earpiece">Kablet eller øretelefon</string>
+    <string name="choose_audio_route">Vælg lydkilde</string>
+    <string name="calling_blocked_number">Nummeret, du ringer til, er blokeret</string>
     <!-- Speed dial -->
 <string name="speed_dial">Hurtigopkald</string>
     <string name="manage_speed_dial">Administrer hurtigopkald</string>
-    <string name="speed_dial_label">Klik på et nummer for at tilknytte en kontakt til det. Derefter kan du hurtigt ringe op til den givne kontkakt ved at holde nede på det givne nummer via det numeriske tastatur.</string>
+    <string name="speed_dial_label">Tryk på et tal for at tildele en kontakt til det. Du kan derefter hurtigt ringe op ved at holde tallet nede i opkaldstastaturet.</string>
     <!-- Settings -->
 <string name="group_subsequent_calls">Gruppér efterfølgende opkald med samme nummer i opkaldsloggen</string>
-    <string name="open_dialpad_by_default">Åbn det numeriske tastatur som standard når appen åbner</string>
+    <string name="open_dialpad_by_default">Åbn det numeriske tastatur som standard, når appen åbner</string>
     <string name="disable_proximity_sensor">Deaktivér nærhedssensor under opkald</string>
     <string name="disable_swipe_to_answer">Erstat swipe ved besvarelse af indgående opkald med berøring</string>
     <string name="show_incoming_calls_full_screen">Vis altid indkomne opkald i fuld skærm</string>
@@ -81,4 +81,6 @@
     <string name="faq_2_title">Hvorfor fungerer nødopkald ikke korrekt?</string>
     <string name="faq_3_text">Fossify Opkald viser kun kontakter med et telefonnummer. Kontakter uden telefonnummer vises ikke.</string>
     <string name="faq_2_text">Grundet systembegrænsninger kan nødopkald kun foretages via systemets standardopkaldsapp. Sørg for, at den er installeret og aktiveret for at sikre, at nødopkald virker.</string>
+    <string name="call_notification_channel">Opkaldsstatus</string>
+    <string name="call_notification_channel_high_priority">Opkaldsstatus (høj prioritet)</string>
 </resources>
