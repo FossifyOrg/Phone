@@ -69,17 +69,17 @@
     <string name="open_dialpad_by_default">Åbn det numeriske tastatur som standard, når appen åbner</string>
     <string name="disable_proximity_sensor">Deaktivér nærhedssensor under opkald</string>
     <string name="disable_swipe_to_answer">Erstat swipe ved besvarelse af indgående opkald med berøring</string>
-    <string name="show_incoming_calls_full_screen">Vis altid indkomne opkald i fuld skærm</string>
+    <string name="show_incoming_calls_full_screen">Vis altid indgående opkald i fuld skærm</string>
     <string name="hide_dialpad_numbers">Skjul numre på tastaturet</string>
-    <string name="export_call_history">Eksporter opkaldshistorik</string>
-    <string name="import_call_history">Importer opkaldshistorik</string>
+    <string name="export_call_history">Eksportér opkaldshistorik</string>
+    <string name="import_call_history">Importér opkaldshistorik</string>
     <!-- FAQ -->
 <string name="faq_1_title">Jeg hører indgående opkald, men skærmen tænder ikke. Hvad kan jeg gøre?</string>
-    <string name="faq_1_text">Sådanne problemer kan have mange enheds- og systemspecifikke årsager, så det er svært at sige noget generelt. Du bør se dig omkring i dine enhedsindstillinger og sikre dig, at appen får lov til at poppe op, når den er i baggrunden, og tillade visning over andre apps.</string>
+    <string name="faq_1_text">Sådanne problemer kan have mange enheds- og systemspecifikke årsager, så det er svært at sige præcist. Du bør tjekke din enheds indstillinger og sørge for, at appen har tilladelse til at vises i baggrunden og over andre apps.</string>
     <string name="call_is_being_connected">Dit opkald bliver tilsluttet…</string>
     <string name="faq_3_title">Hvorfor mangler nogle af mine kontakter i appen?</string>
     <string name="faq_2_title">Hvorfor fungerer nødopkald ikke korrekt?</string>
-    <string name="faq_3_text">Fossify Opkald viser kun kontakter med et telefonnummer. Kontakter uden telefonnummer vises ikke.</string>
+    <string name="faq_3_text">Fossify Telefon viser kun kontakter med et telefonnummer. Kontakter uden telefonnummer vises ikke.</string>
     <string name="faq_2_text">Grundet systembegrænsninger kan nødopkald kun foretages via systemets standardopkaldsapp. Sørg for, at den er installeret og aktiveret for at sikre, at nødopkald virker.</string>
     <string name="call_notification_channel">Opkaldsstatus</string>
     <string name="call_notification_channel_high_priority">Opkaldsstatus (høj prioritet)</string>
