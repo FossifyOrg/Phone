@@ -1,3 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_launcher_name">تیلیفووݩ</string>
+    <string name="default_phone_app_prompt">ای برنومه ن و عونوان پؽش فرز سامووݩ کۊنین</string>
+    <string name="allow_displaying_over_other_apps">سی خۊو کار کردن برنومه بؽلین ری برنومه یل دی نشووݩ داڌه بۊ</string>
+    <string name="could_not_access_contacts">دسرسی و هومدنگووݩ ایسا مومکن نؽ</string>
 </resources>
