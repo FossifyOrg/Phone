@@ -10,6 +10,7 @@ import android.util.TypedValue
 import android.view.*
 import android.widget.PopupMenu
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.SimpleItemAnimator
 import com.bumptech.glide.Glide
 import com.google.i18n.phonenumbers.NumberParseException
 import com.google.i18n.phonenumbers.PhoneNumberUtil
@@ -63,7 +64,7 @@ class RecentCallsAdapter(
         initDrawables()
         setupDragListener(true)
         setHasStableIds(true)
-        recyclerView.itemAnimator?.changeDuration = 0
+        (recyclerView.itemAnimator as? SimpleItemAnimator)?.supportsChangeAnimations = false
     }
 
     override fun getActionMenuId() = R.menu.cab_recent_calls
