@@ -5,13 +5,13 @@ import android.util.AttributeSet
 import org.fossify.commons.extensions.*
 import org.fossify.commons.helpers.*
 import org.fossify.commons.models.contacts.Contact
-import org.fossify.commons.views.MyRecyclerView
 import org.fossify.phone.R
 import org.fossify.phone.activities.MainActivity
 import org.fossify.phone.activities.SimpleActivity
 import org.fossify.phone.adapters.RecentCallsAdapter
 import org.fossify.phone.databinding.FragmentRecentsBinding
 import org.fossify.phone.extensions.config
+import org.fossify.phone.extensions.runAfterAnimations
 import org.fossify.phone.extensions.startCallWithConfirmationCheck
 import org.fossify.phone.extensions.startContactDetailsIntent
 import org.fossify.phone.helpers.RecentsHelper
@@ -68,7 +68,9 @@ class RecentsFragment(
         }
 
         refreshCallLog(loadAll = false) {
-            refreshCallLog(loadAll = true)
+            binding.recentsList.runAfterAnimations {
+                refreshCallLog(loadAll = true)
+            }
         }
     }
 
@@ -163,15 +165,6 @@ class RecentsFragment(
 
                 binding.recentsList.adapter = recentsAdapter
                 recentsAdapter?.updateItems(recents)
-
-                if (context.areSystemAnimationsEnabled) {
-                    binding.recentsList.scheduleLayoutAnimation()
-                }
-
-                binding.recentsList.endlessScrollListener = object : MyRecyclerView.EndlessScrollListener {
-                    override fun updateTop() = Unit
-                    override fun updateBottom() = refreshCallLog()
-                }
             } else {
                 recentsAdapter?.updateItems(recents)
             }
