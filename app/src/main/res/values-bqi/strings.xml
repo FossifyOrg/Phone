@@ -7,4 +7,16 @@
     <string name="could_not_access_the_call_history">دسرسی و ویرگار زنگ زیڌن ایسا مومکن نؽ</string>
     <string name="request_access">درخاست دسرسی</string>
     <string name="clear_history_confirmation">الن اخۊین پوی ویرگار زنگ زیڌنا تووݩ پاک بۊ؟</string>
+    <string name="no_previous_calls">هیچ زنگ زیڌنی ز نیاتر نجۊرست</string>
+    <string name="remove_confirmation">الن اخۊین موورد پسند بیڌه ن ز ویرگار زنگ زیڌنا پاک کۊنین؟</string>
+    <string name="show_grouped_calls">نشووݩ داڌن زنگا بونکۊ وابیڌه</string>
+    <string name="clear_call_history">پاک کردن ویرگار زنگ زیڌنا</string>
+    <string name="show_call_details">نشووݩ داڌن جۊزعیات زنگ زیڌنا</string>
+    <string name="dialpad">شوماره گر</string>
+    <string name="asterisk">آستاره</string>
+    <string name="call_number">زنگ زیڌن و شوماره</string>
+    <string name="dialpad_beeps">فعال کردن دونگ مجال لمس دویمه یل شوماره گر</string>
+    <string name="dialpad_vibrations">فعال کردن دک زیڌن مجال لمس دویمه یل شوماره گر</string>
+    <string name="dialer">تیلیفووݩ‎</string>
+    <string name="hashtag">مربع</string>
 </resources>
