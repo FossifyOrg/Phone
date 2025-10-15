@@ -144,6 +144,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added a progress indicator to indicate call history retrieval
 - Added bottom padding in lists to allow scrolling above the floating action button
 
+## [Unreleased] - 2025-10-15
+### Fixed
+- New custom sorting Not Updated Until Restart the Application in favorites tab
+
+
 ### Changed
 - The hang-up button is now always visible in the call UI ([#9])
 - Enhanced the size of caller avatar and buttons in the call UI ([#118])
