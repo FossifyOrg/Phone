@@ -183,17 +183,13 @@ class FavoritesFragment(context: Context, attributeSet: AttributeSet) : MyViewPa
             val orderIds = items.map { it.contactId }
             val orderGsonString = Gson().toJson(orderIds)
             config.favoritesContactsOrder = orderGsonString
-            assignCustomOrderToAllContact(orderIds)
+            assignCustomOrderToAllContact(items)
         }
     }
 
-    private fun assignCustomOrderToAllContact(orderIds: List<Int>){
-        val customOrderContact = allContacts
-            .sortedBy { contact ->
-                orderIds.indexOf(contact.contactId).takeIf { it != -1 } ?: Int.MAX_VALUE
-            }
+    private fun assignCustomOrderToAllContact(orderIds: List<Contact>){
         allContacts.clear()
-        allContacts.addAll(customOrderContact)
+        allContacts.addAll(orderIds)
     }
 
     private fun setupLetterFastScroller(contacts: List<Contact>) {
