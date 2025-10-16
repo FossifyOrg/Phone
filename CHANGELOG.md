@@ -5,6 +5,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [1.7.3] - 2025-10-16
+### Changed
+- Updated translations
+
 ### Fixed
 - Fixed crash in call history
 - Fixed custom sorting in favorites not taking effect until app restart ([#389])
@@ -212,7 +217,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#585]: https://github.com/FossifyOrg/Phone/issues/585
 [#594]: https://github.com/FossifyOrg/Phone/issues/594
 
-[Unreleased]: https://github.com/FossifyOrg/Phone/compare/1.7.2...HEAD
+[Unreleased]: https://github.com/FossifyOrg/Phone/compare/1.7.3...HEAD
+[1.7.3]: https://github.com/FossifyOrg/Phone/compare/1.7.2...1.7.3
 [1.7.2]: https://github.com/FossifyOrg/Phone/compare/1.7.1...1.7.2
 [1.7.1]: https://github.com/FossifyOrg/Phone/compare/1.7.0...1.7.1
 [1.7.0]: https://github.com/FossifyOrg/Phone/compare/1.6.2...1.7.0
