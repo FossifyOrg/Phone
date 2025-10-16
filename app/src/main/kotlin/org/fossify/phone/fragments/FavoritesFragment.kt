@@ -183,6 +183,7 @@ class FavoritesFragment(context: Context, attributeSet: AttributeSet) : MyViewPa
             val orderIds = items.map { it.contactId }
             val orderGsonString = Gson().toJson(orderIds)
             config.favoritesContactsOrder = orderGsonString
+            allContacts = ArrayList(items)
         }
     }
 
