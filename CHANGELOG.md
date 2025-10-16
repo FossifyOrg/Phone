@@ -6,11 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Fixed
-- Fixed custom sorting Not Updated Until Restart the Application in favorites tab
-
-## [Unreleased]
-### Fixed
 - Fixed crash in call history
+- Fixed custom sorting in favorites not taking effect until app restart ([#389])
 
 ## [1.7.2] - 2025-10-01
 ### Changed
@@ -207,6 +204,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#357]: https://github.com/FossifyOrg/Phone/issues/357
 [#359]: https://github.com/FossifyOrg/Phone/issues/359
 [#378]: https://github.com/FossifyOrg/Phone/issues/378
+[#389]: https://github.com/FossifyOrg/Phone/issues/389
 [#526]: https://github.com/FossifyOrg/Phone/issues/526
 [#535]: https://github.com/FossifyOrg/Phone/issues/535
 [#543]: https://github.com/FossifyOrg/Phone/issues/543
