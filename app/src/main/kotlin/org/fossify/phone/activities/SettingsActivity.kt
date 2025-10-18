@@ -123,6 +123,7 @@ class SettingsActivity : SimpleActivity() {
                 settingsGeneralSettingsLabel,
                 settingsStartupLabel,
                 settingsCallsLabel,
+                settingsDialpadSectionLabel,
                 settingsMigrationSectionLabel
             ).forEach {
                 it.setTextColor(getProperPrimaryColor())
