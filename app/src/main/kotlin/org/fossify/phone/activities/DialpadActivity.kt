@@ -230,7 +230,7 @@ class DialpadActivity : SimpleActivity() {
         updateTextColors(binding.dialpadHolder)
         binding.dialpadClearChar.applyColorFilter(getProperTextColor())
         updateNavigationBarColor(getProperBackgroundColor())
-        setupToolbar(binding.dialpadToolbar, NavigationIcon.Arrow)
+        setupTopAppBar(binding.dialpadToolbar, NavigationIcon.Arrow)
     }
 
     private fun setupOptionsMenu() {
