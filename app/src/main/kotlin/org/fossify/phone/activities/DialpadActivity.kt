@@ -98,11 +98,9 @@ class DialpadActivity : SimpleActivity() {
         hasRussianLocale = Locale.getDefault().language == "ru"
 
         binding.apply {
-            updateMaterialActivityViews(
-                mainCoordinatorLayout = dialpadCoordinator,
-                nestedView = dialpadHolder,
-                useTransparentNavigation = true,
-                useTopSearchMenu = false
+            updateEdgeToEdge(
+                topAppBar = dialpadToolbar,
+                scrollingView = dialpadList,
             )
             setupMaterialScrollListener(dialpadList, dialpadToolbar)
         }
