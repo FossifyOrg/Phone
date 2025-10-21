@@ -14,14 +14,14 @@ class ConferenceActivity : SimpleActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         binding.apply {
-            updateEdgeToEdge(topAppBar = conferenceToolbar, scrollingView = conferenceList)
-            setupMaterialScrollListener(conferenceList, conferenceToolbar)
+            setupEdgeToEdge(padBottomSystem = listOf(conferenceList))
+            setupMaterialScrollListener(binding.conferenceList, binding.conferenceAppbar)
             conferenceList.adapter = ConferenceCallsAdapter(this@ConferenceActivity, conferenceList, ArrayList(CallManager.getConferenceCalls())) {}
         }
     }
 
     override fun onResume() {
         super.onResume()
-        setupTopAppBar(binding.conferenceToolbar, NavigationIcon.Arrow)
+        setupTopAppBar(binding.conferenceAppbar, NavigationIcon.Arrow)
     }
 }

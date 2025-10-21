@@ -31,8 +31,8 @@ class ManageSpeedDialActivity : SimpleActivity(), RemoveSpeedDialListener {
         setContentView(binding.root)
 
         binding.apply {
-            updateEdgeToEdge(topAppBar = manageSpeedDialToolbar, scrollingView = manageSpeedDialList)
-            setupMaterialScrollListener(manageSpeedDialScrollview, manageSpeedDialToolbar)
+            setupEdgeToEdge(padBottomSystem = listOf(manageSpeedDialScrollview))
+            setupMaterialScrollListener(binding.manageSpeedDialScrollview, binding.manageSpeedDialAppbar)
 
         }
 
@@ -53,7 +53,7 @@ class ManageSpeedDialActivity : SimpleActivity(), RemoveSpeedDialListener {
 
     override fun onResume() {
         super.onResume()
-        setupTopAppBar(binding.manageSpeedDialToolbar, NavigationIcon.Arrow)
+        setupTopAppBar(binding.manageSpeedDialAppbar, NavigationIcon.Arrow)
     }
 
     override fun onStop() {
