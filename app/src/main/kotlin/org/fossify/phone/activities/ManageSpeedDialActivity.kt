@@ -53,7 +53,7 @@ class ManageSpeedDialActivity : SimpleActivity(), RemoveSpeedDialListener {
 
     override fun onResume() {
         super.onResume()
-        setupToolbar(binding.manageSpeedDialToolbar, NavigationIcon.Arrow)
+        setupTopAppBar(binding.manageSpeedDialToolbar, NavigationIcon.Arrow)
     }
 
     override fun onStop() {

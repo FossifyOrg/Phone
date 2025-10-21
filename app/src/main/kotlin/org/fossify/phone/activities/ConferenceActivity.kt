@@ -22,6 +22,6 @@ class ConferenceActivity : SimpleActivity() {
 
     override fun onResume() {
         super.onResume()
-        setupToolbar(binding.conferenceToolbar, NavigationIcon.Arrow)
+        setupTopAppBar(binding.conferenceToolbar, NavigationIcon.Arrow)
     }
 }
