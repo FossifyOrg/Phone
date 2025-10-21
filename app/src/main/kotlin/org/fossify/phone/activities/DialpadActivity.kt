@@ -98,14 +98,11 @@ class DialpadActivity : SimpleActivity() {
         hasRussianLocale = Locale.getDefault().language == "ru"
 
         binding.apply {
-            updateEdgeToEdge(
-                topAppBar = dialpadToolbar,
-                scrollingView = dialpadList,
+            setupEdgeToEdge(
+                padBottomImeAndSystem = listOf(dialpadList, dialpadHolder)
             )
-            setupMaterialScrollListener(dialpadList, dialpadToolbar)
+            setupMaterialScrollListener(binding.dialpadList, binding.dialpadAppbar)
         }
-
-        updateNavigationBarColor(getProperBackgroundColor())
 
         if (checkAppSideloading()) {
             return
@@ -229,8 +226,7 @@ class DialpadActivity : SimpleActivity() {
         super.onResume()
         updateTextColors(binding.dialpadHolder)
         binding.dialpadClearChar.applyColorFilter(getProperTextColor())
-        updateNavigationBarColor(getProperBackgroundColor())
-        setupTopAppBar(binding.dialpadToolbar, NavigationIcon.Arrow)
+        setupTopAppBar(binding.dialpadAppbar, NavigationIcon.Arrow)
     }
 
     private fun setupOptionsMenu() {

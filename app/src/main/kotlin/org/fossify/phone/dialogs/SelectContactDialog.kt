@@ -65,10 +65,10 @@ class SelectContactDialog(val activity: SimpleActivity, val contacts: List<Conta
     }
 
     private fun MySearchMenu.updateSearchViewUi() {
-        getToolbar().beInvisible()
+        requireToolbar().beInvisible()
         updateColors()
         setBackgroundColor(Color.TRANSPARENT)
-        binding.topAppBarLayout.setBackgroundColor(Color.TRANSPARENT)
+        binding.searchBarContainer.setBackgroundColor(Color.TRANSPARENT)
     }
 
     private fun MySearchMenu.setSearchViewListeners() {

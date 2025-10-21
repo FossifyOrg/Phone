@@ -83,14 +83,14 @@ class SettingsActivity : SimpleActivity() {
         refreshMenuItems()
 
         binding.apply {
-            updateEdgeToEdge(topAppBar = settingsToolbar, scrollingView = settingsNestedScrollview)
-            setupMaterialScrollListener(settingsNestedScrollview, settingsToolbar)
+            setupEdgeToEdge(padBottomSystem = listOf(settingsNestedScrollview))
+            setupMaterialScrollListener(binding.settingsNestedScrollview, binding.settingsAppbar)
         }
     }
 
     override fun onResume() {
         super.onResume()
-        setupTopAppBar(binding.settingsToolbar, NavigationIcon.Arrow)
+        setupTopAppBar(binding.settingsAppbar, NavigationIcon.Arrow)
 
         setupCustomizeColors()
         setupUseEnglish()

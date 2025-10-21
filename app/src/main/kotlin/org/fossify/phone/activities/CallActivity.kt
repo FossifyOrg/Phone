@@ -75,6 +75,11 @@ class CallActivity : SimpleActivity() {
             return
         }
 
+        setupEdgeToEdge(
+            padTopSystem = listOf(binding.callHolder),
+            padBottomSystem = listOf(binding.callHolder),
+        )
+
         updateTextColors(binding.callHolder)
         initButtons()
         audioManager.mode = AudioManager.MODE_IN_CALL
@@ -91,11 +96,6 @@ class CallActivity : SimpleActivity() {
     override fun onResume() {
         super.onResume()
         updateState()
-        updateNavigationBarColor(getProperBackgroundColor())
-
-        if (isDynamicTheme()) {
-            updateStatusbarColor(getProperBackgroundColor())
-        }
     }
 
     override fun onDestroy() {
