@@ -34,6 +34,7 @@ import org.fossify.phone.dialogs.ChangeSortingDialog
 import org.fossify.phone.dialogs.FilterContactSourcesDialog
 import org.fossify.phone.extensions.clearMissedCalls
 import org.fossify.phone.extensions.config
+import org.fossify.phone.extensions.handleFullScreenNotificationsPermission
 import org.fossify.phone.extensions.launchCreateNewContactIntent
 import org.fossify.phone.fragments.ContactsFragment
 import org.fossify.phone.fragments.FavoritesFragment
@@ -73,7 +74,11 @@ class MainActivity : SimpleActivity() {
             checkContactPermissions()
 
             if (!config.wasOverlaySnackbarConfirmed && !Settings.canDrawOverlays(this)) {
-                val snackbar = Snackbar.make(binding.mainHolder, R.string.allow_displaying_over_other_apps, Snackbar.LENGTH_INDEFINITE).setAction(R.string.ok) {
+                val snackbar = Snackbar.make(
+                    binding.mainHolder,
+                    R.string.allow_displaying_over_other_apps,
+                    Snackbar.LENGTH_INDEFINITE
+                ).setAction(R.string.ok) {
                     config.wasOverlaySnackbarConfirmed = true
                     startActivity(Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION))
                 }
@@ -84,9 +89,9 @@ class MainActivity : SimpleActivity() {
                 snackbar.show()
             }
 
-            handleNotificationPermission { granted ->
+            handleFullScreenNotificationsPermission { granted ->
                 if (!granted) {
-                    PermissionRequiredDialog(this, R.string.allow_notifications_incoming_calls, { openNotificationSettings() })
+                    toast(org.fossify.commons.R.string.notifications_disabled)
                 }
             }
         } else {
