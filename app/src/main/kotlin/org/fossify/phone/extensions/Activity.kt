@@ -8,14 +8,19 @@ import android.provider.ContactsContract
 import android.telecom.PhoneAccount
 import android.telecom.PhoneAccountHandle
 import android.telecom.TelecomManager
+import org.fossify.commons.R
 import org.fossify.commons.activities.BaseSimpleActivity
 import org.fossify.commons.dialogs.CallConfirmationDialog
+import org.fossify.commons.dialogs.PermissionRequiredDialog
+import org.fossify.commons.extensions.canUseFullScreenIntent
 import org.fossify.commons.extensions.initiateCall
 import org.fossify.commons.extensions.isDefaultDialer
 import org.fossify.commons.extensions.isPackageInstalled
 import org.fossify.commons.extensions.launchActivityIntent
 import org.fossify.commons.extensions.launchCallIntent
 import org.fossify.commons.extensions.launchViewContactIntent
+import org.fossify.commons.extensions.openFullScreenIntentSettings
+import org.fossify.commons.extensions.openNotificationSettings
 import org.fossify.commons.extensions.telecomManager
 import org.fossify.commons.helpers.CONTACT_ID
 import org.fossify.commons.helpers.IS_PRIVATE
@@ -23,6 +28,7 @@ import org.fossify.commons.helpers.PERMISSION_READ_PHONE_STATE
 import org.fossify.commons.helpers.SimpleContactsHelper
 import org.fossify.commons.helpers.ensureBackgroundThread
 import org.fossify.commons.models.contacts.Contact
+import org.fossify.phone.BuildConfig
 import org.fossify.phone.activities.DialerActivity
 import org.fossify.phone.activities.SimpleActivity
 import org.fossify.phone.dialogs.SelectSIMDialog
@@ -180,4 +186,37 @@ fun SimpleActivity.showSelectSimDialog(
     }
 ) { handle ->
     callback(handle)
+}
+
+fun SimpleActivity.handleFullScreenNotificationsPermission(callback: (granted: Boolean) -> Unit) {
+    handleNotificationPermission { granted ->
+        if (granted) {
+            if (canUseFullScreenIntent()) {
+                callback(true)
+            } else {
+                PermissionRequiredDialog(
+                    activity = this,
+                    textId = R.string.allow_full_screen_notifications_incoming_calls,
+                    positiveActionCallback = {
+                        @SuppressLint("NewApi")
+                        openFullScreenIntentSettings(BuildConfig.APPLICATION_ID)
+                    },
+                    negativeActionCallback = {
+                        callback(false)
+                    }
+                )
+            }
+        } else {
+            PermissionRequiredDialog(
+                activity = this,
+                textId = R.string.allow_notifications_incoming_calls,
+                positiveActionCallback = {
+                    openNotificationSettings()
+                },
+                negativeActionCallback = {
+                    callback(false)
+                }
+            )
+        }
+    }
 }
