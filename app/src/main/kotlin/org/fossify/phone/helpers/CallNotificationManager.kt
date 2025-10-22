@@ -3,38 +3,41 @@ package org.fossify.phone.helpers
 import android.annotation.SuppressLint
 import android.app.Notification
 import android.app.NotificationChannel
-import android.app.NotificationManager
+import android.app.NotificationManager.IMPORTANCE_DEFAULT
+import android.app.NotificationManager.IMPORTANCE_HIGH
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.telecom.Call
 import android.widget.RemoteViews
-import androidx.core.app.NotificationCompat
 import org.fossify.commons.extensions.notificationManager
 import org.fossify.commons.extensions.setText
 import org.fossify.commons.extensions.setVisibleIf
 import org.fossify.commons.helpers.isOreoPlus
 import org.fossify.phone.R
 import org.fossify.phone.activities.CallActivity
-import org.fossify.phone.extensions.powerManager
 import org.fossify.phone.receivers.CallActionReceiver
 
 class CallNotificationManager(private val context: Context) {
-    private val CALL_NOTIFICATION_ID = 42
-    private val ACCEPT_CALL_CODE = 0
-    private val DECLINE_CALL_CODE = 1
+    companion object {
+        private const val CALL_NOTIFICATION_ID = 42
+        private const val ACCEPT_CALL_CODE = 0
+        private const val DECLINE_CALL_CODE = 1
+    }
+
     private val notificationManager = context.notificationManager
     private val callContactAvatarHelper = CallContactAvatarHelper(context)
 
     @SuppressLint("NewApi")
-    fun setupNotification(forceLowPriority: Boolean = false) {
+    fun setupNotification(lowPriority: Boolean = false) {
         getCallContact(context.applicationContext, CallManager.getPrimaryCall()) { callContact ->
             val callContactAvatar = callContactAvatarHelper.getCallContactAvatar(callContact)
             val callState = CallManager.getState()
-            val isHighPriority = context.powerManager.isInteractive && callState == Call.STATE_RINGING && !forceLowPriority
-            val channelId = if (isHighPriority) "simple_dialer_call_high_priority" else "simple_dialer_call"
+            val isHighPriority = callState == Call.STATE_RINGING && !lowPriority
+            val channelId =
+                if (isHighPriority) "simple_dialer_call_high_priority" else "simple_dialer_call"
+            val importance = if (isHighPriority) IMPORTANCE_HIGH else IMPORTANCE_DEFAULT
             if (isOreoPlus()) {
-                val importance = if (isHighPriority) NotificationManager.IMPORTANCE_HIGH else NotificationManager.IMPORTANCE_DEFAULT
                 val name = if (isHighPriority) {
                     context.getString(R.string.call_notification_channel_high_priority)
                 } else {
@@ -48,19 +51,30 @@ class CallNotificationManager(private val context: Context) {
             }
 
             val openAppIntent = CallActivity.getStartIntent(context)
-            val openAppPendingIntent = PendingIntent.getActivity(context, 0, openAppIntent, PendingIntent.FLAG_MUTABLE)
+            val openAppPendingIntent =
+                PendingIntent.getActivity(context, 0, openAppIntent, PendingIntent.FLAG_MUTABLE)
 
             val acceptCallIntent = Intent(context, CallActionReceiver::class.java)
             acceptCallIntent.action = ACCEPT_CALL
             val acceptPendingIntent =
-                PendingIntent.getBroadcast(context, ACCEPT_CALL_CODE, acceptCallIntent, PendingIntent.FLAG_CANCEL_CURRENT or PendingIntent.FLAG_MUTABLE)
+                PendingIntent.getBroadcast(
+                    context,
+                    ACCEPT_CALL_CODE,
+                    acceptCallIntent,
+                    PendingIntent.FLAG_CANCEL_CURRENT or PendingIntent.FLAG_MUTABLE
+                )
 
             val declineCallIntent = Intent(context, CallActionReceiver::class.java)
             declineCallIntent.action = DECLINE_CALL
             val declinePendingIntent =
-                PendingIntent.getBroadcast(context, DECLINE_CALL_CODE, declineCallIntent, PendingIntent.FLAG_CANCEL_CURRENT or PendingIntent.FLAG_MUTABLE)
+                PendingIntent.getBroadcast(
+                    context,
+                    DECLINE_CALL_CODE,
+                    declineCallIntent,
+                    PendingIntent.FLAG_CANCEL_CURRENT or PendingIntent.FLAG_MUTABLE
+                )
 
-            var callerName = if (callContact.name.isNotEmpty()) callContact.name else context.getString(R.string.unknown_caller)
+            var callerName = callContact.name.ifEmpty { context.getString(R.string.unknown_caller) }
             if (callContact.numberLabel.isNotEmpty()) {
                 callerName += " - ${callContact.numberLabel}"
             }
@@ -82,21 +96,22 @@ class CallNotificationManager(private val context: Context) {
                 setOnClickPendingIntent(R.id.notification_accept_call, acceptPendingIntent)
 
                 if (callContactAvatar != null) {
-                    setImageViewBitmap(R.id.notification_thumbnail, callContactAvatarHelper.getCircularBitmap(callContactAvatar))
+                    setImageViewBitmap(
+                        R.id.notification_thumbnail,
+                        callContactAvatarHelper.getCircularBitmap(callContactAvatar)
+                    )
                 }
             }
 
-            val builder = NotificationCompat.Builder(context, channelId)
+            val builder = Notification.Builder(context, channelId)
                 .setSmallIcon(R.drawable.ic_phone_vector)
                 .setContentIntent(openAppPendingIntent)
-                .setPriority(if (isHighPriority) NotificationManager.IMPORTANCE_HIGH else NotificationCompat.PRIORITY_DEFAULT)
                 .setCategory(Notification.CATEGORY_CALL)
                 .setCustomContentView(collapsedView)
                 .setOngoing(true)
-                .setSound(null)
                 .setUsesChronometer(callState == Call.STATE_ACTIVE)
                 .setChannelId(channelId)
-                .setStyle(NotificationCompat.DecoratedCustomViewStyle())
+                .setStyle(Notification.DecoratedCustomViewStyle())
 
             if (isHighPriority) {
                 builder.setFullScreenIntent(openAppPendingIntent, true)
