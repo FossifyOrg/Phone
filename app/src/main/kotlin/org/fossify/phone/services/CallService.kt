@@ -1,13 +1,15 @@
 package org.fossify.phone.services
 
-import android.app.KeyguardManager
-import android.content.Context
 import android.telecom.Call
 import android.telecom.CallAudioState
 import android.telecom.InCallService
+import org.fossify.commons.extensions.canUseFullScreenIntent
+import org.fossify.commons.extensions.hasPermission
+import org.fossify.commons.helpers.PERMISSION_POST_NOTIFICATIONS
 import org.fossify.phone.activities.CallActivity
 import org.fossify.phone.extensions.config
 import org.fossify.phone.extensions.isOutgoing
+import org.fossify.phone.extensions.keyguardManager
 import org.fossify.phone.extensions.powerManager
 import org.fossify.phone.helpers.CallManager
 import org.fossify.phone.helpers.CallNotificationManager
@@ -35,17 +37,31 @@ class CallService : InCallService() {
         CallManager.inCallService = this
         call.registerCallback(callListener)
 
-        val isScreenLocked = (getSystemService(Context.KEYGUARD_SERVICE) as KeyguardManager).isDeviceLocked
-        if (!powerManager.isInteractive || call.isOutgoing() || isScreenLocked || config.alwaysShowFullscreen) {
+        // Incoming/Outgoing (locked): high priority (FSI)
+        // Incoming (unlocked): if user opted in, low priority ➜ manual activity start, otherwise high priority (FSI)
+        // Outgoing (unlocked): low priority ➜ manual activity start
+        val isIncoming = !call.isOutgoing()
+        val isDeviceLocked = !powerManager.isInteractive || keyguardManager.isDeviceLocked
+        val lowPriority = when {
+            isIncoming && isDeviceLocked -> false
+            !isIncoming && isDeviceLocked -> false
+            isIncoming && !isDeviceLocked -> config.alwaysShowFullscreen
+            else -> true
+        }
+
+        callNotificationManager.setupNotification(lowPriority)
+        if (
+            lowPriority
+            || !hasPermission(PERMISSION_POST_NOTIFICATIONS)
+            || !canUseFullScreenIntent()
+        ) {
             try {
-                callNotificationManager.setupNotification(true)
                 startActivity(CallActivity.getStartIntent(this))
-            } catch (e: Exception) {
-                // seems like startActivity can throw AndroidRuntimeException and ActivityNotFoundException, not yet sure when and why, lets show a notification
+            } catch (_: Exception) {
+                // seems like startActivity can throw AndroidRuntimeException and
+                // ActivityNotFoundException, not yet sure when and why, lets show a notification
                 callNotificationManager.setupNotification()
             }
-        } else {
-            callNotificationManager.setupNotification()
         }
     }
 
