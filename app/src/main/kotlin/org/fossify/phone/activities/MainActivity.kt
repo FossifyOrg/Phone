@@ -174,11 +174,12 @@ class MainActivity : SimpleActivity() {
         refreshItems()
     }
 
-    override fun onBackPressed() {
-        if (binding.mainMenu.isSearchOpen) {
+    override fun onBackPressedCompat(): Boolean {
+        return if (binding.mainMenu.isSearchOpen) {
             binding.mainMenu.closeSearch()
+            true
         } else {
-            super.onBackPressed()
+            false
         }
     }
 
