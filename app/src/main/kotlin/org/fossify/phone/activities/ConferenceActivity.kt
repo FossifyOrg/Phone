@@ -11,18 +11,17 @@ class ConferenceActivity : SimpleActivity() {
     private val binding by viewBinding(ActivityConferenceBinding::inflate)
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        isMaterialActivity = true
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         binding.apply {
-            updateMaterialActivityViews(conferenceCoordinator, conferenceList, useTransparentNavigation = true, useTopSearchMenu = false)
-            setupMaterialScrollListener(conferenceList, conferenceToolbar)
+            setupEdgeToEdge(padBottomSystem = listOf(conferenceList))
+            setupMaterialScrollListener(binding.conferenceList, binding.conferenceAppbar)
             conferenceList.adapter = ConferenceCallsAdapter(this@ConferenceActivity, conferenceList, ArrayList(CallManager.getConferenceCalls())) {}
         }
     }
 
     override fun onResume() {
         super.onResume()
-        setupToolbar(binding.conferenceToolbar, NavigationIcon.Arrow)
+        setupTopAppBar(binding.conferenceAppbar, NavigationIcon.Arrow)
     }
 }

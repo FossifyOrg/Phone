@@ -1,9 +1,9 @@
 package org.fossify.phone.dialogs
 
 import android.graphics.Color
-import android.view.KeyEvent
 import android.view.inputmethod.EditorInfo
 import android.widget.ImageView
+import androidx.activity.addCallback
 import androidx.appcompat.app.AlertDialog
 import org.fossify.commons.extensions.*
 import org.fossify.commons.models.contacts.Contact
@@ -37,15 +37,17 @@ class SelectContactDialog(val activity: SimpleActivity, val contacts: List<Conta
 
         activity.getAlertDialogBuilder()
             .setNegativeButton(R.string.cancel, null)
-            .setOnKeyListener { _, i, keyEvent ->
-                if (keyEvent.action == KeyEvent.ACTION_UP && i == KeyEvent.KEYCODE_BACK) {
-                    backPressed()
-                }
-                true
-            }
             .apply {
                 activity.setupDialogStuff(binding.root, this, R.string.choose_contact) { alertDialog ->
                     dialog = alertDialog
+                    alertDialog.onBackPressedDispatcher.addCallback(alertDialog) {
+                        if (binding.contactSearchView.isSearchOpen) {
+                            binding.contactSearchView.closeSearch()
+                        } else {
+                            isEnabled = false
+                            alertDialog.onBackPressedDispatcher.onBackPressed()
+                        }
+                    }
                 }
             }
     }
@@ -65,10 +67,10 @@ class SelectContactDialog(val activity: SimpleActivity, val contacts: List<Conta
     }
 
     private fun MySearchMenu.updateSearchViewUi() {
-        getToolbar().beInvisible()
+        requireToolbar().beInvisible()
         updateColors()
         setBackgroundColor(Color.TRANSPARENT)
-        binding.topAppBarLayout.setBackgroundColor(Color.TRANSPARENT)
+        binding.searchBarContainer.setBackgroundColor(Color.TRANSPARENT)
     }
 
     private fun MySearchMenu.setSearchViewListeners() {
@@ -121,13 +123,5 @@ class SelectContactDialog(val activity: SimpleActivity, val contacts: List<Conta
 
         letterFastscroller.beVisibleIf(contactsEmptyPlaceholder.isGone())
         letterFastscrollerThumb.beVisibleIf(contactsEmptyPlaceholder.isGone())
-    }
-
-    private fun backPressed() {
-        if (binding.contactSearchView.isSearchOpen) {
-            binding.contactSearchView.closeSearch()
-        } else {
-            dialog?.dismiss()
-        }
     }
 }

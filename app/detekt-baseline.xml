@@ -78,7 +78,6 @@
     <ID>MaxLineLength:ChangeSortingDialog.kt$ChangeSortingDialog$class</ID>
     <ID>MaxLineLength:ChangeSortingDialog.kt$ChangeSortingDialog$if</ID>
     <ID>MaxLineLength:ConferenceActivity.kt$ConferenceActivity$conferenceList.adapter = ConferenceCallsAdapter(this@ConferenceActivity, conferenceList, ArrayList(CallManager.getConferenceCalls())) {}</ID>
-    <ID>MaxLineLength:ConferenceActivity.kt$ConferenceActivity$updateMaterialActivityViews(conferenceCoordinator, conferenceList, useTransparentNavigation = true, useTopSearchMenu = false)</ID>
     <ID>MaxLineLength:ConferenceCallsAdapter.kt$ConferenceCallsAdapter$itemConferenceCallName.text = callContact.name.ifEmpty { itemView.context.getString(R.string.unknown_caller) }</ID>
     <ID>MaxLineLength:Config.kt$Config$set(wasOverlaySnackbarConfirmed) = prefs.edit().putBoolean(WAS_OVERLAY_SNACKBAR_CONFIRMED, wasOverlaySnackbarConfirmed).apply()</ID>
     <ID>MaxLineLength:ContactsAdapter.kt$ContactsAdapter$SimpleContactsHelper(root.context).loadContactImage(contact.photoUri, itemContactImage, contact.getNameToDisplay())</ID>
@@ -101,11 +100,9 @@
     <ID>MaxLineLength:MainActivity.kt$MainActivity$findItem(R.id.column_count).isVisible = currentFragment == getFavoritesFragment() &amp;&amp; config.viewType == VIEW_TYPE_GRID</ID>
     <ID>MaxLineLength:MainActivity.kt$MainActivity$private fun getCurrentFragment(): MyViewPagerFragment&lt;*&gt;?</ID>
     <ID>MaxLineLength:MainActivity.kt$MainActivity$private fun getInactiveTabIndexes(activeIndex: Int)</ID>
-    <ID>MaxLineLength:MainActivity.kt$MainActivity$updateMaterialActivityViews(binding.mainCoordinator, binding.mainHolder, useTransparentNavigation = false, useTopSearchMenu = true)</ID>
     <ID>MaxLineLength:MainActivity.kt$MainActivity$val</ID>
     <ID>MaxLineLength:MainActivity.kt$MainActivity$val confirmationText = "${getString(R.string.clear_history_confirmation)}\n\n${getString(R.string.cannot_be_undone)}"</ID>
     <ID>MaxLineLength:MainActivity.kt$MainActivity$val dialpadIcon = resources.getColoredDrawableWithColor(R.drawable.ic_dialpad_vector, properPrimaryColor.getContrastColor())</ID>
-    <ID>MaxLineLength:ManageSpeedDialActivity.kt$ManageSpeedDialActivity$updateMaterialActivityViews(manageSpeedDialCoordinator, manageSpeedDialHolder, useTransparentNavigation = true, useTopSearchMenu = false)</ID>
     <ID>MaxLineLength:MyViewPagerFragment.kt$MyViewPagerFragment$abstract</ID>
     <ID>MaxLineLength:MyViewPagerFragment.kt$MyViewPagerFragment$setupColors(activity.getProperTextColor(), activity.getProperPrimaryColor(), activity.getProperPrimaryColor())</ID>
     <ID>MaxLineLength:RecentCallsAdapter.kt$RecentCallsAdapter$findItem(R.id.cab_remove_default_sim).isVisible = (activity.config.getCustomSIM(selectedNumber) ?: "") != "" &amp;&amp; !call.isUnknownNumber</ID>
@@ -132,7 +129,6 @@
     <ID>MaxLineLength:SelectSIMDialog.kt$SelectSIMDialog$binding.selectSimRadioGroup.addView(radioButton, RadioGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT))</ID>
     <ID>MaxLineLength:SettingsActivity.kt$SettingsActivity$private</ID>
     <ID>MaxLineLength:SettingsActivity.kt$SettingsActivity$settingsUseEnglishHolder.beVisibleIf((config.wasUseEnglishToggled || Locale.getDefault().language != "en") &amp;&amp; !isTiramisuPlus())</ID>
-    <ID>MaxLineLength:SettingsActivity.kt$SettingsActivity$updateMaterialActivityViews(settingsCoordinator, settingsHolder, useTransparentNavigation = true, useTopSearchMenu = false)</ID>
     <ID>MaxLineLength:SpeedDialAdapter.kt$SpeedDialAdapter$private fun getSelectedItems()</ID>
     <ID>NestedBlockDepth:CallActivity.kt$CallActivity$private fun updateOtherPersonsInfo(avatarUri: String?)</ID>
     <ID>NestedBlockDepth:ContactsAdapter.kt$ContactsAdapter$@SuppressLint("ClickableViewAccessibility") private fun setupView(binding: ItemViewBinding, contact: Contact, holder: ViewHolder)</ID>

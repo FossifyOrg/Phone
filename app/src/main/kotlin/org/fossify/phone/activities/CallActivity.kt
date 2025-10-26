@@ -75,6 +75,11 @@ class CallActivity : SimpleActivity() {
             return
         }
 
+        setupEdgeToEdge(
+            padTopSystem = listOf(binding.callHolder),
+            padBottomSystem = listOf(binding.callHolder),
+        )
+
         updateTextColors(binding.callHolder)
         initButtons()
         audioManager.mode = AudioManager.MODE_IN_CALL
@@ -91,11 +96,6 @@ class CallActivity : SimpleActivity() {
     override fun onResume() {
         super.onResume()
         updateState()
-        updateNavigationBarColor(getProperBackgroundColor())
-
-        if (isDynamicTheme()) {
-            updateStatusbarColor(getProperBackgroundColor())
-        }
     }
 
     override fun onDestroy() {
@@ -108,18 +108,21 @@ class CallActivity : SimpleActivity() {
         }
     }
 
-    override fun onBackPressed() {
+    override fun onBackPressedCompat(): Boolean {
         if (binding.dialpadWrapper.isVisible()) {
             hideDialpad()
-            return
-        } else {
-            super.onBackPressed()
+            return true
         }
 
         val callState = CallManager.getState()
         if (callState == Call.STATE_CONNECTING || callState == Call.STATE_DIALING) {
             toast(R.string.call_is_being_connected)
+            // Allow user to go back but show toast - they can return to call via notification
+            return false
         }
+
+        // Allow minimizing active call - user can return via notification
+        return false
     }
 
     private fun initButtons() = binding.apply {

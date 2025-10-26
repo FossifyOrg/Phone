@@ -27,13 +27,12 @@ class ManageSpeedDialActivity : SimpleActivity(), RemoveSpeedDialListener {
     private var speedDialValues = mutableListOf<SpeedDial>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        isMaterialActivity = true
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
         binding.apply {
-            updateMaterialActivityViews(manageSpeedDialCoordinator, manageSpeedDialHolder, useTransparentNavigation = true, useTopSearchMenu = false)
-            setupMaterialScrollListener(manageSpeedDialScrollview, manageSpeedDialToolbar)
+            setupEdgeToEdge(padBottomSystem = listOf(manageSpeedDialScrollview))
+            setupMaterialScrollListener(binding.manageSpeedDialScrollview, binding.manageSpeedDialAppbar)
 
         }
 
@@ -54,7 +53,7 @@ class ManageSpeedDialActivity : SimpleActivity(), RemoveSpeedDialListener {
 
     override fun onResume() {
         super.onResume()
-        setupToolbar(binding.manageSpeedDialToolbar, NavigationIcon.Arrow)
+        setupTopAppBar(binding.manageSpeedDialAppbar, NavigationIcon.Arrow)
     }
 
     override fun onStop() {
