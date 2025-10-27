@@ -13,7 +13,6 @@ import android.widget.RemoteViews
 import org.fossify.commons.extensions.notificationManager
 import org.fossify.commons.extensions.setText
 import org.fossify.commons.extensions.setVisibleIf
-import org.fossify.commons.helpers.isOreoPlus
 import org.fossify.phone.R
 import org.fossify.phone.activities.CallActivity
 import org.fossify.phone.receivers.CallActionReceiver
