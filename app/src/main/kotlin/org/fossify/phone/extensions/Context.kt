@@ -1,7 +1,9 @@
 package org.fossify.phone.extensions
 
 import android.annotation.SuppressLint
+import android.app.KeyguardManager
 import android.content.Context
+import android.content.Context.KEYGUARD_SERVICE
 import android.content.Intent
 import android.media.AudioManager
 import android.net.Uri
@@ -14,9 +16,14 @@ import org.fossify.phone.models.SIMAccount
 
 val Context.config: Config get() = Config.newInstance(applicationContext)
 
-val Context.audioManager: AudioManager get() = getSystemService(Context.AUDIO_SERVICE) as AudioManager
+val Context.audioManager: AudioManager
+    get() = getSystemService(Context.AUDIO_SERVICE) as AudioManager
 
-val Context.powerManager: PowerManager get() = getSystemService(Context.POWER_SERVICE) as PowerManager
+val Context.powerManager: PowerManager
+    get() = getSystemService(Context.POWER_SERVICE) as PowerManager
+
+val Context.keyguardManager: KeyguardManager
+    get() = getSystemService(KEYGUARD_SERVICE) as KeyguardManager
 
 @SuppressLint("MissingPermission")
 fun Context.getAvailableSIMCardLabels(): List<SIMAccount> {

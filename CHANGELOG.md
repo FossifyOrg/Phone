@@ -7,8 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Changed
-
 - Compatibility updates for Android 15 & 16
+
+### Fixed
+- Fixed incoming call screen hidden by lock screen ([#165])
 
 ## [1.7.3] - 2025-10-16
 ### Changed
@@ -203,6 +205,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#139]: https://github.com/FossifyOrg/Phone/issues/139
 [#146]: https://github.com/FossifyOrg/Phone/issues/146
 [#147]: https://github.com/FossifyOrg/Phone/issues/147
+[#165]: https://github.com/FossifyOrg/Phone/issues/165
 [#181]: https://github.com/FossifyOrg/Phone/issues/181
 [#183]: https://github.com/FossifyOrg/Phone/issues/183
 [#186]: https://github.com/FossifyOrg/Phone/issues/186
