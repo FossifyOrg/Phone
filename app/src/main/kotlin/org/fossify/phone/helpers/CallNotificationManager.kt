@@ -36,19 +36,7 @@ class CallNotificationManager(private val context: Context) {
             val isHighPriority = callState == Call.STATE_RINGING && !lowPriority
             val channelId =
                 if (isHighPriority) "simple_dialer_call_high_priority" else "simple_dialer_call"
-            val importance = if (isHighPriority) IMPORTANCE_HIGH else IMPORTANCE_DEFAULT
-            if (isOreoPlus()) {
-                val name = if (isHighPriority) {
-                    context.getString(R.string.call_notification_channel_high_priority)
-                } else {
-                    context.getString(R.string.call_notification_channel)
-                }
-
-                NotificationChannel(channelId, name, importance).apply {
-                    setSound(null, null)
-                    notificationManager.createNotificationChannel(this)
-                }
-            }
+            createNotificationChannel(isHighPriority, channelId)
 
             val openAppIntent = CallActivity.getStartIntent(context)
             val openAppPendingIntent =
@@ -122,6 +110,20 @@ class CallNotificationManager(private val context: Context) {
             if (CallManager.getState() == callState) {
                 notificationManager.notify(CALL_NOTIFICATION_ID, notification)
             }
+        }
+    }
+
+    fun createNotificationChannel(isHighPriority: Boolean, channelId: String) {
+        val name = if (isHighPriority) {
+            context.getString(R.string.call_notification_channel_high_priority)
+        } else {
+            context.getString(R.string.call_notification_channel)
+        }
+
+        val importance = if (isHighPriority) IMPORTANCE_HIGH else IMPORTANCE_DEFAULT
+        NotificationChannel(channelId, name, importance).apply {
+            setSound(null, null)
+            notificationManager.createNotificationChannel(this)
         }
     }
 
