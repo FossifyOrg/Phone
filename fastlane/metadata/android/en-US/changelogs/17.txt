@@ -1,0 +1,9 @@
+Changed:
+
+• Compatibility updates for Android 15 & 16
+• Updated translations
+
+Fixed:
+
+• Fixed incoming call screen hidden by lock screen 
+
