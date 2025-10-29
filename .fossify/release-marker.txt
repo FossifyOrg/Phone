@@ -1,2 +1,4 @@
-# Auto-generated file. DO NOT EDIT.
+# Auto-generated file. DO NOT EDIT. 
+
+# EDIT: But why not? 🤷
 1.8.0
