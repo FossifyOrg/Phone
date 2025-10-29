@@ -76,4 +76,5 @@
     <string name="faq_2_text">Zbog ograničenja sustava, pozivi za hitne slučajeve se mogu uputiti samo putem zadanog brojčanika ili telefonske aplikacije tvog sustava. Za pravilan rad poziva za hitne slučajeve, aplikacija sustava mora biti instalirana i aktivirana.</string>
     <string name="call_notification_channel">Status poziva</string>
     <string name="call_notification_channel_high_priority">Status poziva (visoki prioritet)</string>
+    <string name="calling_accounts">Računi pozivanja</string>
 </resources>
