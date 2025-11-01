@@ -3,11 +3,9 @@
   <ManuallySuppressedIssues/>
   <CurrentIssues>
     <ID>ComplexCondition:Activity.kt$contact.rawId &gt; 1000000 &amp;&amp; contact.contactId &gt; 1000000 &amp;&amp; contact.rawId == contact.contactId &amp;&amp; (isPackageInstalled(simpleContacts) || isPackageInstalled(simpleContactsDebug))</ID>
-    <ID>ComplexCondition:CallService.kt$CallService$!powerManager.isInteractive || call.isOutgoing() || isScreenLocked || config.alwaysShowFullscreen</ID>
     <ID>ComplexCondition:DialpadActivity.kt$DialpadActivity$(intent.action == Intent.ACTION_DIAL || intent.action == Intent.ACTION_VIEW) &amp;&amp; intent.data != null &amp;&amp; intent.dataString?.contains("tel:") == true</ID>
     <ID>CyclomaticComplexMethod:CallActivity.kt$CallActivity$@SuppressLint("ClickableViewAccessibility") private fun handleSwipe()</ID>
     <ID>CyclomaticComplexMethod:CallManager.kt$CallManager.Companion$fun getPhoneState(): PhoneState</ID>
-    <ID>CyclomaticComplexMethod:CallNotificationManager.kt$CallNotificationManager$@SuppressLint("NewApi") fun setupNotification(forceLowPriority: Boolean = false)</ID>
     <ID>CyclomaticComplexMethod:ContactsAdapter.kt$ContactsAdapter$@SuppressLint("ClickableViewAccessibility") private fun setupView(binding: ItemViewBinding, contact: Contact, holder: ViewHolder)</ID>
     <ID>CyclomaticComplexMethod:RecentCallsAdapter.kt$RecentCallsAdapter$private fun showPopupMenu(view: View, call: RecentCall)</ID>
     <ID>CyclomaticComplexMethod:RecentCallsAdapter.kt$RecentCallsAdapter.RecentCallViewHolder$fun bind(call: RecentCall)</ID>
@@ -67,14 +65,6 @@
     <ID>MaxLineLength:CallContactHelper.kt$callContact.numberLabel = context.getPhoneNumberTypeText(specificPhoneNumber.type, specificPhoneNumber.label)</ID>
     <ID>MaxLineLength:CallManager.kt$CallManager.Companion$if</ID>
     <ID>MaxLineLength:CallManager.kt$CallManager.Companion$val newCall = calls.find { it.getStateCompat() == Call.STATE_CONNECTING || it.getStateCompat() == Call.STATE_DIALING }</ID>
-    <ID>MaxLineLength:CallNotificationManager.kt$CallNotificationManager$.</ID>
-    <ID>MaxLineLength:CallNotificationManager.kt$CallNotificationManager$PendingIntent.getBroadcast(context, ACCEPT_CALL_CODE, acceptCallIntent, PendingIntent.FLAG_CANCEL_CURRENT or PendingIntent.FLAG_MUTABLE)</ID>
-    <ID>MaxLineLength:CallNotificationManager.kt$CallNotificationManager$PendingIntent.getBroadcast(context, DECLINE_CALL_CODE, declineCallIntent, PendingIntent.FLAG_CANCEL_CURRENT or PendingIntent.FLAG_MUTABLE)</ID>
-    <ID>MaxLineLength:CallNotificationManager.kt$CallNotificationManager$setImageViewBitmap(R.id.notification_thumbnail, callContactAvatarHelper.getCircularBitmap(callContactAvatar))</ID>
-    <ID>MaxLineLength:CallNotificationManager.kt$CallNotificationManager$val importance = if (isHighPriority) NotificationManager.IMPORTANCE_HIGH else NotificationManager.IMPORTANCE_DEFAULT</ID>
-    <ID>MaxLineLength:CallNotificationManager.kt$CallNotificationManager$val isHighPriority = context.powerManager.isInteractive &amp;&amp; callState == Call.STATE_RINGING &amp;&amp; !forceLowPriority</ID>
-    <ID>MaxLineLength:CallNotificationManager.kt$CallNotificationManager$var callerName = if (callContact.name.isNotEmpty()) callContact.name else context.getString(R.string.unknown_caller)</ID>
-    <ID>MaxLineLength:CallService.kt$CallService$// seems like startActivity can throw AndroidRuntimeException and ActivityNotFoundException, not yet sure when and why, lets show a notification</ID>
     <ID>MaxLineLength:ChangeSortingDialog.kt$ChangeSortingDialog$class</ID>
     <ID>MaxLineLength:ChangeSortingDialog.kt$ChangeSortingDialog$if</ID>
     <ID>MaxLineLength:ConferenceActivity.kt$ConferenceActivity$conferenceList.adapter = ConferenceCallsAdapter(this@ConferenceActivity, conferenceList, ArrayList(CallManager.getConferenceCalls())) {}</ID>
@@ -95,12 +85,10 @@
     <ID>MaxLineLength:FilterContactSourcesDialog.kt$FilterContactSourcesDialog$binding.filterContactSourcesList.adapter = FilterContactSourcesAdapter(activity, contactSourcesWithCount, selectedSources)</ID>
     <ID>MaxLineLength:FilterContactSourcesDialog.kt$FilterContactSourcesDialog$val selectedContactSources = (binding.filterContactSourcesList.adapter as FilterContactSourcesAdapter).getSelectedContactSources()</ID>
     <ID>MaxLineLength:MainActivity.kt$MainActivity$(drawable as LayerDrawable).findDrawableByLayerId(R.id.shortcut_dialpad_background).applyColorFilter(appIconColor)</ID>
-    <ID>MaxLineLength:MainActivity.kt$MainActivity$PermissionRequiredDialog(this, R.string.allow_notifications_incoming_calls, { openNotificationSettings() })</ID>
     <ID>MaxLineLength:MainActivity.kt$MainActivity$TAB_LAST_USED -&gt; if (config.lastUsedViewPagerPage &lt; binding.mainTabsHolder.tabCount) config.lastUsedViewPagerPage else 0</ID>
     <ID>MaxLineLength:MainActivity.kt$MainActivity$findItem(R.id.column_count).isVisible = currentFragment == getFavoritesFragment() &amp;&amp; config.viewType == VIEW_TYPE_GRID</ID>
     <ID>MaxLineLength:MainActivity.kt$MainActivity$private fun getCurrentFragment(): MyViewPagerFragment&lt;*&gt;?</ID>
     <ID>MaxLineLength:MainActivity.kt$MainActivity$private fun getInactiveTabIndexes(activeIndex: Int)</ID>
-    <ID>MaxLineLength:MainActivity.kt$MainActivity$val</ID>
     <ID>MaxLineLength:MainActivity.kt$MainActivity$val confirmationText = "${getString(R.string.clear_history_confirmation)}\n\n${getString(R.string.cannot_be_undone)}"</ID>
     <ID>MaxLineLength:MainActivity.kt$MainActivity$val dialpadIcon = resources.getColoredDrawableWithColor(R.drawable.ic_dialpad_vector, properPrimaryColor.getContrastColor())</ID>
     <ID>MaxLineLength:MyViewPagerFragment.kt$MyViewPagerFragment$abstract</ID>
@@ -138,11 +126,9 @@
     <ID>NewLineAtEndOfFile:RecentCallsAdapter.kt$org.fossify.phone.adapters.RecentCallsAdapter.kt</ID>
     <ID>SwallowedException:CallActivity.kt$CallActivity$e: Exception</ID>
     <ID>SwallowedException:CallContactHelper.kt$e: NullPointerException</ID>
-    <ID>SwallowedException:CallService.kt$CallService$e: Exception</ID>
     <ID>SwallowedException:FastScrollerView.kt$e: IndexOutOfBoundsException</ID>
     <ID>TooGenericExceptionCaught:CallActivity.kt$CallActivity$e: Exception</ID>
     <ID>TooGenericExceptionCaught:CallContactHelper.kt$e: NullPointerException</ID>
-    <ID>TooGenericExceptionCaught:CallService.kt$CallService$e: Exception</ID>
     <ID>TooGenericExceptionCaught:DialerActivity.kt$DialerActivity$e: Exception</ID>
     <ID>TooGenericExceptionCaught:FastScrollerView.kt$e: IndexOutOfBoundsException</ID>
     <ID>TooGenericExceptionCaught:SettingsActivity.kt$SettingsActivity$e: Exception</ID>
@@ -160,9 +146,6 @@
     <ID>UnusedParameter:CallActivity.kt$CallActivity$view: View</ID>
     <ID>UnusedParameter:MainActivity.kt$MainActivity$event: Events.RefreshCallLog</ID>
     <ID>UtilityClassWithPublicConstructor:CallManager.kt$CallManager</ID>
-    <ID>VariableNaming:CallNotificationManager.kt$CallNotificationManager$private val ACCEPT_CALL_CODE = 0</ID>
-    <ID>VariableNaming:CallNotificationManager.kt$CallNotificationManager$private val CALL_NOTIFICATION_ID = 42</ID>
-    <ID>VariableNaming:CallNotificationManager.kt$CallNotificationManager$private val DECLINE_CALL_CODE = 1</ID>
     <ID>WildcardImport:CallActivity.kt$import org.fossify.commons.extensions.*</ID>
     <ID>WildcardImport:CallActivity.kt$import org.fossify.commons.helpers.*</ID>
     <ID>WildcardImport:CallActivity.kt$import org.fossify.phone.extensions.*</ID>

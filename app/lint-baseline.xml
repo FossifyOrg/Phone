@@ -8,7 +8,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/kotlin/org/fossify/phone/extensions/Context.kt"
-            line="65"
+            line="72"
             column="13"/>
     </issue>
 
@@ -73,7 +73,7 @@
         errorLine1="distributionUrl=https\://services.gradle.org/distributions/gradle-8.13-bin.zip"
         errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="$HOME/Projects/Fossify/FossifyOrg/Phone/gradle/wrapper/gradle-wrapper.properties"
+            file="$HOME/work/Phone/Phone/gradle/wrapper/gradle-wrapper.properties"
             line="3"
             column="17"/>
     </issue>
@@ -84,7 +84,7 @@
         errorLine1="gradlePlugins-agp = &quot;8.11.1&quot;"
         errorLine2="                    ~~~~~~~~">
         <location
-            file="$HOME/Projects/Fossify/FossifyOrg/Phone/gradle/libs.versions.toml"
+            file="$HOME/work/Phone/Phone/gradle/libs.versions.toml"
             line="14"
             column="21"/>
     </issue>
@@ -96,7 +96,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/AndroidManifest.xml"
-            line="120"
+            line="121"
             column="13"/>
     </issue>
 
@@ -107,52 +107,8 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/AndroidManifest.xml"
-            line="128"
+            line="129"
             column="13"/>
-    </issue>
-
-    <issue
-        id="NewerVersionAvailable"
-        message="A newer version of com.googlecode.libphonenumber:geocoder than 3.16 is available: 3.17"
-        errorLine1="geocoderVersion = &quot;3.16&quot;"
-        errorLine2="                  ~~~~~~">
-        <location
-            file="$HOME/Projects/Fossify/FossifyOrg/Phone/gradle/libs.versions.toml"
-            line="3"
-            column="19"/>
-    </issue>
-
-    <issue
-        id="NewerVersionAvailable"
-        message="A newer version of org.jetbrains.kotlin.android than 2.2.20 is available: 2.2.21"
-        errorLine1="kotlin = &quot;2.2.20&quot;"
-        errorLine2="         ~~~~~~~~">
-        <location
-            file="$HOME/Projects/Fossify/FossifyOrg/Phone/gradle/libs.versions.toml"
-            line="4"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="NewerVersionAvailable"
-        message="A newer version of org.jetbrains.kotlin.plugin.serialization than 2.2.20 is available: 2.2.21"
-        errorLine1="kotlin = &quot;2.2.20&quot;"
-        errorLine2="         ~~~~~~~~">
-        <location
-            file="$HOME/Projects/Fossify/FossifyOrg/Phone/gradle/libs.versions.toml"
-            line="4"
-            column="10"/>
-    </issue>
-
-    <issue
-        id="NewerVersionAvailable"
-        message="A newer version of com.googlecode.libphonenumber:libphonenumber than 9.0.16 is available: 9.0.17"
-        errorLine1="libphonenumberVersion = &quot;9.0.16&quot;"
-        errorLine2="                        ~~~~~~~~">
-        <location
-            file="$HOME/Projects/Fossify/FossifyOrg/Phone/gradle/libs.versions.toml"
-            line="18"
-            column="25"/>
     </issue>
 
     <issue
@@ -178,7 +134,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/AndroidManifest.xml"
-            line="120"
+            line="121"
             column="13"/>
     </issue>
 
@@ -189,7 +145,7 @@
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/AndroidManifest.xml"
-            line="128"
+            line="129"
             column="13"/>
     </issue>
 
@@ -266,7 +222,7 @@
         errorLine2="                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/kotlin/org/fossify/phone/activities/MainActivity.kt"
-            line="299"
+            line="304"
             column="24"/>
     </issue>
 
@@ -1329,7 +1285,7 @@
         errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/kotlin/org/fossify/phone/activities/MainActivity.kt"
-            line="289"
+            line="294"
             column="17"/>
     </issue>
 
