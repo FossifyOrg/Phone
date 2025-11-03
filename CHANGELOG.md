@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Fixed
+- Fixed invisible status bar icons in calls ([#628])
 
 ## [1.8.0] - 2025-10-29
 ### Changed
@@ -225,6 +227,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#565]: https://github.com/FossifyOrg/Phone/issues/565
 [#585]: https://github.com/FossifyOrg/Phone/issues/585
 [#594]: https://github.com/FossifyOrg/Phone/issues/594
+[#628]: https://github.com/FossifyOrg/Phone/issues/628
 
 [Unreleased]: https://github.com/FossifyOrg/Phone/compare/1.8.0...HEAD
 [1.8.0]: https://github.com/FossifyOrg/Phone/compare/1.7.3...1.8.0
