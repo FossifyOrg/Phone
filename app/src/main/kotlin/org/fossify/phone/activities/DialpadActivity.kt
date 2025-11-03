@@ -57,6 +57,7 @@ import org.fossify.phone.extensions.config
 import org.fossify.phone.extensions.disableKeyboard
 import org.fossify.phone.extensions.getKeyEvent
 import org.fossify.phone.extensions.setupWithContacts
+import org.fossify.phone.extensions.startAddContactIntent
 import org.fossify.phone.extensions.startCallWithConfirmationCheck
 import org.fossify.phone.extensions.startContactDetailsIntent
 import org.fossify.phone.helpers.DIALPAD_TONE_LENGTH_MS
@@ -254,12 +255,7 @@ class DialpadActivity : SimpleActivity() {
     }
 
     private fun addNumberToContact() {
-        Intent().apply {
-            action = Intent.ACTION_INSERT_OR_EDIT
-            type = "vnd.android.cursor.item/contact"
-            putExtra(KEY_PHONE, binding.dialpadInput.value)
-            launchActivityIntent(this)
-        }
+        startAddContactIntent(binding.dialpadInput.value)
     }
 
     private fun dialpadPressed(char: Char, view: View?) {

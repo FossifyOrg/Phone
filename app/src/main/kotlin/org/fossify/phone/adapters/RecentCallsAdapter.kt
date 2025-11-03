@@ -244,12 +244,7 @@ class RecentCallsAdapter(
 
     private fun addNumberToContact() {
         val phoneNumber = getSelectedPhoneNumber() ?: return
-        Intent().apply {
-            action = Intent.ACTION_INSERT_OR_EDIT
-            type = "vnd.android.cursor.item/contact"
-            putExtra(KEY_PHONE, phoneNumber)
-            activity.launchActivityIntent(this)
-        }
+        activity.startAddContactIntent(phoneNumber)
     }
 
     private fun sendSMS() {
