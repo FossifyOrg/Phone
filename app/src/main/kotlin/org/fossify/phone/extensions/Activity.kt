@@ -24,7 +24,6 @@ import org.fossify.commons.extensions.openNotificationSettings
 import org.fossify.commons.extensions.telecomManager
 import org.fossify.commons.helpers.CONTACT_ID
 import org.fossify.commons.helpers.IS_PRIVATE
-import org.fossify.commons.helpers.KEY_PHONE
 import org.fossify.commons.helpers.PERMISSION_READ_PHONE_STATE
 import org.fossify.commons.helpers.SimpleContactsHelper
 import org.fossify.commons.helpers.ensureBackgroundThread
@@ -142,15 +141,6 @@ fun Activity.startContactDetailsIntent(contact: Contact) {
                 launchViewContactIntent(publicUri)
             }
         }
-    }
-}
-
-fun Activity.startAddContactIntent(phoneNumber: String) {
-    Intent().apply {
-        action = Intent.ACTION_INSERT_OR_EDIT
-        type = "vnd.android.cursor.item/contact"
-        putExtra(KEY_PHONE, phoneNumber)
-        launchActivityIntent(this)
     }
 }
 
