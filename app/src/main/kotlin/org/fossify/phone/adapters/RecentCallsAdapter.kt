@@ -1,13 +1,16 @@
 package org.fossify.phone.adapters
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.provider.CallLog.Calls
 import android.text.SpannableString
 import android.text.TextUtils
 import android.util.TypedValue
-import android.view.*
+import android.view.ContextThemeWrapper
+import android.view.Gravity
+import android.view.Menu
+import android.view.View
+import android.view.ViewGroup
 import android.widget.PopupMenu
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.SimpleItemAnimator
@@ -19,8 +22,30 @@ import com.google.i18n.phonenumbers.geocoding.PhoneNumberOfflineGeocoder
 import org.fossify.commons.adapters.MyRecyclerViewListAdapter
 import org.fossify.commons.dialogs.ConfirmationDialog
 import org.fossify.commons.dialogs.FeatureLockedDialog
-import org.fossify.commons.extensions.*
-import org.fossify.commons.helpers.*
+import org.fossify.commons.extensions.addBlockedNumber
+import org.fossify.commons.extensions.addLockedLabelIfNeeded
+import org.fossify.commons.extensions.adjustAlpha
+import org.fossify.commons.extensions.adjustForContrast
+import org.fossify.commons.extensions.applyColorFilter
+import org.fossify.commons.extensions.beVisibleIf
+import org.fossify.commons.extensions.copyToClipboard
+import org.fossify.commons.extensions.formatDateOrTime
+import org.fossify.commons.extensions.formatPhoneNumber
+import org.fossify.commons.extensions.formatSecondsToShortTimeString
+import org.fossify.commons.extensions.formatTime
+import org.fossify.commons.extensions.getColoredDrawableWithColor
+import org.fossify.commons.extensions.getContrastColor
+import org.fossify.commons.extensions.getPopupMenuTheme
+import org.fossify.commons.extensions.getProperTextColor
+import org.fossify.commons.extensions.getTextSize
+import org.fossify.commons.extensions.highlightTextPart
+import org.fossify.commons.extensions.isOrWasThankYouInstalled
+import org.fossify.commons.extensions.launchSendSMSIntent
+import org.fossify.commons.extensions.setupViewBackground
+import org.fossify.commons.helpers.PERMISSION_WRITE_CALL_LOG
+import org.fossify.commons.helpers.SimpleContactsHelper
+import org.fossify.commons.helpers.ensureBackgroundThread
+import org.fossify.commons.helpers.isNougatPlus
 import org.fossify.commons.models.contacts.Contact
 import org.fossify.commons.views.MyRecyclerView
 import org.fossify.phone.R
@@ -29,7 +54,13 @@ import org.fossify.phone.activities.SimpleActivity
 import org.fossify.phone.databinding.ItemRecentCallBinding
 import org.fossify.phone.databinding.ItemRecentsDateBinding
 import org.fossify.phone.dialogs.ShowGroupedCallsDialog
-import org.fossify.phone.extensions.*
+import org.fossify.phone.extensions.areMultipleSIMsAvailable
+import org.fossify.phone.extensions.callContactWithSimWithConfirmationCheck
+import org.fossify.phone.extensions.config
+import org.fossify.phone.extensions.getDayCode
+import org.fossify.phone.extensions.startAddContactIntent
+import org.fossify.phone.extensions.startCallWithConfirmationCheck
+import org.fossify.phone.extensions.startContactDetailsIntent
 import org.fossify.phone.helpers.RecentsHelper
 import org.fossify.phone.interfaces.RefreshItemsListener
 import org.fossify.phone.models.CallLogItem
@@ -244,12 +275,7 @@ class RecentCallsAdapter(
 
     private fun addNumberToContact() {
         val phoneNumber = getSelectedPhoneNumber() ?: return
-        Intent().apply {
-            action = Intent.ACTION_INSERT_OR_EDIT
-            type = "vnd.android.cursor.item/contact"
-            putExtra(KEY_PHONE, phoneNumber)
-            activity.launchActivityIntent(this)
-        }
+        activity.startAddContactIntent(phoneNumber)
     }
 
     private fun sendSMS() {
