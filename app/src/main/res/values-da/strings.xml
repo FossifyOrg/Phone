@@ -83,4 +83,5 @@
     <string name="faq_2_text">Grundet systembegrænsninger kan nødopkald kun foretages via systemets standardopkaldsapp. Sørg for, at den er installeret og aktiveret for at sikre, at nødopkald virker.</string>
     <string name="call_notification_channel">Opkaldsstatus</string>
     <string name="call_notification_channel_high_priority">Opkaldsstatus (høj prioritet)</string>
+    <string name="calling_accounts">Opkaldskonti</string>
 </resources>
