@@ -1,0 +1,12 @@
+Added:
+
+• Ability to create contact by clicking thumbnail in call history 
+
+Changed:
+
+• Updated translations
+
+Fixed:
+
+• Fixed invisible status bar icons in calls 
+
