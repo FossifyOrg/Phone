@@ -1,3 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="conference">Asarag</string>
+    <string name="audio_route_speaker">Amsemɣeṛ n yimesli</string>
+    <string name="call_number">Uṭṭun n usiwel</string>
 </resources>
