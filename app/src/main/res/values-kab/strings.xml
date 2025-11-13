@@ -3,4 +3,6 @@
     <string name="conference">Asarag</string>
     <string name="audio_route_speaker">Amsemɣeṛ n yimesli</string>
     <string name="call_number">Uṭṭun n usiwel</string>
+    <string name="could_not_access_the_call_history">Ur izmir ara ad yekcem ɣer umazray n usiwel</string>
+    <string name="request_access">Suter anekcum</string>
 </resources>
