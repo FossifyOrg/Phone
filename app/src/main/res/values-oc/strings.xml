@@ -6,4 +6,9 @@
     <string name="asterisk">Estela</string>
     <string name="dialing">Numerotacion…</string>
     <string name="call_on_hold">En espèra</string>
+    <string name="default_phone_app_prompt">Mercés de definir aquesta aplicacion coma l\'aplicacion Telefòn per defaut</string>
+    <string name="allow_displaying_over_other_apps">Per un foncionament fisable, autorizatz l\'afichatge per dessús las autras aplicacions</string>
+    <string name="no_previous_calls">Cap de sonada precedenta es pas estat trobada</string>
+    <string name="could_not_access_the_call_history">Impossible d\'accedir a l\'istoric de las sonadas</string>
+    <string name="request_access">Demanda d’accès</string>
 </resources>
