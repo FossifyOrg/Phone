@@ -5,4 +5,11 @@
     <string name="call_number">Uṭṭun n usiwel</string>
     <string name="could_not_access_the_call_history">Ur izmir ara ad yekcem ɣer umazray n usiwel</string>
     <string name="request_access">Suter anekcum</string>
+    <string name="show_grouped_calls">Sken-d tiɣriwin yettwasdukklen</string>
+    <string name="clear_call_history">Sfeḍ amazray n usiwel</string>
+    <string name="show_call_details">Sken-d talqayt n usiwel</string>
+    <string name="dialpad">Anasiw n yimḍanen</string>
+    <string name="hashtag">Ahacṭag</string>
+    <string name="dialpad_vibrations">Rmed asenhez ɣef usiti n tqeffalt</string>
+    <string name="accept">Qbel</string>
 </resources>
