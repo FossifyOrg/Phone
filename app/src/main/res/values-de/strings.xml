@@ -49,7 +49,7 @@
     <string name="conference_manage">Telefonkonferenz verwalten</string>
     <string name="conference">Konferenz</string>
     <string name="audio_route_speaker">Lautsprecher</string>
-    <string name="audio_route_earpiece">Kopfhörer</string>
+    <string name="audio_route_earpiece">Telefon</string>
     <string name="audio_route_wired_headset">Kabelgebundenes Headset</string>
     <string name="audio_route_wired_or_earpiece">Kabelgebunden oder über Kopfhörer</string>
     <string name="choose_audio_route">Audioausgang wählen</string>
