@@ -13,4 +13,9 @@
     <string name="dialpad_vibrations">Rmed asenhez ɣef usiti n tqeffalt</string>
     <string name="accept">Qbel</string>
     <string name="decline_call">Agi asiwel</string>
+    <string name="dialing">Tiɣri…</string>
+    <string name="call_ended">Tekfa tiɣri</string>
+    <string name="unset_default_sim">Kkes asbadu n SIM amezwer</string>
+    <string name="calls">Tiɣriwin</string>
+    <string name="turn_microphone_on">Rmed amikrufun</string>
 </resources>
