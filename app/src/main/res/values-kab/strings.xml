@@ -18,4 +18,10 @@
     <string name="unset_default_sim">Kkes asbadu n SIM amezwer</string>
     <string name="calls">Tiɣriwin</string>
     <string name="turn_microphone_on">Rmed amikrufun</string>
+    <string name="turn_speaker_off">Sens amsemɣeṛ n yimesli</string>
+    <string name="hide_dialpad">Ffer anasiw n wuṭṭunen</string>
+    <string name="end_call">Fak asiwel</string>
+    <string name="hold_call">Asiwel itturaju</string>
+    <string name="resume_call">Kemmel asiwel</string>
+    <string name="conference_manage">Sefrek tiɣri n usarag</string>
 </resources>
