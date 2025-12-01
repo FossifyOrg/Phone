@@ -160,12 +160,6 @@
     <ID>WildcardImport:FilterContactSourcesDialog.kt$import org.fossify.commons.extensions.*</ID>
     <ID>WildcardImport:MainActivity.kt$import org.fossify.commons.extensions.*</ID>
     <ID>WildcardImport:MainActivity.kt$import org.fossify.commons.helpers.*</ID>
-    <ID>WildcardImport:RecentCallsAdapter.kt$import android.view.*</ID>
-    <ID>WildcardImport:RecentCallsAdapter.kt$import org.fossify.commons.extensions.*</ID>
-    <ID>WildcardImport:RecentCallsAdapter.kt$import org.fossify.commons.helpers.*</ID>
-    <ID>WildcardImport:RecentCallsAdapter.kt$import org.fossify.phone.extensions.*</ID>
-    <ID>WildcardImport:RecentsFragment.kt$import org.fossify.commons.extensions.*</ID>
-    <ID>WildcardImport:RecentsFragment.kt$import org.fossify.commons.helpers.*</ID>
     <ID>WildcardImport:RecentsHelper.kt$import org.fossify.commons.extensions.*</ID>
     <ID>WildcardImport:RecentsHelper.kt$import org.fossify.commons.helpers.*</ID>
     <ID>WildcardImport:SelectContactDialog.kt$import org.fossify.commons.extensions.*</ID>
