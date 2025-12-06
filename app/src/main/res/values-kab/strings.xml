@@ -24,4 +24,10 @@
     <string name="hold_call">Asiwel itturaju</string>
     <string name="resume_call">Kemmel asiwel</string>
     <string name="conference_manage">Sefrek tiɣri n usarag</string>
+    <string name="app_launcher_name">Tiliɣri</string>
+    <string name="default_phone_app_prompt">Ttxil-k·m, err asnas-agi d Tiliɣri amezwer</string>
+    <string name="could_not_access_contacts">Ur yezmir ara ad yekcem inermisen-inek·inem</string>
+    <string name="no_previous_calls">Ulac isawalen yezrin yettwafen</string>
+    <string name="remove_confirmation">D tidet tebɣiḍ ad tekkseḍ iferdisen yettwafernen seg umazray n usiwel?</string>
+    <string name="clear_history_confirmation">D tidet tebɣiḍ ad tekkseḍ kullec seg umazray n usiwel?</string>
 </resources>
