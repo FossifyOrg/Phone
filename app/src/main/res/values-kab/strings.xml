@@ -30,4 +30,17 @@
     <string name="no_previous_calls">Ulac isawalen yezrin yettwafen</string>
     <string name="remove_confirmation">D tidet tebɣiḍ ad tekkseḍ iferdisen yettwafernen seg umazray n usiwel?</string>
     <string name="clear_history_confirmation">D tidet tebɣiḍ ad tekkseḍ kullec seg umazray n usiwel?</string>
+    <string name="select_sim">Fren SIM i teɣri-a</string>
+    <string name="always_use_this_sim">Sseqdac yal tikelt SIM-agi i wuṭṭun-agi</string>
+    <string name="turn_microphone_off">Sexsi amikṛufun</string>
+    <string name="turn_speaker_on">Rmed amsemɣeṛ n umeslay</string>
+    <string name="call_split">Bḍu asiwel</string>
+    <string name="call_merge">Sdukkel isawalen</string>
+    <string name="call_add">Rnu asiwel</string>
+    <string name="audio_route_bluetooth">Bluetooth</string>
+    <string name="choose_audio_route">Fren abrid n umeslaw</string>
+    <string name="calling_blocked_number">Amḍan i d-tessawleḍ yettusewḥel</string>
+    <string name="call_is_being_connected">Tiɣri-inek·inem attan deg ubrid n tuqqna…</string>
+    <string name="call_notification_channel">Addad n usiwel</string>
+    <string name="call_notification_channel_high_priority">Addad n usiwel (tazwart tafellayt)</string>
 </resources>
