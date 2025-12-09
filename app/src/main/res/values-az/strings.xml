@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="dialpad">Zəng paneli</string>
+    <string name="app_launcher_name">Telefon</string>
+    <string name="default_phone_app_prompt">Xahiş edirik, bu tətbiqi defolt Telefon tətbiqi edin.</string>
+    <string name="allow_displaying_over_other_apps">Xahiş edirik, etibarlı davranış üçün digər tətbiqlərin üzərində görünməsi parametrlərini aktivləşdirin.</string>
+    <string name="could_not_access_contacts">Kontaktlara giriş mümkün olmadı</string>
 </resources>
