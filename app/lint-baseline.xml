@@ -112,6 +112,17 @@
     </issue>
 
     <issue
+        id="NewerVersionAvailable"
+        message="A newer version of io.nlopez.compose.rules:detekt than 0.4.28 is available: 0.5.1"
+        errorLine1="detektCompose = &quot;0.4.28&quot;"
+        errorLine2="                ~~~~~~~~">
+        <location
+            file="$HOME/work/Phone/Phone/gradle/libs.versions.toml"
+            line="8"
+            column="17"/>
+    </issue>
+
+    <issue
         id="SpUsage"
         message="Should use &quot;`sp`&quot; instead of &quot;`dp`&quot; for text sizes (`@dimen/dialpad_text_size` is defined as `28dp` in `values/dimens.xml`"
         errorLine1="            android:textSize=&quot;@dimen/dialpad_text_size&quot;"
