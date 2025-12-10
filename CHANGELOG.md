@@ -240,6 +240,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#594]: https://github.com/FossifyOrg/Phone/issues/594
 [#628]: https://github.com/FossifyOrg/Phone/issues/628
 [#631]: https://github.com/FossifyOrg/Phone/issues/631
+[#645]: https://github.com/FossifyOrg/Phone/issues/645
 
 [Unreleased]: https://github.com/FossifyOrg/Phone/compare/1.9.0...HEAD
 [1.9.0]: https://github.com/FossifyOrg/Phone/compare/1.8.0...1.9.0
