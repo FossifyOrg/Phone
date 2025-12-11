@@ -1,0 +1,9 @@
+Changed:
+
+• Updated translations
+
+Fixed:
+
+• Fixed overlap between the call screen avatar and the camera notch 
+• Fixed overlap between the call-on-hold banner and the status bar
+
