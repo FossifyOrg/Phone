@@ -69,4 +69,12 @@
     <string name="audio_route_bluetooth">Bluetooth</string>
     <string name="export_call_history">通話履歴をエクスポート</string>
     <string name="import_call_history">通話履歴をインポート</string>
+    <string name="call_is_being_connected">接続中です…</string>
+    <string name="call_notification_channel">通話ステータス</string>
+    <string name="call_notification_channel_high_priority">通話ステータス (高優先度)</string>
+    <string name="calling_accounts">通話用アカウント</string>
+    <string name="faq_2_title">緊急通話が正しく機能しないのはなぜですか?</string>
+    <string name="faq_2_text">システムの制限により、緊急通報はシステムのデフォルトのダイヤラーまたは電話アプリからのみ可能です。緊急通報が正しく機能するには、システムアプリをインストールし、有効にしておく必要があります。</string>
+    <string name="faq_3_title">一部の連絡先がアプリから消えてしまうのはなぜですか?</string>
+    <string name="faq_3_text">Fossify Phone は、電話番号が関連付けられている連絡先のみを表示します。電話番号が関連付けられていない連絡先はアプリに表示されませ ん 。</string>
 </resources>
