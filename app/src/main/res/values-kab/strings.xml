@@ -45,4 +45,14 @@
     <string name="call_notification_channel_high_priority">Addad n usiwel (tazwart tafellayt)</string>
     <string name="faq_3_title">Acuɣer kra seg inermisen-iw xuṣṣen seg usnas?</string>
     <string name="faq_3_text">Tiliɣri Fossify tesskanay-d ala inermisen i yesɛan uṭṭun n tiliɣri icudden ɣur-sen. Inermisen war uṭṭun n tiliɣri ur d-ttwaskanen ara deg usnas.</string>
+    <string name="allow_displaying_over_other_apps">Ma ulac aɣilif, sireg askan sufella n yisnasen-nniḍen i lmend n tekli iggarzen</string>
+    <string name="dialer">sekcem i usawal</string>
+    <string name="accept_call">Qbel asiwel</string>
+    <string name="decline">Agi</string>
+    <string name="unknown_caller">Asiwel arussin</string>
+    <string name="is_calling">Deg usiwel…</string>
+    <string name="call_ending">Tagara n usiwel</string>
+    <string name="ongoing_call">Asiwel itteddu</string>
+    <string name="group_subsequent_calls">Segrew isawalen i d-iteddun s yiwen n wuṭṭun deg usiwel n uɣmis</string>
+    <string name="open_dialpad_by_default">Ldi anasiw n wuṭṭunen s wudem amezwer ticki asnas yeldi</string>
 </resources>
