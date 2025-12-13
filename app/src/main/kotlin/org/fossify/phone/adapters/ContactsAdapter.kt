@@ -388,11 +388,11 @@ class ContactsAdapter(
                 setTextSize(TypedValue.COMPLEX_UNIT_PX, fontSize)
 
                 val name = contact.getNameToDisplay()
-                val normalizedName = name.normalizeString()
-                val normalizedSearchText = textToHighlight.normalizeString()
                 text = if (textToHighlight.isEmpty()) {
                     name
                 } else {
+                    val normalizedName = name.normalizeString()
+                    val normalizedSearchText = textToHighlight.normalizeString()
                     if (normalizedName.contains(normalizedSearchText, true)) {
                         name.highlightTextPart(textToHighlight, properPrimaryColor)
                     } else {
