@@ -55,4 +55,9 @@
     <string name="ongoing_call">Asiwel itteddu</string>
     <string name="group_subsequent_calls">Segrew isawalen i d-iteddun s yiwen n wuṭṭun deg usiwel n uɣmis</string>
     <string name="open_dialpad_by_default">Ldi anasiw n wuṭṭunen s wudem amezwer ticki asnas yeldi</string>
+    <string name="show_incoming_calls_full_screen">Skan yal tikelt isawalen i d-ikecmen ɣef ugdil aččuran</string>
+    <string name="export_call_history">Sifeḍ amazray n usiwel</string>
+    <string name="import_call_history">Kter amazray n usiwel</string>
+    <string name="calling_accounts">Asiwel n imiḍanen</string>
+    <string name="faq_1_title">Selleɣ isawalen i d-ikecmen, maca agdil ur yermid ara. D acu i zemreɣ ad t-xedmeɣ?</string>
 </resources>
