@@ -391,8 +391,10 @@ class ContactsAdapter(
                 text = if (textToHighlight.isEmpty()) {
                     name
                 } else {
-                    if (name.contains(textToHighlight, true)) {
-                        name.highlightTextPart(textToHighlight, properPrimaryColor)
+                    val normalizedName = name.normalizeString()
+                    val normalizedSearchText = textToHighlight.normalizeString()
+                    if (normalizedName.contains(normalizedSearchText, true)) {
+                        name.highlightTextPart(normalizedSearchText, properPrimaryColor)
                     } else {
                         var spacedTextToHighlight = textToHighlight
                         val strippedName = name.filterNot { it.isWhitespace() }
