@@ -1,0 +1,10 @@
+Changed:
+
+• Updated translations
+
+Fixed:
+
+• Fixed overlap between the call screen avatar and the camera notch 
+• Fixed overlap between the call-on-hold banner and the status bar
+• Fixed search highlighting for characters with accents and diacritics
+
