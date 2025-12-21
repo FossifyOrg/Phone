@@ -60,4 +60,12 @@
     <string name="import_call_history">Kter amazray n usiwel</string>
     <string name="calling_accounts">Asiwel n imiḍanen</string>
     <string name="faq_1_title">Selleɣ isawalen i d-ikecmen, maca agdil ur yermid ara. D acu i zemreɣ ad t-xedmeɣ?</string>
+    <string name="asterisk">Azmul n yitri</string>
+    <string name="dialpad_beeps">Rmed argagi deg usiti ɣef tqeffalin n unasiw n yimḍanen</string>
+    <string name="show_dialpad">Sken anasiw n yimḍanen</string>
+    <string name="call_on_hold">itturaju</string>
+    <string name="call_swap">Mbeddel n tiɣriwin</string>
+    <string name="speed_dial">asiwel arurad</string>
+    <string name="manage_speed_dial">sefrek asiwel arurad</string>
+    <string name="hide_dialpad_numbers">Ffer uṭṭunen n unasiw n yimḍanen</string>
 </resources>
