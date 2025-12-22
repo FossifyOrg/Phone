@@ -15,7 +15,7 @@ gradlePlugins-agp = "8.11.1"
 #Other
 indicatorFastScroll = "c7873f7168"
 autofitTextView = "0.2.1"
-libphonenumberVersion = "9.0.20"
+libphonenumberVersion = "9.0.21"
 #build
 app-build-compileSDKVersion = "36"
 app-build-targetSDK = "36"
