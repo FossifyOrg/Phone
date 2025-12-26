@@ -68,4 +68,8 @@
     <string name="speed_dial">asiwel arurad</string>
     <string name="manage_speed_dial">sefrek asiwel arurad</string>
     <string name="hide_dialpad_numbers">Ffer uṭṭunen n unasiw n yimḍanen</string>
+    <string name="speed_dial_label">Ssit ɣef umḍan akken ad t-tmuddeḍ i unermis. Tzemred ad tessiwleḍ s tɣawla i unermis s usiti aɣezzfan ɣef wuṭṭun i d-yettwamudden deg unasiw n yimḍanen.</string>
+    <string name="faq_1_text">Uguren am wi zemren ad sɛun aṭas n sebbat seg yibenk akked ssebbat uzzigen n unagraw, yewɛer ad d-tiniḍ s umata. Ilaq ad twaliḍ deg yiɣewwaṛen n yibenk-ik·im yerna ad tḥeqq belli asnas yettwasireg ad d-yekker deg ugilal yerna ad yizmir ad ibeqqeḍ sufella n isnasen-nniḍen.</string>
+    <string name="faq_2_title">Acuɣer isawalen n tetrabt ur tteddun ara akken iwatan ?</string>
+    <string name="faq_2_text">Ɣef sebba n tlisa n unagraw, isawalen n tetrabt zemren kan ad d-gen deg unasiw n yimḍanen umezwer n unagraw-ik·im neɣ n yisnasen n tiliɣri-ik·im.Iwakken ad neḍmen isawalen n tetrabt akken iwata, ilaq-ak·am ad tḥerzeḍ asebdad n usnas n unagraw yerna ad yili yermed.</string>
 </resources>
