@@ -76,4 +76,5 @@
     <string name="faq_3_text">Fossify Telefonoak telefono zenbakiren bat duten kontaktuak bakarrik erakusten ditu. Telefono zenbakirik ez duten kontaktuak ez dira aplikazioan erakusten.</string>
     <string name="call_notification_channel">Deiaren egoera</string>
     <string name="call_notification_channel_high_priority">Deiaren egoera (lehentasun handia)</string>
+    <string name="calling_accounts">Deien kontuak</string>
 </resources>
