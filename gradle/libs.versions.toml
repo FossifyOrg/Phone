@@ -1,7 +1,7 @@
 [versions]
 #jetbrains
 geocoderVersion = "3.21"
-kotlin = "2.2.21"
+kotlin = "2.3.0"
 kotlinxSerializationJson = "1.9.0"
 #Detekt
 detekt = "1.23.8"
@@ -9,7 +9,7 @@ detektCompose = "0.4.28"
 #Eventbus
 eventbus = "3.3.1"
 #Fossify
-commons = "5.13.0"
+commons = "5.13.1"
 #Gradle
 gradlePlugins-agp = "8.11.1"
 #Other
