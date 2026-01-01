@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.10.1] - 2026-01-01
+### Changed
+- Updated translations
+
 ### Fixed
 - Fixed incorrect spacing between prefix and last name
 
@@ -251,7 +255,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#631]: https://github.com/FossifyOrg/Phone/issues/631
 [#645]: https://github.com/FossifyOrg/Phone/issues/645
 
-[Unreleased]: https://github.com/FossifyOrg/Phone/compare/1.10.0...HEAD
+[Unreleased]: https://github.com/FossifyOrg/Phone/compare/1.10.1...HEAD
+[1.10.1]: https://github.com/FossifyOrg/Phone/compare/1.10.0...1.10.1
 [1.10.0]: https://github.com/FossifyOrg/Phone/compare/1.9.0...1.10.0
 [1.9.0]: https://github.com/FossifyOrg/Phone/compare/1.8.0...1.9.0
 [1.8.0]: https://github.com/FossifyOrg/Phone/compare/1.7.3...1.8.0
