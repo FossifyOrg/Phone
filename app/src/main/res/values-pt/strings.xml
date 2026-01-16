@@ -73,4 +73,8 @@
     <string name="faq_2_title">Que chamadas de emergência não estão a funcionar corretamente?</string>
     <string name="faq_3_title">Por que alguns dos meus contactos faltam na app?</string>
     <string name="faq_3_text">O Fossify Phone exibe apenas contactos que tenham um número de telefone lhes associados. Contactos sem um número de telefone não são exibidos na app.</string>
+    <string name="call_notification_channel">Estado da chamada</string>
+    <string name="call_notification_channel_high_priority">Estado da chamada (alta prioridade)</string>
+    <string name="calling_accounts">Contas de chamadas</string>
+    <string name="faq_2_text">Devido a restrições do sistema, chamadas de emergência só podem ser feitas através marcador padrão do seu dispositivo ou da aplicação do telefone. Para garantir que as chamadas de emergência funcionam corretamente, necessita de manter a aplicação do dispositivo instalada e ativa.</string>
 </resources>
