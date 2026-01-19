@@ -1,6 +1,6 @@
 [versions]
 #jetbrains
-geocoderVersion = "3.21"
+geocoderVersion = "3.22"
 kotlin = "2.3.0"
 kotlinxSerializationJson = "1.9.0"
 #Detekt
