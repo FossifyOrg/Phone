@@ -49,7 +49,7 @@
             android:background="@drawable/bg_notification_decline"
             android:padding="@dimen/small_margin"
             android:src="@drawable/ic_phone_down_red_vector"
-            android:tint="@android:color/white" />
+            app:tint="@android:color/white" />
 
         <ImageView
             android:id="@+id/notification_answer_speaker"
@@ -60,7 +60,7 @@
             android:background="@drawable/bg_notification_speaker"
             android:padding="@dimen/small_margin"
             android:src="@drawable/ic_volume_up_vector"
-            android:tint="@android:color/white" />
+            app:tint="@android:color/white" />
 
         <ImageView
             android:id="@+id/notification_accept_call"
@@ -70,7 +70,7 @@
             android:background="@drawable/bg_notification_answer"
             android:padding="@dimen/small_margin"
             android:src="@drawable/ic_phone_green_vector"
-            android:tint="@android:color/white" />
+            app:tint="@android:color/white" />
 
     </LinearLayout>
 </RelativeLayout>
