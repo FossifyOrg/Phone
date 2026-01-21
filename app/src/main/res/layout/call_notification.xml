@@ -42,21 +42,35 @@
 
         <ImageView
             android:id="@+id/notification_decline_call"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="@dimen/call_notification_button_size"
             android:layout_weight="1"
-            android:background="@drawable/ripple_background"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/bg_notification_decline"
             android:padding="@dimen/small_margin"
-            android:src="@drawable/ic_phone_down_red_vector" />
+            android:src="@drawable/ic_phone_down_red_vector"
+            android:tint="@android:color/white" />
+
+        <ImageView
+            android:id="@+id/notification_answer_speaker"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/call_notification_button_size"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/bg_notification_speaker"
+            android:padding="@dimen/small_margin"
+            android:src="@drawable/ic_volume_up_vector"
+            android:tint="@android:color/white" />
 
         <ImageView
             android:id="@+id/notification_accept_call"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="@dimen/call_notification_button_size"
             android:layout_weight="1"
-            android:background="@drawable/ripple_background"
+            android:background="@drawable/bg_notification_answer"
             android:padding="@dimen/small_margin"
-            android:src="@drawable/ic_phone_green_vector" />
+            android:src="@drawable/ic_phone_green_vector"
+            android:tint="@android:color/white" />
 
     </LinearLayout>
 </RelativeLayout>
