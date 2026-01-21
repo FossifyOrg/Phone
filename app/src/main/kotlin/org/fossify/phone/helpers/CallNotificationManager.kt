@@ -22,6 +22,7 @@ class CallNotificationManager(private val context: Context) {
         private const val CALL_NOTIFICATION_ID = 42
         private const val ACCEPT_CALL_CODE = 0
         private const val DECLINE_CALL_CODE = 1
+        private const val ANSWER_SPEAKER_CALL_CODE = 2
     }
 
     private val notificationManager = context.notificationManager
@@ -61,6 +62,16 @@ class CallNotificationManager(private val context: Context) {
                     PendingIntent.FLAG_CANCEL_CURRENT or PendingIntent.FLAG_MUTABLE
                 )
 
+            val answerSpeakerIntent = Intent(context, CallActionReceiver::class.java)
+            answerSpeakerIntent.action = ANSWER_SPEAKER_CALL
+            val answerSpeakerPendingIntent =
+                PendingIntent.getBroadcast(
+                    context,
+                    ANSWER_SPEAKER_CALL_CODE,
+                    answerSpeakerIntent,
+                    PendingIntent.FLAG_CANCEL_CURRENT or PendingIntent.FLAG_MUTABLE
+                )
+
             var callerName = callContact.name.ifEmpty { context.getString(R.string.unknown_caller) }
             if (callContact.numberLabel.isNotEmpty()) {
                 callerName += " - ${callContact.numberLabel}"
@@ -78,9 +89,11 @@ class CallNotificationManager(private val context: Context) {
                 setText(R.id.notification_caller_name, callerName)
                 setText(R.id.notification_call_status, context.getString(contentTextId))
                 setVisibleIf(R.id.notification_accept_call, callState == Call.STATE_RINGING)
+                setVisibleIf(R.id.notification_answer_speaker, callState == Call.STATE_RINGING)
 
                 setOnClickPendingIntent(R.id.notification_decline_call, declinePendingIntent)
                 setOnClickPendingIntent(R.id.notification_accept_call, acceptPendingIntent)
+                setOnClickPendingIntent(R.id.notification_answer_speaker, answerSpeakerPendingIntent)
 
                 if (callContactAvatar != null) {
                     setImageViewBitmap(
