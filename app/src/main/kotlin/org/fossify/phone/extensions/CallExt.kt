@@ -1,10 +1,7 @@
 package org.fossify.phone.extensions
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.content.Intent
-import android.net.Uri
-import android.provider.ContactsContract
 import android.telecom.PhoneAccount
 import android.telecom.PhoneAccountHandle
 import android.telecom.TelecomManager
@@ -15,20 +12,11 @@ import org.fossify.commons.dialogs.PermissionRequiredDialog
 import org.fossify.commons.extensions.canUseFullScreenIntent
 import org.fossify.commons.extensions.initiateCall
 import org.fossify.commons.extensions.isDefaultDialer
-import org.fossify.commons.extensions.isPackageInstalled
-import org.fossify.commons.extensions.launchActivityIntent
 import org.fossify.commons.extensions.launchCallIntent
-import org.fossify.commons.extensions.launchViewContactIntent
 import org.fossify.commons.extensions.openFullScreenIntentSettings
 import org.fossify.commons.extensions.openNotificationSettings
 import org.fossify.commons.extensions.telecomManager
-import org.fossify.commons.helpers.CONTACT_ID
-import org.fossify.commons.helpers.IS_PRIVATE
-import org.fossify.commons.helpers.ON_CLICK_CALL_CONTACT
-import org.fossify.commons.helpers.ON_CLICK_VIEW_CONTACT
 import org.fossify.commons.helpers.PERMISSION_READ_PHONE_STATE
-import org.fossify.commons.helpers.SimpleContactsHelper
-import org.fossify.commons.helpers.ensureBackgroundThread
 import org.fossify.commons.models.contacts.Contact
 import org.fossify.phone.BuildConfig
 import org.fossify.phone.activities.DialerActivity
@@ -79,21 +67,6 @@ fun SimpleActivity.startCallWithConfirmationCheck(contact: Contact) {
     }
 }
 
-fun SimpleActivity.handleGenericContactClick(contact: Contact) {
-    when (config.onContactClick) {
-        ON_CLICK_CALL_CONTACT -> startCallWithConfirmationCheck(contact)
-        ON_CLICK_VIEW_CONTACT -> startContactDetailsIntent(contact)
-    }
-}
-
-fun SimpleActivity.launchCreateNewContactIntent() {
-    Intent().apply {
-        action = Intent.ACTION_INSERT
-        data = ContactsContract.Contacts.CONTENT_URI
-        launchActivityIntent(this)
-    }
-}
-
 fun BaseSimpleActivity.callContactWithSim(
     recipient: String,
     useMainSIM: Boolean
@@ -118,38 +91,6 @@ fun BaseSimpleActivity.callContactWithSimWithConfirmationCheck(
         }
     } else {
         callContactWithSim(recipient, useMainSIM)
-    }
-}
-
-// handle private contacts differently, only Simple Contacts Pro can open them
-fun Activity.startContactDetailsIntent(contact: Contact) {
-    val simpleContacts = "org.fossify.contacts"
-    val simpleContactsDebug = "org.fossify.contacts.debug"
-    if (contact.rawId > 1000000 && contact.contactId > 1000000 && contact.rawId == contact.contactId &&
-        (isPackageInstalled(simpleContacts) || isPackageInstalled(simpleContactsDebug))
-    ) {
-        Intent().apply {
-            action = Intent.ACTION_VIEW
-            putExtra(CONTACT_ID, contact.rawId)
-            putExtra(IS_PRIVATE, true)
-            `package` =
-                if (isPackageInstalled(simpleContacts)) simpleContacts else simpleContactsDebug
-            setDataAndType(
-                ContactsContract.Contacts.CONTENT_LOOKUP_URI,
-                "vnd.android.cursor.dir/person"
-            )
-            launchActivityIntent(this)
-        }
-    } else {
-        ensureBackgroundThread {
-            val lookupKey =
-                SimpleContactsHelper(this).getContactLookupKey((contact).rawId.toString())
-            val publicUri =
-                Uri.withAppendedPath(ContactsContract.Contacts.CONTENT_LOOKUP_URI, lookupKey)
-            runOnUiThread {
-                launchViewContactIntent(publicUri)
-            }
-        }
     }
 }
 
