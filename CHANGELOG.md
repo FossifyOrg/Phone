@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.11.0] - 2026-01-25
 ### Added
 - Added support for custom fonts
+- Option to choose contact click action ([#561])
 
 ### Changed
 - Updated translations
@@ -251,6 +252,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#526]: https://github.com/FossifyOrg/Phone/issues/526
 [#535]: https://github.com/FossifyOrg/Phone/issues/535
 [#543]: https://github.com/FossifyOrg/Phone/issues/543
+[#561]: https://github.com/FossifyOrg/Phone/issues/561
 [#565]: https://github.com/FossifyOrg/Phone/issues/565
 [#585]: https://github.com/FossifyOrg/Phone/issues/585
 [#594]: https://github.com/FossifyOrg/Phone/issues/594
