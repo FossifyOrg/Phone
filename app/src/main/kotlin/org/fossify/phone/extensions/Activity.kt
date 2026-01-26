@@ -24,6 +24,8 @@ import org.fossify.commons.extensions.openNotificationSettings
 import org.fossify.commons.extensions.telecomManager
 import org.fossify.commons.helpers.CONTACT_ID
 import org.fossify.commons.helpers.IS_PRIVATE
+import org.fossify.commons.helpers.ON_CLICK_CALL_CONTACT
+import org.fossify.commons.helpers.ON_CLICK_VIEW_CONTACT
 import org.fossify.commons.helpers.PERMISSION_READ_PHONE_STATE
 import org.fossify.commons.helpers.SimpleContactsHelper
 import org.fossify.commons.helpers.ensureBackgroundThread
@@ -74,6 +76,13 @@ fun SimpleActivity.startCallWithConfirmationCheck(contact: Contact) {
         }
     } else {
         initiateCall(contact) { launchCallIntent(it) }
+    }
+}
+
+fun SimpleActivity.handleGenericContactClick(contact: Contact) {
+    when (config.onContactClick) {
+        ON_CLICK_CALL_CONTACT -> startCallWithConfirmationCheck(contact)
+        ON_CLICK_VIEW_CONTACT -> startContactDetailsIntent(contact)
     }
 }
 

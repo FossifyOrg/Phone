@@ -26,9 +26,9 @@ import org.fossify.phone.activities.SimpleActivity
 import org.fossify.phone.adapters.ContactsAdapter
 import org.fossify.phone.databinding.FragmentContactsBinding
 import org.fossify.phone.databinding.FragmentLettersLayoutBinding
+import org.fossify.phone.extensions.handleGenericContactClick
 import org.fossify.phone.extensions.launchCreateNewContactIntent
 import org.fossify.phone.extensions.setupWithContacts
-import org.fossify.phone.extensions.startCallWithConfirmationCheck
 import org.fossify.phone.extensions.startContactDetailsIntent
 import org.fossify.phone.interfaces.RefreshItemsListener
 
@@ -128,7 +128,7 @@ class ContactsFragment(context: Context, attributeSet: AttributeSet) : MyViewPag
                     recyclerView = binding.fragmentList,
                     refreshItemsListener = this,
                     itemClick = {
-                        activity?.startCallWithConfirmationCheck(it as Contact)
+                        activity?.handleGenericContactClick(it as Contact)
                     },
                     profileIconClick = {
                         activity?.startContactDetailsIntent(it as Contact)
