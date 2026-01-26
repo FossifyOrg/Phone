@@ -26,6 +26,8 @@ import org.fossify.commons.helpers.FONT_SIZE_LARGE
 import org.fossify.commons.helpers.FONT_SIZE_MEDIUM
 import org.fossify.commons.helpers.FONT_SIZE_SMALL
 import org.fossify.commons.helpers.NavigationIcon
+import org.fossify.commons.helpers.ON_CLICK_CALL_CONTACT
+import org.fossify.commons.helpers.ON_CLICK_VIEW_CONTACT
 import org.fossify.commons.helpers.TAB_CALL_HISTORY
 import org.fossify.commons.helpers.TAB_CONTACTS
 import org.fossify.commons.helpers.TAB_FAVORITES
@@ -101,6 +103,7 @@ class SettingsActivity : SimpleActivity() {
         setupFontSize()
         setupManageShownTabs()
         setupDefaultTab()
+        setupOnContactClick()
         setupDialPadOpen()
         setupGroupSubsequentCalls()
         setupStartNameWithSurname()
@@ -255,6 +258,28 @@ class SettingsActivity : SimpleActivity() {
             TAB_FAVORITES -> R.string.favorites_tab
             TAB_CALL_HISTORY -> R.string.call_history_tab
             else -> R.string.last_used_tab
+        }
+    )
+
+    private fun setupOnContactClick() {
+        binding.settingsOnContactClick.text = getOnContactClickText()
+        binding.settingsOnContactClickHolder.setOnClickListener {
+            val items = arrayListOf(
+                RadioItem(ON_CLICK_CALL_CONTACT, getString(org.fossify.commons.R.string.call_contact)),
+                RadioItem(ON_CLICK_VIEW_CONTACT, getString(org.fossify.commons.R.string.view_contact))
+            )
+
+            RadioGroupDialog(this@SettingsActivity, items, config.onContactClick) {
+                config.onContactClick = it as Int
+                binding.settingsOnContactClick.text = getOnContactClickText()
+            }
+        }
+    }
+
+    private fun getOnContactClickText() = getString(
+        when (config.onContactClick) {
+            ON_CLICK_CALL_CONTACT -> org.fossify.commons.R.string.call_contact
+            else -> org.fossify.commons.R.string.view_contact
         }
     )
 
