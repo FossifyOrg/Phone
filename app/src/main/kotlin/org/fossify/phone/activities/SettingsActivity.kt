@@ -265,8 +265,8 @@ class SettingsActivity : SimpleActivity() {
         binding.settingsOnContactClick.text = getOnContactClickText()
         binding.settingsOnContactClickHolder.setOnClickListener {
             val items = arrayListOf(
-                RadioItem(ON_CLICK_CALL_CONTACT, getString(R.string.call_contact)),
-                RadioItem(ON_CLICK_VIEW_CONTACT, getString(R.string.view_contact))
+                RadioItem(ON_CLICK_CALL_CONTACT, getString(org.fossify.commons.R.string.call_contact)),
+                RadioItem(ON_CLICK_VIEW_CONTACT, getString(org.fossify.commons.R.string.view_contact))
             )
 
             RadioGroupDialog(this@SettingsActivity, items, config.onContactClick) {
@@ -278,8 +278,8 @@ class SettingsActivity : SimpleActivity() {
 
     private fun getOnContactClickText() = getString(
         when (config.onContactClick) {
-            ON_CLICK_CALL_CONTACT -> R.string.call_contact
-            else -> R.string.view_contact
+            ON_CLICK_CALL_CONTACT -> org.fossify.commons.R.string.call_contact
+            else -> org.fossify.commons.R.string.view_contact
         }
     )
 
