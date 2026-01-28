@@ -18,9 +18,10 @@ class SimpleCallScreeningService : CallScreeningService() {
             }
 
             number != null && baseConfig.blockUnknownNumbers -> {
-                val privateCursor = getMyContactsCursor(favoritesOnly = false, withPhoneNumbersOnly = true)
-                val isKnownContact = SimpleContactsHelper(this).existsSync(number, privateCursor)
-                respondToCall(callDetails, isBlocked = !isKnownContact)
+                getMyContactsCursor(favoritesOnly = false, withPhoneNumbersOnly = true).use {
+                    val isKnownContact = SimpleContactsHelper(this).existsSync(number, it)
+                    respondToCall(callDetails, isBlocked = !isKnownContact)
+                }
             }
 
             number == null && baseConfig.blockHiddenNumbers -> {
