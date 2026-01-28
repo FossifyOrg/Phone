@@ -5,6 +5,7 @@ import android.telecom.CallScreeningService
 import org.fossify.commons.extensions.baseConfig
 import org.fossify.commons.extensions.getMyContactsCursor
 import org.fossify.commons.extensions.isNumberBlocked
+import org.fossify.commons.helpers.ContactLookupResult
 import org.fossify.commons.helpers.SimpleContactsHelper
 
 class SimpleCallScreeningService : CallScreeningService() {
@@ -17,10 +18,9 @@ class SimpleCallScreeningService : CallScreeningService() {
             }
 
             number != null && baseConfig.blockUnknownNumbers -> {
-                getMyContactsCursor(favoritesOnly = false, withPhoneNumbersOnly = true).use {
-                    val isKnownContact = SimpleContactsHelper(this).existsSync(number, it)
-                    respondToCall(callDetails, isBlocked = !isKnownContact)
-                }
+                val privateCursor = getMyContactsCursor(favoritesOnly = false, withPhoneNumbersOnly = true)
+                val result = SimpleContactsHelper(this).existsSync(number, privateCursor)
+                respondToCall(callDetails, isBlocked = result == ContactLookupResult.NotFound)
             }
 
             number == null && baseConfig.blockHiddenNumbers -> {
