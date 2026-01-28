@@ -5,7 +5,6 @@ import android.telecom.CallScreeningService
 import org.fossify.commons.extensions.baseConfig
 import org.fossify.commons.extensions.getMyContactsCursor
 import org.fossify.commons.extensions.isNumberBlocked
-import org.fossify.commons.extensions.normalizePhoneNumber
 import org.fossify.commons.helpers.SimpleContactsHelper
 
 class SimpleCallScreeningService : CallScreeningService() {
@@ -13,7 +12,7 @@ class SimpleCallScreeningService : CallScreeningService() {
     override fun onScreenCall(callDetails: Call.Details) {
         val number = callDetails.handle?.schemeSpecificPart
         when {
-            number != null && isNumberBlocked(number.normalizePhoneNumber()) -> {
+            number != null && isNumberBlocked(number) -> {
                 respondToCall(callDetails, isBlocked = true)
             }
 
