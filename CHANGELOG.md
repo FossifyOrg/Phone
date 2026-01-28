@@ -11,7 +11,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - Fixed incorrect spacing between prefix and last name
-- Fixed an issue where all calls were blocked if contacts permission was denied
 - Fixed issues with unknown number blocking in some cases ([#696])
 
 ## [1.10.0] - 2025-12-16
