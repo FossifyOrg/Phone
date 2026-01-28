@@ -74,4 +74,6 @@
     <string name="app_launcher_name">الهاتف</string>
     <string name="faq_2_title">لماذا لا تعمل مكالمات الطوارئ؟</string>
     <string name="faq_2_text">بسبب قيود النظام، لا يمكن إجراء مكالمات الطوارئ إلا من خلال تطبيق الهاتف الإفتراضي للنظام، لضمان عمل مكالمات الطوارئ بشكل صحيح، تحتاج إلى إبقاء تطبيق النظام مثبتا و مفعلا.</string>
+    <string name="call_notification_channel">حالة المكالمة</string>
+    <string name="call_notification_channel_high_priority">حالة المكالمة (أولوية عالية)</string>
 </resources>
