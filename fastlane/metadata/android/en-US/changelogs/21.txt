@@ -1,0 +1,14 @@
+Added:
+
+• Added support for custom fonts
+• Option to choose contact click action 
+
+Changed:
+
+• Updated translations
+
+Fixed:
+
+• Fixed incorrect spacing between prefix and last name
+• Fixed issues with unknown number blocking in some cases 
+
