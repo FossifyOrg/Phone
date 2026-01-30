@@ -5,9 +5,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [1.11.0] - 2026-01-30
 ### Added
 - Added support for custom fonts
 - Option to choose contact click action ([#561])
+
+### Changed
+- Updated translations
 
 ### Fixed
 - Fixed incorrect spacing between prefix and last name
@@ -257,7 +262,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#645]: https://github.com/FossifyOrg/Phone/issues/645
 [#696]: https://github.com/FossifyOrg/Phone/issues/696
 
-[Unreleased]: https://github.com/FossifyOrg/Phone/compare/1.10.0...HEAD
+[Unreleased]: https://github.com/FossifyOrg/Phone/compare/1.11.0...HEAD
+[1.11.0]: https://github.com/FossifyOrg/Phone/compare/1.10.0...1.11.0
 [1.10.0]: https://github.com/FossifyOrg/Phone/compare/1.9.0...1.10.0
 [1.9.0]: https://github.com/FossifyOrg/Phone/compare/1.8.0...1.9.0
 [1.8.0]: https://github.com/FossifyOrg/Phone/compare/1.7.3...1.8.0
