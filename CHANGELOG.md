@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Fixed
 - Fixed truncated long names in call history ([#157])
+- Fixed truncated long names on call screen ([#286])
 
 ## [1.11.0] - 2026-01-30
 ### Added
@@ -247,6 +248,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#186]: https://github.com/FossifyOrg/Phone/issues/186
 [#196]: https://github.com/FossifyOrg/Phone/issues/196
 [#237]: https://github.com/FossifyOrg/Phone/issues/237
+[#286]: https://github.com/FossifyOrg/Phone/issues/286
 [#293]: https://github.com/FossifyOrg/Phone/issues/293
 [#307]: https://github.com/FossifyOrg/Phone/issues/307
 [#357]: https://github.com/FossifyOrg/Phone/issues/357
