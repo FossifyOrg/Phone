@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Fixed
+- Fixed truncated long names in call history ([#157])
 
 ## [1.11.0] - 2026-01-30
 ### Added
@@ -238,6 +240,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#139]: https://github.com/FossifyOrg/Phone/issues/139
 [#146]: https://github.com/FossifyOrg/Phone/issues/146
 [#147]: https://github.com/FossifyOrg/Phone/issues/147
+[#157]: https://github.com/FossifyOrg/Phone/issues/157
 [#165]: https://github.com/FossifyOrg/Phone/issues/165
 [#181]: https://github.com/FossifyOrg/Phone/issues/181
 [#183]: https://github.com/FossifyOrg/Phone/issues/183
