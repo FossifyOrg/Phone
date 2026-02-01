@@ -2,7 +2,6 @@
 <SmellBaseline>
   <ManuallySuppressedIssues/>
   <CurrentIssues>
-    <ID>ComplexCondition:Activity.kt$contact.rawId &gt; 1000000 &amp;&amp; contact.contactId &gt; 1000000 &amp;&amp; contact.rawId == contact.contactId &amp;&amp; (isPackageInstalled(simpleContacts) || isPackageInstalled(simpleContactsDebug))</ID>
     <ID>ComplexCondition:DialpadActivity.kt$DialpadActivity$(intent.action == Intent.ACTION_DIAL || intent.action == Intent.ACTION_VIEW) &amp;&amp; intent.data != null &amp;&amp; intent.dataString?.contains("tel:") == true</ID>
     <ID>CyclomaticComplexMethod:CallActivity.kt$CallActivity$@SuppressLint("ClickableViewAccessibility") private fun handleSwipe()</ID>
     <ID>CyclomaticComplexMethod:CallManager.kt$CallManager.Companion$fun getPhoneState(): PhoneState</ID>
@@ -22,7 +21,6 @@
     <ID>LongMethod:CallActivity.kt$CallActivity$@SuppressLint("ClickableViewAccessibility") private fun handleSwipe()</ID>
     <ID>LongMethod:RecentCallsAdapter.kt$RecentCallsAdapter.RecentCallViewHolder$fun bind(call: RecentCall)</ID>
     <ID>LongMethod:RecentsHelper.kt$RecentsHelper$@SuppressLint("NewApi") private fun getRecents( contacts: List&lt;Contact&gt;, selection: String? = null, selectionParams: Array&lt;String&gt;? = null, ): List&lt;RecentCall&gt;</ID>
-    <ID>MagicNumber:Activity.kt$1000000</ID>
     <ID>MagicNumber:CallActivity.kt$CallActivity$0.10f</ID>
     <ID>MagicNumber:CallActivity.kt$CallActivity$0.2f</ID>
     <ID>MagicNumber:CallActivity.kt$CallActivity$0.5f</ID>
