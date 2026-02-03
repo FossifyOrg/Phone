@@ -1,0 +1,9 @@
+Changed:
+
+• Updated translations
+
+Fixed:
+
+• Fixed truncated long names in call history 
+• Fixed truncated long names on call screen 
+
