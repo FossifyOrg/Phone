@@ -11,7 +11,7 @@ eventbus = "3.3.1"
 #Fossify
 commons = "6.1.0"
 #Gradle
-gradlePlugins-agp = "8.11.1"
+gradlePlugins-agp = "9.0.0"
 #Other
 indicatorFastScroll = "c7873f7168"
 autofitTextView = "0.2.1"
@@ -38,6 +38,5 @@ autofit-text-view = { module = "me.grantland:autofittextview", version.ref = "au
 libphonenumber = { module = "com.googlecode.libphonenumber:libphonenumber", version.ref = "libphonenumberVersion" }
 [plugins]
 android = { id = "com.android.application", version.ref = "gradlePlugins-agp" }
-kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
