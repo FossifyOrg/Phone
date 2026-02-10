@@ -81,6 +81,7 @@ class RecentCallsAdapter(
     private lateinit var outgoingCallIcon: Drawable
     private lateinit var incomingCallIcon: Drawable
     private lateinit var incomingMissedCallIcon: Drawable
+    private lateinit var blockedCallIcon: Drawable
     var fontSize: Float = activity.getTextSize()
     private val areMultipleSIMsAvailable = activity.areMultipleSIMsAvailable()
     private var missedCallColor = resources.getColor(R.color.color_missed_call)
@@ -214,6 +215,7 @@ class RecentCallsAdapter(
         outgoingCallIcon = resources.getColoredDrawableWithColor(R.drawable.ic_call_made_vector, outgoingCallColor)
         incomingCallIcon = resources.getColoredDrawableWithColor(R.drawable.ic_call_received_vector, incomingCallColor)
         incomingMissedCallIcon = resources.getColoredDrawableWithColor(R.drawable.ic_call_missed_vector, missedCallColor)
+        blockedCallIcon = resources.getColoredDrawableWithColor(R.drawable.ic_call_blocked_vector, missedCallColor)
     }
 
     private fun callContact(useSimOne: Boolean) {
@@ -265,9 +267,7 @@ class RecentCallsAdapter(
                 activity.addBlockedNumber(number)
             }
 
-            val recentCalls = currentList.toMutableList().also { it.removeAll(callsToBlock) }
             activity.runOnUiThread {
-                submitList(recentCalls)
                 finishActMode()
             }
         }
@@ -481,7 +481,10 @@ class RecentCallsAdapter(
                 } else {
                     SpannableString(name)
                 }
-                val shouldShowDuration = call.type != Calls.MISSED_TYPE && call.type != Calls.REJECTED_TYPE && call.duration > 0
+                val isUnanswered = call.type == Calls.MISSED_TYPE ||
+                    call.type == Calls.REJECTED_TYPE ||
+                    call.type == Calls.BLOCKED_TYPE
+                val shouldShowDuration = !isUnanswered && call.duration > 0
 
                 if (refreshItemsListener == null) {
                     // show specific number at "Show call details" dialog too
@@ -521,7 +524,9 @@ class RecentCallsAdapter(
                         call.startTS.formatTime(activity)
                     }
 
-                    setTextColor(if (call.type == Calls.MISSED_TYPE) missedCallColor else secondaryTextColor)
+                    val isMissedOrBlocked =
+                        call.type == Calls.MISSED_TYPE || call.type == Calls.BLOCKED_TYPE
+                    setTextColor(if (isMissedOrBlocked) missedCallColor else secondaryTextColor)
                     setTextSize(TypedValue.COMPLEX_UNIT_PX, currentFontSize * 0.8f)
                 }
 
@@ -601,6 +606,7 @@ class RecentCallsAdapter(
                 val drawable = when (call.type) {
                     Calls.OUTGOING_TYPE -> outgoingCallIcon
                     Calls.MISSED_TYPE -> incomingMissedCallIcon
+                    Calls.BLOCKED_TYPE -> blockedCallIcon
                     else -> incomingCallIcon
                 }
 

@@ -278,10 +278,7 @@ class RecentsHelper(private val context: Context) {
             } while (cursor.moveToNext() && recentCalls.size < queryLimit)
         }
 
-        val blockedNumbers = context.getBlockedNumbers()
-
         return recentCalls
-            .filter { !context.isNumberBlocked(it.phoneNumber, blockedNumbers) }
     }
 
     fun removeRecentCalls(ids: List<Int>, callback: () -> Unit) {
