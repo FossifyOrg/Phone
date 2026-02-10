@@ -1,6 +1,10 @@
 package org.fossify.phone.fragments
 
 import android.content.Context
+import android.database.ContentObserver
+import android.os.Handler
+import android.os.Looper
+import android.provider.CallLog.Calls
 import android.util.AttributeSet
 import org.fossify.commons.extensions.baseConfig
 import org.fossify.commons.extensions.beGone
@@ -42,10 +46,29 @@ class RecentsFragment(
     private var searchQuery: String? = null
     private var recentsHelper = RecentsHelper(context)
 
+    private var callLogObserverEnabled = true
+    private val callLogObserver = object : ContentObserver(Handler(Looper.getMainLooper())) {
+        override fun onChange(selfChange: Boolean) {
+            if (callLogObserverEnabled) {
+                refreshItems()
+            }
+        }
+    }
+
     override fun onFinishInflate() {
         super.onFinishInflate()
         binding = FragmentRecentsBinding.bind(this)
         innerBinding = RecentsInnerBinding(binding)
+    }
+
+    override fun onAttachedToWindow() {
+        super.onAttachedToWindow()
+        context.contentResolver.registerContentObserver(Calls.CONTENT_URI, true, callLogObserver)
+    }
+
+    override fun onDetachedFromWindow() {
+        super.onDetachedFromWindow()
+        context.contentResolver.unregisterContentObserver(callLogObserver)
     }
 
     override fun setupFragment() {
@@ -160,6 +183,8 @@ class RecentsFragment(
                     recyclerView = binding.recentsList,
                     refreshItemsListener = this,
                     showOverflowMenu = true,
+                    beforeCallLogChange = ::pauseCallLogObserver,
+                    afterCallLogChange = ::resumeCallLogObserver,
                     itemDelete = { deleted ->
                         allRecentCalls = allRecentCalls.filter { it !in deleted }
                     },
@@ -301,5 +326,13 @@ class RecentsFragment(
 
     private fun findContactByCall(recentCall: RecentCall): Contact? {
         return (activity as MainActivity).cachedContacts.find { it.name == recentCall.name && it.doesHavePhoneNumber(recentCall.phoneNumber) }
+    }
+
+    fun pauseCallLogObserver() {
+        callLogObserverEnabled = false
+    }
+
+    fun resumeCallLogObserver() {
+        callLogObserverEnabled = true
     }
 }

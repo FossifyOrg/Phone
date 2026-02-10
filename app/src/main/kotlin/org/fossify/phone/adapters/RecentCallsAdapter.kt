@@ -73,6 +73,8 @@ class RecentCallsAdapter(
     recyclerView: MyRecyclerView,
     private val refreshItemsListener: RefreshItemsListener?,
     private val showOverflowMenu: Boolean,
+    private val beforeCallLogChange: () -> Unit = {},
+    private val afterCallLogChange: () -> Unit = {},
     private val itemDelete: (List<RecentCall>) -> Unit = {},
     itemClick: (Any) -> Unit,
     val profileIconClick: ((Any) -> Unit)? = null
@@ -316,11 +318,13 @@ class RecentCallsAdapter(
             it.groupedCalls?.mapTo(idsToRemove) { call -> call.id }
         }
 
+        beforeCallLogChange()
         RecentsHelper(activity).removeRecentCalls(idsToRemove) {
             itemDelete(callsToRemove)
             val recentCalls = currentList.toMutableList().also { it.removeAll(callsToRemove) }
             activity.runOnUiThread {
                 refreshItemsListener?.refreshItems()
+                afterCallLogChange()
                 submitList(recentCalls)
                 finishActMode()
             }
