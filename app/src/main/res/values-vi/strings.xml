@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="default_phone_app_prompt">Vui lòng đặt app này làm app Điện thoại mặc định</string>
-    <string name="allow_displaying_over_other_apps">Vui lòng cho phép hiển thị trên các app khác để có hành vi đáng tin cậy</string>
+    <string name="default_phone_app_prompt">Vui lòng đặt ứng dụng này làm ứng dụng Điện thoại mặc định</string>
+    <string name="allow_displaying_over_other_apps">Vui lòng cho phép hiển thị trên các ứng dụng khác để có hành vi đáng tin cậy</string>
     <string name="could_not_access_contacts">Không thể truy cập danh bạ của bạn</string>
     <string name="no_previous_calls">Không có cuộc gọi nào gần đây</string>
     <string name="could_not_access_the_call_history">Không xem được lịch sử cuộc gọi</string>
@@ -58,13 +58,13 @@
     <string name="manage_speed_dial">Quản lý quay số nhanh</string>
     <string name="speed_dial_label">Nhấn vào một số để gán liên hệ cho nó. Sau đó, bạn có thể gọi nhanh cho liên hệ đã gán bằng cách nhấn giữ số đã gán ở trình quay số.</string>
     <string name="group_subsequent_calls">Gộp các cuộc gọi chung một số gần nhau trong nhật ký cuộc gọi</string>
-    <string name="open_dialpad_by_default">Mở bàn phím quay số khi mở app</string>
+    <string name="open_dialpad_by_default">Mở bàn phím quay số khi mở ứng dụng</string>
     <string name="disable_proximity_sensor">Tắt cảm biến tiệm cận trong khi gọi</string>
     <string name="disable_swipe_to_answer">Dùng thao tác vuốt thay thế thao tác nhấn khi trả lời cuộc gọi đến</string>
     <string name="show_incoming_calls_full_screen">Hiện các cuộc gọi đến toàn màn hình</string>
     <string name="hide_dialpad_numbers">Ẩn số ở bàn phím quay số</string>
     <string name="faq_1_title">Làm sao khi nghe thấy cuộc gọi đến, nhưng màn hình không bật?</string>
-    <string name="faq_1_text">Những vấn đề như vậy có thể do nhiều lý do từ thiết bị và hệ thống, khó nói chung. Bạn nên xem trong cài đặt thiết bị của mình và đảm bảo rằng app được phép bật lên khi ở chế độ nền và cho phép hiển thị trên các app khác.</string>
+    <string name="faq_1_text">Những vấn đề như vậy có thể do nhiều lý do từ thiết bị và hệ thống, khó nói chung. Bạn nên xem trong cài đặt thiết bị của mình và đảm bảo rằng ứng dụng được phép bật lên khi ở chế độ nền và cho phép hiển thị trên các ứng dụng khác.</string>
     <string name="app_launcher_name">Điện thoại</string>
     <string name="import_call_history">Nhập lịch sử cuộc gọi</string>
     <string name="export_call_history">Xuất lịch sử cuộc gọi</string>
@@ -73,8 +73,8 @@
     <string name="call_notification_channel">Trạng thái cuộc gọi</string>
     <string name="call_notification_channel_high_priority">Trạng thái cuộc gọi (ưu tiên cao)</string>
     <string name="faq_2_title">Tại sao không thể sử dụng cuộc gọi khẩn cấp?</string>
-    <string name="faq_2_text">Do hạn chế của hệ thống, chỉ có thể thực hiện các cuộc gọi khẩn cấp thông qua trình quay số mặc định hoặc app điện thoại của hệ thống. Để đảm bảo các cuộc gọi khẩn cấp hoạt động bình thường, bạn cần giữ app hệ thống cài đặt và được bật.</string>
-    <string name="faq_3_title">Tại sao một số liên hệ của tôi không thấy trên app?</string>
-    <string name="faq_3_text">Fossify Phone chỉ hiển thị các liên hệ đã liên kết số điện thoại. Các liên hệ không có số điện thoại sẽ không được hiển thị trong app.</string>
+    <string name="faq_2_text">Do hạn chế của hệ thống, chỉ có thể thực hiện các cuộc gọi khẩn cấp thông qua trình quay số mặc định hoặc ứng dụng điện thoại của hệ thống. Để đảm bảo các cuộc gọi khẩn cấp hoạt động bình thường, bạn cần giữ ứng dụng hệ thống cài đặt và được bật.</string>
+    <string name="faq_3_title">Tại sao một số liên hệ của tôi không thấy trên ứng dụng?</string>
+    <string name="faq_3_text">Fossify Phone chỉ hiển thị các liên hệ đã liên kết số điện thoại. Các liên hệ không có số điện thoại sẽ không được hiển thị trong ứng dụng.</string>
     <string name="calling_accounts">Tài khoản cuộc gọi</string>
 </resources>
