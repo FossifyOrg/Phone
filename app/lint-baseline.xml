@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<issues format="6" by="lint 8.11.1" type="baseline" client="gradle" dependencies="false" name="AGP (8.11.1)" variant="all" version="8.11.1">
+<issues format="6" by="lint 9.0.1" type="baseline" client="gradle" dependencies="false" name="AGP (9.0.1)" variant="all" version="9.0.1">
 
     <issue
         id="MissingPermission"
@@ -68,28 +68,6 @@
     </issue>
 
     <issue
-        id="AndroidGradlePluginVersion"
-        message="A newer version of Gradle than 8.13 is available: 8.14.4"
-        errorLine1="distributionUrl=https\://services.gradle.org/distributions/gradle-8.13-bin.zip"
-        errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
-        <location
-            file="$HOME/work/Phone/Phone/gradle/wrapper/gradle-wrapper.properties"
-            line="3"
-            column="17"/>
-    </issue>
-
-    <issue
-        id="AndroidGradlePluginVersion"
-        message="A newer version of com.android.application than 8.11.1 is available: 9.0.0. (There is also a newer version of 8.11.𝑥 available, if upgrading to 9.0.0 is difficult: 8.11.2)"
-        errorLine1="gradlePlugins-agp = &quot;8.11.1&quot;"
-        errorLine2="                    ~~~~~~~~">
-        <location
-            file="$HOME/work/Phone/Phone/gradle/libs.versions.toml"
-            line="14"
-            column="21"/>
-    </issue>
-
-    <issue
         id="LockedOrientationActivity"
         message="Expecting `android:screenOrientation=&quot;unspecified&quot;` or `&quot;fullSensor&quot;` for this activity so the user can use the application in any orientation and provide a great experience on Chrome OS devices"
         errorLine1="            android:screenOrientation=&quot;portrait&quot;"
@@ -113,6 +91,17 @@
 
     <issue
         id="NewerVersionAvailable"
+        message="A newer version of com.googlecode.libphonenumber:geocoder than 3.24 is available: 3.25"
+        errorLine1="geocoderVersion = &quot;3.24&quot;"
+        errorLine2="                  ~~~~~~">
+        <location
+            file="$HOME/work/Phone/Phone/gradle/libs.versions.toml"
+            line="3"
+            column="19"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
         message="A newer version of io.nlopez.compose.rules:detekt than 0.4.28 is available: 0.5.6"
         errorLine1="detektCompose = &quot;0.4.28&quot;"
         errorLine2="                ~~~~~~~~">
@@ -120,6 +109,17 @@
             file="$HOME/work/Phone/Phone/gradle/libs.versions.toml"
             line="8"
             column="17"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of com.googlecode.libphonenumber:libphonenumber than 9.0.24 is available: 9.0.25"
+        errorLine1="libphonenumberVersion = &quot;9.0.24&quot;"
+        errorLine2="                        ~~~~~~~~">
+        <location
+            file="$HOME/work/Phone/Phone/gradle/libs.versions.toml"
+            line="18"
+            column="25"/>
     </issue>
 
     <issue
@@ -1020,7 +1020,7 @@
 
     <issue
         id="MissingTranslation"
-        message="&quot;calling_accounts&quot; is not translated in &quot;hi&quot; (Hindi), &quot;fil&quot; (Filipino; Pilipino), &quot;lt&quot; (Lithuanian), &quot;lv&quot; (Latvian), &quot;hu&quot; (Hungarian), &quot;ia&quot; (Interlingua), &quot;mk&quot; (Macedonian), &quot;ml&quot; (Malayalam), &quot;in&quot; (Indonesian), &quot;ms&quot; (Malay), &quot;el&quot; (Greek), &quot;en&quot; (English), &quot;is&quot; (Icelandic), &quot;it&quot; (Italian), &quot;my&quot; (Burmese), &quot;ar&quot; (Arabic), &quot;nb&quot; (Norwegian Bokmål), &quot;ne&quot; (Nepali), &quot;az&quot; (Azerbaijani), &quot;fa&quot; (Persian), &quot;ro&quot; (Romanian), &quot;nn&quot; (Norwegian Nynorsk), &quot;be&quot; (Belarusian), &quot;bn&quot; (Bangla), &quot;br&quot; (Breton), &quot;oc&quot; (Occitan (post 1500)), &quot;si&quot; (Sinhala), &quot;sk&quot; (Slovak), &quot;sl&quot; (Slovenian), &quot;zgh&quot; (Standard Moroccan Tamazight), &quot;ltg&quot;, &quot;kn&quot; (Kannada), &quot;or&quot; (Odia), &quot;ko&quot; (Korean), &quot;kr&quot; (Kanuri), &quot;sat&quot; (Santali), &quot;ta&quot; (Tamil), &quot;cr&quot; (Cree), &quot;pa&quot; (Punjabi), &quot;te&quot; (Telugu), &quot;cy&quot; (Welsh), &quot;bqi&quot;, &quot;ckb&quot;"
+        message="&quot;calling_accounts&quot; is not translated in &quot;hi&quot; (Hindi), &quot;fil&quot; (Filipino; Pilipino), &quot;lt&quot; (Lithuanian), &quot;lv&quot; (Latvian), &quot;hu&quot; (Hungarian), &quot;ia&quot; (Interlingua), &quot;mk&quot; (Macedonian), &quot;ml&quot; (Malayalam), &quot;in&quot; (Indonesian), &quot;ms&quot; (Malay), &quot;el&quot; (Greek), &quot;en&quot; (English), &quot;is&quot; (Icelandic), &quot;it&quot; (Italian), &quot;my&quot; (Burmese), &quot;nb&quot; (Norwegian Bokmål), &quot;ne&quot; (Nepali), &quot;az&quot; (Azerbaijani), &quot;fa&quot; (Persian), &quot;ro&quot; (Romanian), &quot;nn&quot; (Norwegian Nynorsk), &quot;be&quot; (Belarusian), &quot;bn&quot; (Bangla), &quot;br&quot; (Breton), &quot;oc&quot; (Occitan (post 1500)), &quot;si&quot; (Sinhala), &quot;sk&quot; (Slovak), &quot;sl&quot; (Slovenian), &quot;zgh&quot; (Standard Moroccan Tamazight), &quot;ltg&quot;, &quot;kn&quot; (Kannada), &quot;or&quot; (Odia), &quot;ko&quot; (Korean), &quot;kr&quot; (Kanuri), &quot;sat&quot; (Santali), &quot;ta&quot; (Tamil), &quot;cr&quot; (Cree), &quot;pa&quot; (Punjabi), &quot;te&quot; (Telugu), &quot;cy&quot; (Welsh), &quot;bqi&quot;, &quot;ckb&quot;"
         errorLine1="    &lt;string name=&quot;calling_accounts&quot;>Calling accounts&lt;/string>"
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~">
         <location
@@ -1099,7 +1099,7 @@
         id="Typos"
         message="&quot;Numero&quot; is a common misspelling; did you mean &quot;Número&quot;?"
         errorLine1="    &lt;string name=&quot;call_number&quot;>Numero de telefone&lt;/string>"
-        errorLine2="                               ^">
+        errorLine2="                               ~~~~~~">
         <location
             file="src/main/res/values-pt-rBR/strings.xml"
             line="16"
@@ -1472,7 +1472,7 @@
         errorLine2="     ~~~~~~~~~">
         <location
             file="src/main/res/layout/activity_call.xml"
-            line="136"
+            line="137"
             column="6"/>
     </issue>
 
@@ -1483,7 +1483,7 @@
         errorLine2="             ~~~~~~~~~">
         <location
             file="src/main/res/layout/activity_call.xml"
-            line="481"
+            line="482"
             column="14"/>
     </issue>
 
@@ -1549,7 +1549,7 @@
         errorLine2="     ~~~~~~~~~">
         <location
             file="src/main/res/layout/item_recent_call.xml"
-            line="44"
+            line="47"
             column="6"/>
     </issue>
 
@@ -1560,7 +1560,7 @@
         errorLine2="     ~~~~~~~~~">
         <location
             file="src/main/res/layout/item_recent_call.xml"
-            line="74"
+            line="77"
             column="6"/>
     </issue>
 
@@ -1571,7 +1571,7 @@
         errorLine2="     ~~~~~~~~~">
         <location
             file="src/main/res/layout/item_recent_call.xml"
-            line="146"
+            line="149"
             column="6"/>
     </issue>
 
@@ -1626,7 +1626,7 @@
         errorLine2="                                            ~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="src/main/kotlin/org/fossify/phone/adapters/RecentCallsAdapter.kt"
-            line="577"
+            line="578"
             column="45"/>
     </issue>
 
