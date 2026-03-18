@@ -22,6 +22,13 @@ The Fossify Phone App is designed for optimal resource usage, contributing to ex
 
 Download the Fossify Phone App now and step into a mobile world where privacy seamlessly blends with functionality. Your journey towards a safer, personalized mobile experience starts here.
 
+## 🔴 REDIAL BRANCH FEATURES
+
+This branch includes experimental features designed to help calling customer service lines that may be full:
+
+- **Automatic Redial**: Enable the "Redial if disconnected" option during a call, and the app will automatically attempt to redial if the other end disconnects. This often happens if customer service is too busy to answer, so keep trying.
+- **Call Duration Alerts**: The app provides an annoying audio and visual cue (dual beep and screen flash) when your call reaches the 50-second mark, helping you keep track of when you get beyond the automated disconnect of a busy call center.
+
 ➡️ Explore more Fossify apps: https://www.fossify.org<br>
 ➡️ Open-Source Code: https://www.github.com/FossifyOrg<br>
 ➡️ Join the community on Reddit: https://www.reddit.com/r/Fossify<br>
