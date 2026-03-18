@@ -4,9 +4,11 @@ import android.annotation.SuppressLint
 import android.app.KeyguardManager
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.graphics.drawable.LayerDrawable
 import android.graphics.drawable.RippleDrawable
 import android.media.AudioManager
+import android.media.ToneGenerator
 import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
@@ -46,6 +48,8 @@ import kotlin.math.min
 
 class CallActivity : SimpleActivity() {
     companion object {
+        private const val CALL_DURATION_NOTIFICATION_THRESHOLD = 50
+
         fun getStartIntent(context: Context): Intent {
             val openAppIntent = Intent(context, CallActivity::class.java)
             openAppIntent.flags = Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT or Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
@@ -63,6 +67,7 @@ class CallActivity : SimpleActivity() {
     private var proximityWakeLock: PowerManager.WakeLock? = null
     private var screenOnWakeLock: PowerManager.WakeLock? = null
     private var callDuration = 0
+    private var hasNotifiedDurationThreshold = false
     private val callDurationHandler = Handler(Looper.getMainLooper())
     private var dragDownX = 0f
     private var stopAnimation = false
@@ -853,15 +858,64 @@ class CallActivity : SimpleActivity() {
 
         override fun onPrimaryCallChanged(call: Call) {
             callDurationHandler.removeCallbacks(updateCallDurationTask)
+            hasNotifiedDurationThreshold = false
             updateCallContactInfo(call)
             updateState()
         }
+    }
+
+    private fun notifyDurationThresholdReached() {
+        val currentRoute = CallManager.getCallAudioRoute()
+        val wasSpeaker = currentRoute == AudioRoute.SPEAKER
+        if (!wasSpeaker) {
+            CallManager.setAudioRoute(CallAudioState.ROUTE_SPEAKER)
+        }
+
+        beepTwice()
+        flashScreen()
+
+        if (!wasSpeaker) {
+            Handler(Looper.getMainLooper()).postDelayed({
+                CallManager.setAudioRoute(currentRoute?.route ?: CallAudioState.ROUTE_EARPIECE)
+            }, 1000)
+        }
+    }
+
+    private fun beepTwice() {
+        val toneGenerator = try {
+            ToneGenerator(AudioManager.STREAM_VOICE_CALL, 100)
+        } catch (e: Exception) {
+            null
+        }
+
+        toneGenerator?.startTone(ToneGenerator.TONE_PROP_BEEP, 100)
+        Handler(Looper.getMainLooper()).postDelayed({
+            toneGenerator?.startTone(ToneGenerator.TONE_PROP_BEEP, 100)
+            Handler(Looper.getMainLooper()).postDelayed({
+                toneGenerator?.release()
+            }, 500)
+        }, 300)
+    }
+
+    private fun flashScreen() {
+        val backgroundColor = getProperBackgroundColor()
+        val flashColor = if (isSystemInDarkMode()) Color.WHITE else Color.BLACK
+        binding.callHolder.setBackgroundColor(flashColor)
+        Handler(Looper.getMainLooper()).postDelayed({
+            binding.callHolder.setBackgroundColor(backgroundColor)
+        }, 200)
     }
 
     private val updateCallDurationTask = object : Runnable {
         override fun run() {
             callDuration = CallManager.getPrimaryCall().getCallDuration()
             if (!isCallEnded) {
+                if (callDuration >= CALL_DURATION_NOTIFICATION_THRESHOLD && !hasNotifiedDurationThreshold) {
+                    hasNotifiedDurationThreshold = true
+                    notifyDurationThresholdReached()
+                } else if (callDuration < CALL_DURATION_NOTIFICATION_THRESHOLD) {
+                    hasNotifiedDurationThreshold = false
+                }
                 binding.callStatusLabel.text = callDuration.getFormattedDuration()
                 callDurationHandler.postDelayed(this, 1000)
             }
