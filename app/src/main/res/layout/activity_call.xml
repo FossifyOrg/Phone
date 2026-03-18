@@ -128,10 +128,23 @@
         android:textColor="@color/md_red"
         android:textSize="@dimen/call_status_text_size"
         android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@id/guideline"
+        app:layout_constraintBottom_toTopOf="@id/redial_checkbox"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/call_status_label"
+        tools:visibility="visible" />
+
+    <org.fossify.commons.views.MyAppCompatCheckbox
+        android:id="@+id/redial_checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/normal_margin"
+        android:text="@string/redial_if_disconnected"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hold_status_label"
         tools:visibility="visible" />
 
     <ImageView

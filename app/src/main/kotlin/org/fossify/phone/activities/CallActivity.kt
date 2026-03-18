@@ -7,12 +7,15 @@ import android.content.Intent
 import android.graphics.drawable.LayerDrawable
 import android.graphics.drawable.RippleDrawable
 import android.media.AudioManager
+import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.os.PowerManager
 import android.telecom.Call
 import android.telecom.CallAudioState
+import android.telecom.PhoneAccountHandle
+import android.telecom.TelecomManager
 import android.view.KeyEvent
 import android.view.MotionEvent
 import android.view.View
@@ -20,6 +23,7 @@ import android.view.WindowManager
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.OvershootInterpolator
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.os.postDelayed
 import androidx.core.view.children
@@ -54,6 +58,7 @@ class CallActivity : SimpleActivity() {
     private var isSpeakerOn = false
     private var isMicrophoneOff = false
     private var isCallEnded = false
+    private var isUserEndingCall = false
     private var callContact: CallContact? = null
     private var proximityWakeLock: PowerManager.WakeLock? = null
     private var screenOnWakeLock: PowerManager.WakeLock? = null
@@ -183,7 +188,16 @@ class CallActivity : SimpleActivity() {
         }
 
         callEnd.setOnClickListener {
+            isUserEndingCall = true
             endCall()
+        }
+
+        redialCheckbox.apply {
+            setColors(getProperTextColor(), getProperPrimaryColor(), getProperBackgroundColor())
+            isChecked = config.redialEnabled
+            setOnCheckedChangeListener { _, isChecked ->
+                config.redialEnabled = isChecked
+            }
         }
 
         dialpadInclude.apply {
@@ -734,10 +748,12 @@ class CallActivity : SimpleActivity() {
         binding.incomingCallHolder.beGone()
         binding.ongoingCallHolder.beVisible()
         binding.callEnd.beVisible()
+        binding.redialCheckbox.beVisible()
     }
 
     private fun callRinging() {
         binding.incomingCallHolder.beVisible()
+        binding.redialCheckbox.beGone()
     }
 
     private fun callStarted() {
@@ -745,6 +761,7 @@ class CallActivity : SimpleActivity() {
         binding.incomingCallHolder.beGone()
         binding.ongoingCallHolder.beVisible()
         binding.callEnd.beVisible()
+        binding.redialCheckbox.beVisible()
         callDurationHandler.removeCallbacks(updateCallDurationTask)
         callDurationHandler.post(updateCallDurationTask)
     }
@@ -772,19 +789,28 @@ class CallActivity : SimpleActivity() {
         } catch (ignored: Exception) {
         }
 
+        val shouldRedial = binding.redialCheckbox.isChecked && !isUserEndingCall && callContact != null
         isCallEnded = true
         runOnUiThread {
             if (callDuration > 0) {
                 disableAllActionButtons()
                 @SuppressLint("SetTextI18n")
                 binding.callStatusLabel.text = "${callDuration.getFormattedDuration()} (${getString(R.string.call_ended)})"
-                Handler(mainLooper).postDelayed(3000) {
-                    safeFinishAndRemoveTask()
+                if (shouldRedial) {
+                    redial()
+                } else {
+                    Handler(mainLooper).postDelayed(3000) {
+                        safeFinishAndRemoveTask()
+                    }
                 }
             } else {
                 disableAllActionButtons()
                 binding.callStatusLabel.text = getString(R.string.call_ended)
-                finish()
+                if (shouldRedial) {
+                    redial()
+                } else {
+                    finish()
+                }
             }
         }
     }
@@ -797,6 +823,21 @@ class CallActivity : SimpleActivity() {
                 finish()
             }
         } catch (_: Exception) {
+            finish()
+        }
+    }
+
+    @SuppressLint("MissingPermission")
+    private fun redial() {
+        val number = callContact?.number ?: return
+        val uri = Uri.fromParts("tel", number, null)
+        getHandleToUse(intent, number) { handle ->
+            val bundle = Bundle().apply {
+                putParcelable(TelecomManager.EXTRA_PHONE_ACCOUNT_HANDLE, handle)
+                putBoolean(TelecomManager.EXTRA_START_CALL_WITH_VIDEO_STATE, false)
+                putBoolean(TelecomManager.EXTRA_START_CALL_WITH_SPEAKERPHONE, false)
+            }
+            telecomManager.placeCall(uri, bundle)
             finish()
         }
     }

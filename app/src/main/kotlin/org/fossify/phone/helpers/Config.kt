@@ -135,4 +135,8 @@ class Config(context: Context) : BaseConfig(context) {
     var alwaysShowFullscreen: Boolean
         get() = prefs.getBoolean(ALWAYS_SHOW_FULLSCREEN, false)
         set(alwaysShowFullscreen) = prefs.edit().putBoolean(ALWAYS_SHOW_FULLSCREEN, alwaysShowFullscreen).apply()
+
+    var redialEnabled: Boolean
+        get() = prefs.getBoolean(REDIAL_ENABLED, false)
+        set(redialEnabled) = prefs.edit().putBoolean(REDIAL_ENABLED, redialEnabled).apply()
 }
