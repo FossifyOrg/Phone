@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="default_phone_app_prompt">Tegye az alkalmazást az alapértelmezett Telefon alkalmazássá</string>
-    <string name="allow_displaying_over_other_apps">A kiszámítható viselkedés érdekében engedélyezze a más alkalmazások feletti megjelenítést</string>
+    <string name="allow_displaying_over_other_apps">A megbízható működés érdekében engedélyezze a más alkalmazások feletti megjelenítést</string>
     <string name="could_not_access_contacts">A névjegyei nem érhetők el</string>
     <string name="no_previous_calls">Nem találhatók híváselőzmények</string>
     <string name="could_not_access_the_call_history">A híváselőzmények nem érhetők el</string>
