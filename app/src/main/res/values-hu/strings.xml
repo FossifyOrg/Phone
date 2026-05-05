@@ -6,9 +6,9 @@
     <string name="no_previous_calls">Nem találhatók híváselőzmények</string>
     <string name="could_not_access_the_call_history">A híváselőzmények nem érhetők el</string>
     <string name="request_access">Hozzáférés kérése</string>
-    <string name="remove_confirmation">Biztos, hogy eltávolítja a kiválasztott elemeket a híváselőzményekből\?</string>
-    <string name="clear_history_confirmation">Biztos, hogy mindent eltávolít a híváselőzményekből\?</string>
-    <string name="show_grouped_calls">Csoportosított hívások megjelenítése</string>
+    <string name="remove_confirmation">Biztosan el kívánja távolítani a kiválasztott elemeket a híváselőzményekből?</string>
+    <string name="clear_history_confirmation">Biztosan üríti a híváselőzményeket?</string>
+    <string name="show_grouped_calls">Csoportos hívások megjelenítése</string>
     <string name="clear_call_history">Híváselőzmények törlése</string>
     <string name="show_call_details">Hívás részleteinek megjelenítése</string>
     <string name="dialpad">Tárcsázó</string>
