@@ -1,8 +1,8 @@
 [versions]
 #jetbrains
-geocoderVersion = "3.27"
-kotlin = "2.3.20"
-kotlinxSerializationJson = "1.10.0"
+geocoderVersion = "3.29"
+kotlin = "2.3.21"
+kotlinxSerializationJson = "1.11.0"
 #Detekt
 detekt = "1.23.8"
 detektCompose = "0.4.28"
@@ -11,11 +11,11 @@ eventbus = "3.3.1"
 #Fossify
 commons = "6.1.6"
 #Gradle
-gradlePlugins-agp = "9.0.1"
+gradlePlugins-agp = "9.2.0"
 #Other
 indicatorFastScroll = "c7873f7168"
 autofitTextView = "0.2.1"
-libphonenumberVersion = "9.0.27"
+libphonenumberVersion = "9.0.29"
 #build
 app-build-compileSDKVersion = "36"
 app-build-targetSDK = "36"
