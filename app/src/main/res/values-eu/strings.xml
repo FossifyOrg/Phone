@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_launcher_name">Telefonoa</string>
+    <string name="app_launcher_name">NovaDial</string>
     <string name="default_phone_app_prompt">Egin aplikazio hau telefono-aplikazio lehenetsia</string>
     <string name="could_not_access_contacts">Ezin izan dira atzitu zure kontaktuak</string>
     <string name="no_previous_calls">Ez da aurreko deirik aurkitu</string>

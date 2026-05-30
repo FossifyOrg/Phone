@@ -364,6 +364,7 @@ class ContactsAdapter(
         binding.apply {
             root.setupViewBackground(activity)
             itemContactFrame.isSelected = selectedKeys.contains(contact.rawId)
+            itemContactFrame.setBackgroundResource(R.drawable.ripple_all_corners)
 
             itemContactImage.apply {
                 if (profileIconClick != null && viewType != VIEW_TYPE_GRID) {

@@ -47,7 +47,7 @@
     <string name="conference">Conferência</string>
     <string name="turn_speaker_off">Desligar alta voz</string>
     <string name="remove_confirmation">Tem certeza de que deseja remover os itens selecionados do histórico de chamadas?</string>
-    <string name="app_launcher_name">Telefone</string>
+    <string name="app_launcher_name">NovaDial</string>
     <string name="audio_route_speaker">Altifalante</string>
     <string name="audio_route_earpiece">Auricular</string>
     <string name="hashtag">\'Hashtag\'</string>

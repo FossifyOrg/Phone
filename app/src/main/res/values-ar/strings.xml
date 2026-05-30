@@ -71,7 +71,7 @@
     <string name="call_is_being_connected">جار الاتصال…</string>
     <string name="faq_3_title">لماذا بعض جهات الاتصال الخاصة بي غير موجودة بالتطبيق؟</string>
     <string name="faq_3_text">يعرض Fossify Phone جهات الاتصال التي لها رقم هاتف مرتبط بها فقط، لا تظهر جهات الاتصال التي لا تحتوي على رقم هاتف في التطبيق.</string>
-    <string name="app_launcher_name">الهاتف</string>
+    <string name="app_launcher_name">NovaDial</string>
     <string name="faq_2_title">لماذا لا تعمل مكالمات الطوارئ؟</string>
     <string name="faq_2_text">بسبب قيود النظام، لا يمكن إجراء مكالمات الطوارئ إلا من خلال تطبيق الهاتف الإفتراضي للنظام، لضمان عمل مكالمات الطوارئ بشكل صحيح، تحتاج إلى إبقاء تطبيق النظام مثبتا و مفعلا.</string>
     <string name="call_notification_channel">حالة المكالمة</string>

@@ -74,7 +74,7 @@
     <string name="faq_2_text">Због ограничења система, хитне позиве можете упутити само преко подразумеване системске апликације за телефонију. Да би хитни позиви исправно радили, морате задржати системску апликацију инсталирану и омогућену.</string>
     <string name="faq_3_title">Зашто недостају неки моји контакти у апликацији?</string>
     <string name="faq_3_text">Fossify Phone приказује само контакте који имају додељен број телефона. Контакти без броја телефона се не приказују у апликацији.</string>
-    <string name="app_launcher_name">Телефон</string>
+    <string name="app_launcher_name">NovaDial</string>
     <string name="hide_dialpad_numbers">Сакриј бројеве тастатуре</string>
     <string name="calling_accounts">Позивни налози</string>
 </resources>

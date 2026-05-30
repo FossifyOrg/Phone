@@ -63,7 +63,7 @@
     <string name="import_call_history">وارد کردن تاریخچهٔ تماس</string>
     <string name="faq_1_title">من صدای تماس ورودی را می‌شنوم اما نمایشگر روشن نمی‌شود. باید چه کاری انجام دهم؟</string>
     <string name="faq_1_text">این مشکل ممکن است بسته به دلایل مشکلات مختلفی در دستگاه و سامانه رخ دهد، بنابراین جواب کلی برای آن سخت است. باید تنظیمات دستگاهتان را بررسی کنید و مطمئن شوید که برنامه اجازه دارد در پس‌زمینه اجرا شود و روی برنامه‌های دیگر نمایش داده شود.</string>
-    <string name="app_launcher_name">تلفن</string>
+    <string name="app_launcher_name">NovaDial</string>
     <string name="call_merge">یکی کردن تماس ها</string>
     <string name="call_split">جدا کردن تماس ها</string>
     <string name="conference_manage">مدیریت تماس های رایزنی</string>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="clear_history_confirmation">An bhfuil tú cinnte gur mhaith leat gach rud a bhaint de Stair na nGlaonna?</string>
-    <string name="app_launcher_name">Fón</string>
+    <string name="app_launcher_name">NovaDial</string>
     <string name="no_previous_calls">Níor aimsíodh aon ghlaonna roimhe seo</string>
     <string name="clear_call_history">Glan stair na nglaonna</string>
     <string name="show_call_details">Taispeáin sonraí glaonna</string>

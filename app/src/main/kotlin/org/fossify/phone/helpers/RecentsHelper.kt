@@ -87,6 +87,49 @@ class RecentsHelper(private val context: Context) {
         }
     }
 
+    fun getRecentCallsForNumber(
+        recentCall: RecentCall,
+        callback: (List<RecentCall>) -> Unit,
+    ) {
+        val phoneNumber = recentCall.phoneNumber
+        if (phoneNumber.isBlank() || !context.hasPermission(PERMISSION_READ_CALL_LOG)) {
+            callback(emptyList())
+            return
+        }
+
+        val privateCursor = context.getMyContactsCursor(favoritesOnly = false, withPhoneNumbersOnly = true)
+        ContactsHelper(context).getContacts(getAll = true, showOnlyContactsWithNumbers = true) { contacts ->
+            ensureBackgroundThread {
+                val privateContacts = MyContactsContentProvider.getContacts(context, privateCursor)
+                if (privateContacts.isNotEmpty()) {
+                    contacts.addAll(privateContacts)
+                }
+
+                val matchingContact = contacts.firstOrNull { it.doesHavePhoneNumber(phoneNumber) }
+                val numbersToMatch = (matchingContact?.phoneNumbers
+                    ?.flatMap { listOf(it.value, it.normalizedNumber) }
+                    ?: listOf(phoneNumber))
+                    .plus(phoneNumber)
+                    .filter { it.isNotBlank() }
+                    .distinct()
+
+                queryLimit = Int.MAX_VALUE
+                val calls = getRecents(
+                    contacts = contacts,
+                    selection = "${Calls.NUMBER} IN (${getQuestionMarks(numbersToMatch.size)})",
+                    selectionParams = numbersToMatch.toTypedArray()
+                )
+
+                callback(
+                    calls
+                        .filter { call -> numbersToMatch.any { PhoneNumberUtils.compare(call.phoneNumber, it) || call.phoneNumber == it } }
+                        .sortedByDescending { it.startTS }
+                        .distinctBy { it.id }
+                )
+            }
+        }
+    }
+
     private fun shouldGroupCalls(callA: RecentCall, callB: RecentCall): Boolean {
         val differentSim = callA.simID != callB.simID
         val differentDay = callA.dayCode != callB.dayCode

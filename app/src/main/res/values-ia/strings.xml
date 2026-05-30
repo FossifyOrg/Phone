@@ -7,7 +7,7 @@
     <string name="ongoing_call">Appello in curso</string>
     <string name="resume_call">Resumer le appello</string>
     <string name="select_sim">Selige un carta SIM pro iste appello</string>
-    <string name="app_launcher_name">Telephono</string>
+    <string name="app_launcher_name">NovaDial</string>
     <string name="no_previous_calls">Necun appellos previe ha essite trovate</string>
     <string name="could_not_access_the_call_history">Non poteva acceder al chronologia de appellos</string>
     <string name="request_access">Requestar accesso</string>

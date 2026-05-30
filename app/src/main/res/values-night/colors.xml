@@ -3,4 +3,7 @@
     <color name="color_missed_call">@color/md_red_400</color>
     <color name="color_outgoing_call">@color/md_green_300</color>
     <color name="color_incoming_call">@color/md_blue_300</color>
+    <color name="nova_card">#151515</color>
+    <color name="nova_action_button">#1F2A38</color>
+    <color name="nova_amoled_black">#000000</color>
 </resources>

@@ -68,7 +68,7 @@
     <string name="dialer">Pemanggil</string>
     <string name="export_call_history">Ekspor riwayat panggilan</string>
     <string name="import_call_history">Impor riwayat panggilan</string>
-    <string name="app_launcher_name">Telepon</string>
+    <string name="app_launcher_name">NovaDial</string>
     <string name="faq_3_text">Fossify Phone hanya menampilkan kontak yang memiliki nomor telepon terkait. Kontak tanpa nomor telepon tidak akan ditampilkan di aplikasi.</string>
     <string name="call_is_being_connected">Panggilan Anda sedang dihubungkan…</string>
     <string name="faq_2_title">Mengapa panggilan darurat tidak berfungsi dengan baik?</string>

@@ -71,7 +71,7 @@
     <string name="calling_blocked_number">המספר שאתה מתקשר אליו חסום</string>
     <string name="choose_audio_route">בחר איך לשמוע</string>
     <string name="faq_2_title">מדוע שיחות חירום אינן פועלות כראוי?</string>
-    <string name="app_launcher_name">טלפון</string>
+    <string name="app_launcher_name">NovaDial</string>
     <string name="dialpad_vibrations">אפשר רטט בלחיצות על לחצני לוח החיוג</string>
     <string name="audio_route_speaker">רמקול</string>
     <string name="call_notification_channel">סטטוס שיחה</string>

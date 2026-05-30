@@ -81,6 +81,7 @@ class CallActivity : SimpleActivity() {
         )
 
         updateTextColors(binding.callHolder)
+        binding.callHolder.setBackgroundColor(getNovaBackgroundColor())
         initButtons()
         audioManager.mode = AudioManager.MODE_IN_CALL
         addLockScreenFlags()
@@ -884,7 +885,7 @@ class CallActivity : SimpleActivity() {
         }
     }
 
-    private fun getActiveButtonColor() = getProperPrimaryColor()
+    private fun getActiveButtonColor() = getNovaAccentColor()
 
     private fun getInactiveButtonColor() = getProperTextColor().adjustAlpha(0.10f)
 

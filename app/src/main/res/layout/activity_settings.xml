@@ -64,6 +64,37 @@
                 android:id="@+id/settings_color_customization_divider"
                 layout="@layout/divider" />
 
+            <RelativeLayout
+                android:id="@+id/settings_dynamic_colors_holder"
+                style="@style/SettingsHolderSwitchStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <org.fossify.commons.views.MyMaterialSwitch
+                    android:id="@+id/settings_dynamic_colors"
+                    style="@style/SettingsSwitchStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/dynamic_colors" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/settings_amoled_black_holder"
+                style="@style/SettingsHolderSwitchStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <org.fossify.commons.views.MyMaterialSwitch
+                    android:id="@+id/settings_amoled_black"
+                    style="@style/SettingsSwitchStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/amoled_black" />
+            </RelativeLayout>
+
+            <include
+                layout="@layout/divider" />
+
             <TextView
                 android:id="@+id/settings_general_settings_label"
                 style="@style/SettingsSectionLabelStyle"
