@@ -1,6 +1,7 @@
 package org.fossify.phone.adapters
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.provider.CallLog.Calls
 import android.text.SpannableString
@@ -49,11 +50,11 @@ import org.fossify.commons.helpers.isNougatPlus
 import org.fossify.commons.models.contacts.Contact
 import org.fossify.commons.views.MyRecyclerView
 import org.fossify.phone.R
+import org.fossify.phone.activities.ContactCallHistoryActivity
 import org.fossify.phone.activities.MainActivity
 import org.fossify.phone.activities.SimpleActivity
 import org.fossify.phone.databinding.ItemRecentCallBinding
 import org.fossify.phone.databinding.ItemRecentsDateBinding
-import org.fossify.phone.dialogs.ShowGroupedCallsDialog
 import org.fossify.phone.extensions.areMultipleSIMsAvailable
 import org.fossify.phone.extensions.callContactWithSimWithConfirmationCheck
 import org.fossify.phone.extensions.config
@@ -286,8 +287,21 @@ class RecentCallsAdapter(
 
     private fun showCallDetails() {
         val recentCall = getSelectedItems().firstOrNull() ?: return
-        val recentCalls = recentCall.groupedCalls ?: listOf(recentCall)
-        ShowGroupedCallsDialog(activity, recentCalls)
+        Intent(activity, ContactCallHistoryActivity::class.java).apply {
+            putExtra(ContactCallHistoryActivity.EXTRA_CALL_ID, recentCall.id)
+            putExtra(ContactCallHistoryActivity.EXTRA_PHONE_NUMBER, recentCall.phoneNumber)
+            putExtra(ContactCallHistoryActivity.EXTRA_NAME, recentCall.name)
+            putExtra(ContactCallHistoryActivity.EXTRA_PHOTO_URI, recentCall.photoUri)
+            putExtra(ContactCallHistoryActivity.EXTRA_START_TS, recentCall.startTS)
+            putExtra(ContactCallHistoryActivity.EXTRA_DURATION, recentCall.duration)
+            putExtra(ContactCallHistoryActivity.EXTRA_TYPE, recentCall.type)
+            putExtra(ContactCallHistoryActivity.EXTRA_SIM_ID, recentCall.simID)
+            putExtra(ContactCallHistoryActivity.EXTRA_SIM_COLOR, recentCall.simColor)
+            putExtra(ContactCallHistoryActivity.EXTRA_SPECIFIC_NUMBER, recentCall.specificNumber)
+            putExtra(ContactCallHistoryActivity.EXTRA_SPECIFIC_TYPE, recentCall.specificType)
+            putExtra(ContactCallHistoryActivity.EXTRA_IS_UNKNOWN_NUMBER, recentCall.isUnknownNumber)
+            activity.startActivity(this)
+        }
     }
 
     private fun copyNumber() {
@@ -473,6 +487,7 @@ class RecentCallsAdapter(
 
                 val currentFontSize = fontSize
                 itemRecentsHolder.isSelected = selectedKeys.contains(call.id)
+                itemRecentsHolder.setBackgroundResource(R.drawable.ripple_all_corners)
                 val matchingContact = findContactByCall(call)
                 val name = matchingContact?.getNameToDisplay() ?: call.name
                 val formatPhoneNumbers = activity.config.formatPhoneNumbers

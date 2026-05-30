@@ -132,6 +132,14 @@ class Config(context: Context) : BaseConfig(context) {
         get() = prefs.getBoolean(DIALPAD_BEEPS, true)
         set(dialpadBeeps) = prefs.edit().putBoolean(DIALPAD_BEEPS, dialpadBeeps).apply()
 
+    var novaDynamicColors: Boolean
+        get() = prefs.getBoolean(NOVA_DYNAMIC_COLORS, true)
+        set(novaDynamicColors) = prefs.edit().putBoolean(NOVA_DYNAMIC_COLORS, novaDynamicColors).apply()
+
+    var novaAmoledBlack: Boolean
+        get() = prefs.getBoolean(NOVA_AMOLED_BLACK, false)
+        set(novaAmoledBlack) = prefs.edit().putBoolean(NOVA_AMOLED_BLACK, novaAmoledBlack).apply()
+
     var alwaysShowFullscreen: Boolean
         get() = prefs.getBoolean(ALWAYS_SHOW_FULLSCREEN, false)
         set(alwaysShowFullscreen) = prefs.edit().putBoolean(ALWAYS_SHOW_FULLSCREEN, alwaysShowFullscreen).apply()

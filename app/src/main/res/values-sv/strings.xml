@@ -67,7 +67,7 @@
     <string name="import_call_history">Importera samtalshistorik</string>
     <string name="faq_1_title">Jag hör inkommande samtal, men skärmen slås inte på. Vad kan jag göra?</string>
     <string name="faq_1_text">Sådana problem kan ha många enhets- och systemspecifika orsaker, det är svårt att svara på generellt. Titta i enhetens inställningar och se till att appen tillåts visas när den är i bakgrunden och tillåts visas ovanpå andra appar.</string>
-    <string name="app_launcher_name">Telefon</string>
+    <string name="app_launcher_name">NovaDial</string>
     <string name="audio_route_bluetooth">Bluetooth</string>
     <string name="call_is_being_connected">Samtalet kopplas…</string>
     <string name="faq_2_title">Varför fungerar inte nödsamtal korrekt?</string>

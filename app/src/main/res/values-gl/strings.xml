@@ -68,7 +68,7 @@
     <string name="faq_1_title">Escoito chamadas entrantes, pero a pantalla non se acende. Que podo facer\?</string>
     <string name="faq_1_text">Estes problemas poden ter moitas razóns específicas do dispositivo e do sistema, difícil dar unha resposta concreta. Debes mirar na configuración do teu dispositivo e asegurarte de que a aplicación pode aparecer cando está en segundo plano e permitir que se vexa sobre outras aplicacións.</string>
     <string name="audio_route_bluetooth">Bluetooth</string>
-    <string name="app_launcher_name">Teléfono</string>
+    <string name="app_launcher_name">NovaDial</string>
     <string name="call_is_being_connected">Estase iniciando a chamada…</string>
     <string name="call_notification_channel">Estado da chamada</string>
     <string name="call_notification_channel_high_priority">Estado da chamada (alta prioridade)</string>

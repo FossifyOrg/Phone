@@ -203,7 +203,7 @@ class DialpadActivity : SimpleActivity() {
             gotContacts(allContacts)
         }
 
-        val properPrimaryColor = getProperPrimaryColor()
+        val properPrimaryColor = getNovaAccentColor()
         binding.apply {
             val callIcon = resources.getColoredDrawableWithColor(
                 drawableId = R.drawable.ic_phone_vector,
@@ -223,6 +223,7 @@ class DialpadActivity : SimpleActivity() {
     override fun onResume() {
         super.onResume()
         updateTextColors(binding.dialpadHolder)
+        binding.dialpadHolder.setBackgroundColor(getNovaBackgroundColor())
         binding.dialpadClearChar.applyColorFilter(getProperTextColor())
         setupTopAppBar(binding.dialpadAppbar, NavigationIcon.Arrow)
     }
@@ -444,6 +445,7 @@ class DialpadActivity : SimpleActivity() {
         view.setOnTouchListener { _, event ->
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
+                    view.animate().scaleX(0.94f).scaleY(0.94f).setDuration(80L).start()
                     dialpadPressed(char, view)
                     startDialpadTone(char)
                     if (longClickable) {
@@ -455,6 +457,7 @@ class DialpadActivity : SimpleActivity() {
                 }
 
                 MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
+                    view.animate().scaleX(1f).scaleY(1f).setDuration(120L).start()
                     stopDialpadTone(char)
                     if (longClickable) {
                         longPressHandler.removeCallbacksAndMessages(null)

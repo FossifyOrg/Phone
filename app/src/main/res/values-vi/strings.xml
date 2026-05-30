@@ -65,7 +65,7 @@
     <string name="hide_dialpad_numbers">Ẩn số ở bàn phím quay số</string>
     <string name="faq_1_title">Làm sao khi nghe thấy cuộc gọi đến, nhưng màn hình không bật?</string>
     <string name="faq_1_text">Những vấn đề như vậy có thể do nhiều lý do từ thiết bị và hệ thống, khó nói chung. Bạn nên xem trong cài đặt thiết bị của mình và đảm bảo rằng ứng dụng được phép bật lên khi ở chế độ nền và cho phép hiển thị trên các ứng dụng khác.</string>
-    <string name="app_launcher_name">Điện thoại</string>
+    <string name="app_launcher_name">NovaDial</string>
     <string name="import_call_history">Nhập lịch sử cuộc gọi</string>
     <string name="export_call_history">Xuất lịch sử cuộc gọi</string>
     <string name="audio_route_bluetooth">Bluetooth</string>

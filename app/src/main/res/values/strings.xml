@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_launcher_name">Phone</string>
+    <string name="app_launcher_name">NovaDial</string>
     <string name="default_phone_app_prompt">Please make this app the default Phone app</string>
     <string name="allow_displaying_over_other_apps">Please allow displaying over other apps for reliable behaviour</string>
 
@@ -16,6 +16,20 @@
     <string name="show_grouped_calls">Show grouped calls</string>
     <string name="clear_call_history">Clear call history</string>
     <string name="show_call_details">Show call details</string>
+    <string name="call_history">Call history</string>
+    <string name="total">Total</string>
+    <string name="call_stats_labels">Total     Incoming     Outgoing     Missed</string>
+    <string name="incoming">Incoming</string>
+    <string name="outgoing">Outgoing</string>
+    <string name="missed">Missed</string>
+    <string name="message">Message</string>
+    <string name="video_call">Video call</string>
+    <string name="total_call_duration">Total duration</string>
+    <string name="no_video_call_app">No video calling app found</string>
+    <string name="rejected">Rejected</string>
+    <string name="nova_appearance">Nova appearance</string>
+    <string name="dynamic_colors">Use dynamic colors</string>
+    <string name="amoled_black">AMOLED black theme</string>
 
     <!-- Dialpad -->
     <string name="dialpad">Dialpad</string>
@@ -40,6 +54,7 @@
     <string name="select_sim">Select a SIM for this call</string>
     <string name="always_use_this_sim">Always use this SIM for this number</string>
     <string name="unset_default_sim">Unset default SIM</string>
+    <string name="call">Call</string>
     <string name="calls">Calls</string>
     <string name="turn_microphone_on">Turn microphone on</string>
     <string name="turn_microphone_off">Turn microphone off</string>

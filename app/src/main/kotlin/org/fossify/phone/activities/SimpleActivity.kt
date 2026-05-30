@@ -1,4 +1,10 @@
 package org.fossify.phone.activities
+import android.graphics.Color
+import android.os.Build
+import org.fossify.commons.extensions.getProperBackgroundColor
+import org.fossify.commons.extensions.getProperPrimaryColor
+import org.fossify.commons.extensions.isSystemInDarkMode
+import org.fossify.phone.extensions.config
 
 import org.fossify.commons.activities.BaseSimpleActivity
 import org.fossify.phone.R
@@ -27,6 +33,22 @@ open class SimpleActivity : BaseSimpleActivity() {
     )
 
     override fun getAppLauncherName() = getString(R.string.app_launcher_name)
+
+    fun getNovaAccentColor(): Int {
+        return if (config.novaDynamicColors && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            getColor(android.R.color.system_accent1_600)
+        } else {
+            getProperPrimaryColor()
+        }
+    }
+
+    fun getNovaBackgroundColor(): Int {
+        return if (config.novaAmoledBlack && isSystemInDarkMode()) {
+            Color.BLACK
+        } else {
+            getProperBackgroundColor()
+        }
+    }
 
     override fun getRepositoryName() = "Phone"
 }

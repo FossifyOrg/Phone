@@ -115,11 +115,12 @@ class MainActivity : SimpleActivity() {
         }
 
         updateMenuColors()
-        val properPrimaryColor = getProperPrimaryColor()
+        val properPrimaryColor = getNovaAccentColor()
         val dialpadIcon = resources.getColoredDrawableWithColor(R.drawable.ic_dialpad_vector, properPrimaryColor.getContrastColor())
         binding.mainDialpadButton.setImageDrawable(dialpadIcon)
 
         updateTextColors(binding.mainHolder)
+        binding.mainHolder.setBackgroundColor(getNovaBackgroundColor())
         setupTabColors()
 
         getAllFragments().forEach {

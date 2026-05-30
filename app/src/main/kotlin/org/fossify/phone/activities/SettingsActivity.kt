@@ -95,6 +95,7 @@ class SettingsActivity : SimpleActivity() {
         setupTopAppBar(binding.settingsAppbar, NavigationIcon.Arrow)
 
         setupCustomizeColors()
+        setupNovaAppearance()
         setupUseEnglish()
         setupLanguage()
         setupManageBlockedNumbers()
@@ -157,6 +158,24 @@ class SettingsActivity : SimpleActivity() {
     private fun setupCustomizeColors() {
         binding.settingsColorCustomizationHolder.setOnClickListener {
             startCustomizationActivity()
+        }
+    }
+
+    private fun setupNovaAppearance() {
+        binding.apply {
+            settingsDynamicColors.isChecked = config.novaDynamicColors
+            settingsDynamicColorsHolder.setOnClickListener {
+                settingsDynamicColors.toggle()
+                config.novaDynamicColors = settingsDynamicColors.isChecked
+                recreate()
+            }
+
+            settingsAmoledBlack.isChecked = config.novaAmoledBlack
+            settingsAmoledBlackHolder.setOnClickListener {
+                settingsAmoledBlack.toggle()
+                config.novaAmoledBlack = settingsAmoledBlack.isChecked
+                recreate()
+            }
         }
     }
 

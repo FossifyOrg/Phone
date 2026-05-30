@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_launcher_name">電話</string>
+    <string name="app_launcher_name">NovaDial</string>
     <string name="default_phone_app_prompt">請將此 app 設為預設的電話 app</string>
     <string name="allow_displaying_over_other_apps">請允許在其他 app 上顯示以確保可靠的行為</string>
     <string name="could_not_access_contacts">無法存取您的聯絡人</string>
