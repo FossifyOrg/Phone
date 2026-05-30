@@ -330,3 +330,8 @@ class RecentsHelper(private val context: Context) {
         }
     }
 }
+
+fun getCallsForNumber(
+    number: String,
+    callback: (List<RecentCall>) -> Unit
+)
