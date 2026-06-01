@@ -80,13 +80,24 @@
 
     <issue
         id="AndroidGradlePluginVersion"
-        message="A newer version of Gradle than 9.4.1 is available: 9.5.0"
+        message="A newer version of Gradle than 9.4.1 is available: 9.5.1"
         errorLine1="distributionUrl=https\://services.gradle.org/distributions/gradle-9.4.1-bin.zip"
         errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
             file="$HOME/work/Phone/Phone/gradle/wrapper/gradle-wrapper.properties"
             line="3"
             column="17"/>
+    </issue>
+
+    <issue
+        id="AndroidGradlePluginVersion"
+        message="A newer version of com.android.application than 9.2.0 is available: 9.2.1"
+        errorLine1="gradlePlugins-agp = &quot;9.2.0&quot;"
+        errorLine2="                    ~~~~~~~">
+        <location
+            file="$HOME/work/Phone/Phone/gradle/libs.versions.toml"
+            line="14"
+            column="21"/>
     </issue>
 
     <issue
@@ -124,13 +135,35 @@
 
     <issue
         id="NewerVersionAvailable"
-        message="A newer version of io.nlopez.compose.rules:detekt than 0.4.28 is available: 0.5.8"
+        message="A newer version of com.googlecode.libphonenumber:geocoder than 3.29 is available: 3.31"
+        errorLine1="geocoderVersion = &quot;3.29&quot;"
+        errorLine2="                  ~~~~~~">
+        <location
+            file="$HOME/work/Phone/Phone/gradle/libs.versions.toml"
+            line="3"
+            column="19"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of io.nlopez.compose.rules:detekt than 0.4.28 is available: 0.5.9"
         errorLine1="detektCompose = &quot;0.4.28&quot;"
         errorLine2="                ~~~~~~~~">
         <location
             file="$HOME/work/Phone/Phone/gradle/libs.versions.toml"
             line="8"
             column="17"/>
+    </issue>
+
+    <issue
+        id="NewerVersionAvailable"
+        message="A newer version of com.googlecode.libphonenumber:libphonenumber than 9.0.29 is available: 9.0.31"
+        errorLine1="libphonenumberVersion = &quot;9.0.29&quot;"
+        errorLine2="                        ~~~~~~~~">
+        <location
+            file="$HOME/work/Phone/Phone/gradle/libs.versions.toml"
+            line="18"
+            column="25"/>
     </issue>
 
     <issue
