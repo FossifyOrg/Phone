@@ -69,4 +69,12 @@
     <string name="conference_manage">مدیریت تماس های رایزنی</string>
     <string name="call_swap">رفتن به تماس دیگر</string>
     <string name="conference">رایزنی</string>
+    <string name="call_is_being_connected">تماس شما در حال اتصال است…</string>
+    <string name="call_notification_channel">وضعیت تماس</string>
+    <string name="call_notification_channel_high_priority">وضعیت تماس (اولویت بالا)</string>
+    <string name="calling_accounts">حساب‌های تماس</string>
+    <string name="faq_2_title">چرا تماس‌های اضطراری به‌درستی کار نمی‌کنند؟</string>
+    <string name="faq_2_text">به دلیل محدودیت‌های سیستمی، تماس‌های اضطراری فقط از طریق برنامه شماره‌گیر یا تلفن پیش‌فرض سیستم انجام می‌شوند. برای اطمینان از عملکرد درست تماس‌های اضطراری، باید برنامه سیستمی را نصب و فعال نگه دارید.</string>
+    <string name="faq_3_title">چرا برخی از مخاطبان من در برنامه نمایش داده نمی‌شوند؟</string>
+    <string name="faq_3_text">برنامهٔ Fossify Phone فقط مخاطبانی را نشان می‌دهد که شماره تلفن داشته باشند. مخاطبان بدون شماره تلفن در برنامه نمایش داده نمی‌شوند.</string>
 </resources>
