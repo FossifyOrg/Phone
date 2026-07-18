@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Fixed
+- Fixed crash when tapping "Call back" on a missed call notification when the phone account handle from the intent no longer resolves (e.g. an inactive/locked SIM) ([#134], [#473])
 
 ## [1.11.1] - 2026-02-01
 ### Changed
@@ -243,6 +245,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#118]: https://github.com/FossifyOrg/Phone/issues/118
 [#125]: https://github.com/FossifyOrg/Phone/issues/125
 [#133]: https://github.com/FossifyOrg/Phone/issues/133
+[#134]: https://github.com/FossifyOrg/Phone/issues/134
 [#139]: https://github.com/FossifyOrg/Phone/issues/139
 [#146]: https://github.com/FossifyOrg/Phone/issues/146
 [#147]: https://github.com/FossifyOrg/Phone/issues/147
@@ -260,6 +263,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#359]: https://github.com/FossifyOrg/Phone/issues/359
 [#378]: https://github.com/FossifyOrg/Phone/issues/378
 [#389]: https://github.com/FossifyOrg/Phone/issues/389
+[#473]: https://github.com/FossifyOrg/Phone/issues/473
 [#526]: https://github.com/FossifyOrg/Phone/issues/526
 [#535]: https://github.com/FossifyOrg/Phone/issues/535
 [#543]: https://github.com/FossifyOrg/Phone/issues/543
