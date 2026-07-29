@@ -3,6 +3,7 @@ package org.fossify.phone.services
 import android.telecom.Call
 import android.telecom.CallAudioState
 import android.telecom.InCallService
+import android.util.Log
 import org.fossify.commons.extensions.canUseFullScreenIntent
 import org.fossify.commons.extensions.hasPermission
 import org.fossify.commons.helpers.PERMISSION_POST_NOTIFICATIONS
@@ -14,11 +15,17 @@ import org.fossify.phone.extensions.powerManager
 import org.fossify.phone.helpers.CallManager
 import org.fossify.phone.helpers.CallNotificationManager
 import org.fossify.phone.helpers.NoCall
+import org.fossify.phone.helpers.clearCallContactCache
 import org.fossify.phone.models.Events
 import org.greenrobot.eventbus.EventBus
 
 class CallService : InCallService() {
+    companion object {
+        private const val TAG = "CallService"
+    }
+
     private val callNotificationManager by lazy { CallNotificationManager(this) }
+    private var isForegroundStarted = false
 
     private val callListener = object : Call.Callback() {
         override fun onStateChanged(call: Call, state: Int) {
@@ -49,6 +56,12 @@ class CallService : InCallService() {
             else -> true
         }
 
+        // Promoting to a phoneCall foreground service keeps the process out of the cached/frozen
+        // state for the duration of the call and makes the ongoing-call notification
+        // non-dismissible. The priority must match the one setupNotification uses below, otherwise
+        // this notification would attach a full screen intent the user opted out of.
+        startForegroundIfNeeded(call, lowPriority)
+
         callNotificationManager.setupNotification(lowPriority)
         if (
             lowPriority
@@ -72,11 +85,17 @@ class CallService : InCallService() {
         CallManager.onCallRemoved(call)
         if (CallManager.getPhoneState() == NoCall) {
             CallManager.inCallService = null
+            stopForegroundIfNeeded()
             callNotificationManager.cancelNotification()
+            clearCallContactCache()
         } else {
             callNotificationManager.setupNotification()
             if (wasPrimaryCall) {
-                startActivity(CallActivity.getStartIntent(this))
+                try {
+                    startActivity(CallActivity.getStartIntent(this))
+                } catch (_: Exception) {
+                    callNotificationManager.setupNotification()
+                }
             }
         }
 
@@ -90,8 +109,50 @@ class CallService : InCallService() {
         }
     }
 
+    override fun onBringToForeground(showDialpad: Boolean) {
+        super.onBringToForeground(showDialpad)
+        try {
+            startActivity(CallActivity.getStartIntent(this))
+        } catch (_: Exception) {
+            callNotificationManager.setupNotification()
+        }
+    }
+
     override fun onDestroy() {
         super.onDestroy()
+        stopForegroundIfNeeded()
         callNotificationManager.cancelNotification()
+    }
+
+    private fun startForegroundIfNeeded(call: Call, lowPriority: Boolean) {
+        if (isForegroundStarted) {
+            return
+        }
+
+        try {
+            startForeground(
+                CallNotificationManager.CALL_NOTIFICATION_ID,
+                callNotificationManager.buildForegroundNotification(call, lowPriority)
+            )
+            isForegroundStarted = true
+        } catch (e: SecurityException) {
+            // thrown when the phoneCall foreground service type is unavailable to us, e.g. missing
+            // FOREGROUND_SERVICE_PHONE_CALL or not the default dialer
+            Log.w(TAG, "Not allowed to start a phoneCall foreground service", e)
+        } catch (e: IllegalStateException) {
+            // ForegroundServiceStartNotAllowedException and InvalidForegroundServiceTypeException
+            Log.w(TAG, "Could not start the foreground service for the ongoing call", e)
+        }
+    }
+
+    private fun stopForegroundIfNeeded() {
+        if (!isForegroundStarted) {
+            return
+        }
+
+        // has to happen before cancelNotification, a foreground service's notification cannot be
+        // dismissed while the service is still attached to it
+        stopForeground(STOP_FOREGROUND_REMOVE)
+        isForegroundStarted = false
     }
 }
