@@ -12,6 +12,7 @@ import org.fossify.phone.R
 import org.fossify.phone.activities.SimpleActivity
 import org.fossify.phone.adapters.ContactsAdapter
 import org.fossify.phone.databinding.DialogSelectContactBinding
+import org.fossify.phone.extensions.matchesSearchQuery
 import org.fossify.phone.extensions.setupWithContacts
 
 class SelectContactDialog(val activity: SimpleActivity, val contacts: List<Contact>, val callback: (selectedContact: Contact) -> Unit) {
@@ -97,8 +98,10 @@ class SelectContactDialog(val activity: SimpleActivity, val contacts: List<Conta
     private fun filterContactListBySearchQuery(query: String) {
         val adapter = binding.selectContactList.adapter as? ContactsAdapter
         var contactsToShow = contacts
-        if (query.isNotEmpty()) {
-            contactsToShow = contacts.filter { it.name.contains(query, true) }
+        val fixedQuery = query.trim().replace("\\s+".toRegex(), " ")
+        if (fixedQuery.isNotEmpty()) {
+            val shouldNormalize = fixedQuery.normalizeString() == fixedQuery
+            contactsToShow = contacts.filter { it.matchesSearchQuery(fixedQuery, shouldNormalize) }
         }
         checkPlaceholderVisibility(contactsToShow)
 
