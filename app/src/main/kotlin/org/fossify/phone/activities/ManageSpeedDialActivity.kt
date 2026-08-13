@@ -46,6 +46,8 @@ class ManageSpeedDialActivity : SimpleActivity(), RemoveSpeedDialListener {
             val privateContacts = MyContactsContentProvider.getContacts(this, privateCursor)
             allContacts.addAll(privateContacts)
             allContacts.sort()
+
+            refreshSpeedDialNames()
         }
 
         updateTextColors(binding.manageSpeedDialScrollview)
@@ -59,6 +61,23 @@ class ManageSpeedDialActivity : SimpleActivity(), RemoveSpeedDialListener {
     override fun onStop() {
         super.onStop()
         config.speedDial = Gson().toJson(speedDialValues)
+    }
+
+    private fun refreshSpeedDialNames() {
+        var namesUpdated = false
+        speedDialValues.filter { it.isValid() }.forEach { speedDial ->
+            val contact = allContacts.firstOrNull { contact ->
+                contact.phoneNumbers.any { it.value == speedDial.number }
+            }
+            if (contact != null && contact.getNameToDisplay() != speedDial.displayName) {
+                speedDial.displayName = contact.getNameToDisplay()
+                namesUpdated = true
+            }
+        }
+
+        if (namesUpdated) {
+            updateAdapter()
+        }
     }
 
     private fun updateAdapter() {
