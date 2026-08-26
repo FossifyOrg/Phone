@@ -76,4 +76,5 @@
     <string name="call_is_being_connected">La tua chiamata si sta connettendo…</string>
     <string name="call_notification_channel">Stato della chiamata</string>
     <string name="call_notification_channel_high_priority">Stato della chiamata (priorità elevata)</string>
+    <string name="calling_accounts">Account di chiamata</string>
 </resources>
