@@ -17,6 +17,7 @@ class CallManager {
     companion object {
         @SuppressLint("StaticFieldLeak")
         var inCallService: InCallService? = null
+
         private var call: Call? = null
         private val calls = mutableListOf<Call>()
         private val listeners = CopyOnWriteArraySet<CallManagerListener>()
@@ -27,6 +28,7 @@ class CallManager {
             for (listener in listeners) {
                 listener.onPrimaryCallChanged(call)
             }
+
             call.registerCallback(object : Call.Callback() {
                 override fun onStateChanged(call: Call, state: Int) {
                     updateState()
@@ -62,6 +64,7 @@ class CallManager {
                     val active = calls.find { it.getStateCompat() == Call.STATE_ACTIVE }
                     val newCall = calls.find { it.getStateCompat() == Call.STATE_CONNECTING || it.getStateCompat() == Call.STATE_DIALING }
                     val onHold = calls.find { it.getStateCompat() == Call.STATE_HOLDING }
+
                     if (active != null && newCall != null) {
                         TwoCalls(newCall, active)
                     } else if (newCall != null && onHold != null) {
@@ -82,6 +85,7 @@ class CallManager {
                     } else {
                         null
                     }
+
                     if (secondCall == null) {
                         SingleCall(conference)
                     } else {
@@ -121,6 +125,7 @@ class CallManager {
                 is SingleCall -> phoneState.call
                 is TwoCalls -> phoneState.active
             }
+
             var notify = true
             if (primaryCall == null) {
                 call = null
@@ -131,6 +136,7 @@ class CallManager {
                 }
                 notify = false
             }
+
             if (notify) {
                 for (listener in listeners) {
                     listener.onStateChanged()
@@ -203,9 +209,7 @@ class CallManager {
 
         fun keypad(char: Char) {
             call?.playDtmfTone(char)
-            Handler().postDelayed({
-                call?.stopDtmfTone()
-            }, DIALPAD_TONE_LENGTH_MS)
+            Handler().postDelayed({ call?.stopDtmfTone() }, DIALPAD_TONE_LENGTH_MS)
         }
     }
 }

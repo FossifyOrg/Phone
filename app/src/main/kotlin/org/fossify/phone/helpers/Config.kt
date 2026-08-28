@@ -17,6 +17,7 @@ import java.util.Locale
 class Config(context: Context) : BaseConfig(context) {
     companion object {
         fun newInstance(context: Context) = Config(context)
+        private const val FLIP_TO_MUTE = "flip_to_mute"
     }
 
     private val regionHint: String by lazy {
@@ -54,6 +55,7 @@ class Config(context: Context) : BaseConfig(context) {
 
     fun getCustomSIM(number: String): PhoneAccountHandle? {
         val key = getKeyForCustomSIM(number)
+
         prefs.getPhoneAccountHandleModel(key, null)?.let {
             return it.toPhoneAccountHandle()
         }
@@ -78,7 +80,6 @@ class Config(context: Context) : BaseConfig(context) {
                     handle
                 }
             }
-
         return migratedHandle
     }
 
@@ -135,4 +136,8 @@ class Config(context: Context) : BaseConfig(context) {
     var alwaysShowFullscreen: Boolean
         get() = prefs.getBoolean(ALWAYS_SHOW_FULLSCREEN, false)
         set(alwaysShowFullscreen) = prefs.edit().putBoolean(ALWAYS_SHOW_FULLSCREEN, alwaysShowFullscreen).apply()
+
+    var flipToMute: Boolean
+        get() = prefs.getBoolean(FLIP_TO_MUTE, false)
+        set(flipToMute) = prefs.edit().putBoolean(FLIP_TO_MUTE, flipToMute).apply()
 }

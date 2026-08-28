@@ -13,16 +13,28 @@ import org.fossify.phone.extensions.keyguardManager
 import org.fossify.phone.extensions.powerManager
 import org.fossify.phone.helpers.CallManager
 import org.fossify.phone.helpers.CallNotificationManager
+import org.fossify.phone.helpers.FlipToMuteHelper
 import org.fossify.phone.helpers.NoCall
 import org.fossify.phone.models.Events
 import org.greenrobot.eventbus.EventBus
 
 class CallService : InCallService() {
+    private lateinit var flipToMuteHelper: FlipToMuteHelper
+
+    override fun onCreate() {
+        super.onCreate()
+        flipToMuteHelper = FlipToMuteHelper(this)
+    }
+
     private val callNotificationManager by lazy { CallNotificationManager(this) }
 
     private val callListener = object : Call.Callback() {
         override fun onStateChanged(call: Call, state: Int) {
             super.onStateChanged(call, state)
+            if (state != Call.STATE_RINGING) {
+                flipToMuteHelper.stopListening()
+            }
+
             if (state == Call.STATE_DISCONNECTED || state == Call.STATE_DISCONNECTING) {
                 callNotificationManager.cancelNotification()
             } else {
@@ -37,6 +49,10 @@ class CallService : InCallService() {
         CallManager.inCallService = this
         call.registerCallback(callListener)
 
+        if (call.state == Call.STATE_RINGING && config.flipToMute) {
+            flipToMuteHelper.startListening()
+        }
+
         // Incoming/Outgoing (locked): high priority (FSI)
         // Incoming (unlocked): if user opted in, low priority ➜ manual activity start, otherwise high priority (FSI)
         // Outgoing (unlocked): low priority ➜ manual activity start
@@ -50,6 +66,7 @@ class CallService : InCallService() {
         }
 
         callNotificationManager.setupNotification(lowPriority)
+
         if (
             lowPriority
             || !hasPermission(PERMISSION_POST_NOTIFICATIONS)
@@ -67,9 +84,11 @@ class CallService : InCallService() {
 
     override fun onCallRemoved(call: Call) {
         super.onCallRemoved(call)
+        flipToMuteHelper.stopListening()
         call.unregisterCallback(callListener)
         val wasPrimaryCall = call == CallManager.getPrimaryCall()
         CallManager.onCallRemoved(call)
+
         if (CallManager.getPhoneState() == NoCall) {
             CallManager.inCallService = null
             callNotificationManager.cancelNotification()
@@ -92,6 +111,7 @@ class CallService : InCallService() {
 
     override fun onDestroy() {
         super.onDestroy()
+        flipToMuteHelper.stopListening()
         callNotificationManager.cancelNotification()
     }
 }

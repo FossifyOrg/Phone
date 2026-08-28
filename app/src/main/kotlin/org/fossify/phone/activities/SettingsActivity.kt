@@ -61,6 +61,7 @@ class SettingsActivity : SimpleActivity() {
     }
 
     private val binding by viewBinding(ActivitySettingsBinding::inflate)
+
     private val getContent =
         registerForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
             if (uri != null) {
@@ -83,7 +84,6 @@ class SettingsActivity : SimpleActivity() {
         setContentView(binding.root)
         setupOptionsMenu()
         refreshMenuItems()
-
         binding.apply {
             setupEdgeToEdge(padBottomSystem = listOf(settingsNestedScrollview))
             setupMaterialScrollListener(binding.settingsNestedScrollview, binding.settingsAppbar)
@@ -93,7 +93,6 @@ class SettingsActivity : SimpleActivity() {
     override fun onResume() {
         super.onResume()
         setupTopAppBar(binding.settingsAppbar, NavigationIcon.Arrow)
-
         setupCustomizeColors()
         setupUseEnglish()
         setupLanguage()
@@ -115,10 +114,10 @@ class SettingsActivity : SimpleActivity() {
         setupDisableProximitySensor()
         setupDisableSwipeToAnswer()
         setupAlwaysShowFullscreen()
+        setupFlipToMute()
         setupCallsExport()
         setupCallsImport()
         updateTextColors(binding.settingsHolder)
-
         binding.apply {
             arrayOf(
                 settingsColorCustomizationSectionLabel,
@@ -171,7 +170,6 @@ class SettingsActivity : SimpleActivity() {
             }
         }
     }
-
     private fun setupLanguage() {
         binding.apply {
             settingsLanguage.text = Locale.getDefault().displayLanguage
@@ -221,7 +219,6 @@ class SettingsActivity : SimpleActivity() {
                 RadioItem(FONT_SIZE_LARGE, getString(R.string.large)),
                 RadioItem(FONT_SIZE_EXTRA_LARGE, getString(R.string.extra_large))
             )
-
             RadioGroupDialog(this@SettingsActivity, items, config.fontSize) {
                 config.fontSize = it as Int
                 binding.settingsFontSize.text = getFontSizeText()
@@ -244,7 +241,6 @@ class SettingsActivity : SimpleActivity() {
                 RadioItem(TAB_CALL_HISTORY, getString(R.string.call_history_tab)),
                 RadioItem(TAB_LAST_USED, getString(R.string.last_used_tab))
             )
-
             RadioGroupDialog(this@SettingsActivity, items, config.defaultTab) {
                 config.defaultTab = it as Int
                 binding.settingsDefaultTab.text = getDefaultTabText()
@@ -268,7 +264,6 @@ class SettingsActivity : SimpleActivity() {
                 RadioItem(ON_CLICK_CALL_CONTACT, getString(org.fossify.commons.R.string.call_contact)),
                 RadioItem(ON_CLICK_VIEW_CONTACT, getString(org.fossify.commons.R.string.view_contact))
             )
-
             RadioGroupDialog(this@SettingsActivity, items, config.onContactClick) {
                 config.onContactClick = it as Int
                 binding.settingsOnContactClick.text = getOnContactClickText()
@@ -391,6 +386,16 @@ class SettingsActivity : SimpleActivity() {
         }
     }
 
+    private fun setupFlipToMute() {
+        binding.apply {
+            settingsFlipToMute.isChecked = config.flipToMute
+            settingsFlipToMuteHolder.setOnClickListener {
+                settingsFlipToMute.toggle()
+                config.flipToMute = settingsFlipToMute.isChecked
+            }
+        }
+    }
+
     private fun setupCallsExport() {
         binding.settingsExportCallsHolder.setOnClickListener {
             ExportCallHistoryDialog(this) { filename ->
@@ -410,14 +415,11 @@ class SettingsActivity : SimpleActivity() {
             val jsonString = contentResolver.openInputStream(uri)!!.use { inputStream ->
                 inputStream.bufferedReader().readText()
             }
-
             val objects = Json.decodeFromString<List<RecentCall>>(jsonString)
-
             if (objects.isEmpty()) {
                 toast(R.string.no_entries_for_importing)
                 return
             }
-
             RecentsHelper(this).restoreRecentCalls(this, objects) {
                 toast(R.string.importing_successful)
             }
@@ -436,7 +438,6 @@ class SettingsActivity : SimpleActivity() {
         } else {
             try {
                 val outputStream = contentResolver.openOutputStream(uri)!!
-
                 val jsonString = Json.encodeToString(recents)
                 outputStream.use {
                     it.write(jsonString.toByteArray())

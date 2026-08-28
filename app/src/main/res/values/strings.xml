@@ -83,6 +83,8 @@
     <string name="export_call_history">Export call history</string>
     <string name="import_call_history">Import call history</string>
     <string name="calling_accounts">Calling accounts</string>
+    <string name="flip_to_mute_title">Flip to mute</string>
+    <string name="flip_to_mute_description">Silence the ringer by turning the phone face down during an incoming call</string>
 
     <!-- FAQ -->
     <string name="faq_1_title">I hear incoming calls, but the screen doesn\'t turn on. What can I do?</string>

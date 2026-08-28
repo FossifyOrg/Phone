@@ -360,14 +360,25 @@
                 style="@style/SettingsHolderSwitchStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
                 <org.fossify.commons.views.MyMaterialSwitch
                     android:id="@+id/settings_always_show_fullscreen"
                     style="@style/SettingsSwitchStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/show_incoming_calls_full_screen" />
+            </RelativeLayout>
 
+            <RelativeLayout
+                android:id="@+id/settings_flip_to_mute_holder"
+                style="@style/SettingsHolderSwitchStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <org.fossify.commons.views.MyMaterialSwitch
+                    android:id="@+id/settings_flip_to_mute"
+                    style="@style/SettingsSwitchStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/flip_to_mute_title" />
             </RelativeLayout>
 
             <include
