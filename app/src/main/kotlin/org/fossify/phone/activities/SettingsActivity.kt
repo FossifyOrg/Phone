@@ -1,11 +1,13 @@
 package org.fossify.phone.activities
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import androidx.activity.result.contract.ActivityResultContracts
 import kotlinx.serialization.SerializationException
+import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.fossify.commons.activities.ManageBlockedNumbersActivity
 import org.fossify.commons.dialogs.ChangeDateTimeFormatDialog
@@ -170,6 +172,8 @@ class SettingsActivity : SimpleActivity() {
             }
         }
     }
+
+    @SuppressLint("NewApi")
     private fun setupLanguage() {
         binding.apply {
             settingsLanguage.text = Locale.getDefault().displayLanguage
