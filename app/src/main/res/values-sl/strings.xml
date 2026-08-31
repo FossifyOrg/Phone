@@ -69,4 +69,12 @@
     <string name="hide_dialpad_numbers">Skrij števila na številčnici</string>
     <string name="export_call_history">Izvozi zgodovino klicev</string>
     <string name="import_call_history">Uvozi zgodovino klicev</string>
+    <string name="call_is_being_connected">Vaš klic se vzpostavlja …</string>
+    <string name="call_notification_channel">Stanje klica</string>
+    <string name="call_notification_channel_high_priority">Stanje klica (visoka prioriteta)</string>
+    <string name="calling_accounts">Klicni računi</string>
+    <string name="faq_2_title">Zakaj klici v sili ne delujejo pravilno?</string>
+    <string name="faq_2_text">Zaradi sistemskih omejitev je mogoče klice v sili opravljati samo prek privzetega sistema za klicanje ali telefonske aplikacije. Da bi klici v sili delovali pravilno, morate imeti sistemsko aplikacijo nameščeno in omogočeno.</string>
+    <string name="faq_3_title">Zakaj nekateri moji stiki manjkajo v aplikaciji?</string>
+    <string name="faq_3_text">Fossify Phone prikazuje samo stike, ki imajo povezano telefonsko številko. Stiki brez telefonske številke v aplikaciji niso prikazani.</string>
 </resources>
