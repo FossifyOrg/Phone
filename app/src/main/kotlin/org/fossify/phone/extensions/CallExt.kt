@@ -106,12 +106,11 @@ fun SimpleActivity.getHandleToUse(
         if (it) {
             val defaultHandle =
                 telecomManager.getDefaultOutgoingPhoneAccount(PhoneAccount.SCHEME_TEL)
+            // hasExtra() can be true with a null parcelable (e.g. locked SIM); extract safely and fall through.
+            val intentHandle = intent?.getParcelableExtra<PhoneAccountHandle>(TelecomManager.EXTRA_PHONE_ACCOUNT_HANDLE)
             when {
                 forceSimSelector -> showSelectSimDialog(phoneNumber, callback)
-                intent?.hasExtra(TelecomManager.EXTRA_PHONE_ACCOUNT_HANDLE) == true -> {
-                    callback(intent.getParcelableExtra(TelecomManager.EXTRA_PHONE_ACCOUNT_HANDLE)!!)
-                }
-
+                intentHandle != null -> callback(intentHandle)
                 config.getCustomSIM(phoneNumber) != null -> {
                     callback(config.getCustomSIM(phoneNumber))
                 }
