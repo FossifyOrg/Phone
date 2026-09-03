@@ -44,6 +44,7 @@ import org.fossify.phone.extensions.canLaunchAccountsConfiguration
 import org.fossify.phone.extensions.config
 import org.fossify.phone.extensions.launchAccountsConfiguration
 import org.fossify.phone.helpers.RecentsHelper
+import org.fossify.phone.helpers.getMissingRequiredPermissions
 import org.fossify.phone.models.RecentCall
 import java.util.Locale
 import kotlin.system.exitProcess
@@ -118,6 +119,8 @@ class SettingsActivity : SimpleActivity() {
         setupCallsExport()
         setupCallsImport()
         updateTextColors(binding.settingsHolder)
+        // after updateTextColors, it repaints every child and would drop the warning colour
+        setupPermissions()
 
         binding.apply {
             arrayOf(
@@ -178,6 +181,18 @@ class SettingsActivity : SimpleActivity() {
             settingsLanguageHolder.beVisibleIf(isTiramisuPlus())
             settingsLanguageHolder.setOnClickListener {
                 launchChangeAppLanguageIntent()
+            }
+        }
+    }
+
+    private fun setupPermissions() {
+        binding.apply {
+            val missing = getMissingRequiredPermissions()
+            settingsPermissionsStatus.beVisibleIf(missing.isNotEmpty())
+            settingsPermissionsStatus.text = getString(R.string.permissions_missing_required)
+            settingsPermissionsStatus.setTextColor(getColor(R.color.md_red_400))
+            settingsPermissionsHolder.setOnClickListener {
+                startActivity(Intent(this@SettingsActivity, PermissionsActivity::class.java))
             }
         }
     }
