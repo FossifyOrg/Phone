@@ -135,4 +135,9 @@ class Config(context: Context) : BaseConfig(context) {
     var alwaysShowFullscreen: Boolean
         get() = prefs.getBoolean(ALWAYS_SHOW_FULLSCREEN, false)
         set(alwaysShowFullscreen) = prefs.edit().putBoolean(ALWAYS_SHOW_FULLSCREEN, alwaysShowFullscreen).apply()
+
+    var wasPermissionsSetupShown: Boolean
+        get() = prefs.getBoolean(WAS_PERMISSIONS_SETUP_SHOWN, false)
+        set(wasPermissionsSetupShown) = prefs.edit()
+            .putBoolean(WAS_PERMISSIONS_SETUP_SHOWN, wasPermissionsSetupShown).apply()
 }
