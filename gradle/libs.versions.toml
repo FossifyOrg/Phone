@@ -12,6 +12,8 @@ eventbus = "3.3.1"
 commons = "6.1.6"
 #Gradle
 gradlePlugins-agp = "9.4.0"
+#Testing
+junit = "4.13.2"
 #Other
 indicatorFastScroll = "c7873f7168"
 autofitTextView = "0.2.1"
@@ -32,6 +34,8 @@ eventbus = { module = "org.greenrobot:eventbus", version.ref = "eventbus" }
 #Kotlin
 geocoder = { module = "com.googlecode.libphonenumber:geocoder", version.ref = "geocoderVersion" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
+#Testing
+junit = { module = "junit:junit", version.ref = "junit" }
 #Other
 indicator-fast-scroll = { module = "org.fossify:IndicatorFastScroll", version.ref = "indicatorFastScroll" }
 autofit-text-view = { module = "me.grantland:autofittextview", version.ref = "autofitTextView" }
