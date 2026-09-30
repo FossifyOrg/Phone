@@ -58,10 +58,10 @@
     <string name="show_incoming_calls_full_screen">Заўсёды паказваць уваходныя выклікі ў поўнаэкранным рэжыме</string>
     <string name="app_launcher_name">Тэлефон</string>
     <string name="audio_route_speaker">Дынамік</string>
-    <string name="audio_route_earpiece">Навушнікі</string>
+    <string name="audio_route_earpiece">Вушны дынамік</string>
     <string name="audio_route_bluetooth">Bluetooth</string>
     <string name="audio_route_wired_headset">Правадная гарнітура</string>
-    <string name="audio_route_wired_or_earpiece">Правадныя ці бесправадныя навушнікі</string>
+    <string name="audio_route_wired_or_earpiece">Правадная гарнітура ці вушны дынамік</string>
     <string name="choose_audio_route">Выберыце аўдыёвыхад</string>
     <string name="calling_blocked_number">Набраны вамі нумар заблакіраваны</string>
     <string name="call_is_being_connected">Злучэнне…</string>
