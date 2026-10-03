@@ -83,7 +83,7 @@ class RecentCallsAdapter(
     private lateinit var incomingMissedCallIcon: Drawable
     var fontSize: Float = activity.getTextSize()
     private val areMultipleSIMsAvailable = activity.areMultipleSIMsAvailable()
-    private var missedCallColor = resources.getColor(R.color.color_missed_call)
+    private var missedCallColor = resources.getColor(R.color.color_missed_call, activity.theme)
     private var secondaryTextColor = textColor.adjustAlpha(0.6f)
     private var textToHighlight = ""
     private var durationPadding = resources.getDimension(R.dimen.normal_margin).toInt()

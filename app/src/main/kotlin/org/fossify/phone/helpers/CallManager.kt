@@ -2,6 +2,7 @@ package org.fossify.phone.helpers
 
 import android.annotation.SuppressLint
 import android.os.Handler
+import android.os.Looper
 import android.telecom.Call
 import android.telecom.CallAudioState
 import android.telecom.InCallService
@@ -99,7 +100,7 @@ class CallManager {
         private fun getCallAudioState() = inCallService?.callAudioState
 
         fun getSupportedAudioRoutes(): Array<AudioRoute> {
-            return AudioRoute.values().filter {
+            return AudioRoute.entries.filter {
                 val supportedRouteMask = getCallAudioState()?.supportedRouteMask
                 if (supportedRouteMask != null) {
                     supportedRouteMask and it.route == it.route
@@ -203,7 +204,7 @@ class CallManager {
 
         fun keypad(char: Char) {
             call?.playDtmfTone(char)
-            Handler().postDelayed({
+            Handler(Looper.getMainLooper()).postDelayed({
                 call?.stopDtmfTone()
             }, DIALPAD_TONE_LENGTH_MS)
         }
