@@ -57,4 +57,19 @@
     <string name="disable_swipe_to_answer">Выкарыстоўваць націсканне замест перацягвання пры адказе на ўваходныя выклікі</string>
     <string name="show_incoming_calls_full_screen">Заўсёды паказваць уваходныя выклікі ў поўнаэкранным рэжыме</string>
     <string name="app_launcher_name">Тэлефон</string>
+    <string name="audio_route_speaker">Дынамік</string>
+    <string name="audio_route_earpiece">Вушны дынамік</string>
+    <string name="audio_route_bluetooth">Bluetooth</string>
+    <string name="audio_route_wired_headset">Правадная гарнітура</string>
+    <string name="audio_route_wired_or_earpiece">Правадная гарнітура ці вушны дынамік</string>
+    <string name="choose_audio_route">Выберыце аўдыёвыхад</string>
+    <string name="calling_blocked_number">Набраны вамі нумар заблакіраваны</string>
+    <string name="call_is_being_connected">Злучэнне…</string>
+    <string name="call_notification_channel">Статус выкліку</string>
+    <string name="call_notification_channel_high_priority">Статус выкліку (прыярытэтны)</string>
+    <string name="hide_dialpad_numbers">Схаваць лічбы нумаранабіральніка</string>
+    <string name="export_call_history">Экспарт гісторыі выклікаў</string>
+    <string name="import_call_history">Імпарт гісторыі выклікаў</string>
+    <string name="calling_accounts">Уліковыя запісы выклікаў</string>
+    <string name="faq_1_title">Я чую ўваходны выклік, але экран не ўключаецца. Што рабіць?</string>
 </resources>

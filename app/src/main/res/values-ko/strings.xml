@@ -24,10 +24,10 @@
     <string name="unset_default_sim">기본 SIM 설정 해제</string>
     <string name="calls">전화</string>
     <string name="turn_microphone_on">마이크 켜기</string>
-    <string name="audio_route_earpiece">이어폰</string>
+    <string name="audio_route_earpiece">수화부</string>
     <string name="audio_route_bluetooth">블루투스</string>
     <string name="audio_route_wired_headset">유선 헤드셋</string>
-    <string name="audio_route_wired_or_earpiece">유선 또는 이어폰</string>
+    <string name="audio_route_wired_or_earpiece">유선 또는 수화부</string>
     <string name="call_swap">통화 교환</string>
     <string name="speed_dial">단축 번호</string>
     <string name="call_merge">통화 병합</string>
@@ -35,7 +35,7 @@
     <string name="call_add">통화 추가</string>
     <string name="conference_manage">전화 회의 관리</string>
     <string name="conference">회의</string>
-    <string name="choose_audio_route">오디오 경로 선택</string>
+    <string name="choose_audio_route">오디오 출력 선택</string>
     <string name="calling_blocked_number">지금 거신 번호는 차단되어 있습니다</string>
     <string name="manage_speed_dial">단축 번호 관리</string>
     <string name="speed_dial_label">번호를 클릭해 전화번호를 지정하세요. 키패드에서 지정된 번호를 길게 눌러 빠른 전화를 걸 수 있습니다.</string>
@@ -69,4 +69,12 @@
     <string name="import_call_history">통화 기록 가져오기</string>
     <string name="faq_1_text">이러한 문제는 다양한 기기 및 시스템 별 이유가 있을 수 있어 일반적으로 말하기 어렵습니다. 기기 설정을 살펴보고 백그라운드에서 앱이 팝업되도록 허용되어 있는지, 다른 앱 위에 표시되도록 허용되어 있는지 확인해야 합니다.</string>
     <string name="asterisk">별표</string>
+    <string name="call_is_being_connected">통화 연결 중…</string>
+    <string name="call_notification_channel">통화 상태</string>
+    <string name="call_notification_channel_high_priority">통화 상태(높은 우선순위)</string>
+    <string name="calling_accounts">통화 계정</string>
+    <string name="faq_2_title">긴급 전화가 제대로 작동하지 않는 이유는 무엇인가요?</string>
+    <string name="faq_2_text">시스템 제한으로 인해 긴급 전화는 시스템 기본 전화 앱을 통해서만 걸 수 있습니다. 긴급 전화가 제대로 작동하도록 하려면 시스템 전화 앱을 삭제하거나 비활성화하지 말고 그대로 두어야 합니다.</string>
+    <string name="faq_3_title">일부 연락처가 앱에 표시되지 않는 이유는 무엇인가요?</string>
+    <string name="faq_3_text">Fossify Phone은 전화번호가 등록된 연락처만 표시합니다. 전화번호가 없는 연락처는 앱에 표시되지 않습니다.</string>
 </resources>
