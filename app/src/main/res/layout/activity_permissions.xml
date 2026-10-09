@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/permissions_coordinator"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <org.fossify.commons.views.MyAppBarLayout
+        android:id="@+id/permissions_appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/permissions_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/color_primary"
+            app:title="@string/permissions_and_access"
+            app:titleTextAppearance="@style/AppTheme.ActionBar.TitleTextStyle" />
+
+    </org.fossify.commons.views.MyAppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/permissions_nested_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:id="@+id/permissions_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/activity_margin">
+
+            <LinearLayout
+                android:id="@+id/permissions_restricted_notice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/normal_margin"
+                android:paddingTop="@dimen/activity_margin"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:id="@+id/permissions_restricted_header"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackground"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingVertical="@dimen/small_margin">
+
+                    <ImageView
+                        android:id="@+id/permissions_restricted_icon"
+                        android:layout_width="@dimen/normal_icon_size"
+                        android:layout_height="@dimen/normal_icon_size"
+                        android:layout_marginEnd="@dimen/small_margin"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_info_vector" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <org.fossify.commons.views.MyTextView
+                            android:id="@+id/permissions_restricted_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/restricted_settings_title"
+                            android:textStyle="bold" />
+
+                        <org.fossify.commons.views.MyTextView
+                            android:id="@+id/permissions_restricted_teaser"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/tiny_margin"
+                            android:alpha="0.8"
+                            android:text="@string/restricted_settings_teaser"
+                            android:textSize="@dimen/smaller_text_size" />
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/permissions_restricted_chevron"
+                        android:layout_width="@dimen/normal_icon_size"
+                        android:layout_height="@dimen/normal_icon_size"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_chevron_down_vector" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/permissions_restricted_details"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <org.fossify.commons.views.MyTextView
+                        android:id="@+id/permissions_restricted_summary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/small_margin"
+                        android:text="@string/restricted_settings_summary" />
+
+                    <org.fossify.commons.views.MyTextView
+                        android:id="@+id/permissions_restricted_steps"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/small_margin"
+                        android:text="@string/restricted_settings_steps" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/small_margin"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/permissions_restricted_app_info"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/restricted_settings_open_app_info" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/permissions_restricted_learn_more"
+                            style="@style/Widget.Material3.Button.TextButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/small_margin"
+                            android:text="@string/restricted_settings_learn_more" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <org.fossify.commons.views.MyTextView
+                android:id="@+id/permissions_intro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="@dimen/normal_margin"
+                android:paddingTop="@dimen/activity_margin"
+                android:paddingBottom="@dimen/small_margin"
+                android:text="@string/permissions_intro" />
+
+            <TextView
+                android:id="@+id/permissions_required_label"
+                style="@style/SettingsSectionLabelStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/permissions_required" />
+
+            <LinearLayout
+                android:id="@+id/permissions_required_holder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+            <TextView
+                android:id="@+id/permissions_optional_label"
+                style="@style/SettingsSectionLabelStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/permissions_optional" />
+
+            <LinearLayout
+                android:id="@+id/permissions_optional_holder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/permissions_done"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/normal_margin"
+                android:layout_marginTop="@dimen/activity_margin"
+                android:text="@string/permissions_done" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
