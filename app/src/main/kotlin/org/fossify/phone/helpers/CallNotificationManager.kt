@@ -9,12 +9,14 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.telecom.Call
+import android.telecom.TelecomManager
 import android.widget.RemoteViews
 import org.fossify.commons.extensions.notificationManager
 import org.fossify.commons.extensions.setText
 import org.fossify.commons.extensions.setVisibleIf
 import org.fossify.phone.R
 import org.fossify.phone.activities.CallActivity
+import org.fossify.phone.extensions.isConference
 import org.fossify.phone.receivers.CallActionReceiver
 
 class CallNotificationManager(private val context: Context) {
@@ -29,7 +31,8 @@ class CallNotificationManager(private val context: Context) {
 
     @SuppressLint("NewApi")
     fun setupNotification(lowPriority: Boolean = false) {
-        getCallContact(context.applicationContext, CallManager.getPrimaryCall()) { callContact ->
+        val call = CallManager.getPrimaryCall()
+        getCallContact(context.applicationContext, call) { callContact ->
             val callContactAvatar = callContactAvatarHelper.getCallContactAvatar(callContact)
             val callState = CallManager.getState()
             val isHighPriority = callState == Call.STATE_RINGING && !lowPriority
@@ -99,6 +102,15 @@ class CallNotificationManager(private val context: Context) {
                 .setUsesChronometer(callState == Call.STATE_ACTIVE)
                 .setChannelId(channelId)
                 .setStyle(Notification.DecoratedCustomViewStyle())
+
+            val callDetails = call?.details
+            val handle = callDetails?.handle
+            if (!call.isConference() &&
+                callDetails?.handlePresentation == TelecomManager.PRESENTATION_ALLOWED &&
+                handle?.scheme == "tel" && !handle.schemeSpecificPart.isNullOrBlank()
+            ) {
+                builder.addPerson(handle.toString())
+            }
 
             if (isHighPriority) {
                 builder.setFullScreenIntent(openAppPendingIntent, true)
