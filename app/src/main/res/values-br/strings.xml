@@ -1,4 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_launcher_name">Pellgomzer</string>
+    <string name="could_not_access_contacts">Dibosubl eo adtapout ho tarempredoù</string>
+    <string name="no_previous_calls">N\'eus ket bet kavet pellgomzadenn ebet</string>
+    <string name="could_not_access_the_call_history">Dibosubl eo tizhout roll-istor ar pellgomzadennoù</string>
+    <string name="request_access">Goulenn aotre</string>
+    <string name="remove_confirmation">Ha sur oc\'h e fell deoc\'h dilemel an elfennoù diuzet eus roll-istor ar pellgomzadennoù ?</string>
+    <string name="clear_history_confirmation">Ha sur oc\'h e fell deoc\'h dilemel pep tra eus roll-istor ar pellgomzadennoù ?</string>
+    <string name="show_grouped_calls">Diskouez ar pellgomzadennoù a-stroll</string>
+    <string name="clear_call_history">Skarzhañ roll-istor ar pellgomzadennoù</string>
+    <string name="show_call_details">Diskouez munudoù ar bellgomzadenn</string>
+    <string name="dialpad">Klavier niverenniñ</string>
+    <string name="asterisk">Steredennig</string>
+    <string name="hashtag">Ger-klik</string>
+    <string name="call_number">Niverenn pellgomz</string>
 </resources>
