@@ -84,6 +84,41 @@
     <string name="import_call_history">Import call history</string>
     <string name="calling_accounts">Calling accounts</string>
 
+    <!-- Permissions & access -->
+    <string name="permissions_and_access">Permissions &amp; access</string>
+    <string name="permissions_intro">To place and receive calls reliably, this app needs the access listed below. You can change any of it later.</string>
+    <string name="permissions_required">Required</string>
+    <string name="permissions_optional">Recommended</string>
+    <string name="permissions_done">Done</string>
+    <string name="permission_granted">Granted</string>
+    <string name="permission_not_granted">Not granted</string>
+    <string name="permission_open_settings">Open settings</string>
+    <string name="permission_default_dialer">Default phone app</string>
+    <string name="permission_default_dialer_summary">Required for this app to handle your calls at all.</string>
+    <string name="permission_contacts">Contacts</string>
+    <string name="permission_contacts_summary">Shows caller names and photos instead of bare numbers.</string>
+    <string name="permission_phone">Phone</string>
+    <string name="permission_phone_summary">Lets the app place calls, answer them and read your SIM cards.</string>
+    <string name="permission_call_log">Call log</string>
+    <string name="permission_call_log_summary">Shows your recent calls and records new ones.</string>
+    <string name="permission_notifications">Notifications</string>
+    <string name="permission_notifications_summary">Needed to show the ongoing call and missed call notifications.</string>
+    <string name="permission_full_screen_intent">Full screen notifications</string>
+    <string name="permission_full_screen_intent_summary">Without this, incoming calls only show as a small notification instead of the full screen call UI.</string>
+    <string name="permission_draw_over_other_apps">Display over other apps</string>
+    <string name="permission_draw_over_other_apps_summary">Helps the call screen appear while you are using another app.</string>
+    <string name="permission_caller_id">Caller ID &amp; spam</string>
+    <string name="permission_caller_id_summary">Required only if you want to block unknown or hidden numbers.</string>
+    <string name="permissions_missing_required">Some required permissions are still missing</string>
+
+    <!-- Restricted settings (Android 13+, extended to the dialer role in Android 15) -->
+    <string name="restricted_settings_title">Are some toggles greyed out?</string>
+    <string name="restricted_settings_teaser">Tap to see how to unblock them</string>
+    <string name="restricted_settings_summary">Android blocks apps that were not installed from an app store it recognises from becoming the default phone app or displaying over other apps. The toggle looks greyed out and your device may warn that the app is unsafe. This is not a fault in the app, and you can unblock it yourself.</string>
+    <string name="restricted_settings_steps">1. Tap the greyed out toggle once and dismiss the warning. The unblock option only appears after Android has actually blocked it.\n\n2. Open App info for this app, with the button below or by long pressing the app icon.\n\n3. Tap the three dots (⋮) in the top right corner.\n\n4. Choose \"Allow restricted settings\". It is called \"Allow restricted permission\" on ColorOS and OxygenOS, and on some devices it sits under \"Permissions\" first.\n\n5. Come back here and grant the access again.\n\nIf there is no three dot menu at all, which has been reported on some OnePlus and OPPO builds, install this app through an app store instead of opening the APK file directly.</string>
+    <string name="restricted_settings_open_app_info">Open app info</string>
+    <string name="restricted_settings_learn_more">Learn more</string>
+
     <!-- FAQ -->
     <string name="faq_1_title">I hear incoming calls, but the screen doesn\'t turn on. What can I do?</string>
     <string name="faq_1_text">Such issues can have many device and system specific reasons, hard to say in general. You should look around in your device settings and make sure that the app is allowed to pop up when in background and allow displaying over other apps.</string>
@@ -91,6 +126,8 @@
     <string name="faq_2_text">Due to system restrictions, emergency calls can only be made through your system\'s default dialer or phone app. To ensure emergency calls work properly, you need to keep the system app installed and enabled.</string>
     <string name="faq_3_title">Why are some of my contacts missing from the app?</string>
     <string name="faq_3_text">Fossify Phone only displays contacts that have a phone number associated with them. Contacts without a phone number are not shown in the app.</string>
+    <string name="faq_4_title">Why can\'t I set this app as my default phone app? The toggle is greyed out.</string>
+    <string name="faq_4_text">Since Android 13, and for the default phone app specifically since Android 15, Android blocks apps that were not installed from an app store it recognises from taking sensitive settings. It calls this "Restricted settings", and it affects the default phone app role, displaying over other apps, accessibility, notification access, device admin and usage access. Every Android 15 phone is required to do this, so it is not specific to one manufacturer, though the wording differs: ColorOS and OxygenOS say "Allow restricted permission" while stock Android says "Allow restricted settings".\n\nTo unblock it, tap the greyed out toggle once and dismiss the warning, then open App info for this app, tap the three dots in the top right corner and choose that option. The Permissions &amp; access screen in the app settings has a button that takes you straight to App info. Note the option only shows up after Android has actually blocked something, so the order matters.</string>
     <!--
         Haven't found some strings? There's more at
         https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res
