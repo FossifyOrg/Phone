@@ -158,7 +158,8 @@
             android:configChanges="orientation"
             android:exported="true"
             android:label="@string/dialer"
-            android:theme="@style/Theme.Transparent">
+            android:theme="@style/Theme.Transparent"
+            android:permission="android.permission.CALL_PHONE">
 
             <intent-filter>
                 <action android:name="android.intent.action.CALL" />
