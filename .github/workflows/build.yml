@@ -1,0 +1,127 @@
+name: Build & Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Git tag for the release (leave empty to auto-detect)
+        required: false
+        type: string
+  push:
+    branches: [main]
+    paths:
+      - ".fossify/release-marker.txt"
+
+# Two runs publishing to the same release would race on asset upload
+concurrency:
+  group: build-release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # tags are needed by the "Determine tag" step below; the default shallow
+          # fetch has none, which silently forces the build-<timestamp> fallback
+          fetch-depth: 0
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: 17
+
+#       - name: Set up Android SDK
+#         uses: android-actions/setup-android@v3
+# 
+#       - name: Validate Gradle wrapper
+#         uses: gradle/actions/wrapper-validation@v4
+# 
+#       - name: Setup Gradle
+#         uses: gradle/actions/setup-gradle@v4
+
+      - name: Decode keystore (if provided)
+        id: keystore
+        env:
+          KEYSTORE: ${{ secrets.KEYSTORE }}
+        run: |
+          if [ -n "$KEYSTORE" ]; then
+            echo "$KEYSTORE" | base64 -d > "$RUNNER_TEMP/keystore.jks"
+            echo "created=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "created=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Build release APKs
+        env:
+          SIGNING_KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          SIGNING_KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+          # must be absolute: app/build.gradle.kts resolves file() relative to the app module
+          SIGNING_STORE_FILE: ${{ steps.keystore.outputs.created == 'true' && format('{0}/keystore.jks', runner.temp) || '' }}
+          SIGNING_STORE_PASSWORD: ${{ secrets.STORE_PASSWORD }}
+        run: |
+          if [ -z "$SIGNING_STORE_FILE" ]; then
+            unset SIGNING_KEY_ALIAS SIGNING_KEY_PASSWORD SIGNING_STORE_FILE SIGNING_STORE_PASSWORD
+          fi
+          # `assemble` would also build the three debug variants, which are never published
+          ./gradlew assembleRelease
+
+      - name: Collect APKs
+        id: apks
+        run: |
+          mkdir -p apks
+          find app/build/outputs/apk -name '*.apk' -type f -exec cp {} apks/ \;
+          ls -lh apks/
+          echo "count=$(ls apks/*.apk 2>/dev/null | wc -l)" >> "$GITHUB_OUTPUT"
+
+      - name: Determine tag
+        id: tag
+        env:
+          INPUT_TAG: ${{ inputs.tag }}
+        run: |
+          if [ -n "$INPUT_TAG" ]; then
+            echo "value=$INPUT_TAG" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          DESCRIBE=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
+          if [ -z "$DESCRIBE" ]; then
+            echo "value=build-$(date +%Y%m%d%H%M%S)" >> "$GITHUB_OUTPUT"
+          else
+            echo "value=$DESCRIBE" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Upload APKs as workflow artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: phone-apks-${{ steps.tag.outputs.value }}
+          path: apks/*.apk
+          if-no-files-found: error
+
+      # Unsigned APKs cannot be installed as an update over a signed install, so they stay
+      # as a workflow artifact only and never reach a release.
+      - name: Create or update GitHub release
+        if: steps.apks.outputs.count > 0 && steps.keystore.outputs.created == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.tag.outputs.value }}
+        run: |
+          echo "Tag: $TAG"
+
+          if gh release view "$TAG" --repo "${{ github.repository }}" &>/dev/null; then
+            echo "Release $TAG exists — uploading assets"
+            gh release upload "$TAG" apks/*.apk --clobber --repo "${{ github.repository }}"
+          else
+            echo "Release $TAG does not exist — creating"
+            gh release create "$TAG" apks/*.apk \
+              --title "$TAG" \
+              --notes "Automated build for $TAG" \
+              --repo "${{ github.repository }}"
+          fi
