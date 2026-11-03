@@ -6,7 +6,6 @@ import android.net.Uri
 import android.provider.ContactsContract
 import org.fossify.commons.extensions.isPackageInstalled
 import org.fossify.commons.extensions.launchActivityIntent
-import org.fossify.commons.extensions.launchViewContactIntent
 import org.fossify.commons.helpers.CONTACT_ID
 import org.fossify.commons.helpers.FIRST_CONTACT_ID
 import org.fossify.commons.helpers.IS_PRIVATE
@@ -51,6 +50,9 @@ fun Activity.startContactDetailsIntent(contact: Contact) {
                 ContactsContract.Contacts.CONTENT_LOOKUP_URI,
                 "vnd.android.cursor.dir/person"
             )
+            // launchActivityIntent adds FLAG_ACTIVITY_NEW_TASK; without CLEAR_TASK the receiving
+            // app's existing task is brought forward and re-shows its previously-viewed contact.
+            addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
             launchActivityIntent(this)
         }
     } else {
@@ -60,7 +62,12 @@ fun Activity.startContactDetailsIntent(contact: Contact) {
             val publicUri =
                 Uri.withAppendedPath(ContactsContract.Contacts.CONTENT_LOOKUP_URI, lookupKey)
             runOnUiThread {
-                launchViewContactIntent(publicUri)
+                Intent().apply {
+                    action = ContactsContract.QuickContact.ACTION_QUICK_CONTACT
+                    data = publicUri
+                    addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                    launchActivityIntent(this)
+                }
             }
         }
     }
