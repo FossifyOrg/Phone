@@ -6,6 +6,7 @@ import android.widget.ImageView
 import androidx.activity.addCallback
 import androidx.appcompat.app.AlertDialog
 import org.fossify.commons.extensions.*
+import org.fossify.commons.helpers.getProperText
 import org.fossify.commons.models.contacts.Contact
 import org.fossify.commons.views.MySearchMenu
 import org.fossify.phone.R
@@ -98,7 +99,14 @@ class SelectContactDialog(val activity: SimpleActivity, val contacts: List<Conta
         val adapter = binding.selectContactList.adapter as? ContactsAdapter
         var contactsToShow = contacts
         if (query.isNotEmpty()) {
-            contactsToShow = contacts.filter { it.name.contains(query, true) }
+            val fixedText = query.trim().replace("\\s+".toRegex(), " ")
+            val shouldNormalize = fixedText.normalizeString() == fixedText
+            contactsToShow = contacts.filter { contact ->
+                getProperText(contact.getNameToDisplay(), shouldNormalize).contains(fixedText, true) ||
+                    getProperText(contact.nickname, shouldNormalize).contains(fixedText, true) ||
+                    getProperText(contact.organization.company, shouldNormalize).contains(fixedText, true) ||
+                    getProperText(contact.organization.jobPosition, shouldNormalize).contains(fixedText, true)
+            }
         }
         checkPlaceholderVisibility(contactsToShow)
 
