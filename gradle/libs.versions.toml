@@ -16,6 +16,8 @@ gradlePlugins-agp = "9.4.1"
 indicatorFastScroll = "c7873f7168"
 autofitTextView = "0.2.1"
 libphonenumberVersion = "9.0.40"
+#Testing
+junit = "4.13.2"
 #build
 app-build-compileSDKVersion = "36"
 app-build-targetSDK = "36"
@@ -36,6 +38,8 @@ kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serializa
 indicator-fast-scroll = { module = "org.fossify:IndicatorFastScroll", version.ref = "indicatorFastScroll" }
 autofit-text-view = { module = "me.grantland:autofittextview", version.ref = "autofitTextView" }
 libphonenumber = { module = "com.googlecode.libphonenumber:libphonenumber", version.ref = "libphonenumberVersion" }
+#Testing
+junit = { module = "junit:junit", version.ref = "junit" }
 [plugins]
 android = { id = "com.android.application", version.ref = "gradlePlugins-agp" }
 kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
