@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Show the caller name provided by the network (CNAP) for numbers not saved in contacts ([#873])
 - Fixed call history not showing the contact name for contacts with more than one phone number ([#74])
 - Fixed call history ignoring the "Start name with surname" option ([#865])
+- Fixed slow or frozen incoming call screen and notification with large address books ([#259], [#679])
 
 ## [1.11.1] - 2026-02-01
 ### Changed
@@ -272,6 +273,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#186]: https://github.com/FossifyOrg/Phone/issues/186
 [#196]: https://github.com/FossifyOrg/Phone/issues/196
 [#237]: https://github.com/FossifyOrg/Phone/issues/237
+[#259]: https://github.com/FossifyOrg/Phone/issues/259
 [#286]: https://github.com/FossifyOrg/Phone/issues/286
 [#293]: https://github.com/FossifyOrg/Phone/issues/293
 [#307]: https://github.com/FossifyOrg/Phone/issues/307
@@ -289,6 +291,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#628]: https://github.com/FossifyOrg/Phone/issues/628
 [#631]: https://github.com/FossifyOrg/Phone/issues/631
 [#645]: https://github.com/FossifyOrg/Phone/issues/645
+[#679]: https://github.com/FossifyOrg/Phone/issues/679
 [#696]: https://github.com/FossifyOrg/Phone/issues/696
 [#761]: https://github.com/FossifyOrg/Phone/issues/761
 [#865]: https://github.com/FossifyOrg/Phone/issues/865
