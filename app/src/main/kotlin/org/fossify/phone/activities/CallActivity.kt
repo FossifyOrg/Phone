@@ -469,7 +469,9 @@ class CallActivity : SimpleActivity() {
 
     private fun updateCallAudioState(route: AudioRoute?) {
         if (route != null) {
-            isMicrophoneOff = audioManager.isMicrophoneMute
+            // Telecom is the source of truth for call mute; AudioManager's flag can disagree
+            // (or be reset by the OS), which made the button show "unmuted" while muted and vice versa.
+            isMicrophoneOff = CallManager.inCallService?.callAudioState?.isMuted ?: isMicrophoneOff
             updateMicrophoneButton()
 
             isSpeakerOn = route == AudioRoute.SPEAKER
@@ -501,7 +503,8 @@ class CallActivity : SimpleActivity() {
 
     private fun toggleMicrophone() {
         isMicrophoneOff = !isMicrophoneOff
-        audioManager.isMicrophoneMute = isMicrophoneOff
+        // Mute via Telecom only. Also toggling AudioManager.isMicrophoneMute fights InCallService:
+        // the two states drift apart and the call can end up unmuted without the user asking.
         CallManager.inCallService?.setMuted(isMicrophoneOff)
         updateMicrophoneButton()
     }

@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - Fixed missing call audio over Bluetooth and Android Auto by letting Telecom manage the audio mode
+- Fixed microphone mute state getting out of sync and the call becoming unmuted without user action
 
 ## [1.11.1] - 2026-02-01
 ### Changed
