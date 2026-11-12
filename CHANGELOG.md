@@ -20,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed calls ending when tapping next to the hang up button in the call notification ([#180])
 - Fixed the app staying open after an incoming call ends instead of returning to the previous app ([#761])
 - Show the caller name provided by the network (CNAP) for numbers not saved in contacts ([#873])
+- Fixed call history not showing the contact name for contacts with more than one phone number ([#74])
 
 ## [1.11.1] - 2026-02-01
 ### Changed
@@ -247,6 +248,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#50]: https://github.com/FossifyOrg/Phone/issues/50
 [#60]: https://github.com/FossifyOrg/Phone/issues/60
 [#67]: https://github.com/FossifyOrg/Phone/issues/67
+[#74]: https://github.com/FossifyOrg/Phone/issues/74
 [#80]: https://github.com/FossifyOrg/Phone/issues/80
 [#81]: https://github.com/FossifyOrg/Phone/issues/81
 [#88]: https://github.com/FossifyOrg/Phone/issues/88
