@@ -19,7 +19,7 @@ libphonenumberVersion = "9.0.43"
 #Testing
 junit = "4.13.2"
 #build
-app-build-compileSDKVersion = "36"
+app-build-compileSDKVersion = "37"
 app-build-targetSDK = "36"
 app-build-minimumSDK = "26"
 app-build-javaVersion = "VERSION_17"
