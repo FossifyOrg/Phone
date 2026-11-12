@@ -28,6 +28,9 @@ class CallService : InCallService() {
             } else {
                 callNotificationManager.setupNotification()
             }
+            if (state == Call.STATE_ACTIVE || state == Call.STATE_DIALING || state == Call.STATE_CONNECTING) {
+                CallManager.preferBluetoothRouteIfAvailable()
+            }
         }
     }
 
@@ -36,6 +39,8 @@ class CallService : InCallService() {
         CallManager.onCallAdded(call)
         CallManager.inCallService = this
         call.registerCallback(callListener)
+        // Prefer car/headset audio as soon as Telecom exposes the Bluetooth route.
+        CallManager.preferBluetoothRouteIfAvailable()
 
         // Incoming/Outgoing (locked): high priority (FSI)
         // Incoming (unlocked): if user opted in, low priority ➜ manual activity start, otherwise high priority (FSI)
@@ -87,6 +92,8 @@ class CallService : InCallService() {
         super.onCallAudioStateChanged(audioState)
         if (audioState != null) {
             CallManager.onAudioStateChanged(audioState)
+            // BT route often appears slightly after call start; claim it when it becomes available.
+            CallManager.preferBluetoothRouteIfAvailable()
         }
     }
 

@@ -6,7 +6,6 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.LayerDrawable
 import android.graphics.drawable.RippleDrawable
-import android.media.AudioManager
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -82,10 +81,12 @@ class CallActivity : SimpleActivity() {
 
         updateTextColors(binding.callHolder)
         initButtons()
-        audioManager.mode = AudioManager.MODE_IN_CALL
+        // Do not force AudioManager.MODE_IN_CALL — Telecom/InCallService owns call audio.
+        // Forcing MODE_IN_CALL breaks Bluetooth HFP / Android Auto routing (call connects, no sound).
         addLockScreenFlags()
         CallManager.addListener(callCallback)
         updateCallContactInfo(CallManager.getPrimaryCall())
+        CallManager.preferBluetoothRouteIfAvailable()
     }
 
     override fun onNewIntent(intent: Intent) {
@@ -747,6 +748,7 @@ class CallActivity : SimpleActivity() {
         binding.callEnd.beVisible()
         callDurationHandler.removeCallbacks(updateCallDurationTask)
         callDurationHandler.post(updateCallDurationTask)
+        CallManager.preferBluetoothRouteIfAvailable()
     }
 
     private fun showPhoneAccountPicker() {
@@ -765,11 +767,6 @@ class CallActivity : SimpleActivity() {
         if (isCallEnded) {
             safeFinishAndRemoveTask()
             return
-        }
-
-        try {
-            audioManager.mode = AudioManager.MODE_NORMAL
-        } catch (ignored: Exception) {
         }
 
         isCallEnded = true
