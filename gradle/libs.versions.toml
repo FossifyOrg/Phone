@@ -1,7 +1,7 @@
 [versions]
 #jetbrains
 geocoderVersion = "3.40"
-kotlin = "2.4.20"
+kotlin = "2.4.21"
 kotlinxSerializationJson = "1.11.0"
 #Detekt
 detekt = "1.23.8"
@@ -11,7 +11,7 @@ eventbus = "3.3.1"
 #Fossify
 commons = "7.1.3"
 #Gradle
-gradlePlugins-agp = "9.4.1"
+gradlePlugins-agp = "9.5.1"
 #Other
 indicatorFastScroll = "c7873f7168"
 autofitTextView = "0.2.1"
