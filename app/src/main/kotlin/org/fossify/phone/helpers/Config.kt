@@ -112,6 +112,10 @@ class Config(context: Context) : BaseConfig(context) {
         get() = prefs.getBoolean(DISABLE_PROXIMITY_SENSOR, false)
         set(disableProximitySensor) = prefs.edit().putBoolean(DISABLE_PROXIMITY_SENSOR, disableProximitySensor).apply()
 
+    var xiaomiCallPermissionsHintShown: Boolean
+        get() = prefs.getBoolean(XIAOMI_CALL_PERMISSIONS_HINT_SHOWN, false)
+        set(shown) = prefs.edit().putBoolean(XIAOMI_CALL_PERMISSIONS_HINT_SHOWN, shown).apply()
+
     var disableSwipeToAnswer: Boolean
         get() = prefs.getBoolean(DISABLE_SWIPE_TO_ANSWER, false)
         set(disableSwipeToAnswer) = prefs.edit().putBoolean(DISABLE_SWIPE_TO_ANSWER, disableSwipeToAnswer).apply()

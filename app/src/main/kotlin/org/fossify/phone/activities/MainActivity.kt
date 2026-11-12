@@ -36,6 +36,7 @@ import org.fossify.phone.extensions.clearMissedCalls
 import org.fossify.phone.extensions.config
 import org.fossify.phone.extensions.handleFullScreenNotificationsPermission
 import org.fossify.phone.extensions.launchCreateNewContactIntent
+import org.fossify.phone.extensions.showXiaomiCallPermissionsHintIfNeeded
 import org.fossify.phone.fragments.ContactsFragment
 import org.fossify.phone.fragments.FavoritesFragment
 import org.fossify.phone.fragments.MyViewPagerFragment
@@ -95,6 +96,7 @@ class MainActivity : SimpleActivity() {
                 if (!granted) {
                     toast(org.fossify.commons.R.string.notifications_disabled)
                 }
+                showXiaomiCallPermissionsHintIfNeeded()
             }
         } else {
             launchSetDefaultDialerIntent()

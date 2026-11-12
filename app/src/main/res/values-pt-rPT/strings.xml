@@ -77,4 +77,5 @@
     <string name="call_notification_channel_high_priority">Estado da chamada (alta prioridade)</string>
     <string name="calling_accounts">Contas de chamadas</string>
     <string name="faq_2_text">Devido a restrições do sistema, as chamadas de emergência só podem ser feitas através do marcador padrão do seu sistema ou da aplicação telefónica. Para garantir que as chamadas de emergência funcionam corretamente, é necessário manter a aplicação do sistema instalada e ativada.</string>
+    <string name="xiaomi_call_permissions_hint">Os telemóveis Xiaomi, Redmi e POCO bloqueiam o ecrã de chamada recebida, a menos que ative duas permissões extra para esta aplicação: \"Mostrar no ecrã de bloqueio\" e \"Mostrar janelas pop-up durante a execução em segundo plano\". Abrir as definições agora?</string>
 </resources>

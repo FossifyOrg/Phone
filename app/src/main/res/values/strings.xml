@@ -91,6 +91,7 @@
     <string name="faq_2_text">Due to system restrictions, emergency calls can only be made through your system\'s default dialer or phone app. To ensure emergency calls work properly, you need to keep the system app installed and enabled.</string>
     <string name="faq_3_title">Why are some of my contacts missing from the app?</string>
     <string name="faq_3_text">Fossify Phone only displays contacts that have a phone number associated with them. Contacts without a phone number are not shown in the app.</string>
+    <string name="xiaomi_call_permissions_hint">Xiaomi, Redmi and POCO phones block the incoming call screen unless two extra permissions are enabled for this app: \"Show on Lock screen\" and \"Display pop-up windows while running in the background\". Open the settings now?</string>
     <!--
         Haven't found some strings? There's more at
         https://github.com/FossifyOrg/Commons/tree/master/commons/src/main/res

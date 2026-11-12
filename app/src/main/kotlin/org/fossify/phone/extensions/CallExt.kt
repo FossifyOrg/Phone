@@ -2,12 +2,16 @@ package org.fossify.phone.extensions
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.net.Uri
+import android.os.Build
+import android.provider.Settings
 import android.telecom.PhoneAccount
 import android.telecom.PhoneAccountHandle
 import android.telecom.TelecomManager
 import org.fossify.commons.R
 import org.fossify.commons.activities.BaseSimpleActivity
 import org.fossify.commons.dialogs.CallConfirmationDialog
+import org.fossify.commons.dialogs.ConfirmationDialog
 import org.fossify.commons.dialogs.PermissionRequiredDialog
 import org.fossify.commons.extensions.canUseFullScreenIntent
 import org.fossify.commons.extensions.initiateCall
@@ -167,6 +171,38 @@ fun SimpleActivity.handleFullScreenNotificationsPermission(callback: (granted: B
                     callback(false)
                 }
             )
+        }
+    }
+}
+
+private val XIAOMI_BRANDS = setOf("xiaomi", "redmi", "poco")
+
+/**
+ * MIUI / HyperOS block the incoming call screen from the background unless the app-specific
+ * "Show on Lock screen" and "Display pop-up windows while running in the background" permissions
+ * are enabled — the standard full-screen intent permission alone is not enough there, and the OS
+ * regularly resets it. Explain this once and offer to open the right settings screen.
+ */
+fun SimpleActivity.showXiaomiCallPermissionsHintIfNeeded() {
+    val isXiaomi = Build.MANUFACTURER.lowercase() in XIAOMI_BRANDS || Build.BRAND.lowercase() in XIAOMI_BRANDS
+    if (!isXiaomi || config.xiaomiCallPermissionsHintShown) {
+        return
+    }
+
+    config.xiaomiCallPermissionsHintShown = true
+    ConfirmationDialog(this, getString(org.fossify.phone.R.string.xiaomi_call_permissions_hint)) {
+        val miuiEditor = Intent("miui.intent.action.APP_PERM_EDITOR")
+            .setClassName("com.miui.securitycenter", "com.miui.permcenter.permissions.PermissionsEditorActivity")
+            .putExtra("extra_pkgname", packageName)
+        try {
+            startActivity(miuiEditor)
+        } catch (_: Exception) {
+            try {
+                startActivity(
+                    Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.fromParts("package", packageName, null))
+                )
+            } catch (_: Exception) {
+            }
         }
     }
 }
