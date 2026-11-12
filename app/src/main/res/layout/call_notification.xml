@@ -38,25 +38,46 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/notification_call_status"
         android:layout_marginTop="@dimen/activity_margin"
+        android:baselineAligned="false"
         android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/notification_decline_call"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/call_notification_button_size"
-            android:layout_weight="1"
-            android:background="@drawable/ripple_background"
-            android:padding="@dimen/small_margin"
-            android:src="@drawable/ic_phone_down_red_vector" />
+        <!-- The weighted holders only share the row; the clickable buttons keep a fixed size, so a
+             tap next to "decline" (e.g. to open the call screen) can't end the call by accident. -->
+        <FrameLayout
+            android:id="@+id/notification_decline_call_holder"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
 
-        <ImageView
-            android:id="@+id/notification_accept_call"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/call_notification_button_size"
-            android:layout_weight="1"
-            android:background="@drawable/ripple_background"
-            android:padding="@dimen/small_margin"
-            android:src="@drawable/ic_phone_green_vector" />
+            <ImageView
+                android:id="@+id/notification_decline_call"
+                android:layout_width="@dimen/call_notification_button_size"
+                android:layout_height="@dimen/call_notification_button_size"
+                android:layout_gravity="center"
+                android:background="@drawable/ripple_background"
+                android:contentDescription="@string/decline_call"
+                android:padding="@dimen/small_margin"
+                android:src="@drawable/ic_phone_down_red_vector" />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/notification_accept_call_holder"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/notification_accept_call"
+                android:layout_width="@dimen/call_notification_button_size"
+                android:layout_height="@dimen/call_notification_button_size"
+                android:layout_gravity="center"
+                android:background="@drawable/ripple_background"
+                android:contentDescription="@string/accept_call"
+                android:padding="@dimen/small_margin"
+                android:src="@drawable/ic_phone_green_vector" />
+
+        </FrameLayout>
 
     </LinearLayout>
 </RelativeLayout>
