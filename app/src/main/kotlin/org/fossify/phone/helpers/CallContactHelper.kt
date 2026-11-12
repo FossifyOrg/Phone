@@ -3,6 +3,7 @@ package org.fossify.phone.helpers
 import android.content.Context
 import android.net.Uri
 import android.telecom.Call
+import android.telecom.TelecomManager
 import org.fossify.commons.extensions.formatPhoneNumber
 import org.fossify.commons.extensions.getMyContactsCursor
 import org.fossify.commons.extensions.getPhoneNumberTypeText
@@ -70,11 +71,29 @@ fun getCallContact(context: Context, call: Call?, callback: (CallContact) -> Uni
                         }
                     }
                 } else {
-                    callContact.name = callContact.number
+                    // Not a saved contact: prefer the caller name provided by the network (CNAP),
+                    // which the call log already shows, and fall back to the number.
+                    callContact.name = getNetworkCallerName(call) ?: callContact.number
                 }
 
                 callback(callContact)
             }
         }
     }
+}
+
+/**
+ * Caller name supplied by the network (CNAP), only when the network allows showing it.
+ */
+fun getNetworkCallerName(call: Call?): String? {
+    val details = try {
+        call?.details
+    } catch (_: Exception) {
+        null
+    } ?: return null
+
+    if (details.callerDisplayNamePresentation != TelecomManager.PRESENTATION_ALLOWED) {
+        return null
+    }
+    return details.callerDisplayName?.trim()?.takeIf { it.isNotEmpty() }
 }

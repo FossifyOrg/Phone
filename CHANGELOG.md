@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed accented searches not finding contacts saved without accents
 - Fixed calls ending when tapping next to the hang up button in the call notification ([#180])
 - Fixed the app staying open after an incoming call ends instead of returning to the previous app ([#761])
+- Show the caller name provided by the network (CNAP) for numbers not saved in contacts ([#873])
 
 ## [1.11.1] - 2026-02-01
 ### Changed
@@ -287,6 +288,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#645]: https://github.com/FossifyOrg/Phone/issues/645
 [#696]: https://github.com/FossifyOrg/Phone/issues/696
 [#761]: https://github.com/FossifyOrg/Phone/issues/761
+[#873]: https://github.com/FossifyOrg/Phone/issues/873
 [#921]: https://github.com/FossifyOrg/Phone/issues/921
 
 [Unreleased]: https://github.com/FossifyOrg/Phone/compare/1.11.1...HEAD
