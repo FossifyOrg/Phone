@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed the speaker button reacting with a delay
 - Fixed contact search freezing the app with large address books ([#921])
 - Fixed accented searches not finding contacts saved without accents
+- Fixed calls ending when tapping next to the hang up button in the call notification ([#180])
 
 ## [1.11.1] - 2026-02-01
 ### Changed
@@ -260,6 +261,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#147]: https://github.com/FossifyOrg/Phone/issues/147
 [#157]: https://github.com/FossifyOrg/Phone/issues/157
 [#165]: https://github.com/FossifyOrg/Phone/issues/165
+[#180]: https://github.com/FossifyOrg/Phone/issues/180
 [#181]: https://github.com/FossifyOrg/Phone/issues/181
 [#183]: https://github.com/FossifyOrg/Phone/issues/183
 [#186]: https://github.com/FossifyOrg/Phone/issues/186

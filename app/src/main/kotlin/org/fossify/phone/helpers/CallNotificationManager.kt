@@ -83,7 +83,7 @@ class CallNotificationManager(private val context: Context) {
             val collapsedView = RemoteViews(context.packageName, R.layout.call_notification).apply {
                 setText(R.id.notification_caller_name, callerName)
                 setText(R.id.notification_call_status, context.getString(contentTextId))
-                setVisibleIf(R.id.notification_accept_call, callState == Call.STATE_RINGING)
+                setVisibleIf(R.id.notification_accept_call_holder, callState == Call.STATE_RINGING)
 
                 setOnClickPendingIntent(R.id.notification_decline_call, declinePendingIntent)
                 setOnClickPendingIntent(R.id.notification_accept_call, acceptPendingIntent)
