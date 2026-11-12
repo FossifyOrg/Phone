@@ -7,9 +7,14 @@ import android.app.NotificationManager.IMPORTANCE_DEFAULT
 import android.app.NotificationManager.IMPORTANCE_HIGH
 import android.app.PendingIntent
 import android.content.Context
+import android.app.Person
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.drawable.Icon
+import android.os.Build
 import android.telecom.Call
 import android.widget.RemoteViews
+import org.fossify.commons.extensions.canUseFullScreenIntent
 import org.fossify.commons.extensions.notificationManager
 import org.fossify.commons.extensions.setText
 import org.fossify.commons.extensions.setVisibleIf
@@ -22,6 +27,7 @@ class CallNotificationManager(private val context: Context) {
         private const val CALL_NOTIFICATION_ID = 42
         private const val ACCEPT_CALL_CODE = 0
         private const val DECLINE_CALL_CODE = 1
+        private const val DISMISSED_CODE = 2
     }
 
     private val notificationManager = context.notificationManager
@@ -90,9 +96,22 @@ class CallNotificationManager(private val context: Context) {
                 }
             }
 
-            val builder = Notification.Builder(context, channelId)
+            // Attaching the caller lets Do Not Disturb / Bedtime modes match the call against
+            // "starred contacts", "contacts" and "repeat callers" rules. Without it the system can
+            // hide the incoming call notification even though the phone rings.
+            val caller = Caller(
+                name = callContact.name.ifEmpty {
+                    callContact.number.ifEmpty { context.getString(R.string.unknown_caller) }
+                },
+                uri = getCallerUri(),
+                avatar = callContactAvatar
+            )
+            val dismissedPendingIntent = getDismissedPendingIntent()
+
+            val legacyBuilder = Notification.Builder(context, channelId)
                 .setSmallIcon(R.drawable.ic_phone_vector)
                 .setContentIntent(openAppPendingIntent)
+                .setDeleteIntent(dismissedPendingIntent)
                 .setCategory(Notification.CATEGORY_CALL)
                 .setCustomContentView(collapsedView)
                 .setOngoing(true)
@@ -101,14 +120,122 @@ class CallNotificationManager(private val context: Context) {
                 .setStyle(Notification.DecoratedCustomViewStyle())
 
             if (isHighPriority) {
-                builder.setFullScreenIntent(openAppPendingIntent, true)
+                legacyBuilder.setFullScreenIntent(openAppPendingIntent, true)
+            }
+            addCaller(legacyBuilder, caller)
+
+            val incomingCallStyle = if (canUseIncomingCallStyle(isHighPriority)) {
+                buildIncomingCallStyle(
+                    channelId = channelId,
+                    caller = caller,
+                    openAppPendingIntent = openAppPendingIntent,
+                    dismissedPendingIntent = dismissedPendingIntent,
+                    declinePendingIntent = declinePendingIntent,
+                    acceptPendingIntent = acceptPendingIntent
+                )
+            } else {
+                null
             }
 
-            val notification = builder.build()
             // it's rare but possible for the call state to change by now
             if (CallManager.getState() == callState) {
-                notificationManager.notify(CALL_NOTIFICATION_ID, notification)
+                notify(incomingCallStyle, legacyBuilder)
             }
+        }
+    }
+
+    private class Caller(val name: String, val uri: String?, val avatar: Bitmap?)
+
+    private fun notify(incomingCallStyle: Notification.Builder?, legacyBuilder: Notification.Builder) {
+        if (incomingCallStyle == null) {
+            notificationManager.notify(CALL_NOTIFICATION_ID, legacyBuilder.build())
+            return
+        }
+
+        try {
+            notificationManager.notify(CALL_NOTIFICATION_ID, incomingCallStyle.build())
+        } catch (_: IllegalArgumentException) {
+            // Some OEM builds reject CallStyle under conditions we can't check upfront.
+            // Never lose the call notification because of that — fall back to the classic one.
+            notificationManager.notify(CALL_NOTIFICATION_ID, legacyBuilder.build())
+        }
+    }
+
+    // On Android 12+ a ringing call uses the system CallStyle: it can't be swiped away on
+    // Android 14+ and has large answer/decline buttons. CallStyle requires a full-screen
+    // intent, so it is only used when that permission is actually granted.
+    private fun canUseIncomingCallStyle(isHighPriority: Boolean): Boolean {
+        return isHighPriority &&
+            Build.VERSION.SDK_INT >= Build.VERSION_CODES.S &&
+            context.canUseFullScreenIntent()
+    }
+
+    @SuppressLint("NewApi")
+    private fun buildIncomingCallStyle(
+        channelId: String,
+        caller: Caller,
+        openAppPendingIntent: PendingIntent,
+        dismissedPendingIntent: PendingIntent,
+        declinePendingIntent: PendingIntent,
+        acceptPendingIntent: PendingIntent,
+    ): Notification.Builder {
+        return Notification.Builder(context, channelId)
+            .setSmallIcon(R.drawable.ic_phone_vector)
+            .setContentIntent(openAppPendingIntent)
+            .setDeleteIntent(dismissedPendingIntent)
+            .setFullScreenIntent(openAppPendingIntent, true)
+            .setCategory(Notification.CATEGORY_CALL)
+            .setOngoing(true)
+            .setChannelId(channelId)
+            .setStyle(
+                Notification.CallStyle.forIncomingCall(
+                    buildPerson(caller),
+                    declinePendingIntent,
+                    acceptPendingIntent
+                )
+            )
+    }
+
+    private fun getDismissedPendingIntent(): PendingIntent {
+        val dismissedIntent = Intent(context, CallActionReceiver::class.java)
+        dismissedIntent.action = CALL_NOTIFICATION_DISMISSED
+        return PendingIntent.getBroadcast(
+            context,
+            DISMISSED_CODE,
+            dismissedIntent,
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        )
+    }
+
+    private fun getCallerUri(): String? {
+        val handle = try {
+            CallManager.getPrimaryCall()?.details?.handle
+        } catch (_: Exception) {
+            null
+        }
+        return handle?.takeIf { it.scheme == "tel" && !it.schemeSpecificPart.isNullOrEmpty() }?.toString()
+    }
+
+    @SuppressLint("NewApi")
+    private fun buildPerson(caller: Caller): Person {
+        return Person.Builder()
+            .setName(caller.name)
+            .setUri(caller.uri)
+            .setImportant(true)
+            .apply {
+                if (caller.avatar != null) {
+                    setIcon(Icon.createWithBitmap(callContactAvatarHelper.getCircularBitmap(caller.avatar)))
+                }
+            }
+            .build()
+    }
+
+    @Suppress("DEPRECATION")
+    private fun addCaller(builder: Notification.Builder, caller: Caller) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            builder.addPerson(buildPerson(caller))
+        } else if (caller.uri != null) {
+            builder.addPerson(caller.uri)
         }
     }
 
