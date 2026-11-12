@@ -799,7 +799,9 @@ class CallActivity : SimpleActivity() {
             } else {
                 disableAllActionButtons()
                 binding.callStatusLabel.text = getString(R.string.call_ended)
-                finish()
+                // rejected / missed / not connected: also drop the call task, so the user lands back
+                // in the app they were using instead of the Phone main screen
+                safeFinishAndRemoveTask()
             }
         }
     }

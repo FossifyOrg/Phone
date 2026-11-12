@@ -119,7 +119,8 @@
             android:label="@string/ongoing_call"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
-            android:showOnLockScreen="true" />
+            android:showOnLockScreen="true"
+            android:taskAffinity="${applicationId}.call" />
 
         <activity
             android:name=".activities.DialpadActivity"
