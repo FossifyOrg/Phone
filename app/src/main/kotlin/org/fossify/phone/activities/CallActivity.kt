@@ -54,7 +54,6 @@ class CallActivity : SimpleActivity() {
     private var isMicrophoneOff = false
     private var isCallEnded = false
     private var callContact: CallContact? = null
-    private var proximityWakeLock: PowerManager.WakeLock? = null
     private var screenOnWakeLock: PowerManager.WakeLock? = null
     private var callDuration = 0
     private val callDurationHandler = Handler(Looper.getMainLooper())
@@ -102,7 +101,7 @@ class CallActivity : SimpleActivity() {
     override fun onDestroy() {
         super.onDestroy()
         CallManager.removeListener(callCallback)
-        disableProximitySensor()
+        // proximity is owned by the call (ProximitySensorHelper), not by this screen
 
         if (screenOnWakeLock?.isHeld == true) {
             screenOnWakeLock!!.release()
@@ -493,11 +492,7 @@ class CallActivity : SimpleActivity() {
             toggleButtonColor(binding.callToggleSpeaker, enabled = route != AudioRoute.EARPIECE && route != AudioRoute.WIRED_HEADSET)
             createOrUpdateAudioRouteChooser(supportedAudioRoutes, create = false)
 
-            if (isSpeakerOn) {
-                disableProximitySensor()
-            } else {
-                enableProximitySensor()
-            }
+            ProximitySensorHelper.update(this)
         }
     }
 
@@ -734,7 +729,7 @@ class CallActivity : SimpleActivity() {
     }
 
     private fun initOutgoingCallUI() {
-        enableProximitySensor()
+        ProximitySensorHelper.update(this)
         binding.incomingCallHolder.beGone()
         binding.ongoingCallHolder.beVisible()
         binding.callEnd.beVisible()
@@ -745,7 +740,7 @@ class CallActivity : SimpleActivity() {
     }
 
     private fun callStarted() {
-        enableProximitySensor()
+        ProximitySensorHelper.update(this)
         binding.incomingCallHolder.beGone()
         binding.ongoingCallHolder.beVisible()
         binding.callEnd.beVisible()
@@ -764,7 +759,7 @@ class CallActivity : SimpleActivity() {
 
     private fun endCall() {
         CallManager.reject()
-        disableProximitySensor()
+        ProximitySensorHelper.release()
         audioRouteChooserDialog?.dismissAllowingStateLoss()
 
         if (isCallEnded) {
@@ -852,20 +847,6 @@ class CallActivity : SimpleActivity() {
             screenOnWakeLock = powerManager.newWakeLock(PowerManager.FULL_WAKE_LOCK, "org.fossify.phone:full_wake_lock")
             screenOnWakeLock!!.acquire(5 * 1000L)
         } catch (e: Exception) {
-        }
-    }
-
-    private fun enableProximitySensor() {
-        if (!config.disableProximitySensor && (proximityWakeLock == null || proximityWakeLock?.isHeld == false)) {
-            val powerManager = getSystemService(Context.POWER_SERVICE) as PowerManager
-            proximityWakeLock = powerManager.newWakeLock(PowerManager.PROXIMITY_SCREEN_OFF_WAKE_LOCK, "org.fossify.phone:wake_lock")
-            proximityWakeLock!!.acquire(60 * MINUTE_SECONDS * 1000L)
-        }
-    }
-
-    private fun disableProximitySensor() {
-        if (proximityWakeLock?.isHeld == true) {
-            proximityWakeLock!!.release()
         }
     }
 

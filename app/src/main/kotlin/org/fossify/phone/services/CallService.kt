@@ -14,6 +14,7 @@ import org.fossify.phone.extensions.powerManager
 import org.fossify.phone.helpers.CallManager
 import org.fossify.phone.helpers.CallNotificationManager
 import org.fossify.phone.helpers.NoCall
+import org.fossify.phone.helpers.ProximitySensorHelper
 import org.fossify.phone.models.Events
 import org.greenrobot.eventbus.EventBus
 
@@ -31,6 +32,7 @@ class CallService : InCallService() {
             if (state == Call.STATE_ACTIVE || state == Call.STATE_DIALING || state == Call.STATE_CONNECTING) {
                 CallManager.preferBluetoothRouteIfAvailable()
             }
+            ProximitySensorHelper.update(this@CallService)
         }
     }
 
@@ -78,7 +80,9 @@ class CallService : InCallService() {
         if (CallManager.getPhoneState() == NoCall) {
             CallManager.inCallService = null
             callNotificationManager.cancelNotification()
+            ProximitySensorHelper.release()
         } else {
+            ProximitySensorHelper.update(this)
             callNotificationManager.setupNotification()
             if (wasPrimaryCall) {
                 startActivity(CallActivity.getStartIntent(this))
@@ -94,11 +98,13 @@ class CallService : InCallService() {
             CallManager.onAudioStateChanged(audioState)
             // BT route often appears slightly after call start; claim it when it becomes available.
             CallManager.preferBluetoothRouteIfAvailable()
+            ProximitySensorHelper.update(this)
         }
     }
 
     override fun onDestroy() {
         super.onDestroy()
         callNotificationManager.cancelNotification()
+        ProximitySensorHelper.release()
     }
 }

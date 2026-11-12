@@ -176,6 +176,8 @@ class CallManager {
             return call
         }
 
+        fun getCallStates(): List<Int> = calls.map { it.getStateCompat() }
+
         fun getConferenceCalls(): List<Call> {
             return calls.find { it.isConference() }?.children ?: emptyList()
         }

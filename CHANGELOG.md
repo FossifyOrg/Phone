@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed incoming call notifications being hidden by Do Not Disturb and Bedtime modes for allowed callers
 - Fixed having no way back to an ongoing call from the main screen
 - Fixed the incoming call screen not showing on Xiaomi, Redmi and POCO phones by explaining which extra permissions they need
+- Fixed the proximity sensor stopping after 60 minutes and depending on the call screen being open
 
 ## [1.11.1] - 2026-02-01
 ### Changed
