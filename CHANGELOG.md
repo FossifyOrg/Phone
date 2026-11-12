@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- Fixed the app staying open after a call ends instead of returning to the previous app ([#761])
+
 ## [1.11.1] - 2026-02-01
 ### Changed
 - Updated translations
@@ -271,6 +274,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#631]: https://github.com/FossifyOrg/Phone/issues/631
 [#645]: https://github.com/FossifyOrg/Phone/issues/645
 [#696]: https://github.com/FossifyOrg/Phone/issues/696
+[#761]: https://github.com/FossifyOrg/Phone/issues/761
 
 [Unreleased]: https://github.com/FossifyOrg/Phone/compare/1.11.1...HEAD
 [1.11.1]: https://github.com/FossifyOrg/Phone/compare/1.11.0...1.11.1
