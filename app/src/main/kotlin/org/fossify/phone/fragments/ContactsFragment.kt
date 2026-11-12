@@ -12,13 +12,12 @@ import org.fossify.commons.extensions.getColorStateList
 import org.fossify.commons.extensions.getContrastColor
 import org.fossify.commons.extensions.getMyContactsCursor
 import org.fossify.commons.extensions.hasPermission
-import org.fossify.commons.extensions.normalizeString
 import org.fossify.commons.extensions.underlineText
 import org.fossify.commons.helpers.ContactsHelper
 import org.fossify.commons.helpers.MyContactsContentProvider
 import org.fossify.commons.helpers.PERMISSION_READ_CONTACTS
 import org.fossify.commons.helpers.SMT_PRIVATE
-import org.fossify.commons.helpers.getProperText
+import org.fossify.commons.helpers.ensureBackgroundThread
 import org.fossify.commons.models.contacts.Contact
 import org.fossify.phone.R
 import org.fossify.phone.activities.MainActivity
@@ -30,12 +29,22 @@ import org.fossify.phone.extensions.handleGenericContactClick
 import org.fossify.phone.extensions.launchCreateNewContactIntent
 import org.fossify.phone.extensions.setupWithContacts
 import org.fossify.phone.extensions.startContactDetailsIntent
+import org.fossify.phone.helpers.ContactSearchEntry
+import org.fossify.phone.helpers.searchContacts
 import org.fossify.phone.interfaces.RefreshItemsListener
+import java.util.concurrent.atomic.AtomicInteger
 
 class ContactsFragment(context: Context, attributeSet: AttributeSet) : MyViewPagerFragment<MyViewPagerFragment.LettersInnerBinding>(context, attributeSet),
     RefreshItemsListener {
     private lateinit var binding: FragmentLettersLayoutBinding
     private var allContacts = ArrayList<Contact>()
+    private var searchIndex: List<ContactSearchEntry>? = null
+    private val searchGeneration = AtomicInteger(0)
+    private var pendingSearch = Runnable {}
+
+    companion object {
+        private const val SEARCH_DEBOUNCE_MS = 150L
+    }
 
     override fun onFinishInflate() {
         super.onFinishInflate()
@@ -151,35 +160,50 @@ class ContactsFragment(context: Context, attributeSet: AttributeSet) : MyViewPag
     }
 
     override fun onSearchClosed() {
+        // drop any search still running in the background
+        searchGeneration.incrementAndGet()
+        removeCallbacks(pendingSearch)
         binding.fragmentPlaceholder.beVisibleIf(allContacts.isEmpty())
         (binding.fragmentList.adapter as? ContactsAdapter)?.updateItems(allContacts)
         setupLetterFastScroller(allContacts)
     }
 
     override fun onSearchQueryChanged(text: String) {
+        // Filtering used to run on the UI thread on every keystroke, re-normalizing every field of
+        // every contact, which froze the app with large address books. Now: wait for a short pause
+        // in typing, filter a pre-normalized index in the background, show only the latest result.
         val fixedText = text.trim().replace("\\s+".toRegex(), " ")
-        val shouldNormalize = fixedText.normalizeString() == fixedText
-        val filtered = allContacts.filter { contact ->
-            getProperText(contact.getNameToDisplay(), shouldNormalize).contains(fixedText, true) ||
-                getProperText(contact.nickname, shouldNormalize).contains(fixedText, true) ||
-                (fixedText.toLongOrNull() != null && contact.doesContainPhoneNumber(fixedText, true)) ||
-                contact.emails.any { it.value.contains(fixedText, true) } ||
-                contact.addresses.any { getProperText(it.value, shouldNormalize).contains(fixedText, true) } ||
-                contact.IMs.any { it.value.contains(fixedText, true) } ||
-                getProperText(contact.notes, shouldNormalize).contains(fixedText, true) ||
-                getProperText(contact.organization.company, shouldNormalize).contains(fixedText, true) ||
-                getProperText(contact.organization.jobPosition, shouldNormalize).contains(fixedText, true) ||
-                contact.websites.any { it.contains(fixedText, true) }
-        } as ArrayList
-
-        filtered.sortBy {
-            val nameToDisplay = it.getNameToDisplay()
-            !getProperText(nameToDisplay, shouldNormalize).startsWith(fixedText, true) && !nameToDisplay.contains(fixedText, true)
+        val generation = searchGeneration.incrementAndGet()
+        val contactsSnapshot = ArrayList(allContacts)
+        removeCallbacks(pendingSearch)
+        pendingSearch = Runnable {
+            ensureBackgroundThread {
+                val index = getSearchIndex(contactsSnapshot)
+                val filtered = searchContacts(index, fixedText)
+                post {
+                    if (generation == searchGeneration.get()) {
+                        binding.fragmentPlaceholder.beVisibleIf(filtered.isEmpty())
+                        (binding.fragmentList.adapter as? ContactsAdapter)?.updateItems(filtered, fixedText)
+                        setupLetterFastScroller(filtered)
+                    }
+                }
+            }
         }
+        postDelayed(pendingSearch, SEARCH_DEBOUNCE_MS)
+    }
 
-        binding.fragmentPlaceholder.beVisibleIf(filtered.isEmpty())
-        (binding.fragmentList.adapter as? ContactsAdapter)?.updateItems(filtered, fixedText)
-        setupLetterFastScroller(filtered)
+    @Synchronized
+    private fun getSearchIndex(contacts: ArrayList<Contact>): List<ContactSearchEntry> {
+        val cached = searchIndex
+        // the index stays valid as long as the contact list has the same items in the same order
+        if (
+            cached != null &&
+            cached.size == contacts.size &&
+            cached.indices.all { cached[it].contact === contacts[it] }
+        ) {
+            return cached
+        }
+        return contacts.map { ContactSearchEntry.from(it) }.also { searchIndex = it }
     }
 
     private fun requestReadContactsPermission() {

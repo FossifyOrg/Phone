@@ -15,6 +15,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed the incoming call screen not showing on Xiaomi, Redmi and POCO phones by explaining which extra permissions they need
 - Fixed the proximity sensor stopping after 60 minutes and depending on the call screen being open
 - Fixed the speaker button reacting with a delay
+- Fixed contact search freezing the app with large address books ([#921])
+- Fixed accented searches not finding contacts saved without accents
 
 ## [1.11.1] - 2026-02-01
 ### Changed
@@ -281,6 +283,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#631]: https://github.com/FossifyOrg/Phone/issues/631
 [#645]: https://github.com/FossifyOrg/Phone/issues/645
 [#696]: https://github.com/FossifyOrg/Phone/issues/696
+[#921]: https://github.com/FossifyOrg/Phone/issues/921
 
 [Unreleased]: https://github.com/FossifyOrg/Phone/compare/1.11.1...HEAD
 [1.11.1]: https://github.com/FossifyOrg/Phone/compare/1.11.0...1.11.1
