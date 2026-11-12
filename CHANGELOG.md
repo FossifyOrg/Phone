@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed the app staying open after an incoming call ends instead of returning to the previous app ([#761])
 - Show the caller name provided by the network (CNAP) for numbers not saved in contacts ([#873])
 - Fixed call history not showing the contact name for contacts with more than one phone number ([#74])
+- Fixed call history ignoring the "Start name with surname" option ([#865])
 
 ## [1.11.1] - 2026-02-01
 ### Changed
@@ -290,6 +291,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#645]: https://github.com/FossifyOrg/Phone/issues/645
 [#696]: https://github.com/FossifyOrg/Phone/issues/696
 [#761]: https://github.com/FossifyOrg/Phone/issues/761
+[#865]: https://github.com/FossifyOrg/Phone/issues/865
 [#873]: https://github.com/FossifyOrg/Phone/issues/873
 [#921]: https://github.com/FossifyOrg/Phone/issues/921
 

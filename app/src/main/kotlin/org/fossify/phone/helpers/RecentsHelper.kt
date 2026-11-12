@@ -202,11 +202,15 @@ class RecentsHelper(private val context: Context) {
                     name = number.orEmpty()
                 }
 
-                if (name == number && !isUnknownNumber) {
-                    name = contactsNumbersMap.getOrPut(number!!) {
-                        // Match against every number of the contact, not only the first one:
-                        // contacts with several numbers showed up as a bare number in the history.
-                        findContactByNumber(contacts, number)?.getNameToDisplay() ?: number
+                if (!isUnknownNumber) {
+                    // Prefer the contact as this app displays it (honours "Start name with surname"
+                    // and every number of the contact) over the name cached by the system call log.
+                    // An empty value caches "no matching contact" for this number.
+                    val contactName = contactsNumbersMap.getOrPut(number!!) {
+                        findContactByNumber(contacts, number)?.getNameToDisplay().orEmpty()
+                    }
+                    if (contactName.isNotEmpty()) {
+                        name = contactName
                     }
                 }
 
