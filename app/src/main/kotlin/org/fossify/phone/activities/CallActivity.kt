@@ -41,6 +41,8 @@ import kotlin.math.min
 
 class CallActivity : SimpleActivity() {
     companion object {
+        private const val AUDIO_ROUTE_RESYNC_DELAY_MS = 2000L
+
         fun getStartIntent(context: Context): Intent {
             val openAppIntent = Intent(context, CallActivity::class.java)
             openAppIntent.flags = Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT or Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
@@ -101,6 +103,7 @@ class CallActivity : SimpleActivity() {
     override fun onDestroy() {
         super.onDestroy()
         CallManager.removeListener(callCallback)
+        callDurationHandler.removeCallbacks(resyncAudioRouteTask)
         // proximity is owned by the call (ProximitySensorHelper), not by this screen
 
         if (screenOnWakeLock?.isHeld == true) {
@@ -437,9 +440,26 @@ class CallActivity : SimpleActivity() {
         if (supportAudioRoutes.contains(AudioRoute.BLUETOOTH)) {
             createOrUpdateAudioRouteChooser(supportAudioRoutes)
         } else {
-            val isSpeakerOn = !isSpeakerOn
-            val newRoute = if (isSpeakerOn) CallAudioState.ROUTE_SPEAKER else CallAudioState.ROUTE_WIRED_OR_EARPIECE
+            val turnSpeakerOn = !isSpeakerOn
+            val newRoute = if (turnSpeakerOn) CallAudioState.ROUTE_SPEAKER else CallAudioState.ROUTE_WIRED_OR_EARPIECE
             CallManager.setAudioRoute(newRoute)
+
+            // Telecom can take a second or two to confirm the new route. Reflect the tap right away
+            // so the button doesn't look ignored; the real state arrives via onAudioStateChanged,
+            // and we re-sync once more in case Telecom refused the change without a callback.
+            isSpeakerOn = turnSpeakerOn
+            binding.callToggleSpeaker.setImageResource(
+                if (turnSpeakerOn) AudioRoute.SPEAKER.iconRes else AudioRoute.EARPIECE.iconRes
+            )
+            toggleButtonColor(binding.callToggleSpeaker, enabled = turnSpeakerOn)
+            callDurationHandler.removeCallbacks(resyncAudioRouteTask)
+            callDurationHandler.postDelayed(resyncAudioRouteTask, AUDIO_ROUTE_RESYNC_DELAY_MS)
+        }
+    }
+
+    private val resyncAudioRouteTask = Runnable {
+        if (!isCallEnded) {
+            updateCallAudioState(CallManager.getCallAudioRoute())
         }
     }
 
