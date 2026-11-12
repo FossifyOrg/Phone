@@ -40,6 +40,8 @@ import org.fossify.phone.fragments.ContactsFragment
 import org.fossify.phone.fragments.FavoritesFragment
 import org.fossify.phone.fragments.MyViewPagerFragment
 import org.fossify.phone.fragments.RecentsFragment
+import org.fossify.phone.helpers.CallManager
+import org.fossify.phone.helpers.NoCall
 import org.fossify.phone.helpers.OPEN_DIAL_PAD_AT_LAUNCH
 import org.fossify.phone.helpers.RecentsHelper
 import org.fossify.phone.helpers.tabsList
@@ -145,9 +147,30 @@ class MainActivity : SimpleActivity() {
         }
 
         checkShortcuts()
+        updateOngoingCallBar()
         Handler().postDelayed({
             getRecentsFragment()?.refreshItems()
         }, 2000)
+    }
+
+    // A way back to a running call that doesn't depend on the notification still being there.
+    private fun updateOngoingCallBar() {
+        val hasCall = CallManager.getPhoneState() != NoCall
+        binding.mainOngoingCallBar.apply {
+            beVisibleIf(hasCall)
+            if (hasCall) {
+                val primaryColor = getProperPrimaryColor()
+                setBackgroundColor(primaryColor)
+                setTextColor(primaryColor.getContrastColor())
+                setOnClickListener {
+                    if (CallManager.getPhoneState() != NoCall) {
+                        startActivity(CallActivity.getStartIntent(this@MainActivity))
+                    } else {
+                        updateOngoingCallBar()
+                    }
+                }
+            }
+        }
     }
 
     override fun onPause() {
@@ -637,5 +660,7 @@ class MainActivity : SimpleActivity() {
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun refreshCallLog(event: Events.RefreshCallLog) {
         getRecentsFragment()?.refreshItems()
+        // posted when a call is removed — hide the "ongoing call" bar once nothing is left
+        updateOngoingCallBar()
     }
 }
