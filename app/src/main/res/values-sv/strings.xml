@@ -72,7 +72,7 @@
     <string name="call_is_being_connected">Samtalet kopplas…</string>
     <string name="faq_2_title">Varför fungerar inte nödsamtal korrekt?</string>
     <string name="faq_3_title">Varför saknas vissa av mina kontakter i appen?</string>
-    <string name="faq_3_text">Fossify Phone visar bara kontakter som har ett telefonummer. Kontakter utan ett telefonnummer visas inte i appen.</string>
+    <string name="faq_3_text">Fossify Phone visar bara kontakter som har ett telefonnummer. Kontakter utan ett telefonnummer visas inte i appen.</string>
     <string name="call_notification_channel">Samtalsstatus</string>
     <string name="call_notification_channel_high_priority">Samtalsstatus (hög prioritet)</string>
     <string name="calling_accounts">Konton för samtal</string>
