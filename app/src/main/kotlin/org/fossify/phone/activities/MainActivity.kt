@@ -10,6 +10,7 @@ import android.graphics.drawable.Icon
 import android.graphics.drawable.LayerDrawable
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.provider.Settings
 import android.widget.ImageView
 import android.widget.TextView
@@ -57,6 +58,7 @@ class MainActivity : SimpleActivity() {
     private var storedShowTabs = 0
     private var storedFontSize = 0
     private var storedStartNameWithSurname = false
+    private var hadContactsPermission = false
     var cachedContacts = ArrayList<Contact>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -69,33 +71,15 @@ class MainActivity : SimpleActivity() {
 
         EventBus.getDefault().register(this)
         launchedDialer = savedInstanceState?.getBoolean(OPEN_DIAL_PAD_AT_LAUNCH) ?: false
+        hadContactsPermission = hasPermission(PERMISSION_READ_CONTACTS)
 
-        if (isDefaultDialer()) {
-            checkContactPermissions()
-
-            if (!config.wasOverlaySnackbarConfirmed && !Settings.canDrawOverlays(this)) {
-                val snackbar = Snackbar.make(
-                    binding.mainHolder,
-                    R.string.allow_displaying_over_other_apps,
-                    Snackbar.LENGTH_INDEFINITE
-                ).setAction(R.string.ok) {
-                    config.wasOverlaySnackbarConfirmed = true
-                    startActivity(Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION))
-                }
-
-                snackbar.setBackgroundTint(getProperBackgroundColor().darkenColor())
-                snackbar.setTextColor(getProperTextColor())
-                snackbar.setActionTextColor(getProperTextColor())
-                snackbar.show()
-            }
-
-            handleFullScreenNotificationsPermission { granted ->
-                if (!granted) {
-                    toast(org.fossify.commons.R.string.notifications_disabled)
-                }
-            }
+        if (config.wasPermissionsSetupShown) {
+            checkPermissionsOnLaunch()
         } else {
-            launchSetDefaultDialerIntent()
+            // first launch: ask for everything up front in one place instead of drip-feeding
+            // prompts, and never show it again even if the user skips through it
+            config.wasPermissionsSetupShown = true
+            startActivity(Intent(this, PermissionsActivity::class.java))
         }
 
         if (isQPlus() && (config.blockUnknownNumbers || config.blockHiddenNumbers)) {
@@ -103,7 +87,53 @@ class MainActivity : SimpleActivity() {
         }
 
         setupTabs()
+        // only wires up the view pager, so it must not be gated on a permission result
+        initFragments()
         Contact.sorting = config.sorting
+    }
+
+    private fun checkPermissionsOnLaunch() {
+        if (isDefaultDialer()) {
+            onDefaultDialerReady()
+        } else {
+            launchSetDefaultDialerIntent()
+        }
+    }
+
+    /**
+     * Everything here used to run in onCreate only. A user who granted the default dialer role from
+     * the prompt started by this very launch was therefore never asked for full screen notification
+     * access until the next cold start, which on Android 14+ left incoming calls with no full screen
+     * UI at all. onActivityResult calls this too now.
+     */
+    private fun onDefaultDialerReady() {
+        handlePermission(PERMISSION_READ_CONTACTS) { granted ->
+            if (granted) {
+                refreshItems()
+            }
+        }
+
+        if (!config.wasOverlaySnackbarConfirmed && !Settings.canDrawOverlays(this)) {
+            val snackbar = Snackbar.make(
+                binding.mainHolder,
+                R.string.allow_displaying_over_other_apps,
+                Snackbar.LENGTH_INDEFINITE
+            ).setAction(R.string.ok) {
+                config.wasOverlaySnackbarConfirmed = true
+                startActivity(Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION))
+            }
+
+            snackbar.setBackgroundTint(getProperBackgroundColor().darkenColor())
+            snackbar.setTextColor(getProperTextColor())
+            snackbar.setActionTextColor(getProperTextColor())
+            snackbar.show()
+        }
+
+        handleFullScreenNotificationsPermission { granted ->
+            if (!granted) {
+                toast(org.fossify.commons.R.string.notifications_disabled)
+            }
+        }
     }
 
     override fun onResume() {
@@ -133,6 +163,15 @@ class MainActivity : SimpleActivity() {
             storedStartNameWithSurname = config.startNameWithSurname
         }
 
+        // the fragments read the contacts permission once, in setupFragment, so they keep showing
+        // the "could not access contacts" placeholder until they are recreated. Dropping the
+        // adapter makes refreshItems below rebuild them.
+        val hasContactsPermission = hasPermission(PERMISSION_READ_CONTACTS)
+        if (hasContactsPermission != hadContactsPermission) {
+            hadContactsPermission = hasContactsPermission
+            binding.viewPager.adapter = null
+        }
+
         if (!binding.mainMenu.isSearchOpen) {
             refreshItems(true)
         }
@@ -145,7 +184,7 @@ class MainActivity : SimpleActivity() {
         }
 
         checkShortcuts()
-        Handler().postDelayed({
+        Handler(Looper.getMainLooper()).postDelayed({
             getRecentsFragment()?.refreshItems()
         }, 2000)
     }
@@ -161,7 +200,9 @@ class MainActivity : SimpleActivity() {
         super.onActivityResult(requestCode, resultCode, resultData)
         // we don't really care about the result, the app can work without being the default Dialer too
         if (requestCode == REQUEST_CODE_SET_DEFAULT_DIALER) {
-            checkContactPermissions()
+            if (isDefaultDialer()) {
+                onDefaultDialerReady()
+            }
         } else if (requestCode == REQUEST_CODE_SET_DEFAULT_CALLER_ID && resultCode != Activity.RESULT_OK) {
             toast(R.string.must_make_default_caller_id_app, length = Toast.LENGTH_LONG)
             baseConfig.blockUnknownNumbers = false
@@ -267,12 +308,6 @@ class MainActivity : SimpleActivity() {
         binding.mainMenu.updateColors()
     }
 
-    private fun checkContactPermissions() {
-        handlePermission(PERMISSION_READ_CONTACTS) {
-            initFragments()
-        }
-    }
-
     private fun clearCallHistory() {
         val confirmationText = "${getString(R.string.clear_history_confirmation)}\n\n${getString(R.string.cannot_be_undone)}"
         ConfirmationDialog(this, confirmationText) {
@@ -301,7 +336,7 @@ class MainActivity : SimpleActivity() {
     @SuppressLint("NewApi")
     private fun getLaunchDialpadShortcut(appIconColor: Int): ShortcutInfo {
         val newEvent = getString(R.string.dialpad)
-        val drawable = resources.getDrawable(R.drawable.shortcut_dialpad)
+        val drawable = resources.getDrawable(R.drawable.shortcut_dialpad, theme)
         (drawable as LayerDrawable).findDrawableByLayerId(R.id.shortcut_dialpad_background).applyColorFilter(appIconColor)
         val bmp = drawable.convertToBitmap()
 
@@ -386,7 +421,7 @@ class MainActivity : SimpleActivity() {
 
         // selecting the proper tab sometimes glitches, add an extra selector to make sure we have it right
         binding.mainTabsHolder.onGlobalLayout {
-            Handler().postDelayed({
+            Handler(Looper.getMainLooper()).postDelayed({
                 var wantedTab = getDefaultTab()
 
                 // open the Recents tab if we got here by clicking a missed call notification
@@ -566,6 +601,7 @@ class MainActivity : SimpleActivity() {
             FAQItem(R.string.faq_1_title, R.string.faq_1_text),
             FAQItem(R.string.faq_2_title, R.string.faq_2_text),
             FAQItem(R.string.faq_3_title, R.string.faq_3_text),
+            FAQItem(R.string.faq_4_title, R.string.faq_4_text),
             FAQItem(R.string.faq_9_title_commons, R.string.faq_9_text_commons)
         )
 
