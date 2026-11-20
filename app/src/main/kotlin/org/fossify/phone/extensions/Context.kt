@@ -10,14 +10,34 @@ import android.media.AudioManager
 import android.net.Uri
 import android.os.PowerManager
 import android.telecom.TelecomManager
+import android.telephony.TelephonyManager
 import org.fossify.commons.extensions.launchActivityIntent
 import org.fossify.commons.extensions.telecomManager
 import org.fossify.commons.helpers.KEY_PHONE
 import org.fossify.commons.helpers.ensureBackgroundThread
 import org.fossify.phone.helpers.Config
 import org.fossify.phone.models.SIMAccount
+import java.util.Locale
 
 val Context.config: Config get() = Config.newInstance(applicationContext)
+
+/**
+ * Returns the uppercase ISO 3166-1 alpha-2 code of the country the device is being used in.
+ * The SIM and network countries take priority over the system locale, because many people use
+ * a locale such as en-US outside of that country, and treating numbers without a country code
+ * as belonging to the locale's country makes them display wrong.
+ */
+fun Context.getCurrentCountryIso(): String {
+    val telephonyManager = getSystemService(TelephonyManager::class.java)
+    return listOf(
+        telephonyManager?.simCountryIso,
+        telephonyManager?.networkCountryIso,
+        Locale.getDefault().country
+    )
+        .firstOrNull { !it.isNullOrBlank() }
+        ?.uppercase(Locale.US)
+        .orEmpty()
+}
 
 val Context.audioManager: AudioManager
     get() = getSystemService(Context.AUDIO_SERVICE) as AudioManager

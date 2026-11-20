@@ -3,7 +3,6 @@ package org.fossify.phone.helpers
 import android.content.Context
 import android.net.Uri
 import android.telecom.Call
-import org.fossify.commons.extensions.formatPhoneNumber
 import org.fossify.commons.extensions.getMyContactsCursor
 import org.fossify.commons.extensions.getPhoneNumberTypeText
 import org.fossify.commons.helpers.ContactsHelper
@@ -11,6 +10,8 @@ import org.fossify.commons.helpers.MyContactsContentProvider
 import org.fossify.commons.helpers.ensureBackgroundThread
 import org.fossify.phone.R
 import org.fossify.phone.extensions.config
+import org.fossify.phone.extensions.formatPhoneNumber
+import org.fossify.phone.extensions.getCurrentCountryIso
 import org.fossify.phone.extensions.isConference
 import org.fossify.phone.models.CallContact
 
@@ -53,7 +54,7 @@ fun getCallContact(context: Context, call: Call?, callback: (CallContact) -> Uni
                 }
 
                 callContact.number = if (context.config.formatPhoneNumbers) {
-                    number.formatPhoneNumber()
+                    number.formatPhoneNumber(context.getCurrentCountryIso())
                 } else {
                     number
                 }

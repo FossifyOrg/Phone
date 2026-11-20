@@ -28,7 +28,6 @@ import org.fossify.commons.extensions.applyColorFilter
 import org.fossify.commons.extensions.beVisibleIf
 import org.fossify.commons.extensions.copyToClipboard
 import org.fossify.commons.extensions.formatDateOrTime
-import org.fossify.commons.extensions.formatPhoneNumber
 import org.fossify.commons.extensions.formatSecondsToShortTimeString
 import org.fossify.commons.extensions.formatTime
 import org.fossify.commons.extensions.getColoredDrawableWithColor
@@ -54,6 +53,8 @@ import org.fossify.phone.dialogs.ShowGroupedCallsDialog
 import org.fossify.phone.extensions.areMultipleSIMsAvailable
 import org.fossify.phone.extensions.callContactWithSimWithConfirmationCheck
 import org.fossify.phone.extensions.config
+import org.fossify.phone.extensions.formatPhoneNumber
+import org.fossify.phone.extensions.getCurrentCountryIso
 import org.fossify.phone.extensions.getDayCode
 import org.fossify.phone.extensions.startAddContactIntent
 import org.fossify.phone.extensions.startCallWithConfirmationCheck
@@ -63,6 +64,7 @@ import org.fossify.phone.interfaces.RefreshItemsListener
 import org.fossify.phone.models.CallLogItem
 import org.fossify.phone.models.RecentCall
 import org.joda.time.DateTime
+import java.util.IllformedLocaleException
 import java.util.Locale
 
 class RecentCallsAdapter(
@@ -87,6 +89,12 @@ class RecentCallsAdapter(
     private var phoneNumberUtilInstance: PhoneNumberUtil = PhoneNumberUtil.getInstance()
     private var phoneNumberOfflineGeocoderInstance: PhoneNumberOfflineGeocoder = PhoneNumberOfflineGeocoder.getInstance()
     private val cachedSimColors = HashMap<Pair<Int,Int>, Int>()
+    private val currentCountryIso = activity.getCurrentCountryIso()
+    private val currentCountryName = try {
+        Locale.Builder().setRegion(currentCountryIso).build().displayCountry
+    } catch (_: IllformedLocaleException) {
+        ""
+    }
 
     init {
         initDrawables()
@@ -466,7 +474,7 @@ class RecentCallsAdapter(
                 val name = matchingContact?.getNameToDisplay() ?: call.name
                 val formatPhoneNumbers = activity.config.formatPhoneNumbers
                 var nameToShow = if (name == call.phoneNumber && formatPhoneNumbers) {
-                    SpannableString(name.formatPhoneNumber())
+                    SpannableString(name.formatPhoneNumber(currentCountryIso))
                 } else {
                     SpannableString(name)
                 }
@@ -479,7 +487,7 @@ class RecentCallsAdapter(
 
                     val numPart = call.specificNumber
                         .takeIf { it.isNotBlank() }
-                        ?.let { if (formatPhoneNumbers) it.formatPhoneNumber() else it }
+                        ?.let { if (formatPhoneNumbers) it.formatPhoneNumber(currentCountryIso) else it }
                         ?.let { ", $it" }
                         .orEmpty()
 
@@ -533,17 +541,16 @@ class RecentCallsAdapter(
 
                 itemRecentsLocation.apply {
                     val locale = Locale.getDefault()
-                    val defaultCountryCode = locale.country
                     val phoneNumber = try {
                         phoneNumberUtilInstance
-                            .parse(call.phoneNumber, defaultCountryCode)
+                            .parse(call.phoneNumber, currentCountryIso)
                     } catch (_: NumberParseException) {
                         null
                     }
 
                     val location = if (phoneNumber != null) {
                         phoneNumberOfflineGeocoderInstance
-                            .getDescriptionForNumber(phoneNumber, locale, defaultCountryCode)
+                            .getDescriptionForNumber(phoneNumber, locale, currentCountryIso)
                     } else {
                         null
                     }
@@ -554,7 +561,7 @@ class RecentCallsAdapter(
                     beVisibleIf(
                         phoneNumber != null
                                 && phoneNumber.countryCodeSource != Phonenumber.PhoneNumber.CountryCodeSource.FROM_DEFAULT_COUNTRY
-                                && (location != locale.displayCountry || matchingContact == null)
+                                && (location != currentCountryName || matchingContact == null)
                     )
                 }
 
