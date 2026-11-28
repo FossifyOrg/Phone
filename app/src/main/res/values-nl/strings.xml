@@ -29,7 +29,7 @@
     <string name="call_ending">Einde gesprek</string>
     <string name="ongoing_call">Huidig gesprek</string>
     <string name="select_sim">Kies een simkaart voor dit gesprek</string>
-    <string name="always_use_this_sim">Altijd deze simkaart voor dit nummer gebruiken</string>
+    <string name="always_use_this_sim">Altijd deze simkaart gebruiken voor dit nummer</string>
     <string name="unset_default_sim">Geen standaard-simkaart</string>
     <string name="calls">Gesprekken</string>
     <string name="turn_microphone_on">Microfoon inschakelen</string>
